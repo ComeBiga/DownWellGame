@@ -8,7 +8,11 @@ public class MapGenerator : MonoBehaviour
     public int height = 10;
 
     public GameObject wall;
+
+    [Range(0, 100)]
     public int randomPercent = 30;
+    [Range(0, 10)]
+    public int proliferationRatio = 2;
 
     Tile[,] tiles;
     public Tile[,] Tiles { get { return tiles; } }
@@ -55,15 +59,56 @@ public class MapGenerator : MonoBehaviour
         InitTiles();
         InitWalls();
 
-        System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
 
-        for (int y = 1; y < height - 1; y++)
+        for (int i = 0; i < height; i++)
         {
-            for (int x = 1; x < width - 1; x++)
+            tiles[1, i].style = rand.Next(0, 100) < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+            tiles[width - 2, i].style = rand.Next(0, 100) < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+        }
+
+        ProliferateTile();
+    }
+
+    void ProliferateTile()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 1; x < width; x++)
             {
-                tiles[x, y].style = rand.Next(0, 100) < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+                if(tiles[x, y].style == TileStyle.Wall)
+                {
+                    RandomTile(x, y - 1);
+                    RandomTile(x, y + 1);
+                    RandomTile(x - 1, y);
+                    RandomTile(x + 1, y);
+                }
             }
         }
+    }
+
+    void VisitNextTile(int tileX, int tileY, int proliferationRatio)
+    {
+
+    }
+
+    int RandomTile(int x, int y)
+    {
+        string seed = (Time.time + Random.value).ToString();
+
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        if (x >= 0 && x < width && y >= 0 && y < height)
+        {
+            if (tiles[x, y].style != TileStyle.Wall)
+            {
+                tiles[x, y].style = rand.Next(0, 10) < proliferationRatio ? TileStyle.Wall : TileStyle.Empty;
+                return 1;
+            }
+        }
+
+        return 0;
     }
 
     void Display()

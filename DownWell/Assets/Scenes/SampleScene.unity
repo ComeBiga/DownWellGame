@@ -768,9 +768,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 10
-  height: 10
+  height: 100
   wall: {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   randomPercent: 15
+  proliferationRatio: 4
 --- !u!1001 &2126259989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -839,6 +840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5834640292865415488, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
+      propertyPath: gravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5834640292865415491, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -960,6 +965,10 @@ PrefabInstance:
     - target: {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
       propertyPath: m_Name
       value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
       propertyPath: m_RootOrder
