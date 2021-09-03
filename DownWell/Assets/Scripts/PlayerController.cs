@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton("Jump") && CheckGround())
             Jump();
+
+        if (Input.GetButtonDown("Fire1"))
+            gravity = 3f;
     }
 
     void HorizontalMove()

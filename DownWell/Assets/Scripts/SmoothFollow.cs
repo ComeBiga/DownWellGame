@@ -11,7 +11,7 @@ public class SmoothFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = target.position + offset;
+        transform.position = new Vector3(transform.position.x, (target.position + offset).y, (target.position + offset).z);
     }
 
     // Update is called once per frame

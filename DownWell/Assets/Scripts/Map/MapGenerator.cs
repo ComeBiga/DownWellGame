@@ -64,8 +64,13 @@ public class MapGenerator : MonoBehaviour
 
         for (int i = 0; i < height; i++)
         {
-            tiles[1, i].style = rand.Next(0, 100) < randomPercent ? TileStyle.Wall : TileStyle.Empty;
-            tiles[width - 2, i].style = rand.Next(0, 100) < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+            int left = rand.Next(0, 100);
+            int right = rand.Next(0, 100);
+
+            Debug.Log(i + " : " + left + ", " + right);
+
+            tiles[1, i].style = left < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+            tiles[width - 2, i].style = right < randomPercent ? TileStyle.Wall : TileStyle.Empty;
         }
 
         ProliferateTile();
@@ -75,7 +80,7 @@ public class MapGenerator : MonoBehaviour
     {
         for (int y = 0; y < height; y++)
         {
-            for (int x = 1; x < width; x++)
+            for (int x = 1; x < width - 1; x++)
             {
                 if(tiles[x, y].style == TileStyle.Wall)
                 {
