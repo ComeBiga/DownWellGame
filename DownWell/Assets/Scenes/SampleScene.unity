@@ -769,8 +769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dddd82bf772ec74abaf4f2486c141a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomPercent: 10
-  proliferationRatio: 3
+  wallRate: 19
+  blockRate: 13
+  wallProliferation: 2
+  blockProliferation: 2
+  eliminationRate: 3
+  smoothTime: 2
 --- !u!114 &1215072949
 MonoBehaviour:
   m_ObjectHideFlags: 0

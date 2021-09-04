@@ -9,9 +9,17 @@ public class MapGenerator : MonoBehaviour
     Tile[,] tiles;
 
     [Range(0, 100)]
-    public int randomPercent = 30;
+    public int wallRate = 30;
+    [Range(0, 100)]
+    public int blockRate = 30;
     [Range(0, 10)]
-    public int proliferationRatio = 2;
+    public int wallProliferation = 2;
+    [Range(0, 10)]
+    public int blockProliferation = 2;
+    [Range(0, 8)]
+    public int eliminationRate = 2;
+
+    public int smoothTime = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +33,14 @@ public class MapGenerator : MonoBehaviour
 
         InitWalls();
 
-        ExpandWall();
+        //ExpandWall();
+
+        RandomFillMap();
+        
+        for(int i =0; i< smoothTime; i++)
+        SmoothMap();
+
+        GenerateBlock();
 
         return tiles;
     }
@@ -73,26 +88,118 @@ public class MapGenerator : MonoBehaviour
 
             //Debug.Log(i + " : " + left + ", " + right);
 
-            tiles[1, i].style = left < randomPercent ? TileStyle.Wall : TileStyle.Empty;
-            tiles[mapManager.width - 2, i].style = right < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+            tiles[1, i].style = left < wallRate ? TileStyle.Wall : TileStyle.Empty;
+            tiles[mapManager.width - 2, i].style = right < wallRate ? TileStyle.Wall : TileStyle.Empty;
         }
 
-        ProliferateTile();
+        ProliferateTile(TileStyle.Wall);
     }
 
-    void ProliferateTile()
+    void ProliferateTile(TileStyle styleTo)
     {
         for (int y = 0; y < mapManager.height; y++)
         {
             for (int x = 1; x < mapManager.width - 1; x++)
             {
-                if(tiles[x, y].style != TileStyle.Empty)
+                //EliminateTile(x, y, styleTo);
+
+                if(tiles[x, y].style == styleTo)
                 {
                     RandomTile(x, y - 1, tiles[x, y].style);
                     RandomTile(x, y + 1, tiles[x, y].style);
                     RandomTile(x - 1, y, tiles[x, y].style);
                     RandomTile(x + 1, y, tiles[x, y].style);
                 }
+            }
+        }
+    }
+
+    void EliminateTile(int _x, int _y, TileStyle styleTo)
+    {
+        int count = 0;
+        for(int y = _y - 1; y <= _y + 1; y++)
+        {
+            for(int x = _x - 1; x <= _x + 1; x++)
+            {
+                if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
+                    if ((x != _x || y != _y) && tiles[x, y].style == styleTo)
+                        count++;
+            }
+        }
+
+        Debug.Log(styleTo.ToString() + " : " + count);
+
+        if (count < eliminationRate)
+            tiles[_x, _y].style = TileStyle.Empty;
+    }
+
+    void RandomFillMap()
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        for(int y = 0; y < mapManager.height; y++)
+        {
+            for(int x = 1; x < mapManager.width - 1; x++)
+            {
+                tiles[x, y].style = rand.Next(0, 100) < wallRate ? TileStyle.Wall : TileStyle.Empty;
+            }
+        }
+    }
+
+    int GetSurroundTileCount(int _x, int _y, TileStyle styleTo)
+    {
+        int count = 0;
+        for (int y = _y - 1; y <= _y + 1; y++)
+        {
+            for (int x = _x - 1; x <= _x + 1; x++)
+            {
+                if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
+                {
+                    if ((x != _x || y != _y) && tiles[x, y].style == styleTo)
+                        count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    int GetFourDirTileCount(int x, int y, TileStyle styleTo)
+    {
+        int count = 0;
+
+        count += CheckSurroundTile(x, y-1, styleTo);
+        count += CheckSurroundTile(x+1, y, styleTo);
+        count += CheckSurroundTile(x, y+1, styleTo);
+        count += CheckSurroundTile(x-1, y, styleTo);
+
+        return count;
+    }
+
+    int CheckSurroundTile(int x, int y, TileStyle styleTo)
+    {
+        if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
+            if (tiles[x, y].style == styleTo) return 1;
+
+        return 0;
+    }
+
+    void SmoothMap()
+    {
+        for(int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 2; x < mapManager.width - 2; x++)
+            {
+                //int count = GetSurroundTileCount(x, y, TileStyle.Wall);
+                int count = GetFourDirTileCount(x, y, TileStyle.Wall);
+
+                Debug.Log(new Vector2(x, y).ToString() + " - " + count);
+
+                if (count < eliminationRate)
+                    tiles[x, y].style = TileStyle.Empty;
+                else
+                    tiles[x, y].style = TileStyle.Wall;
             }
         }
     }
@@ -110,16 +217,40 @@ public class MapGenerator : MonoBehaviour
                 switch(rootStyle)
                 {
                     case TileStyle.Wall:
-                        tiles[x, y].style = rand.Next(0, 10) < proliferationRatio ? TileStyle.Wall : TileStyle.Empty;
+                        tiles[x, y].style = rand.Next(0, 10) < wallProliferation ? TileStyle.Wall : TileStyle.Empty;
                         break;
                     case TileStyle.Block:
-                        tiles[x, y].style = rand.Next(0, 10) < proliferationRatio ? TileStyle.Block : TileStyle.Empty;
+                        tiles[x, y].style = rand.Next(0, 10) < blockProliferation ? TileStyle.Block : TileStyle.Empty;
                         break;
                 }
                 
             }
         }
     }
+
+    #region Block Generation
+
+    void GenerateBlock()
+    {
+        string seed = (Time.time + Random.value).ToString();
+
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for(int x = 1; x < mapManager.width - 1; x++)
+            {
+                if(tiles[x, y].style == TileStyle.Empty)
+                {
+                    tiles[x, y].style = rand.Next(0, 100) < blockRate ? TileStyle.Block : TileStyle.Empty;
+                }
+            }
+        }
+
+        ProliferateTile(TileStyle.Block);
+    }
+
+    #endregion
 }
 
 public enum TileStyle { Empty, Wall, Block }

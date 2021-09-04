@@ -25,17 +25,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         rigidbody.gravityScale = gravity;
-        Debug.Log(rigidbody.velocity.y);
+        //Debug.Log(rigidbody.velocity.y);
 
         if (rigidbody.velocity.y <= -maxFallSpeed) rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
 
         HorizontalMove();
 
-        if (Input.GetButton("Jump") && CheckGround())
+        if (Input.GetButton("Jump") && CheckTileUnderPlayer(groundLayerMask))
             Jump();
 
         if (Input.GetButtonDown("Fire1"))
             gravity = 3f;
+
+        if (Input.GetKeyDown(KeyCode.B))
+            Attack();
     }
 
     void HorizontalMove()
@@ -50,17 +53,31 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
     }
 
-    bool CheckGround()
+    bool CheckTileUnderPlayer(LayerMask checkLayer)
     {
         float rayDistance = .1f;
 
         Vector2 origin = new Vector2(transform.position.x, transform.position.y - GetComponent<BoxCollider2D>().size.x / 2);
-        RaycastHit2D[] results = Physics2D.RaycastAll(origin, Vector2.down, rayDistance, groundLayerMask);
+        RaycastHit2D[] results = Physics2D.RaycastAll(origin, Vector2.down, rayDistance, checkLayer);
 
         Debug.DrawRay(origin, Vector3.down * rayDistance, Color.green);
 
         if (results.Length > 0) return true;
 
         return false;
+    }
+
+    void Attack()
+    {
+        float rayDistance = .1f;
+
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - GetComponent<BoxCollider2D>().size.x / 2);
+        RaycastHit2D[] results = Physics2D.RaycastAll(origin, Vector2.down, rayDistance);
+
+        foreach(var result in results)
+        {
+            if (result.transform.tag == "Block")
+                Destroy(result.transform.gameObject);
+        }
     }
 }
