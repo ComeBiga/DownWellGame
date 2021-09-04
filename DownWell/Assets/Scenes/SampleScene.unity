@@ -769,10 +769,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dddd82bf772ec74abaf4f2486c141a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallRate: 20
+  wallRate: 58
   wallProliferation: 30
-  wallSmoothRate: 3
-  wallSmoothTime: 3
+  wallSmoothRate: 6
+  wallSmoothTime: 1
   blockRate: 3
   blockProliferation: 20
   blockSmoothRate: 5

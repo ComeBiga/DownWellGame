@@ -13,7 +13,7 @@ public class MapGenerator : MonoBehaviour
     public int wallRate = 30;
     [Range(0, 100)]
     public int wallProliferation = 2;
-    [Range(0, 4)]
+    [Range(0, 8)]
     public int wallSmoothRate = 2;
     public int wallSmoothTime = 3;
     
@@ -39,9 +39,13 @@ public class MapGenerator : MonoBehaviour
 
         InitWalls();
 
-        ExpandWall();
+        //ExpandWall();
+        RandomFillMap();
 
-        GenerateBlock();
+        for (int i = 0; i < wallSmoothTime; i++)
+            SmoothMap(TileStyle.Wall, wallSmoothRate, true);
+
+        //GenerateBlock();
 
         return tiles;
     }
@@ -164,6 +168,8 @@ public class MapGenerator : MonoBehaviour
                     if ((x != _x || y != _y) && tiles[x, y].style == styleTo)
                         count++;
                 }
+                //else
+                //    count++;
             }
         }
 
@@ -194,9 +200,9 @@ public class MapGenerator : MonoBehaviour
     {
         for(int y = 0; y < mapManager.height; y++)
         {
-            for (int x = 1; x < mapManager.width - 1; x++)
+            for (int x = 1; x < 5; x++)
             {
-                if (tiles[x, y].style == TileStyle.Empty)
+                //if (tiles[x, y].style == TileStyle.Empty)
                 {
                     int count;
 
@@ -209,8 +215,26 @@ public class MapGenerator : MonoBehaviour
 
                     if (count >= smoothRate)
                         tiles[x, y].style = styleTo;
-                    //else if(count <= smoothRate - 2)
-                    //    tiles[x, y].style = TileStyle.Empty;
+                    else if(count < smoothRate)
+                        tiles[x, y].style = TileStyle.Empty;
+                }
+            }
+            for(int x = mapManager.width - 2; x >= 5; x--)
+            {
+                {
+                    int count;
+
+                    if (expandDir)
+                        count = GetSurroundTileCount(x, y, TileStyle.Wall);
+                    else
+                        count = GetFourDirTileCount(x, y, styleTo);
+
+                    Debug.Log(new Vector2(x, y).ToString() + " - " + count);
+
+                    if (count >= smoothRate)
+                        tiles[x, y].style = styleTo;
+                    else if (count < smoothRate)
+                        tiles[x, y].style = TileStyle.Empty;
                 }
             }
         }
