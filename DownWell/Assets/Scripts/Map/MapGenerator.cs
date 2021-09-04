@@ -4,41 +4,48 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public int width = 10;
-    public int height = 10;
+    MapManager mapManager = MapManager.instance;
 
-    public GameObject wall;
+    Tile[,] tiles;
 
     [Range(0, 100)]
     public int randomPercent = 30;
     [Range(0, 10)]
     public int proliferationRatio = 2;
 
-    Tile[,] tiles;
-    public Tile[,] Tiles { get { return tiles; } }
-
     // Start is called before the first frame update
     void Start()
     {
-        tiles = new Tile[width, height];
-        for (int y = 0; y < height; y++)
+        mapManager = MapManager.instance;
+    }
+
+    public Tile[, ] GenerateMap()
+    {
+        InitTiles();
+
+        InitWalls();
+
+        ExpandWall();
+
+        return tiles;
+    }
+
+    void InitTiles()
+    {
+        // Init tiles
+        tiles = new Tile[mapManager.width, mapManager.height];
+        for (int y = 0; y < mapManager.height; y++)
         {
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < mapManager.width; x++)
             {
                 tiles[x, y] = new Tile();
             }
         }
 
-        GenerateMap();
-
-        Display();
-    }
-
-    void InitTiles()
-    {
-        for(int y = 0; y < height; y++)
+        // Init tiles.style
+        for (int y = 0; y < mapManager.height; y++)
         {
-            for(int x = 0; x < width; x++)
+            for(int x = 0; x < mapManager.width; x++)
             {
                 tiles[x, y].style = TileStyle.Empty;
             }
@@ -47,30 +54,27 @@ public class MapGenerator : MonoBehaviour
 
     void InitWalls()
     {
-        for(int i = 0; i< height; i++)
+        for (int i = 0; i< mapManager.height; i++)
         {
             tiles[0, i].style = TileStyle.Wall;
-            tiles[width - 1, i].style = TileStyle.Wall;
+            tiles[mapManager.width - 1, i].style = TileStyle.Wall;
         }
     }
 
-    void GenerateMap()
+    void ExpandWall()
     {
-        InitTiles();
-        InitWalls();
-
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        for (int i = 0; i < height; i++)
+        for (int i = 0; i < mapManager.height; i++)
         {
             int left = rand.Next(0, 100);
             int right = rand.Next(0, 100);
 
-            Debug.Log(i + " : " + left + ", " + right);
+            //Debug.Log(i + " : " + left + ", " + right);
 
             tiles[1, i].style = left < randomPercent ? TileStyle.Wall : TileStyle.Empty;
-            tiles[width - 2, i].style = right < randomPercent ? TileStyle.Wall : TileStyle.Empty;
+            tiles[mapManager.width - 2, i].style = right < randomPercent ? TileStyle.Wall : TileStyle.Empty;
         }
 
         ProliferateTile();
@@ -78,58 +82,47 @@ public class MapGenerator : MonoBehaviour
 
     void ProliferateTile()
     {
-        for (int y = 0; y < height; y++)
+        for (int y = 0; y < mapManager.height; y++)
         {
-            for (int x = 1; x < width - 1; x++)
+            for (int x = 1; x < mapManager.width - 1; x++)
             {
-                if(tiles[x, y].style == TileStyle.Wall)
+                if(tiles[x, y].style != TileStyle.Empty)
                 {
-                    RandomTile(x, y - 1);
-                    RandomTile(x, y + 1);
-                    RandomTile(x - 1, y);
-                    RandomTile(x + 1, y);
+                    RandomTile(x, y - 1, tiles[x, y].style);
+                    RandomTile(x, y + 1, tiles[x, y].style);
+                    RandomTile(x - 1, y, tiles[x, y].style);
+                    RandomTile(x + 1, y, tiles[x, y].style);
                 }
             }
         }
     }
 
-    void VisitNextTile(int tileX, int tileY, int proliferationRatio)
-    {
-
-    }
-
-    int RandomTile(int x, int y)
+    void RandomTile(int x, int y, TileStyle rootStyle)
     {
         string seed = (Time.time + Random.value).ToString();
 
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        if (x >= 0 && x < width && y >= 0 && y < height)
+        if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
         {
-            if (tiles[x, y].style != TileStyle.Wall)
+            if (tiles[x, y].style == TileStyle.Empty)
             {
-                tiles[x, y].style = rand.Next(0, 10) < proliferationRatio ? TileStyle.Wall : TileStyle.Empty;
-                return 1;
-            }
-        }
-
-        return 0;
-    }
-
-    void Display()
-    {
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                if (tiles[x, y].style == TileStyle.Wall)
-                    Instantiate(wall, new Vector2(-width / 2 + x, -y), Quaternion.identity);
+                switch(rootStyle)
+                {
+                    case TileStyle.Wall:
+                        tiles[x, y].style = rand.Next(0, 10) < proliferationRatio ? TileStyle.Wall : TileStyle.Empty;
+                        break;
+                    case TileStyle.Block:
+                        tiles[x, y].style = rand.Next(0, 10) < proliferationRatio ? TileStyle.Block : TileStyle.Empty;
+                        break;
+                }
+                
             }
         }
     }
 }
 
-public enum TileStyle { Empty, Wall }
+public enum TileStyle { Empty, Wall, Block }
 
 public class Tile
 {

@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class MapDisplay : MonoBehaviour
 {
-    MapGenerator generator;
+    MapManager mapManager;
 
-    // Start is called before the first frame update
-    void Start()
+    public Vector3 offset;
+    public GameObject[] tileObject;
+
+    private void Start()
     {
-        GetComponent<MapGenerator>();
+        mapManager = MapManager.instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Display(Tile[,] generatedTiles)
     {
-        
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+                                                    , -y + offset.y);
+
+                if (generatedTiles[x, y].style == TileStyle.Wall)
+                    Instantiate(tileObject[0], tilePosition, Quaternion.identity);
+                else if (generatedTiles[x, y].style == TileStyle.Block)
+                    Instantiate(tileObject[1], tilePosition, Quaternion.identity);
+            }
+        }
     }
 }

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpSpeed = 5f;
     public float gravity = 1f;
+    public float maxFallSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         rigidbody.gravityScale = gravity;
+        Debug.Log(rigidbody.velocity.y);
+
+        if (rigidbody.velocity.y <= -maxFallSpeed) rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
 
         HorizontalMove();
 
