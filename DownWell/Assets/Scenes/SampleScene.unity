@@ -769,12 +769,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dddd82bf772ec74abaf4f2486c141a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallRate: 19
-  blockRate: 13
-  wallProliferation: 2
-  blockProliferation: 2
-  eliminationRate: 3
-  smoothTime: 2
+  wallRate: 20
+  wallProliferation: 30
+  wallSmoothRate: 3
+  wallSmoothTime: 3
+  blockRate: 3
+  blockProliferation: 20
+  blockSmoothRate: 5
+  blockSmoothTime: 1
 --- !u!114 &1215072949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ab239e5143d0746a11e683eadd52ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0.5, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   tileObject:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
@@ -803,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e5111ac375d444eb28d445f891fac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
+  width: 11
   height: 100
 --- !u!1001 &2126259989
 PrefabInstance:
