@@ -26,6 +26,10 @@ public class MapGenerator : MonoBehaviour
     public int blockSmoothRate = 2;
     public int blockSmoothTime = 3;
 
+    [Header("Enemy prop")]
+    [Range(0, 100)]
+    public int enemyRate = 30;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +49,9 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < wallSmoothTime; i++)
             SmoothMap(TileStyle.Wall, wallSmoothRate, true);
 
-        //GenerateBlock();
+        GenerateBlock();
+
+        GenerateEnemy();
 
         return tiles;
     }
@@ -292,9 +298,31 @@ public class MapGenerator : MonoBehaviour
     }
 
     #endregion
+
+    #region Enemy Generation
+
+    void GenerateEnemy()
+    {
+        string seed = (Time.time + Random.value).ToString();
+
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 1; x < mapManager.width - 1; x++)
+            {
+                if (tiles[x, y].style == TileStyle.Empty)
+                {
+                    tiles[x, y].style = rand.Next(0, 100) < enemyRate ? TileStyle.Enemy : TileStyle.Empty;
+                }
+            }
+        }
+    }
+
+    #endregion
 }
 
-public enum TileStyle { Empty, Wall, Block }
+public enum TileStyle { Empty, Wall, Block, Enemy }
 
 public class Tile
 {

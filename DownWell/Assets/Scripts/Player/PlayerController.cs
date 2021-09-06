@@ -11,7 +11,15 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpSpeed = 5f;
     public float gravity = 1f;
+    public float shotReboundSpeed = 1f;
+    public float reboundTime = 1f;
     public float maxFallSpeed = 10f;
+
+    bool grounded = true;
+    bool jumping = false;
+
+    bool shootable = true;
+    bool shooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +39,37 @@ public class PlayerController : MonoBehaviour
 
         HorizontalMove();
 
-        if (Input.GetButton("Jump") && CheckTileUnderPlayer(groundLayerMask))
+        grounded = CheckTileUnderPlayer(groundLayerMask);
+
+        if (Input.GetButtonDown("Jump") && grounded)
             Jump();
 
-        if (Input.GetButtonDown("Fire1"))
-            gravity = 3f;
+        if (Input.GetButtonUp("Jump"))
+        {
+            Debug.Log("ButtonUp");
+            shootable = true;
+        }
 
-        if (Input.GetKeyDown(KeyCode.B))
-            Attack();
+        if (shootable && Input.GetButtonDown("Jump"))
+        {
+            shooting = true;
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+        }
+        if (shooting && Input.GetButton("Jump"))
+        {
+            GetComponent<PlayerAttack>().Shoot();
+        }
+        
+        if(grounded)
+        {
+            jumping = false;
+            shootable = false;
+            shooting = false;
+        }
+        else
+        {
+            shootable = true;
+        }
     }
 
     void HorizontalMove()
@@ -51,6 +82,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+        jumping = true;
     }
 
     bool CheckTileUnderPlayer(LayerMask checkLayer)
@@ -79,5 +111,10 @@ public class PlayerController : MonoBehaviour
             if (result.transform.tag == "Block")
                 Destroy(result.transform.gameObject);
         }
+    }
+
+    public void ShotRebound()
+    {
+        rigidbody.velocity += Vector2.up * shotReboundSpeed;
     }
 }

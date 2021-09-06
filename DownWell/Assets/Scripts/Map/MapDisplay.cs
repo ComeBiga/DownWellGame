@@ -27,6 +27,8 @@ public class MapDisplay : MonoBehaviour
                     Instantiate(tileObject[0], tilePosition, Quaternion.identity);
                 else if (generatedTiles[x, y].style == TileStyle.Block)
                     Instantiate(tileObject[1], tilePosition, Quaternion.identity);
+                else if (generatedTiles[x, y].style == TileStyle.Enemy)
+                    Instantiate(tileObject[2], tilePosition, Quaternion.identity);
             }
         }
     }

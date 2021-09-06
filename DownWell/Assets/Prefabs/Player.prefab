@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5834640292865415493}
   - component: {fileID: 5834640292865415492}
   - component: {fileID: 5834640292865415488}
-  m_Layer: 0
+  - component: {fileID: 4656855670834671392}
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5834640292865415495}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 39fc5cd1dba7c194ca2562b5fb1191b9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -150,3 +151,21 @@ MonoBehaviour:
   speed: 8
   jumpSpeed: 12
   gravity: 3
+  shotReboundSpeed: 5
+  reboundTime: 1
+  maxFallSpeed: 30
+--- !u!114 &4656855670834671392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df3ec03567d57c49aa7ca7097fe0f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
+  projectileDamage: 4
+  shotDelay: 0.2
