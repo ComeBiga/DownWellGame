@@ -44,9 +44,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded)
             Jump();
 
+        Shoot();
+    }
+
+    void Shoot()
+    {
         if (Input.GetButtonUp("Jump"))
         {
-            Debug.Log("ButtonUp");
             shootable = true;
         }
 
@@ -59,8 +63,8 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<PlayerAttack>().Shoot();
         }
-        
-        if(grounded)
+
+        if (grounded)
         {
             jumping = false;
             shootable = false;
@@ -83,6 +87,34 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
         jumping = true;
+    }
+
+    public void LeapOff(float leapSpeed)
+    {
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, leapSpeed);
+        jumping = true;
+    }
+
+    public void KnuckBack(float knuckBackSpeed, int direction)
+    {
+        //rigidbody.velocity = new Vector2(knuckBackSpeed * direction, rigidbody.velocity.y);
+
+        StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
+    }
+
+    IEnumerator KnuckBacking(float knuckBackSpeed, int direction)
+    {
+        float duration = .3f;
+        float elapse = 0;
+
+        while(elapse < duration)
+        {
+            transform.position = new Vector3(transform.position.x + knuckBackSpeed * direction * Time.deltaTime, transform.position.y, transform.position.z);
+
+            elapse += Time.deltaTime;
+
+            yield return null;
+        }
     }
 
     bool CheckTileUnderPlayer(LayerMask checkLayer)

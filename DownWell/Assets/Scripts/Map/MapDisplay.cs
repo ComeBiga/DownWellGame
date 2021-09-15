@@ -32,4 +32,23 @@ public class MapDisplay : MonoBehaviour
             }
         }
     }
+
+    public void Display(int[,] generatedLevel)
+    {
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+                                                    , -y + offset.y);
+
+                if (generatedLevel[x, y] == 1)
+                    Instantiate(tileObject[0], tilePosition, Quaternion.identity);
+                //else if (generatedLevel[x, y] == TileStyle.Block)
+                //    Instantiate(tileObject[1], tilePosition, Quaternion.identity);
+                //else if (generatedLevel[x, y] == TileStyle.Enemy)
+                //    Instantiate(tileObject[2], tilePosition, Quaternion.identity);
+            }
+        }
+    }
 }

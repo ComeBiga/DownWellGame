@@ -17,6 +17,7 @@ public class MapManager : MonoBehaviour
 
     MapGenerator mapGen;
     MapDisplay mapDisplay;
+    LevelGenerator lg;
 
     public int width = 10;
     public int height = 100;
@@ -26,6 +27,7 @@ public class MapManager : MonoBehaviour
     {
         mapGen = GetComponent<MapGenerator>();
         mapDisplay = GetComponent<MapDisplay>();
+        lg = GetComponent<LevelGenerator>();
 
         StartCoroutine(FirstGenerateMap());
     }
@@ -34,7 +36,10 @@ public class MapManager : MonoBehaviour
     {
         yield return null;
 
-        Tile[,] genMap = mapGen.GenerateMap();
-        mapDisplay.Display(genMap);
+        //Tile[,] genMap = mapGen.GenerateMap();
+        //mapDisplay.Display(genMap);
+
+        int[,] genLev = lg.GenerateLevel();
+        mapDisplay.Display(genLev);
     }
 }

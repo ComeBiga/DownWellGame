@@ -217,7 +217,7 @@ public class MapGenerator : MonoBehaviour
                     else
                         count = GetFourDirTileCount(x, y, styleTo);
 
-                    Debug.Log(new Vector2(x, y).ToString() + " - " + count);
+                    //Debug.Log(new Vector2(x, y).ToString() + " - " + count);
 
                     if (count >= smoothRate)
                         tiles[x, y].style = styleTo;
@@ -235,7 +235,7 @@ public class MapGenerator : MonoBehaviour
                     else
                         count = GetFourDirTileCount(x, y, styleTo);
 
-                    Debug.Log(new Vector2(x, y).ToString() + " - " + count);
+                    //Debug.Log(new Vector2(x, y).ToString() + " - " + count);
 
                     if (count >= smoothRate)
                         tiles[x, y].style = styleTo;
