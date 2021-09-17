@@ -11,6 +11,9 @@ public class LevelGenerator : MonoBehaviour
 
     int[,] map;
 
+    #region LeftWall
+    List<int[,]> wallListLeft = new List<int[,]>();
+
     int[,] wall_2_2 = new int[4, 4] { { 1, 0, 0, 0 },
                                       { 1, 1, 1, 1 },
                                       { 1, 1, 1, 0 },
@@ -22,6 +25,24 @@ public class LevelGenerator : MonoBehaviour
                                       { 1, 1, 1, 1, 1, 0 },
                                       { 1, 0, 0, 1, 1, 0 },
                                       { 1, 0, 0, 0, 1, 0 } };
+
+    #endregion
+
+    #region RightWall
+    List<int[,]> wallListRight = new List<int[,]>();
+
+    int[,] R_wall_2_2 = new int[4, 4] { { 0, 0, 0, 1 },
+                                        { 0, 0, 1, 1 },
+                                        { 0, 0, 1, 1 },
+                                        { 0, 0, 0, 1 } };
+
+    int[,] R_wall_2_3 = new int[6, 6] { { 0, 1, 1, 0, 0, 1 },
+                                        { 0, 1, 1, 1, 1, 1 },
+                                        { 0, 0, 1, 1, 1, 1 },
+                                        { 0, 0, 0, 1, 1, 1 },
+                                        { 0, 0, 0, 0, 0, 1 },
+                                        { 0, 0, 0, 0, 0, 1 } };
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +74,24 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    void InitwallListLeft()
+    {
+        wallListLeft.Add(wall_2_2);
+        wallListLeft.Add(wall_2_3);
+    }
+
+    void InitwallListRight()
+    {
+        wallListRight.Add(R_wall_2_2);
+        wallListRight.Add(R_wall_2_3);
+    }
+
     public int[, ] GenerateLevel()
     {
         InitMap();
+
+        InitwallListLeft();
+        InitwallListRight();
 
         RandomPlaceWall();
 
@@ -70,15 +106,22 @@ public class LevelGenerator : MonoBehaviour
         for (int y = 0; y < mapManager.height; y++)
         {
             if (rand.Next(0, 100) < wallRatio)
-                FillWall(0, y);
-            //map[mapManager.width - 1, y] = 1;
+                FillWallLeft(0, y);
+
+            if (rand.Next(0, 100) < wallRatio)
+                FillWallRight(mapManager.width, y);
         }
     }
 
-    void FillWall(int _x, int _y)
+    void FillWallLeft(int _x, int _y)
     {
-        int wallWidth = wall_2_3.GetLength(0);
-        int wallHeight = wall_2_3.GetLength(1);
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        int[,] wallRandom = wallListLeft[rand.Next(0, wallListLeft.Count)];
+
+        int wallWidth = wallRandom.GetLength(0);
+        int wallHeight = wallRandom.GetLength(1);
 
         for (int y = _y; y < _y + wallHeight; y++)
         {
@@ -86,7 +129,29 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
                 {
-                    map[x, y] = wall_2_3[y - _y, x - _x];
+                    map[x, y] = wallRandom[y - _y, x - _x];
+                }
+            }
+        }
+    }
+
+    void FillWallRight(int _x, int _y)
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        int[,] wallRandom = wallListRight[rand.Next(0, wallListRight.Count)];
+
+        int wallWidth = wallRandom.GetLength(0);
+        int wallHeight = wallRandom.GetLength(1);
+
+        for (int y = _y; y < _y + wallHeight; y++)
+        {
+            for (int x = _x - wallWidth; x < _x; x++)
+            {
+                if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
+                {
+                    map[x, y] = wallRandom[y - _y, x - (_x - wallWidth)];
                 }
             }
         }

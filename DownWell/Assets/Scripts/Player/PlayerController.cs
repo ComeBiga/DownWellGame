@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         float rayDistance = .1f;
 
-        Vector2 origin = new Vector2(transform.position.x, transform.position.y - GetComponent<BoxCollider2D>().size.x / 2);
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y / 2);
         RaycastHit2D[] results = Physics2D.RaycastAll(origin, Vector2.down, rayDistance, checkLayer);
 
         Debug.DrawRay(origin, Vector3.down * rayDistance, Color.green);

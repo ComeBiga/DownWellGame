@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045934f5cff0df34d81dc9135601b11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallRatio: 10
+  wallRatio: 6
 --- !u!1001 &2126259989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1192,6 +1192,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5834640292865415491, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834640292865415492, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834640292865415492, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834640292865415492, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
+      propertyPath: m_EdgeRadius
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
