@@ -33,7 +33,7 @@ public class MapDisplay : MonoBehaviour
         }
     }
 
-    public void Display(int[,] generatedLevel)
+    public void Display(int[,] generatedLevel, int[,] generatedStageGround)
     {
         for (int y = 0; y < mapManager.height; y++)
         {
@@ -48,6 +48,19 @@ public class MapDisplay : MonoBehaviour
                     Instantiate(tileObject[1], tilePosition, Quaternion.identity);
                 else if (generatedLevel[x, y] == 3)
                     Instantiate(tileObject[2], tilePosition, Quaternion.identity);
+            }
+        }
+
+        for(int y = 0; y < generatedStageGround.GetLength(0); y++)
+        {
+            for(int x = 0; x < generatedStageGround.GetLength(1); x++)
+            {
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+                                                    , -y + offset.y -mapManager.height);
+
+                if(generatedStageGround[y, x] == 1)
+                    Instantiate(tileObject[0], tilePosition, Quaternion.identity);
+
             }
         }
     }

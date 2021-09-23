@@ -216,6 +216,22 @@ public class LevelGenerator : MonoBehaviour
 
     #endregion
 
+    #region StageGround
+
+    int[,] stageGround = new int[11, 11] { { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+                                          { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -465,5 +481,10 @@ public class LevelGenerator : MonoBehaviour
                     map[x, y] = 3;
             }
         }
+    }
+
+    public int[,] GenerateStageGround()
+    {
+        return stageGround;
     }
 }

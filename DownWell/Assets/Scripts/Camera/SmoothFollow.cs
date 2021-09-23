@@ -8,6 +8,8 @@ public class SmoothFollow : MonoBehaviour
     public Vector3 offset;
     public float smooth = 3f;
 
+    public bool followActive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class SmoothFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
+        if(followActive)
+         transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
     }
 }

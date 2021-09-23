@@ -10,6 +10,7 @@ public class PlayerDamaged : MonoBehaviour
     public float invincibleTime;
 
     bool isInvincible = false;
+    public bool IsInvincible { get; }
 
     private void Update()
     {
@@ -20,19 +21,24 @@ public class PlayerDamaged : MonoBehaviour
     {
         if (isInvincible) return;
 
+        GetComponent<PlayerHealth>().LoseHealth();
+
         GetComponent<PlayerController>().LeapOff(leapSpeed);
 
         Vector3 knuckbackDir = transform.position - enemy.transform.position;
         int direction = knuckbackDir.x > 0 ? 1 : -1;
-        Debug.Log(direction);
+        //Debug.Log(direction);
         GetComponent<PlayerController>().KnuckBack(knuckBackSpeed, direction);
 
+
         StartCoroutine(BecomeInvincible());
+        StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake());
     }
 
     IEnumerator BecomeInvincible()
     {
         isInvincible = true;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
         //GetComponent<PlayerStepping>().hitBox.GetComponent<CircleCollider2D>().enabled = false;
 
         //yield return new WaitForSeconds(invincibleTime / 2);
@@ -42,5 +48,7 @@ public class PlayerDamaged : MonoBehaviour
         yield return new WaitForSeconds(invincibleTime);
 
         isInvincible = false;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+
     }
 }
