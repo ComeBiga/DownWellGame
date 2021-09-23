@@ -8,6 +8,10 @@ public class LevelGenerator : MonoBehaviour
 
     [Range(0, 100)]
     public int wallRatio = 15;
+    [Range(0, 100)]
+    public int blockRatio = 15;
+    [Range(0, 100)]
+    public int enemyRatio = 15;
 
     int[,] map;
 
@@ -45,8 +49,8 @@ public class LevelGenerator : MonoBehaviour
     int[,] wall_2 = new int[11, 11] {
                                         { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                                         { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                                        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                                        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                                        { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
+                                        { 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1 },
                                         { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
                                         { 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1 },
                                         { 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
@@ -194,6 +198,24 @@ public class LevelGenerator : MonoBehaviour
                                         { 0, 0, 0, 0, 0, 1 } };
     #endregion
 
+    #region Block
+    List<int[,]> blockList = new List<int[,]>();
+
+    int[,] block_0 = new int[1, 1] { { 2 } };
+
+    int[,] block_1 = new int[1, 2] { { 2, 2 } };
+
+    int[,] block_2 = new int[1, 3] { { 2, 2, 2 } };
+
+    int[,] block_3 = new int[2, 2] { { 2, 2 },
+                                     { 2, 2 } };
+
+    int[,] block_4 = new int[3, 3] { { 2, 2, 2 },
+                                     { 2, 2, 2 },
+                                     { 2, 2, 2 } };
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -210,6 +232,11 @@ public class LevelGenerator : MonoBehaviour
 
         RandomWall();
         //RandomPlaceWall();
+
+        InitBlockList();
+        RandomBlock();
+
+        RandomEnemy();
 
         return map;
     }
@@ -264,6 +291,15 @@ public class LevelGenerator : MonoBehaviour
     {
         wallListRight.Add(R_wall_2_2);
         wallListRight.Add(R_wall_2_3);
+    }
+
+    void InitBlockList()
+    {
+        blockList.Add(block_0);
+        blockList.Add(block_1);
+        blockList.Add(block_2);
+        blockList.Add(block_3);
+        blockList.Add(block_4);
     }
 
     void RandomWall()
@@ -376,5 +412,58 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return wallHeight;
+    }
+
+    void RandomBlock()
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                if (map[x, y] != 1 && rand.Next(0, 100) < blockRatio)
+                    FillBlock(x, y);
+            }
+        }
+    }
+
+    void FillBlock(int _x, int _y)
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        int[,] blockRandom = blockList[rand.Next(0, blockList.Count)];
+
+        int blockWidth = blockRandom.GetLength(1);
+        int blockHeight = blockRandom.GetLength(0);
+
+        for (int y = _y; y < _y + blockHeight; y++)
+        {
+            for (int x = _x; x < _x + blockWidth; x++)
+            {
+                if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
+                {
+                    if (map[x, y] != 1 && map[x, y] != 2)
+                        map[x, y] = blockRandom[y - _y, x - _x];
+                }
+            }
+        }
+    }
+
+    void RandomEnemy()
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                if (map[x, y] == 0 && rand.Next(0, 100) < enemyRatio)
+                    map[x, y] = 3;
+            }
+        }
     }
 }

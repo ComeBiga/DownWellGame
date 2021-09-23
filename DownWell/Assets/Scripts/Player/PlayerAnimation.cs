@@ -17,7 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
-        Run(h);
+        //Run(h);
 
         SpriteFilpX(h);
     }

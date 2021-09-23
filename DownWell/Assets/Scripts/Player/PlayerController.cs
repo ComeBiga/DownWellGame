@@ -147,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
     public void ShotRebound()
     {
+        //rigidbody.velocity += Vector2.up * 0;
         rigidbody.velocity += Vector2.up * shotReboundSpeed;
     }
 }

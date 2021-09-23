@@ -44,10 +44,10 @@ public class MapDisplay : MonoBehaviour
 
                 if (generatedLevel[x, y] == 1)
                     Instantiate(tileObject[0], tilePosition, Quaternion.identity);
-                //else if (generatedLevel[x, y] == TileStyle.Block)
-                //    Instantiate(tileObject[1], tilePosition, Quaternion.identity);
-                //else if (generatedLevel[x, y] == TileStyle.Enemy)
-                //    Instantiate(tileObject[2], tilePosition, Quaternion.identity);
+                else if (generatedLevel[x, y] == 2)
+                    Instantiate(tileObject[1], tilePosition, Quaternion.identity);
+                else if (generatedLevel[x, y] == 3)
+                    Instantiate(tileObject[2], tilePosition, Quaternion.identity);
             }
         }
     }
