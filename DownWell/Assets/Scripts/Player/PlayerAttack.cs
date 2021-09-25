@@ -35,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
             GetComponent<PlayerController>().ShotRebound();
             StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake());
 
+            GetComponent<PlayerAnimation>().Shoot();
+
             shotTimer = 0;
         }
     }

@@ -17,7 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
-        //Run(h);
+        Run(h);
 
         SpriteFilpX(h);
     }
@@ -25,6 +25,11 @@ public class PlayerAnimation : MonoBehaviour
     void Run(float h)
     {
         anim.SetFloat("Horizontal", h);
+    }
+
+    public void Shoot()
+    {
+        anim.SetTrigger("Shoot");
     }
 
     void SpriteFilpX(float h)
