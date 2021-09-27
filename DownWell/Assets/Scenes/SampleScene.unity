@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallRatio: 20
-  blockRatio: 1
+  blockRatio: 30
   enemyRatio: 1
 --- !u!1001 &1232071132
 PrefabInstance:

@@ -12,14 +12,11 @@ public class PlayerDamaged : MonoBehaviour
     bool isInvincible = false;
     public bool IsInvincible { get; }
 
-    private void Update()
-    {
-        
-    }
-
     public void Damaged(Enemy enemy)
     {
         if (isInvincible) return;
+
+        Debug.Log("Player Damaged");
 
         GetComponent<PlayerHealth>().LoseHealth();
 

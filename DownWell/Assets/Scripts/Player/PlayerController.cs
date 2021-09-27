@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float reboundTime = 1f;
     public float maxFallSpeed = 10f;
 
+    public int colliderDiv = 3;
+
     bool grounded = true;
     bool jumping = false;
 
@@ -129,20 +131,6 @@ public class PlayerController : MonoBehaviour
         if (results.Length > 0) return true;
 
         return false;
-    }
-
-    void Attack()
-    {
-        float rayDistance = .1f;
-
-        Vector2 origin = new Vector2(transform.position.x, transform.position.y - GetComponent<BoxCollider2D>().size.x / 2);
-        RaycastHit2D[] results = Physics2D.RaycastAll(origin, Vector2.down, rayDistance);
-
-        foreach(var result in results)
-        {
-            if (result.transform.tag == "Block")
-                Destroy(result.transform.gameObject);
-        }
     }
 
     public void ShotRebound()

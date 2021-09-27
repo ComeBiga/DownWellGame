@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
+    public float activeRangeOffset = 3f;
 
     public float speed = 3f;
 
@@ -17,7 +18,26 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.position - transform.position;
-        transform.position += direction.normalized * speed * Time.deltaTime;
+        if (CheckTargetRange())
+        {
+            Vector3 direction = target.position - transform.position;
+            //transform.position += direction.normalized * speed * Time.deltaTime;
+
+            GetComponent<Rigidbody2D>().velocity = Vector2.one * direction.normalized * speed;
+        }
+    }
+
+    bool CheckTargetRange()
+    {
+        float height = Camera.main.orthographicSize * 2;
+        float width = height * (9 / 16);
+
+        float h_tarTothis = Mathf.Abs(target.position.y - transform.position.y);
+
+        if (h_tarTothis < height / 2 + activeRangeOffset)
+            return true;
+
+
+        return false;
     }
 }
