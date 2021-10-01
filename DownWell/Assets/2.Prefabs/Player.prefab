@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.27
 --- !u!1 &5834640292865415495
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 7333529968004637726}
   - component: {fileID: 922388361399753173}
   - component: {fileID: 3761122455356345184}
+  - component: {fileID: 1340578661}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -124,9 +125,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1343732879
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dceaa577342627d4b8a2fd6f0e49e4d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -202,7 +203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &5834640292865415488
 MonoBehaviour:
@@ -222,9 +223,10 @@ MonoBehaviour:
   speed: 8
   jumpSpeed: 12
   gravity: 3
-  shotReboundSpeed: 5
-  reboundTime: 1
   maxFallSpeed: 30
+  shotReboundSpeed: 4.6
+  reboundTime: 1
+  verticalRayCount: 4
 --- !u!114 &4656855670834671392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leapSpeed: 7
-  knuckBackSpeed: 1
+  knuckBackSpeed: 2
   invincibleTime: 3
 --- !u!114 &3761122455356345184
 MonoBehaviour:
@@ -284,3 +286,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c30747f893e0c45ba2a782f7e7f0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1340578661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
