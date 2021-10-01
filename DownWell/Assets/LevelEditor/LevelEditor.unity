@@ -2640,8 +2640,8 @@ GameObject:
   m_Component:
   - component: {fileID: 698193441}
   - component: {fileID: 698193444}
-  - component: {fileID: 698193443}
   - component: {fileID: 698193442}
+  - component: {fileID: 698193443}
   - component: {fileID: 698193440}
   m_Layer: 0
   m_Name: LevelEditorManager

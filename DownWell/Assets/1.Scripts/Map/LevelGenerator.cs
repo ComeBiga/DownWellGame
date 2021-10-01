@@ -412,7 +412,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
                 {
-                    Debug.Log(new Vector2(x, y));
+                    //Debug.Log(new Vector2(x, y));
                     map[x, y] = wallRandom[y - _y, x - _x];
                 }
             }

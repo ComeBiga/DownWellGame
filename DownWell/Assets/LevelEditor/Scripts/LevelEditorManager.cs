@@ -29,15 +29,15 @@ public class LevelEditorManager : MonoBehaviour
         //LoadLevel(tiles);
     }
 
-    public void LoadLevel(Transform[] _tiles)
+    public void LoadLevel(TileInfo[] _tiles)
     {
         for(int y = 0; y < height; y++)
         {
             for(int x = 0; x < width; x++)
             {
-                var tileCode = _tiles[y * width + x].GetComponent<TileInfo>().tileCode;
+                var tileCode = _tiles[y * width + x].tileCode;
 
-                ChangeTile(_tiles[y * width + x], (int)tileCode);
+                ChangeTile(tiles[y * width + x].transform, (int)tileCode);
             }
         }
     }
