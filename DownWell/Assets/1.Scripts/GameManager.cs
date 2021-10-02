@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
     #endregion
-
+    
+    public string title = "underground";
     public string company = "4DX";
     public string version = "0.1";
 
