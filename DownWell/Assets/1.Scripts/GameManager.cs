@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public string version = "0.1";
+
     // Start is called before the first frame update
     void Start()
     {
