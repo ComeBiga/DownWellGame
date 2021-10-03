@@ -10,7 +10,14 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
     #endregion
 
@@ -23,6 +30,15 @@ public class PlayerManager : MonoBehaviour
     /// <param name="name">캐릭터 이름</param>
     public void SelectPlayerCharacter(string name)
     {
-        // player = characters.Find(c => c.GetComponent<Player>().name == name);
+        player = characters.Find(c => c.GetComponent<Player>().name == name);
+    }
+
+    /// <summary>
+    /// 선택한 캐릭터를 플레이어의 캐릭터로 선택
+    /// </summary>
+    /// <param charNum="charNum">캐릭터 번호</param>
+    public void SelectPlayerCharacter(int charNum)
+    {
+        player = characters.Find(c => c.GetComponent<Player>().num == charNum);
     }
 }
