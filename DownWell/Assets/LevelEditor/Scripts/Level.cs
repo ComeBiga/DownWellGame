@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Level
 {
+    public int width;
+    public int height;
+
     public int[] tiles;
 
     public Level() { }

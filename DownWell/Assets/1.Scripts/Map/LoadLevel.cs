@@ -15,7 +15,8 @@ public class LoadLevel : MonoBehaviour
     }
     #endregion
 
-    public Dictionary<int, List<int[]>> levels = new Dictionary<int, List<int[]>>();
+    public Dictionary<int, List<Level>> levels = new Dictionary<int, List<Level>>();
+    public Dictionary<string, List<Level>> objects = new Dictionary<string, List<Level>>();
     //public List<int[]> levels = new List<int[]>();
 
     JsonIO jsonIO = new JsonIO();
@@ -24,11 +25,17 @@ public class LoadLevel : MonoBehaviour
     void Start()
     {
         LoadAllLevel();
+        LoadCloudObjects();
     }
 
-    public List<int[]> GetLevels(Stage stage)
+    public List<Level> GetLevels(Stage stage)
     {
         return levels[(int)stage];
+    }
+
+    public List<Level> GetObjects(string objName)
+    {
+        return objects[objName];
     }
 
     public void LoadAllLevel()
@@ -36,20 +43,38 @@ public class LoadLevel : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i+1).ToString() + "/", "*.json");
-            List<int[]> lvList = new List<int[]>();
+            List<Level> lvList = new List<Level>();
 
             foreach (var dir in directories)
             {
                 string jsonStr = File.ReadAllText(dir);
                 var lvs = JsonToLevel<Level>(jsonStr);
 
-                lvList.Add(lvs.tiles);
+                lvList.Add(lvs);
 
-                Debug.Log(JsonUtility.ToJson(lvs));
+                //Debug.Log(JsonUtility.ToJson(lvs));
             }
 
             levels.Add(i, lvList);
         }
+    }
+
+    public void LoadCloudObjects()
+    {
+        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Clouds/" + "*.json");
+        List<Level> objList = new List<Level>();
+
+        foreach (var dir in directories)
+        {
+            string jsonStr = File.ReadAllText(dir);
+            var obj = JsonToLevel<Level>(jsonStr);
+
+            objList.Add(obj);
+
+            //Debug.Log(JsonUtility.ToJson(obj));
+        }
+
+        objects.Add("Cloud", objList);
     }
 
     T JsonToLevel<T>(string jsonData)

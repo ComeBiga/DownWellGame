@@ -24,6 +24,7 @@ public class BrushManagerEditor : Editor
     {
         BrushManager brushManager = (BrushManager)target;
 
+        EditorGUILayout.HelpBox("각 버튼을 누르고 그리면 그려집니다. \n다른 개체를 그리려면 아래에 소스를 추가하면 됩니다.", MessageType.Info);
         EditorGUILayout.LabelField("Brush");
         EditorGUILayout.BeginVertical(GUI.skin.GetStyle("HelpBox"));
         {

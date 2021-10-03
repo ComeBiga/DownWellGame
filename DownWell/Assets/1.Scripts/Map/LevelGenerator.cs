@@ -385,19 +385,18 @@ public class LevelGenerator : MonoBehaviour
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        List<int[]> levels = loadLevel.GetLevels(currentStage);
-        Debug.Log(levels.Count);
-        int[] randomWall = levels[rand.Next(0, levels.Count)];
-        Debug.Log("1");
+        List<Level> levels = loadLevel.GetLevels(currentStage);
+        //Debug.Log(levels.Count);
+        Level randomWall = levels[rand.Next(0, levels.Count)];
 
-        int[,] wallRandom = new int[11, 11];
+        int[,] wallRandom = new int[randomWall.height, randomWall.width];
 
-        for (int y = 0; y < 11; y++)
+        for (int y = 0; y < randomWall.height; y++)
         {
-            for(int x = 0; x < 11; x++)
+            for(int x = 0; x < randomWall.width; x++)
             {
-                Debug.Log(new Vector2(x, y));
-                wallRandom[y, x] = randomWall[y * 11 + x];
+                //Debug.Log(new Vector2(x, y));
+                wallRandom[y, x] = randomWall.tiles[y * randomWall.width + x];
             }
         }
 

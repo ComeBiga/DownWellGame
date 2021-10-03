@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5 }
+public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5, Clouds }
 
 public class JsonIO : MonoBehaviour
 {
@@ -28,10 +28,13 @@ public class JsonIO : MonoBehaviour
     string LevelToJson()
     {
         Level level = new Level();
-        level.tiles = new int[LevelEditorManager.instance.tiles.Length];
+        level.tiles = new int[LevelEditorManager.instance.tiles.Count];
 
         for (int i = 0; i < level.tiles.Length; i++)
             level.tiles[i] = (int)LevelEditorManager.instance.tiles[i].GetComponent<TileInfo>().tileCode;
+
+        level.width = (int)LevelEditorManager.instance.getCanvasSize().x;
+        level.height = (int)LevelEditorManager.instance.getCanvasSize().y;
 
         return JsonUtility.ToJson(level);
     }

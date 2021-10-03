@@ -571,6 +571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df11d0f7b38150546988590fb6cf7589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPanel: {fileID: 397962790}
+  charPanel: {fileID: 638839426}
 --- !u!4 &476490545
 Transform:
   m_ObjectHideFlags: 0

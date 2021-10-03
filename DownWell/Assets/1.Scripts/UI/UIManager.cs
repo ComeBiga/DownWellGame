@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    GameObject startPanel;
-    GameObject charPanel;
+    public GameObject startPanel;
+    public GameObject charPanel;
 
 
     void Awake()
