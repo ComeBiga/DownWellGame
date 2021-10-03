@@ -61,7 +61,7 @@ public class LoadLevel : MonoBehaviour
 
     public void LoadCloudObjects()
     {
-        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Clouds/" + "*.json");
+        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Clouds/", "*.json");
         List<Level> objList = new List<Level>();
 
         foreach (var dir in directories)
