@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class SelectMan : MonoBehaviour
 {
-    GameObject character;
+    public GameObject character;
 
-    GameObject rbtn;
-    GameObject lbtn;
+    public GameObject rbtn;
+    public GameObject lbtn;
 
     bool moveR;
     bool moveL;
@@ -20,9 +20,9 @@ public class SelectMan : MonoBehaviour
 
     void Awake()
     {
-        character = GameObject.Find("character");
-        rbtn = GameObject.Find("rButton");
-        lbtn = GameObject.Find("lButton");
+        //character = GameObject.Find("character");
+        //rbtn = GameObject.Find("rButton");
+        //lbtn = GameObject.Find("lButton");
     }
 
     void Update()
@@ -60,6 +60,7 @@ public class SelectMan : MonoBehaviour
 
     public void selectbtn()
     {
+        PlayerManager.instance.SelectPlayerCharacter(charNum);
         SceneManager.LoadScene(1);
     }
 

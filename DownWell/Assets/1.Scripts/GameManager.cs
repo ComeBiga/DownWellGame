@@ -10,19 +10,21 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int selectedCharacter;
 
-    // Update is called once per frame
-    void Update()
+    public void SelectCharacter(int charNum)
     {
-        
+        selectedCharacter = charNum;
     }
 }
