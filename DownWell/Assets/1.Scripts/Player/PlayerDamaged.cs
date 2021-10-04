@@ -18,7 +18,7 @@ public class PlayerDamaged : MonoBehaviour
 
         Debug.Log("Player Damaged");
 
-        GetComponent<PlayerHealth>().LoseHealth();
+        if(!isInvincible) GetComponent<PlayerHealth>().LoseHealth();
 
         GetComponent<PlayerController>().LeapOff(leapSpeed);
 
@@ -29,7 +29,7 @@ public class PlayerDamaged : MonoBehaviour
 
 
         StartCoroutine(BecomeInvincible());
-        StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake());
+        Camera.main.GetComponent<CameraShake>().Shake();
     }
 
     IEnumerator BecomeInvincible()

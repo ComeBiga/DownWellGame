@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         if (rigidbody.velocity.y <= -maxFallSpeed) rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
 
-        HorizontalMove();
+        //HorizontalMove();
 
         //grounded = CheckTileUnderPlayer(groundLayerMask);
         grounded = VerticalCollisions();
@@ -59,6 +59,11 @@ public class PlayerController : MonoBehaviour
             Jump();
 
         Shoot();
+    }
+
+    private void FixedUpdate()
+    {
+        HorizontalMove();
     }
 
     void Shoot()
@@ -75,7 +80,7 @@ public class PlayerController : MonoBehaviour
         }
         if (shooting && Input.GetButton("Jump"))
         {
-            GetComponent<PlayerAttack>().Shoot();
+            GetComponent<PlayerCombat>().Shoot();
         }
 
         if (grounded)
@@ -96,7 +101,8 @@ public class PlayerController : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");
 
-        rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
+        //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
+        transform.position += Vector3.right * speed * h * Time.deltaTime;
     }
 
     void Jump()

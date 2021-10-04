@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
             newProjectile.GetComponent<Projectile>().damage = projectileDamage;
 
             GetComponent<PlayerController>().ShotRebound();
-            StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake());
+            Camera.main.GetComponent<CameraShake>().Shake();
 
             GetComponent<PlayerAnimation>().Shoot();
 

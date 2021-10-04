@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
             if(collider != null && collider.tag == "Player")
             {
                 //Debug.Log("TakeDamage");
-                collider.GetComponent<PlayerDamaged>().Damaged(this);
+                collider.GetComponent<PlayerCombat>().Damaged(this);
             }
         }
     }

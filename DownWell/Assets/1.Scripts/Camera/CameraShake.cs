@@ -7,7 +7,12 @@ public class CameraShake : MonoBehaviour
     public float duration = .2f;
     public float magnitude = 1f;
 
-    public IEnumerator Shake()
+    public void Shake()
+    {
+        StartCoroutine(EShake());
+    }
+
+    public IEnumerator EShake()
     {
         float elapsed = 0.0f;
 

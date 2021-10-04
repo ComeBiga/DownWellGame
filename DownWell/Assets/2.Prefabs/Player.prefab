@@ -62,11 +62,9 @@ GameObject:
   - component: {fileID: 5834640292865415492}
   - component: {fileID: 3027550015346354234}
   - component: {fileID: 5834640292865415488}
-  - component: {fileID: 4656855670834671392}
-  - component: {fileID: 7333529968004637726}
-  - component: {fileID: 922388361399753173}
-  - component: {fileID: 3761122455356345184}
   - component: {fileID: 1340578661}
+  - component: {fileID: 5561447862664596211}
+  - component: {fileID: 3761122455356345184}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -242,7 +240,7 @@ MonoBehaviour:
   shotReboundSpeed: 4.6
   reboundTime: 1
   verticalRayCount: 4
---- !u!114 &4656855670834671392
+--- !u!114 &1340578661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,41 +249,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 5834640292865415495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df3ec03567d57c49aa7ca7097fe0f7e, type: 3}
+  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  OnChangedHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5561447862664596211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2e08c80e2e2a04b879f15658acf600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
   projectileDamage: 4
   shotDelay: 0.2
---- !u!114 &7333529968004637726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 257e33404b011514e92fc8af400d48ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   hitBox: {fileID: 5416284440441354456}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  leapSpeed: 7
---- !u!114 &922388361399753173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb96365f2daff244a4471a21b3d619b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  stepUpSpeed: 7
   leapSpeed: 7
   knuckBackSpeed: 2
   invincibleTime: 3
@@ -301,16 +295,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c30747f893e0c45ba2a782f7e7f0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1340578661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
