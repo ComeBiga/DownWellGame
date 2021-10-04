@@ -13,17 +13,17 @@ public class PlayerController : MonoBehaviour
     public float gravity = 1f;
     public float maxFallSpeed = 10f;
 
-    [Header("Shoot rebound")]
-    public float shotReboundSpeed = 1f;
-    public float reboundTime = 1f;
-
     [Space()]
+    public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
+    float horizontalRaySpacing;
     float verticalRaySpacing;
+
     RaycastOrigins raycastOrigins;
     struct RaycastOrigins
     {
         public Vector2 bottomLeft, topLeft;
+        public Vector2 bottomRight, topRight;
     }
 
     bool grounded = true;
@@ -46,24 +46,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         rigidbody.gravityScale = gravity;
-        //Debug.Log(rigidbody.velocity.y);
 
+        // 최대 속도
         if (rigidbody.velocity.y <= -maxFallSpeed) rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
 
-        //HorizontalMove();
+        HorizontalMove();
 
-        //grounded = CheckTileUnderPlayer(groundLayerMask);
-        grounded = VerticalCollisions();
+        grounded = GroundCollision();
 
-        if (Input.GetButtonDown("Jump") && grounded)
-            Jump();
+        Jump();
 
         Shoot();
     }
 
     private void FixedUpdate()
     {
-        HorizontalMove();
+        //HorizontalMove();
     }
 
     void Shoot()
@@ -101,67 +99,44 @@ public class PlayerController : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");
 
+        //Debug.Log(HorizontalCollisions());
         //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
-        transform.position += Vector3.right * speed * h * Time.deltaTime;
+        if(!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
     }
 
     void Jump()
     {
-        rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
-        jumping = true;
+        if (Input.GetButtonDown("Jump") && grounded)
+        {
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+            jumping = true;
+        }
+
+        if (rigidbody.velocity.y > 0 && Input.GetButtonUp("Jump"))
+        {
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+            jumping = false;
+        }
     }
 
-    public void LeapOff(float leapSpeed)
+    public void LeapOff(float stepUpSpeed)
     {
-        rigidbody.velocity = new Vector2(rigidbody.velocity.x, leapSpeed);
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, stepUpSpeed);
         jumping = true;
     }
 
     public void KnuckBack(float knuckBackSpeed, int direction)
     {
-        //rigidbody.velocity = new Vector2(knuckBackSpeed * direction, rigidbody.velocity.y);
+        //rigidbody.velocity = new Vector2(knuckBackSpeed * direction, rigidbody.velocity.y + knuckBackSpeed);
 
-        StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
+        //StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
+
+        rigidbody.AddForce(new Vector2(knuckBackSpeed * direction, knuckBackSpeed), ForceMode2D.Impulse);
     }
 
-    IEnumerator KnuckBacking(float knuckBackSpeed, int direction)
+    bool GroundCollision()
     {
-        float duration = .3f;
-        float elapse = 0;
-
-        while(elapse < duration)
-        {
-            transform.position = new Vector3(transform.position.x + knuckBackSpeed * direction * Time.deltaTime, transform.position.y, transform.position.z);
-
-            elapse += Time.deltaTime;
-
-            yield return null;
-        }
-    }
-
-    bool CheckTileUnderPlayer(LayerMask checkLayer)
-    {
-        float rayDistance = .1f;
-
-        Vector2 origin = new Vector2(transform.position.x, transform.position.y - GetComponent<BoxCollider2D>().bounds.size.y / 2);
-        RaycastHit2D[] results = Physics2D.RaycastAll(origin, Vector2.down, rayDistance, checkLayer);
-
-        Debug.DrawRay(origin, Vector3.down * rayDistance, Color.green);
-
-        if (results.Length > 0) return true;
-
-        return false;
-    }
-
-    public void ShotRebound()
-    {
-        //rigidbody.velocity += Vector2.up * 0;
-        rigidbody.velocity += Vector2.up * shotReboundSpeed;
-    }
-
-    bool VerticalCollisions()
-    {
-        for(int i = 0; i< verticalRayCount; i++)
+        for(int i = 0; i < verticalRayCount; i++)
         {
             Vector2 rayOrigin = raycastOrigins.bottomLeft;
             rayOrigin += Vector2.right * (verticalRaySpacing * i);
@@ -175,12 +150,49 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    bool OneSidePlatformCollision()
+    {
+        for(int i = 0; i < verticalRayCount; i++)
+        {
+            Vector2 rayOrigin = raycastOrigins.topLeft;
+            rayOrigin += Vector2.right * (verticalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, .1f);
+
+            Debug.DrawRay(rayOrigin, Vector2.up * .1f, Color.red);
+
+            if (hit) return true;
+        }
+
+        return false;
+    }
+
+    bool HorizontalCollisions()
+    {
+        float directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
+
+        for(int i = 0; i < horizontalRayCount; i++)
+        {
+            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, .1f, groundLayerMask);
+            //Debug.Log(hit.transform.name);
+
+            Debug.DrawRay(rayOrigin, Vector2.right * directionX * .1f, Color.red);
+
+            if (hit) return true;
+        }
+
+        return false;
+    }
+
     void UpdateRaycastOrigins()
     {
         Bounds bounds = GetComponent<BoxCollider2D>().bounds;
 
         raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
         raycastOrigins.topLeft = new Vector2(bounds.min.x, bounds.max.y);
+        raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
+        raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
     }
 
     void CalculateRaySpacing()
@@ -188,7 +200,9 @@ public class PlayerController : MonoBehaviour
         Bounds bounds = GetComponent<BoxCollider2D>().bounds;
 
         verticalRayCount = Mathf.Clamp(verticalRayCount, 2, int.MaxValue);
+        horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
 
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
+        horizontalRaySpacing = bounds.size.y / (horizontalRayCount - 1);
     }
 }

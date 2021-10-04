@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerCombat : MonoBehaviour
     public GameObject projectile;
     public int projectileDamage = 4;
     public float shotDelay = 1f;
+    public float shotReboundSpeed = 1f;
     float shotTimer = 0f;
 
     [Header("Stepping")]
@@ -20,11 +22,11 @@ public class PlayerCombat : MonoBehaviour
     [Header("Damaged")]
     public float leapSpeed;
     public float knuckBackSpeed;
-
     public float invincibleTime;
-
     bool isInvincible = false;
     public bool IsInvincible { get; }
+
+    public UnityEvent OnDamaged;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +58,8 @@ public class PlayerCombat : MonoBehaviour
             GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
             newProjectile.GetComponent<Projectile>().damage = projectileDamage;
 
-            GetComponent<PlayerController>().ShotRebound();
+            //GetComponent<PlayerController>().ShotRebound();
+            GetComponent<PlayerController>().LeapOff(shotReboundSpeed);
             Camera.main.GetComponent<CameraShake>().Shake();
 
             GetComponent<PlayerAnimation>().Shoot();
@@ -72,17 +75,14 @@ public class PlayerCombat : MonoBehaviour
 
         Debug.Log("Player Damaged");
 
-        if (!isInvincible) GetComponent<PlayerHealth>().LoseHealth();
-
-        GetComponent<PlayerController>().LeapOff(leapSpeed);
+        if (!isInvincible) OnDamaged.Invoke();
 
         Vector3 knuckbackDir = transform.position - enemy.transform.position;
         int direction = knuckbackDir.x > 0 ? 1 : -1;
-        //Debug.Log(direction);
         GetComponent<PlayerController>().KnuckBack(knuckBackSpeed, direction);
 
-
         StartCoroutine(BecomeInvincible());
+
         Camera.main.GetComponent<CameraShake>().Shake();
     }
 
@@ -90,11 +90,6 @@ public class PlayerCombat : MonoBehaviour
     {
         isInvincible = true;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
-        //GetComponent<PlayerStepping>().hitBox.GetComponent<CircleCollider2D>().enabled = false;
-
-        //yield return new WaitForSeconds(invincibleTime / 2);
-
-        //GetComponent<PlayerStepping>().hitBox.GetComponent<CircleCollider2D>().enabled = true;
 
         yield return new WaitForSeconds(invincibleTime);
 

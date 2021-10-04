@@ -6,6 +6,7 @@ public class MapDisplay : MonoBehaviour
 {
     MapManager mapManager;
 
+    public Transform parent;
     public Vector3 offset;
     public List<GameObject> wallObjects;
     public List<GameObject> enemyObjects;
@@ -50,14 +51,14 @@ public class MapDisplay : MonoBehaviour
                 if(generatedLevel[x, y] > 10)
                 {
                     var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == generatedLevel[x, y]);
-                    Instantiate(enemyObject, tilePosition, Quaternion.identity);
+                    Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
                 }
                 else
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == generatedLevel[x, y]);
 
                     if(wallObject != null)
-                        Instantiate(wallObject, tilePosition, Quaternion.identity);
+                        Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
                 }
             }
         }
@@ -71,7 +72,7 @@ public class MapDisplay : MonoBehaviour
                                                     , -y + offset.y -mapManager.height);
 
                 if(generatedStageGround[y, x] == 1)
-                    Instantiate(wallObjects[0], tilePosition, Quaternion.identity);
+                    Instantiate(wallObjects[0], tilePosition, Quaternion.identity, parent);
 
             }
         }

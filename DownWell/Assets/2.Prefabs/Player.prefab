@@ -173,7 +173,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 39fc5cd1dba7c194ca2562b5fb1191b9, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5834640292865415495}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 39fc5cd1dba7c194ca2562b5fb1191b9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -283,6 +283,21 @@ MonoBehaviour:
   leapSpeed: 7
   knuckBackSpeed: 2
   invincibleTime: 3
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1340578661}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: LoseHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3761122455356345184
 MonoBehaviour:
   m_ObjectHideFlags: 0
