@@ -61,7 +61,7 @@ public class LoadLevel : MonoBehaviour
 
     public void LoadCloudObjects()
     {
-        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Clouds/", "*.json");
+        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Blocks/", "*.json");
         List<Level> objList = new List<Level>();
 
         foreach (var dir in directories)
@@ -74,7 +74,7 @@ public class LoadLevel : MonoBehaviour
             //Debug.Log(JsonUtility.ToJson(obj));
         }
 
-        objects.Add("Cloud", objList);
+        objects.Add("Block", objList);
     }
 
     T JsonToLevel<T>(string jsonData)
