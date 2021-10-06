@@ -25,7 +25,7 @@ public class LoadLevel : MonoBehaviour
     void Start()
     {
         LoadAllLevel();
-        LoadCloudObjects();
+        LoadBlockObjects();
     }
 
     public List<Level> GetLevels(Stage stage)
@@ -59,7 +59,7 @@ public class LoadLevel : MonoBehaviour
         }
     }
 
-    public void LoadCloudObjects()
+    public void LoadBlockObjects()
     {
         string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Blocks/", "*.json");
         List<Level> objList = new List<Level>();

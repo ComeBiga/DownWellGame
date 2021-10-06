@@ -13,8 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public int CurrentHealth { get { return currentHealth; } }
 
     #region Event Declare
-    [Header("Event")]
-    public UnityEvent OnChangedHealth;
+    //[Header("Event")]
+    public event System.Action OnChangedHealth;
     public UnityEvent OnDie;
     #endregion
 
@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += Mathf.Clamp(amount, 0, maxHealth);
 
-        OnChangedHealth.Invoke();
+        if (OnChangedHealth != null) OnChangedHealth.Invoke();
 
         //var additionalHP = amount - maxHealth;
 
@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth--;
         Debug.Log("Lose hp");
 
-        OnChangedHealth.Invoke();
+        if(OnChangedHealth != null) OnChangedHealth.Invoke();
 
         if (currentHealth <= 0)
         {

@@ -532,7 +532,19 @@ public class LevelGenerator : MonoBehaviour
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        int[,] blockRandom = blockList[rand.Next(0, blockList.Count)];
+        List<Level> blocks = loadLevel.GetObjects("Block");
+
+        Level randomBlock = blocks[rand.Next(0, blocks.Count)];
+
+        int[,] blockRandom = new int[randomBlock.height, randomBlock.width];
+
+        for(int y = 0; y < randomBlock.height; y++)
+        {
+            for(int x = 0; x < randomBlock.width; x++)
+            {
+                blockRandom[y, x] = randomBlock.tiles[y * randomBlock.width + x];
+            }
+        }
 
         int blockWidth = blockRandom.GetLength(1);
         int blockHeight = blockRandom.GetLength(0);
@@ -544,7 +556,7 @@ public class LevelGenerator : MonoBehaviour
                 if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
                 {
                     if (map[x, y] != 1 && map[x, y] != 2)
-                        map[x, y] = blockRandom[y - _y, x - _x] == 1 ? 2 : 0;
+                        map[x, y] = blockRandom[y - _y, x - _x];
                 }
             }
         }
