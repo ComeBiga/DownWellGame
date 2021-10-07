@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (shootable && Input.GetButtonDown("Jump"))
         {
             shooting = true;
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
         }
         if (shooting && Input.GetButton("Jump"))
         {

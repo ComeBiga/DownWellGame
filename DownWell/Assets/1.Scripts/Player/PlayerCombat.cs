@@ -8,6 +8,9 @@ public class PlayerCombat : MonoBehaviour
     [Header("Shoot")]
     public GameObject projectile;
     public int projectileDamage = 4;
+    public int maxProjectile = 8;
+    int currentProjectile;
+    bool reloaded = true;
     public float shotDelay = 1f;
     public float shotReboundSpeed = 1f;
     float shotTimer = 0f;
@@ -16,6 +19,8 @@ public class PlayerCombat : MonoBehaviour
     public GameObject hitBox;
     public LayerMask enemyLayerMask;
     public float stepUpSpeed = 7f;
+    public float unshootableTime = 1f;
+    public bool shootable = true;
     ContactFilter2D enemyFilter;
     Collider2D[] enemyColliders;
 
@@ -37,6 +42,8 @@ public class PlayerCombat : MonoBehaviour
         enemyFilter.SetLayerMask(enemyLayerMask);
 
         enemyColliders = new Collider2D[3];
+
+        currentProjectile = maxProjectile;
     }
 
     // Update is called once per frame
@@ -44,8 +51,11 @@ public class PlayerCombat : MonoBehaviour
     {
         shotTimer += Time.deltaTime;
 
-        //if (Input.GetButton("Jump") && !GetComponent<PlayerController>().grounded)
-        //    Shoot();
+        if (!reloaded && GetComponent<PlayerController>().GroundCollision())
+        {
+            Reload();
+            reloaded = true;
+        }
 
         StepOn();
     }
@@ -53,10 +63,14 @@ public class PlayerCombat : MonoBehaviour
     #region Shoot Function
     public void Shoot()
     {
-        if (shotTimer >= shotDelay)
+        if (shotTimer >= shotDelay && shootable && currentProjectile > 0)
         {
             GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
             newProjectile.GetComponent<Projectile>().damage = projectileDamage;
+
+            currentProjectile--;
+
+            if (currentProjectile < maxProjectile) reloaded = false;
 
             //GetComponent<PlayerController>().ShotRebound();
             GetComponent<PlayerController>().LeapOff(shotReboundSpeed);
@@ -66,6 +80,11 @@ public class PlayerCombat : MonoBehaviour
 
             shotTimer = 0;
         }
+    }
+
+    public void Reload()
+    {
+        currentProjectile = maxProjectile;
     }
     #endregion
 
@@ -112,9 +131,19 @@ public class PlayerCombat : MonoBehaviour
             {
                 playerBound = true;
                 enemyCollider.GetComponent<Enemy>().Die();
+
+                if (!reloaded) Reload();
+                StartCoroutine(SteppingUp());
             }
         }
 
         if (playerBound) GetComponent<PlayerController>().LeapOff(leapSpeed);
+    }
+
+    IEnumerator SteppingUp()
+    {
+        shootable = false;
+        yield return new WaitForSeconds(unshootableTime);
+        shootable = true;
     }
 }
