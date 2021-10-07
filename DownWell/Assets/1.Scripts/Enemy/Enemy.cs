@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
             if(collider != null && collider.tag == "Player")
             {
                 //Debug.Log("TakeDamage");
-                collider.GetComponent<PlayerCombat>().Damaged(this);
+                if(!collider.GetComponent<PlayerCombat>().IsInvincible)
+                    collider.GetComponent<PlayerCombat>().Damaged(this);
             }
         }
     }

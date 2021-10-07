@@ -114,7 +114,6 @@ public class PlayerCombat : MonoBehaviour
 
         isInvincible = false;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
-
     }
 
     void StepOn()
