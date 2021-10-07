@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -21,10 +21,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    int selectedCharacter;
+    public GameObject playerPrefab;
+    public Transform startPos;
 
-    public void SelectCharacter(int charNum)
+    private void Start()
     {
-        selectedCharacter = charNum;
+        PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
+
+        playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
+
+        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
+
+        PlayerManager.instance.player = playerPrefab;
     }
 }
