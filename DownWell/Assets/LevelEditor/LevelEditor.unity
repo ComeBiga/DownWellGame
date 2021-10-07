@@ -2849,6 +2849,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d7c67dbde88b7cb4b8c12dcec0b6e05c, type: 2}
   - {fileID: 11400000, guid: 15e5dd87c4c9e5441b5e34f8be30f2b2, type: 2}
   - {fileID: 11400000, guid: e08c9d90780e27347b5734e150d7dedb, type: 2}
+  - {fileID: 11400000, guid: 1d7a3b683c5d2b646b628f7fbe730bab, type: 2}
   eraserBrush: {fileID: 11400000, guid: a026768d6bd64cd41a9286fe3cfd577b, type: 2}
 --- !u!114 &698193443
 MonoBehaviour:

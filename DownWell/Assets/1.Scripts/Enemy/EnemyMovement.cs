@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckTargetRange())
+        if (GameManager.instance.CheckTargetRange(transform))
         {
             Vector3 direction = target.position - transform.position;
             //transform.position += direction.normalized * speed * Time.deltaTime;
@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
         float height = Camera.main.orthographicSize * 2;
         float width = height * (9 / 16);
 
-        float h_tarTothis = Mathf.Abs(target.position.y - transform.position.y);
+        float h_tarTothis = Mathf.Abs(GameManager.instance.playerPrefab.transform.position.y - transform.position.y);
 
         if (h_tarTothis < height / 2 + activeRangeOffset)
             return true;
