@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -21,10 +21,36 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    int selectedCharacter;
+    public GameObject playerPrefab;
+    public Transform startPos;
 
-    public void SelectCharacter(int charNum)
+    public float activeRangeOffset = 0;
+
+    private void Start()
     {
-        selectedCharacter = charNum;
+        PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
+
+        playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
+
+        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
+
+        PlayerManager.instance.player = playerPrefab;
+    }
+
+    public bool CheckTargetRange(Transform enemy)
+    {
+        float height = Camera.main.orthographicSize * 2;
+        float width = height * (9 / 16);
+
+        float h_tarTothis = Mathf.Abs(playerPrefab.transform.position.y - enemy.position.y);
+
+        if (height / 2 + activeRangeOffset < enemy.position.y - playerPrefab.transform.position.y)
+            Destroy(enemy.gameObject);
+
+        if (h_tarTothis < height / 2 + activeRangeOffset)
+            return true;
+
+
+        return false;
     }
 }

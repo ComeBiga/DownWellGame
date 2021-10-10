@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (shootable && Input.GetButtonDown("Jump"))
         {
             shooting = true;
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
         }
         if (shooting && Input.GetButton("Jump"))
         {
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         rigidbody.AddForce(new Vector2(knuckBackSpeed * direction, knuckBackSpeed), ForceMode2D.Impulse);
     }
 
-    bool GroundCollision()
+    public bool GroundCollision()
     {
         for(int i = 0; i < verticalRayCount; i++)
         {
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    bool OneSidePlatformCollision()
+    public bool OneSidePlatformCollision()
     {
         for(int i = 0; i < verticalRayCount; i++)
         {
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    bool HorizontalCollisions()
+    public bool HorizontalCollisions()
     {
         float directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
 
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    void UpdateRaycastOrigins()
+    public void UpdateRaycastOrigins()
     {
         Bounds bounds = GetComponent<BoxCollider2D>().bounds;
 
@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
         raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
     }
 
-    void CalculateRaySpacing()
+    public void CalculateRaySpacing()
     {
         Bounds bounds = GetComponent<BoxCollider2D>().bounds;
 

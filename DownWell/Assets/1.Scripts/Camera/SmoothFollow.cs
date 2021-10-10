@@ -13,7 +13,7 @@ public class SmoothFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(transform.position.x, (target.position + offset).y, (target.position + offset).z);
+        
     }
 
     // Update is called once per frame
@@ -26,5 +26,11 @@ public class SmoothFollow : MonoBehaviour
     {
         if(followActive)
          transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
+    }
+
+    public void InitFollowCamera(Transform playerPos)
+    {
+        target = playerPos;
+        transform.position = new Vector3(transform.position.x, (target.position + offset).y, (target.position + offset).z);
     }
 }

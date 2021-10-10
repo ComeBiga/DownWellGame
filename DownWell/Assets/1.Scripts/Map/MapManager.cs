@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MapGenerator))]
+[RequireComponent(typeof(LevelGenerator))]
 public class MapManager : MonoBehaviour
 {
     #region Singleton
@@ -15,7 +15,7 @@ public class MapManager : MonoBehaviour
     }
     #endregion
 
-    MapGenerator mapGen;
+    //MapGenerator mapGen;
     MapDisplay mapDisplay;
     LevelGenerator lg;
 
@@ -25,7 +25,7 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mapGen = GetComponent<MapGenerator>();
+        //mapGen = GetComponent<MapGenerator>();
         mapDisplay = GetComponent<MapDisplay>();
         lg = GetComponent<LevelGenerator>();
 
