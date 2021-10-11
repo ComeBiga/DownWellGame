@@ -23,6 +23,8 @@ public class SelectMan : MonoBehaviour
         //character = GameObject.Find("character");
         //rbtn = GameObject.Find("rButton");
         //lbtn = GameObject.Find("lButton");
+
+        charNum = 0;
     }
 
     void Update()

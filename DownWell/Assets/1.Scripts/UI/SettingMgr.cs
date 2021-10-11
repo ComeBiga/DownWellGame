@@ -61,6 +61,7 @@ public class SettingMgr : MonoBehaviour
 
     public void homeBtn()
     {
+        Time.timeScale = 1;
         Destroy(this.gameObject);
         SceneManager.LoadScene(0);
     }
