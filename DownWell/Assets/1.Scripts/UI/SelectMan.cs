@@ -39,7 +39,7 @@ public class SelectMan : MonoBehaviour
             lbtn.GetComponent<Button>().enabled = true;
         }
 
-        if (moveX >= 100)
+        if (moveX >= 150)
         {
             moveR = false;
             moveL = false;
@@ -48,13 +48,13 @@ public class SelectMan : MonoBehaviour
 
         if (moveR)
         {
-            moveX += 1;
-            character.transform.localPosition += new Vector3(-1, 0, 0);
+            moveX += 2;
+            character.transform.localPosition += new Vector3(-2, 0, 0);
         }
         else if (moveL)
         {
-            moveX += 1;
-            character.transform.localPosition += new Vector3(1, 0, 0);
+            moveX += 2;
+            character.transform.localPosition += new Vector3(2, 0, 0);
         }
     }
 
@@ -89,4 +89,5 @@ public class SelectMan : MonoBehaviour
             lbtn.SetActive(true);
         }
     }
+
 }
