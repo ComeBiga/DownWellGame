@@ -63,6 +63,7 @@ public class SelectMan : MonoBehaviour
     public void selectbtn()
     {
         PlayerManager.instance.SelectPlayerCharacter(charNum);
+        SoundManager.instance.PlayBGMSound("base");  //사운드 시작
         SceneManager.LoadScene(1);
     }
 
