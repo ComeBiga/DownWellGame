@@ -9,8 +9,12 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        SoundManager.instance.SoundOff();
         startPanel.SetActive(true);
         charPanel.SetActive(false);
+
+        SettingMgr.instance.BgmSlider.value = PlayerPrefs.GetFloat("BgmVolume");
+        SettingMgr.instance.effSlider.value = PlayerPrefs.GetFloat("EffectVolume");
     }
 
     public void startBtn()
