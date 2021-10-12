@@ -66,18 +66,29 @@ public class InputManager : MonoBehaviour
         //        }
         //    }
         //}
-        if (Input.GetMouseButton(0) && Input.mousePosition.x < Camera.main.pixelWidth / 2)
+        if (Input.touchCount > 0)
         {
-            if (Input.mousePosition.x > 0 && Input.mousePosition.x <= Camera.main.pixelWidth / 4)
+            var moveTouchCount = 0;
+            foreach (var touch in Input.touches)
             {
-                Debug.Log("left");
-                horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                if (touch.position.x < Camera.main.pixelWidth / 2)
+                {
+                    moveTouchCount++;
+
+                    if (touch.position.x > 0 && touch.position.x <= Camera.main.pixelWidth / 4)
+                    {
+                        Debug.Log("left");
+                        horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                    }
+                    else if (touch.position.x > Camera.main.pixelWidth / 4 && touch.position.x < Camera.main.pixelWidth / 2)
+                    {
+                        Debug.Log("right");
+                        horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                    }
+                }
             }
-            else if (Input.mousePosition.x > Camera.main.pixelWidth / 4 && Input.mousePosition.x < Camera.main.pixelWidth / 2)
-            {
-                Debug.Log("right");
-                horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
-            }
+
+            if(moveTouchCount <= 0) horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
         }
         else
         {
@@ -92,7 +103,18 @@ public class InputManager : MonoBehaviour
         return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
 #if UNITY_ANDROID
-        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+        if (Input.touchCount > 0)
+        {
+            foreach (var touch in Input.touches)
+            {
+                if (touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Began))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        //return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
     }
 
@@ -102,7 +124,18 @@ public class InputManager : MonoBehaviour
         return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
 #if UNITY_ANDROID
-        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+        if(Input.touchCount > 0)
+        {
+            foreach(var touch in Input.touches)
+            {
+                if(touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        //return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
     }
 
@@ -112,7 +145,18 @@ public class InputManager : MonoBehaviour
         return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
 #if UNITY_ANDROID
-        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+        if (Input.touchCount > 0)
+        {
+            foreach (var touch in Input.touches)
+            {
+                if (touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Ended))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        //return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
     }
 }
