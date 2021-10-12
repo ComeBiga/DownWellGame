@@ -40,15 +40,35 @@ public class LoadLevel : MonoBehaviour
 
     public void LoadAllLevel()
     {
+#if UNITY_EDITOR
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i+1).ToString() + "/", "*.json");
+        //    List<Level> lvList = new List<Level>();
+
+        //    foreach (var dir in directories)
+        //    {
+        //        string jsonStr = File.ReadAllText(dir);
+        //        var lvs = JsonToLevel<Level>(jsonStr);
+
+        //        lvList.Add(lvs);
+
+        //        //Debug.Log(JsonUtility.ToJson(lvs));
+        //    }
+
+        //    levels.Add(i, lvList);
+        //}
+#endif
+#if UNITY_ANDROID
         for (int i = 0; i < 5; i++)
         {
-            string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i+1).ToString() + "/", "*.json");
+            var textDatas = Resources.LoadAll("Levels/Stage" + (i + 1).ToString() + "/", typeof(TextAsset));
             List<Level> lvList = new List<Level>();
 
-            foreach (var dir in directories)
+            foreach (var textData in textDatas)
             {
-                string jsonStr = File.ReadAllText(dir);
-                var lvs = JsonToLevel<Level>(jsonStr);
+                Debug.Log(textData.ToString());
+                var lvs = JsonToLevel<Level>(textData.ToString());
 
                 lvList.Add(lvs);
 
@@ -57,24 +77,41 @@ public class LoadLevel : MonoBehaviour
 
             levels.Add(i, lvList);
         }
+#endif
     }
 
     public void LoadBlockObjects()
     {
-        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Blocks/", "*.json");
-        List<Level> objList = new List<Level>();
+        List<Level> objList = new List<Level>(); ;
 
-        foreach (var dir in directories)
+#if UNITY_EDITOR
+        //string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Blocks/", "*.json");
+
+        //foreach (var dir in directories)
+        //{
+        //    string jsonStr = File.ReadAllText(dir);
+        //    var obj = JsonToLevel<Level>(jsonStr);
+
+        //    objList.Add(obj);
+
+        //    //Debug.Log(JsonUtility.ToJson(obj));
+        //}
+
+        //objects.Add("Block", objList);
+#endif
+#if UNITY_ANDROID
+        var textDatas = Resources.LoadAll("Levels/Blocks", typeof(TextAsset));
+
+        foreach (var textData in textDatas)
         {
-            string jsonStr = File.ReadAllText(dir);
-            var obj = JsonToLevel<Level>(jsonStr);
+            Debug.Log(textData.ToString());
+            var obj = JsonToLevel<Level>(textData.ToString());
 
             objList.Add(obj);
-
-            //Debug.Log(JsonUtility.ToJson(obj));
         }
 
         objects.Add("Block", objList);
+#endif
     }
 
     T JsonToLevel<T>(string jsonData)
