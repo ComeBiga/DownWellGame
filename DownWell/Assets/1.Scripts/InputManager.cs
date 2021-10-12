@@ -46,27 +46,42 @@ public class InputManager : MonoBehaviour
         {
             horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
         }
-
-        if(Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2)
-        {
-
-        }
 #endif
 #if UNITY_ANDROID
-        if (Input.touchCount > 0)
-        {
-            Debug.Log("touched");
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                return;
+        //if (Input.touchCount > 0)
+        //{
+        //    Debug.Log("touched");
+        //    if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        //        return;
 
-            else
+        //    foreach(var touch in Input.touches)
+        //    {
+        //        if (touch.position.x > 0 && touch.position.x <= Camera.main.pixelWidth / 4)
+        //        {
+        //            horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+        //        }
+        //        else if(touch.position.x > Camera.main.pixelWidth / 4 && touch.position.x < Camera.main.pixelWidth / 2)
+        //        {
+        //            horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+        //        }
+        //    }
+        //}
+        if (Input.GetMouseButton(0) && Input.mousePosition.x < Camera.main.pixelWidth / 2)
+        {
+            if (Input.mousePosition.x > 0 && Input.mousePosition.x <= Camera.main.pixelWidth / 4)
             {
-                foreach(var touch in Input.touches)
-                {
-                    if (touch.position.x < Camera.main.pixelWidth)
-                        Debug.Log("");
-                }
+                Debug.Log("left");
+                horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
             }
+            else if (Input.mousePosition.x > Camera.main.pixelWidth / 4 && Input.mousePosition.x < Camera.main.pixelWidth / 2)
+            {
+                Debug.Log("right");
+                horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+            }
+        }
+        else
+        {
+            horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
         }
 #endif
     }
@@ -75,7 +90,9 @@ public class InputManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#elif UNITY_ANDROID
+#endif
+#if UNITY_ANDROID
+        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
     }
 
@@ -83,7 +100,9 @@ public class InputManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#elif UNITY_ANDROID
+#endif
+#if UNITY_ANDROID
+        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
     }
 
@@ -91,7 +110,9 @@ public class InputManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#elif UNITY_ANDROID
+#endif
+#if UNITY_ANDROID
+        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
     }
 }

@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
+#if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
         {
             if (InputManager.instance.GetJumpButtonUp())
@@ -100,6 +101,23 @@ public class PlayerController : MonoBehaviour
                 GetComponent<PlayerCombat>().Shoot();
             }
         }
+#endif
+#if UNITY_ANDROID
+        if (InputManager.instance.GetJumpButtonUp())
+        {
+            shootable = true;
+        }
+
+        if (shootable && InputManager.instance.GetJumpButtonDown())
+        {
+            shooting = true;
+            //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+        }
+        if (shooting && InputManager.instance.GetJumpButton())
+        {
+            GetComponent<PlayerCombat>().Shoot();
+        }
+#endif
 
         if (grounded)
         {
@@ -121,6 +139,7 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(HorizontalCollisions());
         //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
+#if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
         {
             if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
@@ -129,11 +148,15 @@ public class PlayerController : MonoBehaviour
         {
             if (!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
         }
-        
+#endif
+#if UNITY_ANDROID
+        if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
+#endif
     }
 
     void Jump()
     {
+#if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
         {
             if (InputManager.instance.GetJumpButtonDown() && grounded)
@@ -162,6 +185,21 @@ public class PlayerController : MonoBehaviour
                 jumping = false;
             }
         }
+#endif
+#if UNITY_ANDROID
+        if (InputManager.instance.GetJumpButtonDown() && grounded)
+        {
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+            jumping = true;
+        }
+
+        if (rigidbody.velocity.y > 0 && InputManager.instance.GetJumpButtonUp())
+        {
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+            jumping = false;
+        }
+#endif
+
     }
 
     public void LeapOff(float stepUpSpeed)
@@ -213,17 +251,18 @@ public class PlayerController : MonoBehaviour
 
     public bool HorizontalCollisions()
     {
-#if UNITY_EDITOR
         float directionX;
+#if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
             directionX = Mathf.Sign(InputManager.instance.horizontal);
         else
             directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
-
-#elif UNITY_ANDROID
+#endif
+#if UNITY_ANDROID
+        directionX = Mathf.Sign(InputManager.instance.horizontal);
 #endif
 
-        for(int i = 0; i < horizontalRayCount; i++)
+        for (int i = 0; i < horizontalRayCount; i++)
         {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);

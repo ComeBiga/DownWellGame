@@ -16,10 +16,16 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         float h;
+#if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
             h = InputManager.instance.horizontal;
         else
             h = Input.GetAxis("Horizontal");
+#endif
+#if UNITY_ANDROID
+        h = InputManager.instance.horizontal;
+#endif
+
 
         Run(h);
 
