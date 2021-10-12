@@ -78,7 +78,8 @@ public class PlayerCombat : MonoBehaviour
 
             GetComponent<PlayerAnimation>().Shoot();
 
-            SoundManager.instance.PlayEffSound("gun");  //사운드이펙트
+            if(SoundManager.instance != null) SoundManager.instance.PlayEffSound("gun");  //사운드이펙트
+            GetComponent<Effector>().Generate("Shoot");
 
             shotTimer = 0;
         }

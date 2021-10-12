@@ -17,7 +17,7 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
+  - CantStepEnemy
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1343732879
+    locked: 0
+  - name: FX
+    uniqueID: 2443339527
     locked: 0

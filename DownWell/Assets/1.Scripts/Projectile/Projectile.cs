@@ -37,6 +37,7 @@ public class Projectile : MonoBehaviour
 
             if(collider.tag == "Enemy")
             {
+                GetComponent<Effector>().Generate("Hit");
                 Destroy();
                 collider.GetComponent<Enemy>().Damaged(damage);
             }

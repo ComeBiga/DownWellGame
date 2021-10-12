@@ -15,7 +15,11 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
+        float h;
+        if (InputManager.instance.mouseClick)
+            h = InputManager.instance.horizontal;
+        else
+            h = Input.GetAxis("Horizontal");
 
         Run(h);
 

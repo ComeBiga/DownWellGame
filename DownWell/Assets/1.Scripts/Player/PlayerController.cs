@@ -66,19 +66,39 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButtonUp("Jump"))
+        if (InputManager.instance.mouseClick)
         {
-            shootable = true;
-        }
+            if (InputManager.instance.GetJumpButtonUp())
+            {
+                shootable = true;
+            }
 
-        if (shootable && Input.GetButtonDown("Jump"))
-        {
-            shooting = true;
-            //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            if (shootable && InputManager.instance.GetJumpButtonDown())
+            {
+                shooting = true;
+                //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            }
+            if (shooting && InputManager.instance.GetJumpButton())
+            {
+                GetComponent<PlayerCombat>().Shoot();
+            }
         }
-        if (shooting && Input.GetButton("Jump"))
+        else
         {
-            GetComponent<PlayerCombat>().Shoot();
+            if (Input.GetButtonUp("Jump"))
+            {
+                shootable = true;
+            }
+
+            if (shootable && Input.GetButtonDown("Jump"))
+            {
+                shooting = true;
+                //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            }
+            if (shooting && Input.GetButton("Jump"))
+            {
+                GetComponent<PlayerCombat>().Shoot();
+            }
         }
 
         if (grounded)
@@ -101,21 +121,46 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(HorizontalCollisions());
         //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
-        if(!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
+        if (InputManager.instance.mouseClick)
+        {
+            if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
+        }
+        else
+        {
+            if (!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
+        }
+        
     }
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (InputManager.instance.mouseClick)
         {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
-            jumping = true;
-        }
+            if (InputManager.instance.GetJumpButtonDown() && grounded)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+                jumping = true;
+            }
 
-        if (rigidbody.velocity.y > 0 && Input.GetButtonUp("Jump"))
+            if (rigidbody.velocity.y > 0 && InputManager.instance.GetJumpButtonUp())
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+                jumping = false;
+            }
+        }
+        else
         {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
-            jumping = false;
+            if (Input.GetButtonDown("Jump") && grounded)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+                jumping = true;
+            }
+
+            if (rigidbody.velocity.y > 0 && Input.GetButtonUp("Jump"))
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+                jumping = false;
+            }
         }
     }
 
@@ -168,7 +213,15 @@ public class PlayerController : MonoBehaviour
 
     public bool HorizontalCollisions()
     {
-        float directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
+#if UNITY_EDITOR
+        float directionX;
+        if (InputManager.instance.mouseClick)
+            directionX = Mathf.Sign(InputManager.instance.horizontal);
+        else
+            directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
+
+#elif UNITY_ANDROID
+#endif
 
         for(int i = 0; i < horizontalRayCount; i++)
         {
