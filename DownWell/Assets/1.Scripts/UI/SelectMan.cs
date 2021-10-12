@@ -50,13 +50,13 @@ public class SelectMan : MonoBehaviour
 
         if (moveR)
         {
-            moveX += 2;
-            character.transform.localPosition += new Vector3(-2, 0, 0);
+            moveX += 5;
+            character.transform.localPosition += new Vector3(-5, 0, 0);
         }
         else if (moveL)
         {
-            moveX += 2;
-            character.transform.localPosition += new Vector3(2, 0, 0);
+            moveX += 5;
+            character.transform.localPosition += new Vector3(5, 0, 0);
         }
     }
 

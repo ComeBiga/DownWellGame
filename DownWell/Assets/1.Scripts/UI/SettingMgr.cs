@@ -32,8 +32,6 @@ public class SettingMgr : MonoBehaviour
     public Slider BgmSlider;
     public Slider effSlider;
 
-    [Space(10f)]
-    public Image pauseImg;
 
     [Header("Image")]
     public Sprite muteImg;
@@ -41,6 +39,8 @@ public class SettingMgr : MonoBehaviour
     public Image bgmImg;
     public Image effImg;
 
+    public bool gPaused;
+    int ClickCount = 0;
 
     void Start()
     {
@@ -58,20 +58,39 @@ public class SettingMgr : MonoBehaviour
             effImg.sprite = muteImg;
         else if (SoundManager.instance.vEff == 1)
             effImg.sprite = originImg;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CancelBtn();
+            ClickCount++;
+            if (!IsInvoking("DoubleClick"))
+                Invoke("DoubleClick", 1.0f);
+
+        }
+        else if (ClickCount == 2)
+        {
+            CancelInvoke("DoubleClick");
+            Application.Quit();
+        }
+
+    }
+
+    void DoubleClick()
+    {
+        ClickCount = 0;
     }
 
     //setting
     public void SettingBtn()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        gPaused = true;
+        if ((SceneManager.GetActiveScene().buildIndex == 1) || UIManager.clickPlay)
         {
-            pauseImg.enabled = true;
             exitButton.SetActive(false);
             ingameSetting.SetActive(true);
         }
         else
         {
-            pauseImg.enabled = false;
             exitButton.SetActive(true);
             ingameSetting.SetActive(false);
         }
@@ -81,22 +100,47 @@ public class SettingMgr : MonoBehaviour
     public void CancelBtn()
     {
         Time.timeScale = 1;
+        gPaused = false;
         setPanel.SetActive(false);
     }
-
     public void homeBtn()
     {
         Time.timeScale = 1;
         Destroy(this.gameObject);
         SceneManager.LoadScene(0);
     }
+
+/*    private void OnApplicationQuit()
+    {
+        Application.CancelQuit();
+#if !UNITY_EDITOR
+        System.Diagnostics.Process.GetCurrentProcess().Kill();
+#endif
+    }*/
+    
     public void exitBtn()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        /*#else
-                Application.Quit();*/
+#else
+        Application.Quit();
 #endif
+    }
+
+    void OnApplicationPause(bool pause)
+    {
+        if (pause) //유저가 홈이나 홀드버튼 눌렸을 때 일시정지
+        {
+            gPaused = true;
+            SettingBtn();
+        }
+        else
+        {
+            if (gPaused) //유저가 게임으로 돌아왔을 때
+            {
+                gPaused = false;
+            }
+        }
     }
 
 

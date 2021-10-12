@@ -422,7 +422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -30, y: 0}
+  m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &293355337
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 480, y: 800}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2145,7 +2145,6 @@ MonoBehaviour:
   ingameSetting: {fileID: 960585518}
   BgmSlider: {fileID: 1242936489}
   effSlider: {fileID: 1294563240}
-  pauseImg: {fileID: 1122755568}
   muteImg: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   originImg: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   bgmImg: {fileID: 1855672133}
@@ -4680,11 +4679,11 @@ RectTransform:
   m_Father: {fileID: 975347743}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -60, y: -60}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 340}
   m_SizeDelta: {x: 80, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1919142643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4943,6 +4942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1527060946}
   charPanel: {fileID: 947480729}
+  versionInfo: {fileID: 293355337}
 --- !u!4 &1962636607
 Transform:
   m_ObjectHideFlags: 0
