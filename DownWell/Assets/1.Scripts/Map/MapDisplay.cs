@@ -9,6 +9,7 @@ public class MapDisplay : MonoBehaviour
     public Transform parent;
     public Vector3 offset;
     public List<GameObject> wallObjects;
+    public List<Sprite> wallSprites;
     public List<GameObject> enemyObjects;
 
     public static int enemyCount;
@@ -48,16 +49,25 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y);
 
-                if(generatedLevel[x, y] > 10)
+                if(generatedLevel[x, y] >= 100)
+                {
+                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
+                    Debug.Log(generatedLevel[x, y]);
+                    GameObject wall = new GameObject();
+                    if (wallObject != null)
+                        wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                    wall.GetComponent<SpriteRenderer>().sprite = wallSprites[generatedLevel[x, y] - 100];
+                }
+                else if(generatedLevel[x, y] > 10 && generatedLevel[x, y] < 100)
                 {
                     var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == generatedLevel[x, y]);
                     Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
                 }
-                else
+                else if(generatedLevel[x, y] <= 10)
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == generatedLevel[x, y]);
 
-                    if(wallObject != null)
+                    if (wallObject != null)
                         Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
                 }
             }

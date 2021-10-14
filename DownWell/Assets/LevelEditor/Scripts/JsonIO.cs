@@ -36,6 +36,8 @@ public class JsonIO : MonoBehaviour
         level.width = (int)LevelEditorManager.instance.getCanvasSize().x;
         level.height = (int)LevelEditorManager.instance.getCanvasSize().y;
 
+        LevelEditorManager.instance.DesignateTileCorner(level);
+
         return JsonUtility.ToJson(level);
     }
 

@@ -74,7 +74,7 @@ public class PlayerCombat : MonoBehaviour
 
             //GetComponent<PlayerController>().ShotRebound();
             GetComponent<PlayerController>().LeapOff(shotReboundSpeed);
-            Camera.main.GetComponent<CameraShake>().Shake();
+            Camera.main.GetComponent<CameraShake>().Shake(.03f);
 
             GetComponent<PlayerAnimation>().Shoot();
 
@@ -109,7 +109,7 @@ public class PlayerCombat : MonoBehaviour
         Invoke("BecomeVincible", invincibleTime);
 
 
-        Camera.main.GetComponent<CameraShake>().Shake();
+        Camera.main.GetComponent<CameraShake>().Shake(.08f);
     }
 
     void BecomeVincible()

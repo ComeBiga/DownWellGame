@@ -117,6 +117,7 @@ public class LevelEditorManager : MonoBehaviour
         {
             for (int x = 0; x < level.width; x++)
             {
+                if (level.tiles[y * level.width + x] >= 100) level.tiles[y * level.width + x] = 1;
                 ChangeTile(tiles[y * level.width + x].transform, level.tiles[y * level.width + x]);
             }
         }
@@ -124,7 +125,9 @@ public class LevelEditorManager : MonoBehaviour
 
     void ChangeTile(Transform tile, int tileCode)
     {
-        if (tileCode > 10)
+        if (tileCode >= 100)
+            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == 1).sprite;
+        else if (tileCode > 10)
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.enemyBrushes.Find(b => b.code == tileCode).sprite;
         else if (tileCode > 0)
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == tileCode).sprite;
@@ -134,4 +137,77 @@ public class LevelEditorManager : MonoBehaviour
         tile.GetComponent<TileInfo>().tileCode = tileCode;
     }
 
+    public void DesignateTileCorner(Level level)
+    {
+        for(int y = 0; y < level.height; y++)
+        {
+            for(int x = 0; x < level.width; x++)
+            {
+                if(level.tiles[y * level.width + x] == 1)
+                {
+                    var result = TileCorner(level, x, y);
+
+                    if (result != -1) level.tiles[y * level.width + x] = result + 100;
+                }
+            }
+        }
+    }
+
+    int TileCorner(Level level, int x, int y)
+    {
+        int result = -1;
+        bool top = false;
+        bool right = false;
+        bool left = false;
+        bool bottom = false;
+
+        // left wall edge
+        if (x == 0) left = true;
+        // right wall edge
+        if (x == level.width - 1) right = true;
+        // top edge
+        if (y == 0) top = true;
+        // bottom edge
+        if (y == level.height - 1) bottom = true;
+
+        // top check
+        if (y - 1 >= 0 && (level.tiles[(y - 1) * level.width + x] == 1 || level.tiles[(y - 1) * level.width + x] > 100)) top = true;
+        // right check
+        if (x + 1 < level.width && (level.tiles[y * level.width + (x + 1)] == 1 || level.tiles[y * level.width + (x + 1)] > 100)) right = true;
+        // left check
+        if (x - 1 >= 0 && (level.tiles[y * level.width + (x - 1)] == 1 || level.tiles[y * level.width + (x - 1)] > 100)) left = true;
+        // bottom check
+        if (y + 1 < level.height && (level.tiles[(y + 1) * level.width + x] == 1 || level.tiles[(y + 1) * level.width + x] > 100)) bottom = true;
+
+        // top-left
+        if (top == false && right == true && bottom == true && left == false) result = 1;
+        // top
+        if (top == false && right == true && bottom == true && left == true) result = 2;
+        // top-right
+        if (top == false && right == false && bottom == true && left == true) result = 3;
+        // left
+        if (top == true && right == true && bottom == true && left == false) result = 4;
+        // middle
+        if (top == true && right == true && bottom == true && left == true) result = 5;
+        // right
+        if (top == true && right == false && bottom == true && left == true) result = 6;
+        // bottom-left
+        if (top == true && right == true && bottom == false && left == false) result = 7;
+        // bottom
+        if (top == true && right == true && bottom == false && left == true) result = 8;
+        // bottom-right
+        if (top == true && right == false && bottom == false && left == true) result = 9;
+        // top-top
+        if (top == false && right == false && bottom == true && left == false) result = 10;
+        // right-right
+        if (top == false && right == false && bottom == false && left == true) result = 11;
+        // bottom-bottom
+        if (top == true && right == false && bottom == false && left == false) result = 12;
+        // left-left
+        if (top == false && right == true && bottom == false && left == false) result = 13;
+        // alone
+        if (top == false && right == false && bottom == false && left == false) result = 0;
+
+        return result;
+    }
 }

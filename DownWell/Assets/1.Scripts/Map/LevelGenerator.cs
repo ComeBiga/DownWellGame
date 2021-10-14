@@ -280,8 +280,8 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int y = 0; y < mapManager.height; y++)
         {
-            map[0, y] = 1;
-            map[mapManager.width - 1, y] = 1;
+            map[0, y] = 106;
+            map[mapManager.width - 1, y] = 104;
         }
     }
 
@@ -557,7 +557,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (x >= 0 && x < mapManager.width && y >= 0 && y < mapManager.height)
                 {
-                    if (map[x, y] != 1 && map[x, y] != 2)
+                    if (map[x, y] < 10 && map[x, y] != 1 && map[x, y] != 2)
                         map[x, y] = blockRandom[y - _y, x - _x];
                 }
             }
@@ -596,7 +596,7 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int x = 0; x < mapManager.width; x++)
             {
-                if (map[x, y] > 10)
+                if (map[x, y] > 10 && map[x, y] < 100)
                 {
                     if (rand.Next(0, 100) > enemyRatio)
                         map[x, y] = 0;
