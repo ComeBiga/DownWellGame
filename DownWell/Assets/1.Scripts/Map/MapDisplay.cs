@@ -52,7 +52,7 @@ public class MapDisplay : MonoBehaviour
                 if(generatedLevel[x, y] >= 100)
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
-                    Debug.Log(generatedLevel[x, y]);
+                    //Debug.Log(generatedLevel[x, y]);
                     GameObject wall = new GameObject();
                     if (wallObject != null)
                         wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
