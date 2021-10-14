@@ -101,8 +101,7 @@ public class PlayerController : MonoBehaviour
                 GetComponent<PlayerCombat>().Shoot();
             }
         }
-#endif
-#if UNITY_ANDROID
+#elif UNITY_ANDROID
         if (InputManager.instance.GetJumpButtonUp())
         {
             shootable = true;
@@ -148,8 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
         }
-#endif
-#if UNITY_ANDROID
+#elif UNITY_ANDROID
         if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
 #endif
     }
@@ -185,8 +183,7 @@ public class PlayerController : MonoBehaviour
                 jumping = false;
             }
         }
-#endif
-#if UNITY_ANDROID
+#elif UNITY_ANDROID
         if (InputManager.instance.GetJumpButtonDown() && grounded)
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
@@ -257,8 +254,7 @@ public class PlayerController : MonoBehaviour
             directionX = Mathf.Sign(InputManager.instance.horizontal);
         else
             directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
-#endif
-#if UNITY_ANDROID
+#elif UNITY_ANDROID
         directionX = Mathf.Sign(InputManager.instance.horizontal);
 #endif
 

@@ -103,9 +103,19 @@ public class PlayerCombat : MonoBehaviour
         int direction = knuckbackDir.x > 0 ? 1 : -1;
         GetComponent<PlayerController>().KnuckBack(knuckBackSpeed, direction);
 
-        StartCoroutine(BecomeInvincible());
+        //StartCoroutine(BecomeInvincible());
+        isInvincible = true;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
+        Invoke("BecomeVincible", invincibleTime);
+
 
         Camera.main.GetComponent<CameraShake>().Shake();
+    }
+
+    void BecomeVincible()
+    {
+        isInvincible = false;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
     }
 
     IEnumerator BecomeInvincible()

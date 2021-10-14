@@ -21,8 +21,7 @@ public class PlayerAnimation : MonoBehaviour
             h = InputManager.instance.horizontal;
         else
             h = Input.GetAxis("Horizontal");
-#endif
-#if UNITY_ANDROID
+#elif UNITY_ANDROID
         h = InputManager.instance.horizontal;
 #endif
 
