@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        Screen.SetResolution(Screen.height * (10 / 16), Screen.height, true);
+        Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
 
         SoundManager.instance.SoundOff();
         startPanel.SetActive(true);

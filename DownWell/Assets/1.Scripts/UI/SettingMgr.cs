@@ -42,7 +42,7 @@ public class SettingMgr : MonoBehaviour
     public bool gPaused;
     int ClickCount = 0;
 
-    public Canvas SetPanel;
+    public Canvas Setting;
 
     void Start()
     {
@@ -52,8 +52,8 @@ public class SettingMgr : MonoBehaviour
 
     void Update()
     {
-        if (SetPanel.worldCamera == null)
-            SetPanel.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        if (Setting.worldCamera == null)
+            Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         if (BgmSlider.value == 0)
             bgmImg.sprite = muteImg;
@@ -76,7 +76,7 @@ public class SettingMgr : MonoBehaviour
         else if (ClickCount == 2)
         {
             CancelInvoke("DoubleClick");
-            Application.Quit();
+            exitBtn();
         }
 
     }
