@@ -10,6 +10,9 @@ public class SmoothFollow : MonoBehaviour
 
     public bool followActive = true;
 
+    [Header("StageEnd")]
+    public float offset_End;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,9 @@ public class SmoothFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (transform.position.y < -MapManager.instance.height + offset_End) followActive = false;
+        else followActive = true;
+
         if(followActive)
          transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
     }

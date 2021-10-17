@@ -74,16 +74,48 @@ public class MapDisplay : MonoBehaviour
         }
 
         // StageGround
-        for(int y = 0; y < generatedStageGround.GetLength(0); y++)
+        //for(int y = 0; y < generatedStageGround.GetLength(0); y++)
+        //{
+        //    for(int x = 0; x < generatedStageGround.GetLength(1); x++)
+        //    {
+        //        Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+        //                                            , -y + offset.y -mapManager.height);
+
+        //        if(generatedStageGround[y, x] == 1)
+        //            Instantiate(wallObjects[0], tilePosition, Quaternion.identity, parent);
+
+        //    }
+        //}
+
+        List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
+        Level stageGround = stageGrounds[0];
+
+        for(int y = 0; y < stageGround.height; y++)
         {
-            for(int x = 0; x < generatedStageGround.GetLength(1); x++)
+            for(int x= 0; x < stageGround.width; x++)
             {
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
-                                                    , -y + offset.y -mapManager.height);
+                                                    , -y + offset.y - mapManager.height);
 
-                if(generatedStageGround[y, x] == 1)
-                    Instantiate(wallObjects[0], tilePosition, Quaternion.identity, parent);
+                if (stageGround.tiles[y * stageGround.width + x] >= 100)
+                {
+                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
+                    //Debug.Log(generatedLevel[x, y]);
+                    GameObject wall = new GameObject();
+                    if (wallObject != null)
+                        wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                    wall.GetComponent<SpriteRenderer>().sprite = wallSprites[stageGround.tiles[y * stageGround.width + x] - 100];
+                }
+                else if (stageGround.tiles[y * stageGround.width + x] == 2)
+                {
+                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.name == "StageEnd");
 
+                    if (wallObject != null)
+                        Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                }
+
+                //if (stageGround.tiles[y * stageGround.width + x] == 1)
+                //    Instantiate(wallObjects[0], tilePosition, Quaternion.identity, parent);
             }
         }
     }

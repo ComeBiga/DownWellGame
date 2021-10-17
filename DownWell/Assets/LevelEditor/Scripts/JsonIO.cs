@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5, Blocks }
+public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5, Blocks, StageGround }
 
 public class JsonIO : MonoBehaviour
 {
