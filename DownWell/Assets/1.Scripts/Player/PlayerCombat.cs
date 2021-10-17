@@ -9,7 +9,7 @@ public class PlayerCombat : MonoBehaviour
     public GameObject projectile;
     public int projectileDamage = 4;
     public int maxProjectile = 8;
-    int currentProjectile;
+    public int currentProjectile;
     bool reloaded = true;
     public float shotDelay = 1f;
     public float shotReboundSpeed = 1f;

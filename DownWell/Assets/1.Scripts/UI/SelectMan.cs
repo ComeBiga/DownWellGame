@@ -44,7 +44,7 @@ public class SelectMan : MonoBehaviour
             lbtn.GetComponent<Button>().enabled = true;
         }
 
-        if (moveX >= 250)
+        if (moveX >= 300)
         {
             moveR = false;
             moveL = false;

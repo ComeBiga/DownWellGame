@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Image fillbar;
+    public GameObject hp;
 
-    private void Start()
+    void Start()
+    {   
+    }
+
+    void Update()
     {
-
+        PlayerHealthEvent();
     }
 
     public void UpdateBar()
     {
-
+        Destroy(hp.transform.GetChild(0).gameObject);
     }
 
     public void PlayerHealthEvent()
