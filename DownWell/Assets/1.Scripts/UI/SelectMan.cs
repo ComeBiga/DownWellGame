@@ -12,7 +12,7 @@ public class SelectMan : MonoBehaviour
     public GameObject lbtn;
 
     [SerializeField]
-    int charMoveSpeed = 5;
+    int charMoveSpeed = 10;
 
     bool moveR;
     bool moveL;
@@ -44,7 +44,7 @@ public class SelectMan : MonoBehaviour
             lbtn.GetComponent<Button>().enabled = true;
         }
 
-        if (moveX >= 150)
+        if (moveX >= 250)
         {
             moveR = false;
             moveL = false;

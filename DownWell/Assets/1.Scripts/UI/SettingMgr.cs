@@ -42,6 +42,8 @@ public class SettingMgr : MonoBehaviour
     public bool gPaused;
     int ClickCount = 0;
 
+    public Canvas SetPanel;
+
     void Start()
     {
         setPanel.SetActive(false);
@@ -50,6 +52,9 @@ public class SettingMgr : MonoBehaviour
 
     void Update()
     {
+        if (SetPanel.worldCamera == null)
+            SetPanel.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
         if (BgmSlider.value == 0)
             bgmImg.sprite = muteImg;
         else
