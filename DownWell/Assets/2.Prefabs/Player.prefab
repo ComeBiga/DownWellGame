@@ -273,6 +273,7 @@ MonoBehaviour:
   projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
   projectileDamage: 4
   maxProjectile: 8
+  currentProjectile: 0
   shotDelay: 0.2
   shotReboundSpeed: 0
   hitBox: {fileID: 5416284440441354456}
