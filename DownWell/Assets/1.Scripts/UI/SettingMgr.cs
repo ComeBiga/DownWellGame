@@ -50,13 +50,14 @@ public class SettingMgr : MonoBehaviour
 
     void Update()
     {
-        if (SoundManager.instance.vBGM == 0)
+        if (BgmSlider.value == 0)
             bgmImg.sprite = muteImg;
-        else if (SoundManager.instance.vBGM == 1)
+        else
             bgmImg.sprite = originImg;
-        if (SoundManager.instance.vEff == 0)
+        
+        if (effSlider.value == 0)
             effImg.sprite = muteImg;
-        else if (SoundManager.instance.vEff == 1)
+        else
             effImg.sprite = originImg;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -158,15 +159,16 @@ public class SettingMgr : MonoBehaviour
         SoundManager.instance.SetEffVolume(value);
         PlayerPrefs.SetFloat("EffectVolume", value);
     }
+
     public void muteSound(string sound)
     {
         switch (sound)
         {
             case "bgm":
-                SoundManager.instance.muteBGM();
+                BgmSlider.value = 0;
                 break;
             case "eff":
-                SoundManager.instance.muteEff();
+                effSlider.value = 0;
                 break;
         }
     }

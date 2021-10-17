@@ -38,10 +38,6 @@ public class SoundManager : MonoBehaviour
 
     Dictionary<string, AudioClip> effAudioClipsDic = new Dictionary<string, AudioClip>(); //효과음 딕셔너리
 
-
-    public int vBGM = 1;
-    public int vEff = 1;
-
     private void Awake()
     {
         if (instance != this)
@@ -87,47 +83,16 @@ public class SoundManager : MonoBehaviour
         bgm.Stop();
     }
 
-    public void muteBGM()
-    {
-        if (vBGM == 1)  //소리 있을 때 클릭하면
-        {
-            bgm.volume = 0;  //소리없앰
-            vBGM = 0;
-        }
-        else if (vBGM == 0) //소리 없을 때 클릭하면
-        {
-            bgm.volume = PlayerPrefs.GetFloat("BgmVolume");
-            bgm.Play();  //브금 재시작
-            vBGM = 1;
-        }
-        PlayerPrefs.SetInt("volBGM", vBGM);
-    }
-    public void muteEff()
-    {
-        if (vEff == 1)
-        {
-            eff.volume = 0;
-            vEff = 0;
-        }
-        else if (vEff == 0)
-        {
-            eff.volume = PlayerPrefs.GetFloat("EffectVolume");
-            vEff = 1;
-        }
-        PlayerPrefs.SetInt("volEff", vEff);
-    }
 
     public void SetBgmVolume(float fVolume)
     {
         masterVolumeBGM = fVolume;
-        vBGM = 1;
         bgm.volume = fVolume * masterVolumeBGM;
     }
 
     public void SetEffVolume(float fVolume)
     {
         masterVolumeEFF = fVolume;
-        vEff = 1;
         eff.volume = fVolume * masterVolumeEFF;
     }
 }
