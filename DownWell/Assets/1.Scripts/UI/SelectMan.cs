@@ -11,6 +11,9 @@ public class SelectMan : MonoBehaviour
     public GameObject rbtn;
     public GameObject lbtn;
 
+    [SerializeField]
+    int charMoveSpeed = 5;
+
     bool moveR;
     bool moveL;
 
@@ -50,13 +53,13 @@ public class SelectMan : MonoBehaviour
 
         if (moveR)
         {
-            moveX += 5;
-            character.transform.localPosition += new Vector3(-5, 0, 0);
+            moveX += charMoveSpeed;
+            character.transform.localPosition -= new Vector3(charMoveSpeed, 0, 0);
         }
         else if (moveL)
         {
-            moveX += 5;
-            character.transform.localPosition += new Vector3(5, 0, 0);
+            moveX += charMoveSpeed;
+            character.transform.localPosition += new Vector3(charMoveSpeed, 0, 0);
         }
     }
 
