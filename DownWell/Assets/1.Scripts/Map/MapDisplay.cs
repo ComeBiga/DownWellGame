@@ -53,10 +53,12 @@ public class MapDisplay : MonoBehaviour
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
                     //Debug.Log(generatedLevel[x, y]);
-                    GameObject wall = new GameObject();
+                    GameObject wall;
                     if (wallObject != null)
+                    {
                         wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
-                    wall.GetComponent<SpriteRenderer>().sprite = wallSprites[generatedLevel[x, y] - 100];
+                        wall.GetComponent<SpriteRenderer>().sprite = wallSprites[generatedLevel[x, y] - 100];
+                    }
                 }
                 else if(generatedLevel[x, y] > 10 && generatedLevel[x, y] < 100)
                 {
@@ -101,10 +103,12 @@ public class MapDisplay : MonoBehaviour
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
                     //Debug.Log(generatedLevel[x, y]);
-                    GameObject wall = new GameObject();
+                    GameObject wall;
                     if (wallObject != null)
+                    {
                         wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
-                    wall.GetComponent<SpriteRenderer>().sprite = wallSprites[stageGround.tiles[y * stageGround.width + x] - 100];
+                        wall.GetComponent<SpriteRenderer>().sprite = wallSprites[stageGround.tiles[y * stageGround.width + x] - 100];
+                    }
                 }
                 else if (stageGround.tiles[y * stageGround.width + x] == 2)
                 {

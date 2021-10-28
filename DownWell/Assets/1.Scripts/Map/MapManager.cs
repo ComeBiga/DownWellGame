@@ -42,5 +42,7 @@ public class MapManager : MonoBehaviour
         int[,] genLev = lg.GenerateLevel();
         int[,] genSgr = lg.GenerateStageGround();
         mapDisplay.Display(genLev, genSgr);
+        //GameObject newGameObject = new GameObject();
+        //Instantiate(new GameObject());
     }
 }
