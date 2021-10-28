@@ -6,6 +6,9 @@ public class Enemy : MonoBehaviour
 {
     public LevelObject info;
     public int health = 10;
+    [Header("DropItems")]
+    public List<GameObject> dropItems;
+
     Collider2D[] colliders;
 
     ContactFilter2D filter;
@@ -15,7 +18,7 @@ public class Enemy : MonoBehaviour
     {
         colliders = new Collider2D[3];
         filter = new ContactFilter2D();
-        filter.layerMask = LayerMask.NameToLayer("Player");
+        filter.layerMask = 1 << 3;
         filter.useLayerMask = false;
     }
 
@@ -34,7 +37,7 @@ public class Enemy : MonoBehaviour
         var colliders = new List<Collider2D>();
         GetComponent<Collider2D>().OverlapCollider(filter, colliders);
 
-        //if(colliders.Count > 0)
+        //if (colliders.Count > 0)
         //{
         //    Debug.Log(colliders.Count);
         //    if (!colliders[0].GetComponent<PlayerCombat>().IsInvincible)
@@ -64,6 +67,15 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        if (dropItems.Count > 0)
+        {
+            string seed = (Time.time + Random.value).ToString();
+            System.Random rand = new System.Random(seed.GetHashCode());
+            int rdCount = rand.Next(5);
+            for (int i = 0; i < rdCount; i++)
+                dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
+            
+        }
         Destroy(this.gameObject);
     }
 }
