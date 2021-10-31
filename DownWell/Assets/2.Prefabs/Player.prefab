@@ -285,7 +285,8 @@ MonoBehaviour:
   unshootableTime: 0.5
   shootable: 1
   leapSpeed: 7
-  knuckBackSpeed: 2
+  knuckBackSpeed: {x: 3, y: 5}
+  knuckBackDistance: 1
   invincibleTime: 3
   OnDamaged:
     m_PersistentCalls:

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         public Vector2 bottomRight, topRight;
     }
 
+    bool cantMove = false;
     bool grounded = true;
     public bool Grounded { get { return grounded; } }
     bool jumping = false;
@@ -140,6 +141,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateRaycastOrigins();
 
+        if (cantMove) return;
         float h = Input.GetAxis("Horizontal");
 
         //Debug.Log(HorizontalCollisions());
@@ -211,13 +213,36 @@ public class PlayerController : MonoBehaviour
         jumping = true;
     }
 
-    public void KnuckBack(float knuckBackSpeed, int direction)
+    public void KnuckBack(Vector2 speed, int direction, float distance)
     {
         //rigidbody.velocity = new Vector2(knuckBackSpeed * direction, rigidbody.velocity.y + knuckBackSpeed);
 
         //StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
+        //rigidbody.velocity = new Vector2(0, 0);
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed.y);
+        //rigidbody.AddForce(new Vector2(0, speed), ForceMode2D.Impulse);
+        StartCoroutine(AddForceTransform(speed.x, direction, distance));
+        cantMove = true;
+    }
 
-        rigidbody.AddForce(new Vector2(knuckBackSpeed * direction, knuckBackSpeed), ForceMode2D.Impulse);
+    IEnumerator AddForceTransform(float knuckBackSpeed, int direction, float distance)
+    {
+        float dis = 0;
+        
+        while(true)
+        {
+            if (Mathf.Abs(dis) > distance)
+                break;
+
+            var forceX = knuckBackSpeed * direction * Time.deltaTime;
+            transform.position += new Vector3(forceX, 0, 0);
+            dis += forceX;
+            //Debug.Log(dis);
+
+            yield return null;
+        }
+
+        cantMove = false;
     }
 
     public void CheckGroundForEvent()

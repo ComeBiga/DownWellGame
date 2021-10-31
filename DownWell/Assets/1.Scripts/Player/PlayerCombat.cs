@@ -26,7 +26,8 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Damaged")]
     public float leapSpeed;
-    public float knuckBackSpeed;
+    public Vector2 knuckBackSpeed;
+    public float knuckBackDistance;
     public float invincibleTime;
     bool isInvincible = false;
     public bool IsInvincible { get; }
@@ -97,11 +98,11 @@ public class PlayerCombat : MonoBehaviour
 
         Debug.Log("Player Damaged");
 
-        if (!isInvincible) OnDamaged.Invoke();
+        //if (!isInvincible) OnDamaged.Invoke();
 
         Vector3 knuckbackDir = transform.position - enemy.transform.position;
         int direction = knuckbackDir.x > 0 ? 1 : -1;
-        GetComponent<PlayerController>().KnuckBack(knuckBackSpeed, direction);
+        GetComponent<PlayerController>().KnuckBack(knuckBackSpeed, direction, knuckBackDistance);
 
         //StartCoroutine(BecomeInvincible());
         isInvincible = true;
