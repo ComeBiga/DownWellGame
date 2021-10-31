@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour
         {
             if (collider.tag == "Block")
             {
+                GetComponent<Effector>().Generate("Hit");
                 Destroy();
                 collider.transform.GetComponent<Block>().Destroy();
 
@@ -32,6 +33,7 @@ public class Projectile : MonoBehaviour
 
             if (collider.tag == "Wall")
             {
+                GetComponent<Effector>().Generate("Hit");
                 Destroy();
             }
 

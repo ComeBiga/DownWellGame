@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 5561447862664596211}
   - component: {fileID: 3761122455356345184}
   - component: {fileID: 3505710173777569079}
+  - component: {fileID: 6825594153966316911}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -327,6 +328,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects:
   - name: Shoot
+    transform: {fileID: 7447212144028510301}
+    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+--- !u!114 &6825594153966316911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81dec32fb46c9b6458f0513ffd222ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - name: Shoot
+    transform: {fileID: 7447212144028510301}
+    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+  - name: Grounding
     transform: {fileID: 7447212144028510301}
     fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
 --- !u!1 &9199056338382792220

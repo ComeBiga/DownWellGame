@@ -27,10 +27,15 @@ public class PlayerController : MonoBehaviour
     }
 
     bool grounded = true;
+    public bool Grounded { get { return grounded; } }
     bool jumping = false;
 
     bool shootable = true;
     bool shooting = false;
+
+    #region EventCallback
+    public event System.Action OnGrounded;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
         HorizontalMove();
 
+        CheckGroundForEvent();
         grounded = GroundCollision();
 
         Jump();
@@ -212,6 +218,17 @@ public class PlayerController : MonoBehaviour
         //StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
 
         rigidbody.AddForce(new Vector2(knuckBackSpeed * direction, knuckBackSpeed), ForceMode2D.Impulse);
+    }
+
+    public void CheckGroundForEvent()
+    {
+        if(grounded == false)
+        {
+            if(GroundCollision() == true)
+            {
+                OnGrounded.Invoke();
+            }
+        }
     }
 
     public bool GroundCollision()
