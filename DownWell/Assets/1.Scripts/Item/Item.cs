@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public float minPopSpeed = 2f;
-    public float maxPopSpeed = 10f;
+    public float maxHorizontalPopSpeed = 5f;
+    public float minVerticalPopSpeed = 2f;
+    public float maxVerticalPopSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,8 @@ public class Item : MonoBehaviour
         Rigidbody2D rb2d = newItem.GetComponent<Rigidbody2D>();
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
-        Vector2 popSpeed = new Vector2(rand.Next(-(int)maxPopSpeed, (int)maxPopSpeed),
-                                        rand.Next((int)minPopSpeed, (int)maxPopSpeed));
+        Vector2 popSpeed = new Vector2(rand.Next(-(int)maxHorizontalPopSpeed, (int)maxHorizontalPopSpeed),
+                                        rand.Next((int)minVerticalPopSpeed, (int)maxVerticalPopSpeed));
         rb2d.AddForce(popSpeed, ForceMode2D.Impulse);
 
         newItem.GetComponent<Item>().DestroyItem();
