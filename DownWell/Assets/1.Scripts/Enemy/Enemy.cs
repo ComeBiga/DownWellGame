@@ -76,6 +76,7 @@ public class Enemy : MonoBehaviour
                 dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
             
         }
+        if(GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");
         Destroy(this.gameObject);
     }
 }

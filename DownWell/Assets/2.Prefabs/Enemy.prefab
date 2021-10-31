@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7840619046348813551}
   - component: {fileID: 7840619046348813555}
   - component: {fileID: 7840619046348813552}
+  - component: {fileID: 8194383683811550079}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -152,3 +153,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+--- !u!114 &8194383683811550079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840619046348813548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4b361938b6aed468435063e3c70420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - name: Die
+    transform: {fileID: 7840619046348813553}
+    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
