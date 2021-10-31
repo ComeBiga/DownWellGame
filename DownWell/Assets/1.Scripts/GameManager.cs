@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public float activeRangeOffset = 0;
 
+    public int coin = 0;
+
     private void Start()
     {
         PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
@@ -53,6 +55,11 @@ public class GameManager : MonoBehaviour
 
 
         return false;
+    }
+
+    public void GainCoin(int amount = 1)
+    {
+        coin += amount;
     }
 
     public void StageEnd()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public float livingTime = 2f;
+
     public float maxHorizontalPopSpeed = 5f;
     public float minVerticalPopSpeed = 2f;
     public float maxVerticalPopSpeed = 10f;
@@ -17,7 +19,24 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //CollisionCheck();
+    }
+
+    void CollisionCheck()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x);
+
+        foreach (var collider in colliders)
+        {
+            if(collider.tag == "Player")
+            {
+                // coin up
+                GameManager.instance.GainCoin();
+                Destroy(this.gameObject);
+                // coin get sound
+                //SoundManager.instance.PlayEffSound("gun");
+            }
+        }
     }
 
     public void InstantiateItem(Vector3 position)
@@ -40,7 +59,7 @@ public class Item : MonoBehaviour
 
     IEnumerator DestroyItem(GameObject item)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(livingTime);
         Destroy(item);
     }
 }
