@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2054867273042109988}
   - component: {fileID: 2054867273042110008}
   - component: {fileID: 2054867273042109994}
+  - component: {fileID: 3898033097261231818}
   m_Layer: 8
   m_Name: Wallbug
   m_TagString: Enemy
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 146973773
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2311659948842064771, guid: 51c81e11cf1b83741a6d4debdf26562c, type: 3}
   m_Color: {r: 0.735849, g: 0.22115926, b: 0.17702027, a: 1}
@@ -146,7 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 1d7a3b683c5d2b646b628f7fbe730bab, type: 2}
-  health: 10
+  health: 8
+  dropItems:
+  - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
 --- !u!114 &2054867273042109994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +171,19 @@ MonoBehaviour:
   speed: 1
   gravity: 10
   posMod: 0.1
+--- !u!114 &3898033097261231818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054867273042109991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4b361938b6aed468435063e3c70420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - name: Die
+    transform: {fileID: 2054867273042110010}
+    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}

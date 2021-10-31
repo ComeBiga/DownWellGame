@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         {
             string seed = (Time.time + Random.value).ToString();
             System.Random rand = new System.Random(seed.GetHashCode());
-            int rdCount = rand.Next(5);
+            int rdCount = rand.Next(2, 5);
             for (int i = 0; i < rdCount; i++)
                 dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
             

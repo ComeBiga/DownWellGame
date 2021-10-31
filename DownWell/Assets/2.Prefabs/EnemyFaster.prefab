@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3497555664075828467}
   - component: {fileID: 3497555664075828463}
   - component: {fileID: 3497555664075828460}
+  - component: {fileID: 2625999096728353576}
   m_Layer: 7
   m_Name: EnemyFaster
   m_TagString: Enemy
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 146973773
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5dceacb4ad9c71439838f9d84ddf1ae, type: 3}
   m_Color: {r: 1, g: 0.364316, b: 0.32704395, a: 1}
@@ -137,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 15e5dd87c4c9e5441b5e34f8be30f2b2, type: 2}
   health: 10
+  dropItems:
+  - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
 --- !u!114 &3497555664075828460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +153,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &2625999096728353576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497555664075828464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4b361938b6aed468435063e3c70420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - name: Die
+    transform: {fileID: 3497555664075828461}
+    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
