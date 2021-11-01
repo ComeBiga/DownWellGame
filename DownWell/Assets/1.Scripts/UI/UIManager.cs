@@ -14,16 +14,29 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+<<<<<<< HEAD
         //Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
+=======
+<<<<<<< Updated upstream
+        Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
+>>>>>>> ede2731 (SoundSlider delete & UI set)
 
+=======
+        //Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
+        //PlayerPrefs.DeleteAll();
+        
+>>>>>>> Stashed changes
         SoundManager.instance.SoundOff();
         startPanel.SetActive(true);
         charPanel.SetActive(false);
 
         clickPlay = false;
 
-        SettingMgr.instance.BgmSlider.value = PlayerPrefs.GetFloat("BgmVolume");
-        SettingMgr.instance.effSlider.value = PlayerPrefs.GetFloat("EffectVolume");
+        SettingMgr.instance.bgmOff = PlayerPrefs.GetInt("BgmVolume");
+        SettingMgr.instance.effOff = PlayerPrefs.GetInt("EffVolume");
+
+        SoundManager.instance.SetBgmVolume(SettingMgr.instance.bgmOff);
+        SoundManager.instance.SetEffVolume(SettingMgr.instance.effOff);
 
         versionInfo.text = "Ver." + Application.version;
     }
