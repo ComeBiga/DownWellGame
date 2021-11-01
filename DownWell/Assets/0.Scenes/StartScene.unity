@@ -1641,7 +1641,7 @@ MonoBehaviour:
   character: {fileID: 2124402309}
   rbtn: {fileID: 863745671}
   lbtn: {fileID: 557312810}
-  charMoveSpeed: 5
+  charMoveSpeed: 20
 --- !u!4 &962011374
 Transform:
   m_ObjectHideFlags: 0
@@ -1758,9 +1758,9 @@ MonoBehaviour:
   bgmImg: {fileID: 1855672133}
   effImg: {fileID: 1128366811}
   gPaused: 0
-  bgmClick: 1
-  effClick: 1
   Setting: {fileID: 975347741}
+  bgmOff: 0
+  effOff: 0
 --- !u!224 &975347743
 RectTransform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class SelectMan : MonoBehaviour
     public GameObject lbtn;
 
     [SerializeField]
-    int charMoveSpeed = 10;
+    int charMoveSpeed = 20;
 
     bool moveR;
     bool moveL;
