@@ -28,10 +28,6 @@ public class SettingMgr : MonoBehaviour
     public GameObject exitButton;
     public GameObject ingameSetting;
 
-    [Header("Slider")]
-    public Slider BgmSlider;
-    public Slider effSlider;
-
 
     [Header("Image")]
     public Sprite muteImg;
@@ -44,6 +40,11 @@ public class SettingMgr : MonoBehaviour
 
     public Canvas Setting;
 
+    [HideInInspector]
+    public int bgmOff;
+    [HideInInspector]
+    public int effOff;
+
     void Start()
     {
         setPanel.SetActive(false);
@@ -55,12 +56,12 @@ public class SettingMgr : MonoBehaviour
         if (Setting.worldCamera == null)
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
-        if (BgmSlider.value == 0)
+        if (bgmOff == 1)
             bgmImg.sprite = muteImg;
         else
             bgmImg.sprite = originImg;
         
-        if (effSlider.value == 0)
+        if (effOff == 1)
             effImg.sprite = muteImg;
         else
             effImg.sprite = originImg;
@@ -151,29 +152,25 @@ public class SettingMgr : MonoBehaviour
 
 
     //sound
-    public void CheckBgmSlider(float value)
-    {
-        value = BgmSlider.value;
-        SoundManager.instance.SetBgmVolume(value);
-        PlayerPrefs.SetFloat("BgmVolume", value);
-    }
-
-    public void CheckEffectSlider(float value)
-    {
-        value = effSlider.value;
-        SoundManager.instance.SetEffVolume(value);
-        PlayerPrefs.SetFloat("EffectVolume", value);
-    }
-
     public void muteSound(string sound)
     {
         switch (sound)
         {
             case "bgm":
-                BgmSlider.value = 0;
+                if (bgmOff == 0)
+                    bgmOff = 1;
+                else
+                    bgmOff = 0;
+                SoundManager.instance.SetBgmVolume(bgmOff);
+                PlayerPrefs.SetInt("BgmVolume", bgmOff);
                 break;
             case "eff":
-                effSlider.value = 0;
+                if (effOff == 0)
+                    effOff = 1;
+                else
+                    effOff = 0;
+                SoundManager.instance.SetEffVolume(effOff);
+                PlayerPrefs.SetInt("EffVolume", effOff);
                 break;
         }
     }

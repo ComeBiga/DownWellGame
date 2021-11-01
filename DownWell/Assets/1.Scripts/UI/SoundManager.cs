@@ -86,14 +86,28 @@ public class SoundManager : MonoBehaviour
 
     public void SetBgmVolume(float fVolume)
     {
-        masterVolumeBGM = fVolume;
-        bgm.volume = fVolume * masterVolumeBGM;
+        switch (fVolume)
+        {
+            case 1:
+                bgm.mute = true;
+                break;
+            case 0:
+                bgm.mute = false;
+                break;
+        }
     }
 
     public void SetEffVolume(float fVolume)
     {
-        masterVolumeEFF = fVolume;
-        eff.volume = fVolume * masterVolumeEFF;
+        switch (fVolume)
+        {
+            case 1:
+                eff.mute = true;
+                break;
+            case 0:
+                eff.mute = false;
+                break;
+        }
     }
 }
 
