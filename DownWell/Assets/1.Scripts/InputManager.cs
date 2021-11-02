@@ -78,21 +78,31 @@ public class InputManager : MonoBehaviour
                     if (touch.position.x > 0 && touch.position.x <= Camera.main.pixelWidth / 4)
                     {
                         Debug.Log("left");
-                        horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                        //horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                        horizontal = (horizontal > 0) ? 0 : Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                        //horizontal = -1;
                     }
                     else if (touch.position.x > Camera.main.pixelWidth / 4 && touch.position.x < Camera.main.pixelWidth / 2)
                     {
                         Debug.Log("right");
-                        horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                        //horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                        horizontal = (horizontal < 0) ? 0 : Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                        //horizontal = 1;
                     }
                 }
             }
 
-            if(moveTouchCount <= 0) horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
+            // 터치는 있지만, 방향키가 눌리지 않았을 때
+            if (moveTouchCount <= 0)
+            {
+                horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
+                //horizontal = 0;
+            }
         }
         else
         {
             horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
+            //horizontal = 0;
         }
 #endif
     }
