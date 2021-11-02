@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthwarmMovement : MonoBehaviour
+public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
 {
     Rigidbody2D rigidbody;
     CollisionCheck collision = new CollisionCheck();
@@ -12,8 +12,9 @@ public class EarthwarmMovement : MonoBehaviour
     public int verticalRayCount = 4;
     public LayerMask groundLayermask;
 
-    public float speed;
-    public float gravity = 10f;
+    [HideInInspector] public float speed;
+    public float Speed { set; get; }
+    //public float gravity = 10f;
 
     public float posMod = .1f;
     Vector2 gDirection = Vector2.right;
@@ -43,11 +44,6 @@ public class EarthwarmMovement : MonoBehaviour
         else gDir = GravityDirection.NONE;
 
         UpdateGravityDirection();
-    }
-
-    private void OnEnable()
-    {
-        //StartCoroutine(ModifyPosition());
     }
 
     IEnumerator ModifyPosition()
@@ -91,19 +87,19 @@ public class EarthwarmMovement : MonoBehaviour
             switch (gDir)
             {
                 case GravityDirection.DOWN:
-                    rigidbody.velocity = Vector2.right * speed;
+                    rigidbody.velocity = Vector2.right * Speed;
                     rigidbody.gravityScale = 0f;
                     break;
                 case GravityDirection.UP:
-                    rigidbody.velocity = Vector2.left * speed;
+                    rigidbody.velocity = Vector2.left * Speed;
                     rigidbody.gravityScale = 0f;
                     break;
                 case GravityDirection.LEFT:
-                    rigidbody.velocity = Vector2.down * speed;
+                    rigidbody.velocity = Vector2.down * Speed;
                     rigidbody.gravityScale = 0f;
                     break;
                 case GravityDirection.RIGHT:
-                    rigidbody.velocity = Vector2.up * speed;
+                    rigidbody.velocity = Vector2.up * Speed;
                     rigidbody.gravityScale = 0f;
                     break;
                 case GravityDirection.NONE:

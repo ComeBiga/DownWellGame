@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IEnemyMoveValue
 {
     Transform target;
     //public float activeRangeOffset = 3f;
 
     public float speed = 3f;
+    public float Speed { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
             Vector3 direction = target.position - transform.position;
             //transform.position += direction.normalized * speed * Time.deltaTime;
 
-            GetComponent<Rigidbody2D>().velocity = Vector2.one * direction.normalized * speed;
+            GetComponent<Rigidbody2D>().velocity = Vector2.one * direction.normalized * Speed;
         }
     }
 
@@ -40,4 +41,9 @@ public class EnemyMovement : MonoBehaviour
 
     //    return false;
     //}
+}
+
+interface IEnemyMoveValue
+{
+    public float Speed { get; set; }
 }

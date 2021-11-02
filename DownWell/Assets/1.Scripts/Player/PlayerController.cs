@@ -142,8 +142,8 @@ public class PlayerController : MonoBehaviour
         UpdateRaycastOrigins();
 
         if (cantMove) return;
-        //float h = Input.GetAxis("Horizontal");
-        float h = Input.GetAxisRaw("Horizontal");
+        float h = Input.GetAxis("Horizontal");
+        //float h = Input.GetAxisRaw("Horizontal");
 
         //Debug.Log(HorizontalCollisions());
         //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);

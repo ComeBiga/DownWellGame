@@ -34,12 +34,12 @@ public class InputManager : MonoBehaviour
             if (Input.mousePosition.x > 0 && Input.mousePosition.x <= Camera.main.pixelWidth / 4)
             {
                 //Debug.Log("left");
-                horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                horizontal = (horizontal > 0) ? 0 : Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
             }
             else if (Input.mousePosition.x > Camera.main.pixelWidth / 4 && Input.mousePosition.x < Camera.main.pixelWidth / 2)
             {
                 //Debug.Log("right");
-                horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                horizontal = (horizontal < 0) ? 0 : Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
             }
         }
         else

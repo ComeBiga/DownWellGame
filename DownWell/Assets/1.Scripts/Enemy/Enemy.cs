@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public LevelObject info;
     public int health = 10;
+    public float speed = 1f;
     [Header("DropItems")]
     public List<GameObject> dropItems;
 
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GetComponent<IEnemyMoveValue>() != null) GetComponent<IEnemyMoveValue>().Speed = speed;
+
         colliders = new Collider2D[3];
         filter = new ContactFilter2D();
         filter.layerMask = 1 << 3;
