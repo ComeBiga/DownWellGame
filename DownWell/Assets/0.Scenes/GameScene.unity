@@ -1304,7 +1304,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6607719, g: 0.56554824, b: 0.6698113, a: 0}
+  m_BackGroundColor: {r: 0.4865907, g: 0.53006953, b: 0.5566038, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3303,20 +3303,20 @@ MonoBehaviour:
   - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
   - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
   wallSprites:
-  - {fileID: -918346401335071701, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: 5396204769823183710, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -5821060854175699869, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: 5165533640376034986, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -5165959877168208800, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -1323146808037713884, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -3770101013574802308, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -2210200839815223582, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: 4552384352675610393, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -7368316917289917849, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: 7572148005967777737, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -9151963264724259764, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -5352584327396870056, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: 7669734429983149357, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
+  - {fileID: -951322060632603880, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 6581872092519538347, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 2455783293724050709, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 1875709807338832749, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: -3717330014404040435, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: -951322060632603880, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: -3719909767865143490, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 4825673364666892774, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 1724007606726858806, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 8767515795313060889, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 2455783293724050709, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: -3719909767865143490, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: 1724007606726858806, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
+  - {fileID: -3717330014404040435, guid: 1411830f45f71e84e803cd4a4fa87db5, type: 3}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
   - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}
