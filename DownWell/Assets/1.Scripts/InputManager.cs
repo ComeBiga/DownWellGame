@@ -20,6 +20,17 @@ public class InputManager : MonoBehaviour
     public float sens = 10f;
     public float dead = .001f;
 
+    public GameObject controllerPanel;
+
+    void Start()
+    {
+#if UNITY_EDITOR
+        controllerPanel.SetActive(false);
+#elif UNITY_ANDROID
+        controllerPanel.SetActive(true);  
+#endif
+    }
+
     // Update is called once per frame
     void Update()
     {
