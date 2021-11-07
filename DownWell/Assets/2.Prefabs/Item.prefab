@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.2
 --- !u!114 &2315712013749624785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,3 +138,4 @@ MonoBehaviour:
   maxHorizontalPopSpeed: 5
   minVerticalPopSpeed: 5
   maxVerticalPopSpeed: 10
+  popingTime: 0.5

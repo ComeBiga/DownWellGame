@@ -10,6 +10,9 @@ public class Item : MonoBehaviour
     public float minVerticalPopSpeed = 2f;
     public float maxVerticalPopSpeed = 10f;
 
+    public float popingTime = .5f;
+    bool poping = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +22,13 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CollisionCheck();
+        if(!poping)
+            CollisionCheck();
     }
 
     void CollisionCheck()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, GetComponent<CircleCollider2D>().radius);
 
         foreach (var collider in colliders)
         {
@@ -49,7 +53,13 @@ public class Item : MonoBehaviour
                                         rand.Next((int)minVerticalPopSpeed, (int)maxVerticalPopSpeed));
         rb2d.AddForce(popSpeed, ForceMode2D.Impulse);
 
+        newItem.GetComponent<Item>().Invoke("EndPoping", popingTime);
         newItem.GetComponent<Item>().DestroyItem();
+    }
+
+    private void EndPoping()
+    {
+        poping = false;
     }
 
     public void DestroyItem()
