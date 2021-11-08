@@ -82,6 +82,8 @@ public class PlayerCombat : MonoBehaviour
             if(SoundManager.instance != null) SoundManager.instance.PlayEffSound("gun");  //사운드이펙트
             GetComponent<Effector>().Generate("Shoot");
 
+            bulletCount.instance.countBullet();
+
             shotTimer = 0;
         }
     }
@@ -89,6 +91,7 @@ public class PlayerCombat : MonoBehaviour
     public void Reload()
     {
         currentProjectile = maxProjectile;
+        bulletCount.instance.bulletReload();
     }
     #endregion
 

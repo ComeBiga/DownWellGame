@@ -5,19 +5,56 @@ using UnityEngine.UI;
 
 public class bulletCount : MonoBehaviour
 {
-    public Text c_bullet;
+    #region Singleton
+    public static bulletCount instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
+    //public Text c_bullet;
+
+    public GameObject[] bulletType;
+    public GameObject curBulletType;
+
+    Animator anim;
 
     void Start()
     {
+        if (curBulletType == null)
+            curBulletType = bulletType[0];
+
+        anim = curBulletType.GetComponent<Animator>();
+
     }
 
     void Update()
     {
-        countBullet();
+        //countBullet();
     }
+
 
     public void countBullet()
     {
-        c_bullet.text = "X " + PlayerManager.instance.player.GetComponent<PlayerCombat>().currentProjectile;
+        switch(curBulletType.name)
+        {
+            case "type1":
+                anim.SetInteger("shootNum", PlayerManager.instance.player.GetComponent<PlayerCombat>().currentProjectile);
+                break;
+        }
     }
+
+    public void bulletReload()
+    {
+        anim.SetInteger("shootNum", 8);
+        anim.SetTrigger("reload");
+    }
+
+    /*public void countBullet()
+    {
+        c_bullet.text = "X " + PlayerManager.instance.player.GetComponent<PlayerCombat>().currentProjectile;
+    }*/
 }
