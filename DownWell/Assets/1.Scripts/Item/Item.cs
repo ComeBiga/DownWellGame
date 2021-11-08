@@ -12,6 +12,9 @@ public class Item : MonoBehaviour
 
     public float popingTime = .5f;
     bool poping = true;
+    bool gaining = false;
+    Transform gainTarget;
+    public float followSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,14 @@ public class Item : MonoBehaviour
     {
         if(!poping)
             CollisionCheck();
+
+        if (gaining)
+        {
+            Vector3 dir = gainTarget.position - transform.position;
+            //transform.position += dir * followSpeed * Time.deltaTime;
+            GetComponent<Rigidbody2D>().velocity = dir * followSpeed;
+        }
+
     }
 
     void CollisionCheck()
@@ -39,6 +50,13 @@ public class Item : MonoBehaviour
                 Destroy(this.gameObject);
                 // coin get sound
                 //SoundManager.instance.PlayEffSound("gun");
+            }
+            if (collider.tag == "CoinMag" && gaining == false)
+            {
+                gaining = true;
+                gainTarget = collider.transform;
+                GetComponent<Rigidbody2D>().isKinematic = true;
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
     }

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2828334627078130588}
   - component: {fileID: 2828334627078130563}
   - component: {fileID: 8300281836758000164}
-  - component: {fileID: 2828334627078130562}
+  - component: {fileID: 7666890564351190176}
   - component: {fileID: 2828334627078130590}
-  - component: {fileID: 2828334627078130589}
+  - component: {fileID: -4898498956113332456}
   - component: {fileID: 4194952058874207250}
   m_Layer: 7
-  m_Name: Turtle
+  m_Name: Octopus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b61c7bbb179101f4baf39276b81fb71b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4852dd9e079af9f4aad50740240f7bb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,14 +102,14 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &2828334627078130562
-CircleCollider2D:
+--- !u!61 &7666890564351190176
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,8 +122,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Size: {x: 0.64, y: 1.06}
+  m_EdgeRadius: 0
 --- !u!114 &2828334627078130590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +151,7 @@ MonoBehaviour:
   speed: 1
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
---- !u!114 &2828334627078130589
+--- !u!114 &-4898498956113332456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,10 +160,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2828334627078130561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e5884656842a24084b51217d804975, type: 3}
+  m_Script: {fileID: 11500000, guid: caa2db58d384b1b4c875ddb75221e9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
+  rayLength: 0.1
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  groundLayermask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4194952058874207250
 MonoBehaviour:
   m_ObjectHideFlags: 0
