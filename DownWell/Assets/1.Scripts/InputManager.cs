@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     #endregion
 
     public bool mouseClick = false;
+    public bool blockInput = false;
     public float horizontal = 0;
     public float sens = 10f;
     public float dead = .001f;
@@ -34,7 +35,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MobileTouch();
+        if(!blockInput)
+            MobileTouch();
     }
 
     void MobileTouch()

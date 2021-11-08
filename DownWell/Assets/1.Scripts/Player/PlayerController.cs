@@ -228,6 +228,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator AddForceTransform(float knuckBackSpeed, int direction, float distance)
     {
+        InputManager.instance.blockInput = true;
         float dis = 0;
         
         while(true)
@@ -243,6 +244,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        InputManager.instance.blockInput = false;
         cantMove = false;
     }
 

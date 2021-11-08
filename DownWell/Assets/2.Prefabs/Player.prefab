@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7898422307149849015}
   - component: {fileID: 3991413537837890761}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: CoinMag
   m_TagString: CoinMag
   m_Icon: {fileID: 0}
