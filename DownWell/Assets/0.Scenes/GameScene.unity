@@ -3296,6 +3296,7 @@ GameObject:
   - component: {fileID: 928105777}
   - component: {fileID: 928105776}
   - component: {fileID: 928105781}
+  - component: {fileID: 928105782}
   m_Layer: 5
   m_Name: inGameUI
   m_TagString: Untagged
@@ -3415,6 +3416,19 @@ MonoBehaviour:
   - {fileID: 2145767295}
   - {fileID: 1195211023}
   curBulletType: {fileID: 0}
+--- !u!114 &928105782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928105775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd7574fd3baf3e49bcf4601819440da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreTxt: {fileID: 1863949371}
 --- !u!4 &949391695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
@@ -6399,6 +6413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseClick: 0
+  blockInput: 0
   horizontal: 0
   sens: 3
   dead: 0.001
@@ -6783,10 +6798,10 @@ RectTransform:
   m_Father: {fileID: 748933959}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -2}
+  m_SizeDelta: {x: 0, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863949371
 MonoBehaviour:
@@ -6815,13 +6830,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
-    m_Alignment: 4
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0
 --- !u!222 &1863949372
 CanvasRenderer:
   m_ObjectHideFlags: 0
