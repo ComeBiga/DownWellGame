@@ -60,17 +60,32 @@ public class MapDisplay : MonoBehaviour
                         wall.GetComponent<SpriteRenderer>().sprite = wallSprites[generatedLevel[x, y] - 100];
                     }
                 }
-                else if(generatedLevel[x, y] > 10 && generatedLevel[x, y] < 100)
-                {
-                    var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == generatedLevel[x, y]);
-                    Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
-                }
+                //else if(generatedLevel[x, y] > 10 && generatedLevel[x, y] < 100)
+                //{
+                //    var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == generatedLevel[x, y]);
+                //    Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
+                //}
                 else if(generatedLevel[x, y] <= 10)
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == generatedLevel[x, y]);
 
                     if (wallObject != null)
                         Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                }
+            }
+        }
+
+        for (int y = 0; y < mapManager.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+                                                    , -y + offset.y);
+
+                if (generatedLevel[x, y] > 10 && generatedLevel[x, y] < 100)
+                {
+                    var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == generatedLevel[x, y]);
+                    Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
                 }
             }
         }

@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 0.05
+  rayLengthOutRange: 0.5
   horizontalRayCount: 4
   verticalRayCount: 4
   groundLayermask:

@@ -7,7 +7,11 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
     Rigidbody2D rigidbody;
     CollisionCheck collision = new CollisionCheck();
 
+    bool adjustedPos = false;
+
+    private float currentRayLength = 0;
     public float rayLength = .1f;
+    public float rayLengthOutRange = .5f;
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
     public LayerMask groundLayermask;
@@ -36,6 +40,7 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         collision.CalculateRaySpacing();
 
         //gDir = GravityDirection.DOWN;
+        //currentRayLength = rayLengthOutRange;
 
         if (LeftSideCollision()) gDir = GravityDirection.LEFT;
         else if (RightSideCollision()) gDir = GravityDirection.RIGHT;
@@ -46,25 +51,80 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         UpdateGravityDirection();
     }
 
-    IEnumerator ModifyPosition()
+    void OnEnable()
     {
+        if (LeftSideCollision()) Debug.Log("Left");
+        else if (RightSideCollision()) Debug.Log("Right");
+        else if (UpSideCollision()) Debug.Log("Up");
+        else if (DownSideCollision()) Debug.Log("Down");
+    }
+
+    void AdjustPositionOutOfRange()
+    {
+        switch (gDir)
+        {
+            case GravityDirection.DOWN:
+                transform.position += Vector3.down * .03f;
+                //currentRayLength = rayLength;
+                adjustedPos = true;
+                break;
+            case GravityDirection.UP:
+                transform.position += Vector3.up * .03f;
+                //currentRayLength = rayLength;
+                adjustedPos = true;
+                break;
+            case GravityDirection.LEFT:
+                Debug.Log("Left");
+                transform.position += Vector3.left * .03f;
+                //currentRayLength = rayLength;
+                adjustedPos = true;
+                break;
+            case GravityDirection.RIGHT:
+                transform.position += Vector3.right * .03f;
+                //currentRayLength = rayLength;
+                adjustedPos = true;
+                break;
+        }
+        //currentRayLength = rayLengthOutRange;
+
+        //if (!LeftSideCollision() && !RightSideCollision() && !UpSideCollision() && !DownSideCollision()) return;
+
+        //if (!DownSideCollision())
+        //{
+        //    if (LeftSideCollision()) StartCoroutine(AdjustPosition(Vector2.left));
+        //    else if (RightSideCollision()) StartCoroutine(AdjustPosition(Vector2.right));
+        //    else { currentRayLength = rayLength; adjustedPos = true; }
+        //}
+        //else
+        //{
+        //    currentRayLength = rayLength;
+        //    adjustedPos = true;
+        //}
+    }
+
+    IEnumerator AdjustPosition(Vector3 direction)
+    {
+        currentRayLength = rayLength;
+
         while (true)
         {
-            if (LeftSideCollision() || RightSideCollision() || UpSideCollision() || DownSideCollision())
-                break;
-            else
-            {
-                transform.position += Vector3.right;
-                yield return null;
-            }
+            if (LeftSideCollision() || RightSideCollision()) break;
+
+            transform.position += direction * .001f;
+            yield return null;
         }
+
+        Debug.Log("1");
+        adjustedPos = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        collision.UpdateRaycastOrigins();
+        if (!adjustedPos)
+            AdjustPositionOutOfRange();
 
+        collision.UpdateRaycastOrigins();
 
         //Debug.Log(gDir);
         if (forwardCollision()) ChangeDirectionCCW();
@@ -84,6 +144,8 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
 
         if (GameManager.instance.CheckTargetRange(transform))
         {
+            currentRayLength = rayLength;
+
             switch (gDir)
             {
                 case GravityDirection.DOWN:
@@ -109,7 +171,9 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         }
         else
         {
-            if(gDir == GravityDirection.NONE) rigidbody.gravityScale = 3f;
+            currentRayLength = rayLengthOutRange;
+            if (gDir == GravityDirection.NONE) rigidbody.gravityScale = 3f;
+            else { rigidbody.gravityScale = 0f; rigidbody.velocity = Vector2.zero; }
         }
     }
 
@@ -119,11 +183,11 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         {
             Vector2 rayOrigin = collision.raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (collision.horizontalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, rayLength, groundLayermask);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, currentRayLength, groundLayermask);
             //Debug.Log(hit.transform.name);
 
-            Debug.DrawRay(rayOrigin, Vector2.right * rayLength, Color.red);
-
+            Debug.DrawRay(rayOrigin, Vector2.right * currentRayLength, Color.red);
+            
             if (hit) return true;
         }
 
@@ -136,10 +200,10 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         {
             Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
             rayOrigin += Vector2.up * (collision.horizontalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.left, rayLength, groundLayermask);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.left, currentRayLength, groundLayermask);
             //Debug.Log(hit.transform.name);
 
-            Debug.DrawRay(rayOrigin, Vector2.left * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, Vector2.left * currentRayLength, Color.red);
 
             if (hit) return true;
         }
@@ -153,9 +217,9 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         {
             Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
             rayOrigin += Vector2.right * (collision.verticalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, groundLayermask);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, currentRayLength, groundLayermask);
 
-            Debug.DrawRay(rayOrigin, Vector2.down * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, Vector2.down * currentRayLength, Color.red);
 
             if (hit) return true;
         }
@@ -169,9 +233,9 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
         {
             Vector2 rayOrigin = collision.raycastOrigins.topLeft;
             rayOrigin += Vector2.right * (collision.verticalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, rayLength, groundLayermask);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, currentRayLength, groundLayermask);
 
-            Debug.DrawRay(rayOrigin, Vector2.up * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, Vector2.up * currentRayLength, Color.red);
 
             if (hit) return true;
         }
@@ -247,8 +311,8 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
                 break;
             case GravityDirection.NONE:
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                forwardCollision = RightSideCollision;
-                groundCollision = DownSideCollision;
+                forwardCollision = () => { return false; };
+                groundCollision = () => { return false; };
                 break;
         }
     }
