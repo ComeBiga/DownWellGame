@@ -75,9 +75,9 @@ public class Enemy : MonoBehaviour
             string seed = (Time.time + Random.value).ToString();
             System.Random rand = new System.Random(seed.GetHashCode());
             int rdCount = rand.Next(2, 5);
-            for (int i = 0; i < rdCount; i++)
-                dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
-            
+            //for (int i = 0; i < rdCount; i++)
+            //    dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
+            dropItems[0].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
         }
         Score.instance.getScore(this.gameObject.name);
         if (GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");

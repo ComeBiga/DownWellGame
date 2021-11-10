@@ -75,6 +75,14 @@ public class Item : MonoBehaviour
         newItem.GetComponent<Item>().DestroyItem();
     }
 
+    public void InstantiateItem(Vector3 position, int randomCount)
+    {
+        for(int i = 0; i< randomCount; i++)
+        {
+            InstantiateItem(position);
+        }
+    }
+
     private void EndPoping()
     {
         poping = false;
