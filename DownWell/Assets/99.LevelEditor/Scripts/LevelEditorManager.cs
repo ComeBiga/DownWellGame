@@ -207,6 +207,10 @@ public class LevelEditorManager : MonoBehaviour
         if (top == false && right == true && bottom == false && left == false) result = 13;
         // alone
         if (top == false && right == false && bottom == false && left == false) result = 0;
+        // horizontal-between
+        if (top == false && right == true && bottom == false && left == true) result = 14;
+        // vertical-between
+        if (top == true && right == false && bottom == true && left == false) result = 15;
 
         return result;
     }
