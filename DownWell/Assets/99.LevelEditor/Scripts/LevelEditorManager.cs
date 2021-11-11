@@ -117,7 +117,7 @@ public class LevelEditorManager : MonoBehaviour
         {
             for (int x = 0; x < level.width; x++)
             {
-                if (level.tiles[y * level.width + x] >= 100) level.tiles[y * level.width + x] = 1;
+                if (level.tiles[y * level.width + x] >= 100 && level.tiles[y * level.width + x] < 1000) level.tiles[y * level.width + x] = 1;
                 ChangeTile(tiles[y * level.width + x].transform, level.tiles[y * level.width + x]);
             }
         }
@@ -126,10 +126,10 @@ public class LevelEditorManager : MonoBehaviour
     void ChangeTile(Transform tile, int tileCode)
     {
         // sprite set
-        if (tileCode >= 100)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == 1).sprite;
-        else if (tileCode > 10)
+        if (tileCode > 2000)
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.enemyBrushes.Find(b => b.code == tileCode).sprite;
+        else if (tileCode >= 100)
+            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == 1).sprite;
         else if (tileCode > 0)
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == tileCode).sprite;
         else
