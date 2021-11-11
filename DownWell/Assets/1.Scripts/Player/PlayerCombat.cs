@@ -99,7 +99,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (isInvincible) return;
 
-        Debug.Log("Player Damaged");
+        //Debug.Log("Player Damaged");
 
         //if (!isInvincible) OnDamaged.Invoke();
 
@@ -111,7 +111,6 @@ public class PlayerCombat : MonoBehaviour
         isInvincible = true;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
         Invoke("BecomeVincible", invincibleTime);
-
 
         Camera.main.GetComponent<CameraShake>().Shake(.08f);
     }

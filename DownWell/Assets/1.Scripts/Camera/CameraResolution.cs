@@ -53,7 +53,7 @@ public class CameraResolution : MonoBehaviour
         ScreenSizeX = Screen.width;
         ScreenSizeY = Screen.height;
 
-        Debug.Log("Rescale");
+        //Debug.Log("Rescale");
     }
     #endregion
 
@@ -77,7 +77,7 @@ public class CameraResolution : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
         RescaleCamera();
     }
 

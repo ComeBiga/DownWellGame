@@ -4745,8 +4745,8 @@ MonoBehaviour:
   - {fileID: -9151963264724259764, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
   - {fileID: -5352584327396870056, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
   - {fileID: 7669734429983149357, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -918346401335071701, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
-  - {fileID: -918346401335071701, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
+  - {fileID: 2501948075229649708, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
+  - {fileID: 5544583237230050904, guid: 01e1f5a68a3f66c4ab9dcd10e94a75f4, type: 3}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
   - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}
