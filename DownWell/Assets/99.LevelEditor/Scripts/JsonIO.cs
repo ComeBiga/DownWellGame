@@ -10,6 +10,12 @@ public class JsonIO : MonoBehaviour
     public Stage stage;
     public string fileName = " ";
 
+    // UpdateFile
+    public string updateStage = " ";
+    public string updatefileName = " ";
+    public int fromCode;
+    public int toCode;
+
     private void Start()
     {
         fileName = "";
@@ -29,6 +35,8 @@ public class JsonIO : MonoBehaviour
     {
         Level level = new Level();
         level.tiles = new int[LevelEditorManager.instance.tiles.Count];
+
+        level.name = fileName;
 
         for (int i = 0; i < level.tiles.Length; i++)
             level.tiles[i] = (int)LevelEditorManager.instance.tiles[i].GetComponent<TileInfo>().tileCode;
@@ -57,7 +65,74 @@ public class JsonIO : MonoBehaviour
         return JsonUtility.FromJson<T>(jsonData);
     }
 
-    public void UpdateAllFiles()
+    public void UpdateTileCode()
+    {
+        if (updateStage == "*")
+        {
+            UpdateAllFiles();
+            return;
+        }
+
+        if (updatefileName == "*")
+        {
+            Debug.Log("*");
+            UpdateAllOfStage();
+            return;
+        }
+
+        string jsonStr = File.ReadAllText(Application.dataPath + "/Resources/Levels/" + updateStage + "/" + updatefileName + ".json");
+        var lvs = JsonToLevel<Level>(jsonStr);
+
+        var width = lvs.width;
+        var height = lvs.height;
+
+        for (int y = 0; y < lvs.height; y++)
+        {
+            for (int x = 0; x < lvs.width; x++)
+            {
+                // 한 레벨에 하고싶은 짓
+                if (lvs.tiles[lvs.width * y + x] == fromCode)
+                    lvs.tiles[lvs.width * y + x] = toCode;
+            }
+        }
+
+        jsonStr = JsonUtility.ToJson(lvs);
+
+        File.WriteAllText(Application.dataPath + "/Resources/Levels/" + updateStage + "/" + updatefileName + ".json", jsonStr);
+
+        Debug.Log("/Resources/Levels/" + updateStage + "/" + updatefileName + ".json");
+    }
+
+    private void UpdateAllOfStage()
+    {
+        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/" + updateStage + "/", "*.json");
+        List<Level> lvList = new List<Level>();
+
+        foreach (var dir in directories)
+        {
+            string jsonStr = File.ReadAllText(dir);
+            var lvs = JsonToLevel<Level>(jsonStr);
+
+            var width = lvs.width;
+            var height = lvs.height;
+
+            for (int y = 0; y < lvs.height; y++)
+            {
+                for (int x = 0; x < lvs.width; x++)
+                {
+                    // 한 레벨에 하고싶은 짓
+                    if (lvs.tiles[lvs.width * y + x] == fromCode)
+                        lvs.tiles[lvs.width * y + x] = toCode;
+                }
+            }
+
+            jsonStr = JsonUtility.ToJson(lvs);
+
+            File.WriteAllText(Application.dataPath + "/Resources/Levels/" + updateStage + "/" + lvs.name + ".json", jsonStr);
+        }
+    }
+
+    private void UpdateAllFiles()
     {
         for (int i = 0; i < 5; i++)
         {
@@ -77,8 +152,14 @@ public class JsonIO : MonoBehaviour
                     for (int x = 0; x < lvs.width; x++)
                     {
                         // 한 레벨에 하고싶은 짓
+                        if (lvs.tiles[lvs.width * y + x] == fromCode)
+                            lvs.tiles[lvs.width * y + x] = toCode;
                     }
                 }
+
+                jsonStr = JsonUtility.ToJson(lvs);
+
+                File.WriteAllText(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/" + lvs.name + ".json", jsonStr);
 
                 //lvList.Add(lvs);
 
