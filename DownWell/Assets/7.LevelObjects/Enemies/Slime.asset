@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f1fa0cac20b2c458ebe590f0931d74, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  code: 11
-  name: Slime
-  sprite: {fileID: 21300000, guid: d5dceacb4ad9c71439838f9d84ddf1ae, type: 3}
+  code: 2003
+  name: Wing
+  sprite: {fileID: 21300000, guid: b61c7bbb179101f4baf39276b81fb71b, type: 3}
