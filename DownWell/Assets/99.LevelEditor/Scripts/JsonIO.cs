@@ -100,7 +100,8 @@ public class JsonIO : MonoBehaviour
 
         File.WriteAllText(Application.dataPath + "/Resources/Levels/" + updateStage + "/" + updatefileName + ".json", jsonStr);
 
-        Debug.Log("/Resources/Levels/" + updateStage + "/" + updatefileName + ".json");
+        Debug.Log("TileCode Changed from "+ fromCode.ToString() + "to" + toCode.ToString()
+            + "(" + "/Resources/Levels/" + updateStage + "/" + updatefileName + ".json" + ")");
     }
 
     private void UpdateAllOfStage()
