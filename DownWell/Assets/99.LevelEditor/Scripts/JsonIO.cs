@@ -56,4 +56,36 @@ public class JsonIO : MonoBehaviour
     {
         return JsonUtility.FromJson<T>(jsonData);
     }
+
+    public void UpdateAllFiles()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
+            List<Level> lvList = new List<Level>();
+
+            foreach (var dir in directories)
+            {
+                string jsonStr = File.ReadAllText(dir);
+                var lvs = JsonToLevel<Level>(jsonStr);
+
+                var width = lvs.width;
+                var height = lvs.height;
+
+                for (int y = 0; y < lvs.height; y++)
+                {
+                    for (int x = 0; x < lvs.width; x++)
+                    {
+                        // 한 레벨에 하고싶은 짓
+                    }
+                }
+
+                //lvList.Add(lvs);
+
+                //Debug.Log(JsonUtility.ToJson(lvs));
+            }
+
+            //levels.Add(i, lvList);
+        }
+    }
 }

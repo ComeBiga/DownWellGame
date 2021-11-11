@@ -125,6 +125,7 @@ public class LevelEditorManager : MonoBehaviour
 
     void ChangeTile(Transform tile, int tileCode)
     {
+        // sprite set
         if (tileCode >= 100)
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == 1).sprite;
         else if (tileCode > 10)
@@ -134,6 +135,7 @@ public class LevelEditorManager : MonoBehaviour
         else
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.eraserBrush.sprite;
 
+        // tilecode set
         tile.GetComponent<TileInfo>().tileCode = tileCode;
     }
 
