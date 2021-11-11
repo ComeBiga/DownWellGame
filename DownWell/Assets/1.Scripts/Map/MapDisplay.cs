@@ -49,7 +49,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y);
 
-                if(generatedLevel[x, y] >= 100)
+                if(generatedLevel[x, y] >= 100 && generatedLevel[x, y] <= 1000)
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
                     //Debug.Log(generatedLevel[x, y]);
@@ -82,7 +82,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y);
 
-                if (generatedLevel[x, y] > 10 && generatedLevel[x, y] < 100)
+                if (generatedLevel[x, y] > 2000 && generatedLevel[x, y] <= 3000)
                 {
                     var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == generatedLevel[x, y]);
                     Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);

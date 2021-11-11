@@ -74,7 +74,7 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
                 adjustedPos = true;
                 break;
             case GravityDirection.LEFT:
-                Debug.Log("Left");
+                //Debug.Log("Left");
                 transform.position += Vector3.left * .03f;
                 //currentRayLength = rayLength;
                 adjustedPos = true;
