@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5257002470696783746}
   - component: {fileID: 2054867273042109988}
   - component: {fileID: 2054867273042110008}
-  - component: {fileID: 2054867273042109994}
   - component: {fileID: 6282653931484027159}
   - component: {fileID: 3898033097261231818}
   m_Layer: 8
@@ -152,27 +151,6 @@ MonoBehaviour:
   speed: 1
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
---- !u!114 &2054867273042109994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054867273042109991}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a618eb27fbed9df4091c64000c6040f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayLength: 0.05
-  rayLengthOutRange: 0.5
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  groundLayermask:
-    serializedVersion: 2
-    m_Bits: 64
-  speed: 1
-  posMod: 0.1
 --- !u!114 &6282653931484027159
 MonoBehaviour:
   m_ObjectHideFlags: 0

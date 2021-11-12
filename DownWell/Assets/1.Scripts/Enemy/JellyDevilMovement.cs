@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JellyDevilMovement : EnemyMovement
 {
-    Transform target;
+    protected Transform target;
 
     // Start is called before the first frame update
     void Start()
@@ -15,12 +15,16 @@ public class JellyDevilMovement : EnemyMovement
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.CheckTargetRange(transform))
-        {
-            Vector3 direction = target.position - transform.position;
-            //transform.position += direction.normalized * speed * Time.deltaTime;
+        if (!GameManager.instance.CheckTargetRange(transform)) return;
 
-            GetComponent<Rigidbody2D>().velocity = Vector2.one * direction.normalized * speed;
-        }
+        MoveToTarget();
+    }
+
+    protected void MoveToTarget()
+    {
+        Vector3 direction = target.position - transform.position;
+        //transform.position += direction.normalized * speed * Time.deltaTime;
+
+        GetComponent<Rigidbody2D>().velocity = Vector2.one * direction.normalized * speed;
     }
 }
