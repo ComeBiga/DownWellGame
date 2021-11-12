@@ -9,10 +9,10 @@ public class JellyManMovement : EnemyMovement
 
     public enum Direction { LEFT, RIGHT }
     public Direction startDirection = Direction.LEFT;
-    int dir = -1;
+    protected int dir = -1;
 
     public float changeTime = 3f;
-    float timer = 0;
+    protected float timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class JellyManMovement : EnemyMovement
         SetStartDirection();
     }
 
-    void SetStartDirection()
+    protected void SetStartDirection()
     {
         switch(startDirection)
         {
@@ -47,7 +47,7 @@ public class JellyManMovement : EnemyMovement
         else MoveAsTime();
     }
 
-    void MoveAsCollision()
+    protected void MoveAsCollision()
     {
         collision.UpdateRaycastOrigins();
 
@@ -59,7 +59,7 @@ public class JellyManMovement : EnemyMovement
         rigidbody.velocity = new Vector2(speed * dir, rigidbody.velocity.y);
     }
 
-    void MoveAsTime()
+    protected void MoveAsTime()
     {
         timer += Time.deltaTime;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JellyPooMovement : JellyDevilMovement
+public class JellyPooMovement : EnemyMovement
 {
     [Header("JellyPoo Value")]
     public BoxCollider2D sensorCollider;
@@ -21,8 +21,6 @@ public class JellyPooMovement : JellyDevilMovement
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-
-        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         //collision.Init(GetComponent<BoxCollider2D>(), rayLength, horizontalRayCount, verticalRayCount, targetLayer);
         //collision.CalculateRaySpacing();
