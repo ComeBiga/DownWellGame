@@ -21,7 +21,7 @@ public class BrushInputManager : MonoBehaviour
 
     void ClickLeftMouseButton()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             var tileInfo = GetTileInfoOnMousePosition();
 
