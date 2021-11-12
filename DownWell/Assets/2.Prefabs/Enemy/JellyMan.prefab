@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4898498956113332456}
   - component: {fileID: 4194952058874207250}
   m_Layer: 7
-  m_Name: Octopus
+  m_Name: JellyMan
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

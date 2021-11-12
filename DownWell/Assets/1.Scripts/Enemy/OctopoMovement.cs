@@ -33,7 +33,7 @@ public class OctopoMovement : MonoBehaviour, IEnemyMoveValue
 
         collision.UpdateRaycastOrigins();
 
-        if (RightSideCollision()) dir = -1;
+        if (collision.CheckCollision(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
         else if (LeftSideCollision()) dir = 1;
         else if (CheckRightEndOfGround()) dir = -1;
         else if (CheckLeftEndOfGround()) dir = 1;

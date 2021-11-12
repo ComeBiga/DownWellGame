@@ -31,7 +31,8 @@ public class BrushManager : MonoBehaviour
 
     public void ChangeEnemyBrush(int brushCode)
     {
-        currentBrush = enemyBrushes.Find(t => t.code == brushCode);
+        //currentBrush = enemyBrushes.Find(t => t.code == brushCode);
+        currentBrush = enemyBrushes[brushCode];
     }
 
     public void ChangeToEraser()

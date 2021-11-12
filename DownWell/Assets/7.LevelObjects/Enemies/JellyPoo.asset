@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f1fa0cac20b2c458ebe590f0931d74, type: 3}
-  m_Name: Octo
+  m_Name: JellyPoo
   m_EditorClassIdentifier: 
-  code: 2001
-  name: Octo
-  sprite: {fileID: 21300000, guid: 074b674255719e949aa85c5d645a9632, type: 3}
+  code: 2004
+  name: JellyPoo
+  sprite: {fileID: 21300000, guid: 3c724a01bf58cf14a8b7394c9e224a3d, type: 3}

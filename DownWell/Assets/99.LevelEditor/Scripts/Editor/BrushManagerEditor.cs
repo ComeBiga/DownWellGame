@@ -56,11 +56,11 @@ public class BrushManagerEditor : Editor
             {
                 if (brushManager.currentBrush.code > 10)
                 {
-                    brushManager.ChangeEnemyBrush(enemyCode + 11);
+                    brushManager.ChangeEnemyBrush(enemyCode);
                 }
                 if (GUILayout.Button("Enemy"))
                 {
-                    brushManager.ChangeEnemyBrush(enemyCode + 11);
+                    brushManager.ChangeEnemyBrush(enemyCode);
                 }
 
                 enemyCode = EditorGUILayout.Popup(enemyCode, DisplayEnemyBrushes(brushManager.enemyBrushes));
