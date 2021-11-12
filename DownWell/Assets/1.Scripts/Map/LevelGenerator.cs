@@ -596,7 +596,7 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int x = 0; x < mapManager.width; x++)
             {
-                if (map[x, y] > 10 && map[x, y] < 100)
+                if (map[x, y] > 2000 && map[x, y] < 3000)
                 {
                     if (rand.Next(0, 100) > enemyRatio)
                         map[x, y] = 0;
