@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8300281836758000164}
   - component: {fileID: 7666890564351190176}
   - component: {fileID: 2828334627078130590}
-  - component: {fileID: -4898498956113332456}
+  - component: {fileID: 2657657372516588841}
   - component: {fileID: 4194952058874207250}
   m_Layer: 7
   m_Name: JellyMan
@@ -151,7 +151,7 @@ MonoBehaviour:
   speed: 1
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
---- !u!114 &-4898498956113332456
+--- !u!114 &2657657372516588841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,10 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2828334627078130561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caa2db58d384b1b4c875ddb75221e9b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e90d74a5549992469eb81877ce58c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   rayLength: 0.1
   horizontalRayCount: 4
   verticalRayCount: 4

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GetComponent<IEnemyMoveValue>() != null) GetComponent<IEnemyMoveValue>().Speed = speed;
+        GetComponent<EnemyMovement>().speed = speed;
 
         colliders = new Collider2D[3];
         filter = new ContactFilter2D();

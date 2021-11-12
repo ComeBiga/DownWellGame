@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CollisionDirection { HORIZONTAL, UP, DOWN, LEFT, RIGHT }
+public enum CollisionDirection { NONE, HORIZONTAL, UP, DOWN, LEFT, RIGHT }
 
 public class CollisionCheck : MonoBehaviour
 {
     public BoxCollider2D boxCollider;
 
+    public float rayLength = .1f;
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
     public float horizontalRaySpacing;
     public float verticalRaySpacing;
+    public LayerMask groundLayermask;
 
     public RaycastOrigins raycastOrigins;
     public struct RaycastOrigins
@@ -22,11 +24,13 @@ public class CollisionCheck : MonoBehaviour
 
     delegate Vector2 GetRaycastOrigin();
 
-    public void Init(BoxCollider2D boxCollider, int horizontalRayCount, int verticalRayCount)
+    public void Init(BoxCollider2D boxCollider, float rayLength, int horizontalRayCount, int verticalRayCount, LayerMask groundLayermask)
     {
         this.boxCollider = boxCollider;
+        this.rayLength = rayLength;
         this.horizontalRayCount = horizontalRayCount;
         this.verticalRayCount = verticalRayCount;
+        this.groundLayermask = groundLayermask;
     }
 
     private bool RayCastCollision(int rayCount, GetRaycastOrigin getOrigin, Vector2 raySpacingDirection, float raySpacing, Vector2 rayDirection, float rayLength, LayerMask layerMask)
@@ -43,6 +47,11 @@ public class CollisionCheck : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool CheckCollision(CollisionDirection direction)
+    {
+        return CheckCollision(direction, rayLength, groundLayermask);
     }
 
     public bool CheckCollision(CollisionDirection direction, float rayLength, LayerMask layerMask)
@@ -83,6 +92,8 @@ public class CollisionCheck : MonoBehaviour
                 raySpacing = horizontalRaySpacing;
                 rayDir = Vector2.right;
                 break;
+            case CollisionDirection.NONE:
+                return false;
             default:
                 Debug.LogError("Wrong CollisionDirection");
                 return false;
@@ -103,6 +114,12 @@ public class CollisionCheck : MonoBehaviour
         //}
 
         //return false;
+    }
+
+    public bool CheckHorizontalCollision(int direction)
+    {
+        return RayCastCollision(verticalRayCount, () => { return (direction == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight; },
+                                Vector2.up, verticalRaySpacing, Vector2.down, rayLength, groundLayermask);
     }
 
     public bool CheckEndOfGround(CollisionDirection direction, float rayLength, LayerMask layerMask)

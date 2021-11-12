@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OctopoMovement : MonoBehaviour, IEnemyMoveValue
+public class OctopoMovement : EnemyMovement
 {
-    Rigidbody2D rigidbody;
-
-    [HideInInspector] public float speed = 5f;
     public float Speed { get; set; }
     int dir = 1;
-
-    CollisionCheck collision = new CollisionCheck();
-    public float rayLength = .1f;
-    public int horizontalRayCount = 4;
-    public int verticalRayCount = 4;
-    public LayerMask groundLayermask;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
 
-        collision.Init(GetComponent<BoxCollider2D>(), horizontalRayCount, verticalRayCount);
+        collision.Init(GetComponent<BoxCollider2D>(), rayLength, horizontalRayCount, verticalRayCount, groundLayermask);
 
         collision.CalculateRaySpacing();
     }
@@ -41,6 +32,7 @@ public class OctopoMovement : MonoBehaviour, IEnemyMoveValue
         rigidbody.velocity = new Vector2(Speed * dir, rigidbody.velocity.y);
     }
 
+    #region unused Code
     //public bool RightSideCollision()
     //{
     //    for (int i = 0; i < horizontalRayCount; i++)
@@ -98,4 +90,5 @@ public class OctopoMovement : MonoBehaviour, IEnemyMoveValue
     //    if (hit) return false;
     //    else return true;
     //}
+    #endregion
 }

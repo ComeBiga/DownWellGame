@@ -35,7 +35,7 @@ public class EarthwarmMovement : MonoBehaviour, IEnemyMoveValue
     {
         rigidbody = GetComponent<Rigidbody2D>();
 
-        collision.Init(GetComponent<BoxCollider2D>(), horizontalRayCount, verticalRayCount);
+        collision.Init(GetComponent<BoxCollider2D>(), rayLength, horizontalRayCount, verticalRayCount, groundLayermask);
 
         collision.CalculateRaySpacing();
 
