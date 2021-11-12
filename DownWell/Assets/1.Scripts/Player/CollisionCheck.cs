@@ -105,6 +105,32 @@ public class CollisionCheck : MonoBehaviour
         //return false;
     }
 
+    public bool CheckEndOfGround(CollisionDirection direction, float rayLength, LayerMask layerMask)
+    {
+        Vector2 raycastOrigin = new Vector2();
+
+        switch (direction)
+        {
+            case CollisionDirection.LEFT:
+                raycastOrigin = raycastOrigins.bottomLeft;
+                break;
+            case CollisionDirection.RIGHT:
+                raycastOrigin = raycastOrigins.bottomRight;
+                break;
+            default:
+                Debug.LogError("Wrong CollisionDirection");
+                return false;
+        }
+
+        Vector2 rayOrigin = raycastOrigin;
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, layerMask);
+
+        Debug.DrawRay(rayOrigin, Vector2.down * rayLength, Color.red);
+
+        if (hit) return false;
+        else return true;
+    }
+
     public bool GroundCollision(LayerMask layerMask)
     {
         for (int i = 0; i < verticalRayCount; i++)

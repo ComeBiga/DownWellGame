@@ -34,68 +34,68 @@ public class OctopoMovement : MonoBehaviour, IEnemyMoveValue
         collision.UpdateRaycastOrigins();
 
         if (collision.CheckCollision(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
-        else if (LeftSideCollision()) dir = 1;
-        else if (CheckRightEndOfGround()) dir = -1;
-        else if (CheckLeftEndOfGround()) dir = 1;
+        else if (collision.CheckCollision(CollisionDirection.LEFT, rayLength, groundLayermask)) dir = 1;
+        else if (collision.CheckEndOfGround(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
+        else if (collision.CheckEndOfGround(CollisionDirection.LEFT, rayLength, groundLayermask)) dir = 1;
 
         rigidbody.velocity = new Vector2(Speed * dir, rigidbody.velocity.y);
     }
 
-    public bool RightSideCollision()
-    {
-        for (int i = 0; i < horizontalRayCount; i++)
-        {
-            Vector2 rayOrigin = collision.raycastOrigins.bottomRight;
-            rayOrigin += Vector2.up * (collision.horizontalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, rayLength, groundLayermask);
-            //Debug.Log(hit.transform.name);
+    //public bool RightSideCollision()
+    //{
+    //    for (int i = 0; i < horizontalRayCount; i++)
+    //    {
+    //        Vector2 rayOrigin = collision.raycastOrigins.bottomRight;
+    //        rayOrigin += Vector2.up * (collision.horizontalRaySpacing * i);
+    //        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, rayLength, groundLayermask);
+    //        //Debug.Log(hit.transform.name);
 
-            Debug.DrawRay(rayOrigin, Vector2.right * rayLength, Color.red);
+    //        Debug.DrawRay(rayOrigin, Vector2.right * rayLength, Color.red);
 
-            if (hit) return true;
-        }
+    //        if (hit) return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    public bool LeftSideCollision()
-    {
-        for (int i = 0; i < horizontalRayCount; i++)
-        {
-            Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
-            rayOrigin += Vector2.up * (collision.horizontalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.left, rayLength, groundLayermask);
-            //Debug.Log(hit.transform.name);
+    //public bool LeftSideCollision()
+    //{
+    //    for (int i = 0; i < horizontalRayCount; i++)
+    //    {
+    //        Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
+    //        rayOrigin += Vector2.up * (collision.horizontalRaySpacing * i);
+    //        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.left, rayLength, groundLayermask);
+    //        //Debug.Log(hit.transform.name);
 
-            Debug.DrawRay(rayOrigin, Vector2.left * rayLength, Color.red);
+    //        Debug.DrawRay(rayOrigin, Vector2.left * rayLength, Color.red);
 
-            if (hit) return true;
-        }
+    //        if (hit) return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    public bool CheckRightEndOfGround()
-    {
-        Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
-        rayOrigin += Vector2.right * (collision.verticalRaySpacing * (verticalRayCount - 1));
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, groundLayermask);
+    //public bool CheckRightEndOfGround()
+    //{
+    //    Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
+    //    rayOrigin += Vector2.right * (collision.verticalRaySpacing * (verticalRayCount - 1));
+    //    RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, groundLayermask);
 
-        Debug.DrawRay(rayOrigin, Vector2.down * rayLength, Color.red);
+    //    Debug.DrawRay(rayOrigin, Vector2.down * rayLength, Color.red);
 
-        if (hit) return false;
-        else return true;
-    }
+    //    if (hit) return false;
+    //    else return true;
+    //}
 
-    public bool CheckLeftEndOfGround()
-    {
-        Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
-        rayOrigin += Vector2.right * (collision.verticalRaySpacing * 0);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, groundLayermask);
+    //public bool CheckLeftEndOfGround()
+    //{
+    //    Vector2 rayOrigin = collision.raycastOrigins.bottomLeft;
+    //    rayOrigin += Vector2.right * (collision.verticalRaySpacing * 0);
+    //    RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, groundLayermask);
 
-        Debug.DrawRay(rayOrigin, Vector2.down * rayLength, Color.red);
+    //    Debug.DrawRay(rayOrigin, Vector2.down * rayLength, Color.red);
 
-        if (hit) return false;
-        else return true;
-    }
+    //    if (hit) return false;
+    //    else return true;
+    //}
 }
