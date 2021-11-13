@@ -139,3 +139,4 @@ MonoBehaviour:
   minVerticalPopSpeed: 5
   maxVerticalPopSpeed: 10
   popingTime: 0.2
+  followSpeed: 5
