@@ -2864,6 +2864,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb0accf475fef54cb20c0e425dffcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelDB: {fileID: 11400000, guid: 2ea69ae0d998bd443b5df229ba1e228c, type: 2}
+  selectedDB:
+    filename: 
+    stage: 0
+    path: 
   stage: 0
   fileName: level_0
   updateStage: ' '
