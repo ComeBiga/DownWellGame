@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c4fa1e77955884191eb62a6d364184, type: 3}
+  m_Name: LevelDatabase
+  m_EditorClassIdentifier: 
+  jsonLevelDBs:
+  - filename: S2_2
+    stage: 1
+    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage2/S2_2.json
+  - filename: S2_3
+    stage: 1
+    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage2/S2_3.json

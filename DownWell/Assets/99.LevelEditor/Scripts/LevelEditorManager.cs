@@ -31,6 +31,8 @@ public class LevelEditorManager : MonoBehaviour
         //tiles = levelTiles.GetComponentsInChildren<TileInfo>();
 
         //LoadLevel(tiles);
+        SetCanvasActive(false);
+
         InitCanvas(width, height);
     }
 
@@ -64,11 +66,23 @@ public class LevelEditorManager : MonoBehaviour
         }
     }
 
+    public void SetCanvasActive(bool value)
+    {
+        levelTiles.SetActive(value);
+    }
+
+    public void ResetCanvas()
+    {
+        ResetCanvas(width, height);
+    }
+
     public void ResetCanvas(int resizeWidth, int resizeHeight)
     {
         if (resizeWidth == canvasWidth && resizeHeight == canvasHeight)
         {
             ClearCanvas();
+
+            InitLevel();
             return;
         }
         else
@@ -79,6 +93,8 @@ public class LevelEditorManager : MonoBehaviour
             }
 
             InitCanvas(resizeWidth, resizeHeight);
+
+            InitLevel();
         }
     }
 
@@ -90,6 +106,18 @@ public class LevelEditorManager : MonoBehaviour
             {
                 tiles[y * width + x].GetComponent<TileInfo>().tileCode = 0;
             }
+        }
+    }
+
+    void InitLevel()
+    {
+        for(int i = 0; i < canvasHeight; i++)
+        {
+            tiles[i * canvasWidth].GetComponent<TileInfo>().tileCode = 1;
+            ChangeTile(tiles[i * canvasWidth].transform, 1);
+
+            tiles[i * canvasWidth + (canvasWidth - 1)].GetComponent<TileInfo>().tileCode = 1;
+            ChangeTile(tiles[i * canvasWidth + (canvasWidth - 1)].transform, 1);
         }
     }
 
