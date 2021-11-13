@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 580551afad545b14aa809adec4688252, type: 3}
-  m_Name: RecoveryPotion
+  m_Name: Coin
   m_EditorClassIdentifier: 
-  code: 3001
-  name: RecoveryPotion
-  sprite: {fileID: 21300000, guid: d229b6b100d1d3a4195c279f87b4f4ad, type: 3}
-  score: 20
-  chacePercent: 15
+  code: 0
+  name: Coin
+  sprite: {fileID: 21300000, guid: b7169c21225b1f04ab520fd934e0cd2c, type: 3}
+  score: 0
+  chacePercent: 0

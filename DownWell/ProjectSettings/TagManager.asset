@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - StageEnd
   - CoinMag
+  - Item
   layers:
   - Default
   - TransparentFX

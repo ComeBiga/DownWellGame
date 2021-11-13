@@ -16,14 +16,23 @@ public class Score : MonoBehaviour
     #endregion
 
     LevelObject g_Info;
+    ItemInfo i_info;
     public Text scoreTxt;
     int curScore = 0;
 
     public void getScore(GameObject gameObject)
     {
-        if(gameObject.CompareTag("Enemy"))
-            g_Info = gameObject.GetComponent<Enemy>().info;
-        curScore += g_Info.score;
+        switch (gameObject.tag)
+        {
+            case "Enemy":
+                g_Info = gameObject.GetComponent<Enemy>().info;
+                curScore += g_Info.score;
+                break;
+            case "Item":
+                i_info = gameObject.GetComponent<ItemDrop>().i_Info;
+                curScore += i_info.score;
+                break;
+        }
         scoreTxt.text = curScore.ToString();
     }
 }
