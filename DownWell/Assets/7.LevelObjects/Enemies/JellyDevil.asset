@@ -15,3 +15,4 @@ MonoBehaviour:
   code: 2003
   name: JellyDevil
   sprite: {fileID: 21300000, guid: b61c7bbb179101f4baf39276b81fb71b, type: 3}
+  score: 10

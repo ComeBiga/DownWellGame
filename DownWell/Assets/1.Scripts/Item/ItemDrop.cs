@@ -5,16 +5,11 @@ using UnityEngine;
 public class ItemDrop : MonoBehaviour
 {
     public ItemInfo i_Info;
-    
-    void InstatiateItem()
+
+    public bool setRandomItem()
     {
-        //반복문
         bool gain = chanceResult(i_Info.chacePercent);
-        if(gain)
-        {
-            //리스트에 추가
-            gain = false;
-        }
+        return gain;
     }
 
 

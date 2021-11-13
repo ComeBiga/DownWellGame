@@ -15,3 +15,4 @@ MonoBehaviour:
   code: 2001
   name: JellyOcto
   sprite: {fileID: 21300000, guid: 074b674255719e949aa85c5d645a9632, type: 3}
+  score: 10

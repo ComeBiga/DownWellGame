@@ -151,6 +151,8 @@ MonoBehaviour:
   speed: 1
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
+  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
+  successItem: []
 --- !u!114 &2657657372516588841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +172,9 @@ MonoBehaviour:
   groundLayermask:
     serializedVersion: 2
     m_Bits: 64
+  moveAsCollision: 0
+  startDirection: 0
+  changeTime: 3
 --- !u!114 &4194952058874207250
 MonoBehaviour:
   m_ObjectHideFlags: 0

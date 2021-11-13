@@ -15,3 +15,4 @@ MonoBehaviour:
   code: 2005
   name: JellyWorm
   sprite: {fileID: 21300000, guid: e08bc27d83e272f48a809da478c0cf70, type: 3}
+  score: 10
