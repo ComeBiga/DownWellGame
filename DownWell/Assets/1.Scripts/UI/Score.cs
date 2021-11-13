@@ -15,34 +15,15 @@ public class Score : MonoBehaviour
     }
     #endregion
 
+    LevelObject g_Info;
     public Text scoreTxt;
-    int score = 0;
+    int curScore = 0;
 
-    public void getScore(string typeName)
+    public void getScore(GameObject gameObject)
     {
-        switch(typeName)
-        {
-            /*case "Enemy(Clone)":
-                score += 10;
-                scoreTxt.text = score.ToString();
-                break;
-            case "Octopus(Clone)":
-                score += 20;
-                scoreTxt.text = score.ToString();
-                break;
-            case "Wallbug(Clone)":
-                score += 30;
-                scoreTxt.text = score.ToString();
-                break; 
-            case "EnemyFaster(Clone)":
-                score += 40;
-                scoreTxt.text = score.ToString();
-                break;*/
-            default:
-                score += 20;
-                scoreTxt.text = score.ToString();
-                break;
-        }
+        if(gameObject.CompareTag("Enemy"))
+            g_Info = gameObject.GetComponent<Enemy>().info;
+        curScore += g_Info.score;
+        scoreTxt.text = curScore.ToString();
     }
-
 }

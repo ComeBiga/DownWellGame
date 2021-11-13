@@ -8,4 +8,5 @@ public class LevelObject : ScriptableObject
     public int code;
     public new string name;
     public Sprite sprite;
+    public int score;
 }

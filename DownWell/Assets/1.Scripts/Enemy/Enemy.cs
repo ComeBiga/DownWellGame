@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
             //    dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
             dropItems[0].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
         }
-        Score.instance.getScore(this.gameObject.name);
+        Score.instance.getScore(this.gameObject);
         if (GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");
         Destroy(this.gameObject);
     }
