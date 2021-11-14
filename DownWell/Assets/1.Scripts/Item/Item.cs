@@ -15,6 +15,9 @@ public class Item : MonoBehaviour
     bool gaining = false;
     Transform gainTarget;
     public float followSpeed = 5f;
+    
+    [Header("ItemInfo")]
+    public ItemInfo i_Info;
 
     // Start is called before the first frame update
     void Start()

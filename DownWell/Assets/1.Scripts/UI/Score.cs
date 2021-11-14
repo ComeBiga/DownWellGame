@@ -29,7 +29,7 @@ public class Score : MonoBehaviour
                 curScore += g_Info.score;
                 break;
             case "Item":
-                i_info = gameObject.GetComponent<ItemDrop>().i_Info;
+                i_info = gameObject.GetComponent<Item>().i_Info;
                 curScore += i_info.score;
                 break;
         }
