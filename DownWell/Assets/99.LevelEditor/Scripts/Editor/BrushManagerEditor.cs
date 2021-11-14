@@ -6,6 +6,8 @@ using UnityEditor;
 [CustomEditor(typeof(BrushManager))]
 public class BrushManagerEditor : Editor
 {
+    BrushManager brushManager;
+
     SerializedProperty wallBrushes;
     SerializedProperty enemyBrushes;
     SerializedProperty eraserBrush;
@@ -13,8 +15,13 @@ public class BrushManagerEditor : Editor
     int enemyCode = 0;
     bool changeColorFoldout = false;
 
+    Vector2 scrollPos;
+    bool brushType = false;
+
     private void OnEnable()
     {
+        brushManager = (BrushManager)target;
+
         wallBrushes = serializedObject.FindProperty("wallBrushes");
         enemyBrushes = serializedObject.FindProperty("enemyBrushes");
         eraserBrush = serializedObject.FindProperty("eraserBrush");
@@ -22,7 +29,7 @@ public class BrushManagerEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        BrushManager brushManager = (BrushManager)target;
+        //base.OnInspectorGUI();
 
         EditorGUILayout.HelpBox("각 버튼을 누르고 그리면 그려집니다. \n다른 개체를 그리려면 아래에 소스를 추가하면 됩니다.", MessageType.Info);
         EditorGUILayout.LabelField("Brush");
@@ -69,6 +76,9 @@ public class BrushManagerEditor : Editor
         }
         EditorGUILayout.EndVertical();
 
+        CreateBrushButton();
+        DisplayBrushRow();
+
         EditorGUILayout.Space();
         changeColorFoldout = EditorGUILayout.Foldout(changeColorFoldout, "Brush Sources");
         {
@@ -86,6 +96,46 @@ public class BrushManagerEditor : Editor
             }
         }
         //base.OnInspectorGUI();
+    }
+
+    void CreateBrushButton()
+    {
+        if (GUILayout.Button("New Brush"))
+        {
+            brushManager.brushDB.brushes.Add(brushManager.eraserBrush);
+        }
+    }
+
+    void DisplayBrushRow()
+    {
+        GUILayout.BeginHorizontal("HelpBox");
+        {
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(100));
+
+            for (int i = 0; i < brushManager.brushDB.brushes.Count; i++)
+            {
+                GUILayout.BeginHorizontal();
+
+                LevelObject brush = brushManager.brushDB.brushes[i];
+
+                if (GUILayout.Button(brush.name))
+                {
+                    brushManager.ChangeBrush(brush);
+                }
+
+                brushManager.brushDB.brushes[i] = EditorGUILayout.ObjectField(brush, typeof(LevelObject), false) as LevelObject;
+
+                if (GUILayout.Button("X", GUILayout.Width(20)))
+                {
+                    brushManager.brushDB.brushes.Remove(brush);
+                }
+
+                GUILayout.EndHorizontal();
+            }
+
+            EditorGUILayout.EndScrollView();
+        }
+        GUILayout.EndHorizontal();
     }
 
     string[] DisplayEnemyBrushes(List<LevelObject> enemyBrushes)

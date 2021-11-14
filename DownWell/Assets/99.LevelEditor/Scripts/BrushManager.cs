@@ -14,6 +14,8 @@ public class BrushManager : MonoBehaviour
     }
     #endregion
 
+    public BrushDatabase brushDB;
+
     public LevelObject currentBrush;
     public List<LevelObject> wallBrushes;
     public List<LevelObject> enemyBrushes;
@@ -22,6 +24,11 @@ public class BrushManager : MonoBehaviour
     private void Start()
     {
         currentBrush = eraserBrush;
+    }
+
+    public void ChangeBrush(LevelObject brush)
+    {
+        currentBrush = brush;
     }
 
     public void ChangeWallBrush(int brushCode)
