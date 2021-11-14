@@ -76,8 +76,8 @@ public class BrushManagerEditor : Editor
         }
         EditorGUILayout.EndVertical();
 
-        CreateBrushButton();
-        DisplayBrushRow();
+        //CreateBrushButton();
+        //DisplayBrushRow();
 
         EditorGUILayout.Space();
         changeColorFoldout = EditorGUILayout.Foldout(changeColorFoldout, "Brush Sources");
@@ -118,7 +118,7 @@ public class BrushManagerEditor : Editor
 
                 LevelObject brush = brushManager.brushDB.brushes[i];
 
-                if (GUILayout.Button(brush.name))
+                if (GUILayout.Button(brush.name, GUILayout.Width(100)))
                 {
                     brushManager.ChangeBrush(brush);
                 }
