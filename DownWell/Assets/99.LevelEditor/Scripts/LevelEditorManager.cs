@@ -155,11 +155,11 @@ public class LevelEditorManager : MonoBehaviour
     {
         // sprite set
         if (tileCode > 2000)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.enemyBrushes.Find(b => b.code == tileCode).sprite;
+            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.enemyBrushes.Find(b => b.code == tileCode).sprite;
         else if (tileCode >= 100)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == 1).sprite;
+            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.wallBrushes.Find(b => b.code == 1).sprite;
         else if (tileCode > 0)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.wallBrushes.Find(b => b.code == tileCode).sprite;
+            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.wallBrushes.Find(b => b.code == tileCode).sprite;
         else
             tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.eraserBrush.sprite;
 
