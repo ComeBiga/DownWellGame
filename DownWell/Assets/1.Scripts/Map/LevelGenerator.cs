@@ -324,6 +324,20 @@ public class LevelGenerator : MonoBehaviour
     //}
     #endregion
 
+    #region Wall
+
+    public Level RandomLevel(Stage stage)
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        List<Level> levels = loadLevel.GetLevels(currentStage);
+        //Debug.Log(levels.Count);
+        Level randomWall = levels[rand.Next(0, levels.Count)];
+
+        return randomWall;
+    }
+
     void RandomLevelWall()
     {
         string seed = (Time.time + Random.value).ToString();
@@ -421,6 +435,8 @@ public class LevelGenerator : MonoBehaviour
 
         return wallHeight;
     }
+
+    #endregion
 
     //int FillWall(int _x, int _y)
     //{
