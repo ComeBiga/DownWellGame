@@ -290,6 +290,8 @@ MonoBehaviour:
   maxFallSpeed: 30
   horizontalRayCount: 4
   verticalRayCount: 4
+  cantMove: 0
+  jumping: 0
 --- !u!114 &1340578661
 MonoBehaviour:
   m_ObjectHideFlags: 0
