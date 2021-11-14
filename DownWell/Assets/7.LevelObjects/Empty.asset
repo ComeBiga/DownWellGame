@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Empty
   m_EditorClassIdentifier: 
   code: 0
-  name: 0
+  name: Empty
   sprite: {fileID: 0}

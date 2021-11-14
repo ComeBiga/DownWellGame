@@ -15,112 +15,115 @@ MonoBehaviour:
   jsonLevelDBs:
   - filename: level_0
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/level_0.json
+    path: /Resources/Levels/Stage1/level_0.json
   - filename: level_1
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/level_1.json
+    path: /Resources/Levels/Stage1/level_1.json
   - filename: level_2
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/level_2.json
+    path: /Resources/Levels/Stage1/level_2.json
   - filename: level_3
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/level_3.json
+    path: /Resources/Levels/Stage1/level_3.json
   - filename: level_4
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/level_4.json
+    path: /Resources/Levels/Stage1/level_4.json
   - filename: level_5
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/level_5.json
+    path: /Resources/Levels/Stage1/level_5.json
   - filename: S1_1
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_1.json
-  - filename: S1_2
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_2.json
-  - filename: S1_3
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_3.json
-  - filename: S1_4
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_4.json
-  - filename: S1_5
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_5.json
-  - filename: S1_6
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_6.json
-  - filename: S1_7
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_7.json
-  - filename: S1_8
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_8.json
-  - filename: S1_9
-    stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_9.json
+    path: /Resources/Levels/Stage1/S1_1.json
   - filename: S1_10
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_10.json
+    path: /Resources/Levels/Stage1/S1_10.json
   - filename: S1_11
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_11.json
+    path: /Resources/Levels/Stage1/S1_11.json
   - filename: S1_12
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_12.json
+    path: /Resources/Levels/Stage1/S1_12.json
   - filename: S1_13
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_13.json
+    path: /Resources/Levels/Stage1/S1_13.json
   - filename: S1_14
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_14.json
+    path: /Resources/Levels/Stage1/S1_14.json
   - filename: S1_15
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_15.json
+    path: /Resources/Levels/Stage1/S1_15.json
   - filename: S1_16
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_16.json
+    path: /Resources/Levels/Stage1/S1_16.json
   - filename: S1_17
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_17.json
+    path: /Resources/Levels/Stage1/S1_17.json
   - filename: S1_18
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_18.json
+    path: /Resources/Levels/Stage1/S1_18.json
   - filename: S1_19
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_19.json
+    path: /Resources/Levels/Stage1/S1_19.json
+  - filename: S1_2
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_2.json
   - filename: S1_20
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_20.json
+    path: /Resources/Levels/Stage1/S1_20.json
   - filename: S1_21
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_21.json
+    path: /Resources/Levels/Stage1/S1_21.json
   - filename: S1_22
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_22.json
+    path: /Resources/Levels/Stage1/S1_22.json
   - filename: S1_23
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_23.json
+    path: /Resources/Levels/Stage1/S1_23.json
   - filename: S1_24
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_24.json
+    path: /Resources/Levels/Stage1/S1_24.json
   - filename: S1_25
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_25.json
+    path: /Resources/Levels/Stage1/S1_25.json
   - filename: S1_26
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_26.json
+    path: /Resources/Levels/Stage1/S1_26.json
   - filename: S1_27
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_27.json
+    path: /Resources/Levels/Stage1/S1_27.json
   - filename: S1_28
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_28.json
+    path: /Resources/Levels/Stage1/S1_28.json
   - filename: S1_29
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_29.json
+    path: /Resources/Levels/Stage1/S1_29.json
+  - filename: S1_3
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_3.json
   - filename: S1_30
     stage: 1
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage1/S1_30.json
+    path: /Resources/Levels/Stage1/S1_30.json
+  - filename: S1_4
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_4.json
+  - filename: S1_5
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_5.json
+  - filename: S1_6
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_6.json
+  - filename: S1_7
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_7.json
+  - filename: S1_8
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_8.json
+  - filename: S1_9
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_9.json
   - filename: S2_1
     stage: 2
-    path: C:/Users/zoaoz/Desktop/unity/DownWellGame/DownWell/Assets/Resources/Levels/Stage2/S2_1.json
+    path: /Resources/Levels/Stage2/S2_1.json
+  - filename: S2_3
+    stage: 2
+    path: /Resources/Levels/Stage2/S2_3.json
