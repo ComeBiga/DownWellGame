@@ -4766,7 +4766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 11
-  height: 500
+  height: 200
 --- !u!114 &1215072951
 MonoBehaviour:
   m_ObjectHideFlags: 0

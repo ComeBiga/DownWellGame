@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour
         mapDisplay = GetComponent<MapDisplay>();
         lg = GetComponent<LevelGenerator>();
 
-        StartCoroutine(FirstGenerateMap());
+        StartCoroutine(GenerateMap());
     }
 
     IEnumerator FirstGenerateMap()
@@ -44,5 +44,23 @@ public class MapManager : MonoBehaviour
         mapDisplay.Display(genLev, genSgr);
         //GameObject newGameObject = new GameObject();
         //Instantiate(new GameObject());
+    }
+
+    IEnumerator GenerateMap()
+    {
+        yield return null;
+
+        int currentYpos = 0;
+
+        for (;(-currentYpos) < height;)
+        {
+            currentYpos -= mapDisplay.Display(lg.RandomLevel(Stage.Stage1), currentYpos);
+        }
+
+        List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
+        Level stageGround = stageGrounds[0];
+
+        currentYpos = mapDisplay.Display(stageGround, currentYpos);
+
     }
 }

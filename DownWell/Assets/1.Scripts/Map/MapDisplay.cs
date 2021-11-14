@@ -40,6 +40,56 @@ public class MapDisplay : MonoBehaviour
     //    }
     //}
 
+    public int Display(Level level, int Ypos)
+    {
+        for (int y = 0; y < level.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                int currentTile = level.tiles[y * mapManager.width + x];
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
+                                                    -y + offset.y + Ypos);
+
+                if (currentTile >= 100 && currentTile <= 1000)
+                {
+                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
+                    //Debug.Log(generatedLevel[x, y]);
+                    GameObject wall;
+                    if (wallObject != null)
+                    {
+                        wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                        wall.GetComponent<SpriteRenderer>().sprite = wallSprites[currentTile - 100];
+                    }
+                }
+                else if (currentTile <= 10)
+                {
+                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == currentTile);
+
+                    if (wallObject != null)
+                        Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                }
+            }
+        }
+
+        for (int y = 0; y < level.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                int currentTile = level.tiles[y * mapManager.width + x];
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+                                                    , -y + offset.y + Ypos);
+
+                if (currentTile > 2000 && currentTile <= 3000)
+                {
+                    var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == currentTile);
+                    Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
+                }
+            }
+        }
+
+        return level.height;
+    }
+
     public void Display(int[,] generatedLevel, int[,] generatedStageGround)
     {
         for (int y = 0; y < mapManager.height; y++)
