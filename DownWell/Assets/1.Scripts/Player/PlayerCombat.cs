@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class PlayerCombat : MonoBehaviour
 {
+    Rigidbody2D rigidbody;
+    PlayerController controller;
+
     [Header("Shoot")]
     public GameObject projectile;
     public int projectileDamage = 4;
@@ -37,6 +40,9 @@ public class PlayerCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
+        controller = GetComponent<PlayerController>();
+
         shotTimer = shotDelay;
 
         enemyFilter = new ContactFilter2D();
@@ -52,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
     {
         shotTimer += Time.deltaTime;
 
-        if (!reloaded && GetComponent<PlayerController>().GroundCollision())
+        if (!reloaded && controller.GroundCollision())
         {
             Reload();
             reloaded = true;
@@ -66,21 +72,14 @@ public class PlayerCombat : MonoBehaviour
     {
         if (shotTimer >= shotDelay && shootable && currentProjectile > 0)
         {
-            GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-            newProjectile.GetComponent<Projectile>().damage = projectileDamage;
-
+            InstantiateProjectile();
             currentProjectile--;
 
             if (currentProjectile < maxProjectile) reloaded = false;
 
-            //GetComponent<PlayerController>().ShotRebound();
-            GetComponent<PlayerController>().LeapOff(shotReboundSpeed);
-            Camera.main.GetComponent<CameraShake>().Shake(.03f);
+            LeapOff(shotReboundSpeed);
 
-            GetComponent<PlayerAnimation>().Shoot();
-
-            if(SoundManager.instance != null) SoundManager.instance.PlayEffSound("gun");  //사운드이펙트
-            GetComponent<Effector>().Generate("Shoot");
+            ShootEffect();
 
             bulletCount.instance.countBullet();
 
@@ -88,40 +87,82 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void InstantiateProjectile()
+    {
+        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        newProjectile.GetComponent<Projectile>().damage = projectileDamage;
+    }
+
     public void Reload()
     {
         currentProjectile = maxProjectile;
         bulletCount.instance.bulletReload();
     }
+
+    public void ShootEffect()
+    {
+        Camera.main.GetComponent<CameraShake>().Shake(.03f);                           //카메라 흔들림
+        GetComponent<PlayerAnimation>().Shoot();                                       //캐릭터 애니메이션
+        if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("gun");  //사운드이펙트
+        GetComponent<Effector>().Generate("Shoot");                                    //슛 이펙트
+    }
     #endregion
 
+    #region Damage
     public void Damaged(Enemy enemy)
     {
         if (isInvincible) return;
 
-        //Debug.Log("Player Damaged");
+        KnuckBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
 
-        //if (!isInvincible) OnDamaged.Invoke();
+        StartCoroutine(BecomeVincible());
 
-        Vector3 knuckbackDir = transform.position - enemy.transform.position;
-        int direction = knuckbackDir.x > 0 ? 1 : -1;
-        GetComponent<PlayerController>().KnuckBack(knuckBackSpeed, direction, knuckBackDistance);
-
-        //StartCoroutine(BecomeInvincible());
-        isInvincible = true;
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
-        Invoke("BecomeVincible", invincibleTime);
-
-        Camera.main.GetComponent<CameraShake>().Shake(.08f);
+        DamagedEffect();
     }
 
-    void BecomeVincible()
+    public void KnuckBack(Vector2 speed, Vector3 playerPosition, Vector3 enemyPosition, float distance)
     {
-        isInvincible = false;
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+        Vector3 knuckbackDir = playerPosition - enemyPosition;
+        int direction = knuckbackDir.x > 0 ? 1 : -1;
+
+        KnuckBack(speed, direction, distance);
     }
 
-    IEnumerator BecomeInvincible()
+    public void KnuckBack(Vector2 speed, int direction, float distance)
+    {
+        //rigidbody.velocity = new Vector2(knuckBackSpeed * direction, rigidbody.velocity.y + knuckBackSpeed);
+
+        //StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
+        //rigidbody.velocity = new Vector2(0, 0);
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed.y);
+        //rigidbody.AddForce(new Vector2(0, speed), ForceMode2D.Impulse);
+        StartCoroutine(AddForceTransform(speed.x, direction, distance));
+        controller.cantMove = true;
+    }
+
+    IEnumerator AddForceTransform(float knuckBackSpeed, int direction, float distance)
+    {
+        InputManager.instance.blockInput = true;
+        float dis = 0;
+
+        while (true)
+        {
+            if (Mathf.Abs(dis) > distance)
+                break;
+
+            var forceX = knuckBackSpeed * direction * Time.deltaTime;
+            transform.position += new Vector3(forceX, 0, 0);
+            dis += forceX;
+            //Debug.Log(dis);
+
+            yield return null;
+        }
+
+        InputManager.instance.blockInput = false;
+        controller.cantMove = false;
+    }
+
+    IEnumerator BecomeVincible()
     {
         isInvincible = true;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
@@ -129,9 +170,36 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(invincibleTime);
 
         isInvincible = false;
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
+    void DamagedEffect()
+    {
+        Camera.main.GetComponent<CameraShake>().Shake(.08f);
+    }
+
+    #endregion
+
+    #region unused Code
+    //void BecomeVincible()
+    //{
+    //    isInvincible = false;
+    //    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    //}
+
+    //IEnumerator BecomeInvincible()
+    //{
+    //    isInvincible = true;
+    //    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
+
+    //    yield return new WaitForSeconds(invincibleTime);
+
+    //    isInvincible = false;
+    //    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    //}
+    #endregion
+
+    #region Stepping
     void StepOn()
     {
         var hitNum = hitBox.GetComponent<CircleCollider2D>().OverlapCollider(enemyFilter, enemyColliders);
@@ -152,7 +220,7 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
-        if (playerBound) GetComponent<PlayerController>().LeapOff(leapSpeed);
+        if (playerBound) LeapOff(leapSpeed);
     }
 
     IEnumerator SteppingUp()
@@ -161,4 +229,12 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(unshootableTime);
         shootable = true;
     }
+
+    public void LeapOff(float stepUpSpeed)
+    {
+        rigidbody.velocity = new Vector2(rigidbody.velocity.x, stepUpSpeed);
+        controller.jumping = true;
+    }
+
+    #endregion
 }

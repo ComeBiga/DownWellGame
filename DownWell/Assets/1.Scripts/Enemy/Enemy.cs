@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public LevelObject info;
     public int health = 10;
-    public float speed = 1f;
+    //public float speed = 1f;
     [Header("DropItems")]
     public List<GameObject> dropItems;
 
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<EnemyMovement>().speed = speed;
+        //GetComponent<EnemyMovement>().speed = speed;
 
         colliders = new Collider2D[3];
         filter = new ContactFilter2D();
@@ -33,10 +33,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage()
     {
-        //GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), colliders);
-        
-        //Debug.Log(filter.useLayerMask);
-        //Debug.Log(LayerMask.LayerToName(filter.layerMask.value));
         var colliders = new List<Collider2D>();
         GetComponent<Collider2D>().OverlapCollider(filter, colliders);
 
@@ -75,6 +71,7 @@ public class Enemy : MonoBehaviour
             string seed = (Time.time + Random.value).ToString();
             System.Random rand = new System.Random(seed.GetHashCode());
             int rdCount = rand.Next(2, 5);
+
             //for (int i = 0; i < rdCount; i++)
             //    dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
             dropItems[0].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
