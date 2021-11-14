@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 4
   name: StageEnd
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b73265accab188e409461260602e7e36, type: 3}
