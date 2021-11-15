@@ -29,6 +29,13 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         TakeDamage();
+
+        Animation();
+    }
+
+    void Animation()
+    {
+        GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
     }
 
     public void TakeDamage()
