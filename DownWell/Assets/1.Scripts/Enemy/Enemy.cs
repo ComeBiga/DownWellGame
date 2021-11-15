@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
         filter = new ContactFilter2D();
         filter.layerMask = 1 << 3;
         filter.useLayerMask = false;
+
+        dropItems.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
     }
 
     // Update is called once per frame
@@ -74,8 +76,8 @@ public class Enemy : MonoBehaviour
 
             //for (int i = 0; i < rdCount; i++)
             //    dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
-            dropItems[0].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
-           ItemDrop.instance.InstantiateRandomItem(transform.position, this.gameObject.tag);
+            dropItems[dropItems.Count-1].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
+           ItemDrop.instance.InstantiateRandomItem(dropItems, transform.position);
         }
 
         Score.instance.getScore(this.gameObject);

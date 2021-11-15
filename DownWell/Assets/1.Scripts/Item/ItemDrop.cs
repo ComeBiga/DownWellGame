@@ -14,31 +14,18 @@ public class ItemDrop : MonoBehaviour
     }
     #endregion
 
-    public List<GameObject> enemyDropItem;
-    
-    void Start()
+    public void InstantiateRandomItem(List<GameObject> dropitems, Vector3 position)
     {
-        //리스트 내림차순 정렬
-        enemyDropItem.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
-    }
-
-    public void InstantiateRandomItem(Vector3 position, string whatTag)
-    {
-        switch (whatTag)
+        if (dropitems.Count > 0)
         {
-            case "Enemy":
-                if (enemyDropItem.Count > 0)
+            for (int i = 0; i < dropitems.Count; i++)
+            {
+                if (chanceResult(dropitems[i].GetComponent<Item>().i_Info.chacePercent))
                 {
-                    for (int i = 0; i < enemyDropItem.Count; i++)
-                    {
-                        if (chanceResult(enemyDropItem[i].GetComponent<Item>().i_Info.chacePercent))
-                        {
-                            enemyDropItem[i].GetComponent<Item>().InstantiateItem(position);
-                            break;
-                        }
-                    }
+                    dropitems[i].GetComponent<Item>().InstantiateItem(position);
+                    return;
                 }
-                break;
+            }
         }
     }
 
