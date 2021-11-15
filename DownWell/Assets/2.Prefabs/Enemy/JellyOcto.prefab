@@ -148,10 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 1d7a3b683c5d2b646b628f7fbe730bab, type: 2}
   health: 8
-  speed: 1
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
-  - {fileID: 3519354593657197702, guid: 6cd9cbdc42f18174b9388d554c6b692e, type: 3}
 --- !u!114 &6282653931484027159
 MonoBehaviour:
   m_ObjectHideFlags: 0

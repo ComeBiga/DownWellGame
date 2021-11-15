@@ -4,24 +4,41 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    public List<GameObject> enemyDropItem;
-    List<GameObject> successItem;
+    #region Singleton
+    public static ItemDrop instance = null;
 
-    public void InstantiateRandomItem(Vector3 position)
+    private void Awake()
     {
-        if (enemyDropItem.Count > 0)
+        if (instance == null)
+            instance = this;
+    }
+    #endregion
+
+    public List<GameObject> enemyDropItem;
+    
+    void Start()
+    {
+        //리스트 내림차순 정렬
+        enemyDropItem.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
+    }
+
+    public void InstantiateRandomItem(Vector3 position, string whatTag)
+    {
+        switch (whatTag)
         {
-            for (int i = 0; i < enemyDropItem.Count; i++)
-            {
-                if (chanceResult(enemyDropItem[i].GetComponent<Item>().i_Info.chacePercent))
-                    successItem.Add(enemyDropItem[i]);
-            }
-            if (successItem.Count > 0)
-            {
-                int itemRand = UnityEngine.Random.Range(0, successItem.Count);
-                successItem[itemRand].GetComponent<Item>().InstantiateItem(position);
-                successItem.Clear();
-            }
+            case "Enemy":
+                if (enemyDropItem.Count > 0)
+                {
+                    for (int i = 0; i < enemyDropItem.Count; i++)
+                    {
+                        if (chanceResult(enemyDropItem[i].GetComponent<Item>().i_Info.chacePercent))
+                        {
+                            enemyDropItem[i].GetComponent<Item>().InstantiateItem(position);
+                            break;
+                        }
+                    }
+                }
+                break;
         }
     }
 

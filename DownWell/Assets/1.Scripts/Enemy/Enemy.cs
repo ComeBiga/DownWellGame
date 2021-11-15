@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
             //for (int i = 0; i < rdCount; i++)
             //    dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
             dropItems[0].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
-            dropItems[1].GetComponent<ItemDrop>().InstantiateRandomItem(transform.position);
+           ItemDrop.instance.InstantiateRandomItem(transform.position, this.gameObject.tag);
         }
 
         Score.instance.getScore(this.gameObject);
