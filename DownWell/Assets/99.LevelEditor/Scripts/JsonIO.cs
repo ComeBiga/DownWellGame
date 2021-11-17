@@ -26,7 +26,7 @@ public class JsonIO : MonoBehaviour
 
         fileName = "";
         //tiles = GameObject.Find("LevelTiles").GetComponentsInChildren<TileInfo>();
-        //SaveAllDatabase();
+        UpdateAllDatabase();
 
         Debug.Log((Application.dataPath + "/Resource").Replace(Application.dataPath, ""));
     }
@@ -94,6 +94,11 @@ public class JsonIO : MonoBehaviour
         return JsonUtility.ToJson(level);
     }
 
+    void RemoveAllDatabase()
+    {
+        levelDB.jsonLevelDBs = new List<LevelDBInfo>();
+    }
+
     void SaveIntoDatabase(LevelDBInfo newDB)
     {
         SaveIntoDatabase(newDB.filename, newDB.stage, newDB.path);
@@ -104,8 +109,10 @@ public class JsonIO : MonoBehaviour
         levelDB.Add(filename, stage, path);
     }
 
-    void SaveAllDatabase()
+    void UpdateAllDatabase()
     {
+        RemoveAllDatabase();
+
         for (int i = 0; i < 5; i++)
         {
             string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
@@ -125,6 +132,8 @@ public class JsonIO : MonoBehaviour
                 SaveIntoDatabase(newDB);
             }
         }
+
+        //levelDB.jsonLevelDBs.Sort();
     }
 
     public void LoadJson()
