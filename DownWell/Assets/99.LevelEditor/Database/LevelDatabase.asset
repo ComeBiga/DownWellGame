@@ -103,12 +103,72 @@ MonoBehaviour:
   - filename: S1_30
     stage: 1
     path: /Resources/Levels/Stage1/S1_30.json
+  - filename: S1_31
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_31.json
+  - filename: S1_32
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_32.json
+  - filename: S1_33
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_33.json
+  - filename: S1_34
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_34.json
+  - filename: S1_35
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_35.json
+  - filename: S1_36
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_36.json
+  - filename: S1_37
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_37.json
+  - filename: S1_38
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_38.json
+  - filename: S1_39
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_39.json
   - filename: S1_4
     stage: 1
     path: /Resources/Levels/Stage1/S1_4.json
+  - filename: S1_40
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_40.json
+  - filename: S1_41
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_41.json
+  - filename: S1_42
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_42.json
+  - filename: S1_43
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_43.json
+  - filename: S1_44
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_44.json
+  - filename: S1_45
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_45.json
+  - filename: S1_46
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_46.json
+  - filename: S1_47
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_47.json
+  - filename: S1_48
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_48.json
+  - filename: S1_49
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_49.json
   - filename: S1_5
     stage: 1
     path: /Resources/Levels/Stage1/S1_5.json
+  - filename: S1_50
+    stage: 1
+    path: /Resources/Levels/Stage1/S1_50.json
   - filename: S1_6
     stage: 1
     path: /Resources/Levels/Stage1/S1_6.json
