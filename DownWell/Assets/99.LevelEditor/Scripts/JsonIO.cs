@@ -26,7 +26,7 @@ public class JsonIO : MonoBehaviour
 
         fileName = "";
         //tiles = GameObject.Find("LevelTiles").GetComponentsInChildren<TileInfo>();
-        UpdateAllDatabase();
+        //UpdateAllDatabase();
 
         Debug.Log((Application.dataPath + "/Resource").Replace(Application.dataPath, ""));
     }
@@ -132,8 +132,6 @@ public class JsonIO : MonoBehaviour
                 SaveIntoDatabase(newDB);
             }
         }
-
-        //levelDB.jsonLevelDBs.Sort();
     }
 
     public void LoadJson()

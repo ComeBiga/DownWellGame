@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class LevelDatabase : ScriptableObject
 }
 
 [System.Serializable]
-public class LevelDBInfo
+public class LevelDBInfo : IComparable<LevelDBInfo>
 {
     public string filename;
     public Stage stage;
@@ -36,6 +37,11 @@ public class LevelDBInfo
         this.filename = filename;
         this.stage = stage;
         this.path = path;
+    }
+
+    public int CompareTo(LevelDBInfo other)
+    {
+        throw new NotImplementedException();
     }
 
     public void Save(string filename, Stage stage, string path)
