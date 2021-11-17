@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+//using System.Linq;
 using UnityEngine;
 
 public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5, Blocks, StageGround }
@@ -26,9 +27,9 @@ public class JsonIO : MonoBehaviour
 
         fileName = "";
         //tiles = GameObject.Find("LevelTiles").GetComponentsInChildren<TileInfo>();
-        //UpdateAllDatabase();
+        UpdateAllDatabase();
 
-        Debug.Log((Application.dataPath + "/Resource").Replace(Application.dataPath, ""));
+
     }
 
     public void Update()
@@ -131,6 +132,22 @@ public class JsonIO : MonoBehaviour
 
                 SaveIntoDatabase(newDB);
             }
+        }
+
+        List<string> fns = new List<string>();
+
+        foreach(var fn in levelDB.jsonLevelDBs)
+        {
+            fns.Add(fn.filename);
+        }
+
+        fns.Sort(new StringAsNumericComparer());
+
+        foreach(var fn in fns)
+        {
+            var lv = levelDB.jsonLevelDBs.Find(l => l.filename == fn);
+            levelDB.jsonLevelDBs.Remove(lv);
+            levelDB.jsonLevelDBs.Add(lv);
         }
     }
 
