@@ -18,6 +18,15 @@ public class JellyDevilMovement : EnemyMovement
         if (!GameManager.instance.CheckTargetRange(transform)) return;
 
         MoveToTarget();
+
+        Animation();
+    }
+
+    void Animation()
+    {
+        var dir = target.position.x - transform.position.x;
+
+        GetComponent<SpriteRenderer>().flipX = (dir < 0) ? true : false;
     }
 
     protected void MoveToTarget()

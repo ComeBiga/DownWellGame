@@ -45,6 +45,13 @@ public class JellyManMovement : EnemyMovement
 
         if(moveAsCollision) MoveAsCollision();
         else MoveAsTime();
+
+        Animation();
+    }
+
+    void Animation()
+    {
+        GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
     }
 
     protected void MoveAsCollision()
