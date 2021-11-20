@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
             {
                 // StageEnd
                 GameManager.instance.StageEnd();
+                Destroy(collision.gameObject);
             }
         }
     }

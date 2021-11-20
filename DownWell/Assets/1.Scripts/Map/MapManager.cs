@@ -22,6 +22,9 @@ public class MapManager : MonoBehaviour
     public int width = 10;
     public int height = 100;
 
+    int currentYpos = 0;
+    public int CurrentYPos { get { return currentYpos; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +53,7 @@ public class MapManager : MonoBehaviour
     {
         yield return null;
 
-        int currentYpos = 0;
+        currentYpos = 0;
 
         for (;(-currentYpos) < height;)
         {
@@ -60,7 +63,26 @@ public class MapManager : MonoBehaviour
         List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
         Level stageGround = stageGrounds[0];
 
-        currentYpos = mapDisplay.Display(stageGround, currentYpos);
+        currentYpos -= mapDisplay.Display(stageGround, currentYpos);
+    }
 
+    IEnumerator GenerateMap(int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            currentYpos -= mapDisplay.Display(lg.RandomLevel(Stage.Stage1), currentYpos);
+
+            yield return null;
+        }
+    }
+
+    public void Generate(int times)
+    {
+        StartCoroutine(GenerateMap(times));
+    }
+
+    public void Generate(Transform mainPos, int times)
+    {
+        
     }
 }

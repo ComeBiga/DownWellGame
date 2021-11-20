@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public int coin = 0;
 
+    Boss boss = new Boss();
+
     private void Start()
     {
         PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
@@ -38,6 +40,9 @@ public class GameManager : MonoBehaviour
         Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
 
         PlayerManager.instance.player = playerPrefab;
+
+
+        boss.GetBoss();
     }
 
     public bool CheckTargetRange(Transform enemy)
@@ -53,7 +58,6 @@ public class GameManager : MonoBehaviour
         if (h_tarTothis < height / 2 + activeRangeOffset)
             return true;
 
-
         return false;
     }
 
@@ -64,6 +68,8 @@ public class GameManager : MonoBehaviour
 
     public void StageEnd()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        boss.SetBossActive(true);
+        MapManager.instance.Generate(10);
     }
 }
