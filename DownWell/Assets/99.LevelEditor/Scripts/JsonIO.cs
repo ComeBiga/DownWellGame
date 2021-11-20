@@ -114,10 +114,13 @@ public class JsonIO : MonoBehaviour
     {
         RemoveAllDatabase();
 
+        string[] directories;
+        List<Level> lvList = new List<Level>();
+
         for (int i = 0; i < 5; i++)
         {
-            string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
-            List<Level> lvList = new List<Level>();
+            directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
+            lvList = new List<Level>();
 
             foreach (var dir in directories)
             {
@@ -134,6 +137,25 @@ public class JsonIO : MonoBehaviour
             }
         }
 
+        // StageGround
+        directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageGround/", "*.json");
+        lvList = new List<Level>();
+
+        foreach (var dir in directories)
+        {
+            LevelDBInfo newDB = new LevelDBInfo();
+            newDB.path = dir.Replace(Application.dataPath, "");
+
+            string jsonStr = File.ReadAllText(dir);
+            var lvs = JsonToLevel<Level>(jsonStr);
+
+            newDB.filename = lvs.name;
+            newDB.stage = Stage.StageGround;
+
+            SaveIntoDatabase(newDB);
+        }
+
+        // Sorting
         List<string> fns = new List<string>();
 
         foreach(var fn in levelDB.jsonLevelDBs)
