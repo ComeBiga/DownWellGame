@@ -70,6 +70,6 @@ public class GameManager : MonoBehaviour
     {
         //SceneManager.LoadScene(0);
         boss.SetBossActive(true);
-        MapManager.instance.Generate(10);
+        MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
     }
 }

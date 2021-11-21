@@ -25,6 +25,9 @@ public class MapManager : MonoBehaviour
     int currentYpos = 0;
     public int CurrentYPos { get { return currentYpos; } }
 
+    private bool reGenerate = false;
+    [SerializeField] private int reGenerateOffset = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,8 +84,25 @@ public class MapManager : MonoBehaviour
         StartCoroutine(GenerateMap(times));
     }
 
-    public void Generate(Transform mainPos, int times)
+    IEnumerator GenerateMapInfinity(Transform mainPos, int times)
     {
-        
+        reGenerate = true;
+
+        while(true)
+        {
+            if (!reGenerate) break;
+
+            if (mainPos.position.y < currentYpos + reGenerateOffset)
+                Generate(times);
+
+            yield return null;
+        }
+
+        reGenerate = false;
+    }
+
+    public void GenerateInfinity(Transform mainPos, int times)
+    {
+        StartCoroutine(GenerateMapInfinity(mainPos, times));
     }
 }
