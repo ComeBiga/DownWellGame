@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             {
                 //Debug.Log("TakeDamage");
                 if (!collider.GetComponent<PlayerCombat>().IsInvincible)
-                    collider.GetComponent<PlayerCombat>().Damaged(this);
+                    collider.GetComponent<PlayerCombat>().Damaged(transform);
 
                 return;
             }

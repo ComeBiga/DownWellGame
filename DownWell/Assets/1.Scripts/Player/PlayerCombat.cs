@@ -109,7 +109,7 @@ public class PlayerCombat : MonoBehaviour
     #endregion
 
     #region Damage
-    public void Damaged(Enemy enemy)
+    public void Damaged(Transform enemy)
     {
         if (isInvincible) return;
 
