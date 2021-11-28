@@ -4692,6 +4692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 11
   height: 200
+  currentStage: 2
   reGenerateOffset: 20
 --- !u!114 &1215072951
 MonoBehaviour:
@@ -4721,6 +4722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3f1554aebc2b4590cf0432d97db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadStage: 0
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0

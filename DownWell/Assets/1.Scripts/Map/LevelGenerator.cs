@@ -220,17 +220,17 @@ public class LevelGenerator : MonoBehaviour
 
     #region StageGround
 
-    int[,] stageGround = new int[11, 11] { { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
-                                          { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
+    //int[,] stageGround = new int[11, 11] { { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 },
+    //                                      { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
 
     #endregion
 
@@ -438,6 +438,7 @@ public class LevelGenerator : MonoBehaviour
 
     #endregion
 
+    #region Unused Code
     //int FillWall(int _x, int _y)
     //{
     //    string seed = (Time.time + Random.value).ToString();
@@ -636,8 +637,9 @@ public class LevelGenerator : MonoBehaviour
     //    }
     //}
 
-    public int[,] GenerateStageGround()
-    {
-        return stageGround;
-    }
+    //public int[,] GenerateStageGround()
+    //{
+    //    return stageGround;
+    //}
+    #endregion
 }

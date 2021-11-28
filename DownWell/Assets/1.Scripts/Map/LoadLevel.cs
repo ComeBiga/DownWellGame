@@ -15,6 +15,8 @@ public class LoadLevel : MonoBehaviour
     }
     #endregion
 
+    public Stage loadStage = Stage.Stage1;
+
     public Dictionary<int, List<Level>> levels = new Dictionary<int, List<Level>>();
     public Dictionary<string, List<Level>> objects = new Dictionary<string, List<Level>>();
     //public List<int[]> levels = new List<int[]>();
@@ -149,5 +151,17 @@ public class LoadLevel : MonoBehaviour
     T JsonToLevel<T>(string jsonData)
     {
         return JsonUtility.FromJson<T>(jsonData);
+    }
+
+    public Level RandomLevel(Stage stage)
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        List<Level> levels = GetLevels(stage);
+        //Debug.Log(levels.Count);
+        Level randomWall = levels[rand.Next(0, levels.Count)];
+
+        return randomWall;
     }
 }

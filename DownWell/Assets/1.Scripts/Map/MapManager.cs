@@ -18,9 +18,12 @@ public class MapManager : MonoBehaviour
     //MapGenerator mapGen;
     MapDisplay mapDisplay;
     LevelGenerator lg;
+    LoadLevel loadLevel;
 
     public int width = 10;
     public int height = 100;
+
+    public Stage currentStage = Stage.Stage1;
 
     int currentYpos = 0;
     public int CurrentYPos { get { return currentYpos; } }
@@ -34,35 +37,39 @@ public class MapManager : MonoBehaviour
         //mapGen = GetComponent<MapGenerator>();
         mapDisplay = GetComponent<MapDisplay>();
         lg = GetComponent<LevelGenerator>();
+        loadLevel = LoadLevel.instance;
 
         StartCoroutine(GenerateMap());
     }
 
-    IEnumerator FirstGenerateMap()
-    {
-        yield return null;
+    //IEnumerator FirstGenerateMap()
+    //{
+    //    yield return null;
 
-        //Tile[,] genMap = mapGen.GenerateMap();
-        //mapDisplay.Display(genMap);
+    //    //Tile[,] genMap = mapGen.GenerateMap();
+    //    //mapDisplay.Display(genMap);
 
-        int[,] genLev = lg.GenerateLevel();
-        int[,] genSgr = lg.GenerateStageGround();
-        mapDisplay.Display(genLev, genSgr);
-        //GameObject newGameObject = new GameObject();
-        //Instantiate(new GameObject());
-    }
+    //    int[,] genLev = lg.GenerateLevel();
+    //    int[,] genSgr = lg.GenerateStageGround();
+    //    mapDisplay.Display(genLev, genSgr);
+    //    //GameObject newGameObject = new GameObject();
+    //    //Instantiate(new GameObject());
+    //}
 
     IEnumerator GenerateMap()
     {
         yield return null;
 
+        // 타일을 다 생성하고 난 후 Y position;
         currentYpos = 0;
 
         for (;(-currentYpos) < height;)
         {
-            currentYpos -= mapDisplay.Display(lg.RandomLevel(Stage.Stage1), currentYpos);
+            // 랜덤으로 불러온 레벨을 현재 y 위치에서 생성
+            currentYpos -= mapDisplay.Display(loadLevel.RandomLevel(currentStage), currentYpos);
         }
 
+        // 스테이지 끝을 생성하는 코드
         List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
         Level stageGround = stageGrounds[0];
 
@@ -73,7 +80,7 @@ public class MapManager : MonoBehaviour
     {
         for (int i = 0; i < times; i++)
         {
-            currentYpos -= mapDisplay.Display(lg.RandomLevel(Stage.Stage1), currentYpos);
+            currentYpos -= mapDisplay.Display(loadLevel.RandomLevel(currentStage), currentYpos);
 
             yield return null;
         }

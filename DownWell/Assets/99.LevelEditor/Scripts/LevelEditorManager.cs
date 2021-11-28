@@ -200,6 +200,7 @@ public class LevelEditorManager : MonoBehaviour
         // bottom edge
         if (y == level.height - 1) bottom = true;
 
+        // 상하좌우를 체크해서 타일이 있으면 해당 위치를 true
         // top check
         if (y - 1 >= 0 && (level.tiles[(y - 1) * level.width + x] == 1 || level.tiles[(y - 1) * level.width + x] > 100)) top = true;
         // right check
@@ -209,6 +210,7 @@ public class LevelEditorManager : MonoBehaviour
         // bottom check
         if (y + 1 < level.height && (level.tiles[(y + 1) * level.width + x] == 1 || level.tiles[(y + 1) * level.width + x] > 100)) bottom = true;
 
+        // 체크한 타일에 맞게 결과 코드를 결정
         // top-left
         if (top == false && right == true && bottom == true && left == false) result = 1;
         // top
