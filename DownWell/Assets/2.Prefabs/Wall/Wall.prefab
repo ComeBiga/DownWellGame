@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8657821734391149495}
   - component: {fileID: 3114871295044143615}
   - component: {fileID: 2940679338481091560}
+  - component: {fileID: 3704606285999727925}
   m_Layer: 6
   m_Name: Wall
   m_TagString: Wall
@@ -182,3 +183,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: a233656cf4f4e11469cb9558c55ea7a4, type: 2}
+--- !u!114 &3704606285999727925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687051807138975847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b56f809f618fa1498b9462982dfe391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashed: 0
+  useSpriteChange: 0
+  splashedSprite: {fileID: 0}
+  useColorChange: 1
+  splashedColor: {r: 0.011764706, g: 0.7647059, b: 0, a: 1}

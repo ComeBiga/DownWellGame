@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossCombat : MonoBehaviour
 {
     public GameObject projectile;
+    public GameObject mucousMembrane;
     public float shotTime = 3f;
     float curTime = 0f;
 
@@ -13,7 +14,7 @@ public class BossCombat : MonoBehaviour
     System.Action ShootPattern;
 
     string[] normalPatterns = { "ShootNormal" };
-    string[] ragePatterns = { "ShootNormalRage" };
+    string[] ragePatterns = { "ShootNormalRage", "ShootMucousMembrane" };
     string[] currentPatterns;
 
     [Range(0,100)] public int healthRatioRageMode = 60;
@@ -102,5 +103,16 @@ public class BossCombat : MonoBehaviour
         shotProjectile2.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile2.GetComponent<BossProjectile>().RotateDirection(-sideProjectileAngle);
         shotProjectile2.GetComponent<BossProjectile>().MoveToTarget();
+    }
+
+    void ShootMucousMembrane()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        var dir = (target.position - transform.position).normalized;
+
+        var shotProjectile = Instantiate(mucousMembrane, transform.position, Quaternion.identity);
+        //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
+        shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
+        shotProjectile.GetComponent<BossProjectile>().MoveToTarget();
     }
 }

@@ -7,11 +7,13 @@ public class BossProjectile : MonoBehaviour
 
     public int damage = 1;
     public float speed = 3f;
+    public float minMoveDistance = 10f;
+    protected float moveDistance = 0;
     Vector2 direction;
 
     ContactFilter2D filter;
 
-    private void Start()
+    protected virtual void Start()
     {
         filter = new ContactFilter2D();
         filter.SetLayerMask(1 << 3);
@@ -19,15 +21,12 @@ public class BossProjectile : MonoBehaviour
 
     private void Update()
     {
-        //transform.position += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
-
         TakeDamage();
     }
 
     public void SetTarget(Transform target)
     {
         direction = (target.position - transform.position).normalized;
-        //StartCoroutine(Move());
     }
 
     public void SetDirection(Vector2 direction)
@@ -39,26 +38,14 @@ public class BossProjectile : MonoBehaviour
     {
         var rotation = Quaternion.Euler(0, 0, angle);
         direction = (rotation * direction).normalized;
-        //StartCoroutine(Move());
     }
 
     public void MoveToTarget()
     {
         GetComponent<Rigidbody2D>().velocity = direction * speed;
-        //StartCoroutine(Move());
     }
 
-    IEnumerator Move()
-    {
-        while(true)
-        {
-            transform.position += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
-
-            yield return null;
-        }
-    }
-
-    void TakeDamage()
+    protected virtual void TakeDamage()
     {
         List<Collider2D> colliders = new List<Collider2D>();
         GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), colliders);

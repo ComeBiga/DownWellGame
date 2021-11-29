@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     bool shootable = true;
     bool shooting = false;
 
+    float normalSpeed;
+    float normalJumpSpeed;
+    float splashedSpeed;
+    float splashedJumpSpeed;
+
     #region EventCallback
     public event System.Action OnGrounded;
     #endregion
@@ -46,6 +51,11 @@ public class PlayerController : MonoBehaviour
         rigidbody.gravityScale = gravity;
 
         CalculateRaySpacing();
+
+        normalSpeed = speed;
+        normalJumpSpeed = jumpSpeed;
+        splashedSpeed = speed * .7f;
+        splashedJumpSpeed = jumpSpeed * .7f;
     }
 
     // Update is called once per frame
@@ -57,6 +67,7 @@ public class PlayerController : MonoBehaviour
         if (rigidbody.velocity.y <= -maxFallSpeed) rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
 
         HorizontalMove();
+        MoveOnSplashed();
 
         CheckGroundForEvent();
         grounded = GroundCollision();
@@ -208,6 +219,32 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void MoveOnSplashed()
+    {
+        for (int i = 0; i < verticalRayCount; i++)
+        {
+            Vector2 rayOrigin = raycastOrigins.bottomLeft;
+            rayOrigin += Vector2.right * (verticalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, .1f, groundLayerMask);
+
+            Debug.DrawRay(rayOrigin, Vector2.down * .1f, Color.red);
+
+            if (hit)
+            {
+                if(hit.transform.GetComponent<BeSplashed>() != null && hit.transform.GetComponent<BeSplashed>().splashed)
+                {
+                    speed = splashedSpeed;
+                    jumpSpeed = splashedJumpSpeed;
+                    return;
+                }
+            }
+        }
+
+        speed = normalSpeed;
+        jumpSpeed = normalJumpSpeed;
+    }
+
+    #region Collision
     public void CheckGroundForEvent()
     {
         if(grounded == false)
@@ -298,4 +335,6 @@ public class PlayerController : MonoBehaviour
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
         horizontalRaySpacing = bounds.size.y / (horizontalRayCount - 1);
     }
+
+    #endregion
 }

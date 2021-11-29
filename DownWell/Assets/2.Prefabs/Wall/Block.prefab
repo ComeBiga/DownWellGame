@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6580076903476137171}
   - component: {fileID: 4451407709733034698}
   - component: {fileID: 1885004240818591605}
+  - component: {fileID: -9119115297297353260}
   m_Layer: 6
   m_Name: Block
   m_TagString: Block
@@ -182,3 +183,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 2aa2763ec01845c41aecc54f10412f02, type: 2}
+--- !u!114 &-9119115297297353260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665563266699775398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b56f809f618fa1498b9462982dfe391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashed: 0
+  useSpriteChange: 0
+  splashedSprite: {fileID: 0}
+  useColorChange: 1
+  splashedColor: {r: 0.011764706, g: 0.7647059, b: 0, a: 1}

@@ -25,7 +25,16 @@ public class Projectile : MonoBehaviour
             if (collider.tag == "Block")
             {
                 GetComponent<Effector>().Generate("Hit");
-                Destroy();
+                Destroy();  // 탄환 제거
+
+                // 점막 제거
+                if (collider.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+                {
+                    collider.transform.GetComponent<BeSplashed>().Rid();
+                    break;
+                }
+
+                // 블럭제거
                 collider.transform.GetComponent<Block>().Destroy();
 
                 break;
@@ -34,7 +43,14 @@ public class Projectile : MonoBehaviour
             if (collider.tag == "Wall")
             {
                 GetComponent<Effector>().Generate("Hit");
-                Destroy();
+                Destroy();  // 탄환 제거
+
+                // 점막 제거
+                if (collider.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+                {
+                    collider.transform.GetComponent<BeSplashed>().Rid();
+                    break;
+                }
             }
 
             if(collider.tag == "Enemy")
