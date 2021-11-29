@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public int coin = 0;
 
-    Boss boss = new Boss();
+    public GameObject boss;
 
     private void Start()
     {
@@ -40,9 +40,6 @@ public class GameManager : MonoBehaviour
         Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
 
         PlayerManager.instance.player = playerPrefab;
-
-
-        boss.GetBoss();
     }
 
     public bool CheckTargetRange(Transform enemy)
@@ -69,7 +66,7 @@ public class GameManager : MonoBehaviour
     public void StageEnd()
     {
         //SceneManager.LoadScene(0);
-        boss.SetBossActive(true);
+        boss.SetActive(true);
         MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
     }
 }

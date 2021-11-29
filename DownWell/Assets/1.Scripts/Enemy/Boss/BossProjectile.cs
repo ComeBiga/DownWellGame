@@ -19,13 +19,43 @@ public class BossProjectile : MonoBehaviour
 
     private void Update()
     {
+        //transform.position += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+
         TakeDamage();
     }
 
     public void SetTarget(Transform target)
     {
         direction = (target.position - transform.position).normalized;
+        //StartCoroutine(Move());
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        this.direction = direction;
+    }
+
+    public void RotateDirection(float angle)
+    {
+        var rotation = Quaternion.Euler(0, 0, angle);
+        direction = (rotation * direction).normalized;
+        //StartCoroutine(Move());
+    }
+
+    public void MoveToTarget()
+    {
         GetComponent<Rigidbody2D>().velocity = direction * speed;
+        //StartCoroutine(Move());
+    }
+
+    IEnumerator Move()
+    {
+        while(true)
+        {
+            transform.position += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+
+            yield return null;
+        }
     }
 
     void TakeDamage()
