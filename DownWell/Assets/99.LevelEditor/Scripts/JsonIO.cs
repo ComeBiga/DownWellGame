@@ -209,7 +209,7 @@ public class JsonIO : MonoBehaviour
     public void DeleteJson(LevelDBInfo levelInfo)
     {
         levelDB.Remove(levelInfo);
-        File.Delete(levelInfo.path);
+        File.Delete(Application.dataPath + levelInfo.path);
         SelectDB(new LevelDBInfo());
 
         LevelEditorManager.instance.SetCanvasActive(false);
