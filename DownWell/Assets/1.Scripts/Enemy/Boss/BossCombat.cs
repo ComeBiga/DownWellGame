@@ -90,22 +90,45 @@ public class BossCombat : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         var dir = (target.position - transform.position).normalized;
 
-        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity, transform);
         //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
         shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile.GetComponent<BossProjectile>().MoveToTarget();
 
-        var shotProjectile1 = Instantiate(projectile, transform.position, Quaternion.identity);
+        var shotProjectile1 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
         //shotProjectile1.GetComponent<BossProjectile>().SetTarget(target);
         shotProjectile1.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile1.GetComponent<BossProjectile>().RotateDirection(sideProjectileAngle);
         shotProjectile1.GetComponent<BossProjectile>().MoveToTarget();
 
-        var shotProjectile2 = Instantiate(projectile, transform.position, Quaternion.identity);
+        var shotProjectile2 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
         //shotProjectile2.GetComponent<BossProjectile>().SetTarget(target);
         shotProjectile2.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile2.GetComponent<BossProjectile>().RotateDirection(-sideProjectileAngle);
         shotProjectile2.GetComponent<BossProjectile>().MoveToTarget();
+    }
+
+    void ShootNormalRageByTransform()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        var dir = (target.position - transform.position).normalized;
+
+        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+        //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
+        shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
+        shotProjectile.GetComponent<BossProjectile>().MoveToTargetByTransform();
+
+        var shotProjectile1 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+        //shotProjectile1.GetComponent<BossProjectile>().SetTarget(target);
+        shotProjectile1.GetComponent<BossProjectile>().SetDirection(dir);
+        shotProjectile1.GetComponent<BossProjectile>().RotateDirection(sideProjectileAngle);
+        shotProjectile1.GetComponent<BossProjectile>().MoveToTargetByTransform();
+
+        var shotProjectile2 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+        //shotProjectile2.GetComponent<BossProjectile>().SetTarget(target);
+        shotProjectile2.GetComponent<BossProjectile>().SetDirection(dir);
+        shotProjectile2.GetComponent<BossProjectile>().RotateDirection(-sideProjectileAngle);
+        shotProjectile2.GetComponent<BossProjectile>().MoveToTargetByTransform();
     }
 
     void ShootMucousMembrane()
@@ -117,5 +140,38 @@ public class BossCombat : MonoBehaviour
         //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
         shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile.GetComponent<BossProjectile>().MoveToTarget();
+    }
+
+    void BoxingAttack()
+    {
+        var hitBox = transform.GetChild(0);
+
+        hitBox.gameObject.SetActive(true);
+
+        StartCoroutine(EndBoxingAttack(hitBox));
+    }
+
+    IEnumerator EndBoxingAttack(Transform hitbox)
+    {
+        var pFilter = new ContactFilter2D();
+        pFilter.layerMask = LayerMask.NameToLayer("Player");
+        pFilter.useLayerMask = false;
+        Debug.Log(LayerMask.LayerToName(pFilter.layerMask));
+        var colliders = new List<Collider2D>();
+
+        hitbox.GetComponent<BoxCollider2D>().OverlapCollider(pFilter, colliders);
+
+        if(colliders.Count > 0)
+        {
+            foreach(var collider in colliders)
+            {
+                if(collider.tag == "Player")
+                    collider.GetComponent<PlayerCombat>().Damaged(hitbox);
+            }
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        hitbox.gameObject.SetActive(false);
     }
 }

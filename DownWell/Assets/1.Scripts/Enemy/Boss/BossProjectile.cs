@@ -45,6 +45,21 @@ public class BossProjectile : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 
+    public void MoveToTargetByTransform()
+    {
+        StartCoroutine(MoveByTransform());
+    }
+
+    IEnumerator MoveByTransform()
+    {
+        while(true)
+        {
+            transform.localPosition += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
     protected virtual void TakeDamage()
     {
         List<Collider2D> colliders = new List<Collider2D>();

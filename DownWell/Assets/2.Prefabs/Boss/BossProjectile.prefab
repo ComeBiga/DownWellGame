@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 10
+  minMoveDistance: 10
 --- !u!114 &-1515474970611561407
 MonoBehaviour:
   m_ObjectHideFlags: 0
