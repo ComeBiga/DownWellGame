@@ -10,6 +10,7 @@ public class SmoothFollow : MonoBehaviour
 
     public bool followActive = true;
 
+    public bool followCharacter = true;
     public float scrollSpeed = 3f;
     public bool bossScroll = false;
     Vector3 scrollTarget;
@@ -40,7 +41,13 @@ public class SmoothFollow : MonoBehaviour
          transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
 
         if (bossScroll)
-            CameraScroll();
+        {
+            if (followCharacter)
+                CameraScrollFollowCharacter();
+            else
+                CameraScrollOnly();
+        }
+            
     }
 
     public void InitFollowCamera(Transform playerPos)
@@ -63,7 +70,15 @@ public class SmoothFollow : MonoBehaviour
         scrollTarget = new Vector3(0, target.transform.position.y, 0);
     }
 
-    public void CameraScroll()
+    void CameraScrollOnly()
+    {
+        var Yscroll = Vector3.down * scrollSpeed * Time.fixedDeltaTime;
+        scrollTarget += Yscroll;
+
+        transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, scrollTarget + offset, Time.fixedDeltaTime * smooth).y, transform.position.z);
+    }
+
+    public void CameraScrollFollowCharacter()
     {
         //var Yfollow = Vector3.down * (transform.position.y - Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y);
         //Yfollow = (transform.position.y > target.position.y) ? Yfollow : Vector3.zero;
