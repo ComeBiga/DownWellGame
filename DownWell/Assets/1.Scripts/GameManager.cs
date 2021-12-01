@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         //SceneManager.LoadScene(0);
         boss.SetActive(true);
+        Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
         MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
     }
 }

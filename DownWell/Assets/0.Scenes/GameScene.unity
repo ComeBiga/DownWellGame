@@ -1805,6 +1805,8 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: -10}
   smooth: 15
   followActive: 1
+  scrollSpeed: 1
+  bossScroll: 0
   offset_End: -5
 --- !u!20 &519420031
 Camera:
@@ -4691,7 +4693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 11
-  height: 200
+  height: 11
   currentStage: 0
   reGenerateOffset: 20
 --- !u!114 &1215072951

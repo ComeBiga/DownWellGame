@@ -172,15 +172,15 @@ MonoBehaviour:
   - filename: S1_47
     stage: 1
     path: /Resources/Levels/Stage1/S1_47.json
+  - filename: StageGround
+    stage: 6
+    path: /Resources/Levels/StageGround/stageGround_0.json
   - filename: S1_48
     stage: 1
     path: /Resources/Levels/Stage1/S1_48.json
   - filename: S1_49
     stage: 1
     path: /Resources/Levels/Stage1/S1_49.json
-  - filename: 
-    stage: 6
-    path: /Resources/Levels/StageGround/stageGround_0.json
   - filename: S1_50
     stage: 1
     path: /Resources/Levels/Stage1/S1_50.json
@@ -193,9 +193,3 @@ MonoBehaviour:
   - filename: S3_1
     stage: 3
     path: /Resources/Levels/Stage3/S3_1.json
-  - filename: S3_2
-    stage: 3
-    path: /Resources/Levels/Stage3/S3_2.json
-  - filename: S3_3
-    stage: 3
-    path: /Resources/Levels/Stage3/S3_3.json
