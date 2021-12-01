@@ -45,9 +45,9 @@ public class PlayerHealth : MonoBehaviour
         //if (additionalHP > 0) addHP += additionalHP;
     }
 
-    public void LoseHealth()
+    public void LoseHealth(int amount = 1)
     {
-        currentHealth--;
+        currentHealth -= amount;
         Debug.Log("Lose hp");
 
         if(OnChangedHealth != null) OnChangedHealth.Invoke();

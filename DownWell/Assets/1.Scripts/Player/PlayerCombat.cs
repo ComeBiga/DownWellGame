@@ -7,6 +7,7 @@ public class PlayerCombat : MonoBehaviour
 {
     Rigidbody2D rigidbody;
     PlayerController controller;
+    PlayerHealth health;
 
     [Header("Shoot")]
     public GameObject projectile;
@@ -28,6 +29,7 @@ public class PlayerCombat : MonoBehaviour
     Collider2D[] enemyColliders;
 
     [Header("Damaged")]
+    public bool useLoseHealth = false;
     public float leapSpeed;
     public Vector2 knuckBackSpeed;
     public float knuckBackDistance;
@@ -42,6 +44,7 @@ public class PlayerCombat : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         controller = GetComponent<PlayerController>();
+        health = GetComponent<PlayerHealth>();
 
         shotTimer = shotDelay;
 
@@ -112,6 +115,8 @@ public class PlayerCombat : MonoBehaviour
     public void Damaged(Transform enemy)
     {
         if (isInvincible) return;
+
+        if(useLoseHealth) health.LoseHealth();
 
         KnuckBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
 
