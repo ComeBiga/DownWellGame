@@ -23,6 +23,7 @@ public class ItemManager : MonoBehaviour
     [HideInInspector]
     public string curItem = "";
 
+    public GameObject bubble;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class ItemManager : MonoBehaviour
 
     public void ItemSocket(GameObject getitem)
     {
+        if (getitem.name == "Item(Clone)") return;
         itemImage.sprite = getitem.GetComponent<SpriteRenderer>().sprite;
         curItem = getitem.name;
         itemImage.enabled = true;
@@ -42,10 +44,22 @@ public class ItemManager : MonoBehaviour
     public void UseItem()
     {
         itemImage.enabled = false;
-        if (curItem == "Bubble(Clone)")
+
+        switch (curItem)
         {
-            playercombat.useLoseHealth = false;
-            playercombat.invincibleTime = 1f;
+            case "Bubble(Clone)":
+                Instantiate(bubble, transform.position, Quaternion.identity, this.gameObject.transform);
+                playercombat.useLoseHealth = false;
+                playercombat.invincibleTime = 1f;
+                Invoke("DestroyObj", playercombat.invincibleTime);
+                break;
         }
+
+        curItem = "";
+    }
+
+    void DestroyObj()
+    {
+        Destroy(this.gameObject.transform.GetChild(3).gameObject);
     }
 }

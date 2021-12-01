@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originInvincibleTime: 0
   curItem: 
+  bubble: {fileID: 1491836226527178917, guid: be13bce07010a9b428f096fe7ba1c1d1, type: 3}
 --- !u!1 &9199056338382792220
 GameObject:
   m_ObjectHideFlags: 0
