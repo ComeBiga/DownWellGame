@@ -58,6 +58,6 @@ public class JellyWormMovement : JellyManMovement
     {
         jumping = false;
         dir *= -1;
-        Debug.Log("Land");
+        //Debug.Log("Land");
     }
 }

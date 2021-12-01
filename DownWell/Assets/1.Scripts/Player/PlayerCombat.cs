@@ -142,13 +142,15 @@ public class PlayerCombat : MonoBehaviour
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed.y);
         //rigidbody.AddForce(new Vector2(0, speed), ForceMode2D.Impulse);
         StartCoroutine(AddForceTransform(speed.x, direction, distance));
-        controller.cantMove = true;
+        
     }
 
     IEnumerator AddForceTransform(float knuckBackSpeed, int direction, float distance)
     {
         InputManager.instance.blockInput = true;
         float dis = 0;
+
+        controller.cantMove = true;
 
         while (true)
         {

@@ -334,6 +334,7 @@ MonoBehaviour:
   stepUpSpeed: 7
   unshootableTime: 0.5
   shootable: 1
+  useLoseHealth: 0
   leapSpeed: 7
   knuckBackSpeed: {x: 3, y: 5}
   knuckBackDistance: 1

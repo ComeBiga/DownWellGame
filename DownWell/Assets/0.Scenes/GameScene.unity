@@ -1805,6 +1805,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: -10}
   smooth: 15
   followActive: 1
+  followCharacter: 1
   scrollSpeed: 1
   bossScroll: 0
   offset_End: -5
@@ -4652,6 +4653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 474134045}
   offset: {x: 0, y: 0, z: 0}
+  blockRatio: 100
+  enemyRatio: 0
   wallObjects:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
@@ -4693,7 +4696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 11
-  height: 11
+  height: 200
   currentStage: 0
   reGenerateOffset: 20
 --- !u!114 &1215072951
@@ -5633,7 +5636,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1455221137
 PrefabInstance:
@@ -5783,6 +5786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475212149}
   - component: {fileID: 1475212150}
+  - component: {fileID: 1475212153}
   - component: {fileID: 1475212152}
   - component: {fileID: 1475212151}
   m_Layer: 0
@@ -5800,7 +5804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475212148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.82, z: 10}
+  m_LocalPosition: {x: -0.5, y: 10, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -5843,10 +5847,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 146973773
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84f790102071d3746800a7c4b01d93c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 490810638c5cc4b459d18835ec1d1b04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5869,6 +5873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a886658f6c54348987e47028b4d44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
   projectile: {fileID: 5878161903101301907, guid: ea41c8d8d83fa2d408958a55eb95fe83, type: 3}
   mucousMembrane: {fileID: 6180995892431118728, guid: b159ad9302dcd50458b17970a9ab2352, type: 3}
   shotTime: 3
@@ -5888,6 +5893,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   maxHealth: 100
+--- !u!61 &1475212153
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475212148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16, y: 8}
+    newSize: {x: 256, y: 256}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 16, y: 8}
+  m_EdgeRadius: 0
 --- !u!1001 &1480948373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6548,6 +6579,7 @@ GameObject:
   - component: {fileID: 1700652125}
   - component: {fileID: 1700652127}
   - component: {fileID: 1700652128}
+  - component: {fileID: 1700652129}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6579,12 +6611,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700652124}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1700652127
 MonoBehaviour:
@@ -6616,6 +6648,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec947723ee0cfa47af0d44977b16656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1700652129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700652124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01057ebe1d6dd42449b2cefe5ad7ea1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 1475212148}
+  bossAppearDistance: 2
+  appearSpeed: 1
 --- !u!1 &1704033169
 GameObject:
   m_ObjectHideFlags: 0

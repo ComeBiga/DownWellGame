@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossCombat : MonoBehaviour
 {
+    public bool active = false;
+
     public GameObject projectile;
     public GameObject mucousMembrane;
     public float shotTime = 3f;
@@ -13,8 +15,8 @@ public class BossCombat : MonoBehaviour
 
     System.Action ShootPattern;
 
-    string[] normalPatterns = { "ShootNormal" };
-    string[] ragePatterns = { "ShootNormalRage", "ShootMucousMembrane" };
+    [SerializeField] string[] normalPatterns = { "ShootNormal" };
+    [SerializeField] string[] ragePatterns = { "ShootNormalRage", "ShootMucousMembrane" };
     string[] currentPatterns;
 
     [Range(0,100)] public int healthRatioRageMode = 60;
@@ -28,7 +30,8 @@ public class BossCombat : MonoBehaviour
 
     private void Update()
     {
-        Shoot();
+        if(active)
+            Shoot();
 
         if(GetComponent<Boss>().BecomeRageMode(healthRatioRageMode))
         {

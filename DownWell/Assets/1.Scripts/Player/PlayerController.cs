@@ -174,6 +174,8 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        if (cantMove) return;
+
 #if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
         {

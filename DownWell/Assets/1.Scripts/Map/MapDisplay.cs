@@ -8,6 +8,13 @@ public class MapDisplay : MonoBehaviour
 
     public Transform parent;
     public Vector3 offset;
+
+    [Header("Ratio")]
+    [Range(0, 100)]
+    public int blockRatio = 100;
+    public int enemyRatio = 100;
+
+    [Header("Objects")]
     public List<GameObject> wallObjects;
     public List<Sprite> wallSprites;
     public List<GameObject> enemyObjects;
@@ -42,6 +49,7 @@ public class MapDisplay : MonoBehaviour
 
     public int Display(Level level, int Ypos)
     {
+        // Wall
         for (int y = 0; y < level.height; y++)
         {
             for (int x = 0; x < mapManager.width; x++)
@@ -71,6 +79,7 @@ public class MapDisplay : MonoBehaviour
             }
         }
 
+        // Enemy
         for (int y = 0; y < level.height; y++)
         {
             for (int x = 0; x < mapManager.width; x++)
@@ -81,8 +90,14 @@ public class MapDisplay : MonoBehaviour
 
                 if (currentTile > 2000 && currentTile <= 3000)
                 {
-                    var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == currentTile);
-                    Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
+                    string seed = (Time.time + Random.value).ToString();
+                    System.Random rand = new System.Random(seed.GetHashCode());
+
+                    if (rand.Next(0, 100) < enemyRatio)
+                    {
+                        var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == currentTile);
+                        Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
+                    }
                 }
             }
         }
