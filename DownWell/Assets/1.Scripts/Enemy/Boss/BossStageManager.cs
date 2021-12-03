@@ -39,7 +39,8 @@ public class BossStageManager : MonoBehaviour
         boss.SetActive(true);
         //SetBossAppearPos();
         StartCoroutine(AppearAnimation());
-        
+        Camera.main.GetComponent<CameraShake>().Shake(.02f, 1f, true);
+
         MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
     }
 
