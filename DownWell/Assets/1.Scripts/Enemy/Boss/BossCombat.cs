@@ -177,8 +177,32 @@ public class BossCombat : MonoBehaviour
             yield return null;
         }
 
-        Invoke("Shootable", 3f);
+        //Invoke("Shootable", 3f);
         var boxObject = Instantiate(boxAttack, transform);
+        //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
+    }
+
+    public void EndBoxingAttack()
+    {
+        StartCoroutine(IEndBoxing());
+    }
+
+    IEnumerator IEndBoxing()
+    {
+        while (true)
+        {
+            if (Mathf.Approximately(transform.position.x, 0))
+                break;
+
+            var xPos = Mathf.MoveTowards(transform.position.x, 0, Time.deltaTime * 2);
+            transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+
+            yield return null;
+        }
+
+        shootable = true;
+        //Invoke("Shootable", 3f);
+        //var boxObject = Instantiate(boxAttack, transform);
         //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
     }
 }

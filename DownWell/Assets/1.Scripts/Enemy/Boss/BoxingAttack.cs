@@ -36,8 +36,14 @@ public class BoxingAttack : MonoBehaviour
         }
     }
 
+    void EndAttack()
+    {
+        GetComponentInParent<BossCombat>().EndBoxingAttack();
+    }
+
     void Destory()
     {
+        EndAttack();
         Destroy(this.gameObject);
     }
 }
