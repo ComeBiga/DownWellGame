@@ -130,8 +130,10 @@ public class JsonIO : MonoBehaviour
                 string jsonStr = File.ReadAllText(dir);
                 var lvs = JsonToLevel<Level>(jsonStr);
 
+                LevelEditorManager.instance.DesignateTileCorner(lvs);
+
                 newDB.filename = lvs.name;
-                newDB.stage = (Stage)(i + 1);
+                newDB.stage = (Stage)i;
 
                 SaveIntoDatabase(newDB);
             }
