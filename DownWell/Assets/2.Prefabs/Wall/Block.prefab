@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1511073773
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec802af810c4b224a9a046568b77317b, type: 3}
+  m_Sprite: {fileID: -6544076422255163248, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,6 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashed: 0
+  ridCount: 5
+  currentRidCount: 0
   useSpriteChange: 0
   splashedSprite: {fileID: 0}
   useColorChange: 1
