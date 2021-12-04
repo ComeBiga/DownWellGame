@@ -11,10 +11,11 @@ public class HealthBar : MonoBehaviour
     GameObject HpChild;
 
     bool settingStop;
+    bool gameStart;
 
     void Start()
     {
-        
+        gameStart = true;    
     }
 
     void Update()
@@ -26,16 +27,26 @@ public class HealthBar : MonoBehaviour
 
     void heartSetting()
     {
-        for (int i = 0; i < PlayerManager.instance.player.GetComponent<PlayerHealth>().MaxHealth; i++)
+        if(gameStart)
         {
-            HpChild = Instantiate(heart, hp.transform.position, Quaternion.identity, hp.transform);
+            for (int i = 0; i < PlayerManager.instance.player.GetComponent<PlayerHealth>().MaxHealth; i++)
+            {
+                HpChild = Instantiate(heart, hp.transform.position, Quaternion.identity, hp.transform);
+            }
+            gameStart = false;
         }
+        
+        if(PlayerManager.instance.player.GetComponent<PlayerHealth>().CurrentHealth - hp.transform.childCount < 0)
+            Destroy(hp.transform.GetChild(0).gameObject);
+        else if(PlayerManager.instance.player.GetComponent<PlayerHealth>().CurrentHealth - hp.transform.childCount > 0)
+            HpChild = Instantiate(heart, hp.transform.position, Quaternion.identity, hp.transform);
+        
         settingStop = true;
     }
 
     public void UpdateBar()
     {
-        Destroy(hp.transform.GetChild(0).gameObject);
+        settingStop = false;
     }
 
     public void PlayerHealthEvent()

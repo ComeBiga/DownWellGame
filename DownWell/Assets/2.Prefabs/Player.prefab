@@ -414,7 +414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685e0e424a651a14282fba13eaadb859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
   originInvincibleTime: 0
+>>>>>>> e4284d82d190c5475bedba456f4f93a63b508559
   curItem: 
   bubble: {fileID: 1491836226527178917, guid: be13bce07010a9b428f096fe7ba1c1d1, type: 3}
 --- !u!1 &9199056338382792220

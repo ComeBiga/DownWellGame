@@ -22,6 +22,8 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+<<<<<<< HEAD
+=======
         value: 0
         inSlope: 0
         outSlope: 0
@@ -31,6 +33,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
+>>>>>>> e4284d82d190c5475bedba456f4f93a63b508559
         value: 1
         inSlope: 0
         outSlope: 0
@@ -96,6 +99,8 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+<<<<<<< HEAD
+=======
         value: 0
         inSlope: 0
         outSlope: 0
@@ -105,6 +110,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
+>>>>>>> e4284d82d190c5475bedba456f4f93a63b508559
         value: 1
         inSlope: 0
         outSlope: 0

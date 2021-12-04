@@ -17,3 +17,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: d229b6b100d1d3a4195c279f87b4f4ad, type: 3}
   score: 20
   chacePercent: 15
+  immediately: 1

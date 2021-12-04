@@ -16,4 +16,9 @@ MonoBehaviour:
   name: ProtectBubble
   sprite: {fileID: 21300000, guid: 83c439c75ea600c43850de55cdfc66a9, type: 3}
   score: 0
+<<<<<<< HEAD
+  chacePercent: 5
+  immediately: 0
+=======
   chacePercent: 100
+>>>>>>> e4284d82d190c5475bedba456f4f93a63b508559

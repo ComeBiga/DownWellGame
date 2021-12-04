@@ -177,7 +177,10 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(invincibleTime);
 
         isInvincible = false;
+<<<<<<< HEAD
+=======
         invincibleTime = ItemManager.instance.originInvincibleTime;
+>>>>>>> e4284d82d190c5475bedba456f4f93a63b508559
 
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }

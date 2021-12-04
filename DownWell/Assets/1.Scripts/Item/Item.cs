@@ -51,7 +51,14 @@ public class Item : MonoBehaviour
                 // coin up
                 GameManager.instance.GainCoin();
                 //Score.instance.getScore(this.gameObject);
+<<<<<<< HEAD
+                if (i_Info.immediately)
+                    ItemManager.instance.ImmediatelyUseItem(this.gameObject);
+                else
+                    ItemManager.instance.ItemSocket(this.gameObject);
+=======
                 ItemManager.instance.ItemSocket(this.gameObject);
+>>>>>>> e4284d82d190c5475bedba456f4f93a63b508559
                 Destroy(this.gameObject);
                 // coin get sound
                 //SoundManager.instance.PlayEffSound("gun");
