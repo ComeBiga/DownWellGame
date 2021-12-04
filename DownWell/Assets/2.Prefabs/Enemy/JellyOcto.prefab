@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2054867273042110008}
   - component: {fileID: 6282653931484027159}
   - component: {fileID: 3898033097261231818}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: JellyOcto
   m_TagString: Enemy
   m_Icon: {fileID: 0}
