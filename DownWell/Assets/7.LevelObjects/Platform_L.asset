@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 448642e29d0049349823a3dc92adfdfb, type: 3}
-  m_Name: Platform
+  m_Name: Platform_L
   m_EditorClassIdentifier: 
-  code: 3
-  name: Platform
-  sprite: {fileID: 1509607539823229551, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  code: 5
+  name: Platform_L
+  sprite: {fileID: -692278537203691343, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   score: 0
