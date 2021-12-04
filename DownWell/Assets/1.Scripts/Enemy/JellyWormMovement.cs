@@ -40,15 +40,23 @@ public class JellyWormMovement : JellyManMovement
 
             if(timer > changeTime)
             {
-                Jump();
+                GetComponent<Animator>().SetTrigger("Attack");
+                //Jump();
                 timer = 0;
             }
 
             MoveAsCollision();
         }
+
+        Animation();
     }
 
-    void Jump()
+    void Animation()
+    {
+        GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+    }
+
+    public void Jump()
     {
         jumping = true;
         rigidbody.velocity = new Vector2(0, jumpSpeed);

@@ -13,6 +13,7 @@ public class JellyPooMovement : EnemyMovement
     public float dashTime = 1f;
     float timer = 0;
 
+    public bool sensed = false;
     bool dashing = false;
     int dashDir = 0;
     
@@ -33,8 +34,14 @@ public class JellyPooMovement : EnemyMovement
     {
         if (!GameManager.instance.CheckTargetRange(transform)) return;
 
-        if (dashing) Dash();
-        else SenseTarget();
+        if(!sensed) SenseTarget();
+
+        Animation();
+    }
+
+    void Animation()
+    {
+        GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
     }
 
     void SenseTarget()
@@ -45,22 +52,40 @@ public class JellyPooMovement : EnemyMovement
         if (count > 0)
         {
             dashDir = (target[0].transform.position.x - transform.position.x < 0) ? -1 : 1;
-            dashing = true;
+            GetComponent<Animator>().SetTrigger("Attack");
+            sensed = true;
         }
-        else
-            dashing = false;
     }
 
-    void Dash()
+    public void Dash()
     {
-        rigidbody.velocity = new Vector2(speed * dashDir, rigidbody.velocity.y);
+        //rigidbody.velocity = new Vector2(speed * dashDir, rigidbody.velocity.y);
 
+        //Invoke("CoolDown", dashTime);
+        StartCoroutine(DashCoroutine());
+    }
+    
+    IEnumerator DashCoroutine()
+    {
         Invoke("CoolDown", dashTime);
+
+        while (true)
+        {
+            if (!sensed) break;
+
+            rigidbody.velocity = new Vector2(speed * dashDir, rigidbody.velocity.y);
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     void CoolDown()
     {
+        Debug.Log("CoolDown");
         rigidbody.velocity = new Vector2(0, rigidbody.velocity.y);
-        dashing = false;
+        sensed = false;
+
+        GetComponent<Animator>().SetTrigger("Idle");
+        //dashing = false;
     }
 }
