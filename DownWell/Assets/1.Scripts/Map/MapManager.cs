@@ -63,6 +63,10 @@ public class MapManager : MonoBehaviour
         // 타일을 다 생성하고 난 후 Y position;
         currentYpos = 0;
 
+        List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
+        Level stageStart = stageStarts[0];
+        currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+
         for (;(-currentYpos) < height;)
         {
             // 랜덤으로 불러온 레벨을 현재 y 위치에서 생성

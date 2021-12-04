@@ -54,9 +54,9 @@ public class JsonIO : MonoBehaviour
     // Create Save
     public void SaveToJson()
     {
-        var jsonStr = LevelToJson();
-
         var path = "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json";
+
+        var jsonStr = LevelToJson(fileName);
 
         File.WriteAllText(Application.dataPath + path, jsonStr);
 
@@ -68,9 +68,10 @@ public class JsonIO : MonoBehaviour
     // Auto Save
     public void SaveToJson(LevelDBInfo levelInfo)
     {
-        var jsonStr = LevelToJson(Application.dataPath + levelInfo.path);
-
         var path = Application.dataPath + levelInfo.path;
+
+        var fileName = new DirectoryInfo(path).Name;
+        var jsonStr = LevelToJson(fileName.Replace(".json", ""));
 
         File.WriteAllText(path, jsonStr);
 
@@ -79,13 +80,12 @@ public class JsonIO : MonoBehaviour
         Debug.Log("Saved(" + levelInfo.filename + ")");
     }
 
-    string LevelToJson(string path = "")
+    string LevelToJson(string fileName = "")
     {
         Level level = new Level();
         level.tiles = new int[LevelEditorManager.instance.tiles.Count];
 
-        var fileName = new DirectoryInfo(path).Name;
-        level.name = fileName.Replace(".json", "");
+        level.name = fileName;
 
         for (int i = 0; i < level.tiles.Length; i++)
             level.tiles[i] = (int)LevelEditorManager.instance.tiles[i].GetComponent<TileInfo>().tileCode;
@@ -140,6 +140,24 @@ public class JsonIO : MonoBehaviour
 
                 SaveIntoDatabase(newDB);
             }
+        }
+        
+        // StageStart
+        directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageStart/", "*.json");
+        lvList = new List<Level>();
+
+        foreach (var dir in directories)
+        {
+            LevelDBInfo newDB = new LevelDBInfo();
+            newDB.path = dir.Replace(Application.dataPath, "");
+
+            string jsonStr = File.ReadAllText(dir);
+            var lvs = JsonToLevel<Level>(jsonStr);
+
+            newDB.filename = lvs.name;
+            newDB.stage = Stage.StageGround;
+
+            SaveIntoDatabase(newDB);
         }
 
         // StageGround

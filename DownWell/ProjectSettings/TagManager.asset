@@ -12,6 +12,7 @@ TagManager:
   - CoinMag
   - Item
   - Boss
+  - StageStart
   layers:
   - Default
   - TransparentFX

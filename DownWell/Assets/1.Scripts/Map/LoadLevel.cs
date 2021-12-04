@@ -29,6 +29,7 @@ public class LoadLevel : MonoBehaviour
         LoadAllLevel();
         LoadBlockObjects();
         LoadStageGround();
+        LoadStageStart();
     }
 
     public List<Level> GetLevels(Stage stage)
@@ -112,6 +113,39 @@ public class LoadLevel : MonoBehaviour
         }
 
         objects.Add("Block", objList);
+#endif
+    }
+
+    public void LoadStageStart()
+    {
+        List<Level> objList = new List<Level>();
+
+#if UNITY_EDITOR
+        string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageStart/", "*.json");
+
+        foreach (var dir in directories)
+        {
+            string jsonStr = File.ReadAllText(dir);
+            var obj = JsonToLevel<Level>(jsonStr);
+
+            objList.Add(obj);
+
+            //Debug.Log(JsonUtility.ToJson(obj));
+        }
+
+        objects.Add("StageStart", objList);
+#elif UNITY_ANDROID
+        var textDatas = Resources.LoadAll("Levels/StageStart", typeof(TextAsset));
+
+        foreach (var textData in textDatas)
+        {
+            Debug.Log(textData.ToString());
+            var obj = JsonToLevel<Level>(textData.ToString());
+
+            objList.Add(obj);
+        }
+
+        objects.Add("StageStart", objList);
 #endif
     }
 
