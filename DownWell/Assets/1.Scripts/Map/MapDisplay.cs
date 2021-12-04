@@ -12,6 +12,7 @@ public class MapDisplay : MonoBehaviour
     [Header("Ratio")]
     [Range(0, 100)]
     public int blockRatio = 100;
+    [Range(0, 100)]
     public int enemyRatio = 100;
 
     [Header("Objects")]

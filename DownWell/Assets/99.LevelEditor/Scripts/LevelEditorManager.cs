@@ -202,13 +202,17 @@ public class LevelEditorManager : MonoBehaviour
 
         // 상하좌우를 체크해서 타일이 있으면 해당 위치를 true
         // top check
-        if (y - 1 >= 0 && (level.tiles[(y - 1) * level.width + x] == 1 || level.tiles[(y - 1) * level.width + x] > 100)) top = true;
+        if (y - 1 >= 0 && (level.tiles[(y - 1) * level.width + x] == 1 || 
+            (level.tiles[(y - 1) * level.width + x] > 100 && level.tiles[(y - 1) * level.width + x] < 1000))) top = true;
         // right check
-        if (x + 1 < level.width && (level.tiles[y * level.width + (x + 1)] == 1 || level.tiles[y * level.width + (x + 1)] > 100)) right = true;
+        if (x + 1 < level.width && (level.tiles[y * level.width + (x + 1)] == 1 ||
+            (level.tiles[y * level.width + (x + 1)] > 100 && level.tiles[y * level.width + (x + 1)] < 1000))) right = true;
         // left check
-        if (x - 1 >= 0 && (level.tiles[y * level.width + (x - 1)] == 1 || level.tiles[y * level.width + (x - 1)] > 100)) left = true;
+        if (x - 1 >= 0 && (level.tiles[y * level.width + (x - 1)] == 1 ||
+            (level.tiles[y * level.width + (x - 1)] > 100 && level.tiles[y * level.width + (x - 1)] < 1000))) left = true;
         // bottom check
-        if (y + 1 < level.height && (level.tiles[(y + 1) * level.width + x] == 1 || level.tiles[(y + 1) * level.width + x] > 100)) bottom = true;
+        if (y + 1 < level.height && (level.tiles[(y + 1) * level.width + x] == 1 ||
+            (level.tiles[(y + 1) * level.width + x] > 100 && level.tiles[(y + 1) * level.width + x] < 1000))) bottom = true;
 
         // 체크한 타일에 맞게 결과 코드를 결정
         // top-left

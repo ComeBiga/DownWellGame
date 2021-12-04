@@ -10,6 +10,7 @@ public class BossCombat : MonoBehaviour
     public GameObject mucousMembrane;
     public float shotTime = 3f;
     float curTime = 0f;
+    bool shootable = true;
 
     Transform target;
 
@@ -21,6 +22,8 @@ public class BossCombat : MonoBehaviour
 
     [Range(0,100)] public int healthRatioRageMode = 60;
     [Range(0, 30)] public float sideProjectileAngle = 15f;
+
+    public GameObject boxAttack;
 
     void Start()
     {
@@ -41,7 +44,8 @@ public class BossCombat : MonoBehaviour
 
     void Shoot()
     {
-        curTime += Time.deltaTime;
+        if(shootable)
+            curTime += Time.deltaTime;
 
         if (curTime > shotTime)
         {
@@ -144,34 +148,61 @@ public class BossCombat : MonoBehaviour
 
     void BoxingAttack()
     {
-        var hitBox = transform.GetChild(0);
+        shootable = false;        
 
-        hitBox.gameObject.SetActive(true);
-
-        StartCoroutine(EndBoxingAttack(hitBox));
+        StartCoroutine(IBoxingAttack());
     }
 
-    IEnumerator EndBoxingAttack(Transform hitbox)
+    void Shootable()
     {
-        var pFilter = new ContactFilter2D();
-        pFilter.layerMask = LayerMask.NameToLayer("Player");
-        pFilter.useLayerMask = false;
-        Debug.Log(LayerMask.LayerToName(pFilter.layerMask));
-        var colliders = new List<Collider2D>();
+        shootable = true;
+    }
 
-        hitbox.GetComponent<BoxCollider2D>().OverlapCollider(pFilter, colliders);
+    IEnumerator IBoxingAttack()
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+        var posIndex = rand.Next(-1, 2) * 2;
+        Debug.Log(posIndex);
+        float dis = 0f;
 
-        if(colliders.Count > 0)
+        while (true)
         {
-            foreach(var collider in colliders)
-            {
-                if(collider.tag == "Player")
-                    collider.GetComponent<PlayerCombat>().Damaged(hitbox);
-            }
+            if (Mathf.Approximately(transform.position.x, posIndex))
+                break;
+
+            var xPos = Mathf.MoveTowards(transform.position.x, posIndex, Time.deltaTime * 2);
+            transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+
+            yield return null;
         }
 
-        yield return new WaitForSeconds(3f);
+        //Invoke("Shootable", 3f);
+        var boxObject = Instantiate(boxAttack, transform);
+        //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
+    }
 
-        hitbox.gameObject.SetActive(false);
+    public void EndBoxingAttack()
+    {
+        StartCoroutine(IEndBoxing());
+    }
+
+    IEnumerator IEndBoxing()
+    {
+        while (true)
+        {
+            if (Mathf.Approximately(transform.position.x, 0))
+                break;
+
+            var xPos = Mathf.MoveTowards(transform.position.x, 0, Time.deltaTime * 2);
+            transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+
+            yield return null;
+        }
+
+        shootable = true;
+        //Invoke("Shootable", 3f);
+        //var boxObject = Instantiate(boxAttack, transform);
+        //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
     }
 }
