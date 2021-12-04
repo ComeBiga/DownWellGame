@@ -19,6 +19,9 @@ public class MapDisplay : MonoBehaviour
     public List<GameObject> wallObjects;
     public List<Sprite> wallSprites;
     public List<GameObject> enemyObjects;
+
+    [Header("Background")]
+    public bool displayBackground = true;
     public GameObject backgroundObject;
     public List<Sprite> background;
 
@@ -52,7 +55,7 @@ public class MapDisplay : MonoBehaviour
 
     public int Display(Level level, int Ypos)
     {
-        DisplayBackGround(level, Ypos);
+        if(displayBackground) DisplayBackGround(level, Ypos);
 
         // Wall
         for (int y = 0; y < level.height; y++)
