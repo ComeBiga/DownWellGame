@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
+    PlayerController controller;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        controller = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -28,12 +30,28 @@ public class PlayerAnimation : MonoBehaviour
 
         Run(h);
 
+        Jump();
+
         SpriteFilpX(h);
     }
 
     void Run(float h)
     {
         anim.SetFloat("Horizontal", h);
+    }
+
+    void Jump()
+    {
+        if (!controller.Grounded) 
+        {
+            anim.SetBool("Grounded", false);
+            anim.SetBool("Jump", true); 
+        }
+        else
+        {
+            anim.SetBool("Grounded", true);
+            anim.SetBool("Jump", false);
+        }
     }
 
     public void Shoot()
