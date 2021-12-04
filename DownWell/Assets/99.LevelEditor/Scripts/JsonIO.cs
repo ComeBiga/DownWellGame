@@ -51,6 +51,7 @@ public class JsonIO : MonoBehaviour
         return levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
     }
 
+    // Create Save
     public void SaveToJson()
     {
         var jsonStr = LevelToJson();
@@ -64,9 +65,10 @@ public class JsonIO : MonoBehaviour
         Debug.Log("Saved(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
     }
 
+    // Auto Save
     public void SaveToJson(LevelDBInfo levelInfo)
     {
-        var jsonStr = LevelToJson();
+        var jsonStr = LevelToJson(Application.dataPath + levelInfo.path);
 
         var path = Application.dataPath + levelInfo.path;
 
@@ -77,12 +79,13 @@ public class JsonIO : MonoBehaviour
         Debug.Log("Saved(" + levelInfo.filename + ")");
     }
 
-    string LevelToJson()
+    string LevelToJson(string path = "")
     {
         Level level = new Level();
         level.tiles = new int[LevelEditorManager.instance.tiles.Count];
 
-        level.name = fileName;
+        var fileName = new DirectoryInfo(path).Name;
+        level.name = fileName.Replace(".json", "");
 
         for (int i = 0; i < level.tiles.Length; i++)
             level.tiles[i] = (int)LevelEditorManager.instance.tiles[i].GetComponent<TileInfo>().tileCode;

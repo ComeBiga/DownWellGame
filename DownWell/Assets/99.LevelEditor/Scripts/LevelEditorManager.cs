@@ -173,7 +173,7 @@ public class LevelEditorManager : MonoBehaviour
         {
             for(int x = 0; x < level.width; x++)
             {
-                if(level.tiles[y * level.width + x] == 1)
+                if(level.tiles[y * level.width + x] == 1 || (level.tiles[y * level.width + x] > 100 && level.tiles[y * level.width + x] < 1000))
                 {
                     var result = TileCorner(level, x, y);
 

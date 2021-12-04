@@ -4659,7 +4659,7 @@ MonoBehaviour:
   parent: {fileID: 474134045}
   offset: {x: 0, y: 0, z: 0}
   blockRatio: 100
-  enemyRatio: 0
+  enemyRatio: 100
   wallObjects:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
