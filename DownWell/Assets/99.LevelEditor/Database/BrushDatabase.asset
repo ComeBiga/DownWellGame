@@ -17,6 +17,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2aa2763ec01845c41aecc54f10412f02, type: 2}
   - {fileID: 11400000, guid: af7daa92dfa12d2479ce27596845bd16, type: 2}
   - {fileID: 11400000, guid: 6d11ee9eb9fde214fb39a557f0f166e5, type: 2}
+  - {fileID: 11400000, guid: 41e999af23195f341b2100e2ce0b0188, type: 2}
+  - {fileID: 11400000, guid: c9551ab6784ba9145a409c8ca02a696a, type: 2}
   enemyBrushes:
   - {fileID: 11400000, guid: 1d7a3b683c5d2b646b628f7fbe730bab, type: 2}
   - {fileID: 11400000, guid: e08c9d90780e27347b5734e150d7dedb, type: 2}
