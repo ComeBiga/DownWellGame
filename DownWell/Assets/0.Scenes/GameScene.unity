@@ -5374,6 +5374,8 @@ MonoBehaviour:
   - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  background2by2: {fileID: 4628502433275044613, guid: 930dc36b68f4e9545b358fbafe8ff385, type: 3}
+  background2by2Ratio: 1
 --- !u!114 &1215072950
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class MapDisplay : MonoBehaviour
     public bool displayBackground = true;
     public GameObject backgroundObject;
     public List<Sprite> background;
+    public GameObject background2by2;
+    public int background2by2Ratio = 10;
 
     public static int enemyCount;
 
@@ -132,13 +134,19 @@ public class MapDisplay : MonoBehaviour
                 string seed = (Time.time + Random.value).ToString();
                 System.Random rand = new System.Random(seed.GetHashCode());
 
-                var randTile = background[rand.Next(0, background.Count)];
+                var randIndex = rand.Next(0, background.Count);
+                var randTile = background[randIndex];
 
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y + Ypos);
 
-                var bgo =  Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
+                var bgo = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
                 bgo.GetComponent<SpriteRenderer>().sprite = randTile;
+
+                if (rand.Next(0, 100) < background2by2Ratio)
+                {
+                    bgo = Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
+                }
             }
         }
     }
