@@ -66,8 +66,17 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         //SceneManager.LoadScene(0);
-        gameoverPanel.SetActive(true);
-        Time.timeScale = 0;
+        Invoke("GameOverPanel", 3f);
+        //gameoverPanel.SetActive(true);
+        //Time.timeScale = 0;
         GameManager.instance.GetComponent<Timer>().EndTimer();
+
+        GetComponent<Effector>().Generate("Die");
+        this.gameObject.SetActive(false);
+    }
+
+    void GameOverPanel()
+    {
+        gameoverPanel.SetActive(true);
     }
 }

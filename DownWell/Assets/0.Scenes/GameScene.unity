@@ -5389,7 +5389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 11
-  height: 11
+  height: 100
   currentStage: 0
   reGenerateOffset: 20
 --- !u!114 &1215072951

@@ -10,7 +10,7 @@ public class Effector : MonoBehaviour
     public void Generate(string name)
     {
         var fx = effects.Find(f => f.name == name);
-        Instantiate(fx.fx, fx.transform.position, Quaternion.identity);
+        if(fx != null) Instantiate(fx.fx, fx.transform.position, Quaternion.identity);
     }
 }
 
