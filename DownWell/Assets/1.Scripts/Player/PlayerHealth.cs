@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
@@ -27,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
 
         gameoverPanel = GameObject.Find("GameOver");
+        gameoverPanel.GetComponent<Image>().enabled = true;
         gameoverPanel.SetActive(false);
     }
 
