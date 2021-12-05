@@ -6,4 +6,5 @@ using UnityEngine;
 public class ItemInfo : LevelObject
 {
     public float chacePercent;
+    public bool immediately;
 }
