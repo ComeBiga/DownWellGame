@@ -13,6 +13,7 @@ TagManager:
   - Item
   - Boss
   - StageStart
+  - Object
   layers:
   - Default
   - TransparentFX
