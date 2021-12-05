@@ -77,6 +77,16 @@ public class MapDisplay : MonoBehaviour
                         wall.GetComponent<SpriteRenderer>().sprite = wallSprites[currentTile - 100];
                     }
                 }
+                else if(currentTile == 9)
+                {
+                    if (BossStageManager.instance.BossStage)
+                    {
+                        var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == currentTile);
+
+                        if (wallObject != null)
+                            Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                    }
+                }
                 else if (currentTile <= 10)
                 {
                     var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == currentTile);

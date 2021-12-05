@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3283359789271922674}
   - component: {fileID: 3283359789271922673}
   - component: {fileID: 3283359789271922637}
+  - component: {fileID: 7941453309764303011}
   - component: {fileID: 3283359789271922672}
   m_Layer: 0
   m_Name: BossAttackObject
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1511073773
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec802af810c4b224a9a046568b77317b, type: 3}
+  m_Sprite: {fileID: 21300220, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,6 +133,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7941453309764303011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283359789271922636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b0e0a2f249977488ddaa1eec38d65b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: 7f0f96eb188dead4b84a847ca7b8e114, type: 2}
 --- !u!114 &3283359789271922672
 MonoBehaviour:
   m_ObjectHideFlags: 0

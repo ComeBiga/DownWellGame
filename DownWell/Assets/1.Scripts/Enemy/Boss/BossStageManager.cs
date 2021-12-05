@@ -26,6 +26,9 @@ public class BossStageManager : MonoBehaviour
     public float bossAppearDistance;
     public float appearSpeed = 1f;
 
+    bool bossStage = false;
+    public bool BossStage { get { return bossStage; } }
+
     //Vector3 bossAppearPos;
 
     private void Start()
@@ -36,6 +39,7 @@ public class BossStageManager : MonoBehaviour
     public void StartBossStage()
     {
         //SceneManager.LoadScene(0);
+        bossStage = true;
         boss.SetActive(true);
         //SetBossAppearPos();
         StartCoroutine(AppearAnimation());
