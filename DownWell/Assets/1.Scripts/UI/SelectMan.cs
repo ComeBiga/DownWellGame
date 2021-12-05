@@ -6,18 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class SelectMan : MonoBehaviour
 {
-    public GameObject character;
-
-    public GameObject rbtn;
-    public GameObject lbtn;
-
     [SerializeField]
     int charMoveSpeed = 20;
+    public GameObject secondChar;
+
+    [Header("Player")]
+    public GameObject character;
+
+    [Header("Buttons")]
+    public GameObject rbtn;
+    public GameObject lbtn;
+    public GameObject selbtn;
 
     bool moveR;
     bool moveL;
 
     int moveX = 0;
+    int distanceNextObj;
 
     public static int charNum = 0;
 
@@ -28,6 +33,7 @@ public class SelectMan : MonoBehaviour
         //lbtn = GameObject.Find("lButton");
 
         charNum = 0;
+        distanceNextObj = (int)secondChar.transform.localPosition.x;
     }
 
     void Update()
@@ -44,7 +50,7 @@ public class SelectMan : MonoBehaviour
             lbtn.GetComponent<Button>().enabled = true;
         }
 
-        if (moveX >= 300)
+        if (moveX >= distanceNextObj)
         {
             moveR = false;
             moveL = false;
@@ -87,12 +93,21 @@ public class SelectMan : MonoBehaviour
 
     void btnVisible()
     {
-        if (charNum == 0)   lbtn.SetActive(false);
-        else if (charNum == 2)  rbtn.SetActive(false);
-        else
+        if (charNum == 0)
+        {
+            lbtn.SetActive(false);
+            selbtn.SetActive(true);
+        }
+        else if (charNum == 1)
         {
             rbtn.SetActive(true);
             lbtn.SetActive(true);
+            selbtn.SetActive(false);
+        }
+        else if (charNum == 2)
+        {
+            rbtn.SetActive(false);
+            selbtn.SetActive(false);
         }
     }
 

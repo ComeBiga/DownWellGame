@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(LevelGenerator))]
 public class MapManager : MonoBehaviour
@@ -66,6 +67,8 @@ public class MapManager : MonoBehaviour
         List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
         Level stageStart = stageStarts[0];
         currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+
+        if (SceneManager.GetActiveScene().name=="StartScene") yield break;
 
         for (;(-currentYpos) < height;)
         {

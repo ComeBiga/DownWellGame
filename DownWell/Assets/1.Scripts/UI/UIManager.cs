@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject startPanel;
     public GameObject charPanel;
 
+    public GameObject player;
+
     public Text versionInfo;
 
     public static bool clickPlay;
@@ -37,5 +39,6 @@ public class UIManager : MonoBehaviour
         clickPlay = true;
         startPanel.SetActive(false);
         charPanel.SetActive(true);
+        player.SetActive(false);
     }
 }
