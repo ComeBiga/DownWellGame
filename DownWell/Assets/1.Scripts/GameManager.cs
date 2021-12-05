@@ -42,25 +42,7 @@ public class GameManager : MonoBehaviour
 
         PlayerManager.instance.player = playerPrefab;
 
-        //StartCoroutine(InstantiatePlayerOnMap());
-    }
-
-    IEnumerator InstantiatePlayerOnMap()
-    {
-        while(true)
-        {
-            var stageStart = GameObject.FindGameObjectWithTag("StageStart");
-
-            if(stageStart != null)
-            {
-                PlayerManager.instance.player.transform.position = stageStart.transform.position;
-                PlayerManager.instance.player.SetActive(true);
-
-                break;
-            }
-
-            yield return null;
-        }
+        GetComponent<Timer>().StartTimer();
     }
 
     public bool CheckTargetRange(Transform enemy)

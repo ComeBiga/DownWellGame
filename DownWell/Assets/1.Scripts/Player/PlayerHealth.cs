@@ -60,6 +60,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene(0);
+        GameManager.instance.GetComponent<Timer>().EndTimer();
+        //SceneManager.LoadScene(0);
     }
 }
