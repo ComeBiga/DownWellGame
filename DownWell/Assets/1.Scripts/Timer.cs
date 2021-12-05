@@ -48,8 +48,8 @@ public class Timer : MonoBehaviour
         if (time_current > -1)
         {
             text_Timer = $"{time_current:N2}";
-            Debug.Log(time_current);
-            Debug.Log(text_Timer);
+            //Debug.Log(time_current);
+            //Debug.Log(text_Timer);
         }
         else if (!isEnded)
         {

@@ -137,13 +137,23 @@ public class BossCombat : MonoBehaviour
 
     void ShootMucousMembrane()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        var dir = (target.position - transform.position).normalized;
+        Collider2D mmBox = transform.GetChild(2).GetComponent<Collider2D>();
+        ContactFilter2D wFilter = new ContactFilter2D();
+        wFilter.layerMask = 1 >> 6;
 
-        var shotProjectile = Instantiate(mucousMembrane, transform.position, Quaternion.identity);
-        //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
-        shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
-        shotProjectile.GetComponent<BossProjectile>().MoveToTarget();
+        List<Collider2D> colliders = new List<Collider2D>();
+        mmBox.OverlapCollider(wFilter, colliders);
+
+        if(colliders.Count > 0)
+        {
+            foreach(var col in colliders)
+            {
+                if(col.GetComponent<BeSplashed>() != null)
+                {
+                    col.GetComponent<BeSplashed>().Splash();
+                }
+            }
+        }
     }
 
     void BoxingAttack()

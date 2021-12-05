@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Health
 {
     int max;
     public int Max { get { return max; } }
 
-    int current;
+    [SerializeField]int current;
     public int Current { get { return current; } }
 
     public Health(int max)
@@ -16,7 +17,7 @@ public class Health
         current = max;
     }
 
-    int Gain(int amount)
+    public int Gain(int amount)
     {
         current += amount;
         current = (current > max) ? max : current;
@@ -24,7 +25,7 @@ public class Health
         return current;
     }
 
-    int lose(int amount)
+    public int Lose(int amount)
     {
         current -= amount;
         current = (current < 0) ? 0 : current;

@@ -59,6 +59,11 @@ public class Projectile : MonoBehaviour
                 Destroy();
                 collider.GetComponent<Enemy>().Damaged(damage);
             }
+
+            if(collider.tag == "Object")
+            {
+                collider.GetComponent<IUseObject>().Use();
+            }
         }
     }
 
