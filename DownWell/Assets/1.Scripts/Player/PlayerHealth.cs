@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇöÀç Ã¼·Â ºñÀ²
+    /// Ã‡Ã¶Ã€Ã§ ÃƒÂ¼Â·Ã‚ ÂºÃ±Ã€Â²
     /// </summary>
     /// <returns>currentHealth / maxHealth</returns>
     public float GetCurrentHealthRatio()
@@ -68,5 +68,6 @@ public class PlayerHealth : MonoBehaviour
         //SceneManager.LoadScene(0);
         gameoverPanel.SetActive(true);
         Time.timeScale = 0;
+        GameManager.instance.GetComponent<Timer>().EndTimer();
     }
 }

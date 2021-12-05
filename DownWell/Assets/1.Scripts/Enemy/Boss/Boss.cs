@@ -10,7 +10,7 @@ public class Boss : MonoBehaviour
     [SerializeField] BossState currentState = BossState.normal;
 
     public int maxHealth = 100;
-    Health health;
+    public Health health;
 
     private void Start()
     {
@@ -44,5 +44,10 @@ public class Boss : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void Damaged(int amount)
+    {
+        health.Lose(amount);
     }
 }
