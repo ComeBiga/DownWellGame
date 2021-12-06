@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
 
     void CollisionCheck()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, GetComponent<CircleCollider2D>().radius);
 
         foreach (var collider in colliders)
         {
@@ -63,6 +63,8 @@ public class Projectile : MonoBehaviour
             if(collider.tag == "Object")
             {
                 collider.GetComponent<IUseObject>().Use();
+                GetComponent<Effector>().Generate("Hit");
+                Destroy();
             }
         }
     }

@@ -6,6 +6,8 @@ public class Block : Wall
 {
     public void Destroy()
     {
+        GetComponent<Effector>().Generate("Destroy");
+
         Destroy(this.gameObject);
     }
 }

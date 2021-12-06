@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
         normalJumpSpeed = jumpSpeed;
         splashedSpeed = speed * .7f;
         splashedJumpSpeed = jumpSpeed * .7f;
+
+        OnGrounded += () => { GetComponent<Effector>().Generate("Land"); };
     }
 
     // Update is called once per frame
@@ -197,6 +199,8 @@ public class PlayerController : MonoBehaviour
             {
                 rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
                 jumping = true;
+
+                GetComponent<Effector>().Generate("Jump");
             }
 
             if (rigidbody.velocity.y > 0 && Input.GetButtonUp("Jump"))

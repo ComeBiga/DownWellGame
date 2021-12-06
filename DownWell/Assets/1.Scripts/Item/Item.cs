@@ -55,6 +55,8 @@ public class Item : MonoBehaviour
                     ItemManager.instance.ImmediatelyUseItem(this.gameObject);
                 else
                     ItemManager.instance.ItemSocket(this.gameObject);
+
+                if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Coin");  //사운드이펙트
                 Destroy(this.gameObject);
                 // coin get sound
                 //SoundManager.instance.PlayEffSound("gun");

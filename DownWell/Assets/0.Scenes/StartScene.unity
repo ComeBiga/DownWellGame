@@ -1645,7 +1645,9 @@ MonoBehaviour:
   charBgmAudioClips:
   - {fileID: 8300000, guid: f6dc8613f4269a944b0c246c621ae6f9, type: 3}
   effAudioClips:
+  - {fileID: 8300000, guid: 20fa32acc44658444a7efad7b0fa3d2c, type: 3}
   - {fileID: 8300000, guid: 22908bab48d645d4d97d3a8f488d81fe, type: 3}
+  - {fileID: 8300000, guid: de2fc0eb2b3802a4e8c003fab9df95a4, type: 3}
 --- !u!4 &321332041
 Transform:
   m_ObjectHideFlags: 0
@@ -4440,8 +4442,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.2
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -10646,9 +10648,11 @@ MonoBehaviour:
   - name: Shoot
     transform: {fileID: 3258785748895415447}
     fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+    angle: 0
   - name: Grounding
     transform: {fileID: 3258785748895415447}
     fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+    angle: 0
 --- !u!212 &1916433157048225160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10958,6 +10962,7 @@ MonoBehaviour:
   - name: Shoot
     transform: {fileID: 3258785748895415447}
     fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+    angle: 0
 --- !u!58 &9008359052732557315
 CircleCollider2D:
   m_ObjectHideFlags: 0

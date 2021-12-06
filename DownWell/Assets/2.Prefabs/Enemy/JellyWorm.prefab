@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e08bc27d83e272f48a809da478c0cf70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fad3833eb95309844948493a374ecdfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,18 +141,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.104408205, y: -0.2800038}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0.22}
+    oldSize: {x: 3, y: 4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 1.06}
+  m_Size: {x: 1.0766162, y: 0.55694234}
   m_EdgeRadius: 0
 --- !u!114 &9088113206692327667
 MonoBehaviour:
@@ -209,4 +209,5 @@ MonoBehaviour:
   effects:
   - name: Die
     transform: {fileID: 9088113206692327665}
-    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+    fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
+    angle: 0

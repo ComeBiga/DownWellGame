@@ -73,7 +73,10 @@ public class SelectMan : MonoBehaviour
     {
         PlayerManager.instance.SelectPlayerCharacter(charNum);
         SoundManager.instance.PlayBGMSound("base");  //사운드 시작
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+
+        AsyncOperation asyncOper = SceneManager.LoadSceneAsync(1);
+        //asyncOper.allowSceneActivation = true;
     }
 
     public void arrowbtn(string arrow)

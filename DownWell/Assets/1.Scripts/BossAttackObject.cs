@@ -49,6 +49,8 @@ public class BossAttackObject : MonoBehaviour, IUseObject
 
     void Destroy()
     {
+        GetComponent<Effector>().Generate("Explode");
+
         Destroy(this.gameObject);
     }
 }

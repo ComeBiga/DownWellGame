@@ -208,4 +208,5 @@ MonoBehaviour:
   effects:
   - name: Die
     transform: {fileID: 2828334627078130588}
-    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+    fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
+    angle: 0

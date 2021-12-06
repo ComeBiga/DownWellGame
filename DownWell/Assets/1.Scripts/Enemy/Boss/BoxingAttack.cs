@@ -32,6 +32,11 @@ public class BoxingAttack : MonoBehaviour
                 {
                     col.GetComponent<PlayerCombat>().Damaged(transform);
                 }
+
+                if(col.gameObject.tag == "Enemy")
+                {
+                    col.GetComponent<Enemy>().Damaged(100);
+                }
             }
         }
     }

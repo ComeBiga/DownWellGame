@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
 
         Score.instance.getScore(this.gameObject);
         if (GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");
+        if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //사운드이펙트
         Destroy(this.gameObject);
     }
 }

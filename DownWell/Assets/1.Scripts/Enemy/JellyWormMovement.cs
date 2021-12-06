@@ -45,7 +45,8 @@ public class JellyWormMovement : JellyManMovement
                 timer = 0;
             }
 
-            MoveAsCollision();
+            if (moveAsCollision) MoveAsCollision();
+            else MoveAsTime();
         }
 
         Animation();
@@ -53,7 +54,12 @@ public class JellyWormMovement : JellyManMovement
 
     void Animation()
     {
-        GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+        //GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+        if (GetComponent<Rigidbody2D>().velocity.x < -0.01)
+            GetComponent<SpriteRenderer>().flipX = true;
+        else if(GetComponent<Rigidbody2D>().velocity.x > 0.01)
+            GetComponent<SpriteRenderer>().flipX = false;
+
     }
 
     public void Jump()
@@ -66,6 +72,8 @@ public class JellyWormMovement : JellyManMovement
     {
         jumping = false;
         dir *= -1;
+
+        GetComponent<Animator>().SetTrigger("Grounded");
         //Debug.Log("Land");
     }
 }
