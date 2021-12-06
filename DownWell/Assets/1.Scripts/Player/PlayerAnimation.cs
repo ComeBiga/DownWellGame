@@ -7,6 +7,9 @@ public class PlayerAnimation : MonoBehaviour
     Animator anim;
     PlayerController controller;
 
+    [SerializeField]
+    bool canMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +30,13 @@ public class PlayerAnimation : MonoBehaviour
         h = InputManager.instance.horizontal;
 #endif
 
-
-        Run(h);
-
+        if (canMove)
+        {
+            Run(h);
+            SpriteFilpX(h);
+        }
         Jump();
-
-        SpriteFilpX(h);
     }
-
     void Run(float h)
     {
         anim.SetFloat("Horizontal", h);

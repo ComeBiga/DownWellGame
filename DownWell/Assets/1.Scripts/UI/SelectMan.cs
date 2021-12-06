@@ -33,7 +33,7 @@ public class SelectMan : MonoBehaviour
         //lbtn = GameObject.Find("lButton");
 
         charNum = 0;
-        distanceNextObj = (int)secondChar.transform.localPosition.x;
+        distanceNextObj = (int)secondChar.transform.position.x;
     }
 
     void Update()
@@ -60,12 +60,12 @@ public class SelectMan : MonoBehaviour
         if (moveR)
         {
             moveX += charMoveSpeed;
-            character.transform.localPosition -= new Vector3(charMoveSpeed, 0, 0);
+            character.transform.position -= new Vector3(charMoveSpeed, 0, 0);
         }
         else if (moveL)
         {
             moveX += charMoveSpeed;
-            character.transform.localPosition += new Vector3(charMoveSpeed, 0, 0);
+            character.transform.position += new Vector3(charMoveSpeed, 0, 0);
         }
     }
 

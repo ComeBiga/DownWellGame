@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour
     {
         if(gameStart)
         {
-            for (int i = 0; i < PlayerManager.instance.player.GetComponent<PlayerHealth>().MaxHealth; i++)
+            for (int i = 0; i <= PlayerManager.instance.player.GetComponent<PlayerHealth>().MaxHealth; i++)
             {
                 HpChild = Instantiate(heart, hp.transform.position, Quaternion.identity, hp.transform);
             }

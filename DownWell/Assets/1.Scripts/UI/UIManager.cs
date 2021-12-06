@@ -7,8 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject startPanel;
     public GameObject charPanel;
-
-    public GameObject player;
+    public GameObject character;
 
     public Text versionInfo;
 
@@ -39,6 +38,7 @@ public class UIManager : MonoBehaviour
         clickPlay = true;
         startPanel.SetActive(false);
         charPanel.SetActive(true);
-        player.SetActive(false);
+
+        character.GetComponent<PlayerController>().gravity = 0;
     }
 }
