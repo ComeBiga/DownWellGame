@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public string text_Timer;
+    string text_Timer;
+    public Text timeresult;
+
     private float time_start;
     private float time_current;
     private float time_Max = 5f;
@@ -21,10 +24,10 @@ public class Timer : MonoBehaviour
         //isEnded = false;
     }
 
-    public string EndTimer()
+    public void EndTimer()
     {
         End_Timer();
-        return text_Timer;
+        timeresult.text = text_Timer;
     }
 
     private void Start()

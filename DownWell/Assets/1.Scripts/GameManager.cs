@@ -73,4 +73,9 @@ public class GameManager : MonoBehaviour
         Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
         MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
     }
+
+    public void homeBtn()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
