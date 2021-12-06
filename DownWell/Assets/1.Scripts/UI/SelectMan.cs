@@ -72,7 +72,6 @@ public class SelectMan : MonoBehaviour
     public void selectbtn()
     {
         PlayerManager.instance.SelectPlayerCharacter(charNum);
-        SoundManager.instance.PlayBGMSound("base");  //사운드 시작
         //SceneManager.LoadScene(1);
 
         AsyncOperation asyncOper = SceneManager.LoadSceneAsync(1);
@@ -96,21 +95,21 @@ public class SelectMan : MonoBehaviour
 
     void btnVisible()
     {
-        if (charNum == 0)
+        switch(charNum)
         {
-            lbtn.SetActive(false);
-            selbtn.SetActive(true);
-        }
-        else if (charNum == 1)
-        {
-            rbtn.SetActive(true);
-            lbtn.SetActive(true);
-            selbtn.SetActive(false);
-        }
-        else if (charNum == 2)
-        {
-            rbtn.SetActive(false);
-            selbtn.SetActive(false);
+            case 0:
+                lbtn.SetActive(false);
+                selbtn.SetActive(true);  //bool로 조정하기
+                break;
+            case 1:
+                rbtn.SetActive(true);
+                lbtn.SetActive(true);
+                selbtn.SetActive(false);
+                break;
+            case 2:
+                rbtn.SetActive(false);
+                selbtn.SetActive(false);
+                break;
         }
     }
 
