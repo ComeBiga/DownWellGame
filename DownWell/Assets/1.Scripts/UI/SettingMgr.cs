@@ -50,7 +50,7 @@ public class SettingMgr : MonoBehaviour
         setPanel.SetActive(false);
         setBtn.SetActive(true);
         if (SceneManager.GetActiveScene().name == "GameScene" && bgmOff == 0)
-            SoundManager.instance.PlayBGMSound("base");  //사운드 시작
+            SoundManager.instance.PlayBGMSound("Background");  //사운드 시작
     }
 
     void Update()

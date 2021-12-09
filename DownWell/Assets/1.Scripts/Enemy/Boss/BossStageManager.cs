@@ -46,6 +46,9 @@ public class BossStageManager : MonoBehaviour
         Camera.main.GetComponent<CameraShake>().Shake(.02f, 1f, true);
 
         MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
+
+        SoundManager.instance.SoundOff();
+        SoundManager.instance.PlayBGMSound("BackgroundBoss");
     }
 
     void SetBossAppearPos()

@@ -175,7 +175,8 @@ MonoBehaviour:
   masterVolumeBGM: 1
   masterVolumeEFF: 1
   charBgmAudioClips:
-  - {fileID: 8300000, guid: f6dc8613f4269a944b0c246c621ae6f9, type: 3}
+  - {fileID: 8300000, guid: 4a7ceb681b180af4f912958dea491bca, type: 3}
+  - {fileID: 8300000, guid: 68cb205ff95b39549b0c2416cc3989f0, type: 3}
   effAudioClips:
   - {fileID: 8300000, guid: 20fa32acc44658444a7efad7b0fa3d2c, type: 3}
   - {fileID: 8300000, guid: 22908bab48d645d4d97d3a8f488d81fe, type: 3}
