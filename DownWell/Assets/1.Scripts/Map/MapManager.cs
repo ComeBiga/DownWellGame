@@ -41,6 +41,8 @@ public class MapManager : MonoBehaviour
         loadLevel = LoadLevel.instance;
 
         StartCoroutine(GenerateMap());
+
+        Debug.Log("MapManager Start");
     }
 
     //IEnumerator FirstGenerateMap()
@@ -67,6 +69,8 @@ public class MapManager : MonoBehaviour
         List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
         Level stageStart = stageStarts[0];
         currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+
+        Debug.Log("After Display");
 
         if (SceneManager.GetActiveScene().name=="StartScene") yield break;
 

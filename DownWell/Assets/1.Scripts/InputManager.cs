@@ -25,10 +25,10 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-#if UNITY_EDITOR
-        controllerPanel.SetActive(false);
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        if(controllerPanel != null) controllerPanel.SetActive(false);
 #elif UNITY_ANDROID
-        controllerPanel.SetActive(true);  
+        if(controllerPanel != null) controllerPanel.SetActive(true);  
 #endif
     }
 
@@ -122,6 +122,10 @@ public class InputManager : MonoBehaviour
 
     public bool GetJumpButtonDown()
     {
+#if UNITY_STANDALONE_WIN
+        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+#endif
+
 #if UNITY_EDITOR
         return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
@@ -143,6 +147,10 @@ public class InputManager : MonoBehaviour
 
     public bool GetJumpButton()
     {
+#if UNITY_STANDALONE_WIN
+        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+#endif
+
 #if UNITY_EDITOR
         return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif
@@ -164,6 +172,10 @@ public class InputManager : MonoBehaviour
 
     public bool GetJumpButtonUp()
     {
+#if UNITY_STANDALONE_WIN
+        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+#endif
+
 #if UNITY_EDITOR
         return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
 #endif

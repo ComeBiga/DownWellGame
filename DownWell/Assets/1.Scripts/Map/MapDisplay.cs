@@ -57,6 +57,10 @@ public class MapDisplay : MonoBehaviour
 
     public int Display(Level level, int Ypos)
     {
+        Debug.Log("Display");
+        Debug.Log(level.width);
+        Debug.Log("name:"+level.name);
+
         if(displayBackground) DisplayBackGround(level, Ypos);
 
         // Wall
@@ -65,6 +69,7 @@ public class MapDisplay : MonoBehaviour
             for (int x = 0; x < mapManager.width; x++)
             {
                 int currentTile = level.tiles[y * mapManager.width + x];
+                Debug.Log(currentTile);
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
                                                     -y + offset.y + Ypos);
 
@@ -76,6 +81,7 @@ public class MapDisplay : MonoBehaviour
                     if (wallObject != null)
                     {
                         wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
+                        Debug.Log(wall);
                         wall.GetComponent<SpriteRenderer>().sprite = wallSprites[currentTile - 100];
                     }
                 }

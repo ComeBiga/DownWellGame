@@ -86,7 +86,8 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-#if UNITY_EDITOR
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (InputManager.instance.mouseClick)
         {
             if (InputManager.instance.GetJumpButtonUp())
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
                 GetComponent<PlayerCombat>().Shoot();
             }
         }
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID 
         if (InputManager.instance.GetJumpButtonUp())
         {
             shootable = true;
@@ -160,7 +161,8 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(HorizontalCollisions());
         //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
-#if UNITY_EDITOR
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (InputManager.instance.mouseClick)
         {
             if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
@@ -178,7 +180,7 @@ public class PlayerController : MonoBehaviour
     {
         if (cantMove) return;
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (InputManager.instance.mouseClick)
         {
             if (InputManager.instance.GetJumpButtonDown() && grounded)
@@ -297,6 +299,9 @@ public class PlayerController : MonoBehaviour
     public bool HorizontalCollisions()
     {
         float directionX;
+#if UNITY_STANDALONE_WIN
+        directionX = Mathf.Sign(Input.GetAxis("Horizontal"));
+#endif
 #if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
             directionX = Mathf.Sign(InputManager.instance.horizontal);

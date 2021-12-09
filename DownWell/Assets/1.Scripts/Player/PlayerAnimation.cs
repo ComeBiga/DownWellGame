@@ -21,6 +21,10 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         float h;
+
+#if UNITY_STANDALONE_WIN
+        h = Input.GetAxis("Horizontal");
+#endif
 #if UNITY_EDITOR
         if (InputManager.instance.mouseClick)
             h = InputManager.instance.horizontal;
