@@ -43,6 +43,13 @@ public class GameManager : MonoBehaviour
         PlayerManager.instance.player = playerPrefab;
 
         GetComponent<Timer>().StartTimer();
+
+        BackgroundSound();
+    }
+
+    void BackgroundSound()
+    {
+        SoundManager.instance.PlayBGMSound("Background");
     }
 
     public bool CheckTargetRange(Transform enemy)
