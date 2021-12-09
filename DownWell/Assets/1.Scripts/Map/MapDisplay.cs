@@ -127,13 +127,13 @@ public class MapDisplay : MonoBehaviour
 
     public void DisplayBackGround(Level level, int Ypos)
     {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
         for (int y = 0; y < level.height; y++)
         {
             for (int x = 0; x < mapManager.width; x++)
             {
-                string seed = (Time.time + Random.value).ToString();
-                System.Random rand = new System.Random(seed.GetHashCode());
-
                 var randIndex = rand.Next(0, background.Count);
                 var randTile = background[randIndex];
 
@@ -146,6 +146,20 @@ public class MapDisplay : MonoBehaviour
                 if (rand.Next(0, 100) < background2by2Ratio)
                 {
                     bgo = Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
+                }
+            }
+        }
+
+        for (int y = 0; y < level.height; y+=5)
+        {
+            for (int x = 0; x < mapManager.width; x+=5)
+            {
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+                                                    , -y + offset.y + Ypos);
+
+                if (rand.Next(0, 100) < background2by2Ratio)
+                {
+                    Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
                 }
             }
         }

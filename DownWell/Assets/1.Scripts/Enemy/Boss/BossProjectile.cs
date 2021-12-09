@@ -52,12 +52,22 @@ public class BossProjectile : MonoBehaviour
 
     IEnumerator MoveByTransform()
     {
+        var top = Camera.main.transform.position.y - Camera.main.orthographicSize;
+
         while(true)
         {
-            transform.localPosition += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+            if (transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize
+                || transform.position.y > Camera.main.transform.position.y + Camera.main.orthographicSize
+                || transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * 9 / 16
+                || transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * 9 / 16)
+                break;
+
+                transform.localPosition += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
 
             yield return null;
         }
+
+        Destroy(this.gameObject);
     }
 
     protected virtual void TakeDamage()
@@ -69,18 +79,18 @@ public class BossProjectile : MonoBehaviour
         {
             foreach(var collider in colliders)
             {
-                if(collider.tag == "Wall")
-                {
-                    Destroy(this.gameObject);
-                    GetComponent<Effector>().Generate("Hit");
-                    return;
-                }
-                if (collider.tag == "Block")
-                {
-                    Destroy(this.gameObject);
-                    GetComponent<Effector>().Generate("Hit");
-                    return;
-                }
+                //if(collider.tag == "Wall")
+                //{
+                //    Destroy(this.gameObject);
+                //    GetComponent<Effector>().Generate("Hit");
+                //    return;
+                //}
+                //if (collider.tag == "Block")
+                //{
+                //    Destroy(this.gameObject);
+                //    GetComponent<Effector>().Generate("Hit");
+                //    return;
+                //}
                 if (collider.tag == "Player")
                 {
                     collider.GetComponent<PlayerCombat>().Damaged(transform);

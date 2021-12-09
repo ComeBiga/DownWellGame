@@ -12,6 +12,12 @@ public class Effector : MonoBehaviour
         var fx = effects.Find(f => f.name == name);
         if(fx != null) Instantiate(fx.fx, fx.transform.position, Quaternion.Euler(0, 0, fx.angle));
     }
+
+    public void GenerateInParent(string name)
+    {
+        var fx = effects.Find(f => f.name == name);
+        if (fx != null) Instantiate(fx.fx, fx.transform.position, Quaternion.Euler(0, 0, fx.angle), transform);
+    }
 }
 
 [System.Serializable]

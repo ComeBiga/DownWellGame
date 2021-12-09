@@ -87,9 +87,16 @@ public class BossCombat : MonoBehaviour
         var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
         target = GameObject.FindGameObjectWithTag("Player").transform;
         shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
+
+        GetComponent<Animator>().SetTrigger("Attack_0");
     }
 
     void ShootNormalRage()
+    {
+        GetComponent<Animator>().SetTrigger("Attack_0");
+    }
+
+    void ShootNormalRagebyVelocity()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         var dir = (target.position - transform.position).normalized;
@@ -154,6 +161,9 @@ public class BossCombat : MonoBehaviour
                 }
             }
         }
+
+        //GetComponent<Effector>().Generate("Blast");
+        GetComponent<Animator>().SetTrigger("Attack_1");
     }
 
     void BoxingAttack()
@@ -187,9 +197,15 @@ public class BossCombat : MonoBehaviour
             yield return null;
         }
 
+        GetComponent<Animator>().SetBool("Attack_2", true);
         //Invoke("Shootable", 3f);
-        var boxObject = Instantiate(boxAttack, transform);
+        //var boxObject = Instantiate(boxAttack, transform);
         //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
+    }
+
+    void InstantiateAttackBox()
+    {
+        var boxObject = Instantiate(boxAttack, transform);
     }
 
     public void EndBoxingAttack()
@@ -199,6 +215,8 @@ public class BossCombat : MonoBehaviour
 
     IEnumerator IEndBoxing()
     {
+        GetComponent<Animator>().SetBool("Attack_2", false);
+
         while (true)
         {
             if (Mathf.Approximately(transform.position.x, 0))
@@ -210,6 +228,7 @@ public class BossCombat : MonoBehaviour
             yield return null;
         }
 
+        
         shootable = true;
         //Invoke("Shootable", 3f);
         //var boxObject = Instantiate(boxAttack, transform);

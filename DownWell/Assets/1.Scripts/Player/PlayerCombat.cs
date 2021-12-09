@@ -156,7 +156,7 @@ public class PlayerCombat : MonoBehaviour
 
         while (true)
         {
-            if (Mathf.Abs(dis) > distance)
+            if (Mathf.Abs(dis) > distance || controller.HorizontalCollisions() == true)
                 break;
 
             var forceX = knuckBackSpeed * direction * Time.deltaTime;
