@@ -38,10 +38,10 @@ public class EnemyHorizontalMove : EnemyCollisionMove
 
     public override bool Act(Rigidbody2D rigidbody)
     {
-        if (!GameManager.instance.CheckTargetRange(transform)) return false;
+        //if (!GameManager.instance.CheckTargetRange(transform)) return false;
 
-        if (moveAsCollision) MoveAsCollision(rigidbody);
-        else MoveAsTime(rigidbody);
+        if (moveAsCollision) MoveAsCollision();
+        else MoveAsTime();
 
         Animation();
 
@@ -53,7 +53,7 @@ public class EnemyHorizontalMove : EnemyCollisionMove
         GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
     }
 
-    protected void MoveAsCollision(Rigidbody2D rigidbody)
+    protected void MoveAsCollision()
     {
         collision.UpdateRaycastOrigins();
 
@@ -62,10 +62,10 @@ public class EnemyHorizontalMove : EnemyCollisionMove
         else if (collision.CheckEndOfGround(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
         else if (collision.CheckEndOfGround(CollisionDirection.LEFT, rayLength, groundLayermask)) dir = 1;
 
-        rigidbody.velocity = new Vector2(speed * dir, rigidbody.velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
     }
 
-    protected void MoveAsTime(Rigidbody2D rigidbody)
+    protected void MoveAsTime()
     {
         timer += Time.deltaTime;
 
@@ -76,6 +76,6 @@ public class EnemyHorizontalMove : EnemyCollisionMove
             timer = 0;
         }
 
-        rigidbody.velocity = new Vector2(speed * dir, rigidbody.velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
     }
 }

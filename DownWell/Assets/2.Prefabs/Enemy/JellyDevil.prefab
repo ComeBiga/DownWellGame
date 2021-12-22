@@ -211,6 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c460cc622a0a4a428495acc204b5147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionStates:
+  - stateName: Moving
+    acts:
+    - {fileID: 8811911085925686054}
+    transitions: []
   enemyActs:
   - {fileID: 8811911085925686054}
 --- !u!114 &8811911085925686054

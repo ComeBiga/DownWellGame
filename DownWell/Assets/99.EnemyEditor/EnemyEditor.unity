@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  time: 3
 --- !u!114 &619287329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +182,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c460cc622a0a4a428495acc204b5147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionStates:
+  - stateName: Moving
+    acts:
+    - {fileID: 619287328}
+    transitions:
+    - decision: {fileID: 0}
+      trueState: 
+      falseState: 
   enemyActs:
-  - {fileID: 619287329}
+  - {fileID: 0}
   - {fileID: 619287328}
 --- !u!212 &619287331
 SpriteRenderer:
@@ -342,7 +351,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2026419981}
   - component: {fileID: 2026419980}
-  - component: {fileID: 2026419982}
   - component: {fileID: 2026419983}
   m_Layer: 0
   m_Name: EnemyEditorManager
@@ -379,18 +387,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2026419982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026419979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d55bbc99f54c644a0a42fd3012c3e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2026419983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,3 +400,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  time: 3

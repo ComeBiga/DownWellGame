@@ -18,7 +18,9 @@ public class JellyWormAnimBehaviour : StateMachineBehaviour
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<JellyWormMovement>().Jump();
+        if(animator.GetComponent<EnemyActionJump>() != null &&
+            animator.GetComponent<EnemyActionJump>().onAnimationEvent)
+            animator.GetComponent<EnemyActionJump>().Jump();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

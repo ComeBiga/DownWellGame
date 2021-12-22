@@ -14,7 +14,7 @@ public class EnemyFollowTarget : EnemyAct
 
     public override bool Act(Rigidbody2D rigidbody)
     {
-        if (!GameManager.instance.CheckTargetRange(transform)) return false;
+        //if (!GameManager.instance.CheckTargetRange(transform)) return false;
 
         MoveToTarget();
 
