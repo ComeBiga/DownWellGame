@@ -4,15 +4,55 @@ using UnityEngine;
 
 public abstract class EnemyAct : MonoBehaviour
 {
+    //public bool onAnimationEvent = false;
 
-    //public bool Update()
-    //{
-    //    if (!GameManager.instance.CheckTargetRange(transform)) return false;
+    private bool onStart = true;
+    private bool doNextAct = false;
 
-    //    Act(null);
+    public void Init()
+    {
+        onStart = true;
+        doNextAct = false;
+    }
 
-    //    return false;
-    //}
+    public bool UpdateAct()
+    {
+        //if (!GameManager.instance.CheckTargetRange(transform)) return false;
 
+        // Start
+        if(onStart)
+        {
+            StartAct();
+            //StartCoroutine(CoroutineFixedAct());
+            onStart = false;
+        }
+
+        //StartCoroutine(ActLoop());
+        doNextAct = Act(null);
+
+        // End
+        if(doNextAct)
+        {
+            EndAct();
+        }
+
+        return doNextAct;
+    }
+
+    IEnumerator CoroutineFixedAct()
+    {
+        while(true)
+        {
+            if (doNextAct) break;
+
+            if (!FixedAct()) break;
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    protected virtual void StartAct() { }
     public abstract bool Act(Rigidbody2D rigidbody);
+    protected virtual bool FixedAct() { return false; }
+    protected virtual void EndAct() { }
 }

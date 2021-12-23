@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAction : MonoBehaviour
 {
@@ -72,10 +73,10 @@ public class EnemyActionState
 
     public void UpdateActionState()
     {
-        if(acts[index].Act(null))
+        if(acts[index].UpdateAct())
         {
             index++;
-            Debug.Log(index);
+            //Debug.Log(index);
             if (index >= acts.Count) index = 0;
         }
     }
@@ -89,9 +90,11 @@ public class EnemyActionState
             // 만약 조건에 만족한다면
             if (t.Decide(out stateTo))
             {
+                acts[index].Init();
                 index = 0;
-                Debug.Log("Decided");
-                Debug.Log(stateTo);
+                t.onTransition.Invoke();
+                //Debug.Log("Decided");
+                //Debug.Log(stateTo);
                 return true;
             }
         }
@@ -106,6 +109,7 @@ public class EnemyTransition
     public EnemyDecision decision;
     public string trueState = "";
     public string falseState = "";
+    public UnityEvent onTransition;
 
     public bool Decide(out string state)
     {
