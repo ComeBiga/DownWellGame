@@ -16,6 +16,13 @@ public class EnemyActionHorizontalMoveTowardTarget : EnemyAct
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    public override void Init()
+    {
+        base.Init();
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+    }
+
     protected override void StartAct()
     {
         Debug.Log("StartAct");
@@ -28,6 +35,13 @@ public class EnemyActionHorizontalMoveTowardTarget : EnemyAct
     {
         Debug.Log(GetComponent<Rigidbody2D>().velocity);
 
+        Animation();
+
         return false;
+    }
+
+    void Animation()
+    {
+        GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
     }
 }

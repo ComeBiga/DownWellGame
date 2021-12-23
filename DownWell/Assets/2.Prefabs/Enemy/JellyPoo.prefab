@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 3497555664075828466}
   - component: {fileID: 3768119630584708889}
   - component: {fileID: 7275870146132870485}
-  - component: {fileID: 3497555664075828467}
+  - component: {fileID: 8224531701916298570}
   - component: {fileID: 3497555664075828463}
-  - component: {fileID: 2402453279824920555}
   - component: {fileID: 2625999096728353576}
   - component: {fileID: -1365949908434293436}
   - component: {fileID: -4236049846979682612}
@@ -130,13 +129,13 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cd02755851dd5484094b58f50c7ee38e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &3497555664075828467
-CircleCollider2D:
+--- !u!61 &8224531701916298570
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,9 +147,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013900816, y: -0.09267205}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.625, y: 1.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Size: {x: 0.91142523, y: 0.6474173}
+  m_EdgeRadius: 0
 --- !u!114 &3497555664075828463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,31 +177,6 @@ MonoBehaviour:
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
---- !u!114 &2402453279824920555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ff1736c5b64ea43a0d54d626c2a39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.5
-  rayLength: 0.1
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  groundLayermask:
-    serializedVersion: 2
-    m_Bits: 0
-  sensorCollider: {fileID: 2538971142890041180}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  dashTime: 3
-  sensed: 0
 --- !u!114 &2625999096728353576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +252,6 @@ MonoBehaviour:
               m_StringArgument: Idle
               m_BoolArgument: 0
             m_CallState: 2
-  enemyActs: []
 --- !u!114 &-4236049846979682612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,9 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e15e3cebf3b7b4a9af03bdb0d13cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7215596577489734727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23466cbe28658c45894d4c646080141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   dashTime: 1
 --- !u!114 &585750344458908912
 MonoBehaviour:

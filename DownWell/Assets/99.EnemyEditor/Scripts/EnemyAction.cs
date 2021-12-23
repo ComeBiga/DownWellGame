@@ -8,7 +8,7 @@ public class EnemyAction : MonoBehaviour
     Rigidbody2D rigidbody;
 
     public List<EnemyActionState> actionStates;
-    public List<EnemyAct> enemyActs;
+    //public List<EnemyAct> enemyActs;
 
     private string currentStateName = "";
     private EnemyActionState currentState;
@@ -34,31 +34,31 @@ public class EnemyAction : MonoBehaviour
         }
     }
 
-    void Act()
-    {
-        StartCoroutine(ActUpdate());
-    }
+    //void Act()
+    //{
+    //    StartCoroutine(ActUpdate());
+    //}
 
-    IEnumerator ActUpdate()
-    {
-        int index = 0;
-        bool actEnd = false;
+    //IEnumerator ActUpdate()
+    //{
+    //    int index = 0;
+    //    bool actEnd = false;
 
-        while (true)
-        {
-            if (actEnd)
-            {
+    //    while (true)
+    //    {
+    //        if (actEnd)
+    //        {
                 
-                index++;
+    //            index++;
 
-                if (index >= enemyActs.Count) index = 0;
-            }
+    //            if (index >= enemyActs.Count) index = 0;
+    //        }
 
-            actEnd = enemyActs[index].Act(rigidbody);
+    //        actEnd = enemyActs[index].Act(rigidbody);
 
-            yield return null;
-        }
-    }
+    //        yield return null;
+    //    }
+    //}
 }
 
 [System.Serializable]

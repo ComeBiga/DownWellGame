@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+//using UnityEngine.Events;
 
 public class EnemyActionOnAnimationFrame : EnemyAct
 {
-    public UnityEvent onEvent;
+    //public UnityEvent onEvent;
 
     private bool onActive = false;
 

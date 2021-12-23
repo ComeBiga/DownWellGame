@@ -9,7 +9,7 @@ public abstract class EnemyAct : MonoBehaviour
     private bool onStart = true;
     private bool doNextAct = false;
 
-    public void Init()
+    public virtual void Init()
     {
         onStart = true;
         doNextAct = false;
