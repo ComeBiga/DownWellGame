@@ -36,6 +36,13 @@ public class EnemyHorizontalMove : EnemyCollisionMove
         }
     }
 
+    public override void Init()
+    {
+        base.Init();
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+    }
+
     public override bool Act(Rigidbody2D rigidbody)
     {
         //if (!GameManager.instance.CheckTargetRange(transform)) return false;
@@ -46,6 +53,11 @@ public class EnemyHorizontalMove : EnemyCollisionMove
         Animation();
 
         return false;
+    }
+
+    protected override void EndAct()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
     void Animation()

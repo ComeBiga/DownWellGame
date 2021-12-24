@@ -68,7 +68,7 @@ public class EnemyActionState
     public List<EnemyAct> acts;
     public List<EnemyTransition> transitions;
 
-    private EnemyAct currentAct;
+    //private EnemyAct currentAct;
     private int index = 0;
 
     public void UpdateActionState()
@@ -90,7 +90,7 @@ public class EnemyActionState
             // 만약 조건에 만족한다면
             if (t.Decide(out stateTo))
             {
-                acts[index].Init();
+                InitActs();
                 index = 0;
                 t.onTransition.Invoke();
                 //Debug.Log("Decided");
@@ -100,6 +100,14 @@ public class EnemyActionState
         }
 
         return false;
+    }
+
+    void InitActs()
+    {
+        foreach(var act in acts)
+        {
+            act.Init();
+        }
     }
 }
 

@@ -1,25 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnemyActionJump : EnemyAct
 {
     public float jumpSpeed = 1f;
-    public bool onAnimationEvent = false;
 
-    public UnityEvent onJump;
+    protected override void StartAct()
+    {
+        Jump();
+        Debug.Log("JumpStart");
+    }
 
     public override bool Act(Rigidbody2D rigidbody)
     {
-        Debug.Log("Jump");
-
-        if(!onAnimationEvent)
-            Jump();
-
-        onJump.Invoke();
-
-        return true;
+        return false;
     }
 
     public void Jump()

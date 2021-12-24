@@ -9,8 +9,21 @@ public class EnemyActionOnAnimationFrame : EnemyAct
 
     private bool onActive = false;
 
+    public override void Init()
+    {
+        base.Init();
+
+        onActive = false;
+    }
+
+    protected override void StartAct()
+    {
+        onActive = false;
+    }
+
     public override bool Act(Rigidbody2D rigidbody)
     {
+        //Debug.Log(onActive);
         return onActive;
     }
 
