@@ -9,6 +9,8 @@ public abstract class EnemyAct : MonoBehaviour
     private bool onStart = true;
     private bool doNextAct = false;
 
+    protected static int direction = 1;
+
     public virtual void Init()
     {
         onStart = true;
@@ -55,4 +57,9 @@ public abstract class EnemyAct : MonoBehaviour
     public abstract bool Act(Rigidbody2D rigidbody);
     protected virtual bool FixedAct() { return false; }
     protected virtual void EndAct() { }
+
+    protected static void SetDirection(int dir)
+    {
+        direction = dir;
+    }
 }

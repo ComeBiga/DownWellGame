@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyActionJump : EnemyAct
 {
-    public float jumpSpeed = 1f;
+    public float horizontalSpeed = 0;
+    public float verticalSpeed = 1f;
 
     protected override void StartAct()
     {
@@ -19,6 +20,6 @@ public class EnemyActionJump : EnemyAct
 
     public void Jump()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, jumpSpeed);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(EnemyAct.direction * horizontalSpeed, verticalSpeed);
     }
 }
