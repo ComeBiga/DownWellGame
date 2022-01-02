@@ -8839,6 +8839,7 @@ GameObject:
   - component: {fileID: 1475212152}
   - component: {fileID: 1475212151}
   - component: {fileID: 1475212156}
+  - component: {fileID: 1475212157}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -9038,6 +9039,22 @@ MonoBehaviour:
     transform: {fileID: 1475212149}
     fx: {fileID: 6455041936140182723, guid: be0fda99cc271e44c9100cd12c63e8bd, type: 3}
     angle: 0
+--- !u!114 &1475212157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475212148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c433cb8853db2f47af77ba8caf5d5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalPattern:
+    actions: []
+  ragePattern:
+    actions: []
 --- !u!1001 &1480948373
 PrefabInstance:
   m_ObjectHideFlags: 0
