@@ -14,6 +14,11 @@ public class BossBrain : MonoBehaviour
         current = normalPattern;
     }
 
+    private void Update()
+    {
+        if(current != null) current.Act();
+    }
+
     public void BecomeRage()
     {
         current = ragePattern;

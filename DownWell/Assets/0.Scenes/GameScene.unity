@@ -7360,7 +7360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 11
-  height: 200
+  height: 11
   currentStage: 0
   reGenerateOffset: 20
 --- !u!114 &1215072951
@@ -9046,7 +9046,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475212148}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c433cb8853db2f47af77ba8caf5d5bc, type: 3}
   m_Name: 

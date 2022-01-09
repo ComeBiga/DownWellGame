@@ -51,6 +51,7 @@ public class BossCombat : MonoBehaviour
         {
             SetRandomShootPattern();
             ShootPattern.Invoke();
+            Debug.Log(ShootPattern.Method.GetBaseDefinition().Name);
 
             curTime = 0;
         }
@@ -71,6 +72,7 @@ public class BossCombat : MonoBehaviour
 
     public void SetPattern(string methodName)
     {
+        //Debug.Log(methodName);
         ShootPattern = () => { Invoke(methodName, 0); };
     }
 
@@ -79,7 +81,10 @@ public class BossCombat : MonoBehaviour
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        SetPattern(currentPatterns[rand.Next(0, currentPatterns.Length)]);
+        var rp = currentPatterns[rand.Next(0, currentPatterns.Length)];
+        //Debug.Log($"rp : {rp}");
+
+        SetPattern(rp);
     }
 
     void ShootNormal()
@@ -93,11 +98,13 @@ public class BossCombat : MonoBehaviour
 
     void ShootNormalRage()
     {
+        //Debug.Log("ShootNormalRage");
         GetComponent<Animator>().SetTrigger("Attack_0");
     }
 
     void ShootNormalRagebyVelocity()
     {
+        //Debug.Log("ShootNormalRagebyVelocity");
         target = GameObject.FindGameObjectWithTag("Player").transform;
         var dir = (target.position - transform.position).normalized;
 
@@ -119,28 +126,29 @@ public class BossCombat : MonoBehaviour
         shotProjectile2.GetComponent<BossProjectile>().MoveToTarget();
     }
 
-    void ShootNormalRageByTransform()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        var dir = (target.position - transform.position).normalized;
+    //void ShootNormalRageByTransform()
+    //{
+    //    Debug.Log("ShootNormalRagebyTransform");
+    //    target = GameObject.FindGameObjectWithTag("Player").transform;
+    //    var dir = (target.position - transform.position).normalized;
 
-        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity, transform);
-        //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
-        shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
-        shotProjectile.GetComponent<BossProjectile>().MoveToTargetByTransform();
+    //    var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+    //    //shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
+    //    shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
+    //    shotProjectile.GetComponent<BossProjectile>().MoveToTargetByTransform();
 
-        var shotProjectile1 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
-        //shotProjectile1.GetComponent<BossProjectile>().SetTarget(target);
-        shotProjectile1.GetComponent<BossProjectile>().SetDirection(dir);
-        shotProjectile1.GetComponent<BossProjectile>().RotateDirection(sideProjectileAngle);
-        shotProjectile1.GetComponent<BossProjectile>().MoveToTargetByTransform();
+    //    var shotProjectile1 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+    //    //shotProjectile1.GetComponent<BossProjectile>().SetTarget(target);
+    //    shotProjectile1.GetComponent<BossProjectile>().SetDirection(dir);
+    //    shotProjectile1.GetComponent<BossProjectile>().RotateDirection(sideProjectileAngle);
+    //    shotProjectile1.GetComponent<BossProjectile>().MoveToTargetByTransform();
 
-        var shotProjectile2 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
-        //shotProjectile2.GetComponent<BossProjectile>().SetTarget(target);
-        shotProjectile2.GetComponent<BossProjectile>().SetDirection(dir);
-        shotProjectile2.GetComponent<BossProjectile>().RotateDirection(-sideProjectileAngle);
-        shotProjectile2.GetComponent<BossProjectile>().MoveToTargetByTransform();
-    }
+    //    var shotProjectile2 = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+    //    //shotProjectile2.GetComponent<BossProjectile>().SetTarget(target);
+    //    shotProjectile2.GetComponent<BossProjectile>().SetDirection(dir);
+    //    shotProjectile2.GetComponent<BossProjectile>().RotateDirection(-sideProjectileAngle);
+    //    shotProjectile2.GetComponent<BossProjectile>().MoveToTargetByTransform();
+    //}
 
     void ShootMucousMembrane()
     {
