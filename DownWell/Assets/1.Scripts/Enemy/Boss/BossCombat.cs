@@ -33,13 +33,13 @@ public class BossCombat : MonoBehaviour
 
     private void Update()
     {
-        if(active)
-            Shoot();
+        //if(active)
+        //    Shoot();
 
-        if(GetComponent<Boss>().BecomeRageMode(healthRatioRageMode))
-        {
-            ChangeShootPatterns(Boss.BossState.rage);
-        }
+        //if(GetComponent<Boss>().BecomeRageMode(healthRatioRageMode))
+        //{
+        //    ChangeShootPatterns(Boss.BossState.rage);
+        //}
     }
 
     void Shoot()
@@ -126,6 +126,7 @@ public class BossCombat : MonoBehaviour
         shotProjectile2.GetComponent<BossProjectile>().MoveToTarget();
     }
 
+    // Used by Animation Key Event
     //void ShootNormalRageByTransform()
     //{
     //    Debug.Log("ShootNormalRagebyTransform");
@@ -174,6 +175,7 @@ public class BossCombat : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Attack_1");
     }
 
+    #region blast
     void BoxingAttack()
     {
         shootable = false;        
@@ -186,6 +188,7 @@ public class BossCombat : MonoBehaviour
         shootable = true;
     }
 
+    // Move position left, right to shoot blast
     IEnumerator IBoxingAttack()
     {
         string seed = (Time.time + Random.value).ToString();
@@ -205,12 +208,15 @@ public class BossCombat : MonoBehaviour
             yield return null;
         }
 
+        // Animate and key event
         GetComponent<Animator>().SetBool("Attack_2", true);
+
         //Invoke("Shootable", 3f);
         //var boxObject = Instantiate(boxAttack, transform);
         //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
     }
 
+    // Instantiate Blast Object
     void InstantiateAttackBox()
     {
         var boxObject = Instantiate(boxAttack, transform);
@@ -242,4 +248,5 @@ public class BossCombat : MonoBehaviour
         //var boxObject = Instantiate(boxAttack, transform);
         //boxObject.transform.position = new Vector3(posIndex * 2, boxObject.transform.position.y, boxObject.transform.position.z);
     }
+    #endregion
 }

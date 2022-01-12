@@ -4,23 +4,62 @@ using UnityEngine;
 
 public class BossBrain : MonoBehaviour
 {
-    BossPattern current;
+    [SerializeField] private float interval = 3.0f;
+    [Range(0, 100)]
+    public int rageModePercentage = 60;
+
+    BossPattern current = new BossNormalPattern();
 
     public BossNormalPattern normalPattern;
     public BossRagePattern ragePattern;
 
-    private void Start()
+
+    public void Use()
     {
-        current = normalPattern;
+        StartCoroutine(EUse());
     }
 
-    private void Update()
+    IEnumerator EUse()
     {
-        if(current != null) current.Act();
+        float timer = 0;
+
+        SetPattern(normalPattern);
+        //BossAction.onCut += current.Act;
+        //Act();
+
+        while (true)
+        {
+            if (BossAction.ended)
+            {
+                timer += Time.deltaTime;
+
+                if (timer > interval)
+                {
+                    Debug.Log("Acting..");
+                    timer = 0;
+                    BossAction.ended = false;
+                    Act();
+                }
+            }
+
+            if (GetComponent<Boss>().UnderHealthRatio(rageModePercentage))
+            {
+                SetPattern(ragePattern);
+                //current.Act();
+            }
+
+            yield return null;
+        }
     }
 
-    public void BecomeRage()
+    void Act()
     {
-        current = ragePattern;
+        current.Act();
+    }
+
+    public void SetPattern(BossPattern pattern)
+    {
+        current = pattern;
+        //BossAction.onCut += current.Act;
     }
 }

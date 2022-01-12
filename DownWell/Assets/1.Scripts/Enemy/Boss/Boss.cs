@@ -35,11 +35,11 @@ public class Boss : MonoBehaviour
         currentState = state;
     }
 
-    public bool BecomeRageMode(int healthRatio)
+    public bool UnderHealthRatio(int healthRatio)
     {
         if (health.CurrentRatio() < healthRatio)
         {
-            SetState(BossState.rage);
+            //SetState(BossState.rage);
             return true;
         }
 

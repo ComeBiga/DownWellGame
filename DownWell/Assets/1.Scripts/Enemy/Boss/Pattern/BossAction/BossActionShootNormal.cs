@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class BossActionShootNormal : BossAction
 {
-    [SerializeField] private GameObject projectile;
+    [SerializeField] protected GameObject projectile;
+    //[SerializeField] protected Transform target;
 
     public override void Take()
     {
-        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        var target = GameObject.FindGameObjectWithTag("Player").transform;
-        shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
-
+        GetComponent<Animator>().SetTrigger("Attack_0");
         // Event
-        onEvent.Invoke();
+        //onEvent.Invoke();
+
+        Debug.Log("Before Cut");
+        BossAction.Cut();
+        Debug.Log("After Cut");
     }
 
-    //public override void StartAction()
-    //{
-    //    var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-    //    var target = GameObject.FindGameObjectWithTag("Player").transform;
-    //    shotProjectile.GetComponent<BossProjectile>().SetTarget(target);
+    void ShootNormalByTransform()
+    {
+        var target = GameObject.FindGameObjectWithTag("Player").transform;
+        var dir = (target.position - transform.position).normalized;
 
-    //    // Event
-    //    onEvent.Invoke();
-    //}
+        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity, transform);
+        shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
+        shotProjectile.GetComponent<BossProjectile>().MoveToTargetByTransform();
+    }
 }

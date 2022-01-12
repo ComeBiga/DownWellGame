@@ -43,7 +43,7 @@ public class BoxingAttack : MonoBehaviour
 
     void EndAttack()
     {
-        GetComponentInParent<BossCombat>().EndBoxingAttack();
+        GetComponentInParent<BossActionBlast>().EndBoxingAttack();
     }
 
     void Destory()

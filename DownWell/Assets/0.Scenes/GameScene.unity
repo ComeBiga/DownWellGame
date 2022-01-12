@@ -8837,9 +8837,12 @@ GameObject:
   - component: {fileID: 1475212154}
   - component: {fileID: 1475212153}
   - component: {fileID: 1475212152}
-  - component: {fileID: 1475212151}
   - component: {fileID: 1475212156}
   - component: {fileID: 1475212157}
+  - component: {fileID: 1475212161}
+  - component: {fileID: 1475212160}
+  - component: {fileID: 1475212159}
+  - component: {fileID: 1475212158}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -8915,31 +8918,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1475212151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475212148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a886658f6c54348987e47028b4d44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  projectile: {fileID: 5878161903101301907, guid: ea41c8d8d83fa2d408958a55eb95fe83, type: 3}
-  mucousMembrane: {fileID: 6180995892431118728, guid: b159ad9302dcd50458b17970a9ab2352, type: 3}
-  shotTime: 3
-  normalPatterns:
-  - ShootNormal
-  ragePatterns:
-  - ShootNormalRage
-  - ShootMucousMembrane
-  - BoxingAttack
-  healthRatioRageMode: 60
-  sideProjectileAngle: 15
-  boxAttack: {fileID: 307820062667988535, guid: b4d95b51186fd5d48803732f1769ddb6, type: 3}
 --- !u!114 &1475212152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9046,15 +9024,86 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475212148}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c433cb8853db2f47af77ba8caf5d5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 3
+  rageModePercentage: 60
   normalPattern:
-    actions: []
+    actions:
+    - {fileID: 1475212161}
   ragePattern:
-    actions: []
+    actions:
+    - {fileID: 1475212160}
+    - {fileID: 1475212159}
+    - {fileID: 1475212158}
+--- !u!114 &1475212158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475212148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3ca31e7cd033489de4847f1eb00d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hitBox: {fileID: 307820062667988535, guid: b4d95b51186fd5d48803732f1769ddb6, type: 3}
+  pos: {fileID: 1475212149}
+--- !u!114 &1475212159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475212148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45714e694ad9f343ac37518e0a5167d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1475212160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475212148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2aeee5dcb893e42a18f7b78989c464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  projectile: {fileID: 5878161903101301907, guid: ea41c8d8d83fa2d408958a55eb95fe83, type: 3}
+  sideProjectileAngle: 15
+--- !u!114 &1475212161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475212148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089cbcd072494fb48829d79749527460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  projectile: {fileID: 5878161903101301907, guid: ea41c8d8d83fa2d408958a55eb95fe83, type: 3}
 --- !u!1001 &1480948373
 PrefabInstance:
   m_ObjectHideFlags: 0

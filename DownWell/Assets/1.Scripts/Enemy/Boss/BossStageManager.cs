@@ -83,7 +83,8 @@ public class BossStageManager : MonoBehaviour
         }
 
         PlayerManager.instance.player.GetComponent<PlayerController>().cantMove = false;
-        boss.GetComponent<BossCombat>().active = true;
+        //boss.GetComponent<BossCombat>().active = true;
+        boss.GetComponent<BossBrain>().Use();
         Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
     }
 }
