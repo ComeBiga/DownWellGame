@@ -10234,6 +10234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1700652126}
   - component: {fileID: 1700652125}
+  - component: {fileID: 1700652131}
   - component: {fileID: 1700652127}
   - component: {fileID: 1700652128}
   - component: {fileID: 1700652129}
@@ -10334,6 +10335,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeresult: {fileID: 428041034}
+--- !u!114 &1700652131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700652124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba340e2c0136eb1489c7f37640aa23dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stages: []
 --- !u!1 &1704033169
 GameObject:
   m_ObjectHideFlags: 0
