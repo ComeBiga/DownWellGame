@@ -5,13 +5,31 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new StageDB", menuName = "Database/StageDB")]
 public class StageDatabase : ScriptableObject
 {
+    [Header("Info")]
+    [SerializeField]
+    private string name = "new stage";
+    public string Name { get { return name; } }
+
+    [SerializeField]
+    private int num;
+    public int Num { get { return num; } }
+
+    [SerializeField]
+    private string path;
+    public string Path { get { return path; } }
+
     [Header("Wall")]
-    public List<GameObject> mapObjects;
-    public List<Sprite> wallSprites;
+    [SerializeField] private List<GameObject> mapObjects;
+    [SerializeField] private List<Sprite> wallSprites;
 
     [Header("Enemy")]
-    public List<GameObject> enemyObjects;
+    [SerializeField] private List<GameObject> enemyObjects;
 
     [Header("Boss")]
-    public GameObject bossObject;
+    [SerializeField] private GameObject bossObject;
+
+    public List<GameObject> MapObjects { get { return mapObjects; } }
+    public List<Sprite> WallSprites { get { return wallSprites; } }
+    public List<GameObject> EnemyObjects { get { return enemyObjects; } }
+    public GameObject BossObject { get { return bossObject; } }
 }
