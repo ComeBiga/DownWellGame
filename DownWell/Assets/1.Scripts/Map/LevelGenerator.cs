@@ -7,7 +7,7 @@ public class LevelGenerator : MonoBehaviour
     MapManager mapManager;
     LoadLevel loadLevel;
 
-    public Stage currentStage = Stage.Stage1;
+    public LevelEditor.Stage currentStage = LevelEditor.Stage.Stage1;
     [Range(0, 100)]
     public int wallRatio = 15;
     [Range(0, 100)]
@@ -326,7 +326,7 @@ public class LevelGenerator : MonoBehaviour
 
     #region Wall
 
-    public Level RandomLevel(Stage stage)
+    public Level RandomLevel(LevelEditor.Stage stage)
     {
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());

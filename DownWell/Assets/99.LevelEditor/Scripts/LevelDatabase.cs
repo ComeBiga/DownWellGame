@@ -8,7 +8,7 @@ public class LevelDatabase : ScriptableObject
 {
     public List<LevelDBInfo> jsonLevelDBs = new List<LevelDBInfo>();
 
-    public void Add(string filename, Stage stage, string path)
+    public void Add(string filename, LevelEditor.Stage stage, string path)
     {
         LevelDBInfo newInfo = new LevelDBInfo(filename, stage, path);
         jsonLevelDBs.Add(newInfo);
@@ -24,7 +24,7 @@ public class LevelDatabase : ScriptableObject
 public class LevelDBInfo : IComparable<LevelDBInfo>
 {
     public string filename;
-    public Stage stage;
+    public LevelEditor.Stage stage;
     public string path;
 
     public LevelDBInfo()
@@ -32,7 +32,7 @@ public class LevelDBInfo : IComparable<LevelDBInfo>
 
     }
 
-    public LevelDBInfo(string filename, Stage stage, string path)
+    public LevelDBInfo(string filename, LevelEditor.Stage stage, string path)
     {
         this.filename = filename;
         this.stage = stage;
@@ -44,7 +44,7 @@ public class LevelDBInfo : IComparable<LevelDBInfo>
         throw new NotImplementedException();
     }
 
-    public void Save(string filename, Stage stage, string path)
+    public void Save(string filename, LevelEditor.Stage stage, string path)
     {
         this.filename = filename;
         this.stage = stage;

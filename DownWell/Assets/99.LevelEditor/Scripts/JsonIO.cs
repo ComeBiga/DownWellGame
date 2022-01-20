@@ -4,7 +4,10 @@ using System.IO;
 //using System.Linq;
 using UnityEngine;
 
-public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5, Blocks, StageGround }
+namespace LevelEditor
+{
+    public enum Stage { Stage1, Stage2, Stage3, Stage4, Stage5, Blocks, StageGround }
+}
 
 public class JsonIO : MonoBehaviour
 {
@@ -12,7 +15,7 @@ public class JsonIO : MonoBehaviour
     public LevelDBInfo selectedDB;
     public static bool levelChanged = false;
 
-    public Stage stage;
+    public LevelEditor.Stage stage;
     public string fileName = " ";
 
     // UpdateFile
@@ -108,7 +111,7 @@ public class JsonIO : MonoBehaviour
         SaveIntoDatabase(newDB.filename, newDB.stage, newDB.path);
     }
 
-    void SaveIntoDatabase(string filename, Stage stage, string path)
+    void SaveIntoDatabase(string filename, LevelEditor.Stage stage, string path)
     {
         levelDB.Add(filename, stage, path);
     }
@@ -136,7 +139,7 @@ public class JsonIO : MonoBehaviour
                 LevelEditorManager.instance.DesignateTileCorner(lvs);
 
                 newDB.filename = lvs.name;
-                newDB.stage = (Stage)i;
+                newDB.stage = (LevelEditor.Stage)i;
 
                 SaveIntoDatabase(newDB);
             }
@@ -155,7 +158,7 @@ public class JsonIO : MonoBehaviour
             var lvs = JsonToLevel<Level>(jsonStr);
 
             newDB.filename = lvs.name;
-            newDB.stage = Stage.StageGround;
+            newDB.stage = LevelEditor.Stage.StageGround;
 
             SaveIntoDatabase(newDB);
         }
@@ -173,7 +176,7 @@ public class JsonIO : MonoBehaviour
             var lvs = JsonToLevel<Level>(jsonStr);
 
             newDB.filename = lvs.name;
-            newDB.stage = Stage.StageGround;
+            newDB.stage = LevelEditor.Stage.StageGround;
 
             SaveIntoDatabase(newDB);
         }

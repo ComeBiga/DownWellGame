@@ -24,7 +24,7 @@ public class MapManager : MonoBehaviour
     public int width = 10;
     public int height = 100;
 
-    public Stage currentStage = Stage.Stage1;
+    public LevelEditor.Stage currentStage = LevelEditor.Stage.Stage1;
 
     int currentYpos = 0;
     public int CurrentYPos { get { return currentYpos; } }
