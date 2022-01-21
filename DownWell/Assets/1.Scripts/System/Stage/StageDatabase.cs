@@ -32,4 +32,17 @@ public class StageDatabase : ScriptableObject
     public List<Sprite> WallSprites { get { return wallSprites; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
+
+    /// <summary>
+    /// If resourceLoad is true, remove 'Resources/' directory.
+    /// </summary>
+    /// <param name="resourceLoad"></param>
+    /// <returns></returns>
+    public string GetPath(bool resourceLoad = false)
+    {
+        if (resourceLoad)
+            return path.Replace("Resources/", "");
+        else
+            return path;
+    }
 }

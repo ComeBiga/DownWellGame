@@ -44,6 +44,56 @@ public class LoadLevel : MonoBehaviour
         return objects[objName];
     }
 
+    List<Level> LoadAsDirectory(string path)
+    {
+        string[] directories = Directory.GetFiles(Application.dataPath + path + "/", "*.json");
+        List<Level> lvList = new List<Level>();
+
+        foreach (var dir in directories)
+        {
+            string jsonStr = File.ReadAllText(dir);
+            var lvs = JsonToLevel<Level>(jsonStr);
+
+            lvList.Add(lvs);
+        }
+
+        return lvList;
+    }
+
+    List<Level> LoadAsResource(string path)
+    {
+        var textDatas = Resources.LoadAll(path + "/", typeof(TextAsset));
+        List<Level> lvList = new List<Level>();
+
+        foreach (var textData in textDatas)
+        {
+            Debug.Log(textData.ToString());
+            var lvs = JsonToLevel<Level>(textData.ToString());
+
+            lvList.Add(lvs);
+        }
+
+        return lvList;
+    }
+
+    void Load(int index, bool isEditor = false)
+    {
+        var stages = StageManager.instance.stages;
+
+        if(isEditor)
+        {
+            var path = stages[index].GetPath();
+
+            LoadAsDirectory(path);
+        }
+        else
+        {
+            var path = stages[index].GetPath(true);
+
+            LoadAsResource(path);
+        }
+    }
+
     public void LoadAllLevel()
     {
 //#if UNITY_STANDALONE_WIN

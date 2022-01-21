@@ -31,6 +31,26 @@ public class StageManager : MonoBehaviour
         current = stages[index];
     }
 
+    public void SetCurrentStage(string stageName)
+    {
+        var newStage = stages.Find(s => s.Name == stageName);
+
+        if (newStage == null)
+            Debug.LogWarning($"Can't Find stage from name : {stageName}");
+        else
+            current = newStage;
+    }
+
+    public void SetCurrentStage(int stageNum)
+    {
+        var newStage = stages.Find(s => s.Num == stageNum);
+
+        if (newStage == null)
+            Debug.LogWarning($"Can't Find stage from number : {stageNum}");
+        else
+            current = newStage;
+    }
+
     public void NextStage()
     {
         index++;
