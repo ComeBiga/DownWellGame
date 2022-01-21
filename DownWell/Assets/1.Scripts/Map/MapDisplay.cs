@@ -54,6 +54,12 @@ public class MapDisplay : MonoBehaviour
     //        }
     //    }
     //}
+    public void SetObjects(List<GameObject> wallObjects, List<Sprite> wallSprites, List<GameObject> enemyObjects)
+    {
+        this.wallObjects = wallObjects;
+        this.wallSprites = wallSprites;
+        this.enemyObjects = enemyObjects;
+    }
 
     public int Display(Level level, int Ypos)
     {

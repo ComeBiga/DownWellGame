@@ -25,6 +25,7 @@ public class StageManager : MonoBehaviour
         }
     }
     private int index = 0;
+    public int CurrentStageIndex { get { return index; } }
 
     public void Start()
     {

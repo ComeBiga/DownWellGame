@@ -39,6 +39,11 @@ public class LoadLevel : MonoBehaviour
         return levels[(int)stage];
     }
 
+    public List<Level> GetLevels(int stageIndex)
+    {
+        return levels[stageIndex];
+    }
+
     public List<Level> GetObjects(string objName)
     {
         return objects[objName];
@@ -76,7 +81,7 @@ public class LoadLevel : MonoBehaviour
         return lvList;
     }
 
-    void Load(int index, bool isEditor = false)
+    List<Level> LoadStage(int index, bool isEditor = false)
     {
         var stages = StageManager.instance.stages;
 
@@ -84,13 +89,13 @@ public class LoadLevel : MonoBehaviour
         {
             var path = stages[index].GetPath();
 
-            LoadAsDirectory(path);
+            return LoadAsDirectory(path);
         }
         else
         {
             var path = stages[index].GetPath(true);
 
-            LoadAsResource(path);
+            return LoadAsResource(path);
         }
     }
 
@@ -117,38 +122,16 @@ public class LoadLevel : MonoBehaviour
 //#endif
 
 #if UNITY_EDITOR
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < StageManager.instance.stages.Count; i++)
         {
-            string[] directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
-            List<Level> lvList = new List<Level>();
-
-            foreach (var dir in directories)
-            {
-                string jsonStr = File.ReadAllText(dir);
-                var lvs = JsonToLevel<Level>(jsonStr);
-
-                lvList.Add(lvs);
-
-                //Debug.Log(JsonUtility.ToJson(lvs));
-            }
+            var lvList = LoadStage(i, true);
 
             levels.Add(i, lvList);
         }
 #elif UNITY_ANDROID || UNITY_STANDALONE_WIN
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < StageManager.instance.stages.Count; i++)
         {
-            var textDatas = Resources.LoadAll("Levels/Stage" + (i + 1).ToString() + "/", typeof(TextAsset));
-            List<Level> lvList = new List<Level>();
-
-            foreach (var textData in textDatas)
-            {
-                Debug.Log(textData.ToString());
-                var lvs = JsonToLevel<Level>(textData.ToString());
-
-                lvList.Add(lvs);
-
-                //Debug.Log(JsonUtility.ToJson(lvs));
-            }
+            var lvList = LoadStage(i, false);
 
             levels.Add(i, lvList);
         }
@@ -307,15 +290,15 @@ public class LoadLevel : MonoBehaviour
         return JsonUtility.FromJson<T>(jsonData);
     }
 
-    public Level RandomLevel(LevelEditor.Stage stage)
-    {
-        string seed = (Time.time + Random.value).ToString();
-        System.Random rand = new System.Random(seed.GetHashCode());
+    //public Level RandomLevel(LevelEditor.Stage stage)
+    //{
+    //    string seed = (Time.time + Random.value).ToString();
+    //    System.Random rand = new System.Random(seed.GetHashCode());
 
-        List<Level> levels = GetLevels(stage);
-        //Debug.Log(levels.Count);
-        Level randomWall = levels[rand.Next(0, levels.Count)];
+    //    List<Level> levels = GetLevels(stage);
+    //    //Debug.Log(levels.Count);
+    //    Level randomWall = levels[rand.Next(0, levels.Count)];
 
-        return randomWall;
-    }
+    //    return randomWall;
+    //}
 }

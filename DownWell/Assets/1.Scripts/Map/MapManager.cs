@@ -20,6 +20,7 @@ public class MapManager : MonoBehaviour
     MapDisplay mapDisplay;
     LevelGenerator lg;
     LoadLevel loadLevel;
+    StageManager sm;
 
     public int width = 10;
     public int height = 100;
@@ -39,6 +40,7 @@ public class MapManager : MonoBehaviour
         mapDisplay = GetComponent<MapDisplay>();
         lg = GetComponent<LevelGenerator>();
         loadLevel = LoadLevel.instance;
+        sm = StageManager.instance;
 
         StartCoroutine(GenerateMap());
 
@@ -77,7 +79,7 @@ public class MapManager : MonoBehaviour
         for (;(-currentYpos) < height;)
         {
             // 랜덤으로 불러온 레벨을 현재 y 위치에서 생성
-            currentYpos -= mapDisplay.Display(loadLevel.RandomLevel(currentStage), currentYpos);
+            currentYpos -= mapDisplay.Display(RandomLevel(sm.CurrentStageIndex), currentYpos);
         }
 
         // 스테이지 끝을 생성하는 코드
@@ -91,10 +93,22 @@ public class MapManager : MonoBehaviour
     {
         for (int i = 0; i < times; i++)
         {
-            currentYpos -= mapDisplay.Display(loadLevel.RandomLevel(currentStage), currentYpos);
+            currentYpos -= mapDisplay.Display(RandomLevel(sm.CurrentStageIndex), currentYpos);
 
             yield return null;
         }
+    }
+
+    Level RandomLevel(int stageIndex)
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        List<Level> levels = LoadLevel.instance.GetLevels(stageIndex);
+        //Debug.Log(levels.Count);
+        Level randomWall = levels[rand.Next(0, levels.Count)];
+
+        return randomWall;
     }
 
     public void Generate(int times)

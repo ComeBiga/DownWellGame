@@ -41,7 +41,7 @@ public class StageDatabase : ScriptableObject
     public string GetPath(bool resourceLoad = false)
     {
         if (resourceLoad)
-            return path.Replace("Resources/", "");
+            return path.Replace("/Resources", "");
         else
             return path;
     }
