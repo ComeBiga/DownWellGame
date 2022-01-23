@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/*
+#if UNITY_EDITOR
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+#endif
+*/
+
 public class LoadLevel : MonoBehaviour
 {
     #region Singleton
@@ -14,9 +20,6 @@ public class LoadLevel : MonoBehaviour
             instance = this;
     }
     #endregion
-
-    // [Deprecated]
-    //public LevelEditor.Stage loadStage = LevelEditor.Stage.Stage1;
 
     [Header("Path")]
     [SerializeField] private string blockPath = "/Resources/Levels/Blocks/";
@@ -33,9 +36,12 @@ public class LoadLevel : MonoBehaviour
     void Start()
     {
         LoadAllLevel();
-        LoadBlockObjects();
-        LoadStageGround();
-        LoadStageStart();
+        LoadAllObjects("Block", blockPath);
+        LoadAllObjects("StageStart", stageStartPath);
+        LoadAllObjects("StageGround", stageGroundPath);
+        //LoadBlockObjects();
+        //LoadStageGround();
+        //LoadStageStart();
 
         Debug.Log("Loadlevel Start");
     }
@@ -57,8 +63,20 @@ public class LoadLevel : MonoBehaviour
         return objects[objName];
     }
 
-    List<Level> LoadAsDirectory(string path)
+    public static string ReplacePath(string path)
     {
+
+#if UNITY_EDITOR
+        return path;
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+        return path.Replace("/Resources", "");
+#endif
+
+    }
+
+    List<Level> Load(string path)
+    {
+#if UNITY_EDITOR
         string[] directories = Directory.GetFiles(Application.dataPath + path + "/", "*.json");
         List<Level> lvList = new List<Level>();
 
@@ -71,10 +89,7 @@ public class LoadLevel : MonoBehaviour
         }
 
         return lvList;
-    }
-
-    List<Level> LoadAsResource(string path)
-    {
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
         var textDatas = Resources.LoadAll(path + "/", typeof(TextAsset));
         List<Level> lvList = new List<Level>();
 
@@ -87,45 +102,111 @@ public class LoadLevel : MonoBehaviour
         }
 
         return lvList;
+#endif
     }
 
-    List<Level> LoadStage(int index, bool isEditor = false)
-    {
-        var stages = StageManager.instance.stages;
+    #region Deprecated
+    //List<Level> LoadAsDirectory(string path)
+    //{
+    //    string[] directories = Directory.GetFiles(Application.dataPath + path + "/", "*.json");
+    //    List<Level> lvList = new List<Level>();
 
-        if(isEditor)
-        {
-            var path = stages[index].GetPath();
+    //    foreach (var dir in directories)
+    //    {
+    //        string jsonStr = File.ReadAllText(dir);
+    //        var lvs = JsonToLevel<Level>(jsonStr);
 
-            return LoadAsDirectory(path);
-        }
-        else
-        {
-            var path = stages[index].GetPath(true);
+    //        lvList.Add(lvs);
+    //    }
 
-            return LoadAsResource(path);
-        }
-    }
+    //    return lvList;
+    //}
+
+    //List<Level> LoadAsResource(string path)
+    //{
+    //    var textDatas = Resources.LoadAll(path + "/", typeof(TextAsset));
+    //    List<Level> lvList = new List<Level>();
+
+    //    foreach (var textData in textDatas)
+    //    {
+    //        Debug.Log(textData.ToString());
+    //        var lvs = JsonToLevel<Level>(textData.ToString());
+
+    //        lvList.Add(lvs);
+    //    }
+
+    //    return lvList;
+    //}
+
+    //List<Level> Load(string path, bool isEditor = false)
+    //{
+    //    if (isEditor)
+    //    {
+    //        return LoadAsDirectory(path);
+    //    }
+    //    else
+    //    {
+    //        return LoadAsResource(path);
+    //    }
+    //}
+
+    //List<Level> LoadStage(int index)
+    //{
+    //    var stages = StageManager.instance.stages;
+
+    //    return Load(stages[index].GetPath());
+
+    //    //if(isEditor)
+    //    //{
+    //    //    var path = stages[index].GetPath();
+
+    //    //    return LoadAsDirectory(path);
+    //    //}
+    //    //else
+    //    //{
+    //    //    var path = stages[index].GetPath();
+
+    //    //    return LoadAsResource(path);
+    //    //}
+    //}
+    #endregion
 
     public void LoadAllLevel()
     {
+        var stages = StageManager.instance.stages;
 
-#if UNITY_EDITOR
-        for (int i = 0; i < StageManager.instance.stages.Count; i++)
+        for (int i = 0; i < stages.Count; i++)
         {
-            var lvList = LoadStage(i, true);
+            var lvList = Load(stages[i].GetPath());
 
             levels.Add(i, lvList);
         }
-#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
-        for (int i = 0; i < StageManager.instance.stages.Count; i++)
-        {
-            var lvList = LoadStage(i, false);
 
-            levels.Add(i, lvList);
-        }
-#endif
+        //#if UNITY_EDITOR
+        //        for (int i = 0; i < StageManager.instance.stages.Count; i++)
+        //        {
+        //            var lvList = LoadStage(i, true);
+
+        //            levels.Add(i, lvList);
+        //        }
+        //#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+        //        for (int i = 0; i < StageManager.instance.stages.Count; i++)
+        //        {
+        //            var lvList = LoadStage(i, false);
+
+        //            levels.Add(i, lvList);
+        //        }
+        //#endif
     }
+
+    public void LoadAllObjects(string objectName, string path)
+    {
+        var objList = Load(LoadLevel.ReplacePath(path));
+
+        objects.Add(objectName, objList);
+    }
+
+    #region Deprecated
 
     public void LoadBlockObjects()
     {
@@ -231,6 +312,8 @@ public class LoadLevel : MonoBehaviour
         objects.Add("StageGround", objList);
 #endif
     }
+
+    #endregion
 
     T JsonToLevel<T>(string jsonData)
     {

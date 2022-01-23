@@ -38,11 +38,16 @@ public class StageDatabase : ScriptableObject
     /// </summary>
     /// <param name="resourceLoad"></param>
     /// <returns></returns>
-    public string GetPath(bool resourceLoad = false)
+    public string GetPath()
     {
-        if (resourceLoad)
-            return path.Replace("/Resources", "");
-        else
-            return path;
+#if UNITY_EDITOR
+        return path;
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+        return path.Replace("/Resources", "");
+#endif
+        //if (resourceLoad)
+        //    return path.Replace("/Resources", "");
+        //else
+        //    return path;
     }
 }
