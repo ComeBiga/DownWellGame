@@ -70,9 +70,9 @@ public class MapDisplay : MonoBehaviour
 
     public int Display(Level level, int Ypos)
     {
-        Debug.Log("Display");
-        Debug.Log(level.width);
-        Debug.Log("name:"+level.name);
+        //Debug.Log("Display");
+        //Debug.Log(level.width);
+        //Debug.Log("name:"+level.name);
 
         if(displayBackground) DisplayBackGround(level, Ypos);
 
@@ -100,7 +100,7 @@ public class MapDisplay : MonoBehaviour
                 }
                 else if(currentTile == 9)
                 {
-                    if (BossStageManager.instance.BossStage)
+                    if (BossStageManager.instance.IsBossStage)
                     {
                         var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == currentTile);
 

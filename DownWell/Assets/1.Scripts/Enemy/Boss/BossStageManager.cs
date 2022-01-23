@@ -21,26 +21,30 @@ public class BossStageManager : MonoBehaviour
     }
     #endregion
 
-    public GameObject boss;
+    public GameObject bossSpawner;
+    private GameObject bossObject;
 
     public float bossAppearDistance;
     public float appearSpeed = 1f;
 
     bool bossStage = false;
-    public bool BossStage { get { return bossStage; } }
+    public bool IsBossStage { get { return bossSpawner.activeSelf; } }
 
     //Vector3 bossAppearPos;
 
     private void Start()
     {
-        
+        bossObject = StageManager.instance.Current.BossObject;
+        bossObject = Instantiate(bossObject, bossSpawner.transform);
+        bossObject.transform.localPosition = Vector3.zero;
+        bossSpawner.SetActive(false);
     }
 
     public void StartBossStage()
     {
         //SceneManager.LoadScene(0);
         bossStage = true;
-        boss.SetActive(true);
+        bossSpawner.SetActive(true);
         //SetBossAppearPos();
         StartCoroutine(AppearAnimation());
         Camera.main.GetComponent<CameraShake>().Shake(.02f, 1f, true);
@@ -59,7 +63,7 @@ public class BossStageManager : MonoBehaviour
     IEnumerator AppearAnimation()
     {
         var moveDistance = 0f;
-        var bossAppearPos = boss.transform.localPosition;
+        var bossAppearPos = bossObject.transform.localPosition;
         var lateBossPos = new Vector3();
 
         PlayerManager.instance.player.GetComponent<PlayerController>().cantMove = true;
@@ -73,18 +77,18 @@ public class BossStageManager : MonoBehaviour
             var deltaMoveY = Time.fixedDeltaTime * appearSpeed;
             //Debug.Log(deltaMoveY);
 
-            boss.transform.localPosition = new Vector3(boss.transform.localPosition.x,
-                boss.transform.localPosition.y - deltaMoveY,
-                boss.transform.localPosition.z);
+            bossObject.transform.localPosition = new Vector3(bossObject.transform.localPosition.x,
+                bossObject.transform.localPosition.y - deltaMoveY,
+                bossObject.transform.localPosition.z);
 
-            moveDistance = bossAppearPos.y - boss.transform.localPosition.y;
+            moveDistance = bossAppearPos.y - bossObject.transform.localPosition.y;
 
             yield return new WaitForFixedUpdate();
         }
 
         PlayerManager.instance.player.GetComponent<PlayerController>().cantMove = false;
         //boss.GetComponent<BossCombat>().active = true;
-        boss.GetComponent<BossBrain>().Use();
+        bossObject.GetComponent<BossBrain>().Use();
         Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
     }
 }

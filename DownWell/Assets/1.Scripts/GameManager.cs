@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public int coin = 0;
 
-    public GameObject boss;
+    //public GameObject boss;
 
     private void Start()
     {
@@ -73,13 +73,13 @@ public class GameManager : MonoBehaviour
         coin += amount;
     }
 
-    public void StageEnd()
-    {
-        //SceneManager.LoadScene(0);
-        boss.SetActive(true);
-        Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
-        MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
-    }
+    //public void StageEnd()
+    //{
+    //    //SceneManager.LoadScene(0);
+    //    boss.SetActive(true);
+    //    Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
+    //    MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
+    //}
 
     public void homeBtn()
     {

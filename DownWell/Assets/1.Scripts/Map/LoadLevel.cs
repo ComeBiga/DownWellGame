@@ -18,6 +18,11 @@ public class LoadLevel : MonoBehaviour
     // [Deprecated]
     //public LevelEditor.Stage loadStage = LevelEditor.Stage.Stage1;
 
+    [Header("Path")]
+    [SerializeField] private string blockPath = "/Resources/Levels/Blocks/";
+    [SerializeField] private string stageStartPath = "/Resources/Levels/StageStart/";
+    [SerializeField] private string stageGroundPath = "/Resources/Levels/StageGround/";
+
     public Dictionary<int, List<Level>> levels = new Dictionary<int, List<Level>>();
     public Dictionary<string, List<Level>> objects = new Dictionary<string, List<Level>>();
     //public List<int[]> levels = new List<int[]>();
@@ -104,25 +109,6 @@ public class LoadLevel : MonoBehaviour
 
     public void LoadAllLevel()
     {
-//#if UNITY_STANDALONE_WIN
-//        for (int i = 0; i < 5; i++)
-//        {
-//            var textDatas = Resources.LoadAll("Levels/Stage" + (i + 1).ToString() + "/", typeof(TextAsset));
-//            List<Level> lvList = new List<Level>();
-
-//            foreach (var textData in textDatas)
-//            {
-//                Debug.Log(textData.ToString());
-//                var lvs = JsonToLevel<Level>(textData.ToString());
-
-//                lvList.Add(lvs);
-
-//                //Debug.Log(JsonUtility.ToJson(lvs));
-//            }
-
-//            levels.Add(i, lvList);
-//        }
-//#endif
 
 #if UNITY_EDITOR
         for (int i = 0; i < StageManager.instance.stages.Count; i++)
@@ -146,20 +132,6 @@ public class LoadLevel : MonoBehaviour
         List<Level> objList = new List<Level>();
 
         string[] directories;
-
-//#if UNITY_STANDALONE_WIN
-//        var textDatas = Resources.LoadAll("Levels/Blocks", typeof(TextAsset));
-
-//        foreach (var textData in textDatas)
-//        {
-//            Debug.Log(textData.ToString());
-//            var obj = JsonToLevel<Level>(textData.ToString());
-
-//            objList.Add(obj);
-//        }
-
-//        objects.Add("Block", objList);
-//#endif
 
 #if UNITY_EDITOR
         directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Blocks/", "*.json");
@@ -196,20 +168,6 @@ public class LoadLevel : MonoBehaviour
 
         string[] directories;
 
-//#if UNITY_STANDALONE_WIN
-//        var textDatas = Resources.LoadAll("Levels/StageStart", typeof(TextAsset));
-
-//        foreach (var textData in textDatas)
-//        {
-//            Debug.Log(textData.ToString());
-//            var obj = JsonToLevel<Level>(textData.ToString());
-
-//            objList.Add(obj);
-//        }
-
-//        objects.Add("StageStart", objList);
-//#endif
-
 #if UNITY_EDITOR
         directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageStart/", "*.json");
 
@@ -245,20 +203,6 @@ public class LoadLevel : MonoBehaviour
 
         string[] directories;
 
-//#if UNITY_STANDALONE_WIN
-//        var textDatas = Resources.LoadAll("Levels/StageGround", typeof(TextAsset));
-
-//        foreach (var textData in textDatas)
-//        {
-//            Debug.Log(textData.ToString());
-//            var obj = JsonToLevel<Level>(textData.ToString());
-
-//            objList.Add(obj);
-//        }
-
-//        objects.Add("StageGround", objList);
-//#endif
-
 #if UNITY_EDITOR
         directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageGround/", "*.json");
 
@@ -292,16 +236,4 @@ public class LoadLevel : MonoBehaviour
     {
         return JsonUtility.FromJson<T>(jsonData);
     }
-
-    //public Level RandomLevel(LevelEditor.Stage stage)
-    //{
-    //    string seed = (Time.time + Random.value).ToString();
-    //    System.Random rand = new System.Random(seed.GetHashCode());
-
-    //    List<Level> levels = GetLevels(stage);
-    //    //Debug.Log(levels.Count);
-    //    Level randomWall = levels[rand.Next(0, levels.Count)];
-
-    //    return randomWall;
-    //}
 }

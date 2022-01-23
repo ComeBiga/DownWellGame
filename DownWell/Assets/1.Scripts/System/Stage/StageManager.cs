@@ -14,6 +14,10 @@ public class StageManager : MonoBehaviour
     }
     #endregion
 
+    public enum Stage { Stage_1, Stage_2, Stage_3, Stage_4, Stage_5, TestStage }
+    public Stage stage = Stage.Stage_1;
+
+    [Header("DB")]
     public List<StageDatabase> stages;
 
     private StageDatabase current;
@@ -23,6 +27,7 @@ public class StageManager : MonoBehaviour
         {
             if(current == null)
             {
+                SetCurrentStage();
                 current = stages[index];
             }
             return current;
@@ -31,9 +36,29 @@ public class StageManager : MonoBehaviour
     private int index = 0;
     public int CurrentStageIndex { get { return index; } }
 
-    public void Start()
+    private void SetCurrentStage()
     {
-        //current = stages[index];
+        switch(stage)
+        {
+            case Stage.Stage_1:
+                SetCurrentStage(1);
+                break;
+            case Stage.Stage_2:
+                SetCurrentStage(2);
+                break;
+            case Stage.Stage_3:
+                SetCurrentStage(3);
+                break;
+            case Stage.Stage_4:
+                SetCurrentStage(4);
+                break;
+            case Stage.Stage_5:
+                SetCurrentStage(5);
+                break;
+            case Stage.TestStage:
+                SetCurrentStage(0);
+                break;
+        }
     }
 
     public void SetCurrentStage(string stageName)
@@ -43,7 +68,10 @@ public class StageManager : MonoBehaviour
         if (newStage == null)
             Debug.LogWarning($"Can't Find stage from name : {stageName}");
         else
+        {
+            index = stages.IndexOf(newStage);
             current = newStage;
+        }
     }
 
     public void SetCurrentStage(int stageNum)
@@ -53,7 +81,10 @@ public class StageManager : MonoBehaviour
         if (newStage == null)
             Debug.LogWarning($"Can't Find stage from number : {stageNum}");
         else
+        {
+            index = stages.IndexOf(newStage);
             current = newStage;
+        }
     }
 
     public void NextStage()
