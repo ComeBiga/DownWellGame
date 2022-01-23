@@ -63,6 +63,11 @@ public class MapManager : MonoBehaviour
     //    //Instantiate(new GameObject());
     //}
 
+    public void Generate()
+    {
+        StartCoroutine(GenerateMap());
+    }
+
     IEnumerator GenerateMap()
     {
         yield return null;

@@ -7207,8 +7207,8 @@ GameObject:
   - component: {fileID: 1215072947}
   - component: {fileID: 1215072950}
   - component: {fileID: 1215072949}
-  - component: {fileID: 1215072951}
   - component: {fileID: 1215072952}
+  - component: {fileID: 1215072951}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -7329,6 +7329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3f1554aebc2b4590cf0432d97db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPath: /Resources/Levels/Blocks/
+  stageStartPath: /Resources/Levels/StageStart/
+  stageGroundPath: /Resources/Levels/StageGround/
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0
@@ -9926,9 +9929,9 @@ GameObject:
   - component: {fileID: 1700652126}
   - component: {fileID: 1700652125}
   - component: {fileID: 1700652131}
+  - component: {fileID: 1700652129}
   - component: {fileID: 1700652127}
   - component: {fileID: 1700652128}
-  - component: {fileID: 1700652129}
   - component: {fileID: 1700652130}
   m_Layer: 0
   m_Name: GameManager
