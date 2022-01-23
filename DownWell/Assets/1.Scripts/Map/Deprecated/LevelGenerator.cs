@@ -331,7 +331,7 @@ public class LevelGenerator : MonoBehaviour
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        List<Level> levels = loadLevel.GetLevels(currentStage);
+        List<Level> levels = loadLevel.GetLevels(StageManager.instance.CurrentStageIndex);
         //Debug.Log(levels.Count);
         Level randomWall = levels[rand.Next(0, levels.Count)];
 
@@ -401,7 +401,7 @@ public class LevelGenerator : MonoBehaviour
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        List<Level> levels = loadLevel.GetLevels(currentStage);
+        List<Level> levels = loadLevel.GetLevels(StageManager.instance.CurrentStageIndex);
         //Debug.Log(levels.Count);
         Level randomWall = levels[rand.Next(0, levels.Count)];
 

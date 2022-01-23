@@ -54,11 +54,18 @@ public class MapDisplay : MonoBehaviour
     //        }
     //    }
     //}
-    public void SetObjects(List<GameObject> wallObjects, List<Sprite> wallSprites, List<GameObject> enemyObjects)
+    public void SetObjects(List<GameObject> mapObjects, List<Sprite> wallSprites, List<GameObject> enemyObjects)
     {
-        this.wallObjects = wallObjects;
+        this.wallObjects = mapObjects;
         this.wallSprites = wallSprites;
         this.enemyObjects = enemyObjects;
+    }
+
+    public void SetObjects(StageDatabase currentStageDB)
+    {
+        this.wallObjects = currentStageDB.MapObjects;
+        this.wallSprites = currentStageDB.WallSprites;
+        this.enemyObjects = currentStageDB.EnemyObjects;
     }
 
     public int Display(Level level, int Ypos)

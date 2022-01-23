@@ -15,7 +15,8 @@ public class LoadLevel : MonoBehaviour
     }
     #endregion
 
-    public LevelEditor.Stage loadStage = LevelEditor.Stage.Stage1;
+    // [Deprecated]
+    //public LevelEditor.Stage loadStage = LevelEditor.Stage.Stage1;
 
     public Dictionary<int, List<Level>> levels = new Dictionary<int, List<Level>>();
     public Dictionary<string, List<Level>> objects = new Dictionary<string, List<Level>>();
@@ -34,10 +35,12 @@ public class LoadLevel : MonoBehaviour
         Debug.Log("Loadlevel Start");
     }
 
-    public List<Level> GetLevels(LevelEditor.Stage stage)
-    {
-        return levels[(int)stage];
-    }
+    #region Deprecated
+    //public List<Level> GetLevels(LevelEditor.Stage stage)
+    //{
+    //    return levels[(int)stage];
+    //}
+    #endregion
 
     public List<Level> GetLevels(int stageIndex)
     {

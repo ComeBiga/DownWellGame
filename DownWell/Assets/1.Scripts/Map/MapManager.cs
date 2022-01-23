@@ -25,7 +25,7 @@ public class MapManager : MonoBehaviour
     public int width = 10;
     public int height = 100;
 
-    public LevelEditor.Stage currentStage = LevelEditor.Stage.Stage1;
+    //public LevelEditor.Stage currentStage = LevelEditor.Stage.Stage1;
 
     int currentYpos = 0;
     public int CurrentYPos { get { return currentYpos; } }
@@ -42,9 +42,11 @@ public class MapManager : MonoBehaviour
         loadLevel = LoadLevel.instance;
         sm = StageManager.instance;
 
-        StartCoroutine(GenerateMap());
+        // Init Object
+        mapDisplay.SetObjects(sm.Current);
 
-        Debug.Log("MapManager Start");
+        // Generate
+        StartCoroutine(GenerateMap());
     }
 
     //IEnumerator FirstGenerateMap()

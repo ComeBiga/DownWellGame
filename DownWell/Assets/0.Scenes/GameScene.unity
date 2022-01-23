@@ -7361,7 +7361,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 11
   height: 11
-  currentStage: 0
   reGenerateOffset: 20
 --- !u!114 &1215072951
 MonoBehaviour:
@@ -7370,7 +7369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215072946}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 045934f5cff0df34d81dc9135601b11d, type: 3}
   m_Name: 
@@ -7391,7 +7390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3f1554aebc2b4590cf0432d97db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadStage: 0
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0

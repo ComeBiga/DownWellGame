@@ -21,6 +21,10 @@ public class StageManager : MonoBehaviour
     {
         get
         {
+            if(current == null)
+            {
+                current = stages[index];
+            }
             return current;
         }
     }
@@ -29,7 +33,7 @@ public class StageManager : MonoBehaviour
 
     public void Start()
     {
-        current = stages[index];
+        //current = stages[index];
     }
 
     public void SetCurrentStage(string stageName)
