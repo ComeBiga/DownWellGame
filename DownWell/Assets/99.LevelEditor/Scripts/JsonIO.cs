@@ -31,54 +31,63 @@ public class JsonIO : MonoBehaviour
         fileName = "";
         //tiles = GameObject.Find("LevelTiles").GetComponentsInChildren<TileInfo>();
         UpdateAllDatabase();
-
-
     }
 
     public void Update()
     {
-        if(JsonIO.levelChanged)
-            SaveToJson(selectedDB);
+        if (JsonIO.levelChanged)
+        {
+            Save(selectedDB);
+            JsonIO.levelChanged = false;
+        }
     }
 
-    public void SelectDB(LevelDBInfo levelDB)
-    {
-        selectedDB = levelDB;
-    }
-
-    public LevelDBInfo CreateLevelJson(int width, int height)
+    #region Save
+    public LevelDBInfo CreateNewLevel(int width, int height)
     {
         LevelEditorManager.instance.ResetCanvas(width, height);
-        SaveToJson();
+        SaveAsNew();
 
         return levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
     }
 
-    // Create Save
-    public void SaveToJson()
+    // Write into Text File
+    private void SaveToTextFile(string path, string fileName)
+    {
+        var jsonStr = LevelToJson(fileName);
+
+        File.WriteAllText(path, jsonStr);
+    }
+
+    // Save to create
+    public void SaveAsNew()
     {
         var path = "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json";
 
-        var jsonStr = LevelToJson(fileName);
+        SaveToTextFile(Application.dataPath + path, fileName);
 
-        File.WriteAllText(Application.dataPath + path, jsonStr);
+        //var jsonStr = LevelToJson(fileName);
+
+        //File.WriteAllText(Application.dataPath + path, jsonStr);
 
         SaveIntoDatabase(fileName, stage, path);
 
         Debug.Log("Saved(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
     }
 
-    // Auto Save
-    public void SaveToJson(LevelDBInfo levelInfo)
+    // Save for auto
+    public void Save(LevelDBInfo levelInfo)
     {
         var path = Application.dataPath + levelInfo.path;
 
         var fileName = new DirectoryInfo(path).Name;
-        var jsonStr = LevelToJson(fileName.Replace(".json", ""));
 
-        File.WriteAllText(path, jsonStr);
+        SaveToTextFile(path, fileName.Replace(".json", ""));
 
-        JsonIO.levelChanged = false;
+        //var jsonStr = LevelToJson(fileName.Replace(".json", ""));
+
+        //File.WriteAllText(path, jsonStr);
+
 
         Debug.Log("Saved(" + levelInfo.filename + ")");
     }
@@ -101,14 +110,77 @@ public class JsonIO : MonoBehaviour
         return JsonUtility.ToJson(level);
     }
 
-    void RemoveAllDatabase()
+    #endregion
+
+    #region Load
+
+    public T LoadFromTextFile<T>(string path)
     {
-        levelDB.jsonLevelDBs = new List<LevelDBInfo>();
+        // Read From Text File
+        var jsonStr = File.ReadAllText(path);
+
+        // Convert into json
+        var level = JsonToLevel<T>(jsonStr);
+
+        return level;
     }
 
-    void SaveIntoDatabase(LevelDBInfo newDB)
+    // Deprecated
+    //public void LoadJson()
+    //{
+    //    var path = Application.dataPath + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json";
+
+    //    var level = LoadFromTextFile<Level>(path);
+
+    //    //string jsonStr = File.ReadAllText(Application.dataPath + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json");
+
+    //    //var level = JsonToLevel<Level>(jsonStr);
+
+    //    LevelEditorManager.instance.LoadLevel(level);
+
+    //    LevelEditorManager.instance.SetCanvasActive(true);
+
+    //    Debug.Log("Loaded(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
+    //}
+
+    public void LoadJson(string path)
     {
-        SaveIntoDatabase(newDB.filename, newDB.stage, newDB.path);
+        var level = LoadFromTextFile<Level>(Application.dataPath + path);
+        //string jsonStr = File.ReadAllText(Application.dataPath + path);
+        //var level = JsonToLevel<Level>(jsonStr);
+
+        LevelEditorManager.instance.LoadLevel(level);
+
+        JsonIO.levelChanged = false;
+
+        LevelEditorManager.instance.SetCanvasActive(true);
+
+        Debug.Log("Loaded(" + path + ")");
+    }
+
+    T JsonToLevel<T>(string jsonData)
+    {
+        return JsonUtility.FromJson<T>(jsonData);
+    }
+
+    #endregion
+
+    #region Delete
+    public void DeleteJson(LevelDBInfo levelInfo)
+    {
+        levelDB.Remove(levelInfo);
+        File.Delete(Application.dataPath + levelInfo.path);
+        SelectDB(new LevelDBInfo());
+
+        LevelEditorManager.instance.SetCanvasActive(false);
+    }
+    #endregion
+
+    #region Database
+
+    public void SelectDB(LevelDBInfo levelDB)
+    {
+        selectedDB = levelDB;
     }
 
     void SaveIntoDatabase(string filename, LevelEditor.Stage stage, string path)
@@ -116,69 +188,127 @@ public class JsonIO : MonoBehaviour
         levelDB.Add(filename, stage, path);
     }
 
+    void SaveIntoDatabase(LevelDBInfo newDB)
+    {
+        SaveIntoDatabase(newDB.filename, newDB.stage, newDB.path);
+    }
+
+    void RemoveAllDatabase()
+    {
+        levelDB.jsonLevelDBs = new List<LevelDBInfo>();
+    }
+
+    LevelDBInfo LoadDatabase(string path, LevelEditor.Stage stage)
+    {
+        LevelDBInfo newDB = new LevelDBInfo();
+        newDB.path = path.Replace(Application.dataPath, "");
+
+        var lvs = LoadFromTextFile<Level>(path);
+        //string jsonStr = File.ReadAllText(dir);
+        //var lvs = JsonToLevel<Level>(jsonStr);
+
+        // 왜 있는지 모르겠는 코드라인
+        LevelEditorManager.instance.DesignateTileCorner(lvs);
+
+        newDB.filename = lvs.name;
+        newDB.stage = stage;
+
+        return newDB;
+    }
+
+    List<LevelDBInfo> LoadAllDatabase(string path, LevelEditor.Stage stage)
+    {
+        List<LevelDBInfo> loadedDBs = new List<LevelDBInfo>();
+
+        string[] directories = Directory.GetFiles(path, "*.json");
+
+        foreach(var dir in directories)
+        {
+            var db = LoadDatabase(dir, stage);
+            loadedDBs.Add(db);
+        }
+
+        return loadedDBs;
+    }
+
     void UpdateAllDatabase()
     {
         RemoveAllDatabase();
 
         string[] directories;
-        List<Level> lvList = new List<Level>();
+        List<LevelDBInfo> loadedDBs = new List<LevelDBInfo>();
 
         for (int i = 0; i < 5; i++)
         {
-            directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
-            lvList = new List<Level>();
+            var path = Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/";
 
-            foreach (var dir in directories)
-            {
-                LevelDBInfo newDB = new LevelDBInfo();
-                newDB.path = dir.Replace(Application.dataPath, "");
+            var dbs = LoadAllDatabase(path, (LevelEditor.Stage)i);
 
-                string jsonStr = File.ReadAllText(dir);
-                var lvs = JsonToLevel<Level>(jsonStr);
+            loadedDBs.AddRange(dbs);
+            //directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
 
-                LevelEditorManager.instance.DesignateTileCorner(lvs);
+            //foreach (var dir in directories)
+            //{
+            //    LevelDBInfo newDB = new LevelDBInfo();
+            //    newDB.path = dir.Replace(Application.dataPath, "");
 
-                newDB.filename = lvs.name;
-                newDB.stage = (LevelEditor.Stage)i;
+            //    var lvs = LoadFromTextFile<Level>(dir);
+            //    //string jsonStr = File.ReadAllText(dir);
+            //    //var lvs = JsonToLevel<Level>(jsonStr);
 
-                SaveIntoDatabase(newDB);
-            }
+            //    // 왜 있는지 모르겠는 코드라인
+            //    LevelEditorManager.instance.DesignateTileCorner(lvs);
+
+            //    newDB.filename = lvs.name;
+            //    newDB.stage = (LevelEditor.Stage)i;
+
+            //}
         }
-        
+        //SaveIntoDatabase(newDB);
+
         // StageStart
-        directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageStart/", "*.json");
-        lvList = new List<Level>();
+        var pathStageStart = Application.dataPath + "/Resources/Levels/StageStart/";
 
-        foreach (var dir in directories)
-        {
-            LevelDBInfo newDB = new LevelDBInfo();
-            newDB.path = dir.Replace(Application.dataPath, "");
+        loadedDBs.AddRange(LoadAllDatabase(pathStageStart, LevelEditor.Stage.StageGround));
+        //directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageStart/", "*.json");
 
-            string jsonStr = File.ReadAllText(dir);
-            var lvs = JsonToLevel<Level>(jsonStr);
+        //foreach (var dir in directories)
+        //{
+        //    LevelDBInfo newDB = new LevelDBInfo();
+        //    newDB.path = dir.Replace(Application.dataPath, "");
 
-            newDB.filename = lvs.name;
-            newDB.stage = LevelEditor.Stage.StageGround;
+        //    string jsonStr = File.ReadAllText(dir);
+        //    var lvs = JsonToLevel<Level>(jsonStr);
 
-            SaveIntoDatabase(newDB);
-        }
+        //    newDB.filename = lvs.name;
+        //    newDB.stage = LevelEditor.Stage.StageGround;
+
+        //    SaveIntoDatabase(newDB);
+        //}
 
         // StageGround
-        directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageGround/", "*.json");
-        lvList = new List<Level>();
+        var pathStageGround = Application.dataPath + "/Resources/Levels/StageGround/";
 
-        foreach (var dir in directories)
+        loadedDBs.AddRange(LoadAllDatabase(pathStageGround, LevelEditor.Stage.StageGround));
+        //directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/StageGround/", "*.json");
+
+        //foreach (var dir in directories)
+        //{
+        //    LevelDBInfo newDB = new LevelDBInfo();
+        //    newDB.path = dir.Replace(Application.dataPath, "");
+
+        //    string jsonStr = File.ReadAllText(dir);
+        //    var lvs = JsonToLevel<Level>(jsonStr);
+
+        //    newDB.filename = lvs.name;
+        //    newDB.stage = LevelEditor.Stage.StageGround;
+
+        //    SaveIntoDatabase(newDB);
+        //}
+
+        foreach(var db in loadedDBs)
         {
-            LevelDBInfo newDB = new LevelDBInfo();
-            newDB.path = dir.Replace(Application.dataPath, "");
-
-            string jsonStr = File.ReadAllText(dir);
-            var lvs = JsonToLevel<Level>(jsonStr);
-
-            newDB.filename = lvs.name;
-            newDB.stage = LevelEditor.Stage.StageGround;
-
-            SaveIntoDatabase(newDB);
+            SaveIntoDatabase(db);
         }
 
         // Sorting
@@ -199,47 +329,9 @@ public class JsonIO : MonoBehaviour
         }
     }
 
-    public void LoadJson()
-    {
-        string jsonStr = File.ReadAllText(Application.dataPath + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json");
+    #endregion
 
-        var level = JsonToLevel<Level>(jsonStr);
-
-        LevelEditorManager.instance.LoadLevel(level);
-
-        LevelEditorManager.instance.SetCanvasActive(true);
-
-        Debug.Log("Loaded(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
-    }
-
-    public void LoadJson(string path)
-    {
-        string jsonStr = File.ReadAllText(Application.dataPath + path);
-
-        var level = JsonToLevel<Level>(jsonStr);
-
-        LevelEditorManager.instance.LoadLevel(level);
-
-        JsonIO.levelChanged = false;
-
-        LevelEditorManager.instance.SetCanvasActive(true);
-
-        Debug.Log("Loaded(" + path +")");
-    }
-
-    T JsonToLevel<T>(string jsonData)
-    {
-        return JsonUtility.FromJson<T>(jsonData);
-    }
-
-    public void DeleteJson(LevelDBInfo levelInfo)
-    {
-        levelDB.Remove(levelInfo);
-        File.Delete(Application.dataPath + levelInfo.path);
-        SelectDB(new LevelDBInfo());
-
-        LevelEditorManager.instance.SetCanvasActive(false);
-    }
+    #region Updating DB
 
     public void UpdateTileCode()
     {
@@ -346,4 +438,6 @@ public class JsonIO : MonoBehaviour
             //levels.Add(i, lvList);
         }
     }
+
+    #endregion
 }
