@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7864ff271659ad04bb228b1fa90d5f5d, type: 3}
-  m_Name: BrushDatabase
+  m_Name: Stage1
   m_EditorClassIdentifier: 
   wallBrushes:
   - {fileID: 11400000, guid: a233656cf4f4e11469cb9558c55ea7a4, type: 2}

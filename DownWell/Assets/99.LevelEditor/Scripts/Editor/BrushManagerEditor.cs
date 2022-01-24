@@ -8,6 +8,7 @@ public class BrushManagerEditor : Editor
 {
     BrushManager brushManager;
 
+    SerializedProperty brushDB;
     SerializedProperty wallBrushes;
     SerializedProperty enemyBrushes;
     SerializedProperty eraserBrush;
@@ -22,6 +23,7 @@ public class BrushManagerEditor : Editor
     {
         brushManager = (BrushManager)target;
 
+        brushDB = serializedObject.FindProperty("brushDB");
         wallBrushes = serializedObject.FindProperty("wallBrushes");
         enemyBrushes = serializedObject.FindProperty("enemyBrushes");
         eraserBrush = serializedObject.FindProperty("eraserBrush");
@@ -33,48 +35,14 @@ public class BrushManagerEditor : Editor
 
         EditorGUILayout.HelpBox("각 버튼을 누르고 그리면 그려집니다. \n다른 개체를 그리려면 아래에 소스를 추가하면 됩니다.", MessageType.Info);
         EditorGUILayout.LabelField("Brush");
-        //EditorGUILayout.BeginVertical(GUI.skin.GetStyle("HelpBox"));
-        //{
-        //    GUILayout.BeginHorizontal();
-        //    {
-        //        if (GUILayout.Button("Wall"))
-        //        {
-        //            brushManager.ChangeWallBrush(1);
-        //        }
 
-        //        if (GUILayout.Button("Block"))
-        //        {
-        //            brushManager.ChangeWallBrush(2);
-        //        }
+        serializedObject.Update();
 
-        //        if (GUILayout.Button("Plat"))
-        //        {
-        //            brushManager.ChangeWallBrush(3);
-        //        }
-
-        //        if (GUILayout.Button("Eraser"))
-        //        {
-        //            brushManager.ChangeToEraser();
-        //        }
-        //    }
-        //    GUILayout.EndHorizontal();
-
-        //    GUILayout.BeginHorizontal();
-        //    {
-        //        if (brushManager.currentBrush.code > 10)
-        //        {
-        //            brushManager.ChangeEnemyBrush(enemyCode);
-        //        }
-        //        if (GUILayout.Button("Enemy"))
-        //        {
-        //            brushManager.ChangeEnemyBrush(enemyCode);
-        //        }
-
-        //        enemyCode = EditorGUILayout.Popup(enemyCode, DisplayEnemyBrushes(brushManager.enemyBrushes));
-        //    }
-        //    GUILayout.EndHorizontal();
-        //}
-        //EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginHorizontal();
+        {
+            EditorGUILayout.PropertyField(brushDB, new GUIContent("DB"));
+        }
+        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginVertical("HelpBox");
         {
@@ -103,6 +71,8 @@ public class BrushManagerEditor : Editor
             
         }
         EditorGUILayout.EndVertical();
+
+        serializedObject.ApplyModifiedProperties();
 
         //EditorGUILayout.Space();
         //changeColorFoldout = EditorGUILayout.Foldout(changeColorFoldout, "Brush Sources");
@@ -153,7 +123,7 @@ public class BrushManagerEditor : Editor
 
                 if (GUILayout.Button(brush.name, GUILayout.Width(100)))
                 {
-                    brushManager.ChangeBrush(brushManager.brushDB.wallBrushes[i]);
+                    brushManager.ChangeBrush(brush);
                 }
 
                 brushManager.brushDB.wallBrushes[i] = EditorGUILayout.ObjectField(brush, typeof(WallInfo), false) as LevelObject;

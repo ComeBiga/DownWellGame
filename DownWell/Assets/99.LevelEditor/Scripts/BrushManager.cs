@@ -15,6 +15,7 @@ public class BrushManager : MonoBehaviour
     #endregion
 
     public BrushDatabase brushDB;
+    public StageDatabase stage;
 
     public LevelObject currentBrush;
     public List<LevelObject> wallBrushes;

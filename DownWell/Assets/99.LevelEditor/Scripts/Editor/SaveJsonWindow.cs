@@ -49,7 +49,7 @@ public class SaveJsonWindow : EditorWindow
 
         if (GUILayout.Button("Save"))
         {
-            var newLevel = jsonIO.CreateLevelJson(width, height);
+            var newLevel = jsonIO.CreateNewLevel(width, height);
             jsonIO.LoadJson(newLevel.path);
             jsonIO.SelectDB(newLevel);
 
