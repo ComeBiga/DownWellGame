@@ -10,7 +10,7 @@ public abstract class BossPattern
 
     public void Act()
     {
-        Debug.Log("In Act()");
+        //Debug.Log("In Act()");
         var action = GetRandomAction();
         action.Take();
     }
@@ -20,11 +20,11 @@ public abstract class BossPattern
         string seed = (Random.value + Time.time).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
 
-        Debug.Log("Before Random");
+        //Debug.Log("Before Random");
         var rn = rand.Next(actions.Count);
-        Debug.Log("After Random");
+        //Debug.Log("After Random");
 
-        Debug.Log(rn);
+        //Debug.Log(rn);
         return actions[rn];
     }
 }

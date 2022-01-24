@@ -34,6 +34,22 @@ public class EnemyAction : MonoBehaviour
         }
     }
 
+    public bool CheckTargetRange(Transform enemy)
+    {
+        float height = Camera.main.orthographicSize * 2;
+        float width = height * (9 / 16);
+
+        float h_tarTothis = Mathf.Abs(PlayerManager.instance.player.transform.position.y - enemy.position.y);
+
+        if (height / 2 + GameManager.instance.enemyActiveRangeOffset < enemy.position.y - PlayerManager.instance.player.transform.position.y)
+            Destroy(enemy.gameObject);
+
+        if (h_tarTothis < height / 2 + GameManager.instance.enemyActiveRangeOffset)
+            return true;
+
+        return false;
+    }
+
     //void Act()
     //{
     //    StartCoroutine(ActUpdate());
@@ -48,7 +64,7 @@ public class EnemyAction : MonoBehaviour
     //    {
     //        if (actEnd)
     //        {
-                
+
     //            index++;
 
     //            if (index >= enemyActs.Count) index = 0;

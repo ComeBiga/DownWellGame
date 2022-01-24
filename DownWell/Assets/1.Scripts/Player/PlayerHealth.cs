@@ -13,8 +13,6 @@ public class PlayerHealth : MonoBehaviour
     public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
     public int CurrentHealth { get { return currentHealth; } }
 
-    GameObject gameoverPanel;
-
     #region Event Declare
     //[Header("Event")]
     public event System.Action OnChangedHealth;
@@ -26,10 +24,6 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-
-        gameoverPanel = GameObject.Find("GameOver");
-        gameoverPanel.GetComponent<Image>().enabled = true;
-        gameoverPanel.SetActive(false);
     }
 
     /// <summary>
@@ -67,18 +61,13 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        //SceneManager.LoadScene(0);
-        Invoke("GameOverPanel", 3f);
-        //gameoverPanel.SetActive(true);
-        //Time.timeScale = 0;
-        GameManager.instance.GetComponent<Timer>().EndTimer();
-
-        GetComponent<Effector>().Generate("Die");
+        // Player Object
         this.gameObject.SetActive(false);
-    }
+        
+        // GameOver
+        GameManager.instance.GameOver();
 
-    void GameOverPanel()
-    {
-        gameoverPanel.SetActive(true);
+        // Effect
+        GetComponent<Effector>().Generate("Die");
     }
 }

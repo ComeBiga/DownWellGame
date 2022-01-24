@@ -7298,6 +7298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e5111ac375d444eb28d445f891fac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapDisplay: {fileID: 0}
   width: 11
   height: 11
   reGenerateOffset: 20
@@ -9954,7 +9955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
-  activeRangeOffset: 3
+  enemyActiveRangeOffset: 3
   coin: 0
 --- !u!4 &1700652126
 Transform:

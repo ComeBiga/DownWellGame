@@ -33,8 +33,17 @@ public class StageManager : MonoBehaviour
             return current;
         }
     }
-    private int index = 0;
-    public int CurrentStageIndex { get { return index; } }
+    private int index = -1;
+    public int CurrentStageIndex 
+    { 
+        get 
+        {
+            if (index == -1)
+                SetCurrentStage();
+
+            return index;
+        }
+    }
 
     private void SetCurrentStage()
     {
@@ -91,5 +100,6 @@ public class StageManager : MonoBehaviour
     {
         index++;
         current = stages[index];
+        MapManager.instance.mapDisplay.SetObjects(current);
     }
 }

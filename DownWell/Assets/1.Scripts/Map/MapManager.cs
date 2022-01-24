@@ -17,7 +17,7 @@ public class MapManager : MonoBehaviour
     #endregion
 
     //MapGenerator mapGen;
-    MapDisplay mapDisplay;
+    public MapDisplay mapDisplay;
     LevelGenerator lg;
     LoadLevel loadLevel;
     StageManager sm;
@@ -46,7 +46,7 @@ public class MapManager : MonoBehaviour
         mapDisplay.SetObjects(sm.Current);
 
         // Generate
-        StartCoroutine(GenerateMap());
+        //StartCoroutine(GenerateMap());
     }
 
     //IEnumerator FirstGenerateMap()

@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public LevelObject info;
     public int health = 10;
+
     //public float speed = 1f;
     [Header("DropItems")]
     public List<GameObject> dropItems;

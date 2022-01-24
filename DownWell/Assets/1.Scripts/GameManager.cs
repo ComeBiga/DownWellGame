@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,14 +26,17 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Transform startPos;
 
-    public float activeRangeOffset = 0;
+    public float enemyActiveRangeOffset = 0;
 
     public int coin = 0;
+
+    private GameObject gameoverPanel;
 
     //public GameObject boss;
 
     private void Start()
     {
+        // Player Init
         PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
 
         playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
@@ -42,16 +46,53 @@ public class GameManager : MonoBehaviour
 
         PlayerManager.instance.player = playerPrefab;
 
-        GetComponent<Timer>().StartTimer();
+        // Timer
+        //GetComponent<Timer>().StartTimer();
 
-        BackgroundSound();
-    }
-
-    void BackgroundSound()
-    {
+        // Play BGM
         SoundManager.instance.PlayBGMSound("Background");
+
+        // Gameover Panel Init
+        gameoverPanel = GameObject.Find("GameOver");
+        gameoverPanel.GetComponent<Image>().enabled = true;
+        gameoverPanel.SetActive(false);
+
+        StartStage();
     }
 
+    public void StartStage()
+    {
+        // Level Generation
+        MapManager.instance.Generate();
+
+        // Player Position
+        playerPrefab.transform.position = startPos.position;
+
+        // Timer
+        GetComponent<Timer>().StartTimer();
+    }
+
+    public void ClearStage()
+    {
+        StageManager.instance.NextStage();
+        StartStage();
+    }
+
+    public void GameOver()
+    {
+        // Timer
+        GetComponent<Timer>().EndTimer();
+
+        // Gameover UI Panel
+        Invoke("GameOverPanel", 3f);
+    }
+
+    void GameOverPanel()
+    {
+        gameoverPanel.SetActive(true);
+    }
+
+    #region Deprecated
     public bool CheckTargetRange(Transform enemy)
     {
         float height = Camera.main.orthographicSize * 2;
@@ -59,14 +100,15 @@ public class GameManager : MonoBehaviour
 
         float h_tarTothis = Mathf.Abs(playerPrefab.transform.position.y - enemy.position.y);
 
-        if (height / 2 + activeRangeOffset < enemy.position.y - playerPrefab.transform.position.y)
+        if (height / 2 + enemyActiveRangeOffset < enemy.position.y - playerPrefab.transform.position.y)
             Destroy(enemy.gameObject);
 
-        if (h_tarTothis < height / 2 + activeRangeOffset)
+        if (h_tarTothis < height / 2 + enemyActiveRangeOffset)
             return true;
 
         return false;
     }
+    #endregion
 
     public void GainCoin(int amount = 1)
     {
