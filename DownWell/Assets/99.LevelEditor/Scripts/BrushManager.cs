@@ -32,6 +32,34 @@ public class BrushManager : MonoBehaviour
         currentBrush = brush;
     }
 
+    public List<LevelObject> GetWallObjects()
+    {
+        List<LevelObject> objs = new List<LevelObject>();
+
+        var mo = stage.MapObjects;
+
+        foreach(var lo in mo)
+        {
+            objs.Add(lo.GetComponent<Wall>().info);
+        }
+
+        return objs;
+    }
+
+    public List<LevelObject> GetEnemyObjects()
+    {
+        List<LevelObject> objs = new List<LevelObject>();
+
+        var eo = stage.EnemyObjects;
+
+        foreach (var lo in eo)
+        {
+            objs.Add(lo.GetComponent<Enemy>().info);
+        }
+
+        return objs;
+    }
+
     public void ChangeWallBrush(int brushCode)
     {
         currentBrush = wallBrushes.Find(t => t.code == brushCode);

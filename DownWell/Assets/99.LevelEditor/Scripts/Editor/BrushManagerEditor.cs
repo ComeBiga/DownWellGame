@@ -19,6 +19,8 @@ public class BrushManagerEditor : Editor
     Vector2 scrollPos;
     int brushType = 0;
 
+    int selInt = 0;
+
     private void OnEnable()
     {
         brushManager = (BrushManager)target;
@@ -34,7 +36,7 @@ public class BrushManagerEditor : Editor
         //base.OnInspectorGUI();
 
         EditorGUILayout.HelpBox("각 버튼을 누르고 그리면 그려집니다. \n다른 개체를 그리려면 아래에 소스를 추가하면 됩니다.", MessageType.Info);
-        EditorGUILayout.LabelField("Brush");
+        EditorGUILayout.LabelField("Brush", EditorStyles.boldLabel);
 
         serializedObject.Update();
 
@@ -44,7 +46,7 @@ public class BrushManagerEditor : Editor
         }
         EditorGUILayout.EndHorizontal();
 
-        EditorGUILayout.BeginVertical("HelpBox");
+        EditorGUILayout.BeginVertical("HelpBox", GUILayout.ExpandWidth(false), GUILayout.Width(300));
         {
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
 
@@ -55,13 +57,13 @@ public class BrushManagerEditor : Editor
             switch(brushType)
             {
                 case 0:
-                    CreateBrushButton();
-                    DisplayWallBrushRow();
+                    //CreateBrushButton();
+                    DisplayWallBrushButton();
                     //brushManager.ChangeBrush(brushManager.brushDB.wallBrushes[0]);
                     break;
                 case 1:
-                    CreateBrushButton();
-                    DisplayEnemyBrushRow();
+                    //CreateBrushButton();
+                    DisplayEnemyBrushButton();
                     //brushManager.ChangeBrush(brushManager.brushDB.enemyBrushes[0]);
                     break;
                 case 2:
@@ -69,6 +71,14 @@ public class BrushManagerEditor : Editor
                     break;
             }
             
+        }
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.LabelField("Current Brush", EditorStyles.boldLabel);
+
+        EditorGUILayout.BeginVertical("HelpBox");
+        {
+
         }
         EditorGUILayout.EndVertical();
 
@@ -109,17 +119,34 @@ public class BrushManagerEditor : Editor
         }
     }
 
+    #region DisplayBrush
+
     void DisplayWallBrushRow()
     {
         GUILayout.BeginHorizontal("HelpBox");
         {
-            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(100));
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(120));
 
-            for (int i = 0; i < brushManager.brushDB.wallBrushes.Count; i++)
+            GUILayout.BeginHorizontal();
+
+            for (int i = 0, hCount = 0; i < brushManager.brushDB.wallBrushes.Count; i++, hCount++)
             {
+                //if(hCount >= 5)
+                //{
+                //    GUILayout.EndHorizontal();
+                //    hCount = 0;
+                //    GUILayout.BeginHorizontal();
+                //}
                 GUILayout.BeginHorizontal();
 
                 LevelObject brush = brushManager.brushDB.wallBrushes[i];
+                //LevelObject brush = brushManager.GetWallObjects()[i];
+
+                if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
+                {
+                    brushManager.ChangeBrush(brush);
+                }
+
 
                 if (GUILayout.Button(brush.name, GUILayout.Width(100)))
                 {
@@ -135,6 +162,40 @@ public class BrushManagerEditor : Editor
 
                 GUILayout.EndHorizontal();
             }
+
+            GUILayout.EndHorizontal();
+
+            EditorGUILayout.EndScrollView();
+        }
+        GUILayout.EndHorizontal();
+    }
+
+    void DisplayWallBrushButton()
+    {
+        GUILayout.BeginHorizontal("HelpBox");
+        {
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(120));
+
+            GUILayout.BeginHorizontal();
+            {
+                for (int i = 0, hCount = 0; i < brushManager.brushDB.wallBrushes.Count; i++, hCount++)
+                {
+                    if (hCount >= 5)
+                    {
+                        GUILayout.EndHorizontal();
+                        hCount = 0;
+                        GUILayout.BeginHorizontal();
+                    }
+
+                    LevelObject brush = brushManager.GetWallObjects()[i];
+
+                    if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
+                    {
+                        brushManager.ChangeBrush(brush);
+                    }
+                }
+            }
+            GUILayout.EndHorizontal();
 
             EditorGUILayout.EndScrollView();
         }
@@ -172,6 +233,49 @@ public class BrushManagerEditor : Editor
         }
         GUILayout.EndHorizontal();
     }
+
+    void DisplayEnemyBrushButton()
+    {
+        GUILayout.BeginHorizontal("HelpBox");
+        {
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(100));
+
+            GUILayout.BeginHorizontal();
+            {
+                for (int i = 0, hCount = 0; i < brushManager.brushDB.enemyBrushes.Count; i++, hCount++)
+                {
+                    if (hCount >= 5)
+                    {
+                        GUILayout.EndHorizontal();
+                        hCount = 0;
+                        GUILayout.BeginHorizontal();
+                    }
+
+                    LevelObject brush = brushManager.GetEnemyObjects()[i];
+
+                    if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
+                    {
+                        brushManager.ChangeBrush(brush);
+                    }
+                }
+            }
+            GUILayout.EndHorizontal();
+            
+            EditorGUILayout.EndScrollView();
+        }
+        GUILayout.EndHorizontal();
+    }
+
+    #endregion
+
+    #region Current Brush Info
+
+    void DisplayCurrentBrushInfo()
+    {
+
+    }
+
+    #endregion
 
     string[] DisplayEnemyBrushes(List<LevelObject> enemyBrushes)
     {
