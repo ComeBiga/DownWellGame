@@ -78,7 +78,7 @@ public class BrushManagerEditor : Editor
 
         EditorGUILayout.BeginVertical("HelpBox");
         {
-
+            EditorGUILayout.LabelField(brushManager.currentBrush.name, EditorStyles.boldLabel);
         }
         EditorGUILayout.EndVertical();
 
