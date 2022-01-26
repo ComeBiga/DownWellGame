@@ -25,6 +25,8 @@ public class EditJsonWindow : EditorWindow
 
         window.jsonIO = target;
         window.editLevelDB = editLevelDB;
+        window.stage = editLevelDB.stage;
+        window.fileName = editLevelDB.filename;
     }
 
     private void OnGUI()
