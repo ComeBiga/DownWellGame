@@ -15,4 +15,5 @@ MonoBehaviour:
   code: 9
   name: AttackBox
   sprite: {fileID: 21300220, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  sliced: 1
   score: 0
