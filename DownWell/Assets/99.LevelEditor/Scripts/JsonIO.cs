@@ -12,7 +12,7 @@ namespace LevelEditor
 public class JsonIO : MonoBehaviour
 {
     public LevelDatabase levelDB;
-    public LevelDBInfo selectedDB;
+    public LevelDBInfo selectedLevelDB;
     public static bool levelChanged = false;
 
     public LevelEditor.Stage stage;
@@ -37,7 +37,7 @@ public class JsonIO : MonoBehaviour
     {
         if (JsonIO.levelChanged)
         {
-            Save(selectedDB);
+            Save(selectedLevelDB);
             JsonIO.levelChanged = false;
         }
     }
@@ -59,21 +59,31 @@ public class JsonIO : MonoBehaviour
         File.WriteAllText(path, jsonStr);
     }
 
+    private void SaveToTextFile(Level level, string path, string fileName)
+    {
+        var jsonStr = LevelToJson(level, fileName);
+
+        File.WriteAllText(path, jsonStr);
+    }
+
     // Save to create
     public void SaveAsNew()
     {
         var path = "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json";
 
+        // Json
         SaveToTextFile(Application.dataPath + path, fileName);
 
         //var jsonStr = LevelToJson(fileName);
 
         //File.WriteAllText(Application.dataPath + path, jsonStr);
 
+        // Database
         SaveIntoDatabase(fileName, stage, path);
 
         Debug.Log("Saved(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
     }
+
 
     // Save for auto
     public void Save(LevelDBInfo levelInfo)
@@ -92,6 +102,21 @@ public class JsonIO : MonoBehaviour
         Debug.Log("Saved(" + levelInfo.filename + ")");
     }
 
+    public string Save(Level level, string fileName, LevelEditor.Stage stage)
+    {
+        var path =  "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json";
+
+        // Json
+        SaveToTextFile(level, Application.dataPath + path, fileName);
+
+        // Database
+        SaveIntoDatabase(fileName, stage, path);
+
+        Debug.Log("Saved(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
+
+        return path;
+    }
+
     string LevelToJson(string fileName = "")
     {
         Level level = new Level();
@@ -106,6 +131,26 @@ public class JsonIO : MonoBehaviour
         level.height = (int)LevelEditorManager.instance.getCanvasSize().y;
 
         LevelEditorManager.instance.DesignateTileCorner(level);
+
+        return JsonUtility.ToJson(level);
+    }
+
+    string LevelToJson(Level level, string fileName)
+    {
+        level.name = fileName;
+
+        //Level level = new Level();
+        //level.tiles = new int[LevelEditorManager.instance.tiles.Count];
+
+        //level.name = fileName;
+
+        //for (int i = 0; i < level.tiles.Length; i++)
+        //    level.tiles[i] = (int)LevelEditorManager.instance.tiles[i].GetComponent<TileInfo>().tileCode;
+
+        //level.width = (int)LevelEditorManager.instance.getCanvasSize().x;
+        //level.height = (int)LevelEditorManager.instance.getCanvasSize().y;
+
+        //LevelEditorManager.instance.DesignateTileCorner(level);
 
         return JsonUtility.ToJson(level);
     }
@@ -165,14 +210,52 @@ public class JsonIO : MonoBehaviour
 
     #endregion
 
-    #region Delete
-    public void DeleteJson(LevelDBInfo levelInfo)
-    {
-        levelDB.Remove(levelInfo);
-        File.Delete(Application.dataPath + levelInfo.path);
-        SelectDB(new LevelDBInfo());
+    #region Edit
 
-        LevelEditorManager.instance.SetCanvasActive(false);
+    public void Edit(LevelDBInfo levelDB, string fileName, LevelEditor.Stage stage, bool reLoad = false)
+    {
+        // Delete Database, Json;
+        var backUpLevel = DeleteJson(levelDB);
+
+        // Save Database, Json
+        var newPath = Save(backUpLevel, fileName, stage);
+
+        // ReLoad
+        var editedDB = this.levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
+        if (reLoad)
+        {
+            LoadJson(newPath);
+            SelectDB(editedDB);
+        }
+    }
+
+    #endregion
+
+    #region Delete
+    public Level DeleteJson(LevelDBInfo levelInfo)
+    {
+        Debug.Log("BackUped");
+
+        // BackUp
+        Level backUpLevel = new Level();
+        backUpLevel = LoadFromTextFile<Level>(Application.dataPath + levelInfo.path);
+
+        Debug.Log("BackUped");
+
+        // Database
+        levelDB.Remove(levelInfo);
+        
+        // Json
+        File.Delete(Application.dataPath + levelInfo.path);
+
+        if (levelInfo.CompareTo(selectedLevelDB) == 1)
+        {
+            SelectDB(new LevelDBInfo());
+
+            LevelEditorManager.instance.SetCanvasActive(false);
+        }
+
+        return backUpLevel;
     }
     #endregion
 
@@ -180,7 +263,7 @@ public class JsonIO : MonoBehaviour
 
     public void SelectDB(LevelDBInfo levelDB)
     {
-        selectedDB = levelDB;
+        selectedLevelDB = levelDB;
     }
 
     void SaveIntoDatabase(string filename, LevelEditor.Stage stage, string path)

@@ -5,12 +5,17 @@ using UnityEngine;
 public class TileInfo : MonoBehaviour
 {
     public int tileCode = 0;
-    public LevelObject current;
+    public Sprite sprite;
 
-    public void UpdateTileInfo()
+    public void OnEnable()
     {
-        if (tileCode > 10 && tileCode < 20)
-            current = BrushManager.instance.enemyBrushes.Find(c => c.code == tileCode);
+        sprite = GetComponent<SpriteRenderer>().sprite;
+    }
+
+    public void SetInfo(LevelObject currentBrush)
+    {
+        tileCode = currentBrush.code;
+        GetComponent<SpriteRenderer>().sprite = currentBrush.sprite;
     }
 }
 

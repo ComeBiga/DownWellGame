@@ -18,8 +18,8 @@ public class BrushManager : MonoBehaviour
     public StageDatabase stage;
 
     public LevelObject currentBrush;
-    public List<LevelObject> wallBrushes;
-    public List<LevelObject> enemyBrushes;
+    //public List<LevelObject> wallBrushes;
+    //public List<LevelObject> enemyBrushes;
     public LevelObject eraserBrush;
 
     private void Start()
@@ -60,25 +60,25 @@ public class BrushManager : MonoBehaviour
         return objs;
     }
 
-    public void ChangeWallBrush(int brushCode)
-    {
-        currentBrush = wallBrushes.Find(t => t.code == brushCode);
-    }
+    //public void ChangeWallBrush(int brushCode)
+    //{
+    //    currentBrush = wallBrushes.Find(t => t.code == brushCode);
+    //}
 
-    public void ChangeEnemyBrush(int brushCode)
-    {
-        //currentBrush = enemyBrushes.Find(t => t.code == brushCode);
-        currentBrush = enemyBrushes[brushCode];
-    }
+    //public void ChangeEnemyBrush(int brushCode)
+    //{
+    //    //currentBrush = enemyBrushes.Find(t => t.code == brushCode);
+    //    currentBrush = enemyBrushes[brushCode];
+    //}
 
     public void ChangeToEraser()
     {
         currentBrush = eraserBrush;
     }
 
-    public void PaintTile(TileInfo tileInfo)
-    {
-        tileInfo.GetComponent<SpriteRenderer>().sprite = currentBrush.sprite;
-        tileInfo.tileCode = currentBrush.code;
-    }
+    //public void PaintTile(TileInfo tileInfo)
+    //{
+    //    tileInfo.GetComponent<SpriteRenderer>().sprite = currentBrush.sprite;
+    //    tileInfo.tileCode = currentBrush.code;
+    //}
 }
