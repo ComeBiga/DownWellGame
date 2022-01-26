@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class LevelEditorManager : MonoBehaviour
 {
     #region Singleton
@@ -28,6 +29,7 @@ public class LevelEditorManager : MonoBehaviour
 
     private void Start()
     {
+        UnityEditor.Selection.activeGameObject = this.gameObject;
         //tiles = levelTiles.GetComponentsInChildren<TileInfo>();
 
         //LoadLevel(tiles);

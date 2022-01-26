@@ -34,7 +34,7 @@ public class JsonIOEditor : Editor
         fromCode = serializedObject.FindProperty("fromCode");
         toCode = serializedObject.FindProperty("toCode");
 
-        searchName = "search...";
+        searchName = "";
     }
 
     public override void OnInspectorGUI()
@@ -67,7 +67,7 @@ public class JsonIOEditor : Editor
 
         EditorGUILayout.BeginHorizontal("HelpBox");
 
-        EditorGUILayout.LabelField(jsonIO.selectedDB.filename, EditorStyles.boldLabel);
+        EditorGUILayout.LabelField(jsonIO.selectedLevelDB.filename, EditorStyles.boldLabel);
 
         EditorGUILayout.EndHorizontal();
 
@@ -156,6 +156,12 @@ public class JsonIOEditor : Editor
         {
             jsonIO.SelectDB(db);
             jsonIO.LoadJson(db.path);
+        }
+
+        if (GUILayout.Button("E", GUILayout.Width(20)))
+        {
+            //jsonIO.DeleteJson(db);
+            EditJsonWindow.ConversationSystem((JsonIO)target, db);
         }
 
         if (GUILayout.Button("X", GUILayout.Width(20)))
