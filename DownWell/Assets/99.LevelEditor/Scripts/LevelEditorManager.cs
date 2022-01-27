@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class LevelEditorManager : MonoBehaviour
 {
     #region Singleton
@@ -21,7 +21,7 @@ public class LevelEditorManager : MonoBehaviour
     public GameObject levelTiles;
     public GameObject space;
 
-    [HideInInspector]
+    //[HideInInspector]
     public List<TileInfo> tiles;
 
     private int canvasWidth;
@@ -30,6 +30,7 @@ public class LevelEditorManager : MonoBehaviour
     private void Start()
     {
         UnityEditor.Selection.activeGameObject = this.gameObject;
+
         //tiles = levelTiles.GetComponentsInChildren<TileInfo>();
 
         //LoadLevel(tiles);
@@ -54,6 +55,7 @@ public class LevelEditorManager : MonoBehaviour
         canvasWidth = width;
         canvasHeight = height;
 
+        // 타일 오브젝트 생성
         tiles = new List<TileInfo>();
 
         for(int y = 0; y < height; y++)
@@ -106,35 +108,38 @@ public class LevelEditorManager : MonoBehaviour
         {
             for (int x = 0; x < canvasWidth; x++)
             {
-                tiles[y * width + x].GetComponent<TileInfo>().tileCode = 0;
+                tiles[y * width + x].tileCode = 0;
             }
         }
     }
 
+    // 기본 벽 생성
     void InitLevel()
     {
         for(int i = 0; i < canvasHeight; i++)
         {
-            tiles[i * canvasWidth].GetComponent<TileInfo>().tileCode = 1;
-            ChangeTile(tiles[i * canvasWidth].transform, 1);
+            tiles[i * canvasWidth].tileCode = 1;
+            //ChangeTile(tiles[i * canvasWidth].transform, 1);
+            tiles[i * canvasWidth].SetTile(1);
 
-            tiles[i * canvasWidth + (canvasWidth - 1)].GetComponent<TileInfo>().tileCode = 1;
-            ChangeTile(tiles[i * canvasWidth + (canvasWidth - 1)].transform, 1);
+            tiles[i * canvasWidth + (canvasWidth - 1)].tileCode = 1;
+            //ChangeTile(tiles[i * canvasWidth + (canvasWidth - 1)].transform, 1);
+            tiles[i * canvasWidth + (canvasWidth - 1)].SetTile(1);
         }
     }
 
-    public void LoadLevel(TileInfo[] _tiles)
-    {
-        for(int y = 0; y < height; y++)
-        {
-            for(int x = 0; x < width; x++)
-            {
-                var tileCode = _tiles[y * width + x].tileCode;
+    //public void LoadLevel(TileInfo[] _tiles)
+    //{
+    //    for(int y = 0; y < height; y++)
+    //    {
+    //        for(int x = 0; x < width; x++)
+    //        {
+    //            var tileCode = _tiles[y * width + x].tileCode;
 
-                ChangeTile(tiles[y * width + x].transform, (int)tileCode);
-            }
-        }
-    }
+    //            ChangeTile(tiles[y * width + x].transform, (int)tileCode);
+    //        }
+    //    }
+    //}
 
     public void LoadLevel(Level level)
     {
@@ -147,27 +152,32 @@ public class LevelEditorManager : MonoBehaviour
         {
             for (int x = 0; x < level.width; x++)
             {
-                if (level.tiles[y * level.width + x] >= 100 && level.tiles[y * level.width + x] < 1000) level.tiles[y * level.width + x] = 1;
-                ChangeTile(tiles[y * level.width + x].transform, level.tiles[y * level.width + x]);
+                var index = y * level.width + x;
+                var tileCode = level.tiles[index];
+
+                if (tileCode >= 100 && tileCode < 1000) tileCode = 1;
+
+                //ChangeTile(tiles[index].transform, tileCode);
+                tiles[index].SetTile(tileCode);
             }
         }
     }
 
-    void ChangeTile(Transform tile, int tileCode)
-    {
-        // sprite set
-        if (tileCode > 2000)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.enemyBrushes.Find(b => b.code == tileCode).sprite;
-        else if (tileCode >= 100)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.wallBrushes.Find(b => b.code == 1).sprite;
-        else if (tileCode > 0)
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.wallBrushes.Find(b => b.code == tileCode).sprite;
-        else
-            tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.eraserBrush.sprite;
+    //void ChangeTile(Transform tile, int tileCode)
+    //{
+    //    // sprite set
+    //    if (tileCode > 2000)
+    //        tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.enemyBrushes.Find(b => b.code == tileCode).sprite;
+    //    else if (tileCode >= 100)
+    //        tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.wallBrushes.Find(b => b.code == 1).sprite;
+    //    else if (tileCode > 0)
+    //        tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.brushDB.wallBrushes.Find(b => b.code == tileCode).sprite;
+    //    else
+    //        tile.GetComponent<SpriteRenderer>().sprite = BrushManager.instance.eraserBrush.sprite;
 
-        // tilecode set
-        tile.GetComponent<TileInfo>().tileCode = tileCode;
-    }
+    //    // tilecode set
+    //    tile.GetComponent<TileInfo>().tileCode = tileCode;
+    //}
 
     public void DesignateTileCorner(Level level)
     {
