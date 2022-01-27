@@ -8,7 +8,7 @@ public class BrushManagerEditor : Editor
 {
     BrushManager brushManager;
 
-    SerializedProperty brushDB;
+    SerializedProperty stage;
     SerializedProperty wallBrushes;
     SerializedProperty enemyBrushes;
     SerializedProperty eraserBrush;
@@ -25,7 +25,7 @@ public class BrushManagerEditor : Editor
     {
         brushManager = (BrushManager)target;
 
-        brushDB = serializedObject.FindProperty("brushDB");
+        stage = serializedObject.FindProperty("stage");
         wallBrushes = serializedObject.FindProperty("wallBrushes");
         enemyBrushes = serializedObject.FindProperty("enemyBrushes");
         eraserBrush = serializedObject.FindProperty("eraserBrush");
@@ -42,7 +42,7 @@ public class BrushManagerEditor : Editor
 
         EditorGUILayout.BeginHorizontal();
         {
-            EditorGUILayout.PropertyField(brushDB, new GUIContent("DB"));
+            EditorGUILayout.PropertyField(stage, new GUIContent("DB"));
         }
         EditorGUILayout.EndHorizontal();
 
@@ -103,72 +103,72 @@ public class BrushManagerEditor : Editor
         //base.OnInspectorGUI();
     }
 
-    void CreateBrushButton()
-    {
-        if (GUILayout.Button("New Brush"))
-        {
-            switch (brushType)
-            {
-                case 0:
-                    brushManager.brushDB.wallBrushes.Add(brushManager.eraserBrush);
-                    break;
-                case 1:
-                    brushManager.brushDB.enemyBrushes.Add(brushManager.eraserBrush);
-                    break;
-            }
-        }
-    }
+    //void CreateBrushButton()
+    //{
+    //    if (GUILayout.Button("New Brush"))
+    //    {
+    //        switch (brushType)
+    //        {
+    //            case 0:
+    //                brushManager.brushDB.wallBrushes.Add(brushManager.eraserBrush);
+    //                break;
+    //            case 1:
+    //                brushManager.brushDB.enemyBrushes.Add(brushManager.eraserBrush);
+    //                break;
+    //        }
+    //    }
+    //}
 
     #region DisplayBrush
 
-    void DisplayWallBrushRow()
-    {
-        GUILayout.BeginHorizontal("HelpBox");
-        {
-            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(120));
+    //void DisplayWallBrushRow()
+    //{
+    //    GUILayout.BeginHorizontal("HelpBox");
+    //    {
+    //        scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(120));
 
-            GUILayout.BeginHorizontal();
+    //        GUILayout.BeginHorizontal();
 
-            for (int i = 0, hCount = 0; i < brushManager.brushDB.wallBrushes.Count; i++, hCount++)
-            {
-                //if(hCount >= 5)
-                //{
-                //    GUILayout.EndHorizontal();
-                //    hCount = 0;
-                //    GUILayout.BeginHorizontal();
-                //}
-                GUILayout.BeginHorizontal();
+    //        for (int i = 0, hCount = 0; i < brushManager.brushDB.wallBrushes.Count; i++, hCount++)
+    //        {
+    //            //if(hCount >= 5)
+    //            //{
+    //            //    GUILayout.EndHorizontal();
+    //            //    hCount = 0;
+    //            //    GUILayout.BeginHorizontal();
+    //            //}
+    //            GUILayout.BeginHorizontal();
 
-                LevelObject brush = brushManager.brushDB.wallBrushes[i];
-                //LevelObject brush = brushManager.GetWallObjects()[i];
+    //            LevelObject brush = brushManager.brushDB.wallBrushes[i];
+    //            //LevelObject brush = brushManager.GetWallObjects()[i];
 
-                if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
-                {
-                    brushManager.ChangeBrush(brush);
-                }
+    //            if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
+    //            {
+    //                brushManager.ChangeBrush(brush);
+    //            }
 
 
-                if (GUILayout.Button(brush.name, GUILayout.Width(100)))
-                {
-                    brushManager.ChangeBrush(brush);
-                }
+    //            if (GUILayout.Button(brush.name, GUILayout.Width(100)))
+    //            {
+    //                brushManager.ChangeBrush(brush);
+    //            }
 
-                brushManager.brushDB.wallBrushes[i] = EditorGUILayout.ObjectField(brush, typeof(WallInfo), false) as LevelObject;
+    //            brushManager.brushDB.wallBrushes[i] = EditorGUILayout.ObjectField(brush, typeof(WallInfo), false) as LevelObject;
 
-                if (GUILayout.Button("X", GUILayout.Width(20)))
-                {
-                    brushManager.brushDB.wallBrushes.Remove(brush);
-                }
+    //            if (GUILayout.Button("X", GUILayout.Width(20)))
+    //            {
+    //                brushManager.brushDB.wallBrushes.Remove(brush);
+    //            }
 
-                GUILayout.EndHorizontal();
-            }
+    //            GUILayout.EndHorizontal();
+    //        }
 
-            GUILayout.EndHorizontal();
+    //        GUILayout.EndHorizontal();
 
-            EditorGUILayout.EndScrollView();
-        }
-        GUILayout.EndHorizontal();
-    }
+    //        EditorGUILayout.EndScrollView();
+    //    }
+    //    GUILayout.EndHorizontal();
+    //}
 
     void DisplayWallBrushButton()
     {
@@ -178,7 +178,7 @@ public class BrushManagerEditor : Editor
 
             GUILayout.BeginHorizontal();
             {
-                for (int i = 0, hCount = 0; i < brushManager.brushDB.wallBrushes.Count; i++, hCount++)
+                for (int i = 0, hCount = 0; i < brushManager.GetWallObjects().Count; i++, hCount++)
                 {
                     if (hCount >= 5)
                     {
@@ -202,37 +202,37 @@ public class BrushManagerEditor : Editor
         GUILayout.EndHorizontal();
     }
 
-    void DisplayEnemyBrushRow()
-    {
-        GUILayout.BeginHorizontal("HelpBox");
-        {
-            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(100));
+    //void DisplayEnemyBrushRow()
+    //{
+    //    GUILayout.BeginHorizontal("HelpBox");
+    //    {
+    //        scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(100));
 
-            for (int i = 0; i < brushManager.brushDB.enemyBrushes.Count; i++)
-            {
-                GUILayout.BeginHorizontal();
+    //        for (int i = 0; i < brushManager.brushDB.enemyBrushes.Count; i++)
+    //        {
+    //            GUILayout.BeginHorizontal();
 
-                LevelObject brush = brushManager.brushDB.enemyBrushes[i];
+    //            LevelObject brush = brushManager.brushDB.enemyBrushes[i];
 
-                if (GUILayout.Button(brush.name, GUILayout.Width(100)))
-                {
-                    brushManager.ChangeBrush(brush);
-                }
+    //            if (GUILayout.Button(brush.name, GUILayout.Width(100)))
+    //            {
+    //                brushManager.ChangeBrush(brush);
+    //            }
 
-                brushManager.brushDB.enemyBrushes[i] = EditorGUILayout.ObjectField(brush, typeof(EnemyInfo), false) as LevelObject;
+    //            brushManager.brushDB.enemyBrushes[i] = EditorGUILayout.ObjectField(brush, typeof(EnemyInfo), false) as LevelObject;
 
-                if (GUILayout.Button("X", GUILayout.Width(20)))
-                {
-                    brushManager.brushDB.enemyBrushes.Remove(brush);
-                }
+    //            if (GUILayout.Button("X", GUILayout.Width(20)))
+    //            {
+    //                brushManager.brushDB.enemyBrushes.Remove(brush);
+    //            }
 
-                GUILayout.EndHorizontal();
-            }
+    //            GUILayout.EndHorizontal();
+    //        }
 
-            EditorGUILayout.EndScrollView();
-        }
-        GUILayout.EndHorizontal();
-    }
+    //        EditorGUILayout.EndScrollView();
+    //    }
+    //    GUILayout.EndHorizontal();
+    //}
 
     void DisplayEnemyBrushButton()
     {
@@ -242,7 +242,7 @@ public class BrushManagerEditor : Editor
 
             GUILayout.BeginHorizontal();
             {
-                for (int i = 0, hCount = 0; i < brushManager.brushDB.enemyBrushes.Count; i++, hCount++)
+                for (int i = 0, hCount = 0; i < brushManager.GetEnemyObjects().Count; i++, hCount++)
                 {
                     if (hCount >= 5)
                     {
