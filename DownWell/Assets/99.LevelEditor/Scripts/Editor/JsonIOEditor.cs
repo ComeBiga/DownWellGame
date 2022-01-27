@@ -166,7 +166,8 @@ public class JsonIOEditor : Editor
 
         if (GUILayout.Button("X", GUILayout.Width(20)))
         {
-            jsonIO.DeleteJson(db);
+            //jsonIO.DeleteJson(db);
+            DeleteLevelWindow.ConversationSystem((JsonIO)target, db);
         }
 
         EditorGUILayout.EndHorizontal();
