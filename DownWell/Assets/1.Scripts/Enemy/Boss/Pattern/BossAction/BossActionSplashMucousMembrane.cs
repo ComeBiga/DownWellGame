@@ -27,6 +27,6 @@ public class BossActionSplashMucousMembrane : BossAction
         //GetComponent<Effector>().Generate("Blast");
         GetComponent<Animator>().SetTrigger("Attack_1");
 
-        BossAction.Cut();
+        Cut();
     }
 }

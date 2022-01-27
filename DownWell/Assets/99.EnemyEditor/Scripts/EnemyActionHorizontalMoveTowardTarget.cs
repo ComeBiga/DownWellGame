@@ -33,7 +33,7 @@ public class EnemyActionHorizontalMoveTowardTarget : EnemyAct
 
     public override bool Act(Rigidbody2D rigidbody)
     {
-        Debug.Log(GetComponent<Rigidbody2D>().velocity);
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
 
         Animation();
 

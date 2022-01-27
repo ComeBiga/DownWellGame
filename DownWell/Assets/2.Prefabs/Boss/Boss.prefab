@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089cbcd072494fb48829d79749527460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedInterval: 0
   onEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -244,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2aeee5dcb893e42a18f7b78989c464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedInterval: 0
   onEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -261,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45714e694ad9f343ac37518e0a5167d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedInterval: 3
   onEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -276,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b3ca31e7cd033489de4847f1eb00d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedInterval: 6
   onEvent:
     m_PersistentCalls:
       m_Calls: []

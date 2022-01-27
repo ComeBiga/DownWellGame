@@ -14,7 +14,7 @@ public class BossActionShootNormal : BossAction
         //onEvent.Invoke();
 
         //Debug.Log("Before Cut");
-        BossAction.Cut();
+        Cut();
         //Debug.Log("After Cut");
     }
 
