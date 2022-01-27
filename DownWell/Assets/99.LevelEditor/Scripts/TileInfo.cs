@@ -17,6 +17,37 @@ public class TileInfo : MonoBehaviour
         tileCode = currentBrush.code;
         GetComponent<SpriteRenderer>().sprite = currentBrush.sprite;
     }
+
+    public void Set(int tileCode)
+    {
+        this.tileCode = tileCode;
+    }
+
+    public void Set(Sprite sprite)
+    {
+        this.sprite = sprite;
+    }
+
+    public void Set(int tileCode, Sprite sprite)
+    {
+        Set(tileCode);
+        Set(sprite);
+    }
+
+    public void SetTile(int tileCode)
+    {
+        // sprite set
+        if (tileCode > 2000)
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.GetEnemyObjects().Find(b => b.code == tileCode).sprite;
+        else if (tileCode >= 100)
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.GetWallObjects().Find(b => b.code == 1).sprite;
+        else if (tileCode > 0)
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.GetWallObjects().Find(b => b.code == tileCode).sprite;
+        else
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.eraserBrush.sprite;
+
+        Set(tileCode);
+    }
 }
 
 namespace LevelEditor
