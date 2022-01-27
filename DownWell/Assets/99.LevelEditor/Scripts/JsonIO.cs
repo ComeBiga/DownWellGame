@@ -44,10 +44,10 @@ public class JsonIO : MonoBehaviour
     }
 
     #region Save
-    public LevelDBInfo CreateNewLevel(int width, int height)
+    public LevelDBInfo CreateNewLevel(string fileName, LevelEditor.Stage stage, int width, int height)
     {
         LevelEditorManager.instance.ResetCanvas(width, height);
-        SaveAsNew();
+        SaveAsNew(fileName, stage);
 
         return levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
     }
@@ -68,7 +68,7 @@ public class JsonIO : MonoBehaviour
     }
 
     // Save to create
-    public void SaveAsNew()
+    public void SaveAsNew(string fileName, LevelEditor.Stage stage)
     {
         var path = "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json";
 
@@ -131,7 +131,8 @@ public class JsonIO : MonoBehaviour
         level.width = (int)LevelEditorManager.instance.getCanvasSize().x;
         level.height = (int)LevelEditorManager.instance.getCanvasSize().y;
 
-        LevelEditorManager.instance.DesignateTileCorner(level);
+        //LevelEditorManager.instance.DesignateTileCorner(level);
+        level.AssignCorner();
 
         return JsonUtility.ToJson(level);
     }
@@ -195,7 +196,7 @@ public class JsonIO : MonoBehaviour
         //string jsonStr = File.ReadAllText(Application.dataPath + path);
         //var level = JsonToLevel<Level>(jsonStr);
 
-        LevelEditorManager.instance.LoadLevel(level);
+        LevelEditorManager.instance.DrawLevelOnCanvas(level);
 
         JsonIO.levelChanged = false;
 
@@ -235,13 +236,13 @@ public class JsonIO : MonoBehaviour
     #region Delete
     public Level DeleteJson(LevelDBInfo levelInfo)
     {
-        Debug.Log("BackUped");
+        //Debug.Log("BackUped");
 
         // BackUp
         Level backUpLevel = new Level();
         backUpLevel = LoadFromTextFile<Level>(Application.dataPath + levelInfo.path);
 
-        Debug.Log("BackUped");
+        //Debug.Log("BackUped");
 
         // Database
         levelDB.Remove(levelInfo);
@@ -292,7 +293,7 @@ public class JsonIO : MonoBehaviour
         //var lvs = JsonToLevel<Level>(jsonStr);
 
         // 왜 있는지 모르겠는 코드라인
-        LevelEditorManager.instance.DesignateTileCorner(lvs);
+        //LevelEditorManager.instance.DesignateTileCorner(lvs);
 
         newDB.filename = lvs.name;
         newDB.stage = stage;
