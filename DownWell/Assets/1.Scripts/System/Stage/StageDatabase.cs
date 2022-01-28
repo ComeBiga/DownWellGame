@@ -18,6 +18,9 @@ public class StageDatabase : ScriptableObject
     private string path;
     public string Path { get { return path; } }
 
+    private string assetPath;
+    public string AssetPath { get { return assetPath; } set { assetPath = value; } }
+
     [Header("Wall")]
     [SerializeField] private List<GameObject> mapObjects;
     [SerializeField] private List<Sprite> wallSprites;

@@ -4,7 +4,9 @@ using UnityEditor;
 public class CatDownMakerNavigationWindow : EditorWindow
 {
     static float windowWidth = 300;
-    static float windowHeight = 400;
+    static float windowHeight = 250;
+
+    float buttonHeight = 40;
 
     [MenuItem("CatDownNavigation", menuItem = "4DX/CatDownNavigation")]
     public static void ConversationSystem()
@@ -21,30 +23,30 @@ public class CatDownMakerNavigationWindow : EditorWindow
 
         EditorGUILayout.BeginVertical();
         {
-            if(GUILayout.Button("StartScene"))
+            if(GUILayout.Button("StartScene", GUILayout.Height(buttonHeight)))
             {
                 UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/0.Scenes/StartScene.unity");
 
                 this.Close();
             }
             
-            if(GUILayout.Button("GameScene"))
+            if(GUILayout.Button("GameScene", GUILayout.Height(buttonHeight)))
             {
                 UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/0.Scenes/GameScene.unity");
 
                 this.Close();
             }
             
-            if(GUILayout.Button("LevelEditor"))
+            if(GUILayout.Button("LevelEditor", GUILayout.Height(buttonHeight)))
             {
                 UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/99.LevelEditor/LevelEditor.unity");
 
                 this.Close();
             }
 
-            if (GUILayout.Button("Setting"))
+            if (GUILayout.Button("Setting", GUILayout.Height(buttonHeight)))
             {
-                
+                CatDownMakerNavigationSettingWindow.OpenSettingWindow(this);
             }
         }
         EditorGUILayout.EndVertical();
