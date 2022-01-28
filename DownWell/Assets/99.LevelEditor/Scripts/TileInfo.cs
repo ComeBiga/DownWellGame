@@ -49,11 +49,11 @@ public class TileInfo : MonoBehaviour
         Set(tileCode);
     }
 
-    public void Delete(List<TileInfo> tileList)
+    public void Delete()
     {
-        tileList.Remove(this);
-
-        Destroy(this.gameObject);
+        //Debug.Log(this.gameObject.name);
+        //Destroy(this.gameObject);
+        DestroyImmediate(this.gameObject);
     }
 }
 

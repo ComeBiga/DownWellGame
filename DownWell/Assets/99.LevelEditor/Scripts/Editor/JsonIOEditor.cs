@@ -172,4 +172,12 @@ public class JsonIOEditor : Editor
 
         EditorGUILayout.EndHorizontal();
     }
+
+    public static void CheckAndEnterPlayMode()
+    {
+        if(!EditorApplication.isPlaying)
+        {
+            EditorApplication.EnterPlaymode();
+        }
+    }
 }
