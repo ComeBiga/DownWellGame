@@ -42,15 +42,18 @@ public class LevelEditorManager : MonoBehaviour
         //InitCanvas(width, height);
 
         //PreventToEnterPlayMode();
-        //EditorApplication.playModeStateChanged += PreventToEnterPlayMode;
+        EditorApplication.playModeStateChanged += PreventToEnterPlayMode;
         //EditorApplication.EnterPlaymode();
+
     }
 
     void PreventToEnterPlayMode(PlayModeStateChange state)
     {
-        if(state == PlayModeStateChange.ExitingEditMode)
+        if(state == PlayModeStateChange.EnteredEditMode)
         {
-            EditorApplication.isPlaying = false;
+            //EditorApplication.isPlaying = false;
+            UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
+            Debug.Log("Scene Saved");
         }
     }
 
