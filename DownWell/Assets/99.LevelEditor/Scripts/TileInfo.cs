@@ -48,6 +48,13 @@ public class TileInfo : MonoBehaviour
 
         Set(tileCode);
     }
+
+    public void Delete(List<TileInfo> tileList)
+    {
+        tileList.Remove(this);
+
+        Destroy(this.gameObject);
+    }
 }
 
 namespace LevelEditor
