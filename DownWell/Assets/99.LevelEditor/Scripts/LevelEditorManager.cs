@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -27,6 +28,8 @@ public class LevelEditorManager : MonoBehaviour
     private int canvasWidth;
     private int canvasHeight;
 
+    int tileNum = 0;
+
     private void Start()
     {
         UnityEditor.Selection.activeGameObject = this.gameObject;
@@ -37,6 +40,18 @@ public class LevelEditorManager : MonoBehaviour
         SetCanvasActive(false);
 
         //InitCanvas(width, height);
+
+        //PreventToEnterPlayMode();
+        //EditorApplication.playModeStateChanged += PreventToEnterPlayMode;
+        //EditorApplication.EnterPlaymode();
+    }
+
+    void PreventToEnterPlayMode(PlayModeStateChange state)
+    {
+        if(state == PlayModeStateChange.ExitingEditMode)
+        {
+            EditorApplication.isPlaying = false;
+        }
     }
 
     public Vector2 getCanvasSize()
@@ -59,12 +74,14 @@ public class LevelEditorManager : MonoBehaviour
         //tiles = new List<TileInfo>();
         ClearTiles();
 
-        for(int y = 0; y < height; y++)
+        for (int y = 0; y < height; y++)
         {
-            for(int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++)
             {
                 var pos = new Vector2(x - width / 2, height / 2 - y);
                 var madeSpace = Instantiate(space, pos, Quaternion.identity, levelTiles.transform);
+                madeSpace.gameObject.name += tileNum.ToString();
+                tileNum++;
                 //tiles[y * width + x] = madeSpace.GetComponent<TileInfo>();
                 tiles.Add(madeSpace.GetComponent<TileInfo>());
             }
@@ -92,10 +109,7 @@ public class LevelEditorManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < tiles.Count; i++)
-            {
-                Destroy(tiles[i].gameObject);
-            }
+            //ClearTiles();
 
             InitCanvas(resizeWidth, resizeHeight);
 
@@ -161,18 +175,20 @@ public class LevelEditorManager : MonoBehaviour
                 if (tileCode >= 100 && tileCode < 1000) tileCode = 1;
 
                 //ChangeTile(tiles[index].transform, tileCode);
-                tiles[index].SetTile(tileCode);
+                if(tiles.Count > index) tiles[index].SetTile(tileCode);
             }
         }
     }
 
     void ClearTiles()
     {
+        //Debug.Log($"tiles.Count:{tiles.Count}");
         // new 할당 후에 타일 오브젝트들이 남는 걸 대비하기 위한 코드
         for(int i = 0; i < tiles.Count; i++)
         {
-            Debug.Log(tiles[i]);
-            tiles[i].Delete(tiles);
+            //Debug.Log(tiles[i]);
+            //Debug.Log($"index:{i}");
+            tiles[i].Delete();
         }
 
         tiles = new List<TileInfo>();

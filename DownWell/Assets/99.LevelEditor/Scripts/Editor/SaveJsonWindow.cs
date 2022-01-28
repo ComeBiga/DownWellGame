@@ -78,6 +78,8 @@ public class SaveJsonWindow : EditorWindow
 
         if (GUILayout.Button("Save"))
         {
+            //JsonIOEditor.CheckAndEnterPlayMode();
+
             var newLevel = jsonIO.CreateNewLevel(fileName, stage, width, height);
             jsonIO.LoadJson(newLevel.path);
             jsonIO.SelectDB(newLevel);
