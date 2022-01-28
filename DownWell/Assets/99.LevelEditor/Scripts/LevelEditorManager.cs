@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 public class LevelEditorManager : MonoBehaviour
 {
     #region Singleton
@@ -36,7 +36,7 @@ public class LevelEditorManager : MonoBehaviour
         //LoadLevel(tiles);
         SetCanvasActive(false);
 
-        InitCanvas(width, height);
+        //InitCanvas(width, height);
     }
 
     public Vector2 getCanvasSize()
@@ -56,7 +56,8 @@ public class LevelEditorManager : MonoBehaviour
         canvasHeight = height;
 
         // 타일 오브젝트 생성
-        tiles = new List<TileInfo>();
+        //tiles = new List<TileInfo>();
+        ClearTiles();
 
         for(int y = 0; y < height; y++)
         {
@@ -163,6 +164,18 @@ public class LevelEditorManager : MonoBehaviour
                 tiles[index].SetTile(tileCode);
             }
         }
+    }
+
+    void ClearTiles()
+    {
+        // new 할당 후에 타일 오브젝트들이 남는 걸 대비하기 위한 코드
+        for(int i = 0; i < tiles.Count; i++)
+        {
+            Debug.Log(tiles[i]);
+            tiles[i].Delete(tiles);
+        }
+
+        tiles = new List<TileInfo>();
     }
 
     //void ChangeTile(Transform tile, int tileCode)
