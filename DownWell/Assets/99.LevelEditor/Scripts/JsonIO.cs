@@ -245,7 +245,7 @@ public class JsonIO : MonoBehaviour
         //Debug.Log("BackUped");
 
         // Database
-        levelDB.Remove(levelInfo);
+        RemoveDatabase(levelInfo);
         
         // Json
         File.Delete(Application.dataPath + levelInfo.path);
@@ -271,11 +271,20 @@ public class JsonIO : MonoBehaviour
     void SaveIntoDatabase(string filename, LevelEditor.Stage stage, string path)
     {
         levelDB.Add(filename, stage, path);
+
+        UnityEditor.EditorUtility.SetDirty(levelDB);
     }
 
     void SaveIntoDatabase(LevelDBInfo newDB)
     {
         SaveIntoDatabase(newDB.filename, newDB.stage, newDB.path);
+    }
+
+    void RemoveDatabase(LevelDBInfo removeDB)
+    {
+        levelDB.Remove(removeDB);
+
+        UnityEditor.EditorUtility.SetDirty(levelDB);
     }
 
     void RemoveAllDatabase()
