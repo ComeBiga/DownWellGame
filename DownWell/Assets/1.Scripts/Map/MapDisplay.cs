@@ -61,7 +61,7 @@ public class MapDisplay : MonoBehaviour
         this.enemyObjects = enemyObjects;
     }
 
-    public void SetObjects(StageDatabase currentStageDB)
+    public void SetObjects(CatDown.StageInfo currentStageDB)
     {
         this.wallObjects = currentStageDB.MapObjects;
         this.wallSprites = currentStageDB.WallSprites;

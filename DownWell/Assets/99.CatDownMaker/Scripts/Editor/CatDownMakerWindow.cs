@@ -22,7 +22,7 @@ public class CatDownMakerWindow : EditorWindow
 
     private void OnEnable()
     {
-        stageEditor = new StageEditor(StageList.GetStageList());
+        stageEditor = new StageEditor(CatDown.StageDatabase.GetStageList());
 
         editors.Clear();
         editors.Add(stageEditor);

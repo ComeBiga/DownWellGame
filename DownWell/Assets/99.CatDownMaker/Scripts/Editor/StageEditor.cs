@@ -5,13 +5,13 @@ using UnityEditor;
 
 public class StageEditor : EditorBase
 {
-    static StageList stageList;
+    static CatDown.StageDatabase stageList;
 
     string searchName = "";
 
     Vector2 scrollPos;
 
-    public StageEditor(StageList stageList)
+    public StageEditor(CatDown.StageDatabase stageList)
     {
         StageEditor.stageList = stageList;
     }
@@ -50,7 +50,7 @@ public class StageEditor : EditorBase
         EditorGUILayout.EndVertical();
     }
 
-    void DisplayStageListRow(StageDatabase stage)
+    void DisplayStageListRow(CatDown.StageInfo stage)
     {
         EditorGUILayout.BeginHorizontal();
 

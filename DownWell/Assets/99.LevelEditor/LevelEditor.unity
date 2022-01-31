@@ -2841,7 +2841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushDB: {fileID: 11400000, guid: f58ad4e4563ecc545ba9b06939745ea6, type: 2}
-  stage: {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
+  stage: {fileID: 0}
   currentBrush: {fileID: 11400000, guid: a233656cf4f4e11469cb9558c55ea7a4, type: 2}
   eraserBrush: {fileID: 11400000, guid: a026768d6bd64cd41a9286fe3cfd577b, type: 2}
 --- !u!114 &698193443

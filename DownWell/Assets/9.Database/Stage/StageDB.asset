@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85d568bd9495d6498b9ed27d1b2da91, type: 3}
-  m_Name: StageList
+  m_Script: {fileID: 11500000, guid: 184b1b2d10dec39458aa6da38443153d, type: 3}
+  m_Name: StageDB
   m_EditorClassIdentifier: 
-  stages: []
+  path: Assets/9.Database/Stage/StageDB.asset
+  stages:
+  - {fileID: 11400000, guid: 2b20f192bbf5cce4b904f7052b588793, type: 2}

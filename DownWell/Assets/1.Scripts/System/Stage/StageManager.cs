@@ -18,10 +18,10 @@ public class StageManager : MonoBehaviour
     public Stage stage = Stage.Stage_1;
 
     [Header("DB")]
-    public List<StageDatabase> stages;
+    public List<CatDown.StageInfo> stages;
 
-    private StageDatabase current;
-    public StageDatabase Current
+    private CatDown.StageInfo current;
+    public CatDown.StageInfo Current
     {
         get
         {
