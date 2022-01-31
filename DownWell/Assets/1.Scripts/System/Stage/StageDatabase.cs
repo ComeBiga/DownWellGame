@@ -9,7 +9,7 @@ namespace CatDown
     {
         public string path = "Assets/99.CatDownMaker/Database/StageList.asset";
 
-        private static string stagelistPath = "Assets/99.CatDownMaker/Database/StageList.asset";
+        private static string stageDBPath = "Assets/99.CatDownMaker/Database/StageList.asset";
 
         // 이거처럼 StageDatabase를 StageInfo로 바꿔야함
         public List<StageInfo> stages;
@@ -34,7 +34,9 @@ namespace CatDown
 
         public static StageDatabase GetStageList()
         {
-            return UnityEditor.AssetDatabase.LoadAssetAtPath<StageDatabase>(stagelistPath);
+            //var path = UnityEditor.AssetDatabase.GetAssetPath()
+
+            return UnityEditor.AssetDatabase.LoadAssetAtPath<StageDatabase>(stageDBPath);
         }
     }
 

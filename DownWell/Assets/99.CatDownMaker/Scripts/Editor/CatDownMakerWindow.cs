@@ -22,7 +22,8 @@ public class CatDownMakerWindow : EditorWindow
 
     private void OnEnable()
     {
-        stageEditor = new StageEditor(CatDown.StageDatabase.GetStageList());
+        stageEditor = new StageEditor();
+        //stageEditor.SetDatabase(CatDown.Maker.StageManager.instance.database);
 
         editors.Clear();
         editors.Add(stageEditor);
@@ -34,12 +35,12 @@ public class CatDownMakerWindow : EditorWindow
         {
             editorSelected = GUILayout.Toolbar(editorSelected, new string[] { "StageEditor" });
 
-            editors[editorSelected].Draw();
+            if(editors.Count > 0)
+                editors[editorSelected].Draw();
 
             //DisplayDataBaseList();
         }
         EditorGUILayout.EndVertical();
-
     }
 
     void DisplayDataBaseList()

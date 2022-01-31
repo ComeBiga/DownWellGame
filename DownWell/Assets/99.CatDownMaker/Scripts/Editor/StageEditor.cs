@@ -5,15 +5,21 @@ using UnityEditor;
 
 public class StageEditor : EditorBase
 {
-    static CatDown.StageDatabase stageList;
+    public static string stageDBPath = "Assets/9.Database/Stage/StageDB.asset";
+    CatDown.StageDatabase stageDB;
 
     string searchName = "";
 
     Vector2 scrollPos;
 
-    public StageEditor(CatDown.StageDatabase stageList)
+    public StageEditor()
     {
-        StageEditor.stageList = stageList;
+        //stageDB = CatDown.Maker.StageManager.instance.database;
+    }
+
+    public void SetDatabase(CatDown.StageDatabase stageDB)
+    {
+        this.stageDB = stageDB;
     }
 
     public override void Draw()
@@ -28,7 +34,7 @@ public class StageEditor : EditorBase
 
             if(GUILayout.Button("Create"))
             {
-                StageEditor.stageList.AddStage();
+                stageDB.AddStage();
             }
 
             DisplayStageList();
@@ -42,7 +48,7 @@ public class StageEditor : EditorBase
     {
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-        foreach(var stage in StageEditor.stageList.stages)
+        foreach(var stage in stageDB.stages)
         {
             DisplayStageListRow(stage);
         }
@@ -61,7 +67,7 @@ public class StageEditor : EditorBase
 
         if(GUILayout.Button("X", GUILayout.Width(20)))
         {
-            StageEditor.stageList.DeleteStage(stage);
+            stageDB.DeleteStage(stage);
         }
 
         EditorGUILayout.EndHorizontal();
