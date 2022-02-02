@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace CatDown.Maker
 {
-    [UnityEditor.InitializeOnLoad]
+    //[UnityEditor.InitializeOnLoad]
+    [ExecuteAlways]
     public class StageManager : MonoBehaviour
     {
         #region Singleton

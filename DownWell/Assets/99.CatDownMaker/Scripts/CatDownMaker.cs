@@ -6,7 +6,7 @@ namespace CatDown.Maker
 {
     public static class CatDownMaker
     {
-        public const string DatabasePath = "Assets/9.Database/";
-        public const string StageDatabasePath = DatabasePath + "Stage/StageDB.asset";
+        public const string DatabasePath = "Assets/9.Database";
+        public const string StageDatabasePath = DatabasePath + "/Stage";
     }
 }

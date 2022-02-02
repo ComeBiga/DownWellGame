@@ -17,8 +17,9 @@ namespace CatDown
         public int Num { get { return num; } }
 
         [SerializeField]
-        private string path;
-        public string Path { get { return path; } }
+        [UnityEngine.Serialization.FormerlySerializedAs("path")]
+        private string levelPath;
+        public string Path { get { return levelPath; } }
 
         private string assetPath;
         public string AssetPath { get { return assetPath; } set { assetPath = value; } }
@@ -46,7 +47,7 @@ namespace CatDown
         public string GetPath()
         {
 #if UNITY_EDITOR
-            return path;
+            return levelPath;
 #elif UNITY_ANDROID || UNITY_STANDALONE_WIN
         return path.Replace("/Resources", "");
 #endif
@@ -54,6 +55,11 @@ namespace CatDown
             //    return path.Replace("/Resources", "");
             //else
             //    return path;
+        }
+
+        public string GetAssetPath()
+        {
+            return UnityEditor.AssetDatabase.GetAssetPath(this);
         }
     }
 }

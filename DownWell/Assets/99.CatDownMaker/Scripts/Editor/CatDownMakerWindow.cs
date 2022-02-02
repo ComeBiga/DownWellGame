@@ -23,7 +23,7 @@ public class CatDownMakerWindow : EditorWindow
     private void OnEnable()
     {
         stageEditor = new StageEditor();
-        //stageEditor.SetDatabase(CatDown.Maker.StageManager.instance.database);
+        stageEditor.SetDatabase(CatDown.Maker.StageManager.instance.database);
 
         editors.Clear();
         editors.Add(stageEditor);

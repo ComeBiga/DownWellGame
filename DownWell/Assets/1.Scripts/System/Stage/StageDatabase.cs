@@ -17,10 +17,11 @@ namespace CatDown
         public void AddStage()
         {
             var newStage = new CatDown.StageInfo();
-            UnityEditor.AssetDatabase.CreateAsset(newStage, path + "/new Stage" + stages.Count.ToString() + ".asset");
+            UnityEditor.AssetDatabase.CreateAsset(newStage, CatDown.Maker.CatDownMaker.StageDatabasePath + "/new Stage" + stages.Count.ToString() + ".asset");
 
             newStage.AssetPath = UnityEditor.AssetDatabase.GetAssetPath(newStage);
             stages.Add(newStage);
+            UnityEditor.EditorUtility.SetDirty(this);
         }
 
         public void DeleteStage(CatDown.StageInfo deleteStage)
@@ -28,11 +29,12 @@ namespace CatDown
             if (stages.IndexOf(deleteStage) == 0) return;
 
             stages.Remove(deleteStage);
+            UnityEditor.EditorUtility.SetDirty(this);
 
-            UnityEditor.AssetDatabase.DeleteAsset(UnityEditor.AssetDatabase.GetAssetPath(deleteStage));
+            UnityEditor.AssetDatabase.DeleteAsset(deleteStage.GetAssetPath());
         }
 
-        public static StageDatabase GetStageList()
+        public static StageDatabase GetStageDB()
         {
             //var path = UnityEditor.AssetDatabase.GetAssetPath()
 

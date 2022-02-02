@@ -5,12 +5,11 @@ using UnityEditor;
 
 public class StageEditor : EditorBase
 {
-    public static string stageDBPath = "Assets/9.Database/Stage/StageDB.asset";
     CatDown.StageDatabase stageDB;
 
-    string searchName = "";
-
     Vector2 scrollPos;
+
+    CatDown.StageInfo selectedStage;
 
     public StageEditor()
     {
@@ -24,6 +23,9 @@ public class StageEditor : EditorBase
 
     public override void Draw()
     {
+        EditorGUILayout.BeginHorizontal();
+        
+
         EditorGUILayout.BeginVertical(EditorStyles.helpBox, GUILayout.Width(200), GUILayout.Height(400));
         {
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
@@ -42,6 +44,10 @@ public class StageEditor : EditorBase
             EditorGUILayout.EndScrollView();
         }
         EditorGUILayout.EndVertical();
+
+        DrawDetail();
+
+        EditorGUILayout.EndHorizontal();
     }
 
     void DisplayStageList()
@@ -62,7 +68,7 @@ public class StageEditor : EditorBase
 
         if(GUILayout.Button(stage.name))
         {
-
+            selectedStage = stage;
         }
 
         if(GUILayout.Button("X", GUILayout.Width(20)))
@@ -71,5 +77,36 @@ public class StageEditor : EditorBase
         }
 
         EditorGUILayout.EndHorizontal();
+    }
+
+    void DrawDetail()
+    {
+        EditorGUILayout.BeginVertical(GUILayout.Width(200), GUILayout.Height(400));
+
+        EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
+
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+
+
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
+
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+
+
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
+
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+
+
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.EndVertical();
     }
 }
