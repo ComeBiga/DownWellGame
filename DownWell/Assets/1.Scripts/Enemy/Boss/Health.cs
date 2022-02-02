@@ -37,8 +37,8 @@ public class Health
     /// 현재 체력 비율
     /// </summary>
     /// <returns>체력 백분율을 반환</returns>
-    public int CurrentRatio()
+    public float CurrentRatio()
     {
-        return (int)(current / max) * 100;
+        return ((float)current / max) * 100;
     }
 }

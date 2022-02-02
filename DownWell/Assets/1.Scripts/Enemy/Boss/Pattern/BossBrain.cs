@@ -13,7 +13,6 @@ public class BossBrain : MonoBehaviour
     public BossNormalPattern normalPattern;
     public BossRagePattern ragePattern;
 
-
     public void Use()
     {
         StartCoroutine(EUse());
@@ -23,28 +22,31 @@ public class BossBrain : MonoBehaviour
     {
         float timer = 0;
 
+        BossAction.interval = this.interval;
         SetPattern(normalPattern);
         //BossAction.onCut += current.Act;
         //Act();
 
         while (true)
         {
-            if (BossAction.ended)
+            if (BossAction.ready)
             {
-                timer += Time.deltaTime;
+                Act();
+                //timer += Time.deltaTime;
 
-                if (timer > interval)
-                {
-                    Debug.Log("Acting..");
-                    timer = 0;
-                    BossAction.ended = false;
-                    Act();
-                }
+                //if (timer > interval)
+                //{
+                //    Debug.Log("Acting..");
+                //    timer = 0;
+                //    BossAction.ended = false;
+                //    Act();
+                //}
             }
 
             if (GetComponent<Boss>().UnderHealthRatio(rageModePercentage))
             {
                 SetPattern(ragePattern);
+                //BeRageMode();
                 //current.Act();
             }
 
