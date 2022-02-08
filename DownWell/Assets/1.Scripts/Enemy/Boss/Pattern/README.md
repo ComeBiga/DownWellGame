@@ -9,6 +9,8 @@
 
 하위 클래스들은 Take를 오버라이딩합니다. BossAction의 하위클래스만 추가, 변경함으로써, 보스의 기본 시스템은 유지 됩니다.
 
+## [전체코드](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/1.Scripts/Enemy/Boss/Pattern)
+
 ### BossAction.cs
 ```c#
 public abstract class BossAction : MonoBehaviour
