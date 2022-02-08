@@ -13,8 +13,8 @@
 
 
 ## 주요 코드
-+ #### [LevelEditor](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/99.LevelEditor)
-+ #### [MapDisplay]()
-+ #### [BossBrain](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/1.Scripts/Enemy/Boss/Pattern)
++ #### [BossBrain](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/1.Scripts/Enemy/Boss/Pattern/README.md)
 + #### [EnemyBrain]()
++ #### [MapDisplay]()
++ #### [LevelEditor](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/99.LevelEditor)
 + #### [StageDatabase]()
