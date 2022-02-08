@@ -1,5 +1,7 @@
 # MapDisplay
+![me](https://user-images.githubusercontent.com/36800639/153050160-18c66ce5-42bc-4bfd-9193-e134481ad5be.PNG)
 
+위 사진처럼 맵이 일정 길이로 수 십 가지가 저장이 되어있습니다. 그 중 맵을 랜덤하게 선택해 배치합니다.
 ## 주요 코드라인
 
 ### MapManager.cs
