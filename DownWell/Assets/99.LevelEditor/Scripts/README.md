@@ -25,7 +25,7 @@ string LevelToJson(string fileName = "")
     // 레벨 객체 생성
     Level level = new Level();
     level.tiles = new int[LevelEditorManager.instance.tiles.Count];
-
+    
     level.name = fileName;
 
     for (int i = 0; i < level.tiles.Length; i++)
