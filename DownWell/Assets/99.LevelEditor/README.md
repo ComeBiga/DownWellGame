@@ -4,7 +4,7 @@
 
 인 게임에서 생성되는 레벨을 디자인하기 위한 에디터입니다.
 
-+ [코드 리뷰](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/99.LevelEditor/Scripts)
+## [전체코드](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/99.LevelEditor/Scripts)
 
 ## BrushManager
 ![bm](https://user-images.githubusercontent.com/36800639/152983511-61ff7009-b20a-48d8-b719-c6dea162ec41.PNG)
