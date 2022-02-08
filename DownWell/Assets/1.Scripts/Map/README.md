@@ -56,6 +56,7 @@ public int Display(Level level, int Ypos)
     List<Level> Load(string path)
     {
 #if UNITY_EDITOR
+
         string[] directories = Directory.GetFiles(Application.dataPath + path + "/", "*.json");
         List<Level> lvList = new List<Level>();
 
@@ -70,7 +71,9 @@ public int Display(Level level, int Ypos)
         }
 
         return lvList;
+        
 #elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+
         var textDatas = Resources.LoadAll(path + "/", typeof(TextAsset));
         List<Level> lvList = new List<Level>();
 
@@ -82,6 +85,7 @@ public int Display(Level level, int Ypos)
         }
 
         return lvList;
+        
 #endif
     }
 ```
