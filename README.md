@@ -9,7 +9,7 @@
 
 __개발엔진__ : Unity3D   
 __목표플랫폼__ : 모바일   
-__플레이 영상__ : [https://youtu.be/Z9sQcJFnpyM](https://youtu.be/Z9sQcJFnpyM)
+__플레이 영상__ : [Link](https://youtu.be/Z9sQcJFnpyM)
 
 
 
