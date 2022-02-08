@@ -1,6 +1,5 @@
 
-# CatDown
-플레이 영상 : [https://youtu.be/Z9sQcJFnpyM](https://youtu.be/Z9sQcJFnpyM)
+# CatDown ([https://youtu.be/Z9sQcJFnpyM](https://youtu.be/Z9sQcJFnpyM))
 
 ![Screen_Recording_20211209-221833_CatDown_1](https://user-images.githubusercontent.com/36800639/152974931-25161746-d136-4f57-b35f-e18497a190fa.gif)
 
@@ -14,8 +13,8 @@
 
 ## 주요 코드
 + #### [BossBrain](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/1.Scripts/Enemy/Boss/Pattern/README.md)
-+ #### [EnemyBrain]()
++ #### [EnemyBrain](https://github.com/ComeBiga/DownWellGame/blob/CatDown_README/DownWell/Assets/99.EnemyEditor/Scripts/README.md)
 + #### [MapDisplay]()
-+ #### [LevelEditor](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/99.LevelEditor)
++ #### [LevelEditor](https://github.com/ComeBiga/DownWellGame/tree/CatDown_README/DownWell/Assets/99.LevelEditor/README.md)
 + #### [Physics]()
 + #### [StageDatabase]()
