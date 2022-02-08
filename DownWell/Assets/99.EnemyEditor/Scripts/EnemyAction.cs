@@ -30,7 +30,7 @@ public class EnemyAction : MonoBehaviour
         if(currentState.CheckTransition(out currentStateName))
         {
             currentState = actionStates.Find(s => s.stateName == currentStateName);
-            Debug.Log(currentState.stateName);
+            //Debug.Log(currentState.stateName);
         }
     }
 

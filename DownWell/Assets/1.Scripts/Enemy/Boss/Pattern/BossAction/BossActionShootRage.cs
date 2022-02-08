@@ -10,7 +10,7 @@ public class BossActionShootRage : BossActionShootNormal
     {
         GetComponent<Animator>().SetTrigger("Attack_0_Event");
 
-        BossAction.Cut();
+        Cut();
     }
 
     void ShootNormalRageByTransform()

@@ -15,4 +15,5 @@ MonoBehaviour:
   code: 3
   name: Platform
   sprite: {fileID: 1509607539823229551, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  sliced: 1
   score: 0

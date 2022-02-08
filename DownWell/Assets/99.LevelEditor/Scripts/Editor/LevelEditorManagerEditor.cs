@@ -13,6 +13,16 @@ public class LevelEditorManagerEditor : Editor
     {
         width = serializedObject.FindProperty("width");
         height = serializedObject.FindProperty("height");
+
+        //CatDownMakerNavigationWindow.ConversationSystem();
+        //UnityEditor.SceneManagement.EditorSceneManager.sceneOpened += OpenCatDownNavigation;
+        //UnityEditor.SceneManagement.EditorSceneManager.
+        //EditorApplication.projectChanged += OpenCatDownNavigation;
+    }
+
+    void OpenCatDownNavigation()
+    {
+        CatDownMakerNavigationWindow.ConversationSystem();
     }
 
     public override void OnInspectorGUI()

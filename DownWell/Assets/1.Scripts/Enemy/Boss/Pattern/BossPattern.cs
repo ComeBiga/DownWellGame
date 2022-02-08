@@ -10,9 +10,9 @@ public abstract class BossPattern
 
     public void Act()
     {
-        //Debug.Log("In Act()");
         var action = GetRandomAction();
-        action.Take();
+        //Debug.Log($"In Act() : {action}");
+        action.TakeAction();
     }
 
     BossAction GetRandomAction()

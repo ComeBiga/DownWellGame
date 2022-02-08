@@ -61,6 +61,6 @@ public class BossActionBlast : BossAction
             yield return null;
         }
 
-        BossAction.Cut();
+        Cut();
     }
 }

@@ -27,7 +27,8 @@ public class BrushInputManager : MonoBehaviour
 
             if (tileInfo != null)
             {
-                BrushManager.instance.PaintTile(tileInfo);
+                //BrushManager.instance.PaintTile(tileInfo);
+                tileInfo.SetInfo(BrushManager.instance.currentBrush);
                 JsonIO.levelChanged = true;
             }
         }

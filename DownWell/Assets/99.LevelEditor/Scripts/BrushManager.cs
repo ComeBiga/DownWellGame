@@ -15,10 +15,11 @@ public class BrushManager : MonoBehaviour
     #endregion
 
     public BrushDatabase brushDB;
+    public StageDatabase stage;
 
     public LevelObject currentBrush;
-    public List<LevelObject> wallBrushes;
-    public List<LevelObject> enemyBrushes;
+    //public List<LevelObject> wallBrushes;
+    //public List<LevelObject> enemyBrushes;
     public LevelObject eraserBrush;
 
     private void Start()
@@ -31,25 +32,53 @@ public class BrushManager : MonoBehaviour
         currentBrush = brush;
     }
 
-    public void ChangeWallBrush(int brushCode)
+    public List<LevelObject> GetWallObjects()
     {
-        currentBrush = wallBrushes.Find(t => t.code == brushCode);
+        List<LevelObject> objs = new List<LevelObject>();
+
+        var mo = stage.MapObjects;
+
+        foreach(var lo in mo)
+        {
+            objs.Add(lo.GetComponent<Wall>().info);
+        }
+
+        return objs;
     }
 
-    public void ChangeEnemyBrush(int brushCode)
+    public List<LevelObject> GetEnemyObjects()
     {
-        //currentBrush = enemyBrushes.Find(t => t.code == brushCode);
-        currentBrush = enemyBrushes[brushCode];
+        List<LevelObject> objs = new List<LevelObject>();
+
+        var eo = stage.EnemyObjects;
+
+        foreach (var lo in eo)
+        {
+            objs.Add(lo.GetComponent<Enemy>().info);
+        }
+
+        return objs;
     }
+
+    //public void ChangeWallBrush(int brushCode)
+    //{
+    //    currentBrush = wallBrushes.Find(t => t.code == brushCode);
+    //}
+
+    //public void ChangeEnemyBrush(int brushCode)
+    //{
+    //    //currentBrush = enemyBrushes.Find(t => t.code == brushCode);
+    //    currentBrush = enemyBrushes[brushCode];
+    //}
 
     public void ChangeToEraser()
     {
         currentBrush = eraserBrush;
     }
 
-    public void PaintTile(TileInfo tileInfo)
-    {
-        tileInfo.GetComponent<SpriteRenderer>().sprite = currentBrush.sprite;
-        tileInfo.tileCode = currentBrush.code;
-    }
+    //public void PaintTile(TileInfo tileInfo)
+    //{
+    //    tileInfo.GetComponent<SpriteRenderer>().sprite = currentBrush.sprite;
+    //    tileInfo.tileCode = currentBrush.code;
+    //}
 }

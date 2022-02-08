@@ -2316,7 +2316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &609457318
 Transform:
   m_ObjectHideFlags: 0
@@ -2841,17 +2841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushDB: {fileID: 11400000, guid: f58ad4e4563ecc545ba9b06939745ea6, type: 2}
+  stage: {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
   currentBrush: {fileID: 11400000, guid: a233656cf4f4e11469cb9558c55ea7a4, type: 2}
-  wallBrushes:
-  - {fileID: 11400000, guid: a233656cf4f4e11469cb9558c55ea7a4, type: 2}
-  - {fileID: 11400000, guid: 2aa2763ec01845c41aecc54f10412f02, type: 2}
-  - {fileID: 11400000, guid: af7daa92dfa12d2479ce27596845bd16, type: 2}
-  enemyBrushes:
-  - {fileID: 11400000, guid: d7c67dbde88b7cb4b8c12dcec0b6e05c, type: 2}
-  - {fileID: 11400000, guid: 15e5dd87c4c9e5441b5e34f8be30f2b2, type: 2}
-  - {fileID: 11400000, guid: e08c9d90780e27347b5734e150d7dedb, type: 2}
-  - {fileID: 11400000, guid: 1d7a3b683c5d2b646b628f7fbe730bab, type: 2}
-  - {fileID: 11400000, guid: a9a3fc89f8741554c9d92f809695367e, type: 2}
   eraserBrush: {fileID: 11400000, guid: a026768d6bd64cd41a9286fe3cfd577b, type: 2}
 --- !u!114 &698193443
 MonoBehaviour:
@@ -2866,12 +2857,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDB: {fileID: 11400000, guid: 2ea69ae0d998bd443b5df229ba1e228c, type: 2}
-  selectedDB:
+  selectedLevelDB:
     filename: 
     stage: 0
     path: 
-  stage: 0
-  fileName: level_0
+  stage: 1
+  fileName: S2_
   updateStage: ' '
   updatefileName: ' '
   fromCode: 0

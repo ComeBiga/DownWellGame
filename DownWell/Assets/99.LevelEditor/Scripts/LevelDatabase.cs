@@ -29,7 +29,8 @@ public class LevelDBInfo : IComparable<LevelDBInfo>
 
     public LevelDBInfo()
     {
-
+        filename = "";
+        path = "";
     }
 
     public LevelDBInfo(string filename, LevelEditor.Stage stage, string path)
@@ -41,7 +42,10 @@ public class LevelDBInfo : IComparable<LevelDBInfo>
 
     public int CompareTo(LevelDBInfo other)
     {
-        throw new NotImplementedException();
+        if (path == other.path)
+            return 1;
+        else
+            return -1;
     }
 
     public void Save(string filename, LevelEditor.Stage stage, string path)
