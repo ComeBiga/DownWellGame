@@ -8,7 +8,8 @@
 게임 '[다운웰(Downwell)](https://youtu.be/tpDONgfBuzk)'을 벤치마킹해서, 기존 게임의 속도감과 타격감을 살려서 개발했습니다.
 
 __개발엔진__ : Unity3D   
-__목표플랫폼__ : 모바일
+__목표플랫폼__ : 모바일   
+__플레이 영상__ : [https://youtu.be/Z9sQcJFnpyM](https://youtu.be/Z9sQcJFnpyM)
 
 
 
