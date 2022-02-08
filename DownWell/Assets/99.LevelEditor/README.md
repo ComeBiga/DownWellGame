@@ -1,5 +1,5 @@
-# LevelEditor
-[Link]()
+# LevelEditor ([https://youtu.be/tbCmTbiL-9Y](https://youtu.be/tbCmTbiL-9Y))
+
 ![le](https://user-images.githubusercontent.com/36800639/152982460-1968d615-c123-4f23-b487-5e6d56719a92.PNG)
 
 인 게임에서 생성되는 레벨을 디자인하기 위한 에디터입니다.
@@ -17,6 +17,6 @@
 
 저장한 레벨은 Json파일로 저장됩니다. 저장된 파일을 UI에서 리스트로 정리해서 보여줍니다.
 
-리스트 파일을 선택하면 로드됩니다.
+파일은 자동 저장되고, 리스트 파일을 선택하면 로드됩니다.
 
 파일을 새로 생성할 수 있습니다. 그리고 저장된 파일을 검색창에서 검색, 수정, 삭제할 수도 있습니다.
