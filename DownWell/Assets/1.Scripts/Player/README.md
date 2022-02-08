@@ -2,7 +2,8 @@
 
 ![pc](https://user-images.githubusercontent.com/36800639/153020349-b327013a-2f9a-410d-902c-1c6730aee934.PNG)
 
-바닥 끝에서 점프하는 것 처럼 세밀한 충돌 체크를 처리하기 위한 코드입니다.
+바닥 끝에서 점프하는 것 처럼 세밀한 충돌 체크를 처리하기 위한 코드입니다.   
+위 사진에 보이는 빨간 선이 충돌체크에 이용되는 ray입니다. 아래쪽 선 중 하나만 체크돼도 점프를 할 수 있는 상태가 됩니다.
 
 ## 주요 코드라인
 ### [PlayerController.cs](https://github.com/ComeBiga/DownWellGame/blob/CatDown_README/DownWell/Assets/1.Scripts/Player/PlayerController.cs)
