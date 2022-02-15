@@ -39,6 +39,8 @@ namespace CatDown
         #endregion
 
         #region Protected Method
+        protected virtual void EnterExamine() { }
+
         protected abstract void Examine();
 
         protected void Decide()

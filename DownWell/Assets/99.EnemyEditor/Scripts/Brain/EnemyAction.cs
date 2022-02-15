@@ -22,6 +22,7 @@ namespace CatDown
 
             while(true)
             {
+                Debug.Log("ETake in While");
                 OnActionUpdate();
 
                 yield return null;
@@ -30,6 +31,7 @@ namespace CatDown
 
         public void StopAction()
         {
+            Debug.Log("StopAction");
             StopCoroutine(ETake());
         }
 
