@@ -15,5 +15,5 @@ MonoBehaviour:
   code: 10
   name: Laundry
   sprite: {fileID: -8125024893068618053, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
-  sliced: 0
+  sliced: 1
   score: 0
