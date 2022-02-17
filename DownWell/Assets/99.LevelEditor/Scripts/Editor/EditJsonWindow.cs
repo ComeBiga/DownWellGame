@@ -9,6 +9,7 @@ public class EditJsonWindow : EditorWindow
     //SerializedProperty fileName;
 
     private LevelEditor.Stage stage;
+    private string directory;
     private string fileName;
 
     int width = 11;
@@ -27,11 +28,12 @@ public class EditJsonWindow : EditorWindow
         window.editLevelDB = editLevelDB;
         window.stage = editLevelDB.stage;
         window.fileName = editLevelDB.filename;
+        window.directory = editLevelDB.path.Replace(editLevelDB.filename + ".json", "");
     }
 
     private void OnGUI()
     {
-        EditorGUILayout.HelpBox("stage : 저장될 폴더\nfile name : 파일명\n저장과 로드가 적절히 이뤄졌는지 콘솔창에서 확인해주세요.", MessageType.Info);
+        EditorGUILayout.HelpBox("directory : 저장될 폴더\nfile name : 파일명\n저장과 로드가 적절히 이뤄졌는지 콘솔창에서 확인해주세요.", MessageType.Info);
 
         var serializedObject = new SerializedObject(jsonIO);
 
@@ -42,10 +44,17 @@ public class EditJsonWindow : EditorWindow
 
         EditorGUILayout.BeginVertical();
         {
+            //EditorGUILayout.BeginHorizontal();
+            //{
+            //    EditorGUILayout.PrefixLabel("Stage");
+            //    stage = (LevelEditor.Stage)EditorGUILayout.EnumPopup(stage);
+            //}
+            //EditorGUILayout.EndHorizontal();
+            
             EditorGUILayout.BeginHorizontal();
             {
-                EditorGUILayout.PrefixLabel("Stage");
-                stage = (LevelEditor.Stage)EditorGUILayout.EnumPopup(stage);
+                EditorGUILayout.PrefixLabel("Directory");
+                directory = EditorGUILayout.TextField(directory);
             }
             EditorGUILayout.EndHorizontal();
 
@@ -72,7 +81,8 @@ public class EditJsonWindow : EditorWindow
 
         if (GUILayout.Button("Edit"))
         {
-            jsonIO.Edit(editLevelDB, fileName, stage, editLevelDB == jsonIO.selectedLevelDB);
+            //jsonIO.Edit(editLevelDB, fileName, stage, editLevelDB == jsonIO.selectedLevelDB);
+            jsonIO.Edit(editLevelDB, fileName, directory, editLevelDB == jsonIO.selectedLevelDB);
 
             //// Delete Database, Json;
             //var backUpLevel = jsonIO.DeleteJson(editLevelDB);

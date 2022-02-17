@@ -51,6 +51,14 @@ public class JsonIO : MonoBehaviour
 
         return levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
     }
+    
+    public LevelDBInfo CreateNewLevel(string fileName, string directory, int width, int height)
+    {
+        LevelEditorManager.instance.ResetCanvas(width, height);
+        SaveAsNew(fileName, directory);
+
+        return levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
+    }
 
     // Write into Text File
     private void SaveToTextFile(string path, string fileName)
@@ -84,6 +92,24 @@ public class JsonIO : MonoBehaviour
 
         Debug.Log("Saved(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
     }
+    
+    public void SaveAsNew(string fileName, string directory)
+    {
+        var path = directory;
+
+        if (directory[directory.Length - 1].Equals('/'))
+            path += fileName + ".json";
+        else
+            path += "/" + fileName + ".json";
+
+        // Json
+        SaveToTextFile(Application.dataPath + path, fileName);
+
+        // Database
+        SaveIntoDatabase(fileName, stage, path);
+
+        Debug.Log("Saved(" + path + ")");
+    }
 
 
     // Save for auto
@@ -114,6 +140,27 @@ public class JsonIO : MonoBehaviour
         SaveIntoDatabase(fileName, stage, path);
 
         Debug.Log("Saved(" + "/Resources/Levels/" + stage.ToString() + "/" + fileName + ".json)");
+
+        return path;
+    }
+    
+    public string Save(Level level, string fileName, string directory)
+    {
+        var path = directory;
+        Debug.Log(directory[directory.Length - 1]);
+
+        if (directory[directory.Length - 1].Equals('/'))
+            path += fileName + ".json";
+        else
+            path += "/" + fileName + ".json";
+
+        // Json
+        SaveToTextFile(level, Application.dataPath + path, fileName);
+
+        // Database
+        SaveIntoDatabase(fileName, stage, path);
+
+        Debug.Log("Saved(" + path + ")");
 
         return path;
     }
@@ -221,6 +268,23 @@ public class JsonIO : MonoBehaviour
 
         // Save Database, Json
         var newPath = Save(backUpLevel, fileName, stage);
+
+        // ReLoad
+        var editedDB = this.levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
+        if (reLoad)
+        {
+            LoadJson(newPath);
+            SelectDB(editedDB);
+        }
+    }
+    
+    public void Edit(LevelDBInfo levelDB, string fileName, string directory, bool reLoad = false)
+    {
+        // Delete Database, Json;
+        var backUpLevel = DeleteJson(levelDB);
+
+        // Save Database, Json
+        var newPath = Save(backUpLevel, fileName, directory);
 
         // ReLoad
         var editedDB = this.levelDB.jsonLevelDBs.Find(n => n.filename.Equals(fileName));
