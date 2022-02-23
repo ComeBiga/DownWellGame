@@ -24,6 +24,8 @@ namespace CatDown
 
         IEnumerator ECheck()
         {
+            EnterExamine();
+
             while(true)
             {
                 Examine();
@@ -45,7 +47,8 @@ namespace CatDown
 
         protected void Decide()
         {
-            transition.OnChangeState();
+            //transition.OnChangeState();
+            OnDecide.Invoke();
         }
 
         #endregion

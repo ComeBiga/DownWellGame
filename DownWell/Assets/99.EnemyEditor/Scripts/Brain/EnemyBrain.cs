@@ -32,6 +32,8 @@ namespace CatDown
         {
             current.Stop();
             current = states.Find(s => s.name == name);
+            Debug.Log(current.name);
+            current.Handle();
         }
     }
 }

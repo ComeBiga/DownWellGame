@@ -23,9 +23,16 @@ namespace CatDown
             collision.Init(GetComponent<BoxCollider2D>(), rayLength, horizontalRayCount, verticalRayCount, groundLayermask);
             collision.CalculateRaySpacing();
 
-            SetStartDirection();
+            //SetStartDirection();
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+            Move();
+            Debug.Log("Start" + GetComponent<Rigidbody2D>().velocity);
+
+            //if (!moveAsCollision) MoveAsTime();
+            timer = 0;
+            //Debug.Log("StartTimer:"+ timer);
         }
 
         protected void SetStartDirection()
@@ -45,13 +52,23 @@ namespace CatDown
         {
             if (moveAsCollision) MoveAsCollision();
             else MoveAsTime();
+            //Debug.Log(GetComponent<Rigidbody2D>().velocity);
+
+            //Debug.Log("HM Updating");
 
             Animation();
         }
 
         void Animation()
         {
-            GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+            if (GetComponent<Rigidbody2D>().velocity.x < -0.01f) GetComponent<SpriteRenderer>().flipX = true;
+            else if(GetComponent<Rigidbody2D>().velocity.x > 0.01f) GetComponent<SpriteRenderer>().flipX = false;
+            //GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+        }
+
+        private void Move()
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
         }
 
         protected void MoveAsCollision()
@@ -63,7 +80,8 @@ namespace CatDown
             else if (collision.CheckEndOfGround(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
             else if (collision.CheckEndOfGround(CollisionDirection.LEFT, rayLength, groundLayermask)) dir = 1;
 
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
+            //Move();
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
         }
 
         protected void MoveAsTime()
@@ -72,12 +90,23 @@ namespace CatDown
 
             if (timer >= changeTime)
             {
-                dir *= -1;
+                ChangeDirection();
 
                 timer = 0;
             }
 
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
+            //Move();
+
+            //Invoke("ChangeDirection", changeTime);
+        }
+
+        private void ChangeDirection()
+        {
+            dir *= -1;
+            Move();
+            Debug.Log("ChangeDirection");
+
+            //Invoke("ChangeDirection", changeTime);
         }
     }
 }

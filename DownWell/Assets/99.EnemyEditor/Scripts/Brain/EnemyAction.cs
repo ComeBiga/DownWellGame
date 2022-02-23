@@ -9,20 +9,23 @@ namespace CatDown
     {
         protected CatDown.EnemyActionHandler handler;
 
+        private Coroutine coroutineETake;
+
         public void Take(CatDown.EnemyActionHandler handler)
         {
             this.handler = handler;
 
-            StartCoroutine(ETake());
+            coroutineETake = StartCoroutine(ETake());
         }
 
         IEnumerator ETake()
         {
+            Debug.Log("StartAction");
             OnActionEnter();
 
             while(true)
             {
-                Debug.Log("ETake in While");
+                //Debug.Log("ETake in While");
                 OnActionUpdate();
 
                 yield return null;
@@ -32,7 +35,7 @@ namespace CatDown
         public void StopAction()
         {
             Debug.Log("StopAction");
-            StopCoroutine(ETake());
+            StopCoroutine(coroutineETake);
         }
 
         protected virtual void OnActionEnter()
