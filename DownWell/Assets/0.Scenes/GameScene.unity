@@ -10947,6 +10947,7 @@ GameObject:
   - component: {fileID: 2005409816}
   - component: {fileID: 2005409815}
   - component: {fileID: 2005409814}
+  - component: {fileID: 2005409825}
   m_Layer: 7
   m_Name: JellyTestWorm
   m_TagString: Enemy
@@ -11003,7 +11004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeInAnimationFrame: 0
   horizontalSpeed: 0
-  verticalSpeed: 1
+  verticalSpeed: 15
 --- !u!114 &2005409817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11027,7 +11028,7 @@ MonoBehaviour:
     actions:
     - {fileID: 2005409816}
     transitions:
-    - decision: {fileID: 0}
+    - decision: {fileID: 2005409825}
       toState: Moving
 --- !u!114 &2005409818
 MonoBehaviour:
@@ -11076,7 +11077,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25757164, y: -0.26625347}
+  m_Offset: {x: -0.094272375, y: -0.29006767}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.22}
@@ -11087,7 +11088,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4223567, y: 1.217493}
+  m_Size: {x: 1.1365831, y: 0.5574913}
   m_EdgeRadius: 0
 --- !u!50 &2005409821
 Rigidbody2D:
@@ -11105,7 +11106,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cd02755851dd5484094b58f50c7ee38e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -11194,6 +11195,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2005409825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005409813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c47460328950184899b048ed6cba4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 0.1
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  groundLayermask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &2031579387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
@@ -12385,7 +12404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8688014159201673325
 MonoBehaviour:
   m_ObjectHideFlags: 0
