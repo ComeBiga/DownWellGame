@@ -13,6 +13,8 @@ namespace CatDown
 
         protected override void EnterExamine()
         {
+            if (GetComponent<Enemy>().info.name == "JellyPoo")
+                Debug.Log("WaitForTime");
             WaitForTime(time);
         }
 

@@ -16,13 +16,13 @@ namespace CatDown
         {
             this.brain = brain;
 
-            Debug.Log(decision);
+            Debug.Log($"{brain.gameObject.name} / {decision}");
             decision.OnDecide += OnChangeState;
         }
 
         public void CheckDecision()
         {
-            decision.Check();
+            if (decision != null) decision.Check();
         }
 
         public void OnChangeState()
@@ -33,7 +33,7 @@ namespace CatDown
 
         public void StopCheckDecision()
         {
-            decision.StopCheck();
+            if (decision != null) decision.StopCheck();
         }
     }
 }

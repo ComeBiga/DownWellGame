@@ -11,6 +11,8 @@ namespace CatDown
 
         public event System.Action OnDecide;
 
+        private Coroutine coroutineECheck;
+
         public void Init(CatDown.EnemyTransition transition)
         {
             this.transition = transition;
@@ -19,11 +21,18 @@ namespace CatDown
         #region Public Method
         public void Check()
         {
-            StartCoroutine(ECheck());
+            coroutineECheck = StartCoroutine(ECheck());
         }
 
         IEnumerator ECheck()
         {
+            while (true)
+            {
+                if (GameManager.instance.CheckTargetRange(this.gameObject.transform)) break;
+
+                yield return null;
+            }
+
             EnterExamine();
 
             while(true)
@@ -36,14 +45,14 @@ namespace CatDown
 
         public void StopCheck()
         {
-            StopCoroutine(ECheck());
+            StopCoroutine(coroutineECheck);
         }
         #endregion
 
         #region Protected Method
         protected virtual void EnterExamine() { }
 
-        protected abstract void Examine();
+        protected virtual void Examine() { }
 
         protected void Decide()
         {

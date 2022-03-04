@@ -20,6 +20,13 @@ namespace CatDown
 
         IEnumerator ETake()
         {
+            while(true)
+            {
+                if (GameManager.instance.CheckTargetRange(this.gameObject.transform)) break;
+
+                yield return null;
+            }
+
             Debug.Log("StartAction");
             OnActionEnter();
 
@@ -34,7 +41,7 @@ namespace CatDown
 
         public void StopAction()
         {
-            Debug.Log("StopAction");
+            Debug.Log($"{gameObject.name} / StopAction");
             StopCoroutine(coroutineETake);
         }
 
@@ -47,6 +54,5 @@ namespace CatDown
         {
             
         }
-
     }
 }

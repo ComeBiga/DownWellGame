@@ -29,7 +29,7 @@ namespace CatDown
         public void Handle()
         {
             // action
-            handler.Current.Take(handler);
+            if(handler.Current != null) handler.Current.Take(handler);
 
             // transition
             foreach(var t in transitions)
