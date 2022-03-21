@@ -13,9 +13,11 @@ namespace CatDown
 
         protected override void OnActionEnter()
         {
-            if (executeInAnimationFrame) return;
 
-            Jump();
+            if (!executeInAnimationFrame)
+                Jump();
+
+            Animate();
         }
 
         public void Jump()
@@ -23,6 +25,25 @@ namespace CatDown
             var direction = (GetComponent<SpriteRenderer>().flipX == true) ? -1 : 1;
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(direction * horizontalSpeed, verticalSpeed);
+
+        }
+
+        private void Animate()
+        {
+            GetComponent<Animator>().SetTrigger("Jump");
+
+        }
+
+        protected override void OnActionExit()
+        {
+            base.OnActionExit();
+
+            OnGround();
+        }
+
+        public void OnGround()
+        {
+            GetComponent<Animator>().SetTrigger("Grounded");
         }
     }
 }

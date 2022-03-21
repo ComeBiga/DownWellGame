@@ -21,7 +21,7 @@ public class JellyWormAnimBehaviour : StateMachineBehaviour
         //if(animator.GetComponent<EnemyActionJump>() != null &&
         //    animator.GetComponent<EnemyActionJump>().onAnimationEvent)
         //    animator.GetComponent<EnemyActionJump>().Jump();
-        animator.GetComponent<EnemyActionOnAnimationFrame>().OnEvent();
+        //animator.GetComponent<EnemyActionOnAnimationFrame>().OnEvent();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

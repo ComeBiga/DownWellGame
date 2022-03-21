@@ -15,6 +15,10 @@ namespace CatDown
         public List<CatDown.EnemyTransition> transitions;
 
         private CatDown.EnemyActionHandler handler;
+        public CatDown.EnemyAction currentAction
+        {
+            get { return handler.Current; }
+        }
 
         public void Init(CatDown.EnemyBrain brain)
         {

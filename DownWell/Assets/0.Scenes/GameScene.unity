@@ -11002,7 +11002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6a2a992b9df9047a28e0742a562d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeInAnimationFrame: 0
+  executeInAnimationFrame: 1
   horizontalSpeed: 0
   verticalSpeed: 15
 --- !u!114 &2005409817

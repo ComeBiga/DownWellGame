@@ -43,6 +43,8 @@ namespace CatDown
         {
             Debug.Log($"{gameObject.name} / StopAction");
             StopCoroutine(coroutineETake);
+
+            OnActionExit();
         }
 
         protected virtual void OnActionEnter()
@@ -51,6 +53,11 @@ namespace CatDown
         }
 
         protected virtual void OnActionUpdate()
+        {
+            
+        }
+
+        protected virtual void OnActionExit()
         {
             
         }
