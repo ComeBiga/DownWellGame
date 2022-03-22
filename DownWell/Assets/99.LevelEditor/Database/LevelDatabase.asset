@@ -196,6 +196,6 @@ MonoBehaviour:
   - filename: StageStart
     stage: 6
     path: /Resources/Levels/StageStart/StageStart.json
-  - filename: S0_1
+  - filename: S0_2
     stage: 1
-    path: /Resources/Levels/Stage0/S0_1.json
+    path: /Resources/Levels/Stage0/S0_2.json

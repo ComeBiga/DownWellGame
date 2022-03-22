@@ -28,10 +28,37 @@ public class StageDatabase : ScriptableObject
     [Header("Boss")]
     [SerializeField] private GameObject bossObject;
 
-    public List<GameObject> MapObjects { get { return mapObjects; } }
+    public List<GameObject> MapObjects 
+    { 
+        get 
+        {
+            var mos = mapObjects;
+
+            foreach (var mo in mos)
+            {
+                mo.GetComponent<Wall>().SetSpriteByStage(num);
+            }
+
+            return mos;
+            //return mapObjects; 
+        } 
+    }
+
     public List<Sprite> WallSprites { get { return wallSprites; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
+
+    public List<GameObject> GetMapObjects()
+    {
+        var mos = mapObjects;
+
+        foreach(var mo in mos)
+        {
+            mo.GetComponent<Wall>().SetSpriteByStage(num);
+        }
+
+        return mos;
+    }
 
     /// <summary>
     /// If resourceLoad is true, remove 'Resources/' directory.

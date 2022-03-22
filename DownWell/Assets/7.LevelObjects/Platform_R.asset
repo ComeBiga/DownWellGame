@@ -15,5 +15,8 @@ MonoBehaviour:
   code: 7
   name: Platform_R
   sprite: {fileID: -8467144355081181117, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  sprites:
+  - {fileID: 8878917988478322301, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -8467144355081181117, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   sliced: 1
   score: 0

@@ -68,6 +68,11 @@ public class MapDisplay : MonoBehaviour
         this.enemyObjects = currentStageDB.EnemyObjects;
     }
 
+    public void SetSpriteByStage(int stageNum)
+    {
+
+    }
+
     public int Display(Level level, int Ypos)
     {
         //Debug.Log("Display");

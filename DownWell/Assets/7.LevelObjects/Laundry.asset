@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 10
   name: Laundry
-  sprite: {fileID: -8125024893068618053, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  sprite: {fileID: 9209212431809420075, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  sprites: []
   sliced: 1
   score: 0
