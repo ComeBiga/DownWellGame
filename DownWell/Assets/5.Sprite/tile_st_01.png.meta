@@ -40,7 +40,7 @@ TextureImporter:
     second: tile_st_01_41
   - first:
       213: -4018099237683821570
-    second: tile_st_01_42
+    second: tile_st_bg_0
   - first:
       213: -8730504091419975954
     second: tile_st_01_43
@@ -253,7 +253,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_st_01_2
+      name: tile_st_bg_2
       rect:
         serializedVersion: 2
         x: 192
@@ -316,7 +316,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_st_01_5
+      name: tile_st_bg_1
       rect:
         serializedVersion: 2
         x: 176
@@ -1093,7 +1093,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_st_01_42
+      name: tile_st_bg_0
       rect:
         serializedVersion: 2
         x: 16
