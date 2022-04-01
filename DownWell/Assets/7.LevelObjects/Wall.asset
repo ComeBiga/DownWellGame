@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 1
   name: Wall
-  sprite: {fileID: 21300000, guid: 02cc5a41f356f23439d76d05beb89bf9, type: 3}
+  sprite: {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   sprites:
-  - {fileID: 21300000, guid: 02cc5a41f356f23439d76d05beb89bf9, type: 3}
-  - {fileID: 0}
-  sliced: 0
+  - {fileID: 411827754156998616, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  sliced: 1
   score: 0
