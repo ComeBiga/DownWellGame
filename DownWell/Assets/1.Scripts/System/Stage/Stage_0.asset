@@ -24,7 +24,6 @@ MonoBehaviour:
   - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
   - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
   - {fileID: 3283359789271922636, guid: 7571059a67ad7c64b9eacd3f97bf7a2a, type: 3}
-  - {fileID: 8130521901546983347, guid: 1c81f84a7d40dfc4a828ebb8a3e04ea8, type: 3}
   wallSprites:
   - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: 777428186260336440, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
@@ -44,6 +43,7 @@ MonoBehaviour:
   - {fileID: -4039863778131383791, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   enemyObjects: []
   bossObject: {fileID: 1649624395474174977, guid: 1772583bf7a66734ebbb3fa5b0e6e2c5, type: 3}
+  baseBackground: {fileID: -4018099237683821570, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   background:
   - sprite:
     - {fileID: -4018099237683821570, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
