@@ -175,6 +175,7 @@ MonoBehaviour:
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
+  - {fileID: 3519354593657197702, guid: 7e0d9dc808bbc7344afa901471066255, type: 3}
 --- !u!114 &7163049148508202879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,18 +286,3 @@ MonoBehaviour:
   groundLayermask:
     serializedVersion: 2
     m_Bits: 64
-  onGround:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5024053076507662005}
-        m_TargetAssemblyTypeName: CatDown.EnemyActionJump, Assembly-CSharp
-        m_MethodName: OnGround
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

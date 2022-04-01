@@ -15,6 +15,8 @@ MonoBehaviour:
   code: 3002
   name: 
   sprite: {fileID: 21300000, guid: 83c439c75ea600c43850de55cdfc66a9, type: 3}
+  sprites: []
+  sliced: 0
   score: 0
-  chacePercent: 100
+  chacePercent: 30
   immediately: 0
