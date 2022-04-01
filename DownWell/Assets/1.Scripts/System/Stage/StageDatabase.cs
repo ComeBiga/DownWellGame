@@ -29,6 +29,7 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private GameObject bossObject;
 
     [Header("Background")]
+    [SerializeField] private Sprite baseBackground;
     [SerializeField] private BackgroundSprite[] background;
 
     [System.Serializable]
@@ -60,6 +61,8 @@ public class StageDatabase : ScriptableObject
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
 
+
+    public Sprite BaseBackGround { get { return baseBackground; } }
     public Sprite Background
     {
         get

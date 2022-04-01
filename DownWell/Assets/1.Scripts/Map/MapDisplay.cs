@@ -166,7 +166,7 @@ public class MapDisplay : MonoBehaviour
 
                 var bgo = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
                 bgo.GetComponent<SpriteRenderer>().sprite = randTile;
-                bgo.GetComponent<SpriteRenderer>().sprite = StageManager.instance.Current.Background;
+                bgo.GetComponent<SpriteRenderer>().sprite = StageManager.instance.Current.BaseBackGround;
 
                 //if (rand.Next(0, 100) < background2by2Ratio)
                 //{
@@ -175,19 +175,20 @@ public class MapDisplay : MonoBehaviour
             }
         }
 
-        for (int y = 0; y < level.height; y+=3)
-        {
-            for (int x = 0; x < mapManager.width; x+=3)
-            {
-                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
-                                                    , -y + offset.y + Ypos);
+        // Background 2 by 2
+        //for (int y = 0; y < level.height; y+=3)
+        //{
+        //    for (int x = 0; x < mapManager.width; x+=3)
+        //    {
+        //        Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+        //                                            , -y + offset.y + Ypos);
 
-                if (rand.Next(0, 100) < background2by2Ratio)
-                {
-                    Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
-                }
-            }
-        }
+        //        if (rand.Next(0, 100) < background2by2Ratio)
+        //        {
+        //            Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
+        //        }
+        //    }
+        //}
     }
 
     //public void Display(int[,] generatedLevel, int[,] generatedStageGround)
