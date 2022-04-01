@@ -15,13 +15,11 @@ GameObject:
   - component: {fileID: 3691106494225391565}
   - component: {fileID: 9088113206692327667}
   - component: {fileID: 7163049148508202879}
-  - component: {fileID: 5654292589476375938}
-  - component: {fileID: 8083599233147800893}
-  - component: {fileID: 8888994948121893207}
-  - component: {fileID: 7300048398045793736}
-  - component: {fileID: 6234637070404254868}
-  - component: {fileID: 2301437518487190504}
-  - component: {fileID: 1448264911057713924}
+  - component: {fileID: 5040112471250934175}
+  - component: {fileID: 3454877560462762647}
+  - component: {fileID: 3165532532302928838}
+  - component: {fileID: 5024053076507662005}
+  - component: {fileID: 1902573000370004348}
   m_Layer: 7
   m_Name: JellyWorm
   m_TagString: Enemy
@@ -194,7 +192,7 @@ MonoBehaviour:
     transform: {fileID: 9088113206692327665}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
---- !u!114 &5654292589476375938
+--- !u!114 &5040112471250934175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,56 +201,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 9088113206692327660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c460cc622a0a4a428495acc204b5147, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c2cd18e2c0784349b0b41a0698feb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionStates:
-  - stateName: Moving
-    acts:
-    - {fileID: 8083599233147800893}
+  states:
+  - name: Moving
+    actions:
+    - {fileID: 3454877560462762647}
     transitions:
-    - decision: {fileID: 8888994948121893207}
-      trueState: Jumping
-      falseState: 
-      onTransition:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: -1022919674770998676}
-            m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-            m_MethodName: SetTrigger
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Attack
-              m_BoolArgument: 0
-            m_CallState: 2
-  - stateName: Jumping
-    acts:
-    - {fileID: 1448264911057713924}
-    - {fileID: 7300048398045793736}
+    - decision: {fileID: 3165532532302928838}
+      toState: Jumping
+  - name: Jumping
+    actions:
+    - {fileID: 5024053076507662005}
     transitions:
-    - decision: {fileID: 6234637070404254868}
-      trueState: Moving
-      falseState: 
-      onTransition:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: -1022919674770998676}
-            m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-            m_MethodName: SetTrigger
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Grounded
-              m_BoolArgument: 0
-            m_CallState: 2
---- !u!114 &8083599233147800893
+    - decision: {fileID: 3165532532302928838}
+      toState: Jumping
+--- !u!114 &3454877560462762647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,7 +226,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9088113206692327660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbbb7b171c927641bcacf8948508fb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 129e141959d3bba41acf3e2cb3a3f4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 0.1
@@ -274,7 +239,7 @@ MonoBehaviour:
   speed: 1
   startDirection: 0
   changeTime: 3
---- !u!114 &8888994948121893207
+--- !u!114 &3165532532302928838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,25 +248,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9088113206692327660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb29943efb3b30f489007e71b41f2349, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f1f4e6f56f0a984d92433bfa507b7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   time: 3
---- !u!114 &7300048398045793736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9088113206692327660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a442f8114491a449a940ec02456064b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpeed: 0
-  verticalSpeed: 15
---- !u!114 &6234637070404254868
+--- !u!114 &5024053076507662005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,7 +261,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 9088113206692327660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacde2d583d8254408dd06e8bd20bd0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e6a2a992b9df9047a28e0742a562d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInAnimationFrame: 1
+  horizontalSpeed: 0
+  verticalSpeed: 1
+--- !u!114 &1902573000370004348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088113206692327660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c47460328950184899b048ed6cba4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 0.1
@@ -319,27 +285,18 @@ MonoBehaviour:
   groundLayermask:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &2301437518487190504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9088113206692327660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc620f89eda5b44499ca610853cf0f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1448264911057713924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9088113206692327660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e15e3cebf3b7b4a9af03bdb0d13cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  onGround:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5024053076507662005}
+        m_TargetAssemblyTypeName: CatDown.EnemyActionJump, Assembly-CSharp
+        m_MethodName: OnGround
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 8300281836758000164}
   - component: {fileID: 7666890564351190176}
   - component: {fileID: 2828334627078130590}
-  - component: {fileID: 2657657372516588841}
   - component: {fileID: 4194952058874207250}
-  - component: {fileID: 7428506860146903767}
-  - component: {fileID: 4574976316423488832}
+  - component: {fileID: 4795017919699833702}
+  - component: {fileID: 8089671092750369828}
   m_Layer: 7
   m_Name: JellyMan
   m_TagString: Enemy
@@ -125,7 +124,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cd02755851dd5484094b58f50c7ee38e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -173,28 +172,6 @@ MonoBehaviour:
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
---- !u!114 &2657657372516588841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2828334627078130561}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e90d74a5549992469eb81877ce58c2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  rayLength: 0.1
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  groundLayermask:
-    serializedVersion: 2
-    m_Bits: 64
-  moveAsCollision: 0
-  startDirection: 0
-  changeTime: 3
 --- !u!114 &4194952058874207250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +189,7 @@ MonoBehaviour:
     transform: {fileID: 2828334627078130588}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
---- !u!114 &7428506860146903767
+--- !u!114 &4795017919699833702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,17 +198,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2828334627078130561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c460cc622a0a4a428495acc204b5147, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c2cd18e2c0784349b0b41a0698feb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionStates:
-  - stateName: Moving
-    acts:
-    - {fileID: 4574976316423488832}
+  states:
+  - name: Moving
+    actions:
+    - {fileID: 8089671092750369828}
     transitions: []
-  enemyActs:
-  - {fileID: 4574976316423488832}
---- !u!114 &4574976316423488832
+--- !u!114 &8089671092750369828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,7 +215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2828334627078130561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbbb7b171c927641bcacf8948508fb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 129e141959d3bba41acf3e2cb3a3f4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 0.1

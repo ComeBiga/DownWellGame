@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 4089194219044068681}
   - component: {fileID: 7840619046348813551}
   - component: {fileID: 7840619046348813555}
-  - component: {fileID: 5539172317647636999}
   - component: {fileID: 8194383683811550079}
-  - component: {fileID: 7412708513391697396}
-  - component: {fileID: 8811911085925686054}
+  - component: {fileID: 5495624919697888802}
+  - component: {fileID: 2826540639792677883}
   m_Layer: 7
   m_Name: JellyDevil
   m_TagString: Enemy
@@ -163,25 +162,6 @@ MonoBehaviour:
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
---- !u!114 &5539172317647636999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7840619046348813548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c304371bf275344887eb2372f485b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  rayLength: 0.1
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  groundLayermask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8194383683811550079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +179,7 @@ MonoBehaviour:
     transform: {fileID: 7840619046348813553}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
---- !u!114 &7412708513391697396
+--- !u!114 &5495624919697888802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,17 +188,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7840619046348813548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c460cc622a0a4a428495acc204b5147, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c2cd18e2c0784349b0b41a0698feb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionStates:
-  - stateName: Moving
-    acts:
-    - {fileID: 8811911085925686054}
+  states:
+  - name: Moving
+    actions:
+    - {fileID: 2826540639792677883}
     transitions: []
-  enemyActs:
-  - {fileID: 8811911085925686054}
---- !u!114 &8811911085925686054
+--- !u!114 &2826540639792677883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,7 +205,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7840619046348813548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911ad00dce1f0bb45b2fad34d7ed7131, type: 3}
+  m_Script: {fileID: 11500000, guid: 974e88b7bbacb524a92a38d3cd5c82f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1

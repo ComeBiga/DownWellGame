@@ -15,12 +15,11 @@ GameObject:
   - component: {fileID: 8224531701916298570}
   - component: {fileID: 3497555664075828463}
   - component: {fileID: 2625999096728353576}
-  - component: {fileID: -1365949908434293436}
-  - component: {fileID: -4236049846979682612}
-  - component: {fileID: 6311488773700616546}
-  - component: {fileID: 5719947640873028598}
-  - component: {fileID: 7215596577489734727}
-  - component: {fileID: 585750344458908912}
+  - component: {fileID: 492955916106371826}
+  - component: {fileID: 1503795862426347861}
+  - component: {fileID: 7384944447552896362}
+  - component: {fileID: 4329448174518538046}
+  - component: {fileID: 2411612313104567671}
   m_Layer: 7
   m_Name: JellyPoo
   m_TagString: Enemy
@@ -194,7 +193,7 @@ MonoBehaviour:
     transform: {fileID: 3497555664075828461}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
---- !u!114 &-1365949908434293436
+--- !u!114 &492955916106371826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,56 +202,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3497555664075828464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c460cc622a0a4a428495acc204b5147, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c2cd18e2c0784349b0b41a0698feb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionStates:
-  - stateName: Sleeping
-    acts:
-    - {fileID: -4236049846979682612}
+  states:
+  - name: Sleeping
+    actions:
+    - {fileID: 1503795862426347861}
     transitions:
-    - decision: {fileID: 585750344458908912}
-      trueState: Moving
-      falseState: 
-      onTransition:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 3768119630584708889}
-            m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-            m_MethodName: SetTrigger
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Attack
-              m_BoolArgument: 0
-            m_CallState: 2
-  - stateName: Moving
-    acts:
-    - {fileID: 5719947640873028598}
-    - {fileID: 7215596577489734727}
+    - decision: {fileID: 7384944447552896362}
+      toState: Moving
+  - name: Moving
+    actions:
+    - {fileID: 4329448174518538046}
     transitions:
-    - decision: {fileID: 6311488773700616546}
-      trueState: Sleeping
-      falseState: 
-      onTransition:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 3768119630584708889}
-            m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-            m_MethodName: SetTrigger
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Idle
-              m_BoolArgument: 0
-            m_CallState: 2
---- !u!114 &-4236049846979682612
+    - decision: {fileID: 2411612313104567671}
+      toState: Sleeping
+--- !u!114 &1503795862426347861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,10 +227,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3497555664075828464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc620f89eda5b44499ca610853cf0f9, type: 3}
+  m_Script: {fileID: 11500000, guid: d880ce989f8d49f47b9623a1d1c5f09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6311488773700616546
+--- !u!114 &7384944447552896362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,46 +239,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3497555664075828464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb29943efb3b30f489007e71b41f2349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 3
---- !u!114 &5719947640873028598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e15e3cebf3b7b4a9af03bdb0d13cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7215596577489734727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f23466cbe28658c45894d4c646080141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  dashTime: 1
---- !u!114 &585750344458908912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42712753b028f294a9ef602f086d6d27, type: 3}
+  m_Script: {fileID: 11500000, guid: 00ab803d937e40c4dadb1b3abeedd123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sensorCollider: {fileID: 2538971142890041180}
@@ -333,6 +260,33 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+--- !u!114 &4329448174518538046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497555664075828464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72ada7547da8ea48b85ee2ca0b04339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  dashTime: 1
+--- !u!114 &2411612313104567671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497555664075828464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f4e6f56f0a984d92433bfa507b7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 3
 --- !u!1 &6654104118453041115
 GameObject:
   m_ObjectHideFlags: 0
