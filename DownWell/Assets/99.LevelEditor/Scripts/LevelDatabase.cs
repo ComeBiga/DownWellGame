@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Database", menuName = "Database/levelDB")]
 public class LevelDatabase : ScriptableObject
 {
+    public string[] folderPaths;
     public List<LevelDBInfo> jsonLevelDBs = new List<LevelDBInfo>();
 
     public void Add(string filename, LevelEditor.Stage stage, string path)

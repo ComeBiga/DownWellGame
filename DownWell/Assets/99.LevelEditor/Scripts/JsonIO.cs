@@ -396,9 +396,10 @@ public class JsonIO : MonoBehaviour
         string[] directories;
         List<LevelDBInfo> loadedDBs = new List<LevelDBInfo>();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < levelDB.folderPaths.Length; i++)
         {
-            var path = Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/";
+            //var path = Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/";
+            var path = Application.dataPath + "/Resources/Levels/" + levelDB.folderPaths[i] + "/";
 
             var dbs = LoadAllDatabase(path, (LevelEditor.Stage)i);
 
