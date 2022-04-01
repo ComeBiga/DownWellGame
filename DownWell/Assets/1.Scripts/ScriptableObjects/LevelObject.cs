@@ -8,6 +8,7 @@ public class LevelObject : ScriptableObject
     public int code;
     public new string name;
     public Sprite sprite;
+    [SerializeField] private Sprite[] sprites;
     public bool sliced = false;
     public int score;
 
@@ -32,6 +33,11 @@ public class LevelObject : ScriptableObject
         ct.Apply();
 
         return ct;
+    }
+
+    public Sprite GetSprite(int stageNum)
+    {
+        return (sprites.Length > 0) ? sprites[stageNum] : sprite;
     }
 }
 

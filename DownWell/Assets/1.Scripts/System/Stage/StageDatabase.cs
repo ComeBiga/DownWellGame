@@ -28,10 +28,62 @@ public class StageDatabase : ScriptableObject
     [Header("Boss")]
     [SerializeField] private GameObject bossObject;
 
-    public List<GameObject> MapObjects { get { return mapObjects; } }
+    [Header("Background")]
+    [SerializeField] private BackgroundSprite[] background;
+
+    [System.Serializable]
+    private class BackgroundSprite
+    {
+        public Sprite[] sprite;
+
+        public int width = 1;
+        public int height = 1;
+    }
+
+    public List<GameObject> MapObjects 
+    { 
+        get 
+        {
+            var mos = mapObjects;
+
+            foreach (var mo in mos)
+            {
+                mo.GetComponent<Wall>().SetSpriteByStage(num);
+            }
+
+            return mos;
+            //return mapObjects; 
+        } 
+    }
+
     public List<Sprite> WallSprites { get { return wallSprites; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
+
+    public Sprite Background
+    {
+        get
+        {
+            string seed = (Time.time + Random.value).ToString();
+            System.Random rand = new System.Random(seed.GetHashCode());
+
+            return background[rand.Next(0, background.Length)].sprite[0];
+        }
+    }
+
+
+
+    public List<GameObject> GetMapObjects()
+    {
+        var mos = mapObjects;
+
+        foreach(var mo in mos)
+        {
+            mo.GetComponent<Wall>().SetSpriteByStage(num);
+        }
+
+        return mos;
+    }
 
     /// <summary>
     /// If resourceLoad is true, remove 'Resources/' directory.

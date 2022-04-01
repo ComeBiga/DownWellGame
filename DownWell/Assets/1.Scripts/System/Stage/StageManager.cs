@@ -15,7 +15,7 @@ public class StageManager : MonoBehaviour
     #endregion
 
     public enum Stage { Stage_1, Stage_2, Stage_3, Stage_4, Stage_5, TestStage }
-    public Stage stage = Stage.Stage_1;
+    //public Stage stage = Stage.Stage_1;
 
     [Header("DB")]
     public List<StageDatabase> stages;
@@ -27,7 +27,8 @@ public class StageManager : MonoBehaviour
         {
             if(current == null)
             {
-                SetCurrentStage();
+                //SetCurrentStage();
+                index = 0;
                 current = stages[index];
             }
             return current;
@@ -39,36 +40,37 @@ public class StageManager : MonoBehaviour
         get 
         {
             if (index == -1)
-                SetCurrentStage();
+                current = stages[0];
+                //SetCurrentStage();
 
             return index;
         }
     }
 
-    private void SetCurrentStage()
-    {
-        switch(stage)
-        {
-            case Stage.Stage_1:
-                SetCurrentStage(1);
-                break;
-            case Stage.Stage_2:
-                SetCurrentStage(2);
-                break;
-            case Stage.Stage_3:
-                SetCurrentStage(3);
-                break;
-            case Stage.Stage_4:
-                SetCurrentStage(4);
-                break;
-            case Stage.Stage_5:
-                SetCurrentStage(5);
-                break;
-            case Stage.TestStage:
-                SetCurrentStage(0);
-                break;
-        }
-    }
+    //private void SetCurrentStage()
+    //{
+    //    switch(stage)
+    //    {
+    //        case Stage.Stage_1:
+    //            SetCurrentStage(1);
+    //            break;
+    //        case Stage.Stage_2:
+    //            SetCurrentStage(2);
+    //            break;
+    //        case Stage.Stage_3:
+    //            SetCurrentStage(3);
+    //            break;
+    //        case Stage.Stage_4:
+    //            SetCurrentStage(4);
+    //            break;
+    //        case Stage.Stage_5:
+    //            SetCurrentStage(5);
+    //            break;
+    //        case Stage.TestStage:
+    //            SetCurrentStage(0);
+    //            break;
+    //    }
+    //}
 
     public void SetCurrentStage(string stageName)
     {

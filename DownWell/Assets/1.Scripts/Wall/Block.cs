@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Block : Wall
 {
+    private void Awake()
+    {
+        
+    }
+
     public void Destroy()
     {
         GetComponent<Effector>().Generate("Destroy");

@@ -48,3 +48,16 @@ MonoBehaviour:
   - {fileID: 2828334627078130561, guid: 5231486e93382f04fa5396f7693a42e9, type: 3}
   - {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
   bossObject: {fileID: 1649624395474174977, guid: 1772583bf7a66734ebbb3fa5b0e6e2c5, type: 3}
+  background:
+  - sprite:
+    - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    width: 1
+    height: 1
+  - sprite:
+    - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    width: 1
+    height: 1
+  - sprite:
+    - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    width: 1
+    height: 1

@@ -68,6 +68,11 @@ public class MapDisplay : MonoBehaviour
         this.enemyObjects = currentStageDB.EnemyObjects;
     }
 
+    public void SetSpriteByStage(int stageNum)
+    {
+
+    }
+
     public int Display(Level level, int Ypos)
     {
         //Debug.Log("Display");
@@ -161,17 +166,18 @@ public class MapDisplay : MonoBehaviour
 
                 var bgo = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
                 bgo.GetComponent<SpriteRenderer>().sprite = randTile;
+                bgo.GetComponent<SpriteRenderer>().sprite = StageManager.instance.Current.Background;
 
-                if (rand.Next(0, 100) < background2by2Ratio)
-                {
-                    bgo = Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
-                }
+                //if (rand.Next(0, 100) < background2by2Ratio)
+                //{
+                //    bgo = Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
+                //}
             }
         }
 
-        for (int y = 0; y < level.height; y+=5)
+        for (int y = 0; y < level.height; y+=3)
         {
-            for (int x = 0; x < mapManager.width; x+=5)
+            for (int x = 0; x < mapManager.width; x+=3)
             {
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y + Ypos);

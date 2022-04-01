@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141f7572feb228c45ad2f2e543d19892, type: 3}
+  m_Name: Stage_0
+  m_EditorClassIdentifier: 
+  name: Stage0
+  num: 0
+  path: /Resources/Levels/Stage0
+  mapObjects:
+  - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
+  - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
+  - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
+  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
+  - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
+  - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
+  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
+  - {fileID: 3283359789271922636, guid: 7571059a67ad7c64b9eacd3f97bf7a2a, type: 3}
+  - {fileID: 8130521901546983347, guid: 1c81f84a7d40dfc4a828ebb8a3e04ea8, type: 3}
+  wallSprites:
+  - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 777428186260336440, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -4860836371656963761, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -6779026674642244495, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 4969482294364140355, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 411827754156998616, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 8172188071035937061, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -6143238432160821365, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -7158614613909302110, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 7855897900860631361, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -3324486170532640388, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -2316501910061557258, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -1900351779307579296, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 5140595148617232435, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -4039863778131383791, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  enemyObjects: []
+  bossObject: {fileID: 1649624395474174977, guid: 1772583bf7a66734ebbb3fa5b0e6e2c5, type: 3}
+  background:
+  - sprite:
+    - {fileID: -4018099237683821570, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+    width: 1
+    height: 1
+  - sprite:
+    - {fileID: -3880618809844532644, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+    width: 1
+    height: 1
+  - sprite:
+    - {fileID: -3540488448298315108, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+    width: 1
+    height: 1

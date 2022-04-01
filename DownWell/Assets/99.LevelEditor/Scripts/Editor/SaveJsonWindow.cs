@@ -4,6 +4,7 @@ using UnityEditor;
 public class SaveJsonWindow : EditorWindow
 {
     private LevelEditor.Stage stage;
+    private string directory;
     private string fileName;
 
     int width = 11;
@@ -18,13 +19,14 @@ public class SaveJsonWindow : EditorWindow
         window.maxSize = new Vector2(500, 140-10);
 
         window.jsonIO = target;
-        window.fileName = AutoStageFileName(window.stage);
-        EditorGUI.FocusTextInControl("fileName");
+        window.directory = "/Resources/Levels/";
+        window.fileName = "";//AutoStageFileName(window.stage);
+        //EditorGUI.FocusTextInControl("fileName");
     }
 
     private void OnGUI()
     {
-        EditorGUILayout.HelpBox("stage : 저장될 폴더\nfile name : 파일명\n저장과 로드가 적절히 이뤄졌는지 콘솔창에서 확인해주세요.", MessageType.Info);
+        EditorGUILayout.HelpBox("Directory : 저장될 폴더\nfile name : 파일명\n저장과 로드가 적절히 이뤄졌는지 콘솔창에서 확인해주세요.", MessageType.Info);
 
         var serializedObject = new SerializedObject(jsonIO);
 
@@ -40,22 +42,32 @@ public class SaveJsonWindow : EditorWindow
 
         //jsonIO.fileName = AutoStageFileName(jsonIO.stage);
 
+        //EditorGUILayout.BeginHorizontal();
+        //{
+        //    EditorGUILayout.PrefixLabel("Stage");
+
+        //    EditorGUI.BeginChangeCheck();
+        //    {
+        //        stage = (LevelEditor.Stage)EditorGUILayout.EnumPopup(stage);
+        //    }
+        //    if (EditorGUI.EndChangeCheck())
+        //    {
+        //        EditorGUI.FocusTextInControl("fileName");
+        //        fileName = AutoStageFileName(stage);
+        //    }
+        //}
+        //EditorGUILayout.EndHorizontal();
+        
+        // Folder Path
         EditorGUILayout.BeginHorizontal();
         {
-            EditorGUILayout.PrefixLabel("Stage");
+            EditorGUILayout.PrefixLabel("Directory");
 
-            EditorGUI.BeginChangeCheck();
-            {
-                stage = (LevelEditor.Stage)EditorGUILayout.EnumPopup(stage);
-            }
-            if (EditorGUI.EndChangeCheck())
-            {
-                EditorGUI.FocusTextInControl("fileName");
-                fileName = AutoStageFileName(stage);
-            }
+            directory = EditorGUILayout.TextField(directory);
         }
         EditorGUILayout.EndHorizontal();
 
+        // File Name
         EditorGUILayout.BeginHorizontal();
         {
             EditorGUILayout.PrefixLabel("File Name");
@@ -80,7 +92,8 @@ public class SaveJsonWindow : EditorWindow
         {
             //JsonIOEditor.CheckAndEnterPlayMode();
 
-            var newLevel = jsonIO.CreateNewLevel(fileName, stage, width, height);
+            //var newLevel = jsonIO.CreateNewLevel(fileName, stage, width, height);
+            var newLevel = jsonIO.CreateNewLevel(fileName, directory, width, height);
             jsonIO.LoadJson(newLevel.path);
             jsonIO.SelectDB(newLevel);
 
