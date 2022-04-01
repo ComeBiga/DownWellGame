@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1535592457364700956}
   - component: {fileID: 8130521901546983420}
   - component: {fileID: 2700214569216675845}
+  - component: {fileID: -4923042241214358583}
   m_Layer: 6
   m_Name: Laundry
   m_TagString: Untagged
@@ -215,3 +216,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb589d9759ff534498781816409f697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4923042241214358583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130521901546983347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4b361938b6aed468435063e3c70420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - name: Destroy
+    transform: {fileID: 8130521901546983337}
+    fx: {fileID: 7913374481254233727, guid: c0e7a55248deb4741bccfafef45cd0ae, type: 3}
+    angle: 0
