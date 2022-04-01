@@ -7208,7 +7208,6 @@ GameObject:
   - component: {fileID: 1215072950}
   - component: {fileID: 1215072949}
   - component: {fileID: 1215072952}
-  - component: {fileID: 1215072951}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -7284,8 +7283,6 @@ MonoBehaviour:
   - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  background2by2: {fileID: 4628502433275044613, guid: 930dc36b68f4e9545b358fbafe8ff385, type: 3}
-  background2by2Ratio: 1
 --- !u!114 &1215072950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7302,22 +7299,6 @@ MonoBehaviour:
   width: 11
   height: 100
   reGenerateOffset: 20
---- !u!114 &1215072951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215072946}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045934f5cff0df34d81dc9135601b11d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStage: 0
-  wallRatio: 50
-  blockRatio: 100
-  enemyRatio: 100
 --- !u!114 &1215072952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10954,7 +10935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2005409814
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,7 +77,14 @@ public class JsonIOEditor : Editor
         {
             //EditorWindow.GetWindow(typeof(SaveJsonWindow), true);
             //var saveJsonWindow = EditorWindow.GetWindow<SaveJsonWindow>(true);
-            SaveJsonWindow.ConversationSystem((JsonIO)target);
+            if (!EditorApplication.isPlaying)
+            {
+                EditorUtility.DisplayDialog("", "플레이 모드에서 이용해주세요!", "네");
+            }
+            else 
+            { 
+                SaveJsonWindow.ConversationSystem((JsonIO)target);
+            }
         }
 
         //if (GUILayout.Button("LoadToJson"))
@@ -154,20 +161,41 @@ public class JsonIOEditor : Editor
 
         if (GUILayout.Button(buttonLabel, GUILayout.ExpandWidth(true)))
         {
-            jsonIO.SelectDB(db);
-            jsonIO.LoadJson(db.path);
+            if (!EditorApplication.isPlaying)
+            {
+                EditorUtility.DisplayDialog("", "플레이 모드에서 이용해주세요!", "네");
+            }
+            else
+            {
+                jsonIO.SelectDB(db);
+                jsonIO.LoadJson(db.path);
+            }
         }
 
         if (GUILayout.Button("E", GUILayout.Width(20)))
         {
-            //jsonIO.DeleteJson(db);
-            EditJsonWindow.ConversationSystem((JsonIO)target, db);
+            if (!EditorApplication.isPlaying)
+            {
+                EditorUtility.DisplayDialog("", "플레이 모드에서 이용해주세요!", "네");
+            }
+            else
+            {
+                //jsonIO.DeleteJson(db);
+                EditJsonWindow.ConversationSystem((JsonIO)target, db);
+            }
         }
 
         if (GUILayout.Button("X", GUILayout.Width(20)))
         {
-            //jsonIO.DeleteJson(db);
-            DeleteLevelWindow.ConversationSystem((JsonIO)target, db);
+            if (!EditorApplication.isPlaying)
+            {
+                EditorUtility.DisplayDialog("", "플레이 모드에서 이용해주세요!", "네");
+            }
+            else
+            {
+                //jsonIO.DeleteJson(db);
+                DeleteLevelWindow.ConversationSystem((JsonIO)target, db);
+            }
         }
 
         EditorGUILayout.EndHorizontal();

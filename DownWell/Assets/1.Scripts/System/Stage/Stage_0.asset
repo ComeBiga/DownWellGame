@@ -57,3 +57,7 @@ MonoBehaviour:
     - {fileID: -3540488448298315108, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
     width: 1
     height: 1
+  bgInfo:
+    _base:
+    - {fileID: -4018099237683821570, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+    deco: []

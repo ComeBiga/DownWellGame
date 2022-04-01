@@ -24,8 +24,8 @@ public class MapDisplay : MonoBehaviour
     public bool displayBackground = true;
     public GameObject backgroundObject;
     public List<Sprite> background;
-    public GameObject background2by2;
-    public int background2by2Ratio = 10;
+    //public GameObject background2by2;
+    //public int background2by2Ratio = 10;
 
     public static int enemyCount;
 
@@ -166,7 +166,7 @@ public class MapDisplay : MonoBehaviour
 
                 var bgo = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
                 bgo.GetComponent<SpriteRenderer>().sprite = randTile;
-                bgo.GetComponent<SpriteRenderer>().sprite = StageManager.instance.Current.BaseBackGround;
+                bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(StageManager.instance.Current.bgInfo);
 
                 //if (rand.Next(0, 100) < background2by2Ratio)
                 //{
