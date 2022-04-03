@@ -54,6 +54,7 @@ public class MapDisplay : MonoBehaviour
     //        }
     //    }
     //}
+
     public void SetObjects(List<GameObject> mapObjects, List<Sprite> wallSprites, List<GameObject> enemyObjects)
     {
         this.wallObjects = mapObjects;
@@ -68,11 +69,6 @@ public class MapDisplay : MonoBehaviour
         this.enemyObjects = currentStageDB.EnemyObjects;
     }
 
-    public void SetSpriteByStage(int stageNum)
-    {
-
-    }
-
     public int Display(Level level, int Ypos)
     {
         //Debug.Log("Display");
@@ -82,6 +78,16 @@ public class MapDisplay : MonoBehaviour
         DisplayBackGround(level, Ypos);
 
         // Wall
+        DisplayWall(level, Ypos);
+
+        // Enemy
+        DisplayEnemy(level, Ypos);
+
+        return level.height;
+    }
+
+    private void DisplayWall(Level level, int Ypos)
+    {
         for (int y = 0; y < level.height; y++)
         {
             for (int x = 0; x < mapManager.width; x++)
@@ -103,7 +109,7 @@ public class MapDisplay : MonoBehaviour
                         wall.GetComponent<SpriteRenderer>().sprite = wallSprites[currentTile - 100];
                     }
                 }
-                else if(currentTile == 9)
+                else if (currentTile == 9)
                 {
                     if (BossStageManager.instance.IsBossStage)
                     {
@@ -122,8 +128,10 @@ public class MapDisplay : MonoBehaviour
                 }
             }
         }
+    }
 
-        // Enemy
+    private void DisplayEnemy(Level level, int Ypos)
+    {
         for (int y = 0; y < level.height; y++)
         {
             for (int x = 0; x < mapManager.width; x++)
@@ -134,10 +142,10 @@ public class MapDisplay : MonoBehaviour
 
                 if (currentTile > 2000 && currentTile <= 3000)
                 {
-                    string seed = (Time.time + Random.value).ToString();
-                    System.Random rand = new System.Random(seed.GetHashCode());
+                    //string seed = (Time.time + Random.value).ToString();
+                    //System.Random rand = new System.Random(seed.GetHashCode());
 
-                    if (rand.Next(0, 100) < enemyRatio)
+                    if (CatDown.Random.Get().Next(0, 100) < enemyRatio)
                     {
                         var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == currentTile);
                         Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
@@ -145,27 +153,16 @@ public class MapDisplay : MonoBehaviour
                 }
             }
         }
-
-        return level.height;
     }
 
-    public void DisplayBackGround(Level level, int Ypos)
+    private void DisplayBackGround(Level level, int Ypos)
     {
-        string seed = (Time.time + Random.value).ToString();
-        System.Random rand = new System.Random(seed.GetHashCode());
-
         for (int y = 0; y < level.height; y++)
         {
             for (int x = 0; x < mapManager.width; x++)
             {
-                //var randIndex = rand.Next(0, background.Count);
-                //var randTile = background[randIndex];
-
-                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
-                                                    , -y + offset.y + Ypos);
-
-                var bgo = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
-                //bgo.GetComponent<SpriteRenderer>().sprite = randTile;
+                // Background base
+                var bgo = GetTileInstance(backgroundObject, -mapManager.width / 2 + x + offset.x, -y + offset.y + Ypos);
                 bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(StageManager.instance.Current.bgInfo);
 
                 // Background Decoration
@@ -181,29 +178,34 @@ public class MapDisplay : MonoBehaviour
                         break;
                     }
                 }
-
-                //if (rand.Next(0, 100) < background2by2Ratio)
-                //{
-                //    bgo = Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
-                //}
             }
         }
-
-        // Background 2 by 2
-        //for (int y = 0; y < level.height; y+=3)
-        //{
-        //    for (int x = 0; x < mapManager.width; x+=3)
-        //    {
-        //        Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
-        //                                            , -y + offset.y + Ypos);
-
-        //        if (rand.Next(0, 100) < background2by2Ratio)
-        //        {
-        //            Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
-        //        }
-        //    }
-        //}
     }
+
+    private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
+    {
+        Vector2 tilePosition = new Vector2(Xpos, Ypos);
+
+        var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
+
+        return go;
+    }
+
+    #region Deprecated
+    // Background 2 by 2
+    //for (int y = 0; y < level.height; y+=3)
+    //{
+    //    for (int x = 0; x < mapManager.width; x+=3)
+    //    {
+    //        Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
+    //                                            , -y + offset.y + Ypos);
+
+    //        if (rand.Next(0, 100) < background2by2Ratio)
+    //        {
+    //            Instantiate(background2by2, tilePosition, Quaternion.identity, transform);
+    //        }
+    //    }
+    //}
 
     //public void Display(int[,] generatedLevel, int[,] generatedStageGround)
     //{
@@ -303,4 +305,6 @@ public class MapDisplay : MonoBehaviour
     //        }
     //    }
     //}
+
+    #endregion
 }

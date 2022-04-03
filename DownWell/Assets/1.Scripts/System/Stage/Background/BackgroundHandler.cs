@@ -18,20 +18,20 @@ public class BackgroundHandler : MonoBehaviour
 
     public static Sprite GetRandomBase(BackgroundInfo info)
     {
-        string seed = (Time.time + Random.value).ToString();
-        System.Random rand = new System.Random(seed.GetHashCode());
+        //string seed = (Time.time + Random.value).ToString();
+        //System.Random rand = new System.Random(seed.GetHashCode());
 
         var baseCount = info._base.Length;
 
-        return info._base[rand.Next(baseCount)];
+        return info._base[CatDown.Random.Get().Next(baseCount)];
     }
 
     public static bool Decorate(BackgroundInfo.BackgroundDeco deco, out Sprite tile)
     {
-        string seed = (Time.time + Random.value).ToString();
-        System.Random rand = new System.Random(seed.GetHashCode());
+        //string seed = (Time.time + Random.value).ToString();
+        //System.Random rand = new System.Random(seed.GetHashCode());
 
-        if (rand.Next(1000) < deco.prob)
+        if (CatDown.Random.Get().Next(1000) < deco.prob)
         {
             tile = deco.sprite;
             return true;
