@@ -21,9 +21,9 @@ public class MapDisplay : MonoBehaviour
     public List<GameObject> enemyObjects;
 
     [Header("Background")]
-    public bool displayBackground = true;
+    //public bool displayBackground = true;
     public GameObject backgroundObject;
-    public List<Sprite> background;
+    //public List<Sprite> background;
     //public GameObject background2by2;
     //public int background2by2Ratio = 10;
 
@@ -79,7 +79,7 @@ public class MapDisplay : MonoBehaviour
         //Debug.Log(level.width);
         //Debug.Log("name:"+level.name);
 
-        if(displayBackground) DisplayBackGround(level, Ypos);
+        DisplayBackGround(level, Ypos);
 
         // Wall
         for (int y = 0; y < level.height; y++)
@@ -158,15 +158,29 @@ public class MapDisplay : MonoBehaviour
         {
             for (int x = 0; x < mapManager.width; x++)
             {
-                var randIndex = rand.Next(0, background.Count);
-                var randTile = background[randIndex];
+                //var randIndex = rand.Next(0, background.Count);
+                //var randTile = background[randIndex];
 
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y + Ypos);
 
                 var bgo = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
-                bgo.GetComponent<SpriteRenderer>().sprite = randTile;
+                //bgo.GetComponent<SpriteRenderer>().sprite = randTile;
                 bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(StageManager.instance.Current.bgInfo);
+
+                // Background Decoration
+                var decos = StageManager.instance.Current.bgInfo.deco;
+
+                foreach (var deco in decos)
+                {
+                    Sprite decoSprite;
+
+                    if (BackgroundHandler.Decorate(deco, out decoSprite))
+                    {
+                        bgo.GetComponent<SpriteRenderer>().sprite = decoSprite;
+                        break;
+                    }
+                }
 
                 //if (rand.Next(0, 100) < background2by2Ratio)
                 //{

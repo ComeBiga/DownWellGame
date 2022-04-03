@@ -25,4 +25,19 @@ public class BackgroundHandler : MonoBehaviour
 
         return info._base[rand.Next(baseCount)];
     }
+
+    public static bool Decorate(BackgroundInfo.BackgroundDeco deco, out Sprite tile)
+    {
+        string seed = (Time.time + Random.value).ToString();
+        System.Random rand = new System.Random(seed.GetHashCode());
+
+        if (rand.Next(1000) < deco.prob)
+        {
+            tile = deco.sprite;
+            return true;
+        }
+
+        tile = null;
+        return false;
+    }
 }

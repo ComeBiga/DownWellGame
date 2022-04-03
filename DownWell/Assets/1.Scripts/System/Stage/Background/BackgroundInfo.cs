@@ -6,5 +6,13 @@ using UnityEngine;
 public class BackgroundInfo
 {
     public Sprite[] _base;
-    public Sprite[] deco;
+    public BackgroundDeco[] deco;
+
+    [System.Serializable]
+    public struct BackgroundDeco
+    {
+        public Sprite sprite;
+        [Range(0, 100)]
+        public int prob;
+    }
 }

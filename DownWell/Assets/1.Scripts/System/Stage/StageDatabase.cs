@@ -29,18 +29,18 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private GameObject bossObject;
 
     [Header("Background")]
-    [SerializeField] private Sprite baseBackground;
-    [SerializeField] private BackgroundSprite[] background;
+    //[SerializeField] private Sprite baseBackground;
+    //[SerializeField] private BackgroundSprite[] background;
     public BackgroundInfo bgInfo;
 
-    [System.Serializable]
-    private class BackgroundSprite
-    {
-        public Sprite[] sprite;
+    //[System.Serializable]
+    //private class BackgroundSprite
+    //{
+    //    public Sprite[] sprite;
 
-        public int width = 1;
-        public int height = 1;
-    }
+    //    public int width = 1;
+    //    public int height = 1;
+    //}
 
     public List<GameObject> MapObjects 
     { 
@@ -63,17 +63,17 @@ public class StageDatabase : ScriptableObject
     public GameObject BossObject { get { return bossObject; } }
 
 
-    public Sprite BaseBackGround { get { return baseBackground; } }
-    public Sprite Background
-    {
-        get
-        {
-            string seed = (Time.time + Random.value).ToString();
-            System.Random rand = new System.Random(seed.GetHashCode());
+    //public Sprite BaseBackGround { get { return baseBackground; } }
+    //public Sprite Background
+    //{
+    //    get
+    //    {
+    //        string seed = (Time.time + Random.value).ToString();
+    //        System.Random rand = new System.Random(seed.GetHashCode());
 
-            return background[rand.Next(0, background.Length)].sprite[0];
-        }
-    }
+    //        return background[rand.Next(0, background.Length)].sprite[0];
+    //    }
+    //}
 
 
 

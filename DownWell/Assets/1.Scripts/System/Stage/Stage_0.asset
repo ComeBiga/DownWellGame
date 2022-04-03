@@ -60,4 +60,8 @@ MonoBehaviour:
   bgInfo:
     _base:
     - {fileID: -4018099237683821570, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-    deco: []
+    deco:
+    - sprite: {fileID: 648693189539466377, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+      prob: 7
+    - sprite: {fileID: 7511635907411249343, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+      prob: 10
