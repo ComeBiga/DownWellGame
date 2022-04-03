@@ -51,8 +51,12 @@ public class BossStageManager : MonoBehaviour
 
         MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
 
-        SoundManager.instance.SoundOff();
-        SoundManager.instance.PlayBGMSound("BackgroundBoss");
+        //SoundManager.instance.SoundOff();
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
+
+        //SoundManager.instance.PlayBGMSound("BackgroundBoss");
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("BackgroundBoss");
+
     }
 
     void SetBossAppearPos()

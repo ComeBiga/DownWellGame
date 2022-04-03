@@ -106,7 +106,9 @@ public class PlayerCombat : MonoBehaviour
     {
         Camera.main.GetComponent<CameraShake>().Shake(.03f);                           //카메라 흔들림
         GetComponent<PlayerAnimation>().Shoot();                                       //캐릭터 애니메이션
-        if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_0");  //사운드이펙트
+        //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_0");  //사운드이펙트
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_0");
+
         GetComponent<Effector>().Generate("Shoot");                                    //슛 이펙트
     }
     #endregion
@@ -189,7 +191,9 @@ public class PlayerCombat : MonoBehaviour
 
         GetComponent<Effector>().Generate("Damaged");
 
-        if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //사운드이펙트
+        //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //사운드이펙트
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_1");
+
     }
 
     #endregion

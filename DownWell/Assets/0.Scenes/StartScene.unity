@@ -7250,7 +7250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3f1554aebc2b4590cf0432d97db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadStage: 0
+  blockPath: /Resources/Levels/Blocks/
+  stageStartPath: /Resources/Levels/StageStart/
+  stageGroundPath: /Resources/Levels/StageGround/
 --- !u!114 &1703753909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7315,14 +7317,7 @@ MonoBehaviour:
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   - {fileID: 2828334627078130561, guid: 5231486e93382f04fa5396f7693a42e9, type: 3}
   - {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
-  displayBackground: 1
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
-  background:
-  - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  background2by2: {fileID: 4628502433275044613, guid: 930dc36b68f4e9545b358fbafe8ff385, type: 3}
-  background2by2Ratio: 1
 --- !u!114 &1703753911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7335,9 +7330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e5111ac375d444eb28d445f891fac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapDisplay: {fileID: 0}
   width: 11
   height: 11
-  currentStage: 0
   reGenerateOffset: 20
 --- !u!4 &1703753912
 Transform:
@@ -10262,6 +10257,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c0d7fd79166d94ea6edd7d0a95221c, type: 3}
+--- !u!1 &8579365060281516983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8579365060598391025, guid: 89c0d7fd79166d94ea6edd7d0a95221c, type: 3}
+  m_PrefabInstance: {fileID: 8579365060281516982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8579365060281516984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579365060281516983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9066c9e97d1d69a42a13a1dc5cbc715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Background
+    clip: {fileID: 8300000, guid: 4a7ceb681b180af4f912958dea491bca, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BackgroundBoss
+    clip: {fileID: 8300000, guid: 68cb205ff95b39549b0c2416cc3989f0, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Shoot_0
+    clip: {fileID: 8300000, guid: 20fa32acc44658444a7efad7b0fa3d2c, type: 3}
+    type: 1
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: 22908bab48d645d4d97d3a8f488d81fe, type: 3}
+    type: 1
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Shoot_1
+    clip: {fileID: 8300000, guid: de2fc0eb2b3802a4e8c003fab9df95a4, type: 3}
+    type: 1
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &8846916261975912957
 MonoBehaviour:
   m_ObjectHideFlags: 0

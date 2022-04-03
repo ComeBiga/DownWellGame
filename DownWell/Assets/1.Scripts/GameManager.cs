@@ -50,7 +50,9 @@ public class GameManager : MonoBehaviour
         //GetComponent<Timer>().StartTimer();
 
         // Play BGM
-        SoundManager.instance.PlayBGMSound("Background");
+        //SoundManager.instance.PlayBGMSound("Background");
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
+
 
         // Gameover Panel Init
         gameoverPanel = GameObject.Find("GameOver");

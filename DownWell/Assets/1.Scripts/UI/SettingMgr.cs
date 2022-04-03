@@ -163,7 +163,10 @@ public class SettingMgr : MonoBehaviour
                     bgmOff = 1;
                 else
                     bgmOff = 0;
-                SoundManager.instance.SetBgmVolume(bgmOff);
+                //SoundManager.instance.SetBgmVolume(bgmOff);
+                var bgmvalue = (bgmOff == 1) ? true : false;
+                if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
+
                 PlayerPrefs.SetInt("BgmVolume", bgmOff);
                 break;
             case "eff":
@@ -171,7 +174,10 @@ public class SettingMgr : MonoBehaviour
                     effOff = 1;
                 else
                     effOff = 0;
-                SoundManager.instance.SetEffVolume(effOff);
+                //SoundManager.instance.SetEffVolume(effOff);
+                var effvalue = (effOff == 1) ? true : false;
+                if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.EFFECT, effvalue);
+
                 PlayerPrefs.SetInt("EffVolume", effOff);
                 break;
         }

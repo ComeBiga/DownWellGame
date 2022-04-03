@@ -17,8 +17,10 @@ public class UIManager : MonoBehaviour
     {
         //Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
         //PlayerPrefs.DeleteAll();
-        
-        SoundManager.instance.SoundOff();
+
+        //SoundManager.instance.SoundOff();
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
+
         startPanel.SetActive(true);
         charPanel.SetActive(false);
 
@@ -27,8 +29,13 @@ public class UIManager : MonoBehaviour
         SettingMgr.instance.bgmOff = PlayerPrefs.GetInt("BgmVolume");
         SettingMgr.instance.effOff = PlayerPrefs.GetInt("EffVolume");
 
-        SoundManager.instance.SetBgmVolume(SettingMgr.instance.bgmOff);
-        SoundManager.instance.SetEffVolume(SettingMgr.instance.effOff);
+        //SoundManager.instance.SetBgmVolume(SettingMgr.instance.bgmOff);
+        var bgmvalue = (SettingMgr.instance.bgmOff == 1) ? true : false;
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
+
+        //SoundManager.instance.SetEffVolume(SettingMgr.instance.effOff);
+        var effvalue = (SettingMgr.instance.effOff == 1) ? true : false;
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.EFFECT, effvalue);
 
         versionInfo.text = "Ver." + Application.version;
     }

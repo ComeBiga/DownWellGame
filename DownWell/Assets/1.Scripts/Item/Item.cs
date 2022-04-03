@@ -56,7 +56,9 @@ public class Item : MonoBehaviour
                 else
                     ItemManager.instance.ItemSocket(this.gameObject);
 
-                if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Coin");  //사운드이펙트
+                //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Coin");  //사운드이펙트
+                if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");
+
                 Destroy(this.gameObject);
                 // coin get sound
                 //SoundManager.instance.PlayEffSound("gun");
