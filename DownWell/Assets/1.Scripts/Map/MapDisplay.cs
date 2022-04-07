@@ -15,10 +15,9 @@ public class MapDisplay : MonoBehaviour
     [Range(0, 100)]
     public int enemyRatio = 100;
 
-    [Header("Objects")]
-    public List<GameObject> wallObjects;
-    public List<Sprite> wallSprites;
-    public List<GameObject> enemyObjects;
+    private List<GameObject> wallObjects;
+    private List<Sprite> wallSprites;
+    private List<GameObject> enemyObjects;
 
     [Header("Background")]
     //public bool displayBackground = true;
@@ -27,13 +26,28 @@ public class MapDisplay : MonoBehaviour
     //public GameObject background2by2;
     //public int background2by2Ratio = 10;
 
-    public static int enemyCount;
+    private WallSelector ws_root;
+    private EnemySelector es_root;
 
     private void Start()
     {
         mapManager = MapManager.instance;
 
-        enemyCount = enemyObjects.Count;
+        InitSelector();
+    }
+
+    private void InitSelector()
+    {
+        // wall
+        ws_root = new WallSelector(100, 1000);
+        var spws = new SpecialWallSelector(9);
+        var sdws = new SideWallSelector(0, 10);
+
+        ws_root.SetNext(spws);
+        spws.SetNext(sdws);
+
+        // enemy
+        es_root = new EnemySelector(2000, 3000, enemyRatio);
     }
 
     //public void Display(Tile[,] generatedTiles)
@@ -71,20 +85,68 @@ public class MapDisplay : MonoBehaviour
 
     public int Display(Level level, int Ypos)
     {
-        //Debug.Log("Display");
-        //Debug.Log(level.width);
-        //Debug.Log("name:"+level.name);
+        for (int y = 0; y < level.height; y++)
+        {
+            for (int x = 0; x < mapManager.width; x++)
+            {
+                int currentTile = level.tiles[y * mapManager.width + x];
+                Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
+                                                    -y + offset.y + Ypos);
 
-        DisplayBackGround(level, Ypos);
+                DisplayBackground(currentTile, tilePosition);
 
-        // Wall
-        DisplayWall(level, Ypos);
+                DisplayObject(currentTile, tilePosition);
+            }
+        }
 
-        // Enemy
-        DisplayEnemy(level, Ypos);
+        //// Background
+        //DisplayBackGround(level, Ypos);
+
+        //// Wall
+        //DisplayWall(level, Ypos);
+
+        //// Enemy
+        //DisplayEnemy(level, Ypos);
 
         return level.height;
     }
+
+    private void DisplayBackground(int tileCode, Vector3 tilePosition)
+    {
+        // Background base
+        var bgo = GetTileInstance(backgroundObject, tilePosition.x, tilePosition.y);
+        bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(StageManager.instance.Current.bgInfo);
+
+        // Background Decoration
+        var decos = StageManager.instance.Current.bgInfo.deco;
+
+        foreach (var deco in decos)
+        {
+            Sprite decoSprite;
+
+            if (BackgroundHandler.Decorate(deco, out decoSprite))
+            {
+                bgo.GetComponent<SpriteRenderer>().sprite = decoSprite;
+                break;
+            }
+        }
+    }
+
+    private void DisplayObject(int tileCode, Vector3 tilePosition)
+    {
+        ws_root.InstantiateObject(tileCode, tilePosition, parent);
+    }
+
+    private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
+    {
+        Vector2 tilePosition = new Vector2(Xpos, Ypos);
+
+        var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
+
+        return go;
+    }
+
+    #region Deprecated
 
     private void DisplayWall(Level level, int Ypos)
     {
@@ -97,35 +159,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
                                                     -y + offset.y + Ypos);
 
-                if (currentTile >= 100 && currentTile <= 1000)
-                {
-                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == 1);
-                    //Debug.Log(generatedLevel[x, y]);
-                    GameObject wall;
-                    if (wallObject != null)
-                    {
-                        wall = Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
-                        //Debug.Log(wall);
-                        wall.GetComponent<SpriteRenderer>().sprite = wallSprites[currentTile - 100];
-                    }
-                }
-                else if (currentTile == 9)
-                {
-                    if (BossStageManager.instance.IsBossStage)
-                    {
-                        var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == currentTile);
-
-                        if (wallObject != null)
-                            Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
-                    }
-                }
-                else if (currentTile <= 10)
-                {
-                    var wallObject = wallObjects.Find(g => g.GetComponent<Wall>().info.code == currentTile);
-
-                    if (wallObject != null)
-                        Instantiate(wallObject, tilePosition, Quaternion.identity, parent);
-                }
+                ws_root.InstantiateObject(currentTile, tilePosition, parent);
             }
         }
     }
@@ -140,17 +174,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y + Ypos);
 
-                if (currentTile > 2000 && currentTile <= 3000)
-                {
-                    //string seed = (Time.time + Random.value).ToString();
-                    //System.Random rand = new System.Random(seed.GetHashCode());
-
-                    if (CatDown.Random.Get().Next(0, 100) < enemyRatio)
-                    {
-                        var enemyObject = enemyObjects.Find(g => g.GetComponent<Enemy>().info.code == currentTile);
-                        Instantiate(enemyObject, tilePosition, Quaternion.identity, parent);
-                    }
-                }
+                es_root.InstantiateObject(currentTile, tilePosition, parent);
             }
         }
     }
@@ -182,16 +206,7 @@ public class MapDisplay : MonoBehaviour
         }
     }
 
-    private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
-    {
-        Vector2 tilePosition = new Vector2(Xpos, Ypos);
 
-        var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
-
-        return go;
-    }
-
-    #region Deprecated
     // Background 2 by 2
     //for (int y = 0; y < level.height; y+=3)
     //{
