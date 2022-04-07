@@ -62,6 +62,7 @@ public class MapManager : MonoBehaviour
     //    //Instantiate(new GameObject());
     //}
 
+    #region Basic Generating
     public void Generate()
     {
         StartCoroutine(GenerateMap());
@@ -94,6 +95,10 @@ public class MapManager : MonoBehaviour
 
         currentYpos -= mapDisplay.Display(stageGround, currentYpos);
     }
+    public void Generate(int times)
+    {
+        StartCoroutine(GenerateMap(times));
+    }
 
     IEnumerator GenerateMap(int times)
     {
@@ -117,9 +122,14 @@ public class MapManager : MonoBehaviour
         return randomWall;
     }
 
-    public void Generate(int times)
+    #endregion
+
+
+    #region Infinity Generating
+
+    public void GenerateInfinity(Transform mainPos, int times)
     {
-        StartCoroutine(GenerateMap(times));
+        StartCoroutine(GenerateMapInfinity(mainPos, times));
     }
 
     IEnumerator GenerateMapInfinity(Transform mainPos, int times)
@@ -139,8 +149,5 @@ public class MapManager : MonoBehaviour
         reGenerate = false;
     }
 
-    public void GenerateInfinity(Transform mainPos, int times)
-    {
-        StartCoroutine(GenerateMapInfinity(mainPos, times));
-    }
+    #endregion
 }
