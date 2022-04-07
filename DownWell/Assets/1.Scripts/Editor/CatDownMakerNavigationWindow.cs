@@ -37,7 +37,7 @@ public class CatDownMakerNavigationWindow : EditorWindow
             
             if(GUILayout.Button("LevelEditor"))
             {
-                UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/99.LevelEditor/LevelEditor.unity");
+                UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/0.Scenes/LevelEditor/LevelEditor.unity");
 
                 this.Close();
             }
