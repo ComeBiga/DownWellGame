@@ -7227,10 +7227,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1703753912}
-  - component: {fileID: 1703753911}
   - component: {fileID: 1703753910}
-  - component: {fileID: 1703753909}
   - component: {fileID: 1703753908}
+  - component: {fileID: 1703753909}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -7262,13 +7261,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1703753907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045934f5cff0df34d81dc9135601b11d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2106467b462e9f44d80d48fc4deb0e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStage: 0
-  wallRatio: 50
-  blockRatio: 100
-  enemyRatio: 100
+  stageDB: {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
 --- !u!114 &1703753910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7285,55 +7281,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   blockRatio: 100
   enemyRatio: 100
-  wallObjects:
-  - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
-  - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
-  - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
-  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
-  - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
-  - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
-  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
-  - {fileID: 3283359789271922636, guid: 7571059a67ad7c64b9eacd3f97bf7a2a, type: 3}
-  wallSprites:
-  - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 6094567818995607104, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -1797308386499980870, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -8780544266126674041, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -2371495637234060756, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 6278984746606889757, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -1913140024372502332, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -4868785216715901871, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 2111467066964361385, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 8092404753173535885, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -7475247292883857376, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -3121940317747235480, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 7944469906063595454, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -5881622362676116124, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -6728371487741853675, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: 1438999105531611913, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
-  enemyObjects:
-  - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
-  - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}
-  - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
-  - {fileID: 2828334627078130561, guid: 5231486e93382f04fa5396f7693a42e9, type: 3}
-  - {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
---- !u!114 &1703753911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703753907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e5111ac375d444eb28d445f891fac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapDisplay: {fileID: 0}
-  width: 11
-  height: 11
-  reGenerateOffset: 20
 --- !u!4 &1703753912
 Transform:
   m_ObjectHideFlags: 0

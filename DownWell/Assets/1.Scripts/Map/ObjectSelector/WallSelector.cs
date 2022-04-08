@@ -18,7 +18,7 @@ public class WallSelector : ObjectSelector
     {
         GameObject obj = Find(1);
         var wall = Instantiate(obj);
-        wall.GetComponent<SpriteRenderer>().sprite = StageManager.instance.Current.WallSprites[tileCode - 100];
+        wall.GetComponent<SpriteRenderer>().sprite = currentStage.WallSprites[tileCode - 100];
         
         return wall;
     }

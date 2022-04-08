@@ -10,6 +10,7 @@ public abstract class ObjectSelector
 
     protected static Vector3 position;
     protected static Transform parent;
+    protected static StageDatabase currentStage;
 
     public ObjectSelector(int min, int max)
     {
@@ -28,10 +29,11 @@ public abstract class ObjectSelector
         this.next = next;
     }
 
-    public GameObject InstantiateObject(int tileCode, Vector3 _position, Transform _parent)
+    public GameObject InstantiateObject(int tileCode, Vector3 _position, Transform _parent, StageDatabase _currentStage)
     {
         position = _position;
         parent = _parent;
+        currentStage = _currentStage;
 
         if (tileCode >= min && tileCode <= max)
         {
@@ -45,14 +47,14 @@ public abstract class ObjectSelector
 
     private GameObject InstantiateObject(int tileCode)
     {
-        return InstantiateObject(tileCode, position, parent);
+        return InstantiateObject(tileCode, position, parent, currentStage);
     }
 
     protected abstract GameObject Select(int tileCode);
 
     protected GameObject Find(int tileCode)
     {
-        return StageManager.instance.Current.MapObjects.Find(o => o.GetComponent<Wall>().info.code == tileCode);
+        return currentStage.MapObjects.Find(o => o.GetComponent<Wall>().info.code == tileCode);
     }
 
     protected GameObject Next(int tileCode)

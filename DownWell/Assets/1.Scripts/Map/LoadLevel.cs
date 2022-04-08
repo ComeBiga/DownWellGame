@@ -74,6 +74,15 @@ public class LoadLevel : MonoBehaviour
 
     }
 
+    public Level LoadAndGet(string name)
+    {
+        var path = "/Resources/Levels/" + name + "/";
+
+        var levels = Load(LoadLevel.ReplacePath(path));
+
+        return levels[0];
+    }
+
     List<Level> Load(string path)
     {
 #if UNITY_EDITOR
@@ -173,6 +182,8 @@ public class LoadLevel : MonoBehaviour
 
     public void LoadAllLevel()
     {
+        if (StageManager.instance == null) return;
+
         var stages = StageManager.instance.stages;
 
         for (int i = 0; i < stages.Count; i++)

@@ -83,6 +83,23 @@ public class MapDisplay : MonoBehaviour
         this.enemyObjects = currentStageDB.EnemyObjects;
     }
 
+    public void DisplayByDatabase(Level level, StageDatabase stageDB)
+    {
+        for (int y = 0; y < level.height; y++)
+        {
+            for (int x = 0; x < level.width; x++)
+            {
+                int currentTile = level.tiles[y * level.width + x];
+                Vector2 tilePosition = new Vector2(-level.width / 2 + x + offset.x,
+                                                    -y + offset.y);
+
+                DisplayBackground(currentTile, tilePosition, stageDB);
+
+                DisplayObject(currentTile, tilePosition, stageDB);
+            }
+        }
+    }
+
     public int Display(Level level, int Ypos)
     {
         for (int y = 0; y < level.height; y++)
@@ -93,9 +110,9 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
                                                     -y + offset.y + Ypos);
 
-                DisplayBackground(currentTile, tilePosition);
+                DisplayBackground(currentTile, tilePosition, StageManager.instance.Current);
 
-                DisplayObject(currentTile, tilePosition);
+                DisplayObject(currentTile, tilePosition, StageManager.instance.Current);
             }
         }
 
@@ -111,14 +128,14 @@ public class MapDisplay : MonoBehaviour
         return level.height;
     }
 
-    private void DisplayBackground(int tileCode, Vector3 tilePosition)
+    private void DisplayBackground(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         // Background base
         var bgo = GetTileInstance(backgroundObject, tilePosition.x, tilePosition.y);
-        bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(StageManager.instance.Current.bgInfo);
+        bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(currentStage.bgInfo);
 
         // Background Decoration
-        var decos = StageManager.instance.Current.bgInfo.deco;
+        var decos = currentStage.bgInfo.deco;
 
         foreach (var deco in decos)
         {
@@ -132,13 +149,13 @@ public class MapDisplay : MonoBehaviour
         }
     }
 
-    private void DisplayObject(int tileCode, Vector3 tilePosition)
+    private void DisplayObject(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         // wall
-        ws_root.InstantiateObject(tileCode, tilePosition, parent);
+        ws_root.InstantiateObject(tileCode, tilePosition, parent, currentStage);
 
         // enemy
-        es_root.InstantiateObject(tileCode, tilePosition, parent);
+        es_root.InstantiateObject(tileCode, tilePosition, parent, currentStage);
     }
 
     private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
@@ -163,7 +180,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
                                                     -y + offset.y + Ypos);
 
-                ws_root.InstantiateObject(currentTile, tilePosition, parent);
+                ws_root.InstantiateObject(currentTile, tilePosition, parent, StageManager.instance.Current);
             }
         }
     }
@@ -178,7 +195,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y + Ypos);
 
-                es_root.InstantiateObject(currentTile, tilePosition, parent);
+                es_root.InstantiateObject(currentTile, tilePosition, parent, StageManager.instance.Current);
             }
         }
     }
