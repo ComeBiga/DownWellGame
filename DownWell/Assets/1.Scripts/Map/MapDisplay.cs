@@ -8,6 +8,7 @@ public class MapDisplay : MonoBehaviour
 
     public Transform parent;
     public Vector3 offset;
+    [SerializeField] private GameObject startPos;
 
     [Header("Ratio")]
     [Range(0, 100)]
@@ -41,10 +42,13 @@ public class MapDisplay : MonoBehaviour
         // wall
         ws_root = new WallSelector(100, 1000);
         var spws = new SpecialWallSelector(9);
+        var ssws = new StartPosSelector(8);
         var sdws = new SideWallSelector(0, 10);
 
         ws_root.SetNext(spws);
-        spws.SetNext(sdws);
+        spws.SetNext(ssws);
+        ssws.SetNext(sdws);
+
 
         // enemy
         es_root = new EnemySelector(2000, 3000, enemyRatio);
