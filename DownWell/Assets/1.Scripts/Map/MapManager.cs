@@ -95,6 +95,29 @@ public class MapManager : MonoBehaviour
 
         currentYpos -= mapDisplay.Display(stageGround, currentYpos);
     }
+
+    public void GenerateBeforeUpdate()
+    {
+        // 타일을 다 생성하고 난 후 Y position;
+        currentYpos = 0;
+
+        List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
+        Level stageStart = stageStarts[0];
+        currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+
+        for (; (-currentYpos) < height;)
+        {
+            // 랜덤으로 불러온 레벨을 현재 y 위치에서 생성
+            currentYpos -= mapDisplay.Display(RandomLevel(sm.CurrentStageIndex), currentYpos);
+        }
+
+        // 스테이지 끝을 생성하는 코드
+        List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
+        Level stageGround = stageGrounds[0];
+
+        currentYpos -= mapDisplay.Display(stageGround, currentYpos);
+    }
+
     public void Generate(int times)
     {
         StartCoroutine(GenerateMap(times));

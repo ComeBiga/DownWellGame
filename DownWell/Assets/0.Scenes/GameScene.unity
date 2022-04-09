@@ -7113,6 +7113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 474134045}
   offset: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 0}
   blockRatio: 100
   enemyRatio: 50
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}

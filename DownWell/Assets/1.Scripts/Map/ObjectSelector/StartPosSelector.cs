@@ -14,10 +14,12 @@ public class StartPosSelector : ObjectSelector
 
     protected override GameObject Select(int tileCode)
     {
-        var startPosObject = new GameObject();
+        var startPosObject = Instantiate(new GameObject());
         startPosObject.name = "StageStart";
         startPosObject.tag = "StageStart";
 
-        return Instantiate(startPosObject);
+        GameManager.instance.startPos = startPosObject.transform;
+
+        return startPosObject;
     }
 }

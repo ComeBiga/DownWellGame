@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour
         // Player Init
         PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
 
-        playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
+        //playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
         //playerPrefab.SetActive(false);
 
-        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
+        //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
 
-        PlayerManager.instance.player = playerPrefab;
+        //PlayerManager.instance.player = playerPrefab;
 
         // Timer
         //GetComponent<Timer>().StartTimer();
@@ -65,10 +65,17 @@ public class GameManager : MonoBehaviour
     public void StartStage()
     {
         // Level Generation
-        MapManager.instance.Generate();
+        MapManager.instance.GenerateBeforeUpdate();
 
-        // Player Position
-        playerPrefab.transform.position = startPos.position;
+        // Player Inst
+        playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
+
+        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
+
+        PlayerManager.instance.player = playerPrefab;
+
+        //// Player Position
+        //playerPrefab.transform.position = startPos.position;
 
         // Timer
         GetComponent<Timer>().StartTimer();
