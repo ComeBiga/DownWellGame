@@ -90,7 +90,7 @@ public class JellyOctoMovement : EnemyMovement
 
         UpdateGravityDirection();
 
-        if (GameManager.instance.CheckTargetRange(transform))
+        if (CatDown.EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform))//GameManager.instance.CheckTargetRange(transform))
         {
             currentRayLength = rayLength;
 

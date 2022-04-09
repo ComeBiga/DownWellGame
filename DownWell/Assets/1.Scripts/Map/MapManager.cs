@@ -26,7 +26,7 @@ public class MapManager : MonoBehaviour
 
     //public LevelEditor.Stage currentStage = LevelEditor.Stage.Stage1;
 
-    int currentYpos = 0;
+    private int currentYpos = 0;
     public int CurrentYPos { get { return currentYpos; } }
 
     private bool reGenerate = false;
@@ -61,6 +61,26 @@ public class MapManager : MonoBehaviour
     //    //GameObject newGameObject = new GameObject();
     //    //Instantiate(new GameObject());
     //}
+
+    #region Generating Elements Function
+
+    private void Display(string objName, int index = 0)
+    {
+        List<Level> lvs = LoadLevel.instance.GetObjects(objName);
+        Level lv = lvs[index];
+        currentYpos -= mapDisplay.Display(lv, currentYpos);
+    }
+
+    private void Display(List<Level> levels, int height)
+    {
+        for (; (-currentYpos) < height;)
+        {
+            // 랜덤으로 불러온 레벨을 현재 y 위치에서 생성
+            currentYpos -= mapDisplay.Display(levels[CatDown.Random.Get().Next(levels.Count)], currentYpos);
+        }
+    }
+
+    #endregion
 
     #region Basic Generating
     public void Generate()
@@ -101,23 +121,17 @@ public class MapManager : MonoBehaviour
         // 타일을 다 생성하고 난 후 Y position;
         currentYpos = 0;
 
-        List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
-        Level stageStart = stageStarts[0];
-        currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+        // 스테이지 시작 부분
+        Display("StageStart");
 
-        for (; (-currentYpos) < height;)
-        {
-            // 랜덤으로 불러온 레벨을 현재 y 위치에서 생성
-            currentYpos -= mapDisplay.Display(RandomLevel(sm.CurrentStageIndex), currentYpos);
-        }
+        // 랜덤 레벨 생성
+        Display(LoadLevel.instance.GetLevels(sm.CurrentStageIndex), height);
 
         // 스테이지 끝을 생성하는 코드
-        List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
-        Level stageGround = stageGrounds[0];
-
-        currentYpos -= mapDisplay.Display(stageGround, currentYpos);
+        Display("StageGround");
     }
 
+    // Generate levels by times
     public void Generate(int times)
     {
         StartCoroutine(GenerateMap(times));

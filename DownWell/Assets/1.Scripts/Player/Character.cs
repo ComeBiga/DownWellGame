@@ -10,6 +10,7 @@ public class Character : ScriptableObject
     public Sprite sprite;
     public Color color;
     public RuntimeAnimatorController animatorController;
+    public GameObject prefab;
 
     [Header("Health")]
     public int health;

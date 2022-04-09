@@ -49,7 +49,7 @@ public class BossStageManager : MonoBehaviour
         StartCoroutine(AppearAnimation());
         Camera.main.GetComponent<CameraShake>().Shake(.02f, 1f, true);
 
-        MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
+        MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 10);
 
         //SoundManager.instance.SoundOff();
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
@@ -70,7 +70,7 @@ public class BossStageManager : MonoBehaviour
         var bossAppearPos = bossObject.transform.localPosition;
         var lateBossPos = new Vector3();
 
-        PlayerManager.instance.player.GetComponent<PlayerController>().cantMove = true;
+        PlayerManager.instance.playerObject.GetComponent<PlayerController>().cantMove = true;
 
         while(true)
         {
@@ -90,7 +90,7 @@ public class BossStageManager : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        PlayerManager.instance.player.GetComponent<PlayerController>().cantMove = false;
+        PlayerManager.instance.playerObject.GetComponent<PlayerController>().cantMove = false;
         //boss.GetComponent<BossCombat>().active = true;
         bossObject.GetComponent<BossBrain>().Use();
         Camera.main.GetComponent<SmoothFollow>().StartBossCamera();

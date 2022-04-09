@@ -22,7 +22,7 @@ namespace CatDown
         {
             while(true)
             {
-                if (GameManager.instance.CheckTargetRange(this.gameObject.transform)) break;
+                if (EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform)) break;
 
                 yield return null;
             }
@@ -32,6 +32,8 @@ namespace CatDown
 
             while(true)
             {
+                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform)) break;
+
                 //Debug.Log("ETake in While");
                 OnActionUpdate();
 

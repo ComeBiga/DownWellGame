@@ -5576,6 +5576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinTxt: {fileID: 2126811155}
   gameover_coin: {fileID: 720173712}
+  coin: 0
 --- !u!4 &949391695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
@@ -8446,7 +8447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d602b2b8f62c8148b98eff0703bd26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerObject: {fileID: 0}
   selectedCharacter: {fileID: 0}
   characters1: []
 --- !u!4 &1432289946
@@ -9492,7 +9493,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
   enemyActiveRangeOffset: 3
-  coin: 0
 --- !u!4 &1700652126
 Transform:
   m_ObjectHideFlags: 0
@@ -9578,8 +9578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stages:
-  - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
   - {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
+  - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
 --- !u!1 &1704033169
 GameObject:
   m_ObjectHideFlags: 0

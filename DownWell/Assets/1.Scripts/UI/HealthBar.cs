@@ -29,16 +29,16 @@ public class HealthBar : MonoBehaviour
     {
         if(gameStart)
         {
-            for (int i = 0; i <= PlayerManager.instance.player.GetComponent<PlayerHealth>().MaxHealth; i++)
+            for (int i = 0; i <= PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().MaxHealth; i++)
             {
                 HpChild = Instantiate(heart, hp.transform.position, Quaternion.identity, hp.transform);
             }
             gameStart = false;
         }
         
-        if(PlayerManager.instance.player.GetComponent<PlayerHealth>().CurrentHealth - hp.transform.childCount < 0)
+        if(PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().CurrentHealth - hp.transform.childCount < 0)
             Destroy(hp.transform.GetChild(0).gameObject);
-        else if(PlayerManager.instance.player.GetComponent<PlayerHealth>().CurrentHealth - hp.transform.childCount > 0)
+        else if(PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().CurrentHealth - hp.transform.childCount > 0)
             HpChild = Instantiate(heart, hp.transform.position, Quaternion.identity, hp.transform);
         
         settingStop = true;
@@ -51,6 +51,6 @@ public class HealthBar : MonoBehaviour
 
     public void PlayerHealthEvent()
     {
-        PlayerManager.instance.player.GetComponent<PlayerHealth>().OnChangedHealth += UpdateBar;
+        PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().OnChangedHealth += UpdateBar;
     }
 }

@@ -35,5 +35,28 @@ namespace CatDown
             Debug.Log(current.name);
             current.Handle();
         }
+
+        #region Static Function
+
+        public static bool CheckTargetRange(Transform player, Transform enemy, float _activeRange = 3f)
+        {
+            float height = Camera.main.orthographicSize * 2;
+            float width = height * (9 / 16);
+
+            float h_tarTothis = Mathf.Abs(player.position.y - enemy.position.y);
+
+            if (height / 2 + _activeRange < enemy.position.y - player.position.y)
+            {
+                Debug.Log("Destroy " + enemy.name);
+                Destroy(enemy.gameObject);
+            }
+
+            if (h_tarTothis < height / 2 + _activeRange)
+                return true;
+
+            return false;
+        }
+
+        #endregion
     }
 }

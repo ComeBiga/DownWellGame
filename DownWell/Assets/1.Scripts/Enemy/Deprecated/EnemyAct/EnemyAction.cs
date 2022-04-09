@@ -39,9 +39,9 @@ public class EnemyAction : MonoBehaviour
         float height = Camera.main.orthographicSize * 2;
         float width = height * (9 / 16);
 
-        float h_tarTothis = Mathf.Abs(PlayerManager.instance.player.transform.position.y - enemy.position.y);
+        float h_tarTothis = Mathf.Abs(PlayerManager.instance.playerObject.transform.position.y - enemy.position.y);
 
-        if (height / 2 + GameManager.instance.enemyActiveRangeOffset < enemy.position.y - PlayerManager.instance.player.transform.position.y)
+        if (height / 2 + GameManager.instance.enemyActiveRangeOffset < enemy.position.y - PlayerManager.instance.playerObject.transform.position.y)
             Destroy(enemy.gameObject);
 
         if (h_tarTothis < height / 2 + GameManager.instance.enemyActiveRangeOffset)

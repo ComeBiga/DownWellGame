@@ -24,11 +24,10 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public GameObject playerPrefab;
+    private GameObject playerCharacter;
     public Transform startPos;
 
-    public float enemyActiveRangeOffset = 0;
-
-    public int coin = 0;
+    [HideInInspector] public float enemyActiveRangeOffset = 0;
 
     private GameObject gameoverPanel;
 
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour
         //SoundManager.instance.PlayBGMSound("Background");
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
 
-
         // Gameover Panel Init
         gameoverPanel = GameObject.Find("GameOver");
         gameoverPanel.GetComponent<Image>().enabled = true;
@@ -67,15 +65,13 @@ public class GameManager : MonoBehaviour
         // Level Generation
         MapManager.instance.GenerateBeforeUpdate();
 
-        // Player Inst
-        playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
+        // Player Initialization
+        PlayerManager.instance.InstantiateAndInit(startPos.position);
+        //playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
 
-        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
+        //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
 
-        PlayerManager.instance.player = playerPrefab;
-
-        //// Player Position
-        //playerPrefab.transform.position = startPos.position;
+        //PlayerManager.instance.player = playerPrefab;
 
         // Timer
         GetComponent<Timer>().StartTimer();
@@ -119,10 +115,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void GainCoin(int amount = 1)
-    {
-        coin += amount;
-    }
 
     //public void StageEnd()
     //{

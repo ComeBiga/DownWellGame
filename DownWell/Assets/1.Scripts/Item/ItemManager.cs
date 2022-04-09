@@ -67,10 +67,10 @@ public class ItemManager : MonoBehaviour
         switch(getitem.name)
         {
             case "potion(Clone)":
-                if (PlayerManager.instance.player.GetComponent<PlayerHealth>().CurrentHealth
-                    < PlayerManager.instance.player.GetComponent<PlayerHealth>().MaxHealth
-                    && PlayerManager.instance.player.GetComponent<PlayerHealth>().CurrentHealth > 0)
-                PlayerManager.instance.player.GetComponent<PlayerHealth>().GainHealth(1);
+                if (PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().CurrentHealth
+                    < PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().MaxHealth
+                    && PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().CurrentHealth > 0)
+                PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().GainHealth(1);
                 break;
         }
     }

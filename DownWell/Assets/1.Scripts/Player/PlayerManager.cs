@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
-    public GameObject player;
+    public GameObject playerObject;
     //public List<GameObject> characters;
 
     public Character selectedCharacter;
@@ -36,6 +36,13 @@ public class PlayerManager : MonoBehaviour
         //startPos = GameManager.instance.startPos;
         //player = Instantiate(player, startPos.position, Quaternion.identity);
     }
+
+    public void InstantiateAndInit(Vector3 position)
+    {
+        playerObject = Instantiate(selectedCharacter.prefab, position, Quaternion.identity, transform);
+
+        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
+    }    
 
     /// <summary>
     /// 선택한 캐릭터를 플레이어의 캐릭터로 선택
