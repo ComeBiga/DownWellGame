@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
             {
                 // StageEnd
                 //GameManager.instance.StageEnd();
-                BossStageManager.instance.StartBossStage();
-                Destroy(collision.gameObject);
+                //BossStageManager.instance.StartBossStage();
+                //Destroy(collision.gameObject);
             }
         }
     }

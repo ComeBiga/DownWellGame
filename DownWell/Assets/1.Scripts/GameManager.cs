@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private StageManager stageManager;
+    private MapManager mapManager;
+    private PlayerManager playerManager;
+
     public GameObject playerPrefab;
     private GameObject playerCharacter;
     public Transform startPos;
@@ -35,6 +39,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        stageManager = StageManager.instance;
+        mapManager = MapManager.instance;
+        playerManager = PlayerManager.instance;
+
         // Player Init
         PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
 
@@ -79,8 +87,13 @@ public class GameManager : MonoBehaviour
 
     public void ClearStage()
     {
-        StageManager.instance.NextStage();
-        StartStage();
+        stageManager.NextStage();
+
+        mapManager.Clear();
+
+        mapManager.GenerateBeforeUpdate();
+
+        playerManager.playerObject.transform.position = startPos.position;
     }
 
     public void GameOver()

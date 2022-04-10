@@ -32,16 +32,22 @@ public class BossStageManager : MonoBehaviour
 
     //Vector3 bossAppearPos;
 
-    private void Start()
+    private void Init()
     {
         bossObject = StageManager.instance.Current.BossObject;
-        bossObject = Instantiate(bossObject, bossSpawner.transform);
-        bossObject.transform.localPosition = Vector3.zero;
+
+        if(bossObject != null)
+        {
+            bossObject = Instantiate(bossObject, bossSpawner.transform);
+            bossObject.transform.localPosition = Vector3.zero;
+        }
+
         bossSpawner.SetActive(false);
     }
 
     public void StartBossStage()
     {
+        Init();
         //SceneManager.LoadScene(0);
         bossStage = true;
         bossSpawner.SetActive(true);
@@ -57,11 +63,6 @@ public class BossStageManager : MonoBehaviour
         //SoundManager.instance.PlayBGMSound("BackgroundBoss");
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("BackgroundBoss");
 
-    }
-
-    void SetBossAppearPos()
-    {
-        //bossAppearPos = boss.transform.position;
     }
 
     IEnumerator AppearAnimation()

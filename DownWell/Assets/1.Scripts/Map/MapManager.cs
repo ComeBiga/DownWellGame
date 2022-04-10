@@ -62,6 +62,21 @@ public class MapManager : MonoBehaviour
     //    //Instantiate(new GameObject());
     //}
 
+    #region Public Functions
+
+    public void Clear()
+    {
+        var mo = GetComponentsInChildren<Transform>();
+
+        foreach(var m in mo)
+        {
+            if (m != this.transform)
+                Destroy(m.gameObject);
+        }
+    }
+
+    #endregion
+
     #region Generating Elements Function
 
     private void Display(string objName, int index = 0)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 95782553816708499}
   - component: {fileID: 1076842359177817339}
   - component: {fileID: 6780187740627950756}
+  - component: {fileID: 186038846351553980}
   m_Layer: 0
   m_Name: StageEnd
   m_TagString: StageEnd
@@ -145,3 +146,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 6d11ee9eb9fde214fb39a557f0f166e5, type: 2}
+--- !u!114 &186038846351553980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7043322206093987627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7d182ecbb5195499fc719a4f32b83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -156,10 +156,10 @@ public class MapDisplay : MonoBehaviour
     private void DisplayObject(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         // wall
-        ws_root.InstantiateObject(tileCode, tilePosition, parent, currentStage);
+        ws_root.InstantiateObject(tileCode, tilePosition, transform, currentStage);
 
         // enemy
-        es_root.InstantiateObject(tileCode, tilePosition, parent, currentStage);
+        es_root.InstantiateObject(tileCode, tilePosition, transform, currentStage);
     }
 
     private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
