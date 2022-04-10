@@ -20,7 +20,11 @@ public class BossActionShootNormal : BossAction
 
     void ShootNormalByTransform()
     {
-        var target = GameObject.FindGameObjectWithTag("Player").transform;
+        var player = PlayerManager.instance.playerObject;
+
+        if (player.GetComponent<PlayerHealth>().CurrentHealth <= 0) return;
+
+        var target = player.transform;
         var dir = (target.position - transform.position).normalized;
 
         var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity, transform);

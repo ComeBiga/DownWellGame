@@ -2951,7 +2951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d602b2b8f62c8148b98eff0703bd26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerObject: {fileID: 0}
   selectedCharacter: {fileID: 0}
   characters1: []
 --- !u!4 &783146857
@@ -7279,6 +7279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 722291728}
   offset: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 0}
   blockRatio: 100
   enemyRatio: 100
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}

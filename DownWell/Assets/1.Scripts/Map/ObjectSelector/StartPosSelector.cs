@@ -18,7 +18,8 @@ public class StartPosSelector : ObjectSelector
         startPosObject.name = "StageStart";
         startPosObject.tag = "StageStart";
 
-        GameManager.instance.startPos = startPosObject.transform;
+        if(GameManager.instance != null) 
+            GameManager.instance.startPos = startPosObject.transform;
 
         return startPosObject;
     }

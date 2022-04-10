@@ -124,7 +124,7 @@ public class PlayerCombat : MonoBehaviour
 
         KnuckBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
 
-        StartCoroutine(BecomeVincible());
+        if(gameObject.activeSelf) StartCoroutine(BecomeVincible());
 
         DamagedEffect();
     }
@@ -145,7 +145,7 @@ public class PlayerCombat : MonoBehaviour
         //rigidbody.velocity = new Vector2(0, 0);
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed.y);
         //rigidbody.AddForce(new Vector2(0, speed), ForceMode2D.Impulse);
-        StartCoroutine(AddForceTransform(speed.x, direction, distance));
+        if(gameObject.activeSelf) StartCoroutine(AddForceTransform(speed.x, direction, distance));
         
     }
 
