@@ -14,6 +14,31 @@ public class ItemDrop : MonoBehaviour
     }
     #endregion
 
+    private List<GameObject> dropItems;
+
+    public ItemDrop()
+    {
+        dropItems = new List<GameObject>();
+    }
+
+    public void Init(List<GameObject> dropItems)
+    {
+        this.dropItems = dropItems;
+    }
+
+    public void Random(Vector3 position, int count = 5)
+    {
+        for(int i = 0; i< count; i++)
+        {
+            var rItem = dropItems[CatDown.Random.Get().Next(dropItems.Count)].GetComponent<Item>();
+
+            if(CatDown.Random.Get().Next(100) < rItem.i_Info.chacePercent)
+            {
+                rItem.InstantiateItem(position);
+            }
+        }
+    }
+
     public void InstantiateRandomItem(List<GameObject> dropitems, Vector3 position)
     {
         if (dropitems.Count > 0)

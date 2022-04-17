@@ -10,9 +10,9 @@ public class Enemy : MonoBehaviour
     //public float speed = 1f;
     [Header("DropItems")]
     public List<GameObject> dropItems;
+    private ItemDrop itemDropper;
 
     Collider2D[] colliders;
-
     ContactFilter2D filter;
 
     // Start is called before the first frame update
@@ -24,6 +24,10 @@ public class Enemy : MonoBehaviour
         filter = new ContactFilter2D();
         filter.layerMask = 1 << 3;
         filter.useLayerMask = false;
+
+        // ItemDrop Init
+        itemDropper = new ItemDrop();
+        itemDropper.Init(dropItems);
 
         dropItems.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
     }
@@ -69,17 +73,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        if (dropItems.Count > 0)
-        {
-            string seed = (Time.time + Random.value).ToString();
-            System.Random rand = new System.Random(seed.GetHashCode());
-            int rdCount = rand.Next(2, 5);
-
-            //for (int i = 0; i < rdCount; i++)
-            //    dropItems[0].GetComponent<Item>().InstantiateItem(transform.position);
-            dropItems[dropItems.Count-1].GetComponent<Item>().InstantiateItem(transform.position, rdCount);
-           ItemDrop.instance.InstantiateRandomItem(dropItems, transform.position);
-        }
+        itemDropper.Random(transform.position);
 
         Score.instance.getScore(this.gameObject);
         if (GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");
