@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+[CreateAssetMenu(fileName = "new ItemDropper", menuName = "Item/ItemDropper")]
+public class ItemDrop : ScriptableObject
 {
     private List<GameObject> dropItems;
+
+    [Header("TimeSet")]
+    public float popingTime = .5f;
+    public float livingTime = 2f;
+
+    [Header("PopSpeed")]
+    public float maxHorizontalPopSpeed = 5f;
+    public float minVerticalPopSpeed = 2f;
+    public float maxVerticalPopSpeed = 10f;
 
     public ItemDrop()
     {
         dropItems = new List<GameObject>();
     }
 
-    public void Init(List<GameObject> dropItems)
+    public void SetItem(List<GameObject> dropItems)
     {
         this.dropItems = dropItems;
     }
@@ -24,9 +34,23 @@ public class ItemDrop : MonoBehaviour
 
             if(CatDown.Random.Get().Next(100) < rItem.i_Info.chacePercent)
             {
-                rItem.InstantiateItem(position);
+                //rItem.InstantiateItem(position);
+                InstantiateItem(rItem.gameObject, position);
             }
         }
+    }
+
+    private void InstantiateItem(GameObject itemObject, Vector3 position)
+    {
+        var dropItem = Instantiate(itemObject, position, Quaternion.identity);
+
+        var rand = CatDown.Random.Get();
+        var popSpeed = new Vector2(rand.Next(-(int)maxHorizontalPopSpeed, (int)maxHorizontalPopSpeed),
+                                   rand.Next(-(int)minVerticalPopSpeed, (int)maxVerticalPopSpeed));
+
+        dropItem.GetComponent<Rigidbody2D>().AddForce(popSpeed, ForceMode2D.Impulse);
+        dropItem.GetComponent<Item>().Invoke("EndPoping", popingTime);
+        dropItem.GetComponent<Item>().DestroyItem(livingTime);
     }
 
     public void InstantiateRandomItem(List<GameObject> dropitems, Vector3 position)

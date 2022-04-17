@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
 
     //public float speed = 1f;
     [Header("DropItems")]
+    [SerializeField] private ItemDrop itemDropper;
     public List<GameObject> dropItems;
-    private ItemDrop itemDropper;
 
     Collider2D[] colliders;
     ContactFilter2D filter;
@@ -26,8 +26,8 @@ public class Enemy : MonoBehaviour
         filter.useLayerMask = false;
 
         // ItemDrop Init
-        itemDropper = new ItemDrop();
-        itemDropper.Init(dropItems);
+        //itemDropper = new ItemDrop();
+        itemDropper.SetItem(dropItems);
 
         //dropItems.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
     }

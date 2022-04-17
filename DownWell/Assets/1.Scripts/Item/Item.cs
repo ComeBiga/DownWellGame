@@ -11,9 +11,9 @@ public class Item : MonoBehaviour
     public float maxVerticalPopSpeed = 10f;
 
     public float popingTime = .5f;
-    bool poping = true;
-    bool gaining = false;
-    Transform gainTarget;
+    bool poping = true;     //Deprecated
+    bool gaining = false;   //Deprecated
+    Transform gainTarget;   //Deprecated
     public float followSpeed = 5f;
     
     [Header("ItemInfo")]
@@ -69,7 +69,6 @@ public class Item : MonoBehaviour
         }
     }
 
-    #endregion
 
     public void InstantiateItem(Vector3 position)
     {
@@ -82,7 +81,7 @@ public class Item : MonoBehaviour
         rb2d.AddForce(popSpeed, ForceMode2D.Impulse);
 
         newItem.GetComponent<Item>().Invoke("EndPoping", popingTime);
-        newItem.GetComponent<Item>().DestroyItem();
+        newItem.GetComponent<Item>().DestroyItem(livingTime);
     }
 
     public void InstantiateItem(Vector3 position, int randomCount)
@@ -92,18 +91,20 @@ public class Item : MonoBehaviour
             InstantiateItem(position);
         }
     }
+    
+    #endregion
 
     private void EndPoping()
     {
         poping = false;
     }
 
-    public void DestroyItem()
+    public void DestroyItem(float livingTime)
     {
-        StartCoroutine(DestroyItem(this.gameObject));
+        StartCoroutine(DestroyItem(this.gameObject, livingTime));
     }
 
-    private IEnumerator DestroyItem(GameObject item)
+    private IEnumerator DestroyItem(GameObject item, float livingTime)
     {
         yield return new WaitForSeconds(livingTime);
         Destroy(item);
