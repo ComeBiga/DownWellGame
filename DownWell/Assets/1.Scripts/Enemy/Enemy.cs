@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         itemDropper = new ItemDrop();
         itemDropper.Init(dropItems);
 
-        dropItems.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
+        //dropItems.Sort((A, B) => B.GetComponent<Item>().i_Info.chacePercent.CompareTo(A.GetComponent<Item>().i_Info.chacePercent));
     }
 
     // Update is called once per frame
@@ -73,12 +73,21 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        // Item Drop
         itemDropper.Random(transform.position);
 
-        Score.instance.getScore(this.gameObject);
+        // Score
+        //Score.instance.getScore(this.gameObject);
+        GameManager.instance.score.Add(info.score);
+
+        // Effect
         if (GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");
+
+        // Sound
         //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //사운드이펙트
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_1");
+        
+        // Destroy
         Destroy(this.gameObject);
     }
 }

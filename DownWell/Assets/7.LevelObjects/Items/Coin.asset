@@ -15,5 +15,8 @@ MonoBehaviour:
   code: 0
   name: Coin
   sprite: {fileID: 21300000, guid: b7169c21225b1f04ab520fd934e0cd2c, type: 3}
+  sprites: []
+  sliced: 0
   score: 0
-  chacePercent: 0
+  chacePercent: 80
+  immediately: 0

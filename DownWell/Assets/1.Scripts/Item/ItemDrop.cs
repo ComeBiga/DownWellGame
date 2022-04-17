@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    #region Singleton
-    public static ItemDrop instance = null;
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }
-    #endregion
-
     private List<GameObject> dropItems;
 
     public ItemDrop()

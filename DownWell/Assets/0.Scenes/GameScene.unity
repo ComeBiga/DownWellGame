@@ -9492,6 +9492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
+  score: {fileID: 928105782}
   enemyActiveRangeOffset: 3
 --- !u!4 &1700652126
 Transform:

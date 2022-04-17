@@ -7,4 +7,9 @@ public class ItemInfo : LevelObject
 {
     public float chacePercent;
     public bool immediately;
+
+    public virtual void PickUp()
+    {
+
+    }
 }

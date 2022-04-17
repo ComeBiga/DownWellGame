@@ -5,16 +5,6 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    #region Singleton
-    public static Score instance = null;
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }
-    #endregion
-
     LevelObject g_Info;
     ItemInfo i_info;
     public Text scoreTxt;
@@ -33,6 +23,13 @@ public class Score : MonoBehaviour
                 curScore += i_info.score;
                 break;
         }
+        scoreTxt.text = curScore.ToString();
+    }
+
+    public void Add(int amount)
+    {
+        curScore += amount;
+
         scoreTxt.text = curScore.ToString();
     }
 }

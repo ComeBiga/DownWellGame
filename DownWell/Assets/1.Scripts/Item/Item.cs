@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    private CoinCount ui;
     public float livingTime = 2f;
 
     public float maxHorizontalPopSpeed = 5f;
@@ -19,12 +18,6 @@ public class Item : MonoBehaviour
     
     [Header("ItemInfo")]
     public ItemInfo i_Info;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        ui = FindObjectOfType<CoinCount>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -50,7 +43,8 @@ public class Item : MonoBehaviour
             if(collider.tag == "Player")
             {
                 // coin up
-                ui.Gain();
+                GameManager.instance.coin.Gain();
+
                 //Score.instance.getScore(this.gameObject);
                 if (i_Info.immediately)
                     ItemManager.instance.ImmediatelyUseItem(this.gameObject);
