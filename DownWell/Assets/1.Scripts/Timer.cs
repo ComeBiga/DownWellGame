@@ -76,6 +76,6 @@ public class Timer : MonoBehaviour
         time_current = 0;
         text_Timer = $"{time_current:N2}";
         isEnded = false;
-        Debug.Log("Start");
+        //Debug.Log("Start");
     }
 }

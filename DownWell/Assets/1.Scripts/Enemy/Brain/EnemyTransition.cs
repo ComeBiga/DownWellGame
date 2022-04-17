@@ -16,7 +16,7 @@ namespace CatDown
         {
             this.brain = brain;
 
-            Debug.Log($"{brain.gameObject.name} / {decision}");
+            //Debug.Log($"{brain.gameObject.name} / {decision}");
             decision.OnDecide += OnChangeState;
         }
 
@@ -27,7 +27,7 @@ namespace CatDown
 
         public void OnChangeState()
         {
-            Debug.Log("OnChangeState");
+            //Debug.Log("OnChangeState");
             brain.ChangeState(toState);
         }
 

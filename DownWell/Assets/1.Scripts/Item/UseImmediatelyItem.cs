@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinItem : Item
+public class UseImmediatelyItem : UseItem
 {
     public override void OnPickedUp()
     {
-        // Score
-        GameManager.instance.coin.Gain();
+        Use();
+    }
+
+    public override void Use()
+    {
+
     }
 }

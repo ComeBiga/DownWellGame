@@ -22,17 +22,18 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!poping)
-            CollisionCheck();
+        //if(!poping)
+        //    CollisionCheck();
 
-        if (gaining)
-        {
-            Vector3 dir = gainTarget.position - transform.position;
-            //transform.position += dir * followSpeed * Time.deltaTime;
-            GetComponent<Rigidbody2D>().velocity = dir * followSpeed;
-        }
-
+        //if (gaining)
+        //{
+        //    Vector3 dir = gainTarget.position - transform.position;
+        //    //transform.position += dir * followSpeed * Time.deltaTime;
+        //    GetComponent<Rigidbody2D>().velocity = dir * followSpeed;
+        //}
     }
+
+    #region Deprecated
 
     void CollisionCheck()
     {
@@ -68,6 +69,8 @@ public class Item : MonoBehaviour
         }
     }
 
+    #endregion
+
     public void InstantiateItem(Vector3 position)
     {
         GameObject newItem = Instantiate(this.gameObject, position, transform.rotation);
@@ -100,9 +103,51 @@ public class Item : MonoBehaviour
         StartCoroutine(DestroyItem(this.gameObject));
     }
 
-    IEnumerator DestroyItem(GameObject item)
+    private IEnumerator DestroyItem(GameObject item)
     {
         yield return new WaitForSeconds(livingTime);
         Destroy(item);
+    }
+
+    public void PickUp()
+    {
+        if (poping) return;
+
+        // Stop being dragged
+        StopCoroutine("EDraggedIntoPlayer");
+
+        // Item picking up event
+        OnPickedUp();
+
+        // Sound
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");
+
+        // Destroy
+        Destroy(this.gameObject);
+    }
+
+    public virtual void OnPickedUp()
+    {
+
+    }
+
+    public void BeDraggedIntoPlayer(Transform target)
+    {
+        StartCoroutine(EDraggedIntoPlayer(target));
+    }
+
+    private IEnumerator EDraggedIntoPlayer(Transform target)
+    {
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.isKinematic = true;
+        rigidbody.velocity = Vector3.zero;
+
+        while(true)
+        {
+            Vector3 dir = target.position - transform.position;
+            GetComponent<Rigidbody2D>().velocity = dir * followSpeed;
+
+            yield return null;
+        }
     }
 }

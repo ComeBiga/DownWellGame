@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7898422307149849015}
   - component: {fileID: 3991413537837890761}
+  - component: {fileID: 6623385352841280815}
   m_Layer: 10
   m_Name: CoinMag
   m_TagString: CoinMag
@@ -47,6 +48,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &6623385352841280815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838676478569553915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0bd9a2267dca4786f415df88fffe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5416284440441354456
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +127,7 @@ GameObject:
   - component: {fileID: 3761122455356345184}
   - component: {fileID: 3505710173777569079}
   - component: {fileID: 5073135632283657211}
+  - component: {fileID: 6065840089087331528}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -410,6 +424,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curItem: 
   bubble: {fileID: 1491836226527178917, guid: be13bce07010a9b428f096fe7ba1c1d1, type: 3}
+--- !u!114 &6065840089087331528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b891b5d404c11894cad6f53387ef07f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &9199056338382792220
 GameObject:
   m_ObjectHideFlags: 0

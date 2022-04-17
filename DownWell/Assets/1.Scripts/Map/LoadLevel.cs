@@ -43,7 +43,7 @@ public class LoadLevel : MonoBehaviour
         //LoadStageGround();
         //LoadStageStart();
 
-        Debug.Log("Loadlevel Start");
+        //Debug.Log("Loadlevel Start");
     }
 
     #region Deprecated

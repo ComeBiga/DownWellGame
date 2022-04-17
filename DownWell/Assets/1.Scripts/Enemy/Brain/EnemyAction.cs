@@ -27,7 +27,7 @@ namespace CatDown
                 yield return null;
             }
 
-            Debug.Log("StartAction");
+            //Debug.Log("StartAction");
             OnActionEnter();
 
             while(true)
@@ -43,7 +43,7 @@ namespace CatDown
 
         public void StopAction()
         {
-            Debug.Log($"{gameObject.name} / StopAction");
+            //Debug.Log($"{gameObject.name} / StopAction");
             StopCoroutine(coroutineETake);
 
             OnActionExit();
