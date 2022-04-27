@@ -9,6 +9,10 @@ public class PlayerCombat : MonoBehaviour
     PlayerController controller;
     PlayerHealth health;
 
+    private PlayerCombatStepping cStep;
+    private Weapon weapon;
+    private PlayerAttack pAttack;
+
     [Header("Shoot")]
     public GameObject projectile;
     public int projectileDamage = 4;
@@ -54,20 +58,36 @@ public class PlayerCombat : MonoBehaviour
         enemyColliders = new Collider2D[3];
 
         currentProjectile = maxProjectile;
+
+        // Attack
+        pAttack = GetComponent<PlayerAttack>();
+
+        // Weapon
+        weapon = new Weapon(projectile, maxProjectile);
+
+        // Stepping
+        cStep = new PlayerCombatStepping(hitBox);
+        cStep.stepUpSpeed = stepUpSpeed;
+        cStep.unshootableTime = unshootableTime;
+        cStep.onStep += weapon.Reload;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // PlayerAttack
         shotTimer += Time.deltaTime;
 
+        // PlayerAttack
         if (!reloaded && controller.GroundCollision())
         {
             Reload();
             reloaded = true;
         }
 
-        StepOn();
+        //StepOn();
+        // =>
+        cStep.Loop();
     }
 
     #region Shoot Function
