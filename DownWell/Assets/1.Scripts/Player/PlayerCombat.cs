@@ -138,38 +138,38 @@ public class PlayerCombat : MonoBehaviour
     {
         if (isInvincible) return;
 
+        // to OnDamaged
         if (ItemManager.instance.curItem != "") ItemManager.instance.UseItem();
 
+        // Lose Health
         if(useLoseHealth) health.LoseHealth();
 
-        KnuckBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
+        // Knockback
+        KnockBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
 
-        if(gameObject.activeSelf) StartCoroutine(BecomeVincible());
-
+        // Effect
         DamagedEffect();
+        BecomeInvincible();
     }
 
-    public void KnuckBack(Vector2 speed, Vector3 playerPosition, Vector3 enemyPosition, float distance)
+    public void KnockBack(Vector2 speed, Vector3 playerPosition, Vector3 enemyPosition, float distance)
     {
         Vector3 knuckbackDir = playerPosition - enemyPosition;
         int direction = knuckbackDir.x > 0 ? 1 : -1;
 
-        KnuckBack(speed, direction, distance);
+        AddForce(speed, direction, distance);
     }
 
-    public void KnuckBack(Vector2 speed, int direction, float distance)
+    public void AddForce(Vector2 speed, int direction, float distance)
     {
-        //rigidbody.velocity = new Vector2(knuckBackSpeed * direction, rigidbody.velocity.y + knuckBackSpeed);
-
-        //StartCoroutine(KnuckBacking(knuckBackSpeed, direction));
-        //rigidbody.velocity = new Vector2(0, 0);
+        // Y direction
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed.y);
-        //rigidbody.AddForce(new Vector2(0, speed), ForceMode2D.Impulse);
-        if(gameObject.activeSelf) StartCoroutine(AddForceTransform(speed.x, direction, distance));
-        
+
+        // X direction
+        if(gameObject.activeSelf) StartCoroutine(EAddForceTransform(speed.x, direction, distance));
     }
 
-    IEnumerator AddForceTransform(float knuckBackSpeed, int direction, float distance)
+    IEnumerator EAddForceTransform(float knuckBackSpeed, int direction, float distance)
     {
         InputManager.instance.blockInput = true;
         float dis = 0;
@@ -192,8 +192,14 @@ public class PlayerCombat : MonoBehaviour
         InputManager.instance.blockInput = false;
         controller.cantMove = false;
     }
+    
+    private void BecomeInvincible()
+    {
+        // Vincible
+        if (gameObject.activeSelf) StartCoroutine(EBecomeInvincible());
+    }
 
-    IEnumerator BecomeVincible()
+    private IEnumerator EBecomeInvincible()
     {
         isInvincible = true;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
@@ -201,11 +207,10 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(invincibleTime);
 
         isInvincible = false;
-
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
-    void DamagedEffect()
+    private void DamagedEffect()
     {
         Camera.main.GetComponent<CameraShake>().Shake(.08f);
 
