@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseImmediatelyItem : UseItem
 {
-    public override void OnPickedUp()
+    protected override void OnPickedUp()
     {
         Use();
     }

@@ -42,7 +42,12 @@ public class Item : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public virtual void OnPickedUp()
+    protected virtual void OnPickedUp()
+    {
+
+    }
+
+    public virtual void PutIn(PlayerItem playerItem)
     {
 
     }

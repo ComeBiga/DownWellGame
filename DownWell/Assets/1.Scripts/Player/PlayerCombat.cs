@@ -147,6 +147,9 @@ public class PlayerCombat : MonoBehaviour
         // Knockback
         KnockBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
 
+        // Event
+        OnDamaged.Invoke();
+
         // Effect
         DamagedEffect();
         BecomeInvincible();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinItem : Item
 {
-    public override void OnPickedUp()
+    protected override void OnPickedUp()
     {
         // Score
         GameManager.instance.coin.Gain();

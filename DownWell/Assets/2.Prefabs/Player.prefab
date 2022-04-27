@@ -121,12 +121,13 @@ GameObject:
   - component: {fileID: 1272930707902587046}
   - component: {fileID: 5834640292865415493}
   - component: {fileID: 5834640292865415492}
+  - component: {fileID: 3505710173777569079}
   - component: {fileID: 3027550015346354234}
   - component: {fileID: 5834640292865415488}
   - component: {fileID: 1340578661}
   - component: {fileID: 5561447862664596211}
   - component: {fileID: 3761122455356345184}
-  - component: {fileID: 3505710173777569079}
+  - component: {fileID: 1501899443074097855}
   - component: {fileID: 5073135632283657211}
   - component: {fileID: 6065840089087331528}
   m_Layer: 3
@@ -270,6 +271,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &3505710173777569079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4b361938b6aed468435063e3c70420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - name: Shoot
+    transform: {fileID: 7447212144028510301}
+    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
+    angle: 0
+  - name: Damaged
+    transform: {fileID: 5834640292865415491}
+    fx: {fileID: 5553784123641463371, guid: 3db93dc1ff4f95e4da45cf8fc5cb0554, type: 3}
+    angle: 0
+  - name: Jump
+    transform: {fileID: 7447212144028510301}
+    fx: {fileID: 4799331527240392631, guid: 8d7538f851b4f4447b4da42c75533efa, type: 3}
+    angle: 0
+  - name: Land
+    transform: {fileID: 7447212144028510301}
+    fx: {fileID: 5338455378960127721, guid: e650b38e05f3c354594dfed8dc34e2da, type: 3}
+    angle: 0
 --- !u!114 &3027550015346354234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,9 +387,9 @@ MonoBehaviour:
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1340578661}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: LoseHealth
+      - m_Target: {fileID: 1501899443074097855}
+        m_TargetAssemblyTypeName: PlayerItem, Assembly-CSharp
+        m_MethodName: UseSlotItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -382,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
---- !u!114 &3505710173777569079
+--- !u!114 &1501899443074097855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,26 +421,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5834640292865415495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4b361938b6aed468435063e3c70420, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a4bc6516bc05b24491b377273435ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - name: Shoot
-    transform: {fileID: 7447212144028510301}
-    fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
-    angle: 0
-  - name: Damaged
-    transform: {fileID: 5834640292865415491}
-    fx: {fileID: 5553784123641463371, guid: 3db93dc1ff4f95e4da45cf8fc5cb0554, type: 3}
-    angle: 0
-  - name: Jump
-    transform: {fileID: 7447212144028510301}
-    fx: {fileID: 4799331527240392631, guid: 8d7538f851b4f4447b4da42c75533efa, type: 3}
-    angle: 0
-  - name: Land
-    transform: {fileID: 7447212144028510301}
-    fx: {fileID: 5338455378960127721, guid: e650b38e05f3c354594dfed8dc34e2da, type: 3}
-    angle: 0
 --- !u!114 &5073135632283657211
 MonoBehaviour:
   m_ObjectHideFlags: 0
