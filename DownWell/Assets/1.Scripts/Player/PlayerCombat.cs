@@ -10,27 +10,6 @@ public class PlayerCombat : MonoBehaviour
     PlayerHealth health;
 
     private PlayerCombatStepping cStep;
-    private Weapon weapon;
-    private PlayerAttack pAttack;
-
-    [Header("Shoot")]
-    public GameObject projectile;
-    public int projectileDamage = 4;
-    public int maxProjectile = 8;
-    public int currentProjectile;
-    bool reloaded = true;
-    public float shotDelay = 1f;
-    public float shotReboundSpeed = 1f;
-    float shotTimer = 0f;
-
-    [Header("Stepping")]
-    public GameObject hitBox;
-    public LayerMask enemyLayerMask;
-    public float stepUpSpeed = 7f;
-    public float unshootableTime = 1f;
-    public bool shootable = true;
-    ContactFilter2D enemyFilter;
-    Collider2D[] enemyColliders;
 
     [Header("Damaged")]
     public bool useLoseHealth = false;
@@ -50,87 +29,52 @@ public class PlayerCombat : MonoBehaviour
         controller = GetComponent<PlayerController>();
         health = GetComponent<PlayerHealth>();
 
-        shotTimer = shotDelay;
-
-        enemyFilter = new ContactFilter2D();
-        enemyFilter.SetLayerMask(enemyLayerMask);
-
-        enemyColliders = new Collider2D[3];
-
-        currentProjectile = maxProjectile;
-
-        // Attack
-        pAttack = GetComponent<PlayerAttack>();
-
-        // Weapon
-        weapon = new Weapon(projectile, maxProjectile);
-
         // Stepping
-        cStep = new PlayerCombatStepping(hitBox);
-        cStep.stepUpSpeed = stepUpSpeed;
-        cStep.unshootableTime = unshootableTime;
-        cStep.onStep += weapon.Reload;
+        cStep = GetComponent<PlayerCombatStepping>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // PlayerAttack
-        shotTimer += Time.deltaTime;
+    #region Shoot Function (Deprecated)
+    //public void Shoot()
+    //{
+    //    if (shotTimer >= shotDelay && shootable && currentProjectile > 0)
+    //    {
+    //        InstantiateProjectile();
+    //        currentProjectile--;
 
-        // PlayerAttack
-        if (!reloaded && controller.GroundCollision())
-        {
-            Reload();
-            reloaded = true;
-        }
+    //        if (currentProjectile < maxProjectile) reloaded = false;
 
-        //StepOn();
-        // =>
-        cStep.Loop();
-    }
+    //        //LeapOff(shotReboundSpeed);
+    //        GetComponent<PlayerPhysics>().LeapOff(shotReboundSpeed);
 
-    #region Shoot Function
-    public void Shoot()
-    {
-        if (shotTimer >= shotDelay && shootable && currentProjectile > 0)
-        {
-            InstantiateProjectile();
-            currentProjectile--;
+    //        ShootEffect();
 
-            if (currentProjectile < maxProjectile) reloaded = false;
+    //        bulletCount.instance.countBullet();
 
-            LeapOff(shotReboundSpeed);
+    //        shotTimer = 0;
+    //    }
+    //}
 
-            ShootEffect();
+    //public void InstantiateProjectile()
+    //{
+    //    GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+    //    newProjectile.GetComponent<Projectile>().damage = projectileDamage;
+    //}
 
-            bulletCount.instance.countBullet();
+    //public void Reload()
+    //{
+    //    currentProjectile = maxProjectile;
+    //    bulletCount.instance.bulletReload();
+    //}
 
-            shotTimer = 0;
-        }
-    }
+    //public void ShootEffect()
+    //{
+    //    Camera.main.GetComponent<CameraShake>().Shake(.03f);                           //카메라 흔들림
+    //    GetComponent<PlayerAnimation>().Shoot();                                       //캐릭터 애니메이션
+    //    //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_0");  //사운드이펙트
+    //    if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_0");
 
-    public void InstantiateProjectile()
-    {
-        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        newProjectile.GetComponent<Projectile>().damage = projectileDamage;
-    }
-
-    public void Reload()
-    {
-        currentProjectile = maxProjectile;
-        bulletCount.instance.bulletReload();
-    }
-
-    public void ShootEffect()
-    {
-        Camera.main.GetComponent<CameraShake>().Shake(.03f);                           //카메라 흔들림
-        GetComponent<PlayerAnimation>().Shoot();                                       //캐릭터 애니메이션
-        //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_0");  //사운드이펙트
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_0");
-
-        GetComponent<Effector>().Generate("Shoot");                                    //슛 이펙트
-    }
+    //    GetComponent<Effector>().Generate("Shoot");                                    //슛 이펙트
+    //}
     #endregion
 
     #region Damage
@@ -226,61 +170,42 @@ public class PlayerCombat : MonoBehaviour
 
     #endregion
 
-    #region unused Code
-    //void BecomeVincible()
+    #region Stepping (Deprecated)
+    //void StepOn()
     //{
-    //    isInvincible = false;
-    //    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    //    var hitNum = hitBox.GetComponent<CircleCollider2D>().OverlapCollider(enemyFilter, enemyColliders);
+
+    //    bool playerBound = false;
+
+    //    foreach (var enemyCollider in enemyColliders)
+    //    {
+    //        //Debug.Log(enemyCollider);
+
+    //        if (enemyCollider != null)
+    //        {
+    //            playerBound = true;
+    //            enemyCollider.GetComponent<Enemy>().Die();
+
+    //            if (!reloaded) Reload();
+    //            StartCoroutine(SteppingUp());
+    //        }
+    //    }
+
+    //    if (playerBound) LeapOff(leapSpeed);
     //}
 
-    //IEnumerator BecomeInvincible()
+    //IEnumerator SteppingUp()
     //{
-    //    isInvincible = true;
-    //    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .3f);
-
-    //    yield return new WaitForSeconds(invincibleTime);
-
-    //    isInvincible = false;
-    //    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    //    shootable = false;
+    //    yield return new WaitForSeconds(unshootableTime);
+    //    shootable = true;
     //}
-    #endregion
 
-    #region Stepping
-    void StepOn()
-    {
-        var hitNum = hitBox.GetComponent<CircleCollider2D>().OverlapCollider(enemyFilter, enemyColliders);
-
-        bool playerBound = false;
-
-        foreach (var enemyCollider in enemyColliders)
-        {
-            //Debug.Log(enemyCollider);
-
-            if (enemyCollider != null)
-            {
-                playerBound = true;
-                enemyCollider.GetComponent<Enemy>().Die();
-
-                if (!reloaded) Reload();
-                StartCoroutine(SteppingUp());
-            }
-        }
-
-        if (playerBound) LeapOff(leapSpeed);
-    }
-
-    IEnumerator SteppingUp()
-    {
-        shootable = false;
-        yield return new WaitForSeconds(unshootableTime);
-        shootable = true;
-    }
-
-    public void LeapOff(float stepUpSpeed)
-    {
-        rigidbody.velocity = new Vector2(rigidbody.velocity.x, stepUpSpeed);
-        controller.jumping = true;
-    }
+    //public void LeapOff(float stepUpSpeed)
+    //{
+    //    rigidbody.velocity = new Vector2(rigidbody.velocity.x, stepUpSpeed);
+    //    controller.jumping = true;
+    //}
 
     #endregion
 

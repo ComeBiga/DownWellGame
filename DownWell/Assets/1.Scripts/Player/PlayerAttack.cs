@@ -5,12 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerCombat))]
 public class PlayerAttack : MonoBehaviour
 {
-    private Weapon weapon;
+    public Weapon weapon;
     public GameObject projectile;
     public int capacity = 8;
     public float coolDownTime = 1f;
-
-    public bool shootable = true;
+    public float shotRebound = 0f;
 
     private float timer = 0f;
 
@@ -23,14 +22,16 @@ public class PlayerAttack : MonoBehaviour
     {
         if(timer < coolDownTime) timer += Time.deltaTime;
 
-        if(!weapon.Reloaded) weapon.Reload();
+        if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
     }
 
-    public void Loop()
+    public void Shoot()
     {
-        if(timer > coolDownTime && shootable)
+        if(timer > coolDownTime && weapon.shootable && !weapon.IsEmpty)
         {
             weapon.Shoot(projectile, transform);
+
+            GetComponent<PlayerPhysics>().LeapOff(weapon.shotRebound);
 
             // Effect
             Effect();
@@ -55,5 +56,10 @@ public class PlayerAttack : MonoBehaviour
 
         // UI
         bulletCount.instance.countBullet();
+    }
+
+    public void ReLoad()
+    {
+        weapon.Reload();
     }
 }

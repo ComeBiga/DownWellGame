@@ -102,7 +102,8 @@ public class PlayerController : MonoBehaviour
             }
             if (shooting && InputManager.instance.GetJumpButton())
             {
-                GetComponent<PlayerCombat>().Shoot();
+                //GetComponent<PlayerCombat>().Shoot();
+                GetComponent<PlayerAttack>().Shoot();
             }
         }
         else
@@ -119,7 +120,8 @@ public class PlayerController : MonoBehaviour
             }
             if (shooting && Input.GetButton("Jump"))
             {
-                GetComponent<PlayerCombat>().Shoot();
+                //GetComponent<PlayerCombat>().Shoot();
+                GetComponent<PlayerAttack>().Shoot();
             }
         }
 #elif UNITY_ANDROID 

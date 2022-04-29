@@ -42,7 +42,7 @@ public class bulletCount : MonoBehaviour
         switch(curBulletType.name)
         {
             case "type1":
-                anim.SetInteger("shootNum", PlayerManager.instance.playerObject.GetComponent<PlayerCombat>().currentProjectile);
+                //anim.SetInteger("shootNum", PlayerManager.instance.playerObject.GetComponent<PlayerCombat>().currentProjectile);
                 break;
         }
     }

@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerCombat))]
-public class PlayerCombatStepping
+public class PlayerCombatStepping : MonoBehaviour
 {
-    private GameObject hitBox;
+    // Hitbox
+    [SerializeField] private GameObject hitBox;
 
     // Rigidbody
     public float stepUpSpeed = 7f;
-    public float unshootableTime = 1f;
+    public float delayAsStep = .5f;
     private bool shootable = true;
 
     // Enemy Collision
@@ -17,23 +19,33 @@ public class PlayerCombatStepping
     private ContactFilter2D enemyFilter;
     private LayerMask enemyLayerMask;
 
-    Coroutine coroutine;
-
     // Event
-    public event System.Action onStep;
+    public event System.Action onStep;          // deprecated
+    [Space]
+    public UnityEvent OnStep;
 
     public PlayerCombatStepping(GameObject hitBox)
     {
         this.hitBox = hitBox;
         stepUpSpeed = 7f;
-        unshootableTime = .5f;
+        delayAsStep = .5f;
+
+        enemyFilter = new ContactFilter2D();
+        enemyFilter.useLayerMask = true;
+        enemyFilter.layerMask = LayerMask.GetMask("Enemy");
+        Debug.Log(enemyFilter.layerMask);
+    }
+
+    private void Start()
+    {
+        enemyColliders = new Collider2D[3];
 
         enemyFilter = new ContactFilter2D();
         enemyFilter.useLayerMask = true;
         enemyFilter.layerMask = LayerMask.GetMask("Enemy");
     }
 
-    public void Loop()
+    public void Update()
     {
         var hitNum = hitBox.GetComponent<CircleCollider2D>().OverlapCollider(enemyFilter, enemyColliders);
 
@@ -43,30 +55,33 @@ public class PlayerCombatStepping
             {
                 enemyCollider.GetComponent<Enemy>().Die();
 
-                onStep.Invoke();
+                //onStep.Invoke();
+                OnStep.Invoke();
 
                 // onStep, 탄창 클래스에서 참조
                 //if (!reloaded) Reload();
 
                 // onStep
                 //StartCoroutine(SteppingUp());
+                BeUnshootableForTime(delayAsStep);
+
+                GetComponent<PlayerPhysics>().LeapOff(stepUpSpeed);
+
+                break;
             }
         }
-
-        // PlayerPhysics
-        //if (playerBound) LeapOff(leapSpeed);
     }
 
-    IEnumerator SteppingUp()
+    private void BeUnshootableForTime(float time)
     {
-        shootable = false;
-        yield return new WaitForSeconds(unshootableTime);
-        shootable = true;
+        StartCoroutine(EBeUnshootableForTime(time));
     }
 
-    public void LeapOff(float stepUpSpeed)
+    private IEnumerator EBeUnshootableForTime(float time)
     {
-        //rigidbody.velocity = new Vector2(rigidbody.velocity.x, stepUpSpeed);
-        //controller.jumping = true;
+        GetComponent<PlayerAttack>().weapon.shootable = false;
+        yield return new WaitForSeconds(time);
+
+        GetComponent<PlayerAttack>().weapon.shootable = true;
     }
 }

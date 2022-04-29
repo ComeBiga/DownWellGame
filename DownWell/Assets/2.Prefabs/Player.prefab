@@ -125,7 +125,10 @@ GameObject:
   - component: {fileID: 3027550015346354234}
   - component: {fileID: 5834640292865415488}
   - component: {fileID: 1340578661}
+  - component: {fileID: 3329592185957936949}
   - component: {fileID: 5561447862664596211}
+  - component: {fileID: 6960136760963069639}
+  - component: {fileID: 985416465136532519}
   - component: {fileID: 3761122455356345184}
   - component: {fileID: 1501899443074097855}
   - component: {fileID: 5073135632283657211}
@@ -354,6 +357,18 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3329592185957936949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae294d85bb2702409673066ddee7c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5561447862664596211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,12 +387,6 @@ MonoBehaviour:
   currentProjectile: 0
   shotDelay: 0.2
   shotReboundSpeed: 0
-  hitBox: {fileID: 5416284440441354456}
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  stepUpSpeed: 7
-  unshootableTime: 0.5
   shootable: 1
   useLoseHealth: 1
   leapSpeed: 7
@@ -390,6 +399,55 @@ MonoBehaviour:
       - m_Target: {fileID: 1501899443074097855}
         m_TargetAssemblyTypeName: PlayerItem, Assembly-CSharp
         m_MethodName: UseSlotItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6960136760963069639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe2a54b0c002bd45b2c470b42ff2c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon:
+    shotRebound: 0
+    shootable: 1
+  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
+  capacity: 8
+  coolDownTime: 0.2
+  shotRebound: 0
+--- !u!114 &985416465136532519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a67cf9de238a34a834b46fd0e25132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 5416284440441354456}
+  stepUpSpeed: 7
+  delayAsStep: 0.5
+  OnStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6960136760963069639}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: ReLoad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

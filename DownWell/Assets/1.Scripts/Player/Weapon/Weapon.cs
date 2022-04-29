@@ -12,9 +12,11 @@ public class Weapon
     }
     private Magazine magazine;
 
+    public float shotRebound;
     public bool shootable;
 
     public bool Reloaded { get { return (magazine.current >= magazine.max); } }
+    public bool IsEmpty { get { return (magazine.current <= 0); } }
 
     public Weapon(GameObject projectile, int capacity)
     {
