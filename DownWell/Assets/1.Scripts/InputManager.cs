@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     }
     #endregion
 
+    private CatDown.Input input;
+
     public bool mouseClick = false;
     public bool blockInput = false;
     public float horizontal = 0;
@@ -26,7 +28,15 @@ public class InputManager : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if(controllerPanel != null) controllerPanel.SetActive(false);
+        input = new CatDown.InputPC();
+#elif UNITY_ANDROID
+        input = new CatDown.InputAndroid();
+#endif
+
+        input.Init(sens, dead);
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        if (controllerPanel != null) controllerPanel.SetActive(false);
 #elif UNITY_ANDROID
         if(controllerPanel != null) controllerPanel.SetActive(true);  
 #endif
@@ -37,6 +47,8 @@ public class InputManager : MonoBehaviour
     {
         if(!blockInput)
             MobileTouch();
+
+        horizontal = input.GetAxisHorizontal();
     }
 
     void MobileTouch()

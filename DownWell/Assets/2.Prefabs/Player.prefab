@@ -123,13 +123,13 @@ GameObject:
   - component: {fileID: 5834640292865415492}
   - component: {fileID: 3505710173777569079}
   - component: {fileID: 3027550015346354234}
-  - component: {fileID: 5834640292865415488}
+  - component: {fileID: 3761122455356345184}
   - component: {fileID: 1340578661}
+  - component: {fileID: 5834640292865415488}
   - component: {fileID: 3329592185957936949}
   - component: {fileID: 5561447862664596211}
   - component: {fileID: 6960136760963069639}
   - component: {fileID: 985416465136532519}
-  - component: {fileID: 3761122455356345184}
   - component: {fileID: 1501899443074097855}
   - component: {fileID: 5073135632283657211}
   - component: {fileID: 6065840089087331528}
@@ -317,6 +317,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Cat
   num: 0
+--- !u!114 &3761122455356345184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c30747f893e0c45ba2a782f7e7f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+--- !u!114 &1340578661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5834640292865415488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,23 +370,6 @@ MonoBehaviour:
   verticalRayCount: 4
   cantMove: 0
   jumping: 0
---- !u!114 &1340578661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 0
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3329592185957936949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae294d85bb2702409673066ddee7c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  jumpSpeed: 12
+  gravity: 3
+  maxFallSpeed: 30
 --- !u!114 &5561447862664596211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,13 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2e08c80e2e2a04b879f15658acf600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
-  projectileDamage: 4
-  maxProjectile: 8
-  currentProjectile: 0
-  shotDelay: 0.2
-  shotReboundSpeed: 0
-  shootable: 1
   useLoseHealth: 1
   leapSpeed: 7
   knuckBackSpeed: {x: 3, y: 5}
@@ -420,9 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe2a54b0c002bd45b2c470b42ff2c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
-    shotRebound: 0
-    shootable: 1
   projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
   capacity: 8
   coolDownTime: 0.2
@@ -457,19 +464,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3761122455356345184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c30747f893e0c45ba2a782f7e7f0bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canMove: 1
 --- !u!114 &1501899443074097855
 MonoBehaviour:
   m_ObjectHideFlags: 0

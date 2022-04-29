@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerPhysics))]
 public class PlayerController : MonoBehaviour
 {
+    InputManager input;
     Rigidbody2D rigidbody;
 
     public LayerMask groundLayerMask;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        input = InputManager.instance;
         rigidbody = GetComponent<Rigidbody2D>();
 
         rigidbody.gravityScale = gravity;
@@ -158,11 +161,10 @@ public class PlayerController : MonoBehaviour
         UpdateRaycastOrigins();
 
         if (cantMove) return;
-        float h = Input.GetAxis("Horizontal");
-        //float h = Input.GetAxisRaw("Horizontal");
 
-        //Debug.Log(HorizontalCollisions());
-        //rigidbody.velocity = new Vector2(h * speed, rigidbody.velocity.y);
+        transform.position += Vector3.right * speed * input.horizontal * Time.deltaTime;
+
+        float h = Input.GetAxis("Horizontal");
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (InputManager.instance.mouseClick)
