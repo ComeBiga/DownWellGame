@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace CatDown
 {
-
     public class InputAndroid : Input
     {
         float screenCenter = Camera.main.pixelWidth / 2;
@@ -18,51 +17,15 @@ namespace CatDown
             screenQuater = Camera.main.pixelWidth / 4;
         }
 
+        public override void Update()
+        {
+            base.Update();
+
+            UpdateHorizontal();
+        }
+
         public override float GetAxisHorizontal()
         {
-            float horizontal = 0f;
-
-            if (UnityEngine.Input.touchCount > 0)
-            {
-                var moveTouchCount = 0;
-                foreach (var touch in UnityEngine.Input.touches)
-                {
-                    if (touch.position.x < screenCenter)
-                    {
-                        moveTouchCount++;
-
-                        // 왼쪽 방향키
-                        if (touch.position.x > 0 && touch.position.x <= screenQuater)
-                        {
-                            Debug.Log("left");
-                            //horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
-                            horizontal = (horizontal > 0) ? 0 : Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
-                            //horizontal = -1;
-                        }
-                        // 오른쪽 방향키
-                        else if (touch.position.x > screenQuater && touch.position.x < screenCenter)
-                        {
-                            Debug.Log("right");
-                            //horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
-                            horizontal = (horizontal < 0) ? 0 : Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
-                            //horizontal = 1;
-                        }
-                    }
-                }
-
-                // 터치는 있지만, 방향키가 눌리지 않았을 때
-                if (moveTouchCount <= 0)
-                {
-                    horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
-                    //horizontal = 0;
-                }
-            }
-            else
-            {
-                horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
-                //horizontal = 0;
-            }
-
             return horizontal;
         }
 
@@ -110,6 +73,50 @@ namespace CatDown
                 }
             }
             return false;
+        }
+
+        private void UpdateHorizontal()
+        {
+            if (UnityEngine.Input.touchCount > 0)
+            {
+                var moveTouchCount = 0;
+                foreach (var touch in UnityEngine.Input.touches)
+                {
+                    if (touch.position.x < screenCenter)
+                    {
+                        moveTouchCount++;
+
+                        // 왼쪽 방향키
+                        if (touch.position.x > 0 && touch.position.x <= screenQuater)
+                        {
+                            Debug.Log("left");
+                            //horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                            horizontal = (horizontal > 0) ? 0 : Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
+                            //horizontal = -1;
+                        }
+                        // 오른쪽 방향키
+                        else if (touch.position.x > screenQuater && touch.position.x < screenCenter)
+                        {
+                            Debug.Log("right");
+                            //horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                            horizontal = (horizontal < 0) ? 0 : Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
+                            //horizontal = 1;
+                        }
+                    }
+                }
+
+                // 터치는 있지만, 방향키가 눌리지 않았을 때
+                if (moveTouchCount <= 0)
+                {
+                    horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
+                    //horizontal = 0;
+                }
+            }
+            else
+            {
+                horizontal = (Mathf.Abs(horizontal) < dead) ? 0 : Mathf.MoveTowards(horizontal, 0, sens * Time.deltaTime);
+                //horizontal = 0;
+            }
         }
     }
 }

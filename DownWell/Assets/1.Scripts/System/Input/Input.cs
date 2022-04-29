@@ -6,13 +6,21 @@ namespace CatDown
 {
     public abstract class Input
     {
+        protected float horizontal;
+
         protected float sens;
         protected float dead;
 
         public virtual void Init(float sens, float dead)
         {
+            horizontal = 0;
             this.sens = sens;
             this.dead = dead;
+        }
+
+        public virtual void Update()
+        {
+
         }
 
         // Horizontal

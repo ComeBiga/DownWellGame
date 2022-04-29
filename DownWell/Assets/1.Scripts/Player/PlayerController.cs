@@ -82,67 +82,78 @@ public class PlayerController : MonoBehaviour
         Shoot();
     }
 
-    private void FixedUpdate()
-    {
-        //HorizontalMove();
-    }
-
     void Shoot()
     {
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if (InputManager.instance.mouseClick)
-        {
-            if (InputManager.instance.GetJumpButtonUp())
-            {
-                shootable = true;
-            }
-
-            if (shootable && InputManager.instance.GetJumpButtonDown())
-            {
-                shooting = true;
-                //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-            }
-            if (shooting && InputManager.instance.GetJumpButton())
-            {
-                //GetComponent<PlayerCombat>().Shoot();
-                GetComponent<PlayerAttack>().Shoot();
-            }
-        }
-        else
-        {
-            if (Input.GetButtonUp("Jump"))
-            {
-                shootable = true;
-            }
-
-            if (shootable && Input.GetButtonDown("Jump"))
-            {
-                shooting = true;
-                //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-            }
-            if (shooting && Input.GetButton("Jump"))
-            {
-                //GetComponent<PlayerCombat>().Shoot();
-                GetComponent<PlayerAttack>().Shoot();
-            }
-        }
-#elif UNITY_ANDROID 
-        if (InputManager.instance.GetJumpButtonUp())
+        if (input.GetJumpButtonUp())
         {
             shootable = true;
         }
 
-        if (shootable && InputManager.instance.GetJumpButtonDown())
+        if (shootable && input.GetJumpButtonDown())
         {
             shooting = true;
             //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
         }
-        if (shooting && InputManager.instance.GetJumpButton())
+        if (shooting && input.GetJumpButton())
         {
-            GetComponent<PlayerCombat>().Shoot();
+            //GetComponent<PlayerCombat>().Shoot();
+            GetComponent<PlayerAttack>().Shoot();
         }
-#endif
+
+//#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+//        if (InputManager.instance.mouseClick)
+//        {
+//            if (InputManager.instance.GetJumpButtonUp())
+//            {
+//                shootable = true;
+//            }
+
+//            if (shootable && InputManager.instance.GetJumpButtonDown())
+//            {
+//                shooting = true;
+//                //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+//            }
+//            if (shooting && InputManager.instance.GetJumpButton())
+//            {
+//                //GetComponent<PlayerCombat>().Shoot();
+//                GetComponent<PlayerAttack>().Shoot();
+//            }
+//        }
+//        else
+//        {
+//            if (Input.GetButtonUp("Jump"))
+//            {
+//                shootable = true;
+//            }
+
+//            if (shootable && Input.GetButtonDown("Jump"))
+//            {
+//                shooting = true;
+//                //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+//            }
+//            if (shooting && Input.GetButton("Jump"))
+//            {
+//                //GetComponent<PlayerCombat>().Shoot();
+//                GetComponent<PlayerAttack>().Shoot();
+//            }
+//        }
+//#elif UNITY_ANDROID 
+//        if (InputManager.instance.GetJumpButtonUp())
+//        {
+//            shootable = true;
+//        }
+
+//        if (shootable && InputManager.instance.GetJumpButtonDown())
+//        {
+//            shooting = true;
+//            //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+//        }
+//        if (shooting && InputManager.instance.GetJumpButton())
+//        {
+//            GetComponent<PlayerCombat>().Shoot();
+//        }
+//#endif
 
         if (grounded)
         {
@@ -162,72 +173,84 @@ public class PlayerController : MonoBehaviour
 
         if (cantMove) return;
 
-        transform.position += Vector3.right * speed * input.horizontal * Time.deltaTime;
+        transform.position += Vector3.right * speed * input.Horizontal * Time.deltaTime;
 
-        float h = Input.GetAxis("Horizontal");
+//        float h = Input.GetAxis("Horizontal");
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if (InputManager.instance.mouseClick)
-        {
-            if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
-        }
-        else
-        {
-            if (!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
-        }
-#elif UNITY_ANDROID
-        if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
-#endif
+//#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+//        if (InputManager.instance.mouseClick)
+//        {
+//            if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
+//        }
+//        else
+//        {
+//            if (!HorizontalCollisions()) transform.position += Vector3.right * speed * h * Time.deltaTime;
+//        }
+//#elif UNITY_ANDROID
+//        if (!HorizontalCollisions()) transform.position += Vector3.right * speed * InputManager.instance.horizontal * Time.deltaTime;
+//#endif
     }
 
     void Jump()
     {
         if (cantMove) return;
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if (InputManager.instance.mouseClick)
-        {
-            if (InputManager.instance.GetJumpButtonDown() && grounded)
-            {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
-                jumping = true;
-            }
-
-            if (rigidbody.velocity.y > 0 && InputManager.instance.GetJumpButtonUp())
-            {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
-                jumping = false;
-            }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Jump") && grounded)
-            {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
-                jumping = true;
-
-                GetComponent<Effector>().Generate("Jump");
-            }
-
-            if (rigidbody.velocity.y > 0 && Input.GetButtonUp("Jump"))
-            {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
-                jumping = false;
-            }
-        }
-#elif UNITY_ANDROID
-        if (InputManager.instance.GetJumpButtonDown() && grounded)
+        if (input.GetJumpButtonDown() && grounded)
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
             jumping = true;
         }
 
-        if (rigidbody.velocity.y > 0 && InputManager.instance.GetJumpButtonUp())
+        if (rigidbody.velocity.y > 0 && input.GetJumpButtonUp())
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
             jumping = false;
         }
-#endif
+
+//#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+//        if (InputManager.instance.mouseClick)
+//        {
+//            if (InputManager.instance.GetJumpButtonDown() && grounded)
+//            {
+//                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+//                jumping = true;
+//            }
+
+//            if (rigidbody.velocity.y > 0 && InputManager.instance.GetJumpButtonUp())
+//            {
+//                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+//                jumping = false;
+//            }
+//        }
+//        else
+//        {
+//            if (Input.GetButtonDown("Jump") && grounded)
+//            {
+//                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+//                jumping = true;
+
+//                GetComponent<Effector>().Generate("Jump");
+//            }
+
+//            if (rigidbody.velocity.y > 0 && Input.GetButtonUp("Jump"))
+//            {
+//                rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+//                jumping = false;
+//            }
+//        }
+//#elif UNITY_ANDROID
+//        if (InputManager.instance.GetJumpButtonDown() && grounded)
+//        {
+//            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+//            jumping = true;
+//        }
+
+//        if (rigidbody.velocity.y > 0 && InputManager.instance.GetJumpButtonUp())
+//        {
+//            rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+//            jumping = false;
+//        }
+//#endif
 
     }
 

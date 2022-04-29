@@ -23,12 +23,17 @@ public class InputManager : MonoBehaviour
     public float sens = 10f;
     public float dead = .001f;
 
+    public float Horizontal { get { return input.GetAxisHorizontal(); } }
+
     public GameObject controllerPanel;
 
     void Start()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        input = new CatDown.InputPC();
+        if (!mouseClick)
+            input = new CatDown.InputPC();
+        else
+            input = new CatDown.InputPCTouch();
 #elif UNITY_ANDROID
         input = new CatDown.InputAndroid();
 #endif
@@ -45,10 +50,10 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!blockInput)
-            MobileTouch();
+        //if(!blockInput)
+        //    MobileTouch();
 
-        horizontal = input.GetAxisHorizontal();
+        if(!blockInput) input.Update();
     }
 
     void MobileTouch()
@@ -134,76 +139,79 @@ public class InputManager : MonoBehaviour
 
     public bool GetJumpButtonDown()
     {
-#if UNITY_STANDALONE_WIN
-        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
+        return input.GetJumpButtonDown();
+//#if UNITY_STANDALONE_WIN
+//        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
 
-#if UNITY_EDITOR
-        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
-#if UNITY_ANDROID
-        if (Input.touchCount > 0)
-        {
-            foreach (var touch in Input.touches)
-            {
-                if (touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Began))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-        //return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
+//#if UNITY_EDITOR
+//        return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
+//#if UNITY_ANDROID
+//        if (Input.touchCount > 0)
+//        {
+//            foreach (var touch in Input.touches)
+//            {
+//                if (touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Began))
+//                {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//        //return Input.GetMouseButtonDown(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
     }
 
     public bool GetJumpButton()
     {
-#if UNITY_STANDALONE_WIN
-        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
+        return input.GetJumpButton();
+//#if UNITY_STANDALONE_WIN
+//        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
 
-#if UNITY_EDITOR
-        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
-#if UNITY_ANDROID
-        if(Input.touchCount > 0)
-        {
-            foreach(var touch in Input.touches)
-            {
-                if(touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-        //return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
+//#if UNITY_EDITOR
+//        return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
+//#if UNITY_ANDROID
+//        if(Input.touchCount > 0)
+//        {
+//            foreach(var touch in Input.touches)
+//            {
+//                if(touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
+//                {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//        //return Input.GetMouseButton(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
     }
 
     public bool GetJumpButtonUp()
     {
-#if UNITY_STANDALONE_WIN
-        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
+        return input.GetJumpButtonUp();
+//#if UNITY_STANDALONE_WIN
+//        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
 
-#if UNITY_EDITOR
-        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
-#if UNITY_ANDROID
-        if (Input.touchCount > 0)
-        {
-            foreach (var touch in Input.touches)
-            {
-                if (touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Ended))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-        //return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
-#endif
+//#if UNITY_EDITOR
+//        return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
+//#if UNITY_ANDROID
+//        if (Input.touchCount > 0)
+//        {
+//            foreach (var touch in Input.touches)
+//            {
+//                if (touch.position.x > Camera.main.pixelWidth / 2 && (touch.phase == TouchPhase.Ended))
+//                {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//        //return Input.GetMouseButtonUp(0) && Input.mousePosition.x > Camera.main.pixelWidth / 2;
+//#endif
     }
 }
