@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     InputManager input;
     Rigidbody2D rigidbody;
+    PlayerPhysics physics;
 
     public LayerMask groundLayerMask;
 
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         input = InputManager.instance;
         rigidbody = GetComponent<Rigidbody2D>();
+        physics = GetComponent<PlayerPhysics>();
 
         rigidbody.gravityScale = gravity;
 
@@ -173,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
         if (cantMove) return;
 
-        transform.position += Vector3.right * speed * input.Horizontal * Time.deltaTime;
+        if (!HorizontalCollisions()) transform.position += Vector3.right * speed * input.Horizontal * Time.deltaTime;
 
 //        float h = Input.GetAxis("Horizontal");
 
@@ -195,17 +197,31 @@ public class PlayerController : MonoBehaviour
     {
         if (cantMove) return;
 
-        if (input.GetJumpButtonDown() && grounded)
+        // Basic Jump
+        if(input.GetJumpButtonDown())
         {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
-            jumping = true;
+            physics.Jump();
         }
 
-        if (rigidbody.velocity.y > 0 && input.GetJumpButtonUp())
+        // Short Jump(Jump Canceling)
+        if(input.GetJumpButtonUp())
         {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
-            jumping = false;
+            physics.JumpCancel();
         }
+        
+        //// Basic Jump
+        //if (input.GetJumpButtonDown() && grounded)
+        //{
+        //    rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
+        //    jumping = true;
+        //}
+
+        //// Jump Cancel (Short Jump)
+        //if (rigidbody.velocity.y > 0 && input.GetJumpButtonUp())
+        //{
+        //    rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y / 2);
+        //    jumping = false;
+        //}
 
 //#if UNITY_EDITOR || UNITY_STANDALONE_WIN
 //        if (InputManager.instance.mouseClick)
