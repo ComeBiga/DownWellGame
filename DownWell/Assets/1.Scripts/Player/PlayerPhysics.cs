@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPhysics : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
+    private CollisionCheck wallCollision;
 
     [Header("Move Speed")]
     public float speed = 5f;
@@ -14,15 +15,31 @@ public class PlayerPhysics : MonoBehaviour
     public float gravity = 1f;
     public float maxFallSpeed = 10f;
 
+    [Header("Collision")]
+    public int horizontalRayCount = 4;
+    public int verticalRayCount = 4;
+    private float horizontalRaySpacing;
+    private float verticalRaySpacing;
+
     private float hInput = 0;
     private bool jumping = false;
+    private bool grounded = false;
 
     #region Initialization
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.gravityScale = gravity;        
+        rigidbody.gravityScale = gravity;
+
+        wallCollision = new CollisionCheck();
+        wallCollision.Init(GetComponent<BoxCollider2D>(),
+                        .1f,
+                        horizontalRayCount,
+                        verticalRayCount,
+                        LayerMask.GetMask("Ground")
+                        );
+        wallCollision.CalculateRaySpacing();
     }
 
     #endregion
@@ -65,9 +82,13 @@ public class PlayerPhysics : MonoBehaviour
 
     private void Update()
     {
+        wallCollision.UpdateRaycastOrigins();
+
         UpdateGravity();
 
         MoveHorizontal(hInput);
+
+        CheckGround();
     }
 
     private void UpdateGravity()
@@ -79,12 +100,24 @@ public class PlayerPhysics : MonoBehaviour
 
     private void MoveHorizontal(float hInput)
     {
-        transform.position += Vector3.right * speed * hInput * Time.deltaTime;
+        if (!wallCollision.CheckCollision(CollisionDirection.LEFT) &&
+            !wallCollision.CheckCollision(CollisionDirection.RIGHT))
+        {
+            transform.position += Vector3.right * speed * hInput * Time.deltaTime;
+        }
     }
 
     private void MoveVertical(float yVel)
     {
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, yVel);
+    }
+
+    private void CheckGround()
+    {
+        if (wallCollision.CheckCollision(CollisionDirection.DOWN))
+            grounded = true;
+        else
+            grounded = false;
     }
 
     #endregion
