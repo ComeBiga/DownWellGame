@@ -104,6 +104,25 @@ public class CollisionCheck : MonoBehaviour
 
         return false;
     }
+    
+    private bool RayCastCollision(CollisionInfo info, out RaycastHit2D _hit)
+    {
+        for(int i = 0; i < info.rayLength; i++)
+        {
+            RaycastHit2D hit = Raycast(i, info);
+
+            if (hit)
+            {
+                _hit = hit;
+                return true;
+            }
+        }
+
+        _hit = new RaycastHit2D { };
+        return false;
+    }
+
+
 
     /// <summary>
     /// 
@@ -176,11 +195,25 @@ public class CollisionCheck : MonoBehaviour
         return CheckCollision(direction, info, OnCollision);
     }
 
+    public bool CheckCollision(CollisionDirection direction, out RaycastHit2D hit)
+    {
+        return CheckCollision(direction, info, out hit);
+    }    
+
     public bool CheckCollision(CollisionDirection direction, CollisionInfo info, CollisionOption OnCollision)
     {
         if (SetAsDirection(direction, info) == false) return false;
 
         return RayCastCollision(info, OnCollision);
+    }
+    
+    public bool CheckCollision(CollisionDirection direction, CollisionInfo info, out RaycastHit2D hit)
+    {
+        hit = new RaycastHit2D { };
+
+        if (SetAsDirection(direction, info) == false) return false;
+
+        return RayCastCollision(info, out hit);
     }
 
     public bool CheckCollision(CollisionDirection direction, float rayLength, LayerMask layerMask)

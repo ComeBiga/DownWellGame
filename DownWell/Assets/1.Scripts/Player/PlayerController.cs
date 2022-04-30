@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
 //        }
 //#endif
 
-        if (grounded)
+        if (physics.Grounded)
         {
             jumping = false;
             shootable = false;
@@ -171,11 +171,15 @@ public class PlayerController : MonoBehaviour
 
     void HorizontalMove()
     {
-        UpdateRaycastOrigins();
-
         if (cantMove) return;
 
-        if (!HorizontalCollisions()) transform.position += Vector3.right * speed * input.Horizontal * Time.deltaTime;
+        physics.Move(input.Horizontal);
+
+        //UpdateRaycastOrigins();
+
+        //if (cantMove) return;
+
+        //if (!HorizontalCollisions()) transform.position += Vector3.right * speed * input.Horizontal * Time.deltaTime;
 
 //        float h = Input.GetAxis("Horizontal");
 
@@ -272,27 +276,44 @@ public class PlayerController : MonoBehaviour
 
     public void MoveOnSplashed()
     {
-        for (int i = 0; i < verticalRayCount; i++)
+        RaycastHit2D hit;
+
+        if(physics.wallCollision.CheckCollision(CollisionDirection.DOWN, out hit))
         {
-            Vector2 rayOrigin = raycastOrigins.bottomLeft;
-            rayOrigin += Vector2.right * (verticalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, .1f, groundLayerMask);
-
-            Debug.DrawRay(rayOrigin, Vector2.down * .1f, Color.red);
-
-            if (hit)
+            if (hit.transform.GetComponent<BeSplashed>() != null && hit.transform.GetComponent<BeSplashed>().splashed)
             {
-                if(hit.transform.GetComponent<BeSplashed>() != null && hit.transform.GetComponent<BeSplashed>().splashed)
-                {
-                    speed = splashedSpeed;
-                    jumpSpeed = splashedJumpSpeed;
-                    return;
-                }
+                speed = splashedSpeed;
+                jumpSpeed = splashedJumpSpeed;
+                return;
             }
         }
+        else
+        {
+            speed = normalSpeed;
+            jumpSpeed = normalJumpSpeed;
+        }
 
-        speed = normalSpeed;
-        jumpSpeed = normalJumpSpeed;
+        //for (int i = 0; i < verticalRayCount; i++)
+        //{
+        //    Vector2 rayOrigin = raycastOrigins.bottomLeft;
+        //    rayOrigin += Vector2.right * (verticalRaySpacing * i);
+        //    RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, .1f, groundLayerMask);
+
+        //    Debug.DrawRay(rayOrigin, Vector2.down * .1f, Color.red);
+
+        //    if (hit)
+        //    {
+        //        if(hit.transform.GetComponent<BeSplashed>() != null && hit.transform.GetComponent<BeSplashed>().splashed)
+        //        {
+        //            speed = splashedSpeed;
+        //            jumpSpeed = splashedJumpSpeed;
+        //            return;
+        //        }
+        //    }
+        //}
+
+        //speed = normalSpeed;
+        //jumpSpeed = normalJumpSpeed;
     }
 
     #region Collision

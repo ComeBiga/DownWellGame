@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPhysics : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
-    private CollisionCheck wallCollision;
+    public CollisionCheck wallCollision;
 
     [Header("Move Speed")]
     public float speed = 5f;
@@ -24,6 +24,9 @@ public class PlayerPhysics : MonoBehaviour
     private float hInput = 0;
     private bool jumping = false;
     private bool grounded = false;
+
+    public bool Grounded { get { return grounded; } }
+    public event System.Action OnGrounded;
 
     #region Initialization
 
@@ -100,8 +103,7 @@ public class PlayerPhysics : MonoBehaviour
 
     private void MoveHorizontal(float hInput)
     {
-        if (!wallCollision.CheckCollision(CollisionDirection.LEFT) &&
-            !wallCollision.CheckCollision(CollisionDirection.RIGHT))
+        if(!CheckHorizontalCollision(hInput))
         {
             transform.position += Vector3.right * speed * hInput * Time.deltaTime;
         }
@@ -114,10 +116,28 @@ public class PlayerPhysics : MonoBehaviour
 
     private void CheckGround()
     {
-        if (wallCollision.CheckCollision(CollisionDirection.DOWN))
+        if (wallCollision.CheckCollision(CollisionDirection.DOWN, OnGround))
             grounded = true;
         else
             grounded = false;
+    }
+
+    private void OnGround(RaycastHit2D hit)
+    {
+        if(!grounded)
+        {
+            OnGrounded.Invoke();
+        }
+    }
+
+    private bool CheckHorizontalCollision(float hInput)
+    {
+        if (hInput > 0)
+            return wallCollision.CheckCollision(CollisionDirection.RIGHT);
+        else if (hInput < 0)
+            return wallCollision.CheckCollision(CollisionDirection.LEFT);
+        else
+            return false;
     }
 
     #endregion

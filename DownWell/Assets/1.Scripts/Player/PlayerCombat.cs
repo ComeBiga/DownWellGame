@@ -125,7 +125,10 @@ public class PlayerCombat : MonoBehaviour
 
         while (true)
         {
-            if (Mathf.Abs(dis) > distance || controller.HorizontalCollisions() == true)
+            if (Mathf.Abs(dis) > distance || 
+                (GetComponent<PlayerPhysics>().wallCollision.CheckCollision(CollisionDirection.LEFT) ||
+                 GetComponent<PlayerPhysics>().wallCollision.CheckCollision(CollisionDirection.RIGHT) )
+                 )
                 break;
 
             var forceX = knuckBackSpeed * direction * Time.deltaTime;
