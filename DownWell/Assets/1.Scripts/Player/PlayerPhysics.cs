@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPhysics : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
-    public CollisionCheck wallCollision;
+    [HideInInspector] public CollisionCheck wallCollision;
 
     [Header("Move Speed")]
     public float speed = 5f;
@@ -126,7 +126,7 @@ public class PlayerPhysics : MonoBehaviour
     {
         if(!grounded)
         {
-            OnGrounded.Invoke();
+            if(OnGrounded != null) OnGrounded.Invoke();
         }
     }
 

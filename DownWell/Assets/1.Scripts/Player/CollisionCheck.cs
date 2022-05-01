@@ -91,7 +91,7 @@ public class CollisionCheck : MonoBehaviour
     /// <returns></returns>
     private bool RayCastCollision(CollisionInfo info, CollisionOption OnCollision)
     {
-        for(int i = 0; i < info.rayLength; i++)
+        for(int i = 0; i < info.rayCount; i++)
         {
             RaycastHit2D hit = Raycast(i, info);
 
@@ -107,7 +107,7 @@ public class CollisionCheck : MonoBehaviour
     
     private bool RayCastCollision(CollisionInfo info, out RaycastHit2D _hit)
     {
-        for(int i = 0; i < info.rayLength; i++)
+        for(int i = 0; i < info.rayCount; i++)
         {
             RaycastHit2D hit = Raycast(i, info);
 
@@ -202,7 +202,7 @@ public class CollisionCheck : MonoBehaviour
 
     public bool CheckCollision(CollisionDirection direction, CollisionInfo info, CollisionOption OnCollision)
     {
-        if (SetAsDirection(direction, info) == false) return false;
+        if (SetAsDirection(direction, ref info) == false) return false;
 
         return RayCastCollision(info, OnCollision);
     }
@@ -211,7 +211,7 @@ public class CollisionCheck : MonoBehaviour
     {
         hit = new RaycastHit2D { };
 
-        if (SetAsDirection(direction, info) == false) return false;
+        if (SetAsDirection(direction, ref info) == false) return false;
 
         return RayCastCollision(info, out hit);
     }
@@ -320,7 +320,7 @@ public class CollisionCheck : MonoBehaviour
                                 );
     }
 
-    private bool SetAsDirection(CollisionDirection direction, CollisionInfo info)
+    private bool SetAsDirection(CollisionDirection direction, ref CollisionInfo info)
     {
         return SetAsDirection(direction,
                         out info.rayCount,

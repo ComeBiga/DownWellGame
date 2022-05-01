@@ -382,10 +382,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae294d85bb2702409673066ddee7c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallCollision: {fileID: 0}
   speed: 8
   jumpSpeed: 12
   gravity: 3
   maxFallSpeed: 30
+  horizontalRayCount: 4
+  verticalRayCount: 4
 --- !u!114 &5561447862664596211
 MonoBehaviour:
   m_ObjectHideFlags: 0

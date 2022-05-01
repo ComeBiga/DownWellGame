@@ -16,18 +16,20 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         weapon = new Weapon(projectile, capacity);
+
+        GetComponent<PlayerPhysics>().OnGrounded += weapon.Reload;
     }
 
     private void Update()
     {
         if(timer < coolDownTime) timer += Time.deltaTime;
 
-        if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
+        //if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
     }
 
     public void Shoot()
     {
-        if(timer > coolDownTime && weapon.shootable && !weapon.IsEmpty)
+        if(timer >= coolDownTime && weapon.shootable && !weapon.IsEmpty)
         {
             weapon.Shoot(projectile, transform);
 

@@ -13,6 +13,9 @@ public class PlayerCombatStepping : MonoBehaviour
     public float stepUpSpeed = 7f;
     public float delayAsStep = .5f;
     private bool shootable = true;
+    private bool shotLock = false;
+    
+    public bool ShotLock { get { return shotLock; } }
 
     // Enemy Collision
     private Collider2D[] enemyColliders;
@@ -43,6 +46,8 @@ public class PlayerCombatStepping : MonoBehaviour
         enemyFilter = new ContactFilter2D();
         enemyFilter.useLayerMask = true;
         enemyFilter.layerMask = LayerMask.GetMask("Enemy");
+
+        GetComponent<PlayerPhysics>().OnGrounded += OnGround;
     }
 
     public void Update()
@@ -79,9 +84,16 @@ public class PlayerCombatStepping : MonoBehaviour
 
     private IEnumerator EBeUnshootableForTime(float time)
     {
-        GetComponent<PlayerAttack>().weapon.shootable = false;
+        //GetComponent<PlayerAttack>().weapon.shootable = false;
+        shotLock = true;
         yield return new WaitForSeconds(time);
 
-        GetComponent<PlayerAttack>().weapon.shootable = true;
+        //GetComponent<PlayerAttack>().weapon.shootable = true;
+        shotLock = false;
+    }
+
+    private void OnGround()
+    {
+        shotLock = false;
     }
 }

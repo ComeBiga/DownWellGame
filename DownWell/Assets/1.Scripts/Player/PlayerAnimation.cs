@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
     PlayerController controller;
+    PlayerPhysics physics;
 
     [SerializeField]
     bool canMove = true;
@@ -15,24 +16,26 @@ public class PlayerAnimation : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         controller = GetComponent<PlayerController>();
+        physics = GetComponent<PlayerPhysics>();
+
+        physics.OnGrounded += OnGround;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float h;
-
-#if UNITY_STANDALONE_WIN
-        h = Input.GetAxis("Horizontal");
-#endif
-#if UNITY_EDITOR
-        if (InputManager.instance.mouseClick)
-            h = InputManager.instance.horizontal;
-        else
-            h = Input.GetAxis("Horizontal");
-#elif UNITY_ANDROID
-        h = InputManager.instance.horizontal;
-#endif
+        float h = InputManager.instance.Horizontal;
+//#if UNITY_STANDALONE_WIN
+//        h = Input.GetAxis("Horizontal");
+//#endif
+//#if UNITY_EDITOR
+//        if (InputManager.instance.mouseClick)
+//            h = InputManager.instance.horizontal;
+//        else
+//            h = Input.GetAxis("Horizontal");
+//#elif UNITY_ANDROID
+//        h = InputManager.instance.horizontal;
+//#endif
 
         if (canMove)
         {
@@ -48,7 +51,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Jump()
     {
-        if (!controller.Grounded) 
+        if (!physics.Grounded) 
         {
             anim.SetBool("Grounded", false);
             anim.SetBool("Jump", true); 
@@ -72,5 +75,10 @@ public class PlayerAnimation : MonoBehaviour
 
         if (h > 0)
             GetComponent<SpriteRenderer>().flipX = false;
+    }
+
+    private void OnGround()
+    {
+        GetComponent<Effector>().Generate("Land");
     }
 }

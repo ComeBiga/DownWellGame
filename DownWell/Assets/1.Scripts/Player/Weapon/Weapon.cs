@@ -24,7 +24,7 @@ public class Weapon
         magazine.max = capacity;
         magazine.current = 0;
 
-        shootable = true;
+        shootable = false;
     }
 
     public void Shoot(GameObject projectile, Transform transform)
