@@ -39,6 +39,8 @@ public class PlayerAttack : MonoBehaviour
             Effect();
 
             timer = 0;
+
+            Debug.Log(weapon.CurrentNumOfBullet);
         }
     }
 
@@ -57,11 +59,13 @@ public class PlayerAttack : MonoBehaviour
         GetComponent<Effector>().Generate("Shoot");
 
         // UI
-        bulletCount.instance.countBullet();
+        UICollector.Instance.bullet.countBullet();
     }
 
     public void ReLoad()
     {
         weapon.Reload();
+
+        UICollector.Instance.bullet.bulletReload();
     }
 }

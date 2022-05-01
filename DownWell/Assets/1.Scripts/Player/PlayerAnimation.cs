@@ -25,17 +25,6 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         float h = InputManager.instance.Horizontal;
-//#if UNITY_STANDALONE_WIN
-//        h = Input.GetAxis("Horizontal");
-//#endif
-//#if UNITY_EDITOR
-//        if (InputManager.instance.mouseClick)
-//            h = InputManager.instance.horizontal;
-//        else
-//            h = Input.GetAxis("Horizontal");
-//#elif UNITY_ANDROID
-//        h = InputManager.instance.horizontal;
-//#endif
 
         if (canMove)
         {

@@ -6,7 +6,6 @@ public class CoinItem : Item
 {
     protected override void OnPickedUp()
     {
-        // Score
-        GameManager.instance.coin.Gain();
+        UICollector.Instance.coin.Gain();
     }
 }

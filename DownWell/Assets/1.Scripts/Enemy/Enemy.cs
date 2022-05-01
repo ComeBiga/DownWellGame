@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
         itemDropper.Random(transform.position);
 
         // Score
-        GameManager.instance.score.Add(info.score);
+        UICollector.Instance.score.Add(info.score);
 
         // Effect
         if (GetComponent<Effector>() != null) GetComponent<Effector>().Generate("Die");

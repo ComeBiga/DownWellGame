@@ -17,6 +17,8 @@ public class Weapon
 
     public bool Reloaded { get { return (magazine.current >= magazine.max); } }
     public bool IsEmpty { get { return (magazine.current <= 0); } }
+    public int CurrentNumOfBullet { get { return magazine.current; } }
+    public int CapacityOfMagazine { get { return magazine.max; } }
 
     public Weapon(GameObject projectile, int capacity)
     {
