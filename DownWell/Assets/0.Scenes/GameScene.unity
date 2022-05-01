@@ -5425,6 +5425,7 @@ GameObject:
   - component: {fileID: 928105779}
   - component: {fileID: 928105778}
   - component: {fileID: 928105777}
+  - component: {fileID: 928105784}
   - component: {fileID: 928105776}
   - component: {fileID: 928105781}
   - component: {fileID: 928105782}
@@ -5577,6 +5578,22 @@ MonoBehaviour:
   coinTxt: {fileID: 2126811155}
   gameover_coin: {fileID: 720173712}
   coin: 0
+--- !u!114 &928105784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928105775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b70f6fef422de498546a419199d780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 928105776}
+  bullet: {fileID: 928105781}
+  score: {fileID: 928105782}
+  coin: {fileID: 928105783}
 --- !u!4 &949391695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}

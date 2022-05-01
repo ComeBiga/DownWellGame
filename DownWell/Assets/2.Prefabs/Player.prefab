@@ -359,15 +359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   speed: 8
   jumpSpeed: 12
   gravity: 3
   maxFallSpeed: 30
-  horizontalRayCount: 4
-  verticalRayCount: 4
   cantMove: 0
   jumping: 0
 --- !u!114 &3329592185957936949
