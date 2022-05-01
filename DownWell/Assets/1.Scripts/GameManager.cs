@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     private GameObject playerCharacter;
     public Transform startPos;
 
+    [Header("UI")]
+    public Score score;
+    public CoinCount coin;
+
     [HideInInspector] public float enemyActiveRangeOffset = 0;
 
     private GameObject gameoverPanel;

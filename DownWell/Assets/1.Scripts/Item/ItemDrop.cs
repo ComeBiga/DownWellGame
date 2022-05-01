@@ -2,50 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+[CreateAssetMenu(fileName = "new ItemDropper", menuName = "Item/ItemDropper")]
+public class ItemDrop : ScriptableObject
 {
-    #region Singleton
-    public static ItemDrop instance = null;
+    private List<GameObject> dropItems;
 
-    private void Awake()
+    [Header("TimeSet")]
+    public float popingTime = .5f;
+    public float livingTime = 2f;
+
+    [Header("PopSpeed")]
+    public float maxHorizontalPopSpeed = 5f;
+    public float minVerticalPopSpeed = 2f;
+    public float maxVerticalPopSpeed = 10f;
+
+    public ItemDrop()
     {
-        if (instance == null)
-            instance = this;
+        dropItems = new List<GameObject>();
     }
-    #endregion
 
-    public void InstantiateRandomItem(List<GameObject> dropitems, Vector3 position)
+    public void SetItem(List<GameObject> dropItems)
     {
-        if (dropitems.Count > 0)
+        this.dropItems = dropItems;
+    }
+
+    public void Random(Vector3 position, int count = 5)
+    {
+        for(int i = 0; i< count; i++)
         {
-            for (int i = 0; i < dropitems.Count; i++)
+            var rItem = dropItems[CatDown.Random.Get().Next(dropItems.Count)].GetComponent<Item>();
+
+            if(CatDown.Random.Get().Next(100) < rItem.i_Info.chacePercent)
             {
-                if (chanceResult(dropitems[i].GetComponent<Item>().i_Info.chacePercent))
-                {
-                    dropitems[i].GetComponent<Item>().InstantiateItem(position);
-                    return;
-                }
+                //rItem.InstantiateItem(position);
+                InstantiateItem(rItem.gameObject, position);
             }
         }
     }
 
-
-    public bool chanceResult(float chance)  //chance = È®·ü(%)
+    private void InstantiateItem(GameObject itemObject, Vector3 position)
     {
-        chance = chance / 100f;
-     
-        if (chance < 0.0000001f)
-            chance = 0.0000001f;
+        var dropItem = Instantiate(itemObject, position, Quaternion.identity);
 
-        bool Success = false;
-        
-        int RandAccuracy = 10000000;
-        float RandHitRange = chance * RandAccuracy;
-        int Rand = UnityEngine.Random.Range(1, RandAccuracy + 1);
-        
-        if (Rand <= RandHitRange)
-            Success = true;
+        var rand = CatDown.Random.Get();
+        var popSpeed = new Vector2(rand.Next(-(int)maxHorizontalPopSpeed, (int)maxHorizontalPopSpeed),
+                                   rand.Next(-(int)minVerticalPopSpeed, (int)maxVerticalPopSpeed));
 
-        return Success;
+        dropItem.GetComponent<Rigidbody2D>().AddForce(popSpeed, ForceMode2D.Impulse);
+        dropItem.GetComponent<Item>().Invoke("EndPoping", popingTime);
+        dropItem.GetComponent<Item>().DestroyItem(livingTime);
     }
 }

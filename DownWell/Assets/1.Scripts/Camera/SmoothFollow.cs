@@ -94,7 +94,7 @@ public class SmoothFollow : MonoBehaviour
 
             //Debug.Log(target.GetComponent<PlayerController>().Grounded);
 
-            if (target.GetComponent<PlayerController>().Grounded)
+            if (target.GetComponent<PlayerPhysics>().Grounded)
             {
                 SetCameraScrollTarget();
             }

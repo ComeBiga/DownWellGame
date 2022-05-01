@@ -32,7 +32,7 @@ namespace CatDown
         {
             current.Stop();
             current = states.Find(s => s.name == name);
-            Debug.Log(current.name);
+            //Debug.Log(current.name);
             current.Handle();
         }
 
@@ -47,7 +47,7 @@ namespace CatDown
 
             if (height / 2 + _activeRange < enemy.position.y - player.position.y)
             {
-                Debug.Log("Destroy " + enemy.name);
+                //Debug.Log("Destroy " + enemy.name);
                 Destroy(enemy.gameObject);
             }
 

@@ -28,7 +28,7 @@ namespace CatDown
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
 
             Move();
-            Debug.Log("Start" + GetComponent<Rigidbody2D>().velocity);
+            //Debug.Log("Start" + GetComponent<Rigidbody2D>().velocity);
 
             //if (!moveAsCollision) MoveAsTime();
             timer = 0;
@@ -104,7 +104,7 @@ namespace CatDown
         {
             dir *= -1;
             Move();
-            Debug.Log("ChangeDirection");
+            //Debug.Log("ChangeDirection");
 
             //Invoke("ChangeDirection", changeTime);
         }

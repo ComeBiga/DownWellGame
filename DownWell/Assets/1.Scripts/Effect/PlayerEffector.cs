@@ -6,7 +6,7 @@ public class PlayerEffector : Effector
 {
     private void Start()
     {
-        GetComponent<PlayerController>().OnGrounded += PlayGroundingFX;
+        //GetComponent<PlayerController>().OnGrounded += PlayGroundingFX;
     }
 
     void PlayGroundingFX()

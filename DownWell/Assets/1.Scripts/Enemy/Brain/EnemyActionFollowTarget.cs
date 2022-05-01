@@ -20,7 +20,7 @@ namespace CatDown
 
         protected override void OnActionUpdate()
         {
-            Debug.Log("OnActionUpdate");
+            //Debug.Log("OnActionUpdate");
 
             MoveToTarget();
 

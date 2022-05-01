@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7418659999357255690}
   - component: {fileID: 3729459322462400187}
   - component: {fileID: 4858287055878198433}
-  - component: {fileID: 2315712013749624785}
+  - component: {fileID: 5840534878132847374}
   m_Layer: 9
   m_Name: potion
   m_TagString: Item
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &2315712013749624785
+--- !u!114 &5840534878132847374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3519354593657197702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6cffa13078f2fc439c4ee53ea643b86, type: 3}
+  m_Script: {fileID: 11500000, guid: a4a28c481592a3b49bf7a6fb5ae403f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   livingTime: 5
@@ -141,3 +141,4 @@ MonoBehaviour:
   popingTime: 0.2
   followSpeed: 5
   i_Info: {fileID: 11400000, guid: 6a3af4df076309340bf098a8f25095a8, type: 2}
+  amount: 1

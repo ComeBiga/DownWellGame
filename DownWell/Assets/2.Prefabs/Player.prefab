@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7898422307149849015}
   - component: {fileID: 3991413537837890761}
+  - component: {fileID: 6623385352841280815}
   m_Layer: 10
   m_Name: CoinMag
   m_TagString: CoinMag
@@ -47,6 +48,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &6623385352841280815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838676478569553915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0bd9a2267dca4786f415df88fffe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followSpeed: 5
 --- !u!1 &5416284440441354456
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,13 +121,18 @@ GameObject:
   - component: {fileID: 1272930707902587046}
   - component: {fileID: 5834640292865415493}
   - component: {fileID: 5834640292865415492}
-  - component: {fileID: 3027550015346354234}
-  - component: {fileID: 5834640292865415488}
-  - component: {fileID: 1340578661}
-  - component: {fileID: 5561447862664596211}
-  - component: {fileID: 3761122455356345184}
   - component: {fileID: 3505710173777569079}
+  - component: {fileID: 3027550015346354234}
+  - component: {fileID: 3761122455356345184}
+  - component: {fileID: 1340578661}
+  - component: {fileID: 5834640292865415488}
+  - component: {fileID: 3329592185957936949}
+  - component: {fileID: 5561447862664596211}
+  - component: {fileID: 6960136760963069639}
+  - component: {fileID: 985416465136532519}
+  - component: {fileID: 1501899443074097855}
   - component: {fileID: 5073135632283657211}
+  - component: {fileID: 6065840089087331528}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -255,118 +274,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &3027550015346354234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254f924eee6344742a371d832b3d4058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Cat
-  num: 0
---- !u!114 &5834640292865415488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  speed: 8
-  jumpSpeed: 12
-  gravity: 3
-  maxFallSpeed: 30
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  cantMove: 0
-  jumping: 0
---- !u!114 &1340578661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 0
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5561447862664596211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2e08c80e2e2a04b879f15658acf600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
-  projectileDamage: 4
-  maxProjectile: 8
-  currentProjectile: 0
-  shotDelay: 0.2
-  shotReboundSpeed: 0
-  hitBox: {fileID: 5416284440441354456}
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  stepUpSpeed: 7
-  unshootableTime: 0.5
-  shootable: 1
-  useLoseHealth: 1
-  leapSpeed: 7
-  knuckBackSpeed: {x: 3, y: 5}
-  knuckBackDistance: 1
-  invincibleTime: 3
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1340578661}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: LoseHealth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3761122455356345184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c30747f893e0c45ba2a782f7e7f0bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canMove: 1
 --- !u!114 &3505710173777569079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +303,177 @@ MonoBehaviour:
     transform: {fileID: 7447212144028510301}
     fx: {fileID: 5338455378960127721, guid: e650b38e05f3c354594dfed8dc34e2da, type: 3}
     angle: 0
+--- !u!114 &3027550015346354234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254f924eee6344742a371d832b3d4058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Cat
+  num: 0
+--- !u!114 &3761122455356345184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c30747f893e0c45ba2a782f7e7f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+--- !u!114 &1340578661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52f9f5cc2950f4caced633cdbc52f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5834640292865415488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  jumpSpeed: 12
+  gravity: 3
+  maxFallSpeed: 30
+  cantMove: 0
+  jumping: 0
+--- !u!114 &3329592185957936949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae294d85bb2702409673066ddee7c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCollision: {fileID: 0}
+  speed: 8
+  jumpSpeed: 12
+  gravity: 3
+  maxFallSpeed: 30
+  horizontalRayCount: 4
+  verticalRayCount: 4
+--- !u!114 &5561447862664596211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2e08c80e2e2a04b879f15658acf600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useLoseHealth: 1
+  leapSpeed: 7
+  knuckBackSpeed: {x: 3, y: 5}
+  knuckBackDistance: 1
+  invincibleTime: 3
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1501899443074097855}
+        m_TargetAssemblyTypeName: PlayerItem, Assembly-CSharp
+        m_MethodName: UseSlotItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6960136760963069639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe2a54b0c002bd45b2c470b42ff2c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
+  capacity: 8
+  coolDownTime: 0.2
+  shotRebound: 0
+--- !u!114 &985416465136532519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a67cf9de238a34a834b46fd0e25132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 5416284440441354456}
+  stepUpSpeed: 7
+  delayAsStep: 0.5
+  OnStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6960136760963069639}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: ReLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1501899443074097855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4bc6516bc05b24491b377273435ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5073135632283657211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +488,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curItem: 
   bubble: {fileID: 1491836226527178917, guid: be13bce07010a9b428f096fe7ba1c1d1, type: 3}
+--- !u!114 &6065840089087331528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834640292865415495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b891b5d404c11894cad6f53387ef07f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &9199056338382792220
 GameObject:
   m_ObjectHideFlags: 0

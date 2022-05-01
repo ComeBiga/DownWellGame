@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
     public void LoseHealth(int amount = 1)
     {
         currentHealth -= amount;
-        Debug.Log("Lose hp");
+        //Debug.Log("Lose hp");
 
         if(OnChangedHealth != null) OnChangedHealth.Invoke();
 
