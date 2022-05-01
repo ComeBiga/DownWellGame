@@ -33,50 +33,6 @@ public class PlayerCombat : MonoBehaviour
         cStep = GetComponent<PlayerCombatStepping>();
     }
 
-    #region Shoot Function (Deprecated)
-    //public void Shoot()
-    //{
-    //    if (shotTimer >= shotDelay && shootable && currentProjectile > 0)
-    //    {
-    //        InstantiateProjectile();
-    //        currentProjectile--;
-
-    //        if (currentProjectile < maxProjectile) reloaded = false;
-
-    //        //LeapOff(shotReboundSpeed);
-    //        GetComponent<PlayerPhysics>().LeapOff(shotReboundSpeed);
-
-    //        ShootEffect();
-
-    //        bulletCount.instance.countBullet();
-
-    //        shotTimer = 0;
-    //    }
-    //}
-
-    //public void InstantiateProjectile()
-    //{
-    //    GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-    //    newProjectile.GetComponent<Projectile>().damage = projectileDamage;
-    //}
-
-    //public void Reload()
-    //{
-    //    currentProjectile = maxProjectile;
-    //    bulletCount.instance.bulletReload();
-    //}
-
-    //public void ShootEffect()
-    //{
-    //    Camera.main.GetComponent<CameraShake>().Shake(.03f);                           //카메라 흔들림
-    //    GetComponent<PlayerAnimation>().Shoot();                                       //캐릭터 애니메이션
-    //    //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_0");  //사운드이펙트
-    //    if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_0");
-
-    //    GetComponent<Effector>().Generate("Shoot");                                    //슛 이펙트
-    //}
-    #endregion
-
     #region Damage
     public void Damaged(Transform enemy)
     {
@@ -170,45 +126,6 @@ public class PlayerCombat : MonoBehaviour
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_1");
 
     }
-
-    #endregion
-
-    #region Stepping (Deprecated)
-    //void StepOn()
-    //{
-    //    var hitNum = hitBox.GetComponent<CircleCollider2D>().OverlapCollider(enemyFilter, enemyColliders);
-
-    //    bool playerBound = false;
-
-    //    foreach (var enemyCollider in enemyColliders)
-    //    {
-    //        //Debug.Log(enemyCollider);
-
-    //        if (enemyCollider != null)
-    //        {
-    //            playerBound = true;
-    //            enemyCollider.GetComponent<Enemy>().Die();
-
-    //            if (!reloaded) Reload();
-    //            StartCoroutine(SteppingUp());
-    //        }
-    //    }
-
-    //    if (playerBound) LeapOff(leapSpeed);
-    //}
-
-    //IEnumerator SteppingUp()
-    //{
-    //    shootable = false;
-    //    yield return new WaitForSeconds(unshootableTime);
-    //    shootable = true;
-    //}
-
-    //public void LeapOff(float stepUpSpeed)
-    //{
-    //    rigidbody.velocity = new Vector2(rigidbody.velocity.x, stepUpSpeed);
-    //    controller.jumping = true;
-    //}
 
     #endregion
 
