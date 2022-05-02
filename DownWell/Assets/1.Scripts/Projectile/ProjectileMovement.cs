@@ -15,7 +15,7 @@ public class ProjectileMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 deltaDistance = Vector3.down * speed * Time.deltaTime;
         transform.position += deltaDistance;
