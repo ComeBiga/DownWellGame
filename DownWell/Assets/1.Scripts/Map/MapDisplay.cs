@@ -21,7 +21,9 @@ public class MapDisplay : MonoBehaviour
     private List<GameObject> enemyObjects;
 
     [Header("Objects")]
-    public List<GameObject> mapObjects;
+    public GameObject wallObject;
+    public GameObject blockObject;
+    public List<GameObject> platformObject;
 
     [Header("Background")]
     //public bool displayBackground = true;
@@ -88,6 +90,8 @@ public class MapDisplay : MonoBehaviour
         this.wallObjects = currentStageDB.MapObjects;
         this.wallSprites = currentStageDB.WallSprites;
         this.enemyObjects = currentStageDB.EnemyObjects;
+
+        SetMapObjectSprite(currentStageDB.BlockSprites, currentStageDB.PlatformSprites);
     }
 
     public void DisplayByDatabase(Level level, StageDatabase stageDB)
@@ -172,6 +176,18 @@ public class MapDisplay : MonoBehaviour
         var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
 
         return go;
+    }
+
+    private void SetMapObjectSprite(List<Sprite> blockSprites, List<Sprite> platformSprites)
+    {
+        // block
+        blockObject.GetComponent<SpriteRenderer>().sprite = blockSprites[0];
+
+        // platform
+        for(int i = 0; i < platformObject.Count; i++)
+        {
+            platformObject[i].GetComponent<SpriteRenderer>().sprite = platformSprites[i];
+        }
     }
 
     #region Deprecated

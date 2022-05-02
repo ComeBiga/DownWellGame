@@ -15,25 +15,25 @@ public class LevelObject : ScriptableObject
     public Texture2D GetTexture2D()
     {
         if (sliced)
-            return GetCroppedTexture();
+            return TextureCropper.GetCroppedTexture(sprite);
         else
             return sprite.texture;
     }
 
-    public Texture2D GetCroppedTexture()
-    {
-        var ct = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
+    //public Texture2D GetCroppedTexture()
+    //{
+    //    var ct = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
 
-        var pixels = sprite.texture.GetPixels((int)sprite.textureRect.x,
-                                         (int)sprite.textureRect.y,
-                                         (int)sprite.textureRect.width,
-                                         (int)sprite.textureRect.height);
+    //    var pixels = sprite.texture.GetPixels((int)sprite.textureRect.x,
+    //                                     (int)sprite.textureRect.y,
+    //                                     (int)sprite.textureRect.width,
+    //                                     (int)sprite.textureRect.height);
 
-        ct.SetPixels(pixels);
-        ct.Apply();
+    //    ct.SetPixels(pixels);
+    //    ct.Apply();
 
-        return ct;
-    }
+    //    return ct;
+    //}
 
     public Sprite GetSprite(int stageNum)
     {
