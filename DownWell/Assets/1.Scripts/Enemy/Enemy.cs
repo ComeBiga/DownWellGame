@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public LevelObject info;
     public int health = 10;
+    public bool invincible = false;
 
     [Header("DropItems")]
     [SerializeField] private ItemDrop itemDropper;
@@ -59,6 +60,8 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        if (invincible) return;
+
         // Item Drop
         itemDropper.Random(transform.position);
 

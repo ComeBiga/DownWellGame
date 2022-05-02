@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141f7572feb228c45ad2f2e543d19892, type: 3}
+  m_Name: Stage_3
+  m_EditorClassIdentifier: 
+  name: Stage3
+  num: 3
+  path: 
+  mapObjects: []
+  wallSprites: []
+  enemyObjects:
+  - {fileID: 8789586585210228532, guid: a28556a9307fd2a40b0badfa432064a0, type: 3}
+  - {fileID: 3067082653622727890, guid: 9df6efcb519de034799584b2e1e39930, type: 3}
+  bossObject: {fileID: 0}
+  bgInfo:
+    _base: []
+    deco: []
