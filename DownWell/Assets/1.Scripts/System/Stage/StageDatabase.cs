@@ -21,6 +21,8 @@ public class StageDatabase : ScriptableObject
     [Header("Wall")]
     [SerializeField] private List<GameObject> mapObjects;
     [SerializeField] private List<Sprite> wallSprites;
+    [SerializeField] private List<Sprite> blockSprites;
+    [SerializeField] private List<Sprite> platformSprites;
 
     [Header("Enemy")]
     [SerializeField] private List<GameObject> enemyObjects;

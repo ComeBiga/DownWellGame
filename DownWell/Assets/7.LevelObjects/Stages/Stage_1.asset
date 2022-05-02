@@ -41,6 +41,12 @@ MonoBehaviour:
   - {fileID: -5881622362676116124, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: -6728371487741853675, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: 1438999105531611913, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  blockSprites:
+  - {fileID: -6544076422255163248, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  platformSprites:
+  - {fileID: -692278537203691343, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  - {fileID: 1509607539823229551, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  - {fileID: -8467144355081181117, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
   - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}
@@ -48,20 +54,6 @@ MonoBehaviour:
   - {fileID: 2828334627078130561, guid: 5231486e93382f04fa5396f7693a42e9, type: 3}
   - {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
   bossObject: {fileID: 1649624395474174977, guid: 1772583bf7a66734ebbb3fa5b0e6e2c5, type: 3}
-  baseBackground: {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  background:
-  - sprite:
-    - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-    width: 1
-    height: 1
-  - sprite:
-    - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-    width: 1
-    height: 1
-  - sprite:
-    - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-    width: 1
-    height: 1
   bgInfo:
     _base:
     - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}

@@ -20,6 +20,9 @@ public class MapDisplay : MonoBehaviour
     private List<Sprite> wallSprites;
     private List<GameObject> enemyObjects;
 
+    [Header("Objects")]
+    public List<GameObject> mapObjects;
+
     [Header("Background")]
     //public bool displayBackground = true;
     public GameObject backgroundObject;
