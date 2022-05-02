@@ -37,7 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void GainHealth(int amount)
     {
-        currentHealth += Mathf.Clamp(amount, 0, maxHealth);
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         if (OnChangedHealth != null) OnChangedHealth.Invoke();
 

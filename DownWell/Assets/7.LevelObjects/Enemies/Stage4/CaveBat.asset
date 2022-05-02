@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 141f7572feb228c45ad2f2e543d19892, type: 3}
-  m_Name: Stage_3
+  m_Script: {fileID: 11500000, guid: 04f1fa0cac20b2c458ebe590f0931d74, type: 3}
+  m_Name: CaveBat
   m_EditorClassIdentifier: 
-  name: Stage3
-  num: 3
-  path: 
-  mapObjects: []
-  wallSprites: []
-  enemyObjects: []
-  bossObject: {fileID: 0}
-  bgInfo:
-    _base: []
-    deco: []
+  code: 4001
+  name: CaveBat
+  sprite: {fileID: 21300000, guid: 5959240b60095fe4cafd0c5d1dd0a728, type: 3}
+  sprites: []
+  sliced: 0
+  score: 3

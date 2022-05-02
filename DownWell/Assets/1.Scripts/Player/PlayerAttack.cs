@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     {
         weapon = new Weapon(projectile, capacity);
 
-        GetComponent<PlayerPhysics>().OnGrounded += weapon.Reload;
+        GetComponent<PlayerPhysics>().OnGrounded += ReLoad;
     }
 
     private void Update()
