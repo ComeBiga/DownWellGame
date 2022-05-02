@@ -25,6 +25,7 @@ public class BossStageManager : MonoBehaviour
     private GameObject bossObject;
 
     public float bossAppearDistance;
+    public int appearDirection = -1;
     public float appearSpeed = 1f;
 
     bool bossStage = false;
@@ -57,12 +58,7 @@ public class BossStageManager : MonoBehaviour
 
         MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 10);
 
-        //SoundManager.instance.SoundOff();
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
-
-        //SoundManager.instance.PlayBGMSound("BackgroundBoss");
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("BackgroundBoss");
-
+        FX();
     }
 
     IEnumerator AppearAnimation()
@@ -79,14 +75,14 @@ public class BossStageManager : MonoBehaviour
             if (moveDistance > bossAppearDistance)
                 break;
 
-            var deltaMoveY = Time.fixedDeltaTime * appearSpeed;
+            var deltaMoveY = Time.fixedDeltaTime * appearSpeed * appearDirection;
             //Debug.Log(deltaMoveY);
 
             bossObject.transform.localPosition = new Vector3(bossObject.transform.localPosition.x,
                 bossObject.transform.localPosition.y - deltaMoveY,
                 bossObject.transform.localPosition.z);
 
-            moveDistance = bossAppearPos.y - bossObject.transform.localPosition.y;
+            moveDistance = Mathf.Abs(bossAppearPos.y - bossObject.transform.localPosition.y);
 
             yield return new WaitForFixedUpdate();
         }
@@ -95,5 +91,14 @@ public class BossStageManager : MonoBehaviour
         //boss.GetComponent<BossCombat>().active = true;
         bossObject.GetComponent<BossBrain>().Use();
         Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
+    }
+
+    private void FX()
+    {
+        //SoundManager.instance.SoundOff();
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
+
+        //SoundManager.instance.PlayBGMSound("BackgroundBoss");
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("BackgroundBoss");
     }
 }

@@ -31,4 +31,18 @@ public class BossActionShootNormal : BossAction
         shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile.GetComponent<BossProjectile>().MoveToTargetByTransform();
     }
+
+    void ShootNormal()
+    {
+        var player = PlayerManager.instance.playerObject;
+
+        if (player.GetComponent<PlayerHealth>().CurrentHealth <= 0) return;
+
+        var target = player.transform;
+        var dir = (target.position - transform.position).normalized;
+
+        var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
+        shotProjectile.GetComponent<BossProjectile>().MoveToTarget();
+    }
 }

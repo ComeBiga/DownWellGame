@@ -75,7 +75,8 @@ public class SmoothFollow : MonoBehaviour
         var Yscroll = Vector3.down * scrollSpeed * Time.fixedDeltaTime;
         scrollTarget += Yscroll;
 
-        transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, scrollTarget + offset, Time.fixedDeltaTime * smooth).y, transform.position.z);
+        LerpToTarget(scrollTarget + offset);
+        //transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, scrollTarget + offset, Time.fixedDeltaTime * smooth).y, transform.position.z);
     }
 
     public void CameraScrollFollowCharacter()
@@ -90,7 +91,7 @@ public class SmoothFollow : MonoBehaviour
 
         if (scrollTarget.y > target.position.y)
         {
-            transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.fixedDeltaTime * smooth).y, transform.position.z);
+            LerpToTarget(target.position + offset);
 
             //Debug.Log(target.GetComponent<PlayerController>().Grounded);
 
@@ -104,8 +105,21 @@ public class SmoothFollow : MonoBehaviour
             var Yscroll = Vector3.down * scrollSpeed * Time.fixedDeltaTime;
             scrollTarget += Yscroll;
 
-            transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, scrollTarget + offset, Time.fixedDeltaTime * smooth).y, transform.position.z);
+            LerpToTarget(scrollTarget + offset);
         }
+    }
+
+    private void LerpToTarget(Vector3 to)
+    {
+        // Lerp
+        var yDelta = Vector3.Lerp(transform.position,
+                                      to,
+                                      Time.fixedDeltaTime * smooth).y;
+
+        // translate
+        transform.position = new Vector3(transform.position.x,
+                                         yDelta,
+                                         transform.position.z);
     }
 
     #endregion

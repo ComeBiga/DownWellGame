@@ -10,10 +10,15 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        CollisionCheck();
+        //CollisionCheck();
 
         if (GetComponent<ProjectileMovement>().moveDistance >= lifeDistance)
             Destroy();
+    }
+
+    private void FixedUpdate()
+    {
+        CollisionCheck();
     }
 
     void CollisionCheck()
