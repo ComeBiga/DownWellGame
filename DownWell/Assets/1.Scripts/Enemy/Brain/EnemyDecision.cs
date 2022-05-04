@@ -26,6 +26,8 @@ namespace CatDown
 
         IEnumerator ECheck()
         {
+            if (PlayerManager.instance.playerObject == null) yield return null;
+
             while (true)
             {
                 if (EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform)) break;
