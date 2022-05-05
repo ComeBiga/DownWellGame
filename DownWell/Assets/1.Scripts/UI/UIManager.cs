@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject openingPanel;
     public GameObject startPanel;
     public GameObject charPanel;
     public GameObject character;
@@ -17,14 +18,22 @@ public class UIManager : MonoBehaviour
     {
         //Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
         //PlayerPrefs.DeleteAll();
-
+        
         //SoundManager.instance.SoundOff();
+        
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
+
+        if (PlayerPrefs.GetInt("Opening") != 0)
+            openingPanel.SetActive(false);
+        else
+            openingPanel.SetActive(true);
 
         startPanel.SetActive(true);
         charPanel.SetActive(false);
 
         clickPlay = false;
+
+        PlayerPrefs.SetInt("Opening", 1);
 
         SettingMgr.instance.bgmOff = PlayerPrefs.GetInt("BgmVolume");
         SettingMgr.instance.effOff = PlayerPrefs.GetInt("EffVolume");
@@ -40,6 +49,12 @@ public class UIManager : MonoBehaviour
         versionInfo.text = "Ver." + Application.version;
     }
 
+    void Update()
+    {
+        if (openingPanel.activeInHierarchy)
+            if (openingPanel.GetComponent<Image>().enabled == false)
+                openingPanel.SetActive(false);
+    }
     public void startBtn()
     {
         clickPlay = true;
