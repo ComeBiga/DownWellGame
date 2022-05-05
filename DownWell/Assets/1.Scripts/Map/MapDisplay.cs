@@ -23,7 +23,8 @@ public class MapDisplay : MonoBehaviour
     [Header("Objects")]
     public GameObject wallObject;
     public GameObject blockObject;
-    public List<GameObject> platformObject;
+    public List<GameObject> platformObjects;
+    public List<GameObject> extraObjects;
 
     [Header("Background")]
     //public bool displayBackground = true;
@@ -184,9 +185,9 @@ public class MapDisplay : MonoBehaviour
         blockObject.GetComponent<SpriteRenderer>().sprite = blockSprites[0];
 
         // platform
-        for(int i = 0; i < platformObject.Count; i++)
+        for(int i = 0; i < platformObjects.Count; i++)
         {
-            platformObject[i].GetComponent<SpriteRenderer>().sprite = platformSprites[i];
+            platformObjects[i].GetComponent<SpriteRenderer>().sprite = platformSprites[i];
         }
     }
 
