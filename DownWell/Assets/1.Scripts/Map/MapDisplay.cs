@@ -92,7 +92,7 @@ public class MapDisplay : MonoBehaviour
         this.wallSprites = currentStageDB.WallSprites;
         this.enemyObjects = currentStageDB.EnemyObjects;
 
-        SetMapObjectSprite(currentStageDB.BlockSprites, currentStageDB.PlatformSprites);
+        //SetMapObjectSprite(currentStageDB.BlockSprites, currentStageDB.PlatformSprites);
     }
 
     public void DisplayByDatabase(Level level, StageDatabase stageDB)
