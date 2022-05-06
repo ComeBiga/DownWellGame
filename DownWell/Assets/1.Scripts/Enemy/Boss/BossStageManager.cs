@@ -61,6 +61,12 @@ public class BossStageManager : MonoBehaviour
         FX();
     }
 
+    public void EndBossStage()
+    {
+        bossStage = false;
+        GameManager.instance.ClearStage();
+    }
+
     IEnumerator AppearAnimation()
     {
         var moveDistance = 0f;

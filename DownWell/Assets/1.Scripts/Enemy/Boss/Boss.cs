@@ -50,7 +50,16 @@ public class Boss : MonoBehaviour
     {
         health.Lose(amount);
 
+        if (health.Current <= 0)
+            Die();
+
         StartCoroutine(DamagedFX());
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
+        BossStageManager.instance.EndBossStage();
     }
 
     private IEnumerator DamagedFX()

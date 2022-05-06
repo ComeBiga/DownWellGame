@@ -61,6 +61,12 @@ public class SmoothFollow : MonoBehaviour
         transform.position = new Vector3(transform.position.x, (target.position + offset).y, (target.position + offset).z);
     }
 
+    public void StartStage()
+    {
+        bossScroll = false;
+        followActive = true;
+    }
+
     #region BossStageCamera
 
     public void StartBossCamera()
