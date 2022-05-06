@@ -65,5 +65,12 @@ namespace CatDown
         {
             
         }
+
+        protected void Next()
+        {
+            handler.Current.StopAction();
+
+            handler.Next();
+        }
     }
 }

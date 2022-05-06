@@ -35,5 +35,10 @@ namespace CatDown
         {
             if (decision != null) decision.StopCheck();
         }
+
+        public void OnActionEnd()
+        {
+            decision.OnActionEnd();
+        }
     }
 }

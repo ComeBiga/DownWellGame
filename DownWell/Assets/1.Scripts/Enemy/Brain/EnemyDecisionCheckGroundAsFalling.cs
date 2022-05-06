@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace CatDown
 {
-
-    public class EnemyDecisionCheckGround : CatDown.EnemyDecisionCheckCollision
+    public class EnemyDecisionCheckGroundAsFalling : EnemyDecisionCheckCollision
     {
+        [Header("Falling")]
+        [SerializeField] private float minFallingVelocity = 1f;
 
         protected override void EnterExamine()
         {
@@ -19,8 +19,13 @@ namespace CatDown
         {
             collision.UpdateRaycastOrigins();
 
-            if (collision.CheckCollision(CollisionDirection.DOWN))
+            float Yvel = GetComponent<Rigidbody2D>().velocity.y;
+
+            Debug.Log(Yvel);
+            
+            if (collision.CheckCollision(CollisionDirection.DOWN) && Yvel < -minFallingVelocity)
             {
+
                 Debug.Log("Grounded");
 
                 base.Decide();

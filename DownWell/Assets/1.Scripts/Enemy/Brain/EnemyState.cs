@@ -10,6 +10,7 @@ namespace CatDown
     public class EnemyState
     {
         public string name = "";
+        public bool actionLoop = true;
 
         public List<CatDown.EnemyAction> actions;
         public List<CatDown.EnemyTransition> transitions;
@@ -22,12 +23,19 @@ namespace CatDown
 
         public void Init(CatDown.EnemyBrain brain)
         {
+            handler = new CatDown.EnemyActionHandler(actions, actionLoop);
+            
             foreach(var t in transitions)
             {
                 t.Init(brain);
+                handler.OnActionEnd += t.OnActionEnd;
             }
 
-            handler = new CatDown.EnemyActionHandler(actions);
+        }
+
+        public void EnterState()
+        {
+            handler.SetFirstAction();
         }
 
         public void Handle()
@@ -45,7 +53,7 @@ namespace CatDown
         public void Stop()
         {
             // action
-            handler.Current.StopAction();
+            if (handler.Current != null) handler.Current.StopAction();
 
             // transition
             foreach(var t in transitions)

@@ -51,6 +51,8 @@ namespace CatDown
         {
             StopCoroutine(coroutineECheck);
         }
+
+        public virtual void OnActionEnd() { }
         #endregion
 
         #region Protected Method
@@ -62,6 +64,22 @@ namespace CatDown
         {
             //transition.OnChangeState();
             OnDecide.Invoke();
+        }
+
+        protected void DecideAfterOneFrame()
+        {
+            StartCoroutine(EDecideAfterOneFrame());
+        }
+
+        #endregion
+
+        #region Private Method
+
+        private IEnumerator EDecideAfterOneFrame()
+        {
+            yield return null;
+
+            Decide();
         }
 
         #endregion
