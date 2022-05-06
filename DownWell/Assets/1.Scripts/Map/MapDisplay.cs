@@ -26,6 +26,7 @@ public class MapDisplay : MonoBehaviour
     [Header("Background")]
     //public bool displayBackground = true;
     public GameObject backgroundObject;
+    public float brightness = 190;
     //public List<Sprite> background;
     //public GameObject background2by2;
     //public int background2by2Ratio = 10;
@@ -140,6 +141,7 @@ public class MapDisplay : MonoBehaviour
         // Background base
         var bgo = GetTileInstance(backgroundObject, tilePosition.x, tilePosition.y);
         bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(currentStage.bgInfo);
+        bgo.GetComponent<SpriteRenderer>().color = new Color((float)brightness/255, (float)brightness /255, (float)brightness/255);
 
         // Background Decoration
         var decos = currentStage.bgInfo.deco;

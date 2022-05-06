@@ -21,7 +21,7 @@ namespace CatDown
 
             float Yvel = GetComponent<Rigidbody2D>().velocity.y;
 
-            Debug.Log(Yvel);
+            //Debug.Log(Yvel);
             
             if (collision.CheckCollision(CollisionDirection.DOWN) && Yvel < -minFallingVelocity)
             {
