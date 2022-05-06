@@ -23,6 +23,7 @@ public class SettingMgr : MonoBehaviour
     }
     #endregion
 
+    public GameObject OpeningPanel;
     public GameObject setPanel;
     public GameObject setBtn;
     public GameObject exitButton;
@@ -55,6 +56,16 @@ public class SettingMgr : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "StartScene")
+        {
+            if (OpeningPanel.activeInHierarchy)
+                setBtn.GetComponent<Image>().enabled = false;
+            else
+                setBtn.GetComponent<Image>().enabled = true;
+        }
+        else
+            setBtn.GetComponent<Image>().enabled = true;
+
         if (Setting.worldCamera == null)
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
@@ -152,6 +163,10 @@ public class SettingMgr : MonoBehaviour
         }
     }
 
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("Opening");
+    }
 
     //sound
     public void muteSound(string sound)
