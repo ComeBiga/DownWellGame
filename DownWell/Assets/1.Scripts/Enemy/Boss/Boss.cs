@@ -49,5 +49,16 @@ public class Boss : MonoBehaviour
     public void Damaged(int amount)
     {
         health.Lose(amount);
+
+        StartCoroutine(DamagedFX());
+    }
+
+    private IEnumerator DamagedFX()
+    {
+        GetComponent<SpriteRenderer>().color = Color.black;
+
+        yield return null;
+
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

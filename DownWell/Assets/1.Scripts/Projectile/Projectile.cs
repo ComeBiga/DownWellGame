@@ -44,6 +44,14 @@ public class Projectile : MonoBehaviour
 
                 break;
             }
+            
+            if(collider.tag == "Boss")
+            {
+                GetComponent<Effector>().Generate("Hit");
+                Destroy();
+
+                collider.GetComponent<Boss>().Damaged(damage);
+            }
 
             if (collider.tag == "Wall")
             {
@@ -57,6 +65,7 @@ public class Projectile : MonoBehaviour
                     break;
                 }
             }
+
 
             if(collider.tag == "Enemy")
             {

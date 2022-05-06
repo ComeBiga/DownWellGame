@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
             timer = 0;
 
-            Debug.Log(weapon.CurrentNumOfBullet);
+            //Debug.Log(weapon.CurrentNumOfBullet);
         }
     }
 

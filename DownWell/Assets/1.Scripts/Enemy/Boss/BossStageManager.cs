@@ -28,8 +28,8 @@ public class BossStageManager : MonoBehaviour
     public int appearDirection = -1;
     public float appearSpeed = 1f;
 
-    bool bossStage = false;
-    public bool IsBossStage { get { return bossSpawner.activeSelf; } }
+    private bool bossStage = false;
+    public bool IsBossStage { get { return bossStage; } }
 
     //Vector3 bossAppearPos;
 

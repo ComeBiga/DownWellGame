@@ -116,6 +116,9 @@ public class PlayerController : MonoBehaviour
 
     public void MoveOnSplashed()
     {
+        if (!BossStageManager.instance.IsBossStage) return;
+        //if (physics.wallCollision == null) return;
+
         RaycastHit2D hit;
 
         if(physics.wallCollision.CheckCollision(CollisionDirection.DOWN, out hit))

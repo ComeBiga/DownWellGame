@@ -2743,7 +2743,7 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: -10}
   smooth: 15
   followActive: 1
-  followCharacter: 1
+  followCharacter: 0
   scrollSpeed: 1
   bossScroll: 0
   offset_End: -5
@@ -5604,6 +5604,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   m_PrefabInstance: {fileID: 1130928429}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &961688027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_Name
+      value: JellyWorm
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
 --- !u!4 &981342828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
@@ -6065,6 +6122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a2faba35cc14f43bf106ac429a23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OpeningPanel: {fileID: 0}
   setPanel: {fileID: 1111668014}
   setBtn: {fileID: 1667628788}
   exitButton: {fileID: 525866229}
