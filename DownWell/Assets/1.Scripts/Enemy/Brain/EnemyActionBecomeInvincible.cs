@@ -11,7 +11,7 @@ namespace CatDown
         protected override void OnActionEnter()
         {
             GetComponent<Enemy>().invincible = true;
-            handler.Next();
+            base.Next();
         }
 
         protected override void OnActionExit()

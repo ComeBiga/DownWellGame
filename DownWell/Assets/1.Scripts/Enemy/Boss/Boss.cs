@@ -49,5 +49,25 @@ public class Boss : MonoBehaviour
     public void Damaged(int amount)
     {
         health.Lose(amount);
+
+        if (health.Current <= 0)
+            Die();
+
+        StartCoroutine(DamagedFX());
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
+        BossStageManager.instance.EndBossStage();
+    }
+
+    private IEnumerator DamagedFX()
+    {
+        GetComponent<SpriteRenderer>().color = Color.black;
+
+        yield return null;
+
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

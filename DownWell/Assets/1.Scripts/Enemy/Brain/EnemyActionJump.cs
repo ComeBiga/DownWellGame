@@ -26,10 +26,12 @@ namespace CatDown
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(direction * horizontalSpeed, verticalSpeed);
 
+            base.Next();
         }
 
         private void Animate()
         {
+            Debug.Log("Animate Jump");
             GetComponent<Animator>().SetTrigger("Jump");
 
         }
@@ -38,7 +40,7 @@ namespace CatDown
         {
             base.OnActionExit();
 
-            OnGround();
+            //OnGround();
         }
 
         public void OnGround()

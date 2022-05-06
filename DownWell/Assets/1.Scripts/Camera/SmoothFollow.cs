@@ -16,6 +16,8 @@ public class SmoothFollow : MonoBehaviour
     Vector3 scrollTarget;
     float scrollOffset = 0f;
 
+    private BossStageCamera bossCamera;
+
     [Header("StageEnd")]
     public float offset_End;
 
@@ -40,12 +42,15 @@ public class SmoothFollow : MonoBehaviour
         if(followActive)
          transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
 
+        // 보스 등장 후 카메라 움직임
         if (bossScroll)
         {
+            //bossCamera.Update();
+
             if (followCharacter)
-                CameraScrollFollowCharacter();
+                CameraScrollFollowCharacter();      // 캐릭터 따라감
             else
-                CameraScrollOnly();
+                CameraScrollOnly();                 // 화면만 움직임
         }
             
     }
@@ -54,6 +59,12 @@ public class SmoothFollow : MonoBehaviour
     {
         target = playerPos;
         transform.position = new Vector3(transform.position.x, (target.position + offset).y, (target.position + offset).z);
+    }
+
+    public void StartStage()
+    {
+        bossScroll = false;
+        followActive = true;
     }
 
     #region BossStageCamera
@@ -89,7 +100,7 @@ public class SmoothFollow : MonoBehaviour
         //transform.position += Yscroll;
         //transform.position += Yfollow;
 
-        if (scrollTarget.y > target.position.y)
+        if (scrollTarget.y > target.position.y)                             // Follow Charact
         {
             LerpToTarget(target.position + offset);
 

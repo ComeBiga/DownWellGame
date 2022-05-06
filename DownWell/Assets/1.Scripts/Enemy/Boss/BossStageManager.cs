@@ -28,8 +28,8 @@ public class BossStageManager : MonoBehaviour
     public int appearDirection = -1;
     public float appearSpeed = 1f;
 
-    bool bossStage = false;
-    public bool IsBossStage { get { return bossSpawner.activeSelf; } }
+    private bool bossStage = false;
+    public bool IsBossStage { get { return bossStage; } }
 
     //Vector3 bossAppearPos;
 
@@ -59,6 +59,12 @@ public class BossStageManager : MonoBehaviour
         MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 10);
 
         FX();
+    }
+
+    public void EndBossStage()
+    {
+        bossStage = false;
+        GameManager.instance.ClearStage();
     }
 
     IEnumerator AppearAnimation()

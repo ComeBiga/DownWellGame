@@ -33,6 +33,15 @@ public class PlayerCombat : MonoBehaviour
         cStep = GetComponent<PlayerCombatStepping>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            useLoseHealth = !useLoseHealth;
+            Debug.Log("useLoseHealth : " + useLoseHealth);
+        }
+    }
+
     #region Damage
     public void Damaged(Transform enemy)
     {

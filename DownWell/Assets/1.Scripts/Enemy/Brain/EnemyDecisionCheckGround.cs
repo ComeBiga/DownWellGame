@@ -19,12 +19,8 @@ namespace CatDown
         {
             collision.UpdateRaycastOrigins();
 
-            float Yvel = GetComponent<Rigidbody2D>().velocity.y;
-
-            if (collision.CheckCollision(CollisionDirection.DOWN) && Yvel < -0.01f)
+            if (collision.CheckCollision(CollisionDirection.DOWN))
             {
-                Debug.Log(GetComponent<Rigidbody2D>().velocity.y);
-
                 Debug.Log("Grounded");
 
                 base.Decide();

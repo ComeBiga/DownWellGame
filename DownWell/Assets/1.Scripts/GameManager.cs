@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour
     {
         stageManager.NextStage();
 
+        Camera.main.GetComponent<SmoothFollow>().StartStage();
+
         mapManager.Clear();
 
         mapManager.GenerateBeforeUpdate();
