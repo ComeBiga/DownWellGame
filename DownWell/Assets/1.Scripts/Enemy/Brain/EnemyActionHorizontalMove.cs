@@ -24,6 +24,7 @@ namespace CatDown
             collision.CalculateRaySpacing();
 
             //SetStartDirection();
+            Animation();
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
 
@@ -56,19 +57,45 @@ namespace CatDown
 
             //Debug.Log("HM Updating");
 
-            Animation();
+            //Animation();
+        }
+
+        protected override void OnActionExit()
+        {
+            base.OnActionExit();
+
+            Stop();
+
+            if(!moveAsCollision) ChangeDirection();
+            //Animation();
         }
 
         void Animation()
         {
-            if (GetComponent<Rigidbody2D>().velocity.x < -0.01f) GetComponent<SpriteRenderer>().flipX = true;
-            else if(GetComponent<Rigidbody2D>().velocity.x > 0.01f) GetComponent<SpriteRenderer>().flipX = false;
+            if (dir < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<Animator>().SetBool("Fliped", true);
+            }
+            else if (dir > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<Animator>().SetBool("Fliped", false);
+            }
+
+            //if (GetComponent<Rigidbody2D>().velocity.x < -0.01f) GetComponent<SpriteRenderer>().flipX = true;
+            //else if(GetComponent<Rigidbody2D>().velocity.x > 0.01f) GetComponent<SpriteRenderer>().flipX = false;
             //GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
         }
 
         private void Move()
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
+        }
+
+        private void Stop()
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
         }
 
         protected void MoveAsCollision()
@@ -91,6 +118,7 @@ namespace CatDown
             if (timer >= changeTime)
             {
                 ChangeDirection();
+                Move();
 
                 timer = 0;
             }
@@ -103,7 +131,7 @@ namespace CatDown
         private void ChangeDirection()
         {
             dir *= -1;
-            Move();
+            Animation();
             //Debug.Log("ChangeDirection");
 
             //Invoke("ChangeDirection", changeTime);

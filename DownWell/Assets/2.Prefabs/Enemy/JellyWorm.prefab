@@ -262,7 +262,7 @@ MonoBehaviour:
   moveAsCollision: 0
   speed: 1
   startDirection: 0
-  changeTime: 3
+  changeTime: 5
 --- !u!114 &3165532532302928838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774247e78d903e74ea5daa0f6db65dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 0.1
+  rayLength: 0.5
   horizontalRayCount: 4
   verticalRayCount: 4
   groundLayermask:
