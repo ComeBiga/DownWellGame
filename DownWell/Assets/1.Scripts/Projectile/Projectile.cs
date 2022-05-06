@@ -23,7 +23,8 @@ public class Projectile : MonoBehaviour
 
     void CollisionCheck()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, GetComponent<CircleCollider2D>().radius);
+        List<Collider2D> colliders = new List<Collider2D>();// = Physics2D.OverlapCircleAll(transform.position, GetComponent<CircleCollider2D>().radius);
+        var count = GetComponent<CircleCollider2D>().OverlapCollider(new ContactFilter2D(), colliders);
 
         foreach (var collider in colliders)
         {
@@ -44,9 +45,11 @@ public class Projectile : MonoBehaviour
 
                 break;
             }
+
             
             if(collider.tag == "Boss")
             {
+                Debug.Log("boss");
                 GetComponent<Effector>().Generate("Hit");
                 Destroy();
 
@@ -79,6 +82,20 @@ public class Projectile : MonoBehaviour
                 collider.GetComponent<IUseObject>().Use();
                 GetComponent<Effector>().Generate("Hit");
                 Destroy();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision != null)
+        {
+            if (collision.tag == "Boss")
+            {
+                GetComponent<Effector>().Generate("Hit");
+                Destroy();
+
+                collision.GetComponent<Boss>().Damaged(damage);
             }
         }
     }

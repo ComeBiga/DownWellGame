@@ -2757,7 +2757,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 3
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5615,6 +5615,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyWorm
       objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327662, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327662, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088113206692327662, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9088113206692327665, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -7202,6 +7218,7 @@ MonoBehaviour:
   - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
   - {fileID: 3283359789271922636, guid: 7571059a67ad7c64b9eacd3f97bf7a2a, type: 3}
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
+  brightness: 190
 --- !u!114 &1215072950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9652,8 +9669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stages:
-  - {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
   - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
+  - {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
 --- !u!1 &1704033169
 GameObject:
   m_ObjectHideFlags: 0
