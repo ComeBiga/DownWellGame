@@ -101,7 +101,11 @@ public class StageManager : MonoBehaviour
     public void NextStage()
     {
         index++;
+
+        if (index >= stages.Count)
+            Debug.LogWarning("No more Stages!");
+
         current = stages[index];
-        MapManager.instance.mapDisplay.SetObjects(current);
+        //MapManager.instance.mapDisplay.SetObjects(current);
     }
 }

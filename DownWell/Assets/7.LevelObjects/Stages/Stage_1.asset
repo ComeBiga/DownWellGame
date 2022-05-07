@@ -44,8 +44,8 @@ MonoBehaviour:
   blockSprites:
   - {fileID: -6544076422255163248, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   platformSprites:
-  - {fileID: -692278537203691343, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   - {fileID: 1509607539823229551, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  - {fileID: -692278537203691343, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   - {fileID: -8467144355081181117, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}

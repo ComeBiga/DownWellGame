@@ -7208,15 +7208,6 @@ MonoBehaviour:
   startPos: {fileID: 0}
   blockRatio: 100
   enemyRatio: 50
-  mapObjects:
-  - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
-  - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
-  - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
-  - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
-  - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
-  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
-  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
-  - {fileID: 3283359789271922636, guid: 7571059a67ad7c64b9eacd3f97bf7a2a, type: 3}
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
   brightness: 190
 --- !u!114 &1215072950
@@ -9669,8 +9660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stages:
-  - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
   - {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
+  - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
 --- !u!1 &1704033169
 GameObject:
   m_ObjectHideFlags: 0

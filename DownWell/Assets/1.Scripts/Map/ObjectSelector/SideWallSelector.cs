@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SideWallSelector : ObjectSelector
 {
-    public SideWallSelector(int code) : base(code)
+    public SideWallSelector(int code, params GameObject[] objects) : base(code, objects)
     {
     }
 
-    public SideWallSelector(int min, int max) : base(min, max)
+    public SideWallSelector(int min, int max, params GameObject[] objects) : base(min, max, objects)
     {
     }
 
@@ -27,7 +27,8 @@ public class SideWallSelector : ObjectSelector
     private bool SetBlockAndPlatformSprite(string name, out Sprite sprite)
     {
         Sprite result;
-        StageDatabase stage = StageManager.instance.Current;
+        //StageDatabase stage = StageManager.instance.Current;
+        StageDatabase stage = currentStage;
 
         switch(name)
         {

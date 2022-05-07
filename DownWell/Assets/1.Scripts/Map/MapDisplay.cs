@@ -20,11 +20,13 @@ public class MapDisplay : MonoBehaviour
     private List<Sprite> wallSprites;
     private List<GameObject> enemyObjects;
 
-    [Header("Objects")]
-    public GameObject wallObject;
-    public GameObject blockObject;
-    public List<GameObject> platformObjects;
-    public List<GameObject> extraObjects;
+    //[Header("Objects")]
+    //[SerializeField] private List<GameObject> mapObjects;
+
+    //public GameObject wallObject;
+    //public GameObject blockObject;
+    //public List<GameObject> platformObjects;
+    //public List<GameObject> extraObjects;
 
     [Header("Background")]
     //public bool displayBackground = true;
@@ -56,7 +58,6 @@ public class MapDisplay : MonoBehaviour
         spws.SetNext(ssws);
         ssws.SetNext(sdws);
 
-
         // enemy
         es_root = new EnemySelector(2000, 3000, enemyRatio);
     }
@@ -87,14 +88,14 @@ public class MapDisplay : MonoBehaviour
         this.enemyObjects = enemyObjects;
     }
 
-    public void SetObjects(StageDatabase currentStageDB)
-    {
-        this.wallObjects = currentStageDB.MapObjects;
-        this.wallSprites = currentStageDB.WallSprites;
-        this.enemyObjects = currentStageDB.EnemyObjects;
+    //public void SetObjects(StageDatabase currentStageDB)
+    //{
+    //    this.wallObjects = currentStageDB.MapObjects;
+    //    this.wallSprites = currentStageDB.WallSprites;
+    //    this.enemyObjects = currentStageDB.EnemyObjects;
 
-        //SetMapObjectSprite(currentStageDB.BlockSprites, currentStageDB.PlatformSprites);
-    }
+    //    //SetMapObjectSprite(currentStageDB.BlockSprites, currentStageDB.PlatformSprites);
+    //}
 
     public void DisplayByDatabase(Level level, StageDatabase stageDB)
     {
@@ -181,17 +182,17 @@ public class MapDisplay : MonoBehaviour
         return go;
     }
 
-    private void SetMapObjectSprite(List<Sprite> blockSprites, List<Sprite> platformSprites)
-    {
-        // block
-        blockObject.GetComponent<SpriteRenderer>().sprite = blockSprites[0];
+    //private void SetMapObjectSprite(List<Sprite> blockSprites, List<Sprite> platformSprites)
+    //{
+    //    // block
+    //    blockObject.GetComponent<SpriteRenderer>().sprite = blockSprites[0];
 
-        // platform
-        for(int i = 0; i < platformObjects.Count; i++)
-        {
-            platformObjects[i].GetComponent<SpriteRenderer>().sprite = platformSprites[i];
-        }
-    }
+    //    // platform
+    //    for(int i = 0; i < platformObjects.Count; i++)
+    //    {
+    //        platformObjects[i].GetComponent<SpriteRenderer>().sprite = platformSprites[i];
+    //    }
+    //}
 
     #region Deprecated
 

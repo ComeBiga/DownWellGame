@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StartPosSelector : ObjectSelector
 {
-    public StartPosSelector(int code) : base(code)
+    public StartPosSelector(int code, params GameObject[] objects) : base(code, objects)
     {
     }
 
-    public StartPosSelector(int min, int max) : base(min, max)
+    public StartPosSelector(int min, int max, params GameObject[] objects) : base(min, max, objects)
     {
     }
 

@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
         sm = StageManager.instance;
 
         // Init Object
-        mapDisplay.SetObjects(sm.Current);
+        //mapDisplay.SetObjects(sm.Current);
 
         // Generate
         //StartCoroutine(GenerateMap());

@@ -41,6 +41,12 @@ MonoBehaviour:
   - {fileID: 5140595148617232435, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: -4039863778131383791, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  blockSprites:
+  - {fileID: 9209212431809420075, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  platformSprites:
+  - {fileID: -6586523574003130246, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -1080989262840447820, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -6586523574003130246, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   enemyObjects: []
   bossObject: {fileID: 0}
   bgInfo:

@@ -7,26 +7,39 @@ public abstract class ObjectSelector
     protected ObjectSelector next;
     protected int min;
     protected int max;
+    protected GameObject[] objects;
 
     protected static Vector3 position;
     protected static Transform parent;
     protected static StageDatabase currentStage;
 
-    public ObjectSelector(int min, int max)
+    public ObjectSelector(int min, int max, params GameObject[] objects)
     {
         this.min = min;
         this.max = max;
+        this.objects = objects;
     }
 
-    public ObjectSelector(int code)
+    public ObjectSelector(int code, params GameObject[] objects)
     {
         this.min = code;
         this.max = code;
+        this.objects = objects;
     }
 
     public void SetNext(ObjectSelector next)
     {
         this.next = next;
+    }
+
+    public void SetObject(params GameObject[] objects)
+    {
+        this.objects = objects;
+    }
+    
+    public void SetObject(List<GameObject> objects)
+    {
+        this.objects = objects.ToArray();
     }
 
     public GameObject InstantiateObject(int tileCode, Vector3 _position, Transform _parent, StageDatabase _currentStage)

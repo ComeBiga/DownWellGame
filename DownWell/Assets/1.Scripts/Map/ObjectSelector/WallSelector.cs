@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class WallSelector : ObjectSelector
 {
-    public WallSelector(int code) : base(code)
+    public WallSelector(int code, params GameObject[] objects) : base(code, objects)
     {
         
     }
 
-    public WallSelector(int min, int max) : base(min, max)
+    public WallSelector(int min, int max, params GameObject[] objects) : base(min, max, objects)
     {
 
     }
