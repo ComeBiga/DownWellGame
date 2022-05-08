@@ -47,7 +47,8 @@ MonoBehaviour:
   - {fileID: -6586523574003130246, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: -1080989262840447820, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: -6586523574003130246, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-  enemyObjects: []
+  enemyObjects:
+  - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   bossObject: {fileID: 0}
   bgInfo:
     _base:
