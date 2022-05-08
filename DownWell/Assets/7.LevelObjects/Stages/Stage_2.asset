@@ -24,6 +24,7 @@ MonoBehaviour:
   - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
   - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
   - {fileID: 8781748680107075732, guid: 91adba513393f0a4eb5e0a009677edd3, type: 3}
+  - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
   wallSprites:
   - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: 6094567818995607104, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}

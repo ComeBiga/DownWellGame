@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemGiver : Wall
+public class ItemGiver : Block
 {
     public ItemDrop itemDropper;
 
@@ -13,7 +13,7 @@ public class ItemGiver : Wall
         itemDropper.SetItem(dropItems);
     }
 
-    public void Destroy()
+    public override void Destroy()
     {
         itemDropper.Random(transform.position);
 

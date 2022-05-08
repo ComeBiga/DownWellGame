@@ -9,7 +9,7 @@ public class Block : Wall
         
     }
 
-    public void Destroy()
+    public virtual void Destroy()
     {
         GetComponent<Effector>().Generate("Destroy");
 
