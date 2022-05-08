@@ -48,15 +48,15 @@ public class StageDatabase : ScriptableObject
     { 
         get 
         {
-            var mos = mapObjects;
+            //var mos = mapObjects;
 
-            foreach (var mo in mos)
-            {
-                mo.GetComponent<Wall>().SetSpriteByStage(num);
-            }
+            //foreach (var mo in mos)
+            //{
+            //    mo.GetComponent<Wall>().SetSpriteByStage(num);
+            //}
 
-            return mos;
-            //return mapObjects; 
+            //return mos;
+            return mapObjects; 
         } 
     }
 
