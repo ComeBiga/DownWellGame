@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448642e29d0049349823a3dc92adfdfb, type: 3}
   m_Name: TrainHole
   m_EditorClassIdentifier: 
-  code: 0
-  name: 
-  sprite: {fileID: 0}
+  code: 31
+  name: TrainHole
+  sprite: {fileID: 21300144, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
   sprites: []
-  sliced: 0
+  sliced: 1
   score: 0

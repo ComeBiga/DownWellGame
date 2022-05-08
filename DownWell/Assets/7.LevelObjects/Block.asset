@@ -18,5 +18,6 @@ MonoBehaviour:
   sprites:
   - {fileID: 8822228494322020638, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: -6544076422255163248, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  - {fileID: -6544076422255163248, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   sliced: 1
   score: 0

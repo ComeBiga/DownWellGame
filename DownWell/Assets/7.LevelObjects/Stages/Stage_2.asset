@@ -14,11 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stage2
   num: 2
-  path: 
-  mapObjects: []
-  wallSprites: []
+  path: /Resources/Levels/Stage2
+  mapObjects:
+  - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
+  - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
+  - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
+  - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
+  - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
+  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
+  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
+  - {fileID: 8781748680107075732, guid: 91adba513393f0a4eb5e0a009677edd3, type: 3}
+  wallSprites:
+  - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: 6094567818995607104, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -1797308386499980870, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -8780544266126674041, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -2371495637234060756, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: 6278984746606889757, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -1913140024372502332, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -4868785216715901871, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: 2111467066964361385, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: 8092404753173535885, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -7475247292883857376, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -3121940317747235480, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: 7944469906063595454, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -5881622362676116124, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -6728371487741853675, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: 1438999105531611913, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  blockSprites:
+  - {fileID: -6544076422255163248, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  platformSprites:
+  - {fileID: 1509607539823229551, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  - {fileID: -692278537203691343, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
+  - {fileID: -8467144355081181117, guid: fdcb0133f944f884f9fcdcadca8c5803, type: 3}
   enemyObjects: []
   bossObject: {fileID: 0}
   bgInfo:
-    _base: []
-    deco: []
+    _base:
+    - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    deco:
+    - sprite: {fileID: 1457973918208686885, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+      prob: 1

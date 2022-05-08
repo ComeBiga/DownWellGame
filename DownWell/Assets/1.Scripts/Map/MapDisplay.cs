@@ -52,7 +52,7 @@ public class MapDisplay : MonoBehaviour
         ws_root = new WallSelector(100, 1000);
         var spws = new SpecialWallSelector(9);
         var ssws = new StartPosSelector(8);
-        var sdws = new SideWallSelector(0, 10);
+        var sdws = new SideWallSelector(0, 99);
 
         ws_root.SetNext(spws);
         spws.SetNext(ssws);
