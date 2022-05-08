@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 652079162436512120}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5165975778222276129
 SpriteRenderer:
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3453447799436017354}
   - component: {fileID: 5891615091984218109}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 4626489882419344352}
   - component: {fileID: 4626489882419344355}
   - component: {fileID: 2566661457879464288}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ Transform:
   m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 652079162436512120}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4626489882419344352
 SpriteRenderer:
@@ -293,8 +293,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4626489882419344354}
   - {fileID: 3999034029994783326}
+  - {fileID: 4626489882419344354}
   - {fileID: 3453447799436017354}
   m_Father: {fileID: 0}
   m_RootOrder: 0
