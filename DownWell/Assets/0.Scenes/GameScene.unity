@@ -7224,7 +7224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapDisplay: {fileID: 0}
   width: 11
-  height: 100
+  height: 200
   reGenerateOffset: 20
 --- !u!114 &1215072952
 MonoBehaviour:

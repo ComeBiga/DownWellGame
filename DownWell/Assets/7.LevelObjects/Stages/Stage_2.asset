@@ -27,34 +27,36 @@ MonoBehaviour:
   - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
   wallSprites:
   - {fileID: 21300220, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: 3166771915881111183, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: 4650799767681276786, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: 1788131160116610080, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: 6500794085179383178, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: -7650893095360701614, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: 2942002432091055000, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: -4021096186004627352, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: 9140915955669853636, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: -1395124571612005867, guid: 86b84c1a30f7d774189145d76a715091, type: 3}
-  - {fileID: 21300120, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: 21300110, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: 21300148, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: 21300106, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: -2376211433790243913, guid: 5e9d7d38cb9930542a1cfa81b7cb020c, type: 3}
-  - {fileID: 5867984411295312773, guid: 5e9d7d38cb9930542a1cfa81b7cb020c, type: 3}
+  - {fileID: 3766351951999319722, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: 7596687793506137544, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: -8214880746423502723, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: -300668787787298541, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: -4390213633506048918, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: 4081570597874279513, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: -8214639521833686207, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: 3286001471003024038, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: -5753524851468997687, guid: 2c22f8fb57f805c4abf82eb79fafc948, type: 3}
+  - {fileID: -3346016253610257518, guid: 83077752d811b2346bdf026fffdd786b, type: 3}
+  - {fileID: 7719682862298544985, guid: 83077752d811b2346bdf026fffdd786b, type: 3}
+  - {fileID: -8919237106750409106, guid: 83077752d811b2346bdf026fffdd786b, type: 3}
+  - {fileID: 3870747015942205721, guid: 83077752d811b2346bdf026fffdd786b, type: 3}
+  - {fileID: -6268635143535836753, guid: 826afaf4d185a934bb24722724236f85, type: 3}
+  - {fileID: -2485557975778240028, guid: 826afaf4d185a934bb24722724236f85, type: 3}
   blockSprites:
   - {fileID: 21300204, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
   platformSprites:
-  - {fileID: 21300076, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: 21300056, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
-  - {fileID: 21300054, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - {fileID: -2416921811730788455, guid: 225babbfa2bb531439321e3582701833, type: 3}
+  - {fileID: 4995053061636649537, guid: 225babbfa2bb531439321e3582701833, type: 3}
+  - {fileID: 4030520453958319683, guid: 225babbfa2bb531439321e3582701833, type: 3}
   enemyObjects: []
   bossObject: {fileID: 0}
   bgInfo:
     _base:
-    - {fileID: -307173239715039890, guid: 85885a4d3c6810e4cb69e3aedc6f1c38, type: 3}
-    - {fileID: -7805967942173473679, guid: 85885a4d3c6810e4cb69e3aedc6f1c38, type: 3}
-    - {fileID: 21300000, guid: 77a0cd8ee1676d845a4d398bf43200b0, type: 3}
+    - {fileID: 6606195721717542812, guid: fec15b0fa80842a4a97333ebf5b88ea8, type: 3}
+    - {fileID: -246551004071891238, guid: fec15b0fa80842a4a97333ebf5b88ea8, type: 3}
+    - {fileID: 21300000, guid: 50a63f8446f483f429de256d0bcfd1b3, type: 3}
+    - {fileID: 21300000, guid: 634977f4fc9ad1f48b611d3a7ef952bb, type: 3}
+    - {fileID: 21300000, guid: 2755f3225c291534db93c9345b833b0c, type: 3}
     deco:
     - sprite: {fileID: 21300246, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
       prob: 1

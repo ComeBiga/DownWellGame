@@ -6,6 +6,7 @@ public class TrainHole : MonoBehaviour
 {
     [SerializeField] private GameObject train;
     [SerializeField] private BoxCollider2D sensor;
+    [SerializeField] private float appearTime;
     [SerializeField] private float passTime;
 
     private List<Collider2D> colliders;
@@ -32,10 +33,16 @@ public class TrainHole : MonoBehaviour
     
     private IEnumerator EPassThrough()
     {
+        yield return new WaitForSeconds(appearTime);
+
         train.SetActive(true);
 
         yield return new WaitForSeconds(passTime);
 
+        train.GetComponent<Animator>().SetTrigger("PassAway");
+
+        yield return new WaitForSeconds(1f);
+        
         train.SetActive(false);
     }
 
