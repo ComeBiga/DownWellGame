@@ -215,3 +215,6 @@ MonoBehaviour:
   - filename: Tutorial
     stage: 0
     path: /Resources/Levels/Stage0/Tutorial.json
+  - filename: exit_0
+    stage: 1
+    path: /Resources/Levels/Stage0/Exit/exit_0.json

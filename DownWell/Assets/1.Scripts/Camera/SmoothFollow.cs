@@ -13,6 +13,8 @@ public class SmoothFollow : MonoBehaviour
     public bool followCharacter = true;
     public float scrollSpeed = 3f;
     public bool bossScroll = false;
+    public float bossScrollDistance;
+    private Vector3 bossScrollOffset;
     Vector3 scrollTarget;
     float scrollOffset = 0f;
 
@@ -39,18 +41,23 @@ public class SmoothFollow : MonoBehaviour
         //if (transform.position.y < -MapManager.instance.height + offset_End) followActive = false;
         //else followActive = true;
 
-        if(followActive)
-         transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
+        if (followActive)
+            transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
+        else
+            transform.position = new Vector3(0, BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance, -10);
+
 
         // 보스 등장 후 카메라 움직임
         if (bossScroll)
         {
             //bossCamera.Update();
 
-            if (followCharacter)
-                CameraScrollFollowCharacter();      // 캐릭터 따라감
-            else
-                CameraScrollOnly();                 // 화면만 움직임
+            //if (followCharacter)
+            //    CameraScrollFollowCharacter();      // 캐릭터 따라감
+            //else
+            //    CameraScrollOnly();                 // 화면만 움직임
+
+            CameraScrollDistanceFromBoss();
         }
             
     }
@@ -73,12 +80,31 @@ public class SmoothFollow : MonoBehaviour
     {
         SetCameraScrollTarget();
         bossScroll = true;
-        followActive = false;
+        //followActive = false;
     }
 
     public void SetCameraScrollTarget()
     {
         scrollTarget = new Vector3(0, target.transform.position.y, 0);
+    }
+
+    private void CameraScrollDistanceFromBoss()
+    {
+        var dis = (transform.position.y - bossScrollDistance) - BossStageManager.instance.BossObject.transform.localPosition.y;
+
+        Debug.Log("dis : " + dis);
+        Debug.Log(target.transform.position.y >= transform.position.y);
+
+        if(target.transform.position.y >= transform.position.y)
+        {
+            transform.position = new Vector3(0, target.transform.position.y, -10);
+            followActive = true;
+        }
+
+        if(dis <= 0)
+        {
+            followActive = false;
+        }
     }
 
     void CameraScrollOnly()

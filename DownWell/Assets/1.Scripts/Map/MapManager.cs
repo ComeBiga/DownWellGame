@@ -110,9 +110,12 @@ public class MapManager : MonoBehaviour
         // 타일을 다 생성하고 난 후 Y position;
         currentYpos = 0;
 
-        List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
-        Level stageStart = stageStarts[0];
-        currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+        //List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
+        //Level stageStart = stageStarts[0];
+        //currentYpos -= mapDisplay.Display(stageStart, currentYpos);
+
+        Level stageEntre = LoadLevel.instance.LoadAndGet(sm.Current.name + "/Entre");
+        currentYpos -= mapDisplay.Display(stageEntre, currentYpos);
 
         Debug.Log("After Display");
 
@@ -138,9 +141,14 @@ public class MapManager : MonoBehaviour
 
         // 스테이지 시작 부분
         Display("StageStart");
+        //Level stageEntre = LoadLevel.instance.LoadAndGet(sm.Current.Name + "/Entre");
+        //currentYpos -= mapDisplay.Display(stageEntre, currentYpos);
 
         // 랜덤 레벨 생성
         Display(LoadLevel.instance.GetLevels(sm.CurrentStageIndex), height);
+
+        //Level stageExit = LoadLevel.instance.LoadAndGet(sm.Current.Name + "/Exit");
+        //currentYpos -= mapDisplay.Display(stageExit, currentYpos);
 
         // 스테이지 끝을 생성하는 코드
         Display("StageGround");

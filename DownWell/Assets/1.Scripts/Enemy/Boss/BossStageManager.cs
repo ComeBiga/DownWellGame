@@ -28,8 +28,12 @@ public class BossStageManager : MonoBehaviour
     public int appearDirection = -1;
     public float appearSpeed = 1f;
 
+    [SerializeField] private float posOffset = -3f;
+
     private bool bossStage = false;
     public bool IsBossStage { get { return bossStage; } }
+
+    public GameObject BossObject { get { return bossObject; } }
 
     //Vector3 bossAppearPos;
 
@@ -40,7 +44,7 @@ public class BossStageManager : MonoBehaviour
         if(bossObject != null)
         {
             bossObject = Instantiate(bossObject, bossSpawner.transform);
-            bossObject.transform.localPosition = Vector3.zero;
+            bossObject.transform.localPosition = new Vector3(0, Camera.main.transform.position.y + posOffset, 0);//Vector3.zero;
         }
 
         bossSpawner.SetActive(false);
@@ -96,6 +100,8 @@ public class BossStageManager : MonoBehaviour
         PlayerManager.instance.playerObject.GetComponent<PlayerController>().cantMove = false;
         //boss.GetComponent<BossCombat>().active = true;
         bossObject.GetComponent<BossBrain>().Use();
+        bossObject.GetComponent<BossMovement>().Move();
+
         Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
     }
 
