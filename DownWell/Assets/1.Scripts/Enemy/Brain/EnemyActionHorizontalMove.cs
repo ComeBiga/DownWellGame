@@ -13,6 +13,7 @@ namespace CatDown
         public float speed = 1f;
         public enum Direction { LEFT, RIGHT }
         public Direction startDirection = Direction.LEFT;
+        public bool flipX = false;
         protected int dir = -1;
 
         public float changeTime = 3f;
@@ -74,12 +75,12 @@ namespace CatDown
         {
             if (dir < 0)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<SpriteRenderer>().flipX = !flipX;
                 //GetComponent<Animator>().SetBool("Fliped", true);
             }
             else if (dir > 0)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<SpriteRenderer>().flipX = flipX;
                 //GetComponent<Animator>().SetBool("Fliped", false);
             }
 

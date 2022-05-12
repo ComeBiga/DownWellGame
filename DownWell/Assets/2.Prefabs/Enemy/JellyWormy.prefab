@@ -262,6 +262,7 @@ MonoBehaviour:
   moveAsCollision: 0
   speed: 1
   startDirection: 0
+  flipX: 1
   changeTime: 5
 --- !u!114 &8786884190242394773
 MonoBehaviour:
