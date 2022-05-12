@@ -72,5 +72,17 @@ namespace CatDown
 
             handler.Next();
         }
+
+        protected void NextAfterOneFrame()
+        {
+            StartCoroutine(ENextAfterOneFrame());
+        }
+
+        private IEnumerator ENextAfterOneFrame()
+        {
+            yield return null;
+
+            Next();
+        }
     }
 }

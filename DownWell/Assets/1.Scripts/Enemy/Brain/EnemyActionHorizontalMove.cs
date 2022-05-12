@@ -74,13 +74,13 @@ namespace CatDown
         {
             if (dir < 0)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
-                GetComponent<Animator>().SetBool("Fliped", true);
+                GetComponent<SpriteRenderer>().flipX = false;
+                //GetComponent<Animator>().SetBool("Fliped", true);
             }
             else if (dir > 0)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
-                GetComponent<Animator>().SetBool("Fliped", false);
+                GetComponent<SpriteRenderer>().flipX = true;
+                //GetComponent<Animator>().SetBool("Fliped", false);
             }
 
             //if (GetComponent<Rigidbody2D>().velocity.x < -0.01f) GetComponent<SpriteRenderer>().flipX = true;

@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   - {fileID: 2828334627078130561, guid: 5231486e93382f04fa5396f7693a42e9, type: 3}
-  - {fileID: 9088113206692327660, guid: 15e56d91069d7b841a0ae1d3560d541b, type: 3}
+  - {fileID: 3170539923968211391, guid: 6e0ec53eeb2dd904eafd48bdd6c3f183, type: 3}
   bossObject: {fileID: 1649624395474174977, guid: 1772583bf7a66734ebbb3fa5b0e6e2c5, type: 3}
   bgInfo:
     _base:

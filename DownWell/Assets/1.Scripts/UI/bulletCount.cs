@@ -43,7 +43,7 @@ public class bulletCount : MonoBehaviour
         {
             case "type1":
                 Gun g = PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weapon as Gun;
-                Debug.Log($"Bullet Count : {g.CurrentNumOfBullet}");
+                //Debug.Log($"Bullet Count : {g.CurrentNumOfBullet}");
                 anim.SetInteger("shootNum", g.CurrentNumOfBullet);//GetComponent<PlayerAttack>().weapon.CurrentNumOfBullet);
                 break;
         }
@@ -52,7 +52,7 @@ public class bulletCount : MonoBehaviour
     public void bulletReload()
     {
         Gun g = PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weapon as Gun;
-        Debug.Log($"Capacity Of Magazine : {g.CapacityOfMagazine}");
+        //Debug.Log($"Capacity Of Magazine : {g.CapacityOfMagazine}");
         anim.SetInteger("shootNum", g.CapacityOfMagazine);//GetComponent<PlayerAttack>().weapon.CapacityOfMagazine);
         anim.SetTrigger("reload");
     }

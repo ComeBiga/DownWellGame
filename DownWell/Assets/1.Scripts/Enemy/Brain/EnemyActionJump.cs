@@ -13,11 +13,11 @@ namespace CatDown
 
         protected override void OnActionEnter()
         {
+            Animate();
 
             if (!executeInAnimationFrame)
                 Jump();
 
-            Animate();
         }
 
         public void Jump()
@@ -26,7 +26,8 @@ namespace CatDown
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(direction * horizontalSpeed, verticalSpeed);
 
-            base.Next();
+            //base.Next();
+            base.NextAfterOneFrame();
         }
 
         private void Animate()
