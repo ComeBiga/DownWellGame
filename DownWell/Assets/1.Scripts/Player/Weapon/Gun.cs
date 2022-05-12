@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "new Gun", menuName = "Weapon/Gun")]
 public class Gun : Weapon
 {
     [Header("Gun")]
     [SerializeField] private GameObject projectile;
-    [SerializeField] private Transform shotPos;
+    private Transform shotPos;
 
     // magazine
     public struct Magazine
@@ -24,14 +25,14 @@ public class Gun : Weapon
     public int CurrentNumOfBullet { get { return magazine.current; } }
     public int CapacityOfMagazine { get { return magazine.max; } }
 
-    public Gun(GameObject projectile, int capacity)
-    {
-        // magazine
-        magazine.max = capacity;
-        magazine.current = 0;
+    //public Gun(GameObject projectile, int capacity)
+    //{
+    //    // magazine
+    //    magazine.max = capacity;
+    //    magazine.current = 0;
 
-        shootable = false;
-    }
+    //    shootable = false;
+    //}
 
     //private void Start()
     //{
@@ -41,12 +42,16 @@ public class Gun : Weapon
     //    GetComponent<PlayerPhysics>().OnGrounded += Reload;
     //}
 
-    public override void Init()
+    public override void Init(GameObject player)
     {
+        base.Init(player);
+
         magazine.max = capacity;
         magazine.current = 0;
 
-        GetComponent<PlayerPhysics>().OnGrounded += Reload;
+        player.GetComponent<PlayerPhysics>().OnGrounded += Reload;
+        shotPos = player.transform.GetChild(1);
+        Debug.Log(shotPos.name);
     }
 
     public override void Attack()
@@ -57,19 +62,19 @@ public class Gun : Weapon
     public override void Effect()
     {
         // ShotRebound
-        GetComponent<PlayerPhysics>().LeapOff(shotRebound);
+        player.GetComponent<PlayerPhysics>().LeapOff(shotRebound);
 
         // Camera
         Camera.main.GetComponent<CameraShake>().Shake(.03f);
 
         // Animation
-        GetComponent<PlayerAnimation>().Shoot();
+        player.GetComponent<PlayerAnimation>().Shoot();
 
         // Sound
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_0");
 
         // FX
-        GetComponent<Effector>().Generate("Shoot");
+        player.GetComponent<Effector>().Generate("Shoot");
 
         // UI
         UICollector.Instance.bullet.countBullet();

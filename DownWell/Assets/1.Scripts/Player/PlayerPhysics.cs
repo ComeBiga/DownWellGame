@@ -16,6 +16,7 @@ public class PlayerPhysics : MonoBehaviour
     public float maxFallSpeed = 10f;
 
     [Header("Collision")]
+    public LayerMask groundLayer;
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
     private float horizontalRaySpacing;
@@ -40,7 +41,7 @@ public class PlayerPhysics : MonoBehaviour
                         .1f,
                         horizontalRayCount,
                         verticalRayCount,
-                        LayerMask.GetMask("Ground")
+                        groundLayer
                         );
         wallCollision.CalculateRaySpacing();
     }

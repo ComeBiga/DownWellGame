@@ -5,28 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerCombat))]
 public class PlayerAttack : MonoBehaviour
 {
-    public Weapon weapon;
-    public GameObject projectile;
-    public int capacity = 8;
+    [SerializeField] private List<Weapon> lineOfWeapons;
+    [HideInInspector] public Weapon weapon;
+    public WeaponReinforcer weaponReinforcer;
+
+    // shot cooldown
     public float coolDownTime = 1f;
-    public float shotRebound = 0f;
-
     private float timer = 0f;
-
-    private void Start()
-    {
-        //weapon = new Weapon(projectile, capacity);
-
-        //GetComponent<PlayerPhysics>().OnGrounded += ReLoad;
-        weapon.Init();
-    }
-
-    private void Update()
-    {
-        if(timer < coolDownTime) timer += Time.deltaTime;
-
-        //if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
-    }
 
     public void Shoot()
     {
@@ -43,29 +28,38 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // Weapon Effect·Î
-    private void Effect()
+    public void ReinforceWeapon()
     {
-        // Camera
-        Camera.main.GetComponent<CameraShake>().Shake(.03f);
-
-        // Animation
-        GetComponent<PlayerAnimation>().Shoot();
-
-        // Sound
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_0");
-
-        // FX
-        GetComponent<Effector>().Generate("Shoot");
-
-        // UI
-        UICollector.Instance.bullet.countBullet();
+        Weapon improved;
+        if(weaponReinforcer.Reinforce(out improved))
+        {
+            weapon = improved;
+        }
     }
 
-    public void ReLoad()
+    private void Start()
     {
-        //weapon.Reload();
+        //weapon = new Weapon(projectile, capacity);
 
-        UICollector.Instance.bullet.bulletReload();
+        //GetComponent<PlayerPhysics>().OnGrounded += ReLoad;
+        InitWeapons();
+    }
+
+    private void Update()
+    {
+        if(timer < coolDownTime) timer += Time.deltaTime;
+
+        //if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
+    }
+
+    private void InitWeapons()
+    {
+        foreach(var w in lineOfWeapons)
+        {
+            w.Init(this.gameObject);
+        }
+
+        weaponReinforcer = new WeaponReinforcer(lineOfWeapons);
+        weapon = weaponReinforcer.Current;
     }
 }

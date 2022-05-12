@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 3329592185957936949}
   - component: {fileID: 5561447862664596211}
   - component: {fileID: 6960136760963069639}
-  - component: {fileID: 3380466472076664466}
   - component: {fileID: 985416465136532519}
   - component: {fileID: 1501899443074097855}
   - component: {fileID: 5073135632283657211}
@@ -383,6 +382,9 @@ MonoBehaviour:
   jumpSpeed: 12
   gravity: 3
   maxFallSpeed: 30
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 16448
   horizontalRayCount: 4
   verticalRayCount: 4
 --- !u!114 &5561447862664596211
@@ -429,28 +431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe2a54b0c002bd45b2c470b42ff2c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 3380466472076664466}
-  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
-  capacity: 8
+  lineOfWeapons:
+  - {fileID: 11400000, guid: 64bfb787fbaf06b4cad0ba65502440a3, type: 2}
+  - {fileID: 11400000, guid: 34eacdf180e068c49b986d58ce48b3a4, type: 2}
+  weapon: {fileID: 11400000, guid: 64bfb787fbaf06b4cad0ba65502440a3, type: 2}
   coolDownTime: 0.2
-  shotRebound: 0
---- !u!114 &3380466472076664466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834640292865415495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32932b1db19a798428c468ae081a5c6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootable: 0
-  shotRebound: 0
-  projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
-  shotPos: {fileID: 7447212144028510301}
-  capacity: 8
 --- !u!114 &985416465136532519
 MonoBehaviour:
   m_ObjectHideFlags: 0

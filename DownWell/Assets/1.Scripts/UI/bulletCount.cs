@@ -42,14 +42,18 @@ public class bulletCount : MonoBehaviour
         switch(curBulletType.name)
         {
             case "type1":
-                anim.SetInteger("shootNum", PlayerManager.instance.playerObject.GetComponent<Gun>().CurrentNumOfBullet);//GetComponent<PlayerAttack>().weapon.CurrentNumOfBullet);
+                Gun g = PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weapon as Gun;
+                Debug.Log($"Bullet Count : {g.CurrentNumOfBullet}");
+                anim.SetInteger("shootNum", g.CurrentNumOfBullet);//GetComponent<PlayerAttack>().weapon.CurrentNumOfBullet);
                 break;
         }
     }
 
     public void bulletReload()
     {
-        anim.SetInteger("shootNum", PlayerManager.instance.playerObject.GetComponent<Gun>().CapacityOfMagazine);//GetComponent<PlayerAttack>().weapon.CapacityOfMagazine);
+        Gun g = PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weapon as Gun;
+        Debug.Log($"Capacity Of Magazine : {g.CapacityOfMagazine}");
+        anim.SetInteger("shootNum", g.CapacityOfMagazine);//GetComponent<PlayerAttack>().weapon.CapacityOfMagazine);
         anim.SetTrigger("reload");
     }
 

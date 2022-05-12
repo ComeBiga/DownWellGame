@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
     void CollisionCheck()
     {
         List<Collider2D> colliders = new List<Collider2D>();// = Physics2D.OverlapCircleAll(transform.position, GetComponent<CircleCollider2D>().radius);
-        var count = GetComponent<CircleCollider2D>().OverlapCollider(new ContactFilter2D(), colliders);
+        var count = GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), colliders);
 
         foreach (var collider in colliders)
         {

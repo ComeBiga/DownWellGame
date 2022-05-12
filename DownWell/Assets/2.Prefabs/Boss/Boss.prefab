@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 8019252625065771179}
   - component: {fileID: 1533376811635263324}
   - component: {fileID: 5827597038025711456}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: BossLand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
