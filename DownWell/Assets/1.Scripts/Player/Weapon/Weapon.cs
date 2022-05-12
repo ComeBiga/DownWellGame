@@ -2,45 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon
+public abstract class Weapon : MonoBehaviour
 {
-    // magazine
-    public struct Magazine
-    {
-        public int max;
-        public int current;
-    }
-    private Magazine magazine;
-
+    [HideInInspector] public bool shootable = false;
     public float shotRebound;
-    public bool shootable;
 
-    public bool Reloaded { get { return (magazine.current >= magazine.max); } }
-    public bool IsEmpty { get { return (magazine.current <= 0); } }
-    public int CurrentNumOfBullet { get { return magazine.current; } }
-    public int CapacityOfMagazine { get { return magazine.max; } }
+    public abstract void Attack();
 
-    public Weapon(GameObject projectile, int capacity)
+    public abstract void Effect();
+
+    public virtual void Init() { }
+
+    public virtual bool IsShootable()
     {
-        // magazine
-        magazine.max = capacity;
-        magazine.current = 0;
-
-        shootable = false;
-    }
-
-    public void Shoot(GameObject projectile, Transform transform)
-    {
-        if (magazine.current > 0)
-        {
-            magazine.current--;
-            var pt = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
-            //pt.GetComponent<Projectile>().damage = projectileDamage;
-        }
-    }
-
-    public void Reload()
-    {
-        if(!Reloaded) magazine.current = magazine.max;
+        return shootable;
     }
 }

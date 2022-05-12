@@ -15,9 +15,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        weapon = new Weapon(projectile, capacity);
+        //weapon = new Weapon(projectile, capacity);
 
-        GetComponent<PlayerPhysics>().OnGrounded += ReLoad;
+        //GetComponent<PlayerPhysics>().OnGrounded += ReLoad;
     }
 
     private void Update()
@@ -29,21 +29,20 @@ public class PlayerAttack : MonoBehaviour
 
     public void Shoot()
     {
-        if(timer >= coolDownTime && weapon.shootable && !weapon.IsEmpty)
+        if(timer >= coolDownTime && weapon.IsShootable())//weapon.shootable && !weapon.IsEmpty)
         {
-            weapon.Shoot(projectile, transform);
+            weapon.Attack();//Shoot(projectile, transform);
 
-            GetComponent<PlayerPhysics>().LeapOff(weapon.shotRebound);
+            //GetComponent<PlayerPhysics>().LeapOff(weapon.shotRebound);
 
             // Effect
-            Effect();
+            weapon.Effect();
 
             timer = 0;
-
-            //Debug.Log(weapon.CurrentNumOfBullet);
         }
     }
 
+    // Weapon Effect·Î
     private void Effect()
     {
         // Camera
@@ -64,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void ReLoad()
     {
-        weapon.Reload();
+        //weapon.Reload();
 
         UICollector.Instance.bullet.bulletReload();
     }
