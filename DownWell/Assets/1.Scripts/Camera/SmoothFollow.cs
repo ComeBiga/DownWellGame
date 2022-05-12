@@ -92,8 +92,8 @@ public class SmoothFollow : MonoBehaviour
     {
         var dis = (transform.position.y - bossScrollDistance) - BossStageManager.instance.BossObject.transform.localPosition.y;
 
-        Debug.Log("dis : " + dis);
-        Debug.Log(target.transform.position.y >= transform.position.y);
+        //Debug.Log("dis : " + dis);
+        //Debug.Log(target.transform.position.y >= transform.position.y);
 
         if(target.transform.position.y >= transform.position.y)
         {

@@ -2746,7 +2746,7 @@ MonoBehaviour:
   followCharacter: 0
   scrollSpeed: 1
   bossScroll: 0
-  bossScrollDistance: 2
+  bossScrollDistance: 5
   offset_End: -5
 --- !u!20 &519420031
 Camera:
@@ -7224,7 +7224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapDisplay: {fileID: 0}
   width: 11
-  height: 11
+  height: 200
   reGenerateOffset: 20
 --- !u!114 &1215072952
 MonoBehaviour:

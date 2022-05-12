@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        
+        if(transform.position.y < Camera.main.transform.position.y)
+            PlayerCharacterOutofScreen();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +24,19 @@ public class Player : MonoBehaviour
                 //BossStageManager.instance.StartBossStage();
                 //Destroy(collision.gameObject);
             }
+
+            if (collision.tag == "Boss")
+            {
+                GetComponent<PlayerCombat>().Damaged(collision.transform);
+            }
+        }
+    }
+
+    private void PlayerCharacterOutofScreen()
+    {
+        if(transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize)
+        {
+            GetComponent<PlayerHealth>().Die();
         }
     }
 }

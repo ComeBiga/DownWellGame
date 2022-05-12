@@ -60,10 +60,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         // Player Object
         this.gameObject.SetActive(false);
+
+        if(OnDie != null) OnDie.Invoke();
         
         // GameOver
         GameManager.instance.GameOver();
