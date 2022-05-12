@@ -43,7 +43,7 @@ MonoBehaviour:
   - {fileID: -6268635143535836753, guid: 826afaf4d185a934bb24722724236f85, type: 3}
   - {fileID: -2485557975778240028, guid: 826afaf4d185a934bb24722724236f85, type: 3}
   blockSprites:
-  - {fileID: 21300204, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - {fileID: 283477104076507629, guid: b14e66f8dfe08314aa08e91e90d21fd4, type: 3}
   platformSprites:
   - {fileID: -2416921811730788455, guid: 225babbfa2bb531439321e3582701833, type: 3}
   - {fileID: 4995053061636649537, guid: 225babbfa2bb531439321e3582701833, type: 3}
