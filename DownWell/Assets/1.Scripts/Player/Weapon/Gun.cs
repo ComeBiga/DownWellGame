@@ -6,8 +6,8 @@ using UnityEngine;
 public class Gun : Weapon
 {
     [Header("Gun")]
-    [SerializeField] private GameObject projectile;
-    private Transform shotPos;
+    [SerializeField] protected GameObject projectile;
+    protected Transform shotPos;
 
     // magazine
     public struct Magazine
@@ -15,7 +15,7 @@ public class Gun : Weapon
         public int max;
         public int current;
     }
-    private Magazine magazine;
+    protected Magazine magazine;
 
     [Header("Magazine")]
     [SerializeField] private int capacity = 0;

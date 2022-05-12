@@ -49,6 +49,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if(timer < coolDownTime) timer += Time.deltaTime;
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            weaponReinforcer.Reinforce(out weapon);
+            Debug.Log("Weapon reinforced!");
+        }
+
         //if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
     }
 

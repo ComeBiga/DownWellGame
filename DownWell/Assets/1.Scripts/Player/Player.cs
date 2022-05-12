@@ -32,6 +32,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            if (collision.tag == "Boss")
+            {
+                GetComponent<PlayerCombat>().Damaged(collision.transform);
+            }
+        }
+    }
+
     private void PlayerCharacterOutofScreen()
     {
         if(transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize)
