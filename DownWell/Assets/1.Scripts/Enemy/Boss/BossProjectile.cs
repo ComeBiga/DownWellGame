@@ -71,7 +71,7 @@ public class BossProjectile : MonoBehaviour
             if (transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize
                 || transform.position.y > Camera.main.transform.position.y + Camera.main.orthographicSize
                 || transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * 9 / 16
-                || transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * 9 / 16)
+                || transform.position.x > Camera.main.transform.position.x + Camera.main.orthographicSize * 9 / 16)
                 break;
 
                 transform.localPosition += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
