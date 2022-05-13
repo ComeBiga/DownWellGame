@@ -8,4 +8,12 @@ public class UICollector : Singleton<UICollector>
     public bulletCount bullet;
     public Score score;
     public CoinCount coin;
+    
+    private void Update()
+    {
+        if (bullet==null)
+        {
+            bullet = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<bulletCount>();
+        }
+    }
 }
