@@ -32,6 +32,8 @@ public class MapManager : MonoBehaviour
     private bool reGenerate = false;
     [SerializeField] private int reGenerateOffset = 20;
 
+    private Coroutine crInfinity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,14 +81,19 @@ public class MapManager : MonoBehaviour
 
     #region Generating Elements Function
 
-    private void Display(string objName, int index = 0)
+    private void GenerateLevel(string objName, int index = 0)
     {
         List<Level> lvs = LoadLevel.instance.GetObjects(objName);
         Level lv = lvs[index];
         currentYpos -= mapDisplay.Display(lv, currentYpos);
     }
 
-    private void Display(List<Level> levels, int height)
+    private void GenerateLevel(List<Level> levels)
+    {
+        currentYpos -= mapDisplay.Display(levels[CatDown.Random.Get().Next(levels.Count)], currentYpos);
+    }
+
+    private void GenerateLevels(List<Level> levels, int height)
     {
         for (; (-currentYpos) < height;)
         {
@@ -114,7 +121,7 @@ public class MapManager : MonoBehaviour
         //Level stageStart = stageStarts[0];
         //currentYpos -= mapDisplay.Display(stageStart, currentYpos);
 
-        Level stageEntre = LoadLevel.instance.LoadAndGet(sm.Current.name + "/Entre");
+        Level stageEntre = LoadLevel.instance.LoadAndGetLevel(sm.Current.name + "/Entre");
         currentYpos -= mapDisplay.Display(stageEntre, currentYpos);
 
         Debug.Log("After Display");
@@ -140,18 +147,32 @@ public class MapManager : MonoBehaviour
         currentYpos = 0;
 
         // 스테이지 시작 부분
-        Display("StageStart");
+        //GenerateLevel("StageStart");
+        GenerateLevel(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.ENTRE, sm.Current.Num)));
         //Level stageEntre = LoadLevel.instance.LoadAndGet(sm.Current.Name + "/Entre");
         //currentYpos -= mapDisplay.Display(stageEntre, currentYpos);
 
         // 랜덤 레벨 생성
-        Display(LoadLevel.instance.GetLevels(sm.CurrentStageIndex), height);
+        GenerateLevels(LoadLevel.instance.GetLevels(sm.CurrentStageIndex), height);
 
         //Level stageExit = LoadLevel.instance.LoadAndGet(sm.Current.Name + "/Exit");
         //currentYpos -= mapDisplay.Display(stageExit, currentYpos);
 
         // 스테이지 끝을 생성하는 코드
-        Display("StageGround");
+        //GenerateLevel("StageGround");
+        if (sm.Current.BossObject != null)
+        {
+            GenerateLevel(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.BOSS, sm.Current.Num)));
+        }
+        else
+            GenerateLevel(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.EXIT, sm.Current.Num)));
+
+        
+    }
+
+    public void GenerateStageEnd()
+    {
+        GenerateLevel(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.EXIT, sm.Current.Num)));
     }
 
     // Generate levels by times
@@ -189,7 +210,7 @@ public class MapManager : MonoBehaviour
 
     public void GenerateInfinity(Transform mainPos, int times)
     {
-        StartCoroutine(GenerateMapInfinity(mainPos, times));
+        crInfinity = StartCoroutine(GenerateMapInfinity(mainPos, times));
     }
 
     IEnumerator GenerateMapInfinity(Transform mainPos, int times)
@@ -207,6 +228,11 @@ public class MapManager : MonoBehaviour
         }
 
         reGenerate = false;
+    }
+
+    public void StopGenerateInfinity()
+    {
+        StopCoroutine(crInfinity);
     }
 
     #endregion

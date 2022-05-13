@@ -22,7 +22,7 @@ public class StartSceneDisplay : MonoBehaviour
     {
         yield return null;
 
-        Level lv = levelLoader.LoadAndGet("StageStart");
+        Level lv = levelLoader.LoadAndGetLevel("StageStart");
 
         md.DisplayByDatabase(lv, stageDB);
     }

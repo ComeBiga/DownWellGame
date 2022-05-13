@@ -60,7 +60,10 @@ public class BossStageManager : MonoBehaviour
         StartCoroutine(AppearAnimation());
         Camera.main.GetComponent<CameraShake>().Shake(.02f, 1f, true);
 
-        MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 10);
+        // Player
+        PlayerManager.instance.playerObject.GetComponent<PlayerCombat>().CheckOutOfScreen();
+
+        MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 3);
 
         FX();
     }
@@ -68,7 +71,16 @@ public class BossStageManager : MonoBehaviour
     public void EndBossStage()
     {
         bossStage = false;
-        GameManager.instance.ClearStage();
+
+        // Camera
+        Camera.main.GetComponent<SmoothFollow>().EndBossCamera();
+        
+        // Player
+        PlayerManager.instance.playerObject.GetComponent<PlayerCombat>().StopCheckOutOfScreen();
+
+        //GameManager.instance.ClearStage();
+        MapManager.instance.StopGenerateInfinity();
+        MapManager.instance.GenerateStageEnd();
     }
 
     IEnumerator AppearAnimation()

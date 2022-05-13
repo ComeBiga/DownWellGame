@@ -26,6 +26,13 @@ public class LoadLevel : MonoBehaviour
     [SerializeField] private string stageStartPath = "/Resources/Levels/StageStart/";
     [SerializeField] private string stageGroundPath = "/Resources/Levels/StageGround/";
 
+    [SerializeField] private string levelPath = "/Resources/Levels/";
+    [SerializeField] private string entrePath = "Entre/";
+    [SerializeField] private string exitPath = "Exit/"; 
+    [SerializeField] private string bossPath = "Boss/";
+
+    public enum LevelType { BASE, ENTRE, EXIT, BOSS }
+
     public Dictionary<int, List<Level>> levels = new Dictionary<int, List<Level>>();
     public Dictionary<string, List<Level>> objects = new Dictionary<string, List<Level>>();
     //public List<int[]> levels = new List<int[]>();
@@ -53,6 +60,29 @@ public class LoadLevel : MonoBehaviour
     //}
     #endregion
 
+    public string GetPath(LevelType type, int stageCode)
+    {
+        string path = "";
+
+        switch(type)
+        {
+            case LevelType.BASE:
+                path = levelPath + "Stage" + stageCode.ToString() + "/";
+                break;
+            case LevelType.ENTRE:
+                path = levelPath + "Stage" + stageCode.ToString() + "/" + entrePath;
+                break;
+            case LevelType.EXIT:
+                path = levelPath + "Stage" + stageCode.ToString() + "/" + exitPath;
+                break;
+            case LevelType.BOSS:
+                path = levelPath + "Stage" + stageCode.ToString() + "/" + bossPath;
+                break;
+        }
+
+        return path;
+    }
+
     public List<Level> GetLevels(int stageIndex)
     {
         return levels[stageIndex];
@@ -74,13 +104,22 @@ public class LoadLevel : MonoBehaviour
 
     }
 
-    public Level LoadAndGet(string name)
+    public Level LoadAndGetLevel(string name)
     {
         var path = "/Resources/Levels/" + name + "/";
 
         var levels = Load(LoadLevel.ReplacePath(path));
 
         return levels[0];
+    }
+    
+    public List<Level> LoadAndGetLevels(string path)
+    {
+        var levelPath = "/Resources/Levels/" + name + "/";
+
+        var levels = Load(LoadLevel.ReplacePath(path));
+
+        return levels;
     }
 
     List<Level> Load(string path)

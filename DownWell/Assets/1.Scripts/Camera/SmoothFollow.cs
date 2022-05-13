@@ -6,6 +6,7 @@ public class SmoothFollow : MonoBehaviour
 {
     public Transform target;
     public Vector3 startPos;
+    public float endPos;
     public Vector3 offset;
     public float smooth = 3f;
 
@@ -13,6 +14,14 @@ public class SmoothFollow : MonoBehaviour
 
     public bool followCharacter = true;
     public float scrollSpeed = 3f;
+
+    private float StopFollowYPosition
+    {
+        get
+        {
+            return MapManager.instance.CurrentYPos + endPos;
+        }
+    }
 
     [Header("Boss Stage")]
     public bool bossScroll = false;
@@ -46,12 +55,15 @@ public class SmoothFollow : MonoBehaviour
 
         if (followActive)
             transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
-        else if(bossScroll && !followActive)
-            transform.position = new Vector3(0, BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance, -10);
+        else if (bossScroll && !followActive)
+        {
+            if(BossStageManager.instance.BossObject != null)
+                transform.position = new Vector3(0, BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance, -10);
+        }
 
 
         // 보스 등장 후 카메라 움직임
-        if (bossScroll)
+        if (bossScroll && BossStageManager.instance.BossObject != null)
         {
             //bossCamera.Update();
 
@@ -69,10 +81,10 @@ public class SmoothFollow : MonoBehaviour
     {
         transform.position = startPos;
 
-        StartCoroutine(EStartFollowCharacter());
+        StartCoroutine(EFollowCharacterAtStageStart());
     }
 
-    private IEnumerator EStartFollowCharacter()
+    private IEnumerator EFollowCharacterAtStageStart()
     {
         while(true)
         {
@@ -102,6 +114,25 @@ public class SmoothFollow : MonoBehaviour
         SetStartPosition();
     }
 
+    public void StageEnd()
+    {
+        StartCoroutine(EStopFollowCharacterAtStageEnd());
+    }
+
+    private IEnumerator EStopFollowCharacterAtStageEnd()
+    {
+        while(true)
+        {
+            if (PlayerManager.instance.playerObject.transform.position.y <= StopFollowYPosition)
+                break;
+
+            yield return null;
+        }
+
+        bossScroll = false;
+        followActive = false;
+    }
+
     #region BossStageCamera
 
     public void StartBossCamera()
@@ -109,6 +140,12 @@ public class SmoothFollow : MonoBehaviour
         SetCameraScrollTarget();
         bossScroll = true;
         //followActive = false;
+    }
+
+    public void EndBossCamera()
+    {
+        bossScroll = false;
+        followActive = true;
     }
 
     public void SetCameraScrollTarget()

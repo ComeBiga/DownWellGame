@@ -20,6 +20,30 @@ MonoBehaviour:
   - Stage4
   - Stage5
   jsonLevelDBs:
+  - filename: boss1_0
+    stage: 1
+    path: /Resources/Levels/Stage1/Boss/boss1_0.json
+  - filename: boss_0
+    stage: 2
+    path: /Resources/Levels/Stage2/Boss/boss_0.json
+  - filename: entre0_0
+    stage: 0
+    path: /Resources/Levels/Stage0/Entre/entre0_0.json
+  - filename: entre1_0
+    stage: 1
+    path: /Resources/Levels/Stage1/Entre/entre1_0.json
+  - filename: entre_0
+    stage: 2
+    path: /Resources/Levels/Stage2/Entre/entre_0.json
+  - filename: exit0_0
+    stage: 0
+    path: /Resources/Levels/Stage0/Exit/exit0_0.json
+  - filename: exit1_0
+    stage: 1
+    path: /Resources/Levels/Stage1/Exit/exit1_0.json
+  - filename: exit2_0
+    stage: 2
+    path: /Resources/Levels/Stage2/Exit/exit2_0.json
   - filename: level_0
     stage: 1
     path: /Resources/Levels/Stage1/level_0.json

@@ -3517,6 +3517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   startPos: {x: 0, y: -9, z: -10}
+  endPos: 10
   offset: {x: 0, y: 1, z: -10}
   smooth: 15
   followActive: 1
@@ -8871,7 +8872,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   startPos: {fileID: 0}
   blockRatio: 100
-  enemyRatio: 50
+  enemyRatio: 100
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
   brightness: 190
 --- !u!114 &1215072950
@@ -8888,7 +8889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapDisplay: {fileID: 0}
   width: 11
-  height: 11
+  height: 100
   reGenerateOffset: 20
 --- !u!114 &1215072952
 MonoBehaviour:
@@ -8905,6 +8906,10 @@ MonoBehaviour:
   blockPath: /Resources/Levels/Blocks/
   stageStartPath: /Resources/Levels/StageStart/
   stageGroundPath: /Resources/Levels/StageGround/
+  levelPath: /Resources/Levels/
+  entrePath: Entre/
+  exitPath: Exit/
+  bossPath: Boss/
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0
@@ -11550,7 +11555,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
   instantiatePosition: {x: 0, y: 10, z: 0}
-  dropCharacterLateTime: 3
+  dropCharacterDelay: 3
+  stageClearDelay: 3
   score: {fileID: 928105782}
   coin: {fileID: 928105783}
   enemyActiveRangeOffset: 3

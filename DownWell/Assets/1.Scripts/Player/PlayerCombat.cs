@@ -22,6 +22,8 @@ public class PlayerCombat : MonoBehaviour
 
     public UnityEvent OnDamaged;
 
+    private Coroutine crOutOfScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,7 +83,17 @@ public class PlayerCombat : MonoBehaviour
         if(gameObject.activeSelf) StartCoroutine(EAddForceTransform(speed.x, direction, distance));
     }
 
-    IEnumerator EAddForceTransform(float knuckBackSpeed, int direction, float distance)
+    public void CheckOutOfScreen()
+    {
+        crOutOfScreen = StartCoroutine(ECheckOutOfScreen());
+    }
+
+    public void StopCheckOutOfScreen()
+    {
+        StopCoroutine(crOutOfScreen);
+    }
+
+    private IEnumerator EAddForceTransform(float knuckBackSpeed, int direction, float distance)
     {
         InputManager.instance.blockInput = true;
         float dis = 0;
@@ -134,6 +146,19 @@ public class PlayerCombat : MonoBehaviour
         //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //사운드이펙트
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_1");
 
+    }
+
+    private IEnumerator ECheckOutOfScreen()
+    {
+        while(true)
+        {
+            if (transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize)
+                break;
+
+            yield return null;
+        }
+
+        GetComponent<PlayerHealth>().Die();
     }
 
     #endregion

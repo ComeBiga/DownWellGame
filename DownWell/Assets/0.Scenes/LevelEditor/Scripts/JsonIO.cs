@@ -398,12 +398,29 @@ public class JsonIO : MonoBehaviour
 
         for (int i = 0; i < levelDB.folderPaths.Length; i++)
         {
+            // Levels
             //var path = Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/";
             var path = Application.dataPath + "/Resources/Levels/" + levelDB.folderPaths[i] + "/";
 
             var dbs = LoadAllDatabase(path, (LevelEditor.Stage)i);
 
             loadedDBs.AddRange(dbs);
+
+            // Entres
+            dbs = LoadAllDatabase(path + "Entre/", (LevelEditor.Stage)i);
+
+            loadedDBs.AddRange(dbs);
+
+            // Exits
+            dbs = LoadAllDatabase(path + "Exit/", (LevelEditor.Stage)i);
+
+            loadedDBs.AddRange(dbs);
+
+            // Bosses
+            dbs = LoadAllDatabase(path + "Boss/", (LevelEditor.Stage)i);
+
+            loadedDBs.AddRange(dbs);
+
             //directories = Directory.GetFiles(Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/", "*.json");
 
             //foreach (var dir in directories)

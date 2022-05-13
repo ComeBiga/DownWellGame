@@ -23,7 +23,8 @@ MonoBehaviour:
   - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
   - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
   - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
-  - {fileID: 3283359789271922636, guid: 7571059a67ad7c64b9eacd3f97bf7a2a, type: 3}
+  - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
+  - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
   wallSprites:
   - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   - {fileID: 912088643411520816, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
@@ -52,7 +53,7 @@ MonoBehaviour:
   bossObject: {fileID: 0}
   bgInfo:
     _base:
-    - {fileID: -4018099237683821570, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+    - {fileID: 8822228494322020638, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
     deco:
     - sprite: {fileID: 648693189539466377, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
       prob: 7

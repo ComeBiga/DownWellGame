@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.y < Camera.main.transform.position.y)
-            PlayerCharacterOutofScreen();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,14 +39,6 @@ public class Player : MonoBehaviour
             {
                 GetComponent<PlayerCombat>().Damaged(collision.transform);
             }
-        }
-    }
-
-    private void PlayerCharacterOutofScreen()
-    {
-        if(transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize)
-        {
-            GetComponent<PlayerHealth>().Die();
         }
     }
 }

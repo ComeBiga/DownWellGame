@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageChanger : MonoBehaviour
+public class BossStart : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,7 +10,7 @@ public class StageChanger : MonoBehaviour
         {
             if (collision.tag == "Player")
             {
-                GameManager.instance.EndStage();
+                BossStageManager.instance.StartBossStage();
 
                 Destroy(this.gameObject);
             }

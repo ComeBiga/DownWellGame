@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     private GameObject playerCharacter;
     public Transform startPos;
     public Vector3 instantiatePosition;
-    public float dropCharacterLateTime;
+    public float dropCharacterDelay;
+    public float stageClearDelay;
 
     [Header("UI")]
     public Score score;
@@ -103,6 +104,12 @@ public class GameManager : MonoBehaviour
 
         Camera.main.GetComponent<SmoothFollow>().StartStage();
     }
+    public void EndStage()
+    {
+        Camera.main.GetComponent<SmoothFollow>().StageEnd();
+
+        FallIntoNextStage();
+    }
 
     public void GameOver()
     {
@@ -128,9 +135,27 @@ public class GameManager : MonoBehaviour
         playerManager.playerObject.GetComponent<PlayerPhysics>().InitVelocity();
         playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(false);
 
-        yield return new WaitForSeconds(dropCharacterLateTime);
+        yield return new WaitForSeconds(dropCharacterDelay);
 
         playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(true);
+    }
+
+    private void FallIntoNextStage()
+    {
+        StartCoroutine(EFallIntoNextStage());
+    }
+
+    private IEnumerator EFallIntoNextStage()
+    {
+        while(true)
+        {
+            if (playerManager.playerObject.transform.position.y <= mapManager.CurrentYPos)
+                break;
+
+            yield return null;
+        }
+
+        Invoke("ClearStage", stageClearDelay);
     }
 
     #region Deprecated

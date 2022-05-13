@@ -40,7 +40,10 @@ public class StageManager : MonoBehaviour
         get 
         {
             if (index == -1)
-                current = stages[0];
+            {
+                index++;
+                current = stages[index];
+            }
                 //SetCurrentStage();
 
             return index;
