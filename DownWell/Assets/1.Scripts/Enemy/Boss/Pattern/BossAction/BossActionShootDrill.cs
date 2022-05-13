@@ -6,16 +6,19 @@ using UnityEngine;
 public class BossActionShootDrill : BossAction
 {
     [SerializeField] protected GameObject projectile;
-   
+    [SerializeField] protected GameObject warning;
+
+
     float[] x_pos = { -5, 5 };
+    Vector3[] pos = new Vector3[3];
     GameObject[] shotProjectile = new GameObject[3];
+    GameObject[] warn = new GameObject[3];
     public override void Take()
     {
-        ShootDrill();
-        Cut();
+        setDir();
     }
 
-    void ShootDrill()
+    void setDir()
     {
         var player = PlayerManager.instance.playerObject;
         if (player.GetComponent<PlayerHealth>().CurrentHealth <= 0) return;
@@ -25,20 +28,45 @@ public class BossActionShootDrill : BossAction
         System.Random random = new System.Random();
         x_pos = x_pos.OrderBy(x => random.Next()).ToArray();
 
-        var pos0 = new Vector3(x_pos[0], target.position.y + 2, target.position.z);
-        var pos1 = new Vector3(x_pos[0], target.position.y - 2, target.position.z);
-        var pos2 = new Vector3(x_pos[1], target.position.y, target.position.z);
+        pos[0] = new Vector3(x_pos[0], target.position.y + 2, target.position.z);
+        pos[1] = new Vector3(x_pos[0], target.position.y - 2, target.position.z);
+        pos[2] = new Vector3(x_pos[1], target.position.y, target.position.z);
 
-        shotProjectile[0] = Instantiate(projectile, pos0, Quaternion.identity, transform);
-        shotProjectile[1] = Instantiate(projectile, pos1, Quaternion.identity, transform);
-        shotProjectile[2] = Instantiate(projectile, pos2, Quaternion.identity, transform);
-
-        ShootDir();
-        for(int i=0;i<3;i++)
-            shotProjectile[i].GetComponent<BossProjectile>().MoveToTargetByTransform();
+        warningAttack();
     }
 
-    void ShootDir()
+    void warningAttack()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (pos[i].x > 0)
+                warn[i] = Instantiate(warning, new Vector3(pos[i].x - 1f, pos[i].y), Quaternion.identity);
+            else if (pos[i].x < 0)
+                warn[i] = Instantiate(warning, new Vector3(pos[i].x + 1f, pos[i].y), Quaternion.identity);
+        }
+        StartCoroutine(ShootDrill());
+    }
+
+    IEnumerator ShootDrill()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            Destroy(warn[i]);
+        }
+
+        for (int i = 0; i < 3; i++)
+            shotProjectile[i] = Instantiate(projectile, pos[i], Quaternion.identity, transform);
+       
+        Shoot();
+        for(int i=0;i<3;i++)
+            shotProjectile[i].GetComponent<BossProjectile>().MoveToTargetByTransform();
+        
+        Cut();    
+    }
+
+    void Shoot()
     {
         for (int i = 0; i < 3; i ++)
         { 
@@ -53,4 +81,5 @@ public class BossActionShootDrill : BossAction
             } 
         }
     }
+
 }
