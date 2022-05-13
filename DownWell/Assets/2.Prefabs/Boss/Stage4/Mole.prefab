@@ -397,7 +397,7 @@ MonoBehaviour:
   rageModePercentage: 60
   normalPattern:
     actions:
-    - {fileID: 7768102343857038765}
+    - {fileID: -650639293233678163}
   ragePattern:
     actions: []
 --- !u!114 &7768102343857038765
@@ -428,6 +428,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928889178c29a6046949df99f84b4e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedInterval: 0
+  onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  projectile: {fileID: 7027686495914772670, guid: f023abf1de4ccff4a9fb683a7c2a271c, type: 3}
 --- !u!1 &8440922860825937479
 GameObject:
   m_ObjectHideFlags: 0
