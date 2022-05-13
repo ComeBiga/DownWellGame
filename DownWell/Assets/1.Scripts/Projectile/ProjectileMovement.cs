@@ -25,8 +25,6 @@ public class ProjectileMovement : MonoBehaviour
         currentPos = transform.position.y;
         moveDistance += Mathf.Abs(lastPos - currentPos);
 
-        Debug.Log(moveDistance);
-
         lastPos = currentPos;
 
         //Vector3 deltaDistance = Vector3.down * speed * Time.deltaTime;

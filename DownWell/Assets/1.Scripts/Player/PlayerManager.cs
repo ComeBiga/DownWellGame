@@ -40,8 +40,8 @@ public class PlayerManager : MonoBehaviour
     public void InstantiateAndInit(Vector3 position)
     {
         playerObject = Instantiate(selectedCharacter.prefab, position, Quaternion.identity, transform);
-
-        Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
+        playerObject.GetComponent<PlayerPhysics>().Init();
+        //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
     }    
 
     /// <summary>

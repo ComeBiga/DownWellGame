@@ -6,13 +6,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     InputManager input;
-    Rigidbody2D rigidbody;
     PlayerPhysics physics;
     PlayerAttack attack;
 
     public float speed = 5f;
     public float jumpSpeed = 5f;
-    public float gravity = 1f;
     public float maxFallSpeed = 10f;
 
     [HideInInspector] public bool cantMove = false;
@@ -28,11 +26,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         input = InputManager.instance;
-        rigidbody = GetComponent<Rigidbody2D>();
         physics = GetComponent<PlayerPhysics>();
         attack = GetComponent<PlayerAttack>();
-
-        rigidbody.gravityScale = gravity;
 
         // Splashed
         normalSpeed = speed;

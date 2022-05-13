@@ -361,7 +361,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   jumpSpeed: 12
-  gravity: 3
   maxFallSpeed: 30
   cantMove: 0
   jumping: 0

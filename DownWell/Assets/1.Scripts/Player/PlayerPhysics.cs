@@ -33,6 +33,11 @@ public class PlayerPhysics : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    public void Init()
+    {
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = gravity;
 
@@ -44,6 +49,11 @@ public class PlayerPhysics : MonoBehaviour
                         groundLayer
                         );
         wallCollision.CalculateRaySpacing();
+    }
+
+    public void InitVelocity()
+    {
+        rigidbody.velocity = Vector3.zero;
     }
 
     #endregion
@@ -78,6 +88,18 @@ public class PlayerPhysics : MonoBehaviour
     {
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, speed);
         GetComponent<PlayerController>().jumping = true;
+    }
+
+    public void UseGravity(bool value)
+    {
+        if(value)
+        {
+            rigidbody.gravityScale = gravity;
+        }
+        else
+        {
+            rigidbody.gravityScale = 0f;
+        }
     }
 
     #endregion

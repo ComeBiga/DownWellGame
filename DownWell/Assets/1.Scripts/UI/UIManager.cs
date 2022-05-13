@@ -60,7 +60,5 @@ public class UIManager : MonoBehaviour
         clickPlay = true;
         startPanel.SetActive(false);
         charPanel.SetActive(true);
-
-        character.GetComponent<PlayerController>().gravity = 0;
     }
 }

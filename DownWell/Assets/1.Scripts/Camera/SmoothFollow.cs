@@ -5,6 +5,7 @@ using UnityEngine;
 public class SmoothFollow : MonoBehaviour
 {
     public Transform target;
+    public Vector3 startPos;
     public Vector3 offset;
     public float smooth = 3f;
 
@@ -12,6 +13,8 @@ public class SmoothFollow : MonoBehaviour
 
     public bool followCharacter = true;
     public float scrollSpeed = 3f;
+
+    [Header("Boss Stage")]
     public bool bossScroll = false;
     public float bossScrollDistance;
     private Vector3 bossScrollOffset;
@@ -26,7 +29,7 @@ public class SmoothFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        followActive = false;
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class SmoothFollow : MonoBehaviour
 
         if (followActive)
             transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
-        else
+        else if(bossScroll && !followActive)
             transform.position = new Vector3(0, BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance, -10);
 
 
@@ -62,16 +65,41 @@ public class SmoothFollow : MonoBehaviour
             
     }
 
+    public void SetStartPosition()
+    {
+        transform.position = startPos;
+
+        StartCoroutine(EStartFollowCharacter());
+    }
+
+    private IEnumerator EStartFollowCharacter()
+    {
+        while(true)
+        {
+            if (PlayerManager.instance.playerObject.transform.position.y <= transform.position.y)
+                break;
+
+            yield return null;
+        }
+
+        //InitFollowCamera(PlayerManager.instance.playerObject.transform);
+        target = PlayerManager.instance.playerObject.transform;
+        followActive = true;
+    }
+
     public void InitFollowCamera(Transform playerPos)
     {
         target = playerPos;
         transform.position = new Vector3(transform.position.x, (target.position + offset).y, (target.position + offset).z);
+        followActive = true;
     }
 
     public void StartStage()
     {
         bossScroll = false;
-        followActive = true;
+        followActive = false;
+
+        SetStartPosition();
     }
 
     #region BossStageCamera

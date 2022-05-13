@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     private GameObject playerCharacter;
     public Transform startPos;
+    public Vector3 instantiatePosition;
+    public float dropCharacterLateTime;
 
     [Header("UI")]
     public Score score;
@@ -78,12 +80,11 @@ public class GameManager : MonoBehaviour
         MapManager.instance.GenerateBeforeUpdate();
 
         // Player Initialization
-        PlayerManager.instance.InstantiateAndInit(startPos.position);
-        //playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
+        playerManager.InstantiateAndInit(instantiatePosition);
+        DropCharacterLateSeconds();
 
-        //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
-
-        //PlayerManager.instance.player = playerPrefab;
+        // Camera
+        Camera.main.GetComponent<SmoothFollow>().StartStage();
 
         // Timer
         GetComponent<Timer>().StartTimer();
@@ -93,13 +94,14 @@ public class GameManager : MonoBehaviour
     {
         stageManager.NextStage();
 
-        Camera.main.GetComponent<SmoothFollow>().StartStage();
-
         mapManager.Clear();
 
         mapManager.GenerateBeforeUpdate();
 
-        playerManager.playerObject.transform.position = startPos.position;
+        playerManager.playerObject.transform.position = instantiatePosition;
+        DropCharacterLateSeconds();
+
+        Camera.main.GetComponent<SmoothFollow>().StartStage();
     }
 
     public void GameOver()
@@ -114,6 +116,21 @@ public class GameManager : MonoBehaviour
     void GameOverPanel()
     {
         gameoverPanel.SetActive(true);
+    }
+
+    private void DropCharacterLateSeconds()
+    {
+        StartCoroutine(EDropCharacterLateSeconds());
+    }
+
+    private IEnumerator EDropCharacterLateSeconds()
+    {
+        playerManager.playerObject.GetComponent<PlayerPhysics>().InitVelocity();
+        playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(false);
+
+        yield return new WaitForSeconds(dropCharacterLateTime);
+
+        playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(true);
     }
 
     #region Deprecated

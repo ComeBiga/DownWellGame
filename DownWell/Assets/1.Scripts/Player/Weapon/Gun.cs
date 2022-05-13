@@ -51,7 +51,6 @@ public class Gun : Weapon
 
         player.GetComponent<PlayerPhysics>().OnGrounded += Reload;
         shotPos = player.transform.GetChild(1);
-        Debug.Log(shotPos.name);
     }
 
     public override void Attack()
