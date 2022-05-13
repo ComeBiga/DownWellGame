@@ -433,6 +433,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   projectile: {fileID: 7027686495914772670, guid: f023abf1de4ccff4a9fb683a7c2a271c, type: 3}
+  warning: {fileID: 4418804082167057441, guid: de5377b6ce1deec49b3162de8dc590c9, type: 3}
 --- !u!1 &8440922860825937479
 GameObject:
   m_ObjectHideFlags: 0
