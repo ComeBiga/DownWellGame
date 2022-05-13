@@ -23,7 +23,6 @@ public class SettingMgr : MonoBehaviour
     }
     #endregion
 
-    public GameObject OpeningPanel;
     public GameObject setPanel;
     public GameObject setBtn;
     public GameObject exitButton;
@@ -56,16 +55,6 @@ public class SettingMgr : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "StartScene")
-        {
-            if (OpeningPanel.activeInHierarchy)
-                setBtn.GetComponent<Image>().enabled = false;
-            else
-                setBtn.GetComponent<Image>().enabled = true;
-        }
-        else
-            setBtn.GetComponent<Image>().enabled = true;
-
         if (Setting.worldCamera == null)
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
@@ -149,16 +138,19 @@ public class SettingMgr : MonoBehaviour
 
     void OnApplicationPause(bool pause)
     {
-        if (pause) //유저가 홈이나 홀드버튼 눌렸을 때 일시정지
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            gPaused = true;
-            SettingBtn();
-        }
-        else
-        {
-            if (gPaused) //유저가 게임으로 돌아왔을 때
+            if (pause) //유저가 홈이나 홀드버튼 눌렸을 때 일시정지
             {
-                gPaused = false;
+                gPaused = true;
+                SettingBtn();
+            }
+            else
+            {
+                if (gPaused) //유저가 게임으로 돌아왔을 때
+                {
+                    gPaused = false;
+                }
             }
         }
     }
