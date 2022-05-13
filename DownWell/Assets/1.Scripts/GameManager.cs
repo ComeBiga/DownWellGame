@@ -134,10 +134,12 @@ public class GameManager : MonoBehaviour
     {
         playerManager.playerObject.GetComponent<PlayerPhysics>().InitVelocity();
         playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(false);
+        playerManager.playerObject.GetComponent<PlayerController>().cantMove = true;
 
         yield return new WaitForSeconds(dropCharacterDelay);
 
         playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(true);
+        playerManager.playerObject.GetComponent<PlayerController>().cantMove = false;
     }
 
     private void FallIntoNextStage()
@@ -154,6 +156,8 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+
+        playerManager.playerObject.GetComponent<PlayerController>().cantMove = true;
 
         Invoke("ClearStage", stageClearDelay);
     }

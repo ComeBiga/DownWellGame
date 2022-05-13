@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (GetComponent<PlayerCombatStepping>().ShotLock) return;
+        if (GetComponent<PlayerCombatStepping>().ShotLock || cantMove) return;
 
         if (physics.Grounded)
         {
