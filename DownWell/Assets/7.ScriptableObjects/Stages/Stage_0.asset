@@ -27,35 +27,33 @@ MonoBehaviour:
   - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
   wallSprites:
   - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-  - {fileID: 912088643411520816, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: -3900884110224575672, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: 830299414420888621, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: 8937410026113718696, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: 1291332329404054236, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: -1609480031464160702, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: 9068131815811634961, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: -7107507054479093324, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: 8497120588260574248, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: -6414690455917218970, guid: 1b71d2db10bd6864788188038ad5e3c1, type: 3}
-  - {fileID: 925422949388014422, guid: 1b71d2db10bd6864788188038ad5e3c1, type: 3}
-  - {fileID: 903702884888981525, guid: 1b71d2db10bd6864788188038ad5e3c1, type: 3}
-  - {fileID: 8937410026113718696, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
-  - {fileID: 5891168583848289765, guid: 1b71d2db10bd6864788188038ad5e3c1, type: 3}
-  - {fileID: 5891168583848289765, guid: 1b71d2db10bd6864788188038ad5e3c1, type: 3}
+  - {fileID: 8440696037922389947, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: 1470068224239734221, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: 1532517608197764598, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: -4275574677980575433, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: -4998853884690489256, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: 4179863851940445344, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: -8667372400436882467, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: -7771846178456530239, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: -9214287414056250384, guid: 9ede97e93815e27498a8053af362fbbd, type: 3}
+  - {fileID: -8461576206315432868, guid: 5cd61172edfa5a946b4f58b1375a7ccd, type: 3}
+  - {fileID: 2698092731073417775, guid: 5cd61172edfa5a946b4f58b1375a7ccd, type: 3}
+  - {fileID: 2139206066158848624, guid: 5cd61172edfa5a946b4f58b1375a7ccd, type: 3}
+  - {fileID: 4590024121741030887, guid: 5cd61172edfa5a946b4f58b1375a7ccd, type: 3}
+  - {fileID: 3258500523425980620, guid: 5cd61172edfa5a946b4f58b1375a7ccd, type: 3}
+  - {fileID: 7666173176930693044, guid: 5cd61172edfa5a946b4f58b1375a7ccd, type: 3}
   blockSprites:
   - {fileID: 1291332329404054236, guid: 30cf351eec67fdd45a7bf53835ce9428, type: 3}
   platformSprites:
-  - {fileID: -2730780904486281105, guid: 2bfa9f19645be164392f10ba3b1c80e7, type: 3}
-  - {fileID: -228040445172550392, guid: 2bfa9f19645be164392f10ba3b1c80e7, type: 3}
-  - {fileID: 392729166266108711, guid: 2bfa9f19645be164392f10ba3b1c80e7, type: 3}
+  - {fileID: -6586523574003130246, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -1080989262840447820, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
+  - {fileID: -6586523574003130246, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
   enemyObjects:
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   bossObject: {fileID: 0}
   bgInfo:
     _base:
-    - {fileID: 8822228494322020638, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-    deco:
-    - sprite: {fileID: 648693189539466377, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-      prob: 7
-    - sprite: {fileID: 7511635907411249343, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-      prob: 10
+    - {fileID: 6769815502460608889, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
+    - {fileID: 5749315296748578733, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
+    - {fileID: 5997892723870387092, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
+    deco: []
