@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    Collider2D _collider;
+    public Collider2D _collider;
     ContactFilter2D filter;
 
     [Header("Collision")]
@@ -15,7 +15,8 @@ public class PickUpItem : MonoBehaviour
     void Start()
     {
         // Collider2D
-        _collider = GetComponent<Collider2D>();
+        if(_collider == null)
+            _collider = GetComponent<Collider2D>();
 
         // ContactFilter2D
         filter = new ContactFilter2D();
