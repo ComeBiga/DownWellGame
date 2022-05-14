@@ -48,18 +48,18 @@ namespace CatDown
             if (actionEnd) return;
 
             index++;
-            Debug.Log(index);
+            //Debug.Log(index);
 
             if (index >= actions.Count - 1)
             {
-                Debug.Log("Last Action");
+                //Debug.Log("Last Action");
                 if (loop)
                 {
                     index = 0;
                 }
                 else
                 {
-                    Debug.Log("Action End");
+                    //Debug.Log("Action End");
                     actionEnd = true;
                     OnActionEnd.Invoke();
                 }

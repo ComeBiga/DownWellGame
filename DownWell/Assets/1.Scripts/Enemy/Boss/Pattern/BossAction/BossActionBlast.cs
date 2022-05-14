@@ -18,7 +18,7 @@ public class BossActionBlast : BossAction
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
         var posIndex = rand.Next(-1, 2) * 2;
-        Debug.Log(posIndex);
+        //Debug.Log(posIndex);
         float dis = 0f;
 
         while (true)

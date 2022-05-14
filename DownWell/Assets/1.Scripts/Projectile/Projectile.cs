@@ -93,63 +93,63 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision != null)
-        {
-            Debug.Log("Collision");
+        //if (collision != null)
+        //{
+        //    Debug.Log("Collision");
 
-            if (collision.transform.tag == "Block")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();  // 탄환 제거
+        //    if (collision.transform.tag == "Block")
+        //    {
+        //        GetComponent<Effector>().Generate("Hit");
+        //        Destroy();  // 탄환 제거
 
-                // 점막 제거
-                if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
-                {
-                    collision.transform.transform.GetComponent<BeSplashed>().Rid();
-                }
+        //        // 점막 제거
+        //        if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+        //        {
+        //            collision.transform.transform.GetComponent<BeSplashed>().Rid();
+        //        }
 
-                // 블럭제거
-                collision.transform.transform.GetComponent<Block>().Destroy();
+        //        // 블럭제거
+        //        collision.transform.transform.GetComponent<Block>().Destroy();
 
-            }
-
-
-            if (collision.transform.tag == "Boss")
-            {
-                Debug.Log("boss");
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-
-                collision.transform.GetComponent<Boss>().Damaged(damage);
-            }
-
-            if (collision.transform.tag == "Wall")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();  // 탄환 제거
-
-                // 점막 제거
-                if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
-                {
-                    collision.transform.transform.GetComponent<BeSplashed>().Rid();
-                }
-            }
+        //    }
 
 
-            if (collision.transform.tag == "Enemy")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-                collision.transform.GetComponent<Enemy>().Damaged(damage);
-            }
+        //    if (collision.transform.tag == "Boss")
+        //    {
+        //        Debug.Log("boss");
+        //        GetComponent<Effector>().Generate("Hit");
+        //        Destroy();
 
-            if (collision.transform.tag == "Object")
-            {
-                collision.transform.GetComponent<IUseObject>().Use();
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-            }
-        }
+        //        collision.transform.GetComponent<Boss>().Damaged(damage);
+        //    }
+
+        //    if (collision.transform.tag == "Wall")
+        //    {
+        //        GetComponent<Effector>().Generate("Hit");
+        //        Destroy();  // 탄환 제거
+
+        //        // 점막 제거
+        //        if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+        //        {
+        //            collision.transform.transform.GetComponent<BeSplashed>().Rid();
+        //        }
+        //    }
+
+
+        //    if (collision.transform.tag == "Enemy")
+        //    {
+        //        GetComponent<Effector>().Generate("Hit");
+        //        Destroy();
+        //        collision.transform.GetComponent<Enemy>().Damaged(damage);
+        //    }
+
+        //    if (collision.transform.tag == "Object")
+        //    {
+        //        collision.transform.GetComponent<IUseObject>().Use();
+        //        GetComponent<Effector>().Generate("Hit");
+        //        Destroy();
+        //    }
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -183,7 +183,6 @@ public class Projectile : MonoBehaviour
 
             if (collision.transform.tag == "Boss")
             {
-                Debug.Log("boss");
                 GetComponent<Effector>().Generate("Hit");
                 Destroy();
 

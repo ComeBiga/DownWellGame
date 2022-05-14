@@ -26,7 +26,7 @@ namespace CatDown
             if (collision.CheckCollision(CollisionDirection.DOWN) && Yvel < -minFallingVelocity)
             {
 
-                Debug.Log("Grounded");
+                //Debug.Log("Grounded");
 
                 base.Decide();
             }

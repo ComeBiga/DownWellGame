@@ -81,6 +81,8 @@ public class BossStageManager : MonoBehaviour
         //GameManager.instance.ClearStage();
         MapManager.instance.StopGenerateInfinity();
         MapManager.instance.GenerateStageEnd();
+
+        Debug.Log("Clear Boss");
     }
 
     IEnumerator AppearAnimation()

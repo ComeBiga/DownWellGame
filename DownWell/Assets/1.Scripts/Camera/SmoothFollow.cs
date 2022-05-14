@@ -86,16 +86,19 @@ public class SmoothFollow : MonoBehaviour
 
     private IEnumerator EFollowCharacterAtStageStart()
     {
-        while(true)
+        target = PlayerManager.instance.playerObject.transform;
+
+        while (true)
         {
-            if (PlayerManager.instance.playerObject.transform.position.y <= transform.position.y)
+            if (PlayerManager.instance.playerObject.transform.position.y <= transform.position.y - 3f)
                 break;
 
             yield return null;
         }
 
         //InitFollowCamera(PlayerManager.instance.playerObject.transform);
-        target = PlayerManager.instance.playerObject.transform;
+
+        //transform.position = new Vector3(transform.position.x, target.position.y, transform.position.z);
         followActive = true;
     }
 

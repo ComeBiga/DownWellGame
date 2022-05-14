@@ -32,7 +32,7 @@ namespace CatDown
 
         private void Animate()
         {
-            Debug.Log("Animate Jump");
+            //Debug.Log("Animate Jump");
             GetComponent<Animator>().SetTrigger("Jump");
 
         }

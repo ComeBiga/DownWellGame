@@ -12,6 +12,8 @@ public class Boss : MonoBehaviour
     public int maxHealth = 100;
     public Health health;
 
+    private bool died = false;
+
     private void Start()
     {
         health = new Health(maxHealth);
@@ -48,6 +50,8 @@ public class Boss : MonoBehaviour
 
     public void Damaged(int amount)
     {
+        if (died) return;
+
         health.Lose(amount);
 
         if (health.Current <= 0)
@@ -58,6 +62,8 @@ public class Boss : MonoBehaviour
 
     private void Die()
     {
+        Debug.Log("Boss Die");
+        died = true;
         Destroy(this.gameObject);
         BossStageManager.instance.EndBossStage();
     }
