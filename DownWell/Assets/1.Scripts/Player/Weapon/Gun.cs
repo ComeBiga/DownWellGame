@@ -50,6 +50,7 @@ public class Gun : Weapon
         magazine.current = 0;
 
         player.GetComponent<PlayerPhysics>().OnGrounded += Reload;
+        player.GetComponent<PlayerCombatStepping>().OnStep.AddListener(Reload);
         shotPos = player.transform.GetChild(1);
     }
 
