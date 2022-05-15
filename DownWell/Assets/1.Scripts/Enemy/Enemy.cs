@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Damaged(int damage)
+    public virtual void Damaged(int damage)
     {
         health -= damage;
 
