@@ -30,8 +30,9 @@ public class LoadLevel : MonoBehaviour
     [SerializeField] private string entrePath = "Entre/";
     [SerializeField] private string exitPath = "Exit/"; 
     [SerializeField] private string bossPath = "Boss/";
+    [SerializeField] private string bossLevelPath = "Boss/levels";
 
-    public enum LevelType { BASE, ENTRE, EXIT, BOSS }
+    public enum LevelType { BASE, ENTRE, EXIT, BOSS, BOSS_LEVEL }
 
     public Dictionary<int, List<Level>> levels = new Dictionary<int, List<Level>>();
     public Dictionary<string, List<Level>> objects = new Dictionary<string, List<Level>>();
@@ -77,6 +78,9 @@ public class LoadLevel : MonoBehaviour
                 break;
             case LevelType.BOSS:
                 path = levelPath + "Stage" + stageCode.ToString() + "/" + bossPath;
+                break;
+            case LevelType.BOSS_LEVEL:
+                path = levelPath + "Stage" + stageCode.ToString() + "/" + bossLevelPath;
                 break;
         }
 

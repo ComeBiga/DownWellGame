@@ -102,6 +102,21 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    private void GenerateLevelsSeveralTimes(List<Level> levels, int times)
+    {
+        crInfinity = StartCoroutine(EGenerateLevelsSeveralTimes(levels, times));
+    }
+
+    private IEnumerator EGenerateLevelsSeveralTimes(List<Level> levels, int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            currentYpos -= mapDisplay.Display(levels[CatDown.Random.Get().Next(levels.Count)], currentYpos);
+
+            yield return null;
+        }
+    }
+
     #endregion
 
     #region Basic Generating
@@ -191,6 +206,8 @@ public class MapManager : MonoBehaviour
         }
     }
 
+
+
     Level RandomLevel(int stageIndex)
     {
         string seed = (Time.time + Random.value).ToString();
@@ -223,6 +240,28 @@ public class MapManager : MonoBehaviour
 
             if (mainPos.position.y < currentYpos + reGenerateOffset)
                 Generate(times);
+
+            yield return null;
+        }
+
+        reGenerate = false;
+    }
+
+    public void GenerateBossLevels(Transform mainPos, int times)
+    {
+        crInfinity = StartCoroutine(EGenerateBossLevels(mainPos, times));
+    }
+
+    private IEnumerator EGenerateBossLevels(Transform mainPos, int times)
+    {
+        reGenerate = true;
+
+        while (true)
+        {
+            if (!reGenerate) break;
+
+            if (mainPos.position.y < currentYpos + reGenerateOffset)
+                GenerateLevelsSeveralTimes(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.BOSS_LEVEL, sm.Current.Num)), times);
 
             yield return null;
         }

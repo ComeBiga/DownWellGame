@@ -65,11 +65,11 @@ public class PlayerPhysics : MonoBehaviour
         this.hInput = hInput;
     }
 
-    public void Jump()
+    public void Jump(float additive = 1f)
     {
         if(grounded)
         {
-            MoveVertical(jumpSpeed);
+            MoveVertical(jumpSpeed * additive);
             jumping = true;
         }
     }

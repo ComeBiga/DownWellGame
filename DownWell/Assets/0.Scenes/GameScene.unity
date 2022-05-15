@@ -8889,7 +8889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapDisplay: {fileID: 0}
   width: 11
-  height: 100
+  height: 200
   reGenerateOffset: 20
 --- !u!114 &1215072952
 MonoBehaviour:
@@ -8910,6 +8910,7 @@ MonoBehaviour:
   entrePath: Entre/
   exitPath: Exit/
   bossPath: Boss/
+  bossLevelPath: Boss/levels
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0
@@ -11555,7 +11556,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
   instantiatePosition: {x: 0, y: 10, z: 0}
-  dropCharacterDelay: 3
+  dropCharacterDelay: 2
   stageClearDelay: 3
   score: {fileID: 928105782}
   coin: {fileID: 928105783}

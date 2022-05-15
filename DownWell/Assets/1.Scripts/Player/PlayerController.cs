@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     float splashedSpeed;
     float splashedJumpSpeed;
 
-    float slow = 1f;
+    float hAdditive = 1f;
+    float vAdditive = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        physics.Move(input.Horizontal * slow);
+        physics.Move(input.Horizontal * hAdditive);
 
     }
 
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
         // Basic Jump
         if(input.GetJumpButtonDown())
         {
-            physics.Jump();
+            physics.Jump(vAdditive);
         }
 
         // Short Jump(Jump Canceling)
@@ -113,7 +114,13 @@ public class PlayerController : MonoBehaviour
 
     public void MoveOnSplashed()
     {
-        if (!BossStageManager.instance.IsBossStage) return;
+        if (!BossStageManager.instance.IsBossStage)
+        {
+            hAdditive = 1f;
+            vAdditive = 1f;
+
+            return;
+        }
         //if (physics.wallCollision == null) return;
 
         RaycastHit2D hit;
@@ -124,7 +131,8 @@ public class PlayerController : MonoBehaviour
             {
                 speed = splashedSpeed;
                 jumpSpeed = splashedJumpSpeed;
-                slow = .7f;
+                hAdditive = .7f;
+                vAdditive = .7f;
                 return;
             }
         }
@@ -132,7 +140,8 @@ public class PlayerController : MonoBehaviour
         {
             speed = normalSpeed;
             jumpSpeed = normalJumpSpeed;
-            slow = 1f;
+            hAdditive = 1f;
+            vAdditive = 1f;
         }
 
     }

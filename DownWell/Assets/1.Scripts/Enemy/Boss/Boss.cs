@@ -12,6 +12,8 @@ public class Boss : MonoBehaviour
     public int maxHealth = 100;
     public Health health;
 
+    [Header("Death")]
+    public GameObject dyingObj;
     private bool died = false;
 
     private void Start()
@@ -65,7 +67,8 @@ public class Boss : MonoBehaviour
         Debug.Log("Boss Die");
         died = true;
         Destroy(this.gameObject);
-        BossStageManager.instance.EndBossStage();
+        Instantiate(dyingObj, transform.position, Quaternion.identity);
+        //BossStageManager.instance.EndBossStage();
     }
 
     private IEnumerator DamagedFX()

@@ -17,11 +17,21 @@ public class BossProjectile : MonoBehaviour
     {
         filter = new ContactFilter2D();
         filter.SetLayerMask(1 << 3);
+
+        RotateToTarget(PlayerManager.instance.transform.position);
     }
 
     private void Update()
     {
         TakeDamage();
+    }
+
+    public void RotateToTarget(Vector3 target)
+    {
+        Vector3 vectorToTarget = PlayerManager.instance.playerObject.transform.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
     }
 
     public void SetTarget(Transform target)

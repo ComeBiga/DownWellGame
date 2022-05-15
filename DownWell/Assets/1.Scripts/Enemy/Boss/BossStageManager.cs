@@ -64,7 +64,9 @@ public class BossStageManager : MonoBehaviour
         // Player
         PlayerManager.instance.playerObject.GetComponent<PlayerCombat>().CheckOutOfScreen();
 
-        MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 3);
+        // Map Generation
+        //MapManager.instance.GenerateInfinity(PlayerManager.instance.playerObject.transform, 3);
+        MapManager.instance.GenerateBossLevels(PlayerManager.instance.playerObject.transform, 3);
 
         FX();
     }
