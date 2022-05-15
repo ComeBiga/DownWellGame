@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     float splashedSpeed;
     float splashedJumpSpeed;
 
+    float slow = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        physics.Move(input.Horizontal);
+        physics.Move(input.Horizontal * slow);
 
     }
 
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
             {
                 speed = splashedSpeed;
                 jumpSpeed = splashedJumpSpeed;
+                slow = .7f;
                 return;
             }
         }
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = normalSpeed;
             jumpSpeed = normalJumpSpeed;
+            slow = 1f;
         }
 
     }

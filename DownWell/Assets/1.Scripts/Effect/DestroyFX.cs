@@ -19,10 +19,10 @@ public class DestroyFX : StateMachineBehaviour
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.transform.parent != null)
-            Destroy(animator.transform.parent.gameObject);
-        else
+        if (animator.GetComponent<DestroyEffect>() == null)
             Destroy(animator.gameObject);
+        else
+            animator.GetComponent<DestroyEffect>().Destroy();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

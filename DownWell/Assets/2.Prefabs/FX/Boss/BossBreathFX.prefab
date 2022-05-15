@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 618966289905034415}
   - component: {fileID: 6017543586866720269}
   - component: {fileID: 4300100414609015565}
+  - component: {fileID: 1286970071901187290}
   m_Layer: 0
-  m_Name: BossBlastFX
+  m_Name: BossBreathFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,12 +71,12 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1851627769
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9a63e6db3e1aed549afadb2e54ad8eac, type: 3}
   m_Color: {r: 0.011764706, g: 0.7647059, b: 0, a: 0.41960785}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 2.24, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
@@ -102,3 +103,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1286970071901187290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6455041936140182723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd210f5b0b1166343ac3ef4e56eb27b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fx: {fileID: 0}

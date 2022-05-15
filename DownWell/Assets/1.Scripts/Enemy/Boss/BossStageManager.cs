@@ -36,6 +36,7 @@ public class BossStageManager : MonoBehaviour
     public GameObject BossObject { get { return bossObject; } }
 
     //Vector3 bossAppearPos;
+    public float bugTime = 0f;
 
     private void Init()
     {
