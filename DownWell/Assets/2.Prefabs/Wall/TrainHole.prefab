@@ -444,5 +444,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   train: {fileID: 4626489882419344357}
   sensor: {fileID: 5891615091984218109}
-  appearTime: 2
+  appearTime: 0
   passTime: 3

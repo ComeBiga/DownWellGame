@@ -27,6 +27,7 @@ public class BossStageManager : MonoBehaviour
     public float bossAppearDistance;
     public int appearDirection = -1;
     public float appearSpeed = 1f;
+    [SerializeField] private float delayAfterAppear = 2f;
 
     [SerializeField] private float posOffset = -3f;
 
@@ -113,6 +114,8 @@ public class BossStageManager : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+
+        yield return new WaitForSeconds(delayAfterAppear);
 
         PlayerManager.instance.playerObject.GetComponent<PlayerController>().cantMove = false;
         //boss.GetComponent<BossCombat>().active = true;

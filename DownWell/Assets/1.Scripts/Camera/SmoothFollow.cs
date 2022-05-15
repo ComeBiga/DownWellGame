@@ -30,6 +30,11 @@ public class SmoothFollow : MonoBehaviour
     Vector3 scrollTarget;
     float scrollOffset = 0f;
 
+    private bool closeToUnder = false;
+    private bool closeToUpper = false;
+    private float bossFollowPosY;
+
+
     private BossStageCamera bossCamera;
 
     [Header("StageEnd")]
@@ -54,11 +59,25 @@ public class SmoothFollow : MonoBehaviour
         //else followActive = true;
 
         if (followActive)
-            transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y, transform.position.z);
+        {
+            var lerpedPosY = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth).y;
+
+            if(bossScroll)
+            {
+                var underPos = BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance;
+                var upperPos = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - bossScrollDistance;
+                lerpedPosY = Mathf.Clamp(lerpedPosY, underPos, upperPos);
+            }
+
+            transform.position = new Vector3(transform.position.x, lerpedPosY, transform.position.z);
+        }
         else if (bossScroll && !followActive)
         {
-            if(BossStageManager.instance.BossObject != null)
-                transform.position = new Vector3(0, BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance, -10);
+            //if (BossStageManager.instance.BossObject != null)
+            //{
+            //    var bossFollowPos = new Vector3(0, bossFollowPosY, -10);
+            //    transform.position = new Vector3(transform.position.x, Vector3.Lerp(transform.position, bossFollowPos, Time.deltaTime * smooth).y, transform.position.z);
+            //}
         }
 
 
@@ -159,20 +178,55 @@ public class SmoothFollow : MonoBehaviour
     private void CameraScrollDistanceFromBoss()
     {
         var dis = (transform.position.y - bossScrollDistance) - BossStageManager.instance.BossObject.transform.localPosition.y;
+        var upperDis = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - (transform.position.y + bossScrollDistance);
 
-        //Debug.Log("dis : " + dis);
+        Debug.Log("dis : " + dis);
+        Debug.Log("upperDis : " + upperDis);
         //Debug.Log(target.transform.position.y >= transform.position.y);
 
-        if(target.transform.position.y >= transform.position.y)
-        {
-            transform.position = new Vector3(0, target.transform.position.y, -10);
-            followActive = true;
-        }
+        var underPos = BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance;
+        var upperPos = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - bossScrollDistance;
 
-        if(dis <= 0)
-        {
-            followActive = false;
-        }
+        //if(target.position.y >= underPos && target.position.y<= upperPos)
+        //{
+        //    followActive = true;
+        //}
+        //else if(target.position.y < underPos)
+        //{
+        //    followActive = false;
+        //    bossFollowPosY = BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance;
+        //}
+        //else
+        //{
+        //    followActive = false;
+        //    bossFollowPosY = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - bossScrollDistance;
+        //}
+
+        //if (target.transform.position.y >= transform.position.y && closeToUnder)
+        //{
+        //    transform.position = new Vector3(0, target.transform.position.y, -10);
+        //    followActive = true;
+        //    closeToUnder = false;
+        //}
+
+        //if (dis <= 0)
+        //{
+        //    followActive = false;
+        //    closeToUnder = true;
+        //}
+
+        //if (upperDis <= 0)
+        //{
+        //    followActive = false;
+        //    closeToUpper = true;
+        //}
+
+        //if (target.transform.position.y <= transform.position.y && closeToUpper)
+        //{
+        //    transform.position = new Vector3(0, target.transform.position.y, -10);
+        //    followActive = true;
+        //    closeToUpper = false;
+        //}
     }
 
     void CameraScrollOnly()

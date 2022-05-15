@@ -159,6 +159,7 @@ public class MapDisplay : MonoBehaviour
             if (BackgroundHandler.Decorate(deco, out decoSprite))
             {
                 bgo.GetComponent<SpriteRenderer>().sprite = decoSprite;
+                bgo.GetComponent<SpriteRenderer>().sortingOrder = 2;
                 break;
             }
         }

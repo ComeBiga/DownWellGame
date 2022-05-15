@@ -11556,7 +11556,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
   instantiatePosition: {x: 0, y: 10, z: 0}
-  dropCharacterDelay: 2
+  dropCharacterDelay: 0
   stageClearDelay: 3
   score: {fileID: 928105782}
   coin: {fileID: 928105783}
@@ -11609,6 +11609,7 @@ MonoBehaviour:
   bossAppearDistance: 2
   appearDirection: -1
   appearSpeed: 1
+  delayAfterAppear: 2
   posOffset: -11
   bugTime: 0
 --- !u!114 &1700652130

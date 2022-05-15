@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     GameObject bossObject;
+    public GameObject upperBossObject;
 
     public enum BossState { normal, rage }
     [SerializeField] BossState currentState = BossState.normal;
