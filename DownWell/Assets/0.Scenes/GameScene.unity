@@ -11609,6 +11609,7 @@ MonoBehaviour:
   appearDirection: -1
   appearSpeed: 1
   posOffset: -11
+  bugTime: 0
 --- !u!114 &1700652130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11635,9 +11636,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stages:
-  - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
   - {fileID: 11400000, guid: f0251760ecc9c9842985f4fe1230f79a, type: 2}
   - {fileID: 11400000, guid: a23f114bb01b43b498152608e97c3904, type: 2}
+  - {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
 --- !u!1 &1704033169
 GameObject:
   m_ObjectHideFlags: 0

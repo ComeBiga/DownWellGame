@@ -77,7 +77,7 @@ AnimationClip:
   m_Events:
   - time: 0.5
     functionName: GenerateInParent
-    data: Blast
+    data: Breath
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
