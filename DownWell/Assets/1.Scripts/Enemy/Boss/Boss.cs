@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour
 
     public int maxHealth = 100;
     public Health health;
+    public float damagedInterval = 0.5f;
 
     [Header("Death")]
     public GameObject dyingObj;
@@ -76,7 +77,7 @@ public class Boss : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.black;
 
-        yield return null;
+        yield return new WaitForSeconds(damagedInterval);
 
         GetComponent<SpriteRenderer>().color = Color.white;
     }

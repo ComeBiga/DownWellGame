@@ -214,6 +214,7 @@ MonoBehaviour:
   maxHealth: 500
   health:
     current: 0
+  damagedInterval: 0.25
   dyingObj: {fileID: 6431410211589148503, guid: 7d068be3a1a94b44e900397a7b7e7c3c, type: 3}
 --- !u!114 &2485176263420914955
 MonoBehaviour:
@@ -227,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e798cd7e5ef7374d8ab3b3a922e6a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
 --- !u!114 &1649624395474174985
 MonoBehaviour:
   m_ObjectHideFlags: 0
