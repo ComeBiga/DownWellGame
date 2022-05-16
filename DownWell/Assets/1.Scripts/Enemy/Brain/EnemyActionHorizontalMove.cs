@@ -103,10 +103,10 @@ namespace CatDown
         {
             collision.UpdateRaycastOrigins();
 
-            if (collision.CheckCollision(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
-            else if (collision.CheckCollision(CollisionDirection.LEFT, rayLength, groundLayermask)) dir = 1;
-            else if (collision.CheckEndOfGround(CollisionDirection.RIGHT, rayLength, groundLayermask)) dir = -1;
-            else if (collision.CheckEndOfGround(CollisionDirection.LEFT, rayLength, groundLayermask)) dir = 1;
+            if (collision.CheckCollision(CollisionDirection.RIGHT, rayLength, groundLayermask)) { dir = -1; Move(); Animation(); }
+            else if (collision.CheckCollision(CollisionDirection.LEFT, rayLength, groundLayermask)) { dir = 1; Move(); Animation(); }
+            else if (collision.CheckEndOfGround(CollisionDirection.RIGHT, rayLength, groundLayermask)) { dir = -1; Move(); Animation(); }
+            else if (collision.CheckEndOfGround(CollisionDirection.LEFT, rayLength, groundLayermask)) { dir = 1; Move(); Animation(); }
 
             //Move();
             //GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
