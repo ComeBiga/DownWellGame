@@ -12,6 +12,7 @@ namespace CatDown
         public event System.Action OnDecide;
 
         private Coroutine coroutineECheck;
+        private bool decided = false;
 
         public void Init(CatDown.EnemyTransition transition)
         {
@@ -27,6 +28,7 @@ namespace CatDown
         IEnumerator ECheck()
         {
             if (PlayerManager.instance.playerObject == null) yield return null;
+            decided = false;
 
             while (true)
             {
@@ -36,10 +38,11 @@ namespace CatDown
             }
 
             EnterExamine();
+            Debug.Log($"current state : {transition.Brain.Current.name} (ECheck / EnemyDecision.cs");
 
             while(true)
             {
-                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform)) break;
+                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform) || decided) break;
 
                 Examine();
 
@@ -49,7 +52,7 @@ namespace CatDown
 
         public void StopCheck()
         {
-            StopCoroutine(coroutineECheck);
+            if(coroutineECheck != null) StopCoroutine(coroutineECheck);
         }
 
         public virtual void OnActionEnd() { }
@@ -60,26 +63,28 @@ namespace CatDown
 
         protected virtual void Examine() { }
 
-        protected void Decide()
+        protected void Decide(string log = "")
         {
             //transition.OnChangeState();
+            Debug.Log($"Decide from : {log}, current state : {transition.Brain.Current.name}");
+            decided = true;
             OnDecide.Invoke();
         }
 
-        protected void DecideAfterOneFrame()
+        protected void DecideAfterOneFrame(string log = "")
         {
-            StartCoroutine(EDecideAfterOneFrame());
+            StartCoroutine(EDecideAfterOneFrame(log));
         }
 
         #endregion
 
         #region Private Method
 
-        private IEnumerator EDecideAfterOneFrame()
+        private IEnumerator EDecideAfterOneFrame(string log = "")
         {
             yield return null;
 
-            Decide();
+            Decide(log);
         }
 
         #endregion

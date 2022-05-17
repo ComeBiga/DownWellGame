@@ -42,11 +42,14 @@ namespace CatDown
 
             this.loop = loop;
             this.actions.Add(null);
+
+            OnActionEnd += () => { Debug.Log($"OnActionEnd, action : {actions[0].name}"); };
         }
         public void Next()
         {
             if (actionEnd) return;
 
+            var lastAction = actions[index];
             index++;
             //Debug.Log(index);
 
@@ -59,7 +62,7 @@ namespace CatDown
                 }
                 else
                 {
-                    //Debug.Log("Action End");
+                    Debug.Log($"Last action : {lastAction} (Next / EnemyActionHandler.cs)");
                     actionEnd = true;
                     OnActionEnd.Invoke();
                 }

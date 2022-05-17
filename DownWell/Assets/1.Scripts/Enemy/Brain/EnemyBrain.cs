@@ -10,11 +10,14 @@ namespace CatDown
         private List<CatDown.EnemyState> states;
 
         private CatDown.EnemyState current;
+        public CatDown.EnemyState Current { get { return current; } }
+
+        private int count = 0;
 
         private void Start()
         {
             Init();
-
+            if (GetComponent<Enemy>().info.name == "JellyPoo") Debug.Log($"Current state : {current.name} at Brain Start");
             current.Handle();
         }
 
@@ -33,8 +36,17 @@ namespace CatDown
             current.Stop();
             current = states.Find(s => s.name == name);
             current.EnterState();
-            //Debug.Log(current.name);
+            if (GetComponent<Enemy>().info.name == "JellyPoo")
+            {
+                Debug.Log($"transition count :{++count}");
+                Debug.Log($"Current state : {current.name}");
+            }
             current.Handle();
+        }
+
+        public static void CurrentState()
+        {
+            //Debug.Log($"current state : )
         }
 
         #region Static Function

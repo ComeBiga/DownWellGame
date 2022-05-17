@@ -7,9 +7,11 @@ namespace CatDown
 
     public class EnemyDecisionActionEnd : EnemyDecision
     {
+
         public override void OnActionEnd()
         {
-            base.Decide();
+            Debug.Log($"current state : {transition.Brain.Current.name} (OnActionEnd / EnemyDecisionActionEnd)");
+            base.Decide(this.ToString());
         }
     }
 }

@@ -15,12 +15,22 @@ namespace CatDown
         {
             //if (GetComponent<Enemy>().info.name == "JellyPoo")
             //    Debug.Log("WaitForTime");
-            WaitForTime(time);
+            Debug.Log("EnterDecision");
+            current = 0;
+            Debug.Log($"current : {current}");
+
+            //WaitForTime(time);
         }
 
         protected override void Examine()
         {
+            current += Time.deltaTime;
 
+            if(current > time)
+            {
+                Debug.Log($"current : {current}");
+                Decide(this.ToString());
+            }
         }
 
         private void WaitForTime(float time)

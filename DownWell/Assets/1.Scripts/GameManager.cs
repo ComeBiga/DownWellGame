@@ -75,6 +75,14 @@ public class GameManager : MonoBehaviour
         StartStage();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ClearStage();
+        }
+    }
+
     public void StartStage()
     {
         // Level Generation

@@ -7,6 +7,8 @@ public class MapDisplay : MonoBehaviour
     MapManager mapManager;
 
     public Transform parent;
+    public Transform wallParent;
+    public Transform enemyParent;
     public Vector3 offset;
     [SerializeField] private GameObject startPos;
 
@@ -168,10 +170,10 @@ public class MapDisplay : MonoBehaviour
     private void DisplayObject(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         // wall
-        ws_root.InstantiateObject(tileCode, tilePosition, transform, currentStage);
+        ws_root.InstantiateObject(tileCode, tilePosition, wallParent, currentStage);
 
         // enemy
-        es_root.InstantiateObject(tileCode, tilePosition, transform, currentStage);
+        es_root.InstantiateObject(tileCode, tilePosition, enemyParent, currentStage);
     }
 
     private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
@@ -208,7 +210,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x,
                                                     -y + offset.y + Ypos);
 
-                ws_root.InstantiateObject(currentTile, tilePosition, parent, StageManager.instance.Current);
+                ws_root.InstantiateObject(currentTile, tilePosition, wallParent, StageManager.instance.Current);
             }
         }
     }
@@ -223,7 +225,7 @@ public class MapDisplay : MonoBehaviour
                 Vector2 tilePosition = new Vector2(-mapManager.width / 2 + x + offset.x
                                                     , -y + offset.y + Ypos);
 
-                es_root.InstantiateObject(currentTile, tilePosition, parent, StageManager.instance.Current);
+                es_root.InstantiateObject(currentTile, tilePosition, enemyParent, StageManager.instance.Current);
             }
         }
     }

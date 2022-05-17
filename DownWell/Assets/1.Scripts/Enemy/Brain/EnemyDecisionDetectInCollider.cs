@@ -14,8 +14,8 @@ namespace CatDown
         {
             if(Detect())
             {
-                //Debug.Log("Detected");
-                Decide();
+                Debug.Log("Detected");
+                Decide(this.ToString());
             }
         }
 

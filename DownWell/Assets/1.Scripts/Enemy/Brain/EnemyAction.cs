@@ -29,7 +29,7 @@ namespace CatDown
                 yield return null;
             }
 
-            //Debug.Log("StartAction");
+            //Debug.Log($"This Action : {}");
             OnActionEnter();
 
             while(true)

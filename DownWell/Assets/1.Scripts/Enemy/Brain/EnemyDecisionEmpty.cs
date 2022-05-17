@@ -9,7 +9,7 @@ namespace CatDown
     {
         protected override void EnterExamine()
         {
-            DecideAfterOneFrame();
+            DecideAfterOneFrame(this.ToString());
         }
     }
 }

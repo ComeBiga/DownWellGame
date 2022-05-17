@@ -8,6 +8,7 @@ namespace CatDown
     public class EnemyTransition
     {
         private CatDown.EnemyBrain brain;
+        public CatDown.EnemyBrain Brain { get { return brain; } }
 
         public CatDown.EnemyDecision decision;
         public string toState = "";
@@ -16,18 +17,22 @@ namespace CatDown
         {
             this.brain = brain;
 
+            decision.Init(this);
             //Debug.Log($"{brain.gameObject.name} / {decision}");
             decision.OnDecide += OnChangeState;
+
+            //Debug.Log($"Change to : {toState}");
         }
 
         public void CheckDecision()
         {
+            Debug.Log($"Current state : {brain.Current.name}, Change to : {toState} (CheckDecision / EnemyTransition.cs)");
             if (decision != null) decision.Check();
         }
 
         public void OnChangeState()
         {
-            //Debug.Log("OnChangeState");
+            Debug.Log($"Current state : {brain.Current.name}, Change to : {toState} (OnChangeState / EnemyTransition.cs)");
             brain.ChangeState(toState);
         }
 

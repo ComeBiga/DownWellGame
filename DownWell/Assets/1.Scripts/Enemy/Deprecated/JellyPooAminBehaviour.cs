@@ -20,7 +20,7 @@ public class JellyPooAminBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //animator.GetComponent<JellyPooMovement>().Dash();
-        animator.GetComponent<EnemyActionOnAnimationFrame>().OnEvent();
+        //animator.GetComponent<EnemyActionOnAnimationFrame>().OnEvent();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -12,7 +12,10 @@ namespace CatDown
 
         protected override void OnActionEnter()
         {
+            Debug.Log("OnEvent");
             onEvent.Invoke();
+
+            handler.Next();
         }
     }
 }
