@@ -79,20 +79,6 @@ public class StageDatabase : ScriptableObject
     //    }
     //}
 
-
-
-    public List<GameObject> GetMapObjects()
-    {
-        var mos = mapObjects;
-
-        foreach(var mo in mos)
-        {
-            mo.GetComponent<Wall>().SetSpriteByStage(num);
-        }
-
-        return mos;
-    }
-
     /// <summary>
     /// If resourceLoad is true, remove 'Resources/' directory.
     /// </summary>

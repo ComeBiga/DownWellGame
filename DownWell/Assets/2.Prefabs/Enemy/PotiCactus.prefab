@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 6b0f14c1dadb0c440a5fd6be715f3696, type: 2}
-  health: 10
+  health: 8
   invincible: 0
   itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
   dropItems:

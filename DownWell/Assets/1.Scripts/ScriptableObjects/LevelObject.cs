@@ -7,10 +7,11 @@ public class LevelObject : ScriptableObject
 {
     public int code;
     public new string name;
-    public Sprite sprite;
-    [SerializeField] private Sprite[] sprites;
-    public bool sliced = false;
     public int score;
+
+    [Header("Sprite")]
+    public Sprite sprite;
+    public bool sliced = false;
 
     public Texture2D GetTexture2D()
     {
@@ -34,11 +35,6 @@ public class LevelObject : ScriptableObject
 
     //    return ct;
     //}
-
-    public Sprite GetSprite(int stageNum)
-    {
-        return (sprites.Length > 0) ? sprites[stageNum] : sprite;
-    }
 }
 
 

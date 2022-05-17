@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public LevelObject info;
+    public EnemyInfo info;
     public int health = 10;
-    public bool invincible = false;
+    [HideInInspector] public bool invincible = false;
 
     [Header("DropItems")]
     [SerializeField] private ItemDrop itemDropper;
@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = info.hp;
+
         colliders = new Collider2D[3];
         filter = new ContactFilter2D();
         filter.layerMask = 1 << 3;
