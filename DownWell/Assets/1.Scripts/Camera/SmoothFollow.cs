@@ -180,8 +180,8 @@ public class SmoothFollow : MonoBehaviour
         var dis = (transform.position.y - bossScrollDistance) - BossStageManager.instance.BossObject.transform.localPosition.y;
         var upperDis = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - (transform.position.y + bossScrollDistance);
 
-        Debug.Log("dis : " + dis);
-        Debug.Log("upperDis : " + upperDis);
+        //Debug.Log("dis : " + dis);
+        //Debug.Log("upperDis : " + upperDis);
         //Debug.Log(target.transform.position.y >= transform.position.y);
 
         var underPos = BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance;

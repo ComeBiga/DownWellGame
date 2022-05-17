@@ -58,6 +58,12 @@ public class Enemy : MonoBehaviour
             Die();
     }
 
+    public virtual bool Stepped()
+    {
+        Die();
+        return true;
+    }
+
     public void Die()
     {
         if (invincible) return;

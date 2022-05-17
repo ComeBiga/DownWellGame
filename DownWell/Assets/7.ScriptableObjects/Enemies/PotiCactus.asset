@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f1fa0cac20b2c458ebe590f0931d74, type: 3}
-  m_Name: PotiShell
+  m_Name: PotiCactus
   m_EditorClassIdentifier: 
-  code: 2998
-  name: PotiShell
-  sprite: {fileID: 4505586374222085760, guid: f907423746fef3f4ebad90e857763f20, type: 3}
+  code: 2997
+  name: PotiCactus
+  sprite: {fileID: -649022395968036104, guid: da199b96b4bb3254e8824145e32e74ce, type: 3}
   sprites: []
   sliced: 1
   score: 0

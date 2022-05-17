@@ -52,13 +52,14 @@ public class PlayerCombatStepping : MonoBehaviour
 
     public void Update()
     {
+        var enemyColliders = new Collider2D[3];
         var hitNum = hitBox.GetComponent<CircleCollider2D>().OverlapCollider(enemyFilter, enemyColliders);
 
         foreach (var enemyCollider in enemyColliders)
         {
             if (enemyCollider != null)
             {
-                enemyCollider.GetComponent<Enemy>().Die();
+                if (!enemyCollider.GetComponent<Enemy>().Stepped()) break;
 
                 //onStep.Invoke();
                 OnStep.Invoke();

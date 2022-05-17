@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
     public float knuckBackDistance;
     public float invincibleTime;
     bool isInvincible = false;
-    public bool IsInvincible { get; }
+    public bool IsInvincible { get { return isInvincible; } }
 
     public UnityEvent OnDamaged;
 
