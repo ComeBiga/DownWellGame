@@ -15,10 +15,22 @@ namespace CatDown
         private int dashDir = 0;
 
         private Transform target;
+        private float _speed = 0f;
+
+        private CollisionCheck wallCollision;
 
         protected override void OnActionEnter()
         {
             //GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            wallCollision = new CollisionCheck();
+            wallCollision.Init(GetComponent<BoxCollider2D>(),
+                .1f,
+                4,
+                4,
+                LayerMask.GetMask("Ground"));
+            wallCollision.CalculateRaySpacing();
+
+            _speed = 0f;
             InitDir();
             
             GetComponent<Animator>().SetTrigger("Move");
@@ -30,11 +42,15 @@ namespace CatDown
         protected override void OnActionUpdate()
         {
             //Animation();
+            wallCollision.UpdateRaycastOrigins();
+
+            MoveHorizontal();
         }
 
         void Animation()
         {
-            GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+            //GetComponent<SpriteRenderer>().flipX = (GetComponent<Rigidbody2D>().velocity.x < -0.01) ? true : false;
+            GetComponent<SpriteRenderer>().flipX = (dashDir < -0.01) ? true : false;
         }
 
         private void InitDir()
@@ -47,9 +63,26 @@ namespace CatDown
         public void Move()
         {
             Debug.Log($"speed:{speed}, dir:{dashDir}");
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dashDir, GetComponent<Rigidbody2D>().velocity.y);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dashDir, GetComponent<Rigidbody2D>().velocity.y);
+            _speed = speed;
 
             Animation();
+        }
+
+        private void MoveHorizontal()
+        {
+            if(!CheckHorizontalCollision(dashDir))
+                transform.position += Vector3.right * _speed * dashDir * Time.deltaTime;
+        }
+
+        private bool CheckHorizontalCollision(float hInput)
+        {
+            if (hInput > 0)
+                return wallCollision.CheckCollision(CollisionDirection.RIGHT);
+            else if (hInput < 0)
+                return wallCollision.CheckCollision(CollisionDirection.LEFT);
+            else
+                return false;
         }
     }
 }

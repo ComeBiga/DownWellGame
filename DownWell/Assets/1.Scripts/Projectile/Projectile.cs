@@ -195,7 +195,7 @@ public class Projectile : MonoBehaviour
                 Destroy();  // 탄환 제거
 
                 // 점막 제거
-                if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+                if (collision.transform.transform.GetComponent<BeSplashed>() != null && collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
                 {
                     collision.transform.transform.GetComponent<BeSplashed>().Rid();
                 }
