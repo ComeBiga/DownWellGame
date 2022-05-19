@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 3003
   name: PowerUp
-  sprite: {fileID: -2311659948842064771, guid: 51c81e11cf1b83741a6d4debdf26562c, type: 3}
-  sprites: []
-  sliced: 0
   score: 0
+  sprite: {fileID: -2311659948842064771, guid: 51c81e11cf1b83741a6d4debdf26562c, type: 3}
+  sliced: 0
+  dropSetting: {fileID: 11400000, guid: cfffb6fcf71c0ce458edbbea4d767e81, type: 2}
   chacePercent: 50
-  immediately: 0

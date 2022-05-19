@@ -8,6 +8,7 @@ public class Gun : Weapon
     [Header("Gun")]
     [SerializeField] protected GameObject projectile;
     protected Transform shotPos;
+    public float addedRange;
 
     // magazine
     public struct Magazine
@@ -52,6 +53,8 @@ public class Gun : Weapon
         player.GetComponent<PlayerPhysics>().OnGrounded += Reload;
         player.GetComponent<PlayerCombatStepping>().OnStep.AddListener(Reload);
         shotPos = player.transform.GetChild(1);
+
+        addedRange = 0f;
     }
 
     public override void Attack()
@@ -91,6 +94,8 @@ public class Gun : Weapon
         {
             magazine.current--;
             var pt = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
+            AddRange(pt);
+            Debug.Log($"AddedRange : {addedRange} (Gun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
         }
     }
@@ -105,6 +110,11 @@ public class Gun : Weapon
     public override bool IsShootable()
     {
         return shootable && !IsEmpty;
+    }
+
+    protected void AddRange(GameObject projectile)
+    {
+        projectile.GetComponent<Projectile>().lifeDistance += addedRange;
     }
 
 }

@@ -24,6 +24,11 @@ public class DoubleGun : Gun
             magazine.current--;
             var pt = GameObject.Instantiate(projectile, transform.position + Vector3.right * projectileOffset, Quaternion.identity);
             var pt2 = GameObject.Instantiate(projectile, transform.position + Vector3.left * projectileOffset, Quaternion.identity);
+
+            AddRange(pt);
+            AddRange(pt2);
+
+            Debug.Log($"AddedRange : {addedRange} (DoubleGun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new ItemDropper", menuName = "Item/ItemDropper")]
 public class ItemDrop : ScriptableObject
 {
-    private List<GameObject> dropItems;
+    [SerializeField] private List<GameObject> dropItems;
 
     [Header("TimeSet")]
     public float popingTime = .5f;
@@ -43,13 +43,14 @@ public class ItemDrop : ScriptableObject
     private void InstantiateItem(GameObject itemObject, Vector3 position)
     {
         var dropItem = Instantiate(itemObject, position, Quaternion.identity);
+        var dropSetting = dropItem.GetComponent<Item>().i_Info.dropSetting;
 
         var rand = CatDown.Random.Get();
-        var popSpeed = new Vector2(rand.Next(-(int)maxHorizontalPopSpeed, (int)maxHorizontalPopSpeed),
-                                   rand.Next(-(int)minVerticalPopSpeed, (int)maxVerticalPopSpeed));
+        var popSpeed = new Vector2(rand.Next(-(int)dropSetting.maxHorizontalPopSpeed, (int)dropSetting.maxHorizontalPopSpeed),
+                                   rand.Next(-(int)dropSetting.minVerticalPopSpeed, (int)dropSetting.maxVerticalPopSpeed));
 
         dropItem.GetComponent<Rigidbody2D>().AddForce(popSpeed, ForceMode2D.Impulse);
-        dropItem.GetComponent<Item>().Invoke("EndPoping", popingTime);
-        dropItem.GetComponent<Item>().DestroyItem(livingTime);
+        dropItem.GetComponent<Item>().Invoke("EndPoping", dropSetting.popingTime);
+        dropItem.GetComponent<Item>().DestroyItem(dropSetting.livingTime);
     }
 }

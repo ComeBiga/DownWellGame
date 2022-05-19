@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IHitByProjectile
     [HideInInspector] public bool invincible = false;
 
     [Header("DropItems")]
-    [SerializeField] private ItemDrop itemDropper;
+    private ItemDrop itemDropper;
     public List<GameObject> dropItems;
 
     Collider2D[] colliders;
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IHitByProjectile
         filter.useLayerMask = false;
 
         // ItemDrop Init
+        itemDropper = new ItemDrop();
         itemDropper.SetItem(dropItems);
     }
 

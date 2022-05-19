@@ -30,6 +30,22 @@ public class WeaponReinforcer
         return true;
     }
 
+    public void ReinforceRange(float addedRange)
+    {
+        Gun gun;
+
+        for(int i = 0; i < line.Count; i++)
+        {
+            gun = line[i] as Gun;
+            gun.addedRange += addedRange;
+            Debug.Log($"Gun addedRange : {gun.addedRange}");
+
+            line[i] = gun;
+            Gun dlg = line[i] as Gun;
+            Debug.Log($"Weapon addedRange : {dlg.addedRange}");
+        }
+    }
+
     public Weapon BackToFirst()
     {
         index = 0;

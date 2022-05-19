@@ -482,7 +482,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 64bfb787fbaf06b4cad0ba65502440a3, type: 2}
   - {fileID: 11400000, guid: 248a04446c997e4459fcb92ea30698f6, type: 2}
   weapon: {fileID: 11400000, guid: 64bfb787fbaf06b4cad0ba65502440a3, type: 2}
-  coolDownTime: 0.2
+  coolDownTime: 0.16
 --- !u!114 &985416465136532519
 MonoBehaviour:
   m_ObjectHideFlags: 0
