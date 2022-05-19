@@ -19,6 +19,14 @@ namespace CatDown
         public float changeTime = 3f;
         protected float timer = 0;
 
+        private EnemyPhysics physics;
+
+        private void Start()
+        {
+            physics = new EnemyPhysics(transform, GetComponent<Rigidbody2D>(), GetComponent<BoxCollider2D>());
+            physics.InitCollision(4, 4, LayerMask.GetMask("Ground"));
+        }
+
         protected override void OnActionEnter()
         {
             collision.Init(GetComponent<BoxCollider2D>(), rayLength, horizontalRayCount, verticalRayCount, groundLayermask);
@@ -27,7 +35,8 @@ namespace CatDown
             //SetStartDirection();
             Animation();
 
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            physics.SetVelocity(0f);
 
             Move();
             //Debug.Log("Start" + GetComponent<Rigidbody2D>().velocity);
@@ -52,6 +61,8 @@ namespace CatDown
 
         protected override void OnActionUpdate()
         {
+            physics.Update();
+
             if (moveAsCollision) MoveAsCollision();
             else MoveAsTime();
             //Debug.Log(GetComponent<Rigidbody2D>().velocity);
@@ -91,12 +102,14 @@ namespace CatDown
 
         private void Move()
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dir, GetComponent<Rigidbody2D>().velocity.y);
+            physics.SetVelocity(speed * dir);
         }
 
         private void Stop()
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+            physics.SetVelocity(0f);
         }
 
         protected void MoveAsCollision()
