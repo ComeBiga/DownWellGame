@@ -8,9 +8,6 @@ public class Wall : MonoBehaviour, IHitByProjectile
 
     public virtual void Hit(int damage = 0)
     {
-        if (GetComponent<BeSplashed>().currentRidCount > 0)
-        {
-            GetComponent<BeSplashed>().Rid();
-        }
+        GetComponent<BeSplashed>().Rid();
     }
 }

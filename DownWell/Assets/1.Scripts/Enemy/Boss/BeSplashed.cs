@@ -16,6 +16,8 @@ public class BeSplashed : MonoBehaviour
     public bool useColorChange = true;
     public Color splashedColor;
 
+    public bool IsSplashed { get { return currentRidCount > 0; } }
+
     void Start()
     {
         currentRidCount = 0;
