@@ -6,6 +6,9 @@ public class BossActionBlast : BossAction
 {
     public GameObject hitBox;
     public Transform pos;
+    [SerializeField] private float distance = 2f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private bool attackAtCenter = false;
 
     public override void Take()
     {
@@ -17,16 +20,25 @@ public class BossActionBlast : BossAction
     {
         string seed = (Time.time + Random.value).ToString();
         System.Random rand = new System.Random(seed.GetHashCode());
-        var posIndex = rand.Next(-1, 2) * 2;
-        //Debug.Log(posIndex);
-        float dis = 0f;
+        //var posIndex = rand.Next(-1, 2) * 2;
+        var posIndex = 0f;
+
+        if (attackAtCenter)
+        {
+            posIndex = rand.Next(-1, 2);
+            posIndex = (posIndex < 0) ? -distance : posIndex * distance;
+        }
+        else
+        {
+            posIndex = (rand.Next(-1, 1) < 0) ? -distance : distance;
+        }
 
         while (true)
         {
             if (Mathf.Approximately(transform.position.x, posIndex))
                 break;
 
-            var xPos = Mathf.MoveTowards(transform.position.x, posIndex, Time.deltaTime * 2);
+            var xPos = Mathf.MoveTowards(transform.position.x, posIndex, Time.deltaTime * speed);
             transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
 
             yield return null;

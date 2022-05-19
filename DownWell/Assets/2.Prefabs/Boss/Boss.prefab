@@ -303,6 +303,8 @@ MonoBehaviour:
       m_Calls: []
   projectile: {fileID: 5878161903101301907, guid: ea41c8d8d83fa2d408958a55eb95fe83, type: 3}
   sideProjectileAngle: 15
+  numOfShot: 2
+  shotInterval: 0.5
 --- !u!114 &1649624395474174986
 MonoBehaviour:
   m_ObjectHideFlags: 0

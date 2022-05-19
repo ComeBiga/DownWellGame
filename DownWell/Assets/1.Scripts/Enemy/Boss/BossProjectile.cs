@@ -46,6 +46,8 @@ public class BossProjectile : MonoBehaviour
 
     public void RotateDirection(float angle)
     {
+        if (angle == 0) return;
+
         var rotation = Quaternion.Euler(0, 0, angle);
         direction = (rotation * direction).normalized;
     }
