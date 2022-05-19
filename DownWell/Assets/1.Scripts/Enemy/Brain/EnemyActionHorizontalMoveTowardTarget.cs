@@ -18,19 +18,31 @@ namespace CatDown
         private float _speed = 0f;
 
         private CollisionCheck wallCollision;
+        private EnemyPhysics physics;
+
+        private void Start()
+        {
+            physics = new EnemyPhysics(transform,
+                GetComponent<Rigidbody2D>(),
+                GetComponent<BoxCollider2D>()
+                );
+
+            physics.InitCollision(4, 4, LayerMask.GetMask("Ground"));
+        }
 
         protected override void OnActionEnter()
         {
             //GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-            wallCollision = new CollisionCheck();
-            wallCollision.Init(GetComponent<BoxCollider2D>(),
-                .1f,
-                4,
-                4,
-                LayerMask.GetMask("Ground"));
-            wallCollision.CalculateRaySpacing();
+            //wallCollision = new CollisionCheck();
+            //wallCollision.Init(GetComponent<BoxCollider2D>(),
+            //    .1f,
+            //    4,
+            //    4,
+            //    LayerMask.GetMask("Ground"));
+            //wallCollision.CalculateRaySpacing();
 
-            _speed = 0f;
+            //_speed = 0f;
+            physics.SetVelocity(0f);
             InitDir();
             
             GetComponent<Animator>().SetTrigger("Move");
@@ -42,9 +54,11 @@ namespace CatDown
         protected override void OnActionUpdate()
         {
             //Animation();
-            wallCollision.UpdateRaycastOrigins();
+            //wallCollision.UpdateRaycastOrigins();
 
-            MoveHorizontal();
+            //MoveHorizontal();
+
+            physics.Update();
         }
 
         void Animation()
@@ -58,31 +72,33 @@ namespace CatDown
             target = PlayerManager.instance.playerObject.transform;
 
             dashDir = (target.position.x < transform.position.x) ? -1 : 1;
-        }
-
-        public void Move()
-        {
-            Debug.Log($"speed:{speed}, dir:{dashDir}");
-            //GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dashDir, GetComponent<Rigidbody2D>().velocity.y);
-            _speed = speed;
 
             Animation();
         }
 
-        private void MoveHorizontal()
+        public void Move()
         {
-            if(!CheckHorizontalCollision(dashDir))
-                transform.position += Vector3.right * _speed * dashDir * Time.deltaTime;
+            //Debug.Log($"speed:{speed}, dir:{dashDir}");
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(speed * dashDir, GetComponent<Rigidbody2D>().velocity.y);
+            //_speed = speed;
+
+            physics.SetVelocity(speed * dashDir);
         }
 
-        private bool CheckHorizontalCollision(float hInput)
-        {
-            if (hInput > 0)
-                return wallCollision.CheckCollision(CollisionDirection.RIGHT);
-            else if (hInput < 0)
-                return wallCollision.CheckCollision(CollisionDirection.LEFT);
-            else
-                return false;
-        }
+        //private void MoveHorizontal()
+        //{
+        //    if(!CheckHorizontalCollision(dashDir))
+        //        transform.position += Vector3.right * _speed * dashDir * Time.deltaTime;
+        //}
+
+        //private bool CheckHorizontalCollision(float hInput)
+        //{
+        //    if (hInput > 0)
+        //        return wallCollision.CheckCollision(CollisionDirection.RIGHT);
+        //    else if (hInput < 0)
+        //        return wallCollision.CheckCollision(CollisionDirection.LEFT);
+        //    else
+        //        return false;
+        //}
     }
 }
