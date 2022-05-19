@@ -33,61 +33,72 @@ public class Projectile : MonoBehaviour
 
         foreach (var collider in colliders)
         {
-            if (collider.tag == "Block")
+            if (collider.GetComponent<IHitByProjectile>() != null)
             {
+                collider.GetComponent<IHitByProjectile>().Hit(damage);
+
                 GetComponent<Effector>().Generate("Hit");
-                Destroy();  // 탄환 제거
-
-                // 점막 제거
-                if (collider.transform.GetComponent<BeSplashed>().currentRidCount > 0)
-                {
-                    collider.transform.GetComponent<BeSplashed>().Rid();
-                    break;
-                }
-
-                // 블럭제거
-                collider.transform.GetComponent<Block>().Destroy();
+                Destroy();
 
                 break;
             }
 
+
+            //if (collider.tag == "Block")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();  // 탄환 제거
+
+            //    // 점막 제거
+            //    if (collider.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+            //    {
+            //        collider.transform.GetComponent<BeSplashed>().Rid();
+            //        break;
+            //    }
+
+            //    // 블럭제거
+            //    collider.transform.GetComponent<Block>().Destroy();
+
+            //    break;
+            //}
+
             
-            if(collider.tag == "Boss")
-            {
-                Debug.Log("boss");
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
+            //if(collider.tag == "Boss")
+            //{
+            //    Debug.Log("boss");
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
 
-                collider.GetComponent<Boss>().Damaged(damage);
-            }
+            //    collider.GetComponent<Boss>().Damaged(damage);
+            //}
 
-            if (collider.tag == "Wall")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();  // 탄환 제거
+            //if (collider.tag == "Wall")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();  // 탄환 제거
 
-                // 점막 제거
-                if (collider.transform.GetComponent<BeSplashed>().currentRidCount > 0)
-                {
-                    collider.transform.GetComponent<BeSplashed>().Rid();
-                    break;
-                }
-            }
+            //    // 점막 제거
+            //    if (collider.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+            //    {
+            //        collider.transform.GetComponent<BeSplashed>().Rid();
+            //        break;
+            //    }
+            //}
 
 
-            if(collider.tag == "Enemy")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-                collider.GetComponent<Enemy>().Damaged(damage);
-            }
+            //if(collider.tag == "Enemy")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
+            //    collider.GetComponent<Enemy>().Damaged(damage);
+            //}
 
-            if(collider.tag == "Object")
-            {
-                collider.GetComponent<IUseObject>().Use();
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-            }
+            //if(collider.tag == "Object")
+            //{
+            //    collider.GetComponent<IUseObject>().Use();
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
+            //}
         }
     }
 
@@ -156,65 +167,73 @@ public class Projectile : MonoBehaviour
     {
         if(collision != null)
         {
-            if (collision.tag == "Boss")
+            if (collision.GetComponent<IHitByProjectile>() != null)
             {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
+                collision.GetComponent<IHitByProjectile>().Hit(damage);
 
-                collision.GetComponent<Boss>().Damaged(damage);
-            }
-
-            if (collision.transform.tag == "Block")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();  // 탄환 제거
-
-                // 점막 제거
-                if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
-                {
-                    collision.transform.transform.GetComponent<BeSplashed>().Rid();
-                }
-
-                // 블럭제거
-                collision.transform.transform.GetComponent<Block>().Destroy();
-
-            }
-
-
-            if (collision.transform.tag == "Boss")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-
-                collision.transform.GetComponent<Boss>().Damaged(damage);
-            }
-
-            if (collision.transform.tag == "Wall")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();  // 탄환 제거
-
-                // 점막 제거
-                if (collision.transform.transform.GetComponent<BeSplashed>() != null && collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
-                {
-                    collision.transform.transform.GetComponent<BeSplashed>().Rid();
-                }
-            }
-
-
-            if (collision.transform.tag == "Enemy")
-            {
-                GetComponent<Effector>().Generate("Hit");
-                Destroy();
-                collision.transform.GetComponent<Enemy>().Damaged(damage);
-            }
-
-            if (collision.transform.tag == "Object")
-            {
-                collision.transform.GetComponent<IUseObject>().Use();
                 GetComponent<Effector>().Generate("Hit");
                 Destroy();
             }
+
+            //if (collision.tag == "Boss")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
+
+            //    collision.GetComponent<Boss>().Damaged(damage);
+            //}
+
+            //if (collision.transform.tag == "Block")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();  // 탄환 제거
+
+            //    // 점막 제거
+            //    if (collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+            //    {
+            //        collision.transform.transform.GetComponent<BeSplashed>().Rid();
+            //    }
+
+            //    // 블럭제거
+            //    collision.transform.transform.GetComponent<Block>().Destroy();
+
+            //}
+
+
+            //if (collision.transform.tag == "Boss")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
+
+            //    collision.transform.GetComponent<Boss>().Damaged(damage);
+            //}
+
+            //if (collision.transform.tag == "Wall")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();  // 탄환 제거
+
+            //    // 점막 제거
+            //    if (collision.transform.transform.GetComponent<BeSplashed>() != null && collision.transform.transform.GetComponent<BeSplashed>().currentRidCount > 0)
+            //    {
+            //        collision.transform.transform.GetComponent<BeSplashed>().Rid();
+            //    }
+            //}
+
+
+            //if (collision.transform.tag == "Enemy")
+            //{
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
+            //    collision.transform.GetComponent<Enemy>().Damaged(damage);
+            //}
+
+            //if (collision.transform.tag == "Object")
+            //{
+            //    collision.transform.GetComponent<IUseObject>().Use();
+            //    GetComponent<Effector>().Generate("Hit");
+            //    Destroy();
+            //}
         }
     }
 

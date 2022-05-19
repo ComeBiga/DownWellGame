@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : MonoBehaviour, IHitByProjectile
 {
     GameObject bossObject;
     public GameObject upperBossObject;
@@ -80,5 +80,10 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(damagedInterval);
 
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    public void Hit(int damage = 0)
+    {
+        Damaged(damage);
     }
 }

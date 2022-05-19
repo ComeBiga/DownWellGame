@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHitByProjectile
 {
     public EnemyInfo info;
     public int health = 10;
@@ -84,5 +84,10 @@ public class Enemy : MonoBehaviour
         
         // Destroy
         Destroy(this.gameObject);
+    }
+
+    public void Hit(int damage)
+    {
+        Damaged(damage);
     }
 }

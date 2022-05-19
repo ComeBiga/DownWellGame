@@ -15,4 +15,11 @@ public class Block : Wall
 
         Destroy(this.gameObject);
     }
+
+    public override void Hit(int damage = 0)
+    {
+        base.Hit();
+
+        Destroy();
+    }
 }
