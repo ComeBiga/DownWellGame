@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b61c7bbb179101f4baf39276b81fb71b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fef9992c671a4f40b352043834f2710, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,7 +163,10 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 7840fe3bcc818ac45a77bb7f0bb90f31, type: 2}
   health: 10
   invincible: 0
+<<<<<<< HEAD
   itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
+=======
+>>>>>>> ff1d0de0 (add Stage4 sprite)
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}

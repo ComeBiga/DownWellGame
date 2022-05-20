@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4253384174b0035488571665c2605a0c
+=======
+guid: ab51fc0b1de2da64485968cbc953691e
+>>>>>>> ff1d0de0 (add Stage4 sprite)
 PrefabImporter:
   externalObjects: {}
   userData: 
