@@ -44,6 +44,9 @@ public class SideWallSelector : ObjectSelector
             case "Platform_R":
                 result = stage.PlatformSprites[2];
                 break;
+            case "ItemGiver":
+                result = stage.ItemGiverSprites[0];
+                break;
             default:
                 sprite = null;
                 return false;

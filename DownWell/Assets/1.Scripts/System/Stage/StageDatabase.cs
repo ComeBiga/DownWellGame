@@ -23,6 +23,7 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private List<Sprite> wallSprites;
     [SerializeField] private List<Sprite> blockSprites;
     [SerializeField] private List<Sprite> platformSprites;
+    [SerializeField] private List<Sprite> itemGiverSprites;
 
     [Header("Enemy")]
     [SerializeField] private List<GameObject> enemyObjects;
@@ -63,6 +64,7 @@ public class StageDatabase : ScriptableObject
     public List<Sprite> WallSprites { get { return wallSprites; } }
     public List<Sprite> BlockSprites { get { return blockSprites; } }
     public List<Sprite> PlatformSprites { get { return platformSprites; } }
+    public List<Sprite> ItemGiverSprites { get { return itemGiverSprites; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
 
