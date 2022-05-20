@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -649022395968036104, guid: da199b96b4bb3254e8824145e32e74ce, type: 3}
+  m_Sprite: {fileID: -4509343668349450780, guid: 509f648aac9137f46932401ce1781f85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004612446, y: 0.3382519}
+  m_Offset: {x: -0.0046124607, y: 0.0027929842}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.25}
@@ -153,7 +153,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7655431, y: 1.6501306}
+  m_Size: {x: 0.62546146, y: 0.9792127}
   m_EdgeRadius: 0
 --- !u!114 &5050092774610153005
 MonoBehaviour:
@@ -170,7 +170,6 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 6b0f14c1dadb0c440a5fd6be715f3696, type: 2}
   health: 8
   invincible: 0
-  itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
 --- !u!114 &8535915959288927230

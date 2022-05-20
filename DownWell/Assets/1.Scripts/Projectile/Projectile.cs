@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         //CollisionCheck();
-        Debug.Log($"Life Distance : {lifeDistance}");
+        //Debug.Log($"Life Distance : {lifeDistance}");
 
         if (GetComponent<ProjectileMovement>().moveDistance >= lifeDistance)
             Destroy();

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73b5a43048b37c948a9313aceefbd78a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40571f9a4fe64ac4d9e0e176fecd77ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,7 +160,6 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 26705c7ca51d8124bb40166ef9bea7f6, type: 2}
   health: 10
   invincible: 0
-  itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
 --- !u!114 &3976225683679968561
