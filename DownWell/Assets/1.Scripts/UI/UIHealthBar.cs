@@ -7,26 +7,51 @@ public class UIHealthBar : MonoBehaviour
 {
     public List<Image> fills;
 
-    private int remain;
+    private PlayerHealth playerHP;
+    private int lastHP;
 
     private void Start()
     {
-        remain = fills.Count;
 
-        Debug.Log($"remain fill ui : {remain}");
+    }
+
+    public void Init()
+    {
+        playerHP = PlayerManager.instance.playerObject.GetComponent<PlayerHealth>();
+        lastHP = playerHP.CurrentHealth;
+    }
+
+    public void OnChange()
+    {
+        if(playerHP.CurrentHealth > lastHP)
+        {
+            Increase();
+        }
+        else if(playerHP.CurrentHealth < lastHP)
+        {
+            Decrease();
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void Increase(int amount = 1)
     {
-        if (remain >= fills.Count) return;
+        var currentHP = playerHP.CurrentHealth;
 
-        fills[++remain].color = Color.white;
+        fills[lastHP].color = Color.white;
+
+        lastHP = currentHP;
     }
 
     public void Decrease(int amount = 1)
     {
-        if (remain <= 0) return;
+        var currentHP = playerHP.CurrentHealth;
 
-        fills[--remain].color = Color.clear;
+        fills[currentHP].color = Color.clear;
+
+        lastHP = currentHP;
     }
 }

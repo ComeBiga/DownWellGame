@@ -61,4 +61,8 @@ MonoBehaviour:
     - {fileID: 6769815502460608889, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
     - {fileID: 5749315296748578733, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
     - {fileID: 5997892723870387092, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
-    deco: []
+    deco:
+    - sprite: {fileID: 2950533864399549308, guid: 0acea06ccc4f9874eb5981a543b97b0c, type: 3}
+      prob: 5
+    - sprite: {fileID: -3993480536105716121, guid: 0acea06ccc4f9874eb5981a543b97b0c, type: 3}
+      prob: 5

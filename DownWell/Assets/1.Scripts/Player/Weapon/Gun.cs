@@ -95,7 +95,7 @@ public class Gun : Weapon
             magazine.current--;
             var pt = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
             AddRange(pt);
-            Debug.Log($"AddedRange : {addedRange} (Gun.cs)");
+            //Debug.Log($"AddedRange : {addedRange} (Gun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
         }
     }

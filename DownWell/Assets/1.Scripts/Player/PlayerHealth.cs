@@ -24,6 +24,10 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+
+        // health bar UI
+        UICollector.Instance.healthBar.Init();
+        OnChangedHealth += UICollector.Instance.healthBar.OnChange;
     }
 
     /// <summary>
@@ -42,8 +46,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (OnChangedHealth != null) OnChangedHealth.Invoke();
 
-        UICollector.Instance.healthBar.Increase();
-
         //var additionalHP = amount - maxHealth;
 
         //if (additionalHP > 0) addHP += additionalHP;
@@ -55,8 +57,6 @@ public class PlayerHealth : MonoBehaviour
         //Debug.Log("Lose hp");
 
         if(OnChangedHealth != null) OnChangedHealth.Invoke();
-
-        UICollector.Instance.healthBar.Decrease();
 
         if (currentHealth <= 0)
         {

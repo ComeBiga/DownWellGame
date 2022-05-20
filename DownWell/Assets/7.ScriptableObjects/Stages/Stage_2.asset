@@ -49,6 +49,8 @@ MonoBehaviour:
   - {fileID: -2416921811730788455, guid: 225babbfa2bb531439321e3582701833, type: 3}
   - {fileID: 4995053061636649537, guid: 225babbfa2bb531439321e3582701833, type: 3}
   - {fileID: 4030520453958319683, guid: 225babbfa2bb531439321e3582701833, type: 3}
+  itemGiverSprites:
+  - {fileID: 0}
   enemyObjects: []
   bossObject: {fileID: 0}
   bgInfo:

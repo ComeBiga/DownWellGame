@@ -249,7 +249,7 @@ public class MapManager : MonoBehaviour
 
     public void GenerateBossLevels(Transform mainPos, int times)
     {
-        Debug.Log("GenerateInfinity");
+        //Debug.Log("GenerateInfinity");
         crInfinity = StartCoroutine(EGenerateBossLevels(mainPos, times));
     }
 
@@ -264,8 +264,8 @@ public class MapManager : MonoBehaviour
             if (mainPos.position.y < currentYpos + reGenerateOffset)
                 GenerateLevelsSeveralTimes(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.BOSS_LEVEL, sm.Current.Num)), times);
 
-            Debug.Log("EGenerateBossLevels");
-            Debug.Log(crInfinity);
+            //Debug.Log("EGenerateBossLevels");
+            //Debug.Log(crInfinity);
             yield return null;
         }
 
@@ -276,7 +276,7 @@ public class MapManager : MonoBehaviour
     {
         StopCoroutine(crInfinity);
         reGenerate = false;
-        Debug.Log("Stopped");
+        //Debug.Log("Stopped");
     }
 
     #endregion
