@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 3067082653622727890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 8731901465972609192}
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b61c7bbb179101f4baf39276b81fb71b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cc33a11dce0a9e4ebe244c7ea16dd50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 3067082653622727890}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8d9bed793590a8546bae7668dc9f3c6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: dd23b4436f9d6274d9a5f621fbd58904, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.024650872, y: -0.073952615}
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.5526852
 --- !u!114 &3067082653622727885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,6 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 4b9fe10bec256a94dae76a36cbfd71b8, type: 2}
   health: 10
   invincible: 0
-  itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
 --- !u!114 &4028261630157628225
@@ -237,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72ada7547da8ea48b85ee2ca0b04339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animateInFrameTime: 0
   speed: 3
   dashTime: 1
 --- !u!114 &5501434580458530461
