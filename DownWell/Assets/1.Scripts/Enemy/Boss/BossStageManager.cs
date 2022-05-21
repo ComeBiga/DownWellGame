@@ -119,6 +119,7 @@ public class BossStageManager : MonoBehaviour
 
         PlayerManager.instance.playerObject.GetComponent<PlayerController>().cantMove = false;
         //boss.GetComponent<BossCombat>().active = true;
+        bossObject.GetComponent<Boss>().upperBossObject.GetComponent<SpriteRenderer>().color = Color.white;
         bossObject.GetComponent<BossBrain>().Use();
         bossObject.GetComponent<BossMovement>().Move();
 

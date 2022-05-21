@@ -21,6 +21,7 @@ public class Boss : MonoBehaviour, IHitByProjectile
     private void Start()
     {
         health = new Health(maxHealth);
+        upperBossObject.GetComponent<SpriteRenderer>().color = Color.clear;
     }
 
     #region Object Handle
