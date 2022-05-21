@@ -5,6 +5,7 @@ using UnityEngine;
 public class UICollector : Singleton<UICollector>
 {
     public UIHealthBar healthBar;
+    public UIBullets bullets;
     public HealthBar hpBar;
     public bulletCount bullet;
     public Score score;

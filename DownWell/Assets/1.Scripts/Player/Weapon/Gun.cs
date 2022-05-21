@@ -26,6 +26,9 @@ public class Gun : Weapon
     public int CurrentNumOfBullet { get { return magazine.current; } }
     public int CapacityOfMagazine { get { return magazine.max; } }
 
+    public event System.Action OnReload;
+    public event System.Action OnShoot;
+
     //public Gun(GameObject projectile, int capacity)
     //{
     //    // magazine
@@ -55,6 +58,11 @@ public class Gun : Weapon
         shotPos = player.transform.GetChild(1);
 
         addedRange = 0f;
+
+        // Bullet UI
+        UICollector.Instance.bullets.Init();
+        OnReload += UICollector.Instance.bullets.OnChange;
+        OnShoot += UICollector.Instance.bullets.OnChange;
     }
 
     public override void Attack()
@@ -80,7 +88,7 @@ public class Gun : Weapon
         player.GetComponent<Effector>().Generate("Shoot");
 
         // UI
-        UICollector.Instance.bullet.countBullet();
+        //UICollector.Instance.bullet.countBullet();
     }
 
     public void Shoot()
@@ -97,14 +105,20 @@ public class Gun : Weapon
             AddRange(pt);
             //Debug.Log($"AddedRange : {addedRange} (Gun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
+
+            OnShoot.Invoke();
         }
     }
 
     public void Reload()
     {
-        if (!Reloaded) magazine.current = magazine.max;
+        if (Reloaded) return;
 
-        UICollector.Instance.bullet.bulletReload();
+        magazine.current = magazine.max;
+
+        OnReload.Invoke();
+
+        //UICollector.Instance.bullet.bulletReload();
     }
 
     public override bool IsShootable()

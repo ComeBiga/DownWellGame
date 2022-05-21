@@ -23,6 +23,8 @@ public class SettingMgr : MonoBehaviour
     }
     #endregion
 
+    public bool buttonOnStart = false;
+
     public GameObject OpeningPanel;
     public GameObject setPanel;
     public GameObject setBtn;
@@ -49,13 +51,21 @@ public class SettingMgr : MonoBehaviour
     void Start()
     {
         setPanel.SetActive(false);
-        setBtn.SetActive(true);
+        if(buttonOnStart) setBtn.SetActive(true);
         //if (SceneManager.GetActiveScene().name == "GameScene" && bgmOff == 0)
         //    SoundManager.instance.PlayBGMSound("Background");  //사운드 시작
     }
 
     void Update()
     {
+        if(!setPanel.activeSelf)
+        {
+            if(Input.GetKeyDown(KeyCode.P))
+            {
+                SettingBtn();
+            }
+        }
+
         if (SceneManager.GetActiveScene().name == "StartScene")
         {
             if (OpeningPanel.activeInHierarchy)
