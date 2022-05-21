@@ -30,6 +30,8 @@ public class DoubleGun : Gun
 
             Debug.Log($"AddedRange : {addedRange} (DoubleGun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
+
+            OnShootFunc();
         }
     }
 }

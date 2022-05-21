@@ -9,6 +9,7 @@ public class RangeUpItem : UseImmediatelyItem
     public override void Use()
     {
         PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weaponReinforcer.ReinforceRange(addRange);
+        PlayerManager.instance.playerObject.GetComponent<Effector>().GenerateInParent("RangeUp");
 
         Debug.Log("Range Up");
     }

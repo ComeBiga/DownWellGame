@@ -51,7 +51,7 @@ public class Gun : Weapon
         base.Init(player);
 
         magazine.max = capacity;
-        magazine.current = 0;
+        magazine.current = magazine.max;
 
         player.GetComponent<PlayerPhysics>().OnGrounded += Reload;
         player.GetComponent<PlayerCombatStepping>().OnStep.AddListener(Reload);
@@ -63,6 +63,7 @@ public class Gun : Weapon
         UICollector.Instance.bullets.Init();
         OnReload += UICollector.Instance.bullets.OnChange;
         OnShoot += UICollector.Instance.bullets.OnChange;
+        OnReload += () => { player.GetComponent<Effector>().GenerateInParent("Reload"); };
     }
 
     public override void Attack()
@@ -110,8 +111,14 @@ public class Gun : Weapon
         }
     }
 
+    protected void OnShootFunc()
+    {
+        OnShoot.Invoke();
+    }
+
     public void Reload()
     {
+        Debug.Log(Reloaded);
         if (Reloaded) return;
 
         magazine.current = magazine.max;

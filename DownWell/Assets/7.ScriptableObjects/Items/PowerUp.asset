@@ -15,7 +15,7 @@ MonoBehaviour:
   code: 3003
   name: PowerUp
   score: 0
-  sprite: {fileID: -2311659948842064771, guid: 51c81e11cf1b83741a6d4debdf26562c, type: 3}
+  sprite: {fileID: 21300000, guid: e0c8b4464cf6078498e79c351b208222, type: 3}
   sliced: 0
   dropSetting: {fileID: 11400000, guid: cfffb6fcf71c0ce458edbbea4d767e81, type: 2}
-  chacePercent: 50
+  chacePercent: 30

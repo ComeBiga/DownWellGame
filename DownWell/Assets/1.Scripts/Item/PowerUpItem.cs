@@ -12,6 +12,7 @@ public class PowerUpItem : UseImmediatelyItem
         base.Use();
 
         PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().ReinforceWeapon();
+        PlayerManager.instance.playerObject.GetComponent<Effector>().GenerateInParent("PowerUp");
         Debug.Log("Power Up!");
     }
 }
