@@ -20,12 +20,15 @@ MonoBehaviour:
   - Stage4
   - Stage5
   jsonLevelDBs:
+  - filename: bl1_0
+    stage: 1
+    path: /Resources/Levels/Stage1/Boss/Main/bl1_0.json
   - filename: boss1_0
     stage: 1
-    path: /Resources/Levels/Stage1/Boss/boss1_0.json
+    path: /Resources/Levels/Stage1/Boss/Entre/boss1_0.json
   - filename: boss_0
     stage: 2
-    path: /Resources/Levels/Stage2/Boss/boss_0.json
+    path: /Resources/Levels/Stage2/Boss/Entre/boss_0.json
   - filename: entre0_0
     stage: 0
     path: /Resources/Levels/Stage0/Entre/entre0_0.json
@@ -46,202 +49,202 @@ MonoBehaviour:
     path: /Resources/Levels/Stage2/Exit/exit2_0.json
   - filename: level_0
     stage: 1
-    path: /Resources/Levels/Stage1/level_0.json
+    path: /Resources/Levels/Stage1/Main/level_0.json
   - filename: level_1
     stage: 1
-    path: /Resources/Levels/Stage1/level_1.json
+    path: /Resources/Levels/Stage1/Main/level_1.json
   - filename: level_2
     stage: 1
-    path: /Resources/Levels/Stage1/level_2.json
+    path: /Resources/Levels/Stage1/Main/level_2.json
   - filename: level_3
     stage: 1
-    path: /Resources/Levels/Stage1/level_3.json
+    path: /Resources/Levels/Stage1/Main/level_3.json
   - filename: level_4
     stage: 1
-    path: /Resources/Levels/Stage1/level_4.json
+    path: /Resources/Levels/Stage1/Main/level_4.json
   - filename: level_5
     stage: 1
-    path: /Resources/Levels/Stage1/level_5.json
+    path: /Resources/Levels/Stage1/Main/level_5.json
   - filename: s0_1
     stage: 0
-    path: /Resources/Levels/Stage0/s0_1.json
+    path: /Resources/Levels/Stage0/Main/s0_1.json
   - filename: S0_2
     stage: 0
-    path: /Resources/Levels/Stage0/S0_2.json
+    path: /Resources/Levels/Stage0/Main/S0_2.json
   - filename: s0_3
     stage: 0
-    path: /Resources/Levels/Stage0/s0_3.json
+    path: /Resources/Levels/Stage0/Main/s0_3.json
   - filename: s0_4
     stage: 0
-    path: /Resources/Levels/Stage0/s0_4.json
+    path: /Resources/Levels/Stage0/Main/s0_4.json
   - filename: s0_5
     stage: 0
-    path: /Resources/Levels/Stage0/s0_5.json
+    path: /Resources/Levels/Stage0/Main/s0_5.json
   - filename: S1_1
     stage: 1
-    path: /Resources/Levels/Stage1/S1_1.json
+    path: /Resources/Levels/Stage1/Main/S1_1.json
   - filename: S1_2
     stage: 1
-    path: /Resources/Levels/Stage1/S1_2.json
+    path: /Resources/Levels/Stage1/Main/S1_2.json
   - filename: S1_3
     stage: 1
-    path: /Resources/Levels/Stage1/S1_3.json
+    path: /Resources/Levels/Stage1/Main/S1_3.json
   - filename: S1_4
     stage: 1
-    path: /Resources/Levels/Stage1/S1_4.json
+    path: /Resources/Levels/Stage1/Main/S1_4.json
   - filename: S1_5
     stage: 1
-    path: /Resources/Levels/Stage1/S1_5.json
+    path: /Resources/Levels/Stage1/Main/S1_5.json
   - filename: S1_6
     stage: 1
-    path: /Resources/Levels/Stage1/S1_6.json
+    path: /Resources/Levels/Stage1/Main/S1_6.json
   - filename: S1_7
     stage: 1
-    path: /Resources/Levels/Stage1/S1_7.json
+    path: /Resources/Levels/Stage1/Main/S1_7.json
   - filename: S1_8
     stage: 1
-    path: /Resources/Levels/Stage1/S1_8.json
+    path: /Resources/Levels/Stage1/Main/S1_8.json
   - filename: S1_9
     stage: 1
-    path: /Resources/Levels/Stage1/S1_9.json
+    path: /Resources/Levels/Stage1/Main/S1_9.json
   - filename: S1_10
     stage: 1
-    path: /Resources/Levels/Stage1/S1_10.json
+    path: /Resources/Levels/Stage1/Main/S1_10.json
   - filename: S1_11
     stage: 1
-    path: /Resources/Levels/Stage1/S1_11.json
+    path: /Resources/Levels/Stage1/Main/S1_11.json
   - filename: S1_12
     stage: 1
-    path: /Resources/Levels/Stage1/S1_12.json
+    path: /Resources/Levels/Stage1/Main/S1_12.json
   - filename: S1_13
     stage: 1
-    path: /Resources/Levels/Stage1/S1_13.json
+    path: /Resources/Levels/Stage1/Main/S1_13.json
   - filename: S1_14
     stage: 1
-    path: /Resources/Levels/Stage1/S1_14.json
+    path: /Resources/Levels/Stage1/Main/S1_14.json
   - filename: S1_15
     stage: 1
-    path: /Resources/Levels/Stage1/S1_15.json
+    path: /Resources/Levels/Stage1/Main/S1_15.json
   - filename: S1_16
     stage: 1
-    path: /Resources/Levels/Stage1/S1_16.json
+    path: /Resources/Levels/Stage1/Main/S1_16.json
   - filename: S1_17
     stage: 1
-    path: /Resources/Levels/Stage1/S1_17.json
+    path: /Resources/Levels/Stage1/Main/S1_17.json
   - filename: S1_18
     stage: 1
-    path: /Resources/Levels/Stage1/S1_18.json
+    path: /Resources/Levels/Stage1/Main/S1_18.json
   - filename: S1_19
     stage: 1
-    path: /Resources/Levels/Stage1/S1_19.json
+    path: /Resources/Levels/Stage1/Main/S1_19.json
   - filename: S1_20
     stage: 1
-    path: /Resources/Levels/Stage1/S1_20.json
+    path: /Resources/Levels/Stage1/Main/S1_20.json
   - filename: S1_21
     stage: 1
-    path: /Resources/Levels/Stage1/S1_21.json
+    path: /Resources/Levels/Stage1/Main/S1_21.json
   - filename: S1_22
     stage: 1
-    path: /Resources/Levels/Stage1/S1_22.json
+    path: /Resources/Levels/Stage1/Main/S1_22.json
   - filename: S1_23
     stage: 1
-    path: /Resources/Levels/Stage1/S1_23.json
+    path: /Resources/Levels/Stage1/Main/S1_23.json
   - filename: S1_24
     stage: 1
-    path: /Resources/Levels/Stage1/S1_24.json
+    path: /Resources/Levels/Stage1/Main/S1_24.json
   - filename: S1_25
     stage: 1
-    path: /Resources/Levels/Stage1/S1_25.json
+    path: /Resources/Levels/Stage1/Main/S1_25.json
   - filename: S1_26
     stage: 1
-    path: /Resources/Levels/Stage1/S1_26.json
+    path: /Resources/Levels/Stage1/Main/S1_26.json
   - filename: S1_27
     stage: 1
-    path: /Resources/Levels/Stage1/S1_27.json
+    path: /Resources/Levels/Stage1/Main/S1_27.json
   - filename: S1_28
     stage: 1
-    path: /Resources/Levels/Stage1/S1_28.json
+    path: /Resources/Levels/Stage1/Main/S1_28.json
   - filename: S1_29
     stage: 1
-    path: /Resources/Levels/Stage1/S1_29.json
+    path: /Resources/Levels/Stage1/Main/S1_29.json
   - filename: S1_30
     stage: 1
-    path: /Resources/Levels/Stage1/S1_30.json
+    path: /Resources/Levels/Stage1/Main/S1_30.json
   - filename: S1_31
     stage: 1
-    path: /Resources/Levels/Stage1/S1_31.json
+    path: /Resources/Levels/Stage1/Main/S1_31.json
   - filename: S1_32
     stage: 1
-    path: /Resources/Levels/Stage1/S1_32.json
+    path: /Resources/Levels/Stage1/Main/S1_32.json
   - filename: S1_33
     stage: 1
-    path: /Resources/Levels/Stage1/S1_33.json
+    path: /Resources/Levels/Stage1/Main/S1_33.json
   - filename: S1_34
     stage: 1
-    path: /Resources/Levels/Stage1/S1_34.json
+    path: /Resources/Levels/Stage1/Main/S1_34.json
   - filename: S1_35
     stage: 1
-    path: /Resources/Levels/Stage1/S1_35.json
+    path: /Resources/Levels/Stage1/Main/S1_35.json
   - filename: S1_36
     stage: 1
-    path: /Resources/Levels/Stage1/S1_36.json
+    path: /Resources/Levels/Stage1/Main/S1_36.json
   - filename: S1_37
     stage: 1
-    path: /Resources/Levels/Stage1/S1_37.json
+    path: /Resources/Levels/Stage1/Main/S1_37.json
   - filename: S1_38
     stage: 1
-    path: /Resources/Levels/Stage1/S1_38.json
+    path: /Resources/Levels/Stage1/Main/S1_38.json
   - filename: S1_39
     stage: 1
-    path: /Resources/Levels/Stage1/S1_39.json
+    path: /Resources/Levels/Stage1/Main/S1_39.json
   - filename: S1_40
     stage: 1
-    path: /Resources/Levels/Stage1/S1_40.json
+    path: /Resources/Levels/Stage1/Main/S1_40.json
   - filename: S1_41
     stage: 1
-    path: /Resources/Levels/Stage1/S1_41.json
+    path: /Resources/Levels/Stage1/Main/S1_41.json
   - filename: S1_42
     stage: 1
-    path: /Resources/Levels/Stage1/S1_42.json
+    path: /Resources/Levels/Stage1/Main/S1_42.json
   - filename: S1_43
     stage: 1
-    path: /Resources/Levels/Stage1/S1_43.json
+    path: /Resources/Levels/Stage1/Main/S1_43.json
   - filename: S1_44
     stage: 1
-    path: /Resources/Levels/Stage1/S1_44.json
+    path: /Resources/Levels/Stage1/Main/S1_44.json
   - filename: S1_45
     stage: 1
-    path: /Resources/Levels/Stage1/S1_45.json
+    path: /Resources/Levels/Stage1/Main/S1_45.json
   - filename: S1_46
     stage: 1
-    path: /Resources/Levels/Stage1/S1_46.json
+    path: /Resources/Levels/Stage1/Main/S1_46.json
   - filename: S1_47
     stage: 1
-    path: /Resources/Levels/Stage1/S1_47.json
+    path: /Resources/Levels/Stage1/Main/S1_47.json
   - filename: S1_48
     stage: 1
-    path: /Resources/Levels/Stage1/S1_48.json
+    path: /Resources/Levels/Stage1/Main/S1_48.json
   - filename: S1_49
     stage: 1
-    path: /Resources/Levels/Stage1/S1_49.json
+    path: /Resources/Levels/Stage1/Main/S1_49.json
   - filename: S1_50
     stage: 1
-    path: /Resources/Levels/Stage1/S1_50.json
+    path: /Resources/Levels/Stage1/Main/S1_50.json
   - filename: S2_1
     stage: 2
-    path: /Resources/Levels/Stage2/S2_1.json
+    path: /Resources/Levels/Stage2/Main/S2_1.json
   - filename: S2_2
     stage: 2
-    path: /Resources/Levels/Stage2/S2_2.json
+    path: /Resources/Levels/Stage2/Main/S2_2.json
   - filename: S2_3
     stage: 2
-    path: /Resources/Levels/Stage2/S2_3.json
+    path: /Resources/Levels/Stage2/Main/S2_3.json
   - filename: S2_4
     stage: 2
-    path: /Resources/Levels/Stage2/S2_4.json
+    path: /Resources/Levels/Stage2/Main/S2_4.json
   - filename: S3_1
     stage: 3
-    path: /Resources/Levels/Stage3/S3_1.json
+    path: /Resources/Levels/Stage3/Main/S3_1.json
   - filename: stageGround_0
     stage: 6
     path: /Resources/Levels/StageGround/stageGround_0.json

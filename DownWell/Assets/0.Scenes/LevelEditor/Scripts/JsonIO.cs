@@ -24,6 +24,8 @@ public class JsonIO : MonoBehaviour
     public int fromCode;
     public int toCode;
 
+    public event System.Action<LevelDatabase> OnSaveDB;
+
     private void Start()
     {
 
@@ -336,7 +338,8 @@ public class JsonIO : MonoBehaviour
     {
         levelDB.Add(filename, stage, path);
 
-        UnityEditor.EditorUtility.SetDirty(levelDB);
+        //UnityEditor.EditorUtility.SetDirty(levelDB);
+        OnSaveDB.Invoke(levelDB);
     }
 
     void SaveIntoDatabase(LevelDBInfo newDB)
@@ -348,7 +351,8 @@ public class JsonIO : MonoBehaviour
     {
         levelDB.Remove(removeDB);
 
-        UnityEditor.EditorUtility.SetDirty(levelDB);
+        //UnityEditor.EditorUtility.SetDirty(levelDB);
+        OnSaveDB.Invoke(levelDB);
     }
 
     void RemoveAllDatabase()
@@ -389,7 +393,7 @@ public class JsonIO : MonoBehaviour
         return loadedDBs;
     }
 
-    void UpdateAllDatabase()
+    public void UpdateAllDatabase()
     {
         RemoveAllDatabase();
 
@@ -402,7 +406,7 @@ public class JsonIO : MonoBehaviour
             //var path = Application.dataPath + "/Resources/Levels/Stage" + (i + 1).ToString() + "/";
             var path = Application.dataPath + "/Resources/Levels/" + levelDB.folderPaths[i] + "/";
 
-            var dbs = LoadAllDatabase(path, (LevelEditor.Stage)i);
+            var dbs = LoadAllDatabase(path + "Main/", (LevelEditor.Stage)i);
 
             loadedDBs.AddRange(dbs);
 
@@ -417,7 +421,12 @@ public class JsonIO : MonoBehaviour
             loadedDBs.AddRange(dbs);
 
             // Bosses
-            dbs = LoadAllDatabase(path + "Boss/", (LevelEditor.Stage)i);
+            dbs = LoadAllDatabase(path + "Boss/Entre/", (LevelEditor.Stage)i);
+
+            loadedDBs.AddRange(dbs);
+
+            // Bosses Entre
+            dbs = LoadAllDatabase(path + "Boss/Main/", (LevelEditor.Stage)i);
 
             loadedDBs.AddRange(dbs);
 

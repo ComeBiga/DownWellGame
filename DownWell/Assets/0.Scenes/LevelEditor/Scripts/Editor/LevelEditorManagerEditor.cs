@@ -11,6 +11,10 @@ public class LevelEditorManagerEditor : Editor
 
     private void OnEnable()
     {
+        FocusOnThisObject();
+
+        EditorApplication.playModeStateChanged += PreventToEnterPlayMode;
+
         width = serializedObject.FindProperty("width");
         height = serializedObject.FindProperty("height");
 
@@ -18,6 +22,23 @@ public class LevelEditorManagerEditor : Editor
         //UnityEditor.SceneManagement.EditorSceneManager.sceneOpened += OpenCatDownNavigation;
         //UnityEditor.SceneManagement.EditorSceneManager.
         //EditorApplication.projectChanged += OpenCatDownNavigation;
+    }
+
+    private void FocusOnThisObject()
+    {
+        LevelEditorManager lvEditor = (LevelEditorManager)target;
+
+        Selection.activeGameObject = lvEditor.gameObject;
+    }
+
+    private void PreventToEnterPlayMode(PlayModeStateChange state)
+    {
+        if (state == PlayModeStateChange.EnteredEditMode)
+        {
+            //EditorApplication.isPlaying = false;
+            UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
+            Debug.Log("Scene Saved");
+        }
     }
 
     void OpenCatDownNavigation()

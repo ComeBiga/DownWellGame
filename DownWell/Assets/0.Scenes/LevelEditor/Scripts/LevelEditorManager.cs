@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class LevelEditorManager : MonoBehaviour
 {
-    #region Singleton
+#region Singleton
     public static LevelEditorManager instance = null;
 
     private void Awake()
@@ -14,7 +13,7 @@ public class LevelEditorManager : MonoBehaviour
         if (instance == null)
             instance = this;
     }
-    #endregion
+#endregion
 
     public int width = 11;
     public int height = 11;
@@ -32,7 +31,7 @@ public class LevelEditorManager : MonoBehaviour
 
     private void Start()
     {
-        UnityEditor.Selection.activeGameObject = this.gameObject;
+        //UnityEditor.Selection.activeGameObject = this.gameObject;
 
         //tiles = levelTiles.GetComponentsInChildren<TileInfo>();
 
@@ -42,20 +41,20 @@ public class LevelEditorManager : MonoBehaviour
         //InitCanvas(width, height);
 
         //PreventToEnterPlayMode();
-        EditorApplication.playModeStateChanged += PreventToEnterPlayMode;
+        //EditorApplication.playModeStateChanged += PreventToEnterPlayMode;
         //EditorApplication.EnterPlaymode();
 
     }
 
-    void PreventToEnterPlayMode(PlayModeStateChange state)
-    {
-        if(state == PlayModeStateChange.EnteredEditMode)
-        {
-            //EditorApplication.isPlaying = false;
-            UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
-            Debug.Log("Scene Saved");
-        }
-    }
+    //void PreventToEnterPlayMode(UnityEditor.PlayModeStateChange state)
+    //{
+    //    if(state == UnityEditor.PlayModeStateChange.EnteredEditMode)
+    //    {
+    //        //EditorApplication.isPlaying = false;
+    //        UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
+    //        Debug.Log("Scene Saved");
+    //    }
+    //}
 
     public Vector2 getCanvasSize()
     {

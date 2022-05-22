@@ -91,7 +91,7 @@ public class StageDatabase : ScriptableObject
 #if UNITY_EDITOR
         return path;
 #elif UNITY_ANDROID || UNITY_STANDALONE_WIN
-        return path.Replace("/Resources", "");
+        return path.Replace("/Resources/", "");
 #endif
         //if (resourceLoad)
         //    return path.Replace("/Resources", "");

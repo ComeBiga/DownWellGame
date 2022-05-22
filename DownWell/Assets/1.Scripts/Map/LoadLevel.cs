@@ -29,8 +29,8 @@ public class LoadLevel : MonoBehaviour
     [SerializeField] private string levelPath = "/Resources/Levels/";
     [SerializeField] private string entrePath = "Entre/";
     [SerializeField] private string exitPath = "Exit/"; 
-    [SerializeField] private string bossPath = "Boss/";
-    [SerializeField] private string bossLevelPath = "Boss/levels";
+    [SerializeField] private string bossPath = "Boss/Entre";
+    [SerializeField] private string bossLevelPath = "Boss/Main";
 
     public enum LevelType { BASE, ENTRE, EXIT, BOSS, BOSS_LEVEL }
 
@@ -110,20 +110,54 @@ public class LoadLevel : MonoBehaviour
 
     public Level LoadAndGetLevel(string name)
     {
+#if UNITY_EDITOR
         var path = "/Resources/Levels/" + name + "/";
 
         var levels = Load(LoadLevel.ReplacePath(path));
 
         return levels[0];
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+        var textDatas = Resources.LoadAll("Levels/" + name + "/", typeof(TextAsset));
+        List<Level> lvList = new List<Level>();
+
+        foreach (var textData in textDatas)
+        {
+            Debug.Log(textData.ToString());
+            var lvs = JsonToLevel<Level>(textData.ToString());
+
+            lvList.Add(lvs);
+        }
+
+        return lvList[0];
+#endif
     }
-    
+
     public List<Level> LoadAndGetLevels(string path)
     {
-        var levelPath = "/Resources/Levels/" + name + "/";
+#if UNITY_EDITOR
+        //var levelPath = "/Resources/Levels/" + name + "/";
 
         var levels = Load(LoadLevel.ReplacePath(path));
 
         return levels;
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+        var levelPath = path.Replace("/Resources/", "");
+        Debug.Log(levelPath);
+        var textDatas = Resources.LoadAll(levelPath, typeof(TextAsset));
+        List<Level> lvList = new List<Level>();
+
+        foreach (var textData in textDatas)
+        {
+            Debug.Log(textData.ToString());
+            var lvs = JsonToLevel<Level>(textData.ToString());
+
+            lvList.Add(lvs);
+        }
+
+        Debug.Log(lvList.Count);
+
+        return lvList;
+#endif
     }
 
     List<Level> Load(string path)
@@ -157,7 +191,7 @@ public class LoadLevel : MonoBehaviour
 #endif
     }
 
-    #region Deprecated
+#region Deprecated
     //List<Level> LoadAsDirectory(string path)
     //{
     //    string[] directories = Directory.GetFiles(Application.dataPath + path + "/", "*.json");
@@ -221,7 +255,7 @@ public class LoadLevel : MonoBehaviour
     //    //    return LoadAsResource(path);
     //    //}
     //}
-    #endregion
+#endregion
 
     public void LoadAllLevel()
     {
@@ -260,7 +294,7 @@ public class LoadLevel : MonoBehaviour
         objects.Add(objectName, objList);
     }
 
-    #region Deprecated
+#region Deprecated
 
     public void LoadBlockObjects()
     {
@@ -367,7 +401,7 @@ public class LoadLevel : MonoBehaviour
 #endif
     }
 
-    #endregion
+#endregion
 
     T JsonToLevel<T>(string jsonData)
     {

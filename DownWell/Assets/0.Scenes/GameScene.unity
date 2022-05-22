@@ -9800,8 +9800,8 @@ MonoBehaviour:
   levelPath: /Resources/Levels/
   entrePath: Entre/
   exitPath: Exit/
-  bossPath: Boss/
-  bossLevelPath: Boss/levels
+  bossPath: Boss/Entre
+  bossLevelPath: Boss/Main
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0

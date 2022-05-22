@@ -82,6 +82,8 @@ public class BossStageManager : MonoBehaviour
         // Player
         PlayerManager.instance.playerObject.GetComponent<PlayerCombat>().StopCheckOutOfScreen();
 
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
+
         //GameManager.instance.ClearStage();
         MapManager.instance.StopGenerateInfinity();
         MapManager.instance.GenerateStageEnd();

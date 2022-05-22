@@ -25,6 +25,8 @@ public class JsonIOEditor : Editor
     private void OnEnable()
     {
         jsonIO = (JsonIO)target;
+        jsonIO.OnSaveDB += SaveDatabase;
+        jsonIO.UpdateAllDatabase();
 
         stage = serializedObject.FindProperty("stage");
         fileName = serializedObject.FindProperty("fileName");
@@ -35,6 +37,11 @@ public class JsonIOEditor : Editor
         toCode = serializedObject.FindProperty("toCode");
 
         searchName = "";
+    }
+
+    public void SaveDatabase(LevelDatabase levelDB)
+    {
+        EditorUtility.SetDirty(levelDB);
     }
 
     public override void OnInspectorGUI()

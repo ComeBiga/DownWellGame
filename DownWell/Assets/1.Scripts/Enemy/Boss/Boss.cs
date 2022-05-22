@@ -69,6 +69,9 @@ public class Boss : MonoBehaviour, IHitByProjectile
     {
         Debug.Log("Boss Die");
         died = true;
+
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop("BackgroundBoss");
+
         Destroy(this.gameObject);
         Instantiate(dyingObj, transform.position, Quaternion.identity);
         //BossStageManager.instance.EndBossStage();
