@@ -34,6 +34,9 @@ public class SmoothFollow : MonoBehaviour
     private bool closeToUpper = false;
     private float bossFollowPosY;
 
+    private float underPos;
+    private float upperPos;
+
 
     private BossStageCamera bossCamera;
 
@@ -64,8 +67,12 @@ public class SmoothFollow : MonoBehaviour
 
             if(bossScroll)
             {
-                var underPos = BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance;
-                var upperPos = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - bossScrollDistance;
+                if (BossStageManager.instance.BossObject != null)
+                {
+                    underPos = BossStageManager.instance.BossObject.transform.localPosition.y + bossScrollDistance;
+                    upperPos = BossStageManager.instance.BossObject.GetComponent<Boss>().upperBossObject.transform.position.y - bossScrollDistance;
+                }
+
                 lerpedPosY = Mathf.Clamp(lerpedPosY, underPos, upperPos);
             }
 

@@ -108,6 +108,8 @@ public class PlayerPhysics : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerManager.instance.playerObject == null) return;
+
         wallCollision.UpdateRaycastOrigins();
 
         UpdateGravity();
