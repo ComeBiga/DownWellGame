@@ -1836,12 +1836,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1916433157048225161}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: 0
   offset: {x: 0, y: 1, z: -10}
   smooth: 15
   followActive: 1
   followCharacter: 1
   scrollSpeed: 1
   bossScroll: 0
+  bossScrollDistance: 0
   offset_End: -5
 --- !u!1 &366047310
 GameObject:
@@ -4433,6 +4436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a2faba35cc14f43bf106ac429a23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonOnStart: 0
   OpeningPanel: {fileID: 1663313545}
   setPanel: {fileID: 524760324}
   setBtn: {fileID: 1919142641}
@@ -7797,6 +7801,11 @@ MonoBehaviour:
   blockPath: /Resources/Levels/Blocks/
   stageStartPath: /Resources/Levels/StageStart/
   stageGroundPath: /Resources/Levels/StageGround/
+  levelPath: /Resources/Levels/
+  entrePath: Entre/
+  exitPath: Exit/
+  bossPath: Boss/
+  bossLevelPath: Boss/levels
 --- !u!114 &1703753909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7823,11 +7832,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 722291728}
+  wallParent: {fileID: 0}
+  enemyParent: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   startPos: {fileID: 0}
   blockRatio: 100
   enemyRatio: 100
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
+  brightness: 190
 --- !u!4 &1703753912
 Transform:
   m_ObjectHideFlags: 0
@@ -8412,6 +8424,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
+--- !u!1 &1832397173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1832397175}
+  - component: {fileID: 1832397174}
+  m_Layer: 0
+  m_Name: AdManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1832397174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832397173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2caef3aa2c31c64cb967f5c6fa2356f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opening: {fileID: 1663313545}
+  isTestMode: 1
+--- !u!4 &1832397175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832397173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.188612, y: -8.265419, z: -0.30618542}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837557662
 GameObject:
   m_ObjectHideFlags: 0
@@ -10633,7 +10690,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1343732879
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dae63f3904c91e043add6c63cd5bfba7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10676,15 +10733,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   speed: 0
   jumpSpeed: 0
-  gravity: 3
   maxFallSpeed: 30
-  horizontalRayCount: 4
-  verticalRayCount: 4
   cantMove: 1
   jumping: 0
 --- !u!1 &1916433157048225165
@@ -10706,6 +10757,7 @@ GameObject:
   - component: {fileID: 8846916261975912957}
   - component: {fileID: 1502273850961459621}
   - component: {fileID: 1916433157048225168}
+  - component: {fileID: 1916433157048225169}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -10778,6 +10830,28 @@ MonoBehaviour:
   sens: 3
   dead: 0.001
   controllerPanel: {fileID: 0}
+--- !u!114 &1916433157048225169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916433157048225165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae294d85bb2702409673066ddee7c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCollision: {fileID: 0}
+  speed: 5
+  jumpSpeed: 5
+  gravity: 1
+  maxFallSpeed: 10
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontalRayCount: 4
+  verticalRayCount: 4
 --- !u!4 &2881339069021779325
 Transform:
   m_ObjectHideFlags: 0
