@@ -15,11 +15,14 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (PlayerManager.instance.playerObject != null)
+            Destroy(PlayerManager.instance.playerObject);
+            
         //Screen.SetResolution(Screen.height * (9 / 16), Screen.height, true);
         //PlayerPrefs.DeleteAll();
-        
+
         //SoundManager.instance.SoundOff();
-        
+
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
 
 
