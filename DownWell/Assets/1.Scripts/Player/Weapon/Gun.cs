@@ -63,7 +63,7 @@ public class Gun : Weapon
         UICollector.Instance.bullets.Init();
         OnReload += UICollector.Instance.bullets.OnChange;
         OnShoot += UICollector.Instance.bullets.OnChange;
-        OnReload += () => { player.GetComponent<Effector>().GenerateInParent("Reload"); };
+        OnReload += () => { PlayerManager.instance.playerObject.GetComponent<Effector>().GenerateInParent("Reload"); };
     }
 
     public override void Attack()
