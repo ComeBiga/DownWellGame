@@ -1842,6 +1842,7 @@ MonoBehaviour:
   followCharacter: 1
   scrollSpeed: 1
   bossScroll: 0
+  bossScrollDistance: 0
   offset_End: -5
 --- !u!1 &366047310
 GameObject:
@@ -4433,7 +4434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a2faba35cc14f43bf106ac429a23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpeningPanel: {fileID: 1663313545}
   setPanel: {fileID: 524760324}
   setBtn: {fileID: 1919142641}
   exitButton: {fileID: 1467528421}
@@ -7828,6 +7828,7 @@ MonoBehaviour:
   blockRatio: 100
   enemyRatio: 100
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
+  brightness: 190
 --- !u!4 &1703753912
 Transform:
   m_ObjectHideFlags: 0
@@ -8576,6 +8577,7 @@ GameObject:
   - component: {fileID: 1847140163}
   - component: {fileID: 1847140162}
   - component: {fileID: 1847140161}
+  - component: {fileID: 1847140165}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8666,6 +8668,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1847140165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847140160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e23566b92d64ef4f9acd41b7d201b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Opening: {fileID: 1663313545}
 --- !u!1 &1855672130
 GameObject:
   m_ObjectHideFlags: 0
@@ -9049,7 +9064,7 @@ GameObject:
   - component: {fileID: 1919142644}
   - component: {fileID: 1919142643}
   m_Layer: 5
-  m_Name: Setting
+  m_Name: SetBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9399,7 +9414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df11d0f7b38150546988590fb6cf7589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingPanel: {fileID: 1663313545}
   startPanel: {fileID: 1527060946}
   charPanel: {fileID: 947480729}
   character: {fileID: 1916433157048225165}
@@ -10633,7 +10647,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1343732879
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dae63f3904c91e043add6c63cd5bfba7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10676,15 +10690,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   speed: 0
   jumpSpeed: 0
   gravity: 3
   maxFallSpeed: 30
-  horizontalRayCount: 4
-  verticalRayCount: 4
   cantMove: 1
   jumping: 0
 --- !u!1 &1916433157048225165
@@ -10706,6 +10715,7 @@ GameObject:
   - component: {fileID: 8846916261975912957}
   - component: {fileID: 1502273850961459621}
   - component: {fileID: 1916433157048225168}
+  - component: {fileID: 1916433157048225169}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -10778,6 +10788,28 @@ MonoBehaviour:
   sens: 3
   dead: 0.001
   controllerPanel: {fileID: 0}
+--- !u!114 &1916433157048225169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916433157048225165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae294d85bb2702409673066ddee7c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCollision: {fileID: 0}
+  speed: 5
+  jumpSpeed: 5
+  gravity: 1
+  maxFallSpeed: 10
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontalRayCount: 4
+  verticalRayCount: 4
 --- !u!4 &2881339069021779325
 Transform:
   m_ObjectHideFlags: 0

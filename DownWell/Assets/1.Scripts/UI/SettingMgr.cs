@@ -25,7 +25,6 @@ public class SettingMgr : MonoBehaviour
 
     public bool buttonOnStart = false;
 
-    public GameObject OpeningPanel;
     public GameObject setPanel;
     public GameObject setBtn;
     public GameObject exitButton;
@@ -53,7 +52,7 @@ public class SettingMgr : MonoBehaviour
         setPanel.SetActive(false);
         if(buttonOnStart) setBtn.SetActive(true);
         //if (SceneManager.GetActiveScene().name == "GameScene" && bgmOff == 0)
-        //    SoundManager.instance.PlayBGMSound("Background");  //»ç¿îµå ½ÃÀÛ
+        //    SoundManager.instance.PlayBGMSound("Background");  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     void Update()
@@ -65,16 +64,6 @@ public class SettingMgr : MonoBehaviour
                 SettingBtn();
             }
         }
-
-        if (SceneManager.GetActiveScene().name == "StartScene")
-        {
-            if (OpeningPanel.activeInHierarchy)
-                setBtn.GetComponent<Image>().enabled = false;
-            else
-                setBtn.GetComponent<Image>().enabled = true;
-        }
-        else
-            setBtn.GetComponent<Image>().enabled = true;
 
         if (Setting.worldCamera == null)
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -159,16 +148,19 @@ public class SettingMgr : MonoBehaviour
 
     void OnApplicationPause(bool pause)
     {
-        if (pause) //À¯Àú°¡ È¨ÀÌ³ª È¦µå¹öÆ° ´­·ÈÀ» ¶§ ÀÏ½ÃÁ¤Áö
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            gPaused = true;
-            SettingBtn();
-        }
-        else
-        {
-            if (gPaused) //À¯Àú°¡ °ÔÀÓÀ¸·Î µ¹¾Æ¿ÔÀ» ¶§
+            if (pause) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¨ï¿½Ì³ï¿½ È¦ï¿½ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                gPaused = false;
+                gPaused = true;
+                SettingBtn();
+            }
+            else
+            {
+                if (gPaused) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½
+                {
+                    gPaused = false;
+                }
             }
         }
     }
