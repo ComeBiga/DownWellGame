@@ -19,6 +19,9 @@ public class UIHealthBar : MonoBehaviour
     {
         playerHP = PlayerManager.instance.playerObject.GetComponent<PlayerHealth>();
         lastHP = playerHP.CurrentHealth;
+
+        for(int i = 0; i < fills.Count; i++)
+            fills[i].color = Color.white;
     }
 
     public void OnChange()

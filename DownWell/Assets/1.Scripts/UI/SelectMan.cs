@@ -71,6 +71,9 @@ public class SelectMan : MonoBehaviour
 
     public void selectbtn()
     {
+        GameObject gameSceneUI = GameObject.Find("inGameUI");
+        if (gameSceneUI != null)
+            gameSceneUI.transform.GetChild(0).gameObject.SetActive(true);
         PlayerManager.instance.SelectPlayerCharacter(charNum);
         //SceneManager.LoadScene(1);
 

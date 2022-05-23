@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     string text_Timer;
-    public Text timeresult;
+    Text timeresult;
 
     private float time_start;
     private float time_current;
@@ -26,6 +26,9 @@ public class Timer : MonoBehaviour
 
     public void EndTimer()
     {
+        if (timeresult == null)
+            timeresult = GameObject.Find("inGameUI").transform.GetChild(2).GetComponentInChildren<Text>();
+
         End_Timer();
         timeresult.text = text_Timer;
     }

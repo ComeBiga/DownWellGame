@@ -52,8 +52,10 @@ public class InputManager : MonoBehaviour
     {
         //if(!blockInput)
         //    MobileTouch();
+        if (controllerPanel == null)
+            controllerPanel = GameObject.Find("inGameUI").transform.GetChild(1).gameObject;
 
-        if(!blockInput) input.Update();
+        if (!blockInput) input.Update();
     }
 
     public bool GetJumpButtonDown()

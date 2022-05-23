@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
 
         // Gameover Panel Init
-        gameoverPanel = GameObject.Find("GameOver");
+        gameoverPanel = GameObject.Find("inGameUI").transform.GetChild(2).gameObject;
         gameoverPanel.GetComponent<Image>().enabled = true;
         gameoverPanel.SetActive(false);
 

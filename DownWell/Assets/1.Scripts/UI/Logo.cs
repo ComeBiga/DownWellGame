@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Logo : MonoBehaviour
 {
     public GameObject Opening;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,13 @@ public class Logo : MonoBehaviour
         PlayerPrefs.SetInt("Opening", 1);
 
         GameObject gameSceneUI = GameObject.Find("inGameUI");
-        
-        Destroy(gameSceneUI);
+        if (gameSceneUI != null)
+        {
+            for (int i = 0; i < gameSceneUI.transform.childCount; i++)
+            {
+                gameSceneUI.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
