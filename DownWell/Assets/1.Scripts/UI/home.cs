@@ -4,7 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class home : MonoBehaviour
-{   public void homeBtn()
+{
+    private void Update()
+    {
+        if (GetComponent<Canvas>().worldCamera == null)
+            GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+    }
+    public void homeBtn()
     {
         SceneManager.LoadScene(0);
     }
