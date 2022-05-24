@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
+        controllerPanel = GameObject.Find("inGameUI").transform.GetChild(1).gameObject;
+
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (!mouseClick)
             input = new CatDown.InputPC();
@@ -52,9 +54,7 @@ public class InputManager : MonoBehaviour
     {
         //if(!blockInput)
         //    MobileTouch();
-        if (controllerPanel == null)
-            controllerPanel = GameObject.Find("inGameUI").transform.GetChild(1).gameObject;
-
+        if (controllerPanel == null) Start();
         if (!blockInput) input.Update();
     }
 
