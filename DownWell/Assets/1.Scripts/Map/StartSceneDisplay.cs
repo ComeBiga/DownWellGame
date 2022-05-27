@@ -9,6 +9,7 @@ public class StartSceneDisplay : MonoBehaviour
     MapDisplay md;
 
     public StageDatabase stageDB;
+    public string startSceneLevelPath = "Levels/StageStart/";
 
     private void Start()
     {
@@ -22,8 +23,10 @@ public class StartSceneDisplay : MonoBehaviour
     {
         yield return null;
 
-        Level lv = levelLoader.LoadAndGetLevel("StageStart");
+        //var lv = levelLoader.LoadAndGetLevel("StageStart");
+        var lvs = levelLoader.GetLevels(startSceneLevelPath);
 
-        md.DisplayByDatabase(lv, stageDB);
+
+        md.DisplayByDatabase(lvs[0], stageDB);
     }
 }
