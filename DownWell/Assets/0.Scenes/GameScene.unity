@@ -9794,14 +9794,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3f1554aebc2b4590cf0432d97db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPath: /Resources/Levels/Blocks/
-  stageStartPath: /Resources/Levels/StageStart/
-  stageGroundPath: /Resources/Levels/StageGround/
-  levelPath: /Resources/Levels/
+  levelPath: Levels/
   entrePath: Entre/
+  mainPath: Main/
   exitPath: Exit/
   bossPath: Boss/Entre
   bossLevelPath: Boss/Main
+  useLoaderAsEditor: 0
 --- !u!1 &1221548161
 GameObject:
   m_ObjectHideFlags: 0
