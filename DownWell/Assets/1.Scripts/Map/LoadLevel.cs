@@ -109,7 +109,9 @@ public class LoadLevel : MonoBehaviour
 
     public static string ConvertPathResourcesToDirectory(string path)
     {
-        return path.Replace("/Resources/", Application.dataPath + "Resources/");
+        var convertedPath = path.Replace("Levels/", Application.dataPath + "/Resources/Levels/");
+        
+        return convertedPath;
     }
 
     public Level GetLevel(string path)

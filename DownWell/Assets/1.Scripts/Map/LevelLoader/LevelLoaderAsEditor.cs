@@ -15,7 +15,8 @@ public class LevelLoaderAsEditor : LevelLoader
 
     public override List<Level> LoadAll(string path)
     {
-        string[] directories = Directory.GetFiles(Application.dataPath + path, "*.json");
+        Debug.Log(path);
+        string[] directories = Directory.GetFiles(path, "*.json");
         List<Level> lvList = new List<Level>();
 
         foreach (var dir in directories)
