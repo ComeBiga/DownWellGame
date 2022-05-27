@@ -1836,12 +1836,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1916433157048225161}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: 0
   offset: {x: 0, y: 1, z: -10}
   smooth: 15
   followActive: 1
   followCharacter: 1
   scrollSpeed: 1
   bossScroll: 0
+  bossScrollDistance: 0
   offset_End: -5
 --- !u!1 &366047310
 GameObject:
@@ -3105,9 +3108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d602b2b8f62c8148b98eff0703bd26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
-  selectedCharacter: {fileID: 0}
-  characters1: []
+  playerObject: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
 --- !u!4 &783146857
 Transform:
   m_ObjectHideFlags: 0
@@ -4333,8 +4334,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962011372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.147112, y: 13.6505995, z: 681.6499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4433,6 +4434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a2faba35cc14f43bf106ac429a23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonOnStart: 0
   OpeningPanel: {fileID: 1663313545}
   setPanel: {fileID: 524760324}
   setBtn: {fileID: 1919142641}
@@ -7794,9 +7796,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3f1554aebc2b4590cf0432d97db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPath: /Resources/Levels/Blocks/
-  stageStartPath: /Resources/Levels/StageStart/
-  stageGroundPath: /Resources/Levels/StageGround/
+  levelPath: Levels/
+  entrePath: Entre/
+  mainPath: Main/
+  exitPath: Exit/
+  bossPath: Boss/Entre
+  bossLevelPath: Boss/Main
+  useLoaderAsEditor: 0
 --- !u!114 &1703753909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7810,6 +7816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageDB: {fileID: 11400000, guid: 5bd7bf7e7ff07134c963086d32408f2b, type: 2}
+  startSceneLevelPath: Levels/StageStart/
 --- !u!114 &1703753910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7823,11 +7830,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 722291728}
+  wallParent: {fileID: 0}
+  enemyParent: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   startPos: {fileID: 0}
   blockRatio: 100
   enemyRatio: 100
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
+  brightness: 190
 --- !u!4 &1703753912
 Transform:
   m_ObjectHideFlags: 0
@@ -10633,7 +10643,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1343732879
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dae63f3904c91e043add6c63cd5bfba7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10664,29 +10674,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1916433157048225162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916433157048225165}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  speed: 0
-  jumpSpeed: 0
-  gravity: 3
-  maxFallSpeed: 30
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  cantMove: 1
-  jumping: 0
 --- !u!1 &1916433157048225165
 GameObject:
   m_ObjectHideFlags: 0
@@ -10701,7 +10688,6 @@ GameObject:
   - component: {fileID: 1916433157048225167}
   - component: {fileID: 1916433157048225166}
   - component: {fileID: 6945750267178384624}
-  - component: {fileID: 1916433157048225162}
   - component: {fileID: 9102468989825441706}
   - component: {fileID: 8846916261975912957}
   - component: {fileID: 1502273850961459621}

@@ -26,6 +26,8 @@ public class SelectMan : MonoBehaviour
 
     public static int charNum = 0;
 
+    public event System.Action<int> OnSelect;
+
     void Awake()
     {
         //character = GameObject.Find("character");
@@ -71,11 +73,10 @@ public class SelectMan : MonoBehaviour
 
     public void selectbtn()
     {
-        PlayerManager.instance.SelectPlayerCharacter(charNum);
-        //SceneManager.LoadScene(1);
+        //PlayerManager.instance.SelectPlayerCharacter(charNum);
+        if(OnSelect != null) OnSelect.Invoke(charNum);
 
         AsyncOperation asyncOper = SceneManager.LoadSceneAsync(1);
-        //asyncOper.allowSceneActivation = true;
     }
 
     public void arrowbtn(string arrow)

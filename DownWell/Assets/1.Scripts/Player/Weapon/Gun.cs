@@ -118,7 +118,7 @@ public class Gun : Weapon
 
     public void Reload()
     {
-        Debug.Log(Reloaded);
+        //Debug.Log(Reloaded);
         if (Reloaded) return;
 
         magazine.current = magazine.max;

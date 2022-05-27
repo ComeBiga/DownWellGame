@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         playerManager = PlayerManager.instance;
 
         // Player Init
-        PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
+        //PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
 
         //playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
         //playerPrefab.SetActive(false);

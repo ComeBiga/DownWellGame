@@ -24,68 +24,70 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerObject;
     //public List<GameObject> characters;
 
-    public Character selectedCharacter;
-    public List<Character> characters1 = new List<Character>();
+    //public Character selectedCharacter;
+    //public List<Character> characters1 = new List<Character>();
 
     private void Start()
     {
-        LoadAllCharacterFromResource();
-
-        if(selectedCharacter == null) SelectPlayerCharacter("Cat");
-
-        //startPos = GameManager.instance.startPos;
-        //player = Instantiate(player, startPos.position, Quaternion.identity);
+        
     }
 
     public void InstantiateAndInit(Vector3 position)
     {
-        playerObject = Instantiate(selectedCharacter.prefab, position, Quaternion.identity, transform);
+        playerObject = Instantiate(playerObject, position, Quaternion.identity, transform);
         playerObject.GetComponent<PlayerPhysics>().Init();
         //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
-    }    
-
-    /// <summary>
-    /// 선택한 캐릭터를 플레이어의 캐릭터로 선택
-    /// </summary>
-    /// <param name="name">캐릭터 이름</param>
-    public void SelectPlayerCharacter(string name)
-    {
-        //player = characters.Find(c => c.GetComponent<Player>().name == name);
-
-        selectedCharacter = characters1.Find(c => c.name == name);
     }
 
-    /// <summary>
-    /// 선택한 캐릭터를 플레이어의 캐릭터로 선택
-    /// </summary>
-    /// <param charNum="charNum">캐릭터 번호</param>
-    public void SelectPlayerCharacter(int charNum)
+    public void SetPlayerObject(GameObject playerObject)
     {
-        //player = characters.Find(c => c.GetComponent<Player>().num == charNum);
-
-        selectedCharacter = characters1.Find(c => c.num == charNum);
+        this.playerObject = playerObject;
     }
 
-    /// <summary>
-    /// 선택한 캐릭터를 리소스 폴더로 부터 로드
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <returns>로드한 캐릭터</returns>
-    public Character SelectPlayerCharacterFromResource(string fileName)
-    {
-        return Resources.Load("Characters/" + name) as Character;
-    }
+    #region Deprecated(SelectedPlayer)
+    ///// <summary>
+    ///// 선택한 캐릭터를 플레이어의 캐릭터로 선택
+    ///// </summary>
+    ///// <param name="name">캐릭터 이름</param>
+    //public void SelectPlayerCharacter(string name)
+    //{
+    //    //player = characters.Find(c => c.GetComponent<Player>().name == name);
 
-    /// <summary>
-    /// 리소스 폴더로 부터 모든 캐릭터 로드
-    /// </summary>
-    public void LoadAllCharacterFromResource()
-    {
-        var characters = Resources.LoadAll("Characters", typeof(Character));
+    //    selectedCharacter = characters1.Find(c => c.name == name);
+    //}
 
-        foreach(var c in characters)
-        {
-            this.characters1.Add(c as Character);
-        }
-    }
+    ///// <summary>
+    ///// 선택한 캐릭터를 플레이어의 캐릭터로 선택
+    ///// </summary>
+    ///// <param charNum="charNum">캐릭터 번호</param>
+    //public void SelectPlayerCharacter(int charNum)
+    //{
+    //    //player = characters.Find(c => c.GetComponent<Player>().num == charNum);
+
+    //    selectedCharacter = characters1.Find(c => c.num == charNum);
+    //}
+
+    ///// <summary>
+    ///// 선택한 캐릭터를 리소스 폴더로 부터 로드
+    ///// </summary>
+    ///// <param name="fileName"></param>
+    ///// <returns>로드한 캐릭터</returns>
+    //public Character SelectPlayerCharacterFromResource(string fileName)
+    //{
+    //    return Resources.Load("Characters/" + name) as Character;
+    //}
+
+    ///// <summary>
+    ///// 리소스 폴더로 부터 모든 캐릭터 로드
+    ///// </summary>
+    //public void LoadAllCharacterFromResource()
+    //{
+    //    var characters = Resources.LoadAll("Characters", typeof(Character));
+
+    //    foreach(var c in characters)
+    //    {
+    //        this.characters1.Add(c as Character);
+    //    }
+    //}
+    #endregion
 }
