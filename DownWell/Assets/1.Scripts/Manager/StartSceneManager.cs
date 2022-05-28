@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StartSceneManager : Singleton<StartSceneManager>
 {
     [Header("UI")]
+    public bool viewOpening = true;
     public GameObject openingPanel;
     public GameObject startPanel;
     public GameObject charPanel;
@@ -19,7 +20,7 @@ public class StartSceneManager : Singleton<StartSceneManager>
 
     public void InitPanel()
     {
-        if (PlayerPrefs.GetInt("Opening") == 0)
+        if (PlayerPrefs.GetInt("Opening") == 0 && viewOpening)
         {
             openingPanel.SetActive(true);
             startPanel.SetActive(false);

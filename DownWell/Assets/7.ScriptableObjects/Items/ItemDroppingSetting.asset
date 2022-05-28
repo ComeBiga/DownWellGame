@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a3cedd1f69ac34da04e8dba06818ea, type: 3}
   m_Name: ItemDroppingSetting
   m_EditorClassIdentifier: 
-  popingTime: 0.5
+  popingTime: 0.3
   livingTime: 5
   maxHorizontalPopSpeed: 5
   minVerticalPopSpeed: 5
