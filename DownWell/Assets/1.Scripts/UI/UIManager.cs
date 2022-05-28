@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         else
             openingPanel.SetActive(true);
 
-        startPanel.SetActive(true);
+        startPanel.SetActive(false);
         charPanel.SetActive(false);
 
         clickPlay = false;
@@ -51,9 +51,9 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (openingPanel.activeInHierarchy)
-            if (openingPanel.GetComponent<Image>().enabled == false)
-                openingPanel.SetActive(false);
+        //if (openingPanel.activeInHierarchy)
+        //    if (openingPanel.GetComponent<Image>().enabled == false)
+        //        openingPanel.SetActive(false);
     }
     public void startBtn()
     {

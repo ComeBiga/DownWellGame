@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
         //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
     }
 
-    public void SetPlayerObject(GameObject playerObject)
+    public void SetPlayerCharacter(GameObject playerObject)
     {
         this.playerObject = playerObject;
     }

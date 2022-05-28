@@ -11,6 +11,9 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 	/// </summary>
 	private static T instance;
 
+	[Header("Singleton")]
+	[SerializeField] public bool dontDestroyOnLoad = false;
+
 	#endregion
 
 	#region Properties
@@ -49,7 +52,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 		if (instance == null)
 		{
 			instance = this as T;
-			DontDestroyOnLoad(gameObject);
+			if(dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
