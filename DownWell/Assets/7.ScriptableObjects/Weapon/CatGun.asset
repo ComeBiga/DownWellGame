@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootable: 0
   shotRebound: 0
-  coolDownTime: 0.16
+  coolDownTime: 0.2
   projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
-  damage: 4
-  addedRange: 2
+  damage: 6
+  addedRange: 0
   capacity: 6

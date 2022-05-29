@@ -11,12 +11,19 @@ public class ProjectileMovement : MonoBehaviour
     private float currentPos;
     private float lastPos;
 
+    private Vector3 direction;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector3.down * speed;
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
 
         lastPos = currentPos = transform.position.y;
+    }
+
+    public void Init()
+    {
+        direction = Vector3.down;
     }
 
     // Update is called once per frame
@@ -31,5 +38,20 @@ public class ProjectileMovement : MonoBehaviour
         //transform.position += deltaDistance;
 
         //moveDistance += Mathf.Abs(deltaDistance.y);
+    }
+
+    public void SetVelocity(Vector3 velocity)
+    {
+        GetComponent<Rigidbody2D>().velocity = velocity;
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        this.direction = direction;
+    }
+
+    public void Rotate(float angle)
+    {
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }

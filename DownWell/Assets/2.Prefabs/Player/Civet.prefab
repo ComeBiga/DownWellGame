@@ -552,8 +552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineOfWeapons:
-  - {fileID: 11400000, guid: 64bfb787fbaf06b4cad0ba65502440a3, type: 2}
-  - {fileID: 11400000, guid: 248a04446c997e4459fcb92ea30698f6, type: 2}
+  - {fileID: 11400000, guid: 49f1637db9e0cc04780297350baf70e0, type: 2}
+  - {fileID: 11400000, guid: 7fb427196630b504a870c661d72fbe34, type: 2}
   weapon: {fileID: 11400000, guid: 64bfb787fbaf06b4cad0ba65502440a3, type: 2}
   coolDownTime: 0.16
 --- !u!114 &2781323788559046148

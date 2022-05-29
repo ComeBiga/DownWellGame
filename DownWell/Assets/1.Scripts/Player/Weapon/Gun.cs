@@ -152,6 +152,8 @@ public class Gun : Weapon
 
         // Modifying Range
         projectile.lifeDistance += addedRange;
+
+        _projectile.GetComponent<ProjectileMovement>().Init();
     }
 
 }
