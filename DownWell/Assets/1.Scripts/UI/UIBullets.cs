@@ -5,17 +5,33 @@ using UnityEngine.UI;
 
 public class UIBullets : MonoBehaviour
 {
-    public List<Image> bullets;
+    [SerializeField] private GameObject bullet;
+    private List<Image> bullets;
 
     private PlayerAttack playerAttack;
     private Gun gun;
     private int lastCount;
 
-    public void Init()
+    public void Init(PlayerAttack playerAttack)
     {
-        playerAttack = PlayerManager.instance.playerObject.GetComponent<PlayerAttack>();
+        this.playerAttack = playerAttack;
+        bullets = new List<Image>();
+
+        OnWeaponChanged();
+        
+        playerAttack.weaponReinforcer.OnReinforce += OnWeaponChanged;
+    }
+
+    public void OnWeaponChanged()
+    {
+        Debug.Log("OnWeaponChanged");
         gun = playerAttack.weapon as Gun;
+        gun.OnReload += UICollector.Instance.bullets.OnChange;
+        gun.OnShoot += UICollector.Instance.bullets.OnChange;
+
         lastCount = gun.CurrentNumOfBullet;
+
+        DisplayBulletImages();
     }
 
     public void OnChange()
@@ -78,5 +94,29 @@ public class UIBullets : MonoBehaviour
         }
 
         lastCount -= amount;
+    }
+
+    private void DisplayBulletImages()
+    {
+        Debug.Log($"{bullets.Count}, {gun.CapacityOfMagazine}");
+        if (bullets.Count >= gun.CapacityOfMagazine) return;
+
+        foreach(var bullet in bullets)
+        {
+            bullet.gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < gun.CapacityOfMagazine; i++)
+        {
+            if(i < bullets.Count)
+            {
+                bullets[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                var blt = Instantiate(bullet, transform);
+                bullets.Add(blt.GetComponent<Image>());
+            }
+        }
     }
 }

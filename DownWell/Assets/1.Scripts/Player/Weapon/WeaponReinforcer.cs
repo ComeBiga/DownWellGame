@@ -5,15 +5,17 @@ using UnityEngine;
 public class WeaponReinforcer
 {
     private List<Weapon> line;
-    private Weapon weapon;
+    //private Weapon weapon;
     private int index = 0;
 
     public Weapon Current { get { return line[index]; } }
 
+    public event System.Action OnReinforce;
+
     public WeaponReinforcer(List<Weapon> line)
     {
         this.line = line;
-        this.weapon = weapon;
+        //this.weapon = weapon;
         index = 0;
     }
 
@@ -22,11 +24,14 @@ public class WeaponReinforcer
         if (index + 1 >= line.Count)
         {
             reinforced = null;
+            Debug.Log("Reinforce Failed!");
             return false;
         }
 
         index++;
         reinforced = line[index];
+        OnReinforce.Invoke();
+        Debug.Log("Weapon Reinforced!");
         return true;
     }
 

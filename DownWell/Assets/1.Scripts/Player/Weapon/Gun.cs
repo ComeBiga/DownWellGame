@@ -63,10 +63,10 @@ public class Gun : Weapon
         addedRange = 0f;
 
         // Bullet UI
-        UICollector.Instance.bullets.Init();
-        OnReload += UICollector.Instance.bullets.OnChange;
-        OnShoot += UICollector.Instance.bullets.OnChange;
-        OnReload += () => { player.GetComponent<Effector>().GenerateInParent("Reload"); };
+        //OnReload += () => { player.GetComponent<Effector>().GenerateInParent("Reload"); };
+        //UICollector.Instance.bullets.Init();
+        //OnReload += UICollector.Instance.bullets.OnChange;
+        //OnShoot += UICollector.Instance.bullets.OnChange;
     }
 
     public override void Attack()
@@ -128,12 +128,19 @@ public class Gun : Weapon
 
         OnReload.Invoke();
 
+        ReloadFX();
+
         //UICollector.Instance.bullet.bulletReload();
     }
 
     public override bool IsShootable()
     {
         return shootable && !IsEmpty;
+    }
+
+    protected virtual void ReloadFX()
+    {
+        player.GetComponent<Effector>().GenerateInParent("Reload");
     }
 
     protected void InitProjectile(GameObject _projectile)

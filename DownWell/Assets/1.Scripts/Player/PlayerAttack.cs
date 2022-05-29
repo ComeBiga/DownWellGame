@@ -53,7 +53,7 @@ public class PlayerAttack : MonoBehaviour
         {
             weaponReinforcer.Reinforce(out weapon);
             weaponReinforcer.ReinforceRange(2f);
-            Debug.Log("Weapon reinforced!");
+            //Debug.Log("Weapon reinforced!");
         }
 
         //if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
@@ -68,5 +68,8 @@ public class PlayerAttack : MonoBehaviour
 
         weaponReinforcer = new WeaponReinforcer(lineOfWeapons);
         weapon = weaponReinforcer.Current;
+
+        // UI
+        UICollector.Instance.bullets.Init(this);
     }
 }
