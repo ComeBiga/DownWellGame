@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject playerObject;
+    [SerializeField] private CharacterCollector characters;
     //public List<GameObject> characters;
 
     //public Character selectedCharacter;
@@ -32,7 +33,13 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    public void InstantiateAndInit(Vector3 position)
+    public void Init()
+    {
+        if (playerObject != null) Destroy(playerObject);
+        playerObject = characters.GetCharacter(0);
+    }
+
+    public void Instantiate(Vector3 position)
     {
         playerObject = Instantiate(playerObject, position, Quaternion.identity, transform);
         playerObject.GetComponent<PlayerPhysics>().Init();

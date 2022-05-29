@@ -136,6 +136,7 @@ public class SettingMgr : MonoBehaviour
     public void homeBtn()
     {
         Time.timeScale = 1;
+        PlayerManager.instance.Init();
         Destroy(this.gameObject);
         SceneManager.LoadScene(0);
     }

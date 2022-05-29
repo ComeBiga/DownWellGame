@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         MapManager.instance.GenerateBeforeUpdate();
 
         // Player Initialization
-        playerManager.InstantiateAndInit(instantiatePosition);
+        playerManager.Instantiate(instantiatePosition);
         DropCharacterLateSeconds();
 
         // Camera

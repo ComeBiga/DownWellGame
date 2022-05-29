@@ -16,6 +16,8 @@ public class StartSceneManager : Singleton<StartSceneManager>
     void Start()
     {
         InitPanel();
+
+        InitSound();
     }
 
     public void InitPanel()
