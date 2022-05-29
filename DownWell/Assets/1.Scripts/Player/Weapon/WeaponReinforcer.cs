@@ -19,17 +19,17 @@ public class WeaponReinforcer
         index = 0;
     }
 
-    public bool Reinforce(out Weapon reinforced)
+    public bool Reinforce()
     {
         if (index + 1 >= line.Count)
         {
-            reinforced = null;
+            //reinforced = null;
             Debug.Log("Reinforce Failed!");
             return false;
         }
 
         index++;
-        reinforced = line[index];
+        //reinforced = line[index];
         OnReinforce.Invoke();
         Debug.Log("Weapon Reinforced!");
         return true;

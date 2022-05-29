@@ -57,20 +57,20 @@ public class PlayerController : MonoBehaviour
         if (physics.Grounded)
         {
             jumping = false;
-            attack.weapon.shootable = false;
+            attack.CurrentWeapon.shootable = false;
             shooting = false;
         }
         else
         {
-            attack.weapon.shootable = true;
+            attack.CurrentWeapon.shootable = true;
         }
 
         if (input.GetJumpButtonUp())
         {
-            attack.weapon.shootable = true;
+            attack.CurrentWeapon.shootable = true;
         }
 
-        if (attack.weapon.shootable && input.GetJumpButtonDown())
+        if (attack.CurrentWeapon.shootable && input.GetJumpButtonDown())
         {
             shooting = true;
         }
