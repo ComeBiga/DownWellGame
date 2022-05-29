@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Shoot()
     {
-        if(timer >= coolDownTime && weapon.IsShootable())//weapon.shootable && !weapon.IsEmpty)
+        if(timer >= weapon.coolDownTime && weapon.IsShootable())//weapon.shootable && !weapon.IsEmpty)
         {
             weapon.Attack();//Shoot(projectile, transform);
 

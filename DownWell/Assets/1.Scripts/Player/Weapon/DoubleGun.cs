@@ -25,10 +25,10 @@ public class DoubleGun : Gun
             var pt = GameObject.Instantiate(projectile, transform.position + Vector3.right * projectileOffset, Quaternion.identity);
             var pt2 = GameObject.Instantiate(projectile, transform.position + Vector3.left * projectileOffset, Quaternion.identity);
 
-            AddRange(pt);
-            AddRange(pt2);
+            InitProjectile(pt);
+            InitProjectile(pt2);
 
-            Debug.Log($"AddedRange : {addedRange} (DoubleGun.cs)");
+            //Debug.Log($"AddedRange : {addedRange} (DoubleGun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
 
             OnShootFunc();

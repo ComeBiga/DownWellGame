@@ -6,6 +6,8 @@ public abstract class Weapon : ScriptableObject
 {
     [HideInInspector] public bool shootable = false;
     public float shotRebound;
+    public float coolDownTime;
+    public abstract int Damage { get; }
 
     protected GameObject player;
 

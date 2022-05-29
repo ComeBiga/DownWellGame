@@ -7,6 +7,9 @@ public class Gun : Weapon
 {
     [Header("Gun")]
     [SerializeField] protected GameObject projectile;
+    [SerializeField] protected int damage;
+    public override int Damage { get { return damage; } }
+
     protected Transform shotPos;
     public float addedRange;
 
@@ -103,7 +106,7 @@ public class Gun : Weapon
         {
             magazine.current--;
             var pt = GameObject.Instantiate(projectile, transform.position, Quaternion.identity);
-            AddRange(pt);
+            InitProjectile(pt);
             //Debug.Log($"AddedRange : {addedRange} (Gun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
 
@@ -133,9 +136,15 @@ public class Gun : Weapon
         return shootable && !IsEmpty;
     }
 
-    protected void AddRange(GameObject projectile)
+    protected void InitProjectile(GameObject _projectile)
     {
-        projectile.GetComponent<Projectile>().lifeDistance += addedRange;
+        var projectile = _projectile.GetComponent<Projectile>();
+
+        // Init Damage
+        projectile.damage = damage;
+
+        // Modifying Range
+        projectile.lifeDistance += addedRange;
     }
 
 }
