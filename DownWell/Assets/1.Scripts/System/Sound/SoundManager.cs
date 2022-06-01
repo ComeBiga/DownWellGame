@@ -47,6 +47,11 @@ namespace Comebiga
             s.source.Play();
         }
 
+        public void Play(Sound s)
+        {
+            s.source.Play();
+        }
+
         public void Stop(string name)
         {
             Sound s = System.Array.Find(sounds, sound => sound.name == name);

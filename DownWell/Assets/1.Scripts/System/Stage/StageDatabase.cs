@@ -36,6 +36,8 @@ public class StageDatabase : ScriptableObject
     //[SerializeField] private BackgroundSprite[] background;
     public BackgroundInfo bgInfo;
 
+    [Header("Sound")]
+    public Sound bgm;
     //[System.Serializable]
     //private class BackgroundSprite
     //{
