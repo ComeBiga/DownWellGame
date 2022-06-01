@@ -24,6 +24,9 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private List<Sprite> blockSprites;
     [SerializeField] private List<Sprite> platformSprites;
     [SerializeField] private List<Sprite> itemGiverSprites;
+    [SerializeField] private List<GameObject> dropItems;
+
+    public List<GameObject> DropItems { get { return dropItems; } }
 
     [Header("Enemy")]
     [SerializeField] private List<GameObject> enemyObjects;
