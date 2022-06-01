@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f1fa0cac20b2c458ebe590f0931d74, type: 3}
   m_Name: CaveMouse
   m_EditorClassIdentifier: 
-  code: 4002
-  name: CaveHelmet
-  score: 0
-  sprite: {fileID: 21300000, guid: 2a750f09b58bfdb43ae3fbd3e673c147, type: 3}
+  code: 4003
+  name: CaveMouse
+  score: 10
+  sprite: {fileID: 21300000, guid: 1315b030caa9e5a46b53eb73096cf77f, type: 3}
   sliced: 0
   hp: 10
