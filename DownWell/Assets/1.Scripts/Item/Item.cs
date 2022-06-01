@@ -39,7 +39,7 @@ public class Item : MonoBehaviour
         OnPickedUp();
 
         // Sound
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");
+        //if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");
 
         // Destroy
         Destroy(this.gameObject);
