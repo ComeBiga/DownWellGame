@@ -17,5 +17,5 @@ MonoBehaviour:
   score: 0
   sprite: {fileID: 21300000, guid: e0c8b4464cf6078498e79c351b208222, type: 3}
   sliced: 0
-  dropSetting: {fileID: 11400000, guid: cfffb6fcf71c0ce458edbbea4d767e81, type: 2}
+  dropSetting: {fileID: 11400000, guid: 1a291604868b2704291c08c7c5219f74, type: 2}
   chacePercent: 30

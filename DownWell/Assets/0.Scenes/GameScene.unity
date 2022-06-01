@@ -9380,7 +9380,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   startPos: {fileID: 0}
   blockRatio: 100
-  enemyRatio: 100
+  enemyRatio: 80
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
   brightness: 190
 --- !u!114 &1215072950
