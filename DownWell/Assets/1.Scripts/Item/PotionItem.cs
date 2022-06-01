@@ -10,5 +10,8 @@ public class PotionItem : Item
     protected override void OnPickedUp()
     {
         PlayerManager.instance.playerObject.GetComponent<PlayerHealth>().GainHealth(amount);
+
+        // Sound
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Health");
     }
 }

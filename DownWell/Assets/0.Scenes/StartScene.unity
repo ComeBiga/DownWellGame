@@ -4031,7 +4031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -349.99994}
+  m_AnchoredPosition: {x: 0, y: -350}
   m_SizeDelta: {x: 0, y: -700.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929998635
@@ -5567,7 +5567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  viewOpening: 1
+  viewOpening: 0
   openingPanel: {fileID: 1663313545}
   startPanel: {fileID: 1527060946}
   charPanel: {fileID: 947480729}
@@ -11152,6 +11152,34 @@ MonoBehaviour:
     volume: 0.2
     pitch: 1.5
     loop: 0
+    source: {fileID: 0}
+  - name: Health
+    clip: {fileID: 8300000, guid: dc1f1b2fce6a19649a17d94905258316, type: 3}
+    type: 1
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Reload
+    clip: {fileID: 8300000, guid: 829b3d740706de6488075aafeddab437, type: 3}
+    type: 1
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PowerUp
+    clip: {fileID: 8300000, guid: 12bc5382e1e5ebd47a8f7036d434d4f4, type: 3}
+    type: 1
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bg_stage1
+    clip: {fileID: 8300000, guid: 2df1a17f7e54d8d45a81295d0a909f8f, type: 3}
+    type: 0
+    volume: 0.5
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!114 &8846916261975912957
 MonoBehaviour:

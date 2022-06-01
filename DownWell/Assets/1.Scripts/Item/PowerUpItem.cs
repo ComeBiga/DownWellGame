@@ -19,6 +19,9 @@ public class PowerUpItem : UseImmediatelyItem
         // FX
         player.GetComponent<Effector>().GenerateInParent("PowerUp");
 
+        // Sound
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("PowerUp");
+
         //Debug.Log("Power Up!");
     }
 }
