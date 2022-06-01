@@ -64,3 +64,4 @@ MonoBehaviour:
     deco:
     - sprite: {fileID: 1457973918208686885, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
       prob: 1
+  bgm: Bg1

@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
         // Play BGM
         //SoundManager.instance.PlayBGMSound("Background");
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
+        //if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
 
         // Gameover Panel Init
         gameoverPanel = GameObject.Find("GameOver");
@@ -95,12 +95,17 @@ public class GameManager : MonoBehaviour
         // Camera
         Camera.main.GetComponent<SmoothFollow>().StartStage();
 
+        // Sound
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play(stageManager.Current.BGM);
+
         // Timer
         GetComponent<Timer>().StartTimer();
     }
 
     public void ClearStage()
     {
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(stageManager.Current.BGM);
+        
         stageManager.NextStage();
 
         mapManager.Clear();
@@ -111,7 +116,10 @@ public class GameManager : MonoBehaviour
         DropCharacterLateSeconds();
 
         Camera.main.GetComponent<SmoothFollow>().StartStage();
+
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play(stageManager.Current.BGM);
     }
+
     public void EndStage()
     {
         Camera.main.GetComponent<SmoothFollow>().StageEnd();

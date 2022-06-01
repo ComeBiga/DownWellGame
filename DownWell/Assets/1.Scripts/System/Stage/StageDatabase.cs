@@ -37,15 +37,15 @@ public class StageDatabase : ScriptableObject
     public BackgroundInfo bgInfo;
 
     [Header("Sound")]
-    public Sound bgm;
-    //[System.Serializable]
-    //private class BackgroundSprite
-    //{
-    //    public Sprite[] sprite;
+    [SerializeField] private string bgm;
 
-    //    public int width = 1;
-    //    public int height = 1;
-    //}
+    public string BGM
+    {
+        get
+        {
+            return bgm;
+        }
+    }
 
     public List<GameObject> MapObjects 
     { 

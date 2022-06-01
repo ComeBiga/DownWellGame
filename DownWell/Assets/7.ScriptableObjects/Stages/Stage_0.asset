@@ -66,3 +66,4 @@ MonoBehaviour:
       prob: 5
     - sprite: {fileID: -3993480536105716121, guid: 0acea06ccc4f9874eb5981a543b97b0c, type: 3}
       prob: 5
+  bgm: Background

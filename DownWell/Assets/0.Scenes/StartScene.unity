@@ -11174,11 +11174,11 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Bg_stage1
+  - name: Bg1
     clip: {fileID: 8300000, guid: 2df1a17f7e54d8d45a81295d0a909f8f, type: 3}
     type: 0
-    volume: 0.5
-    pitch: 1
+    volume: 0.73
+    pitch: 0.9
     loop: 1
     source: {fileID: 0}
 --- !u!114 &8846916261975912957
