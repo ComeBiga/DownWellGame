@@ -17,7 +17,7 @@ namespace CatDown
         private void Start()
         {
             Init();
-            if (GetComponent<Enemy>().info.name == "JellyPoo") Debug.Log($"Current state : {current.name} at Brain Start");
+            //if (GetComponent<Enemy>().info.name == "JellyPoo") Debug.Log($"Current state : {current.name} at Brain Start");
             current.Handle();
         }
 
@@ -38,8 +38,8 @@ namespace CatDown
             current.EnterState();
             if (GetComponent<Enemy>().info.name == "JellyPoo")
             {
-                Debug.Log($"transition count :{++count}");
-                Debug.Log($"Current state : {current.name}");
+                //Debug.Log($"transition count :{++count}");
+                //Debug.Log($"Current state : {current.name}");
             }
             current.Handle();
         }

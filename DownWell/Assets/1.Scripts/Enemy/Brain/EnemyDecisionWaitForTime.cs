@@ -15,9 +15,9 @@ namespace CatDown
         {
             //if (GetComponent<Enemy>().info.name == "JellyPoo")
             //    Debug.Log("WaitForTime");
-            Debug.Log("EnterDecision");
+            //Debug.Log("EnterDecision");
             current = 0;
-            Debug.Log($"current : {current}");
+            //Debug.Log($"current : {current}");
 
             //WaitForTime(time);
         }
