@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 4001
   name: CaveBat
-  sprite: {fileID: 21300000, guid: 5959240b60095fe4cafd0c5d1dd0a728, type: 3}
-  sprites: []
-  sliced: 0
   score: 3
+  sprite: {fileID: 21300000, guid: 6158889c75e1af846888ce6fe54f4aae, type: 3}
+  sliced: 0
+  hp: 10
