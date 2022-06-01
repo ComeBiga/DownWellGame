@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3764036812942988714}
   - component: {fileID: 5010719017344859165}
   - component: {fileID: 1212839760156519178}
-  - component: {fileID: 5796060890891258182}
   - component: {fileID: 6549295103778410604}
   - component: {fileID: 7482937166843996854}
+  - component: {fileID: -5512599640033987793}
   m_Layer: 0
   m_Name: BossProjectile
   m_TagString: Untagged
@@ -107,21 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5796060890891258182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7027686495914772670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473b577f48a2cf543abb280f6c06c44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  speed: 8
-  minMoveDistance: 10
 --- !u!114 &6549295103778410604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +150,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.39863765, y: 0.15373139}
   m_EdgeRadius: 0
+--- !u!114 &-5512599640033987793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027686495914772670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e7ea345fcd77b478f9056eeb5e65d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 8
+  minMoveDistance: 10

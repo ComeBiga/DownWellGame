@@ -11,7 +11,7 @@ public class BossProjectile : MonoBehaviour
     protected float moveDistance = 0;
     Vector2 direction;
 
-    ContactFilter2D filter;
+    protected ContactFilter2D filter;
 
     protected virtual void Start()
     {
