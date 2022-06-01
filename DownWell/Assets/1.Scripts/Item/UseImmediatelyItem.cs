@@ -6,7 +6,14 @@ public class UseImmediatelyItem : UseItem
 {
     protected override void OnPickedUp()
     {
-        Use();
+        if (PlayerManager.instance.playerObject.GetComponent<PlayerItem>().Exist(i_Info.code))
+        {
+            UICollector.Instance.coin.Gain(10);
+        }
+        else
+        {
+            Use();
+        }
     }
 
     public override void Use()

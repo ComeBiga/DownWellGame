@@ -11,6 +11,6 @@ public class RangeUpItem : UseImmediatelyItem
         PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weaponReinforcer.ReinforceRange(addRange);
         PlayerManager.instance.playerObject.GetComponent<Effector>().GenerateInParent("RangeUp");
 
-        Debug.Log("Range Up");
+        //Debug.Log("Range Up");
     }
 }

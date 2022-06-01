@@ -31,7 +31,7 @@ public class WeaponReinforcer
         index++;
         //reinforced = line[index];
         OnReinforce.Invoke();
-        Debug.Log("Weapon Reinforced!");
+        //Debug.Log("Weapon Reinforced!");
         return true;
     }
 
@@ -43,11 +43,11 @@ public class WeaponReinforcer
         {
             gun = line[i] as Gun;
             gun.addedRange += addedRange;
-            Debug.Log($"Gun addedRange : {gun.addedRange}");
+            //Debug.Log($"Gun addedRange : {gun.addedRange}");
 
             line[i] = gun;
             Gun dlg = line[i] as Gun;
-            Debug.Log($"Weapon addedRange : {dlg.addedRange}");
+            //Debug.Log($"Weapon addedRange : {dlg.addedRange}");
         }
     }
 

@@ -24,7 +24,7 @@ public class UIBullets : MonoBehaviour
 
     public void OnWeaponChanged()
     {
-        Debug.Log("OnWeaponChanged");
+        //Debug.Log("OnWeaponChanged");
         gun = playerAttack.CurrentWeapon as Gun;
         gun.OnReload += UICollector.Instance.bullets.OnChange;
         gun.OnShoot += UICollector.Instance.bullets.OnChange;
@@ -98,7 +98,7 @@ public class UIBullets : MonoBehaviour
 
     private void DisplayBulletImages()
     {
-        Debug.Log($"{bullets.Count}, {gun.CapacityOfMagazine}");
+        //Debug.Log($"{bullets.Count}, {gun.CapacityOfMagazine}");
         if (bullets.Count >= gun.CapacityOfMagazine) return;
 
         foreach(var bullet in bullets)
