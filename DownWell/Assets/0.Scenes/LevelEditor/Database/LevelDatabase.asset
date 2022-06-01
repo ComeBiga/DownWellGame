@@ -32,6 +32,9 @@ MonoBehaviour:
   - filename: entre0_0
     stage: 0
     path: /Resources/Levels/Stage0/Entre/entre0_0.json
+  - filename: entre0_1
+    stage: 0
+    path: /Resources/Levels/Stage0/Entre/entre0_1.json
   - filename: entre1_0
     stage: 1
     path: /Resources/Levels/Stage1/Entre/entre1_0.json
@@ -260,6 +263,3 @@ MonoBehaviour:
   - filename: StageStart
     stage: 6
     path: /Resources/Levels/StageStart/StageStart.json
-  - filename: entre0_1
-    stage: 1
-    path: /Resources/Levels/Stage0/Entre/entre0_1.json

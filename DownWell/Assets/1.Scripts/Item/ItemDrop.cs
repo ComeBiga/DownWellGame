@@ -47,7 +47,7 @@ public class ItemDrop : ScriptableObject
 
         var rand = CatDown.Random.Get();
         var popSpeed = new Vector2(rand.Next(-(int)dropSetting.maxHorizontalPopSpeed, (int)dropSetting.maxHorizontalPopSpeed),
-                                   rand.Next(-(int)dropSetting.minVerticalPopSpeed, (int)dropSetting.maxVerticalPopSpeed));
+                                   rand.Next((int)dropSetting.minVerticalPopSpeed, (int)dropSetting.maxVerticalPopSpeed));
 
         dropItem.GetComponent<Rigidbody2D>().AddForce(popSpeed, ForceMode2D.Impulse);
         dropItem.GetComponent<Item>().Invoke("EndPoping", dropSetting.popingTime);
