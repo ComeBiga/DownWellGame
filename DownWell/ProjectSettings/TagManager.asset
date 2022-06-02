@@ -63,11 +63,11 @@ TagManager:
   - name: Enemy
     uniqueID: 146973773
     locked: 0
-  - name: Player
-    uniqueID: 1343732879
-    locked: 0
   - name: SpecialItem
     uniqueID: 2731365685
+    locked: 0
+  - name: Player
+    uniqueID: 1343732879
     locked: 0
   - name: FX
     uniqueID: 2443339527

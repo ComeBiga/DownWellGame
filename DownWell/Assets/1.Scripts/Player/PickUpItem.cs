@@ -40,11 +40,8 @@ public class PickUpItem : MonoBehaviour
         foreach(var item in items)
         {
             var ic = item.GetComponent<Item>();
-
-            if (ic.PickUp())
-            {
-                ic.PutIn(GetComponent<PlayerItem>());
-            }
+            ic.PickUp();
+            ic.PutIn(GetComponent<PlayerItem>());
         }
     }
 }
