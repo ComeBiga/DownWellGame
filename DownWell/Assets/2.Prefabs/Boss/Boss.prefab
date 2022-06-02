@@ -214,7 +214,7 @@ MonoBehaviour:
   maxHealth: 500
   health:
     current: 0
-  damagedInterval: 0.25
+  damagedInterval: 0.08
   dyingObj: {fileID: 6431410211589148503, guid: 7d068be3a1a94b44e900397a7b7e7c3c, type: 3}
 --- !u!114 &2485176263420914955
 MonoBehaviour:
@@ -339,6 +339,9 @@ MonoBehaviour:
       m_Calls: []
   hitBox: {fileID: 307820062667988535, guid: b4d95b51186fd5d48803732f1769ddb6, type: 3}
   pos: {fileID: 1649624395474174976}
+  distance: 2
+  speed: 2
+  attackAtCenter: 0
 --- !u!1 &1649624395771165162
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +614,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1160250817
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

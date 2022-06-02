@@ -26,13 +26,13 @@ namespace CatDown
 
         public void CheckDecision()
         {
-            Debug.Log($"Current state : {brain.Current.name}, Change to : {toState} (CheckDecision / EnemyTransition.cs)");
+            //Debug.Log($"Current state : {brain.Current.name}, Change to : {toState} (CheckDecision / EnemyTransition.cs)");
             if (decision != null) decision.Check();
         }
 
         public void OnChangeState()
         {
-            Debug.Log($"Current state : {brain.Current.name}, Change to : {toState} (OnChangeState / EnemyTransition.cs)");
+            //Debug.Log($"Current state : {brain.Current.name}, Change to : {toState} (OnChangeState / EnemyTransition.cs)");
             brain.ChangeState(toState);
         }
 

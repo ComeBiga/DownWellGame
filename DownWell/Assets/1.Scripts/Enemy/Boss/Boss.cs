@@ -79,15 +79,27 @@ public class Boss : MonoBehaviour, IHitByProjectile
 
     private IEnumerator DamagedFX()
     {
-        GetComponent<SpriteRenderer>().color = Color.black;
+        //GetComponent<SpriteRenderer>().color = Color.black;
+        ChangeColor(Color.black);
 
         yield return new WaitForSeconds(damagedInterval);
 
-        GetComponent<SpriteRenderer>().color = Color.white;
+        //GetComponent<SpriteRenderer>().color = Color.white;
+        ChangeColor(Color.white);
     }
 
     public void Hit(int damage = 0)
     {
         Damaged(damage);
+    }
+
+    private void ChangeColor(Color color)
+    {
+        //RuntimeAnimatorController ac = gameObject.GetComponent<Animator>().runtimeAnimatorController;
+        //gameObject.GetComponent<Animator>().runtimeAnimatorController = null;
+        //gameObject.GetComponent<SpriteRenderer>().color = color;
+        //gameObject.GetComponent<Animator>().runtimeAnimatorController = ac;
+
+        GetComponent<SpriteRenderer>().material.color = color;
     }
 }

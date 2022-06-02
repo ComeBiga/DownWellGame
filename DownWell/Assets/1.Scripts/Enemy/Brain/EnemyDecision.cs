@@ -38,7 +38,7 @@ namespace CatDown
             }
 
             EnterExamine();
-            Debug.Log($"current state : {transition.Brain.Current.name} (ECheck / EnemyDecision.cs");
+            //Debug.Log($"current state : {transition.Brain.Current.name} (ECheck / EnemyDecision.cs");
 
             while(true)
             {
@@ -66,7 +66,7 @@ namespace CatDown
         protected void Decide(string log = "")
         {
             //transition.OnChangeState();
-            Debug.Log($"Decide from : {log}, current state : {transition.Brain.Current.name}");
+            //Debug.Log($"Decide from : {log}, current state : {transition.Brain.Current.name}");
             decided = true;
             OnDecide.Invoke();
         }
