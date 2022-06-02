@@ -48,7 +48,8 @@ MonoBehaviour:
   - {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
   - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
   - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
-  itemGiverSprites: []
+  itemGiverSprites:
+  - {fileID: 0}
   enemyObjects:
   - {fileID: 8789586585210228532, guid: a28556a9307fd2a40b0badfa432064a0, type: 3}
   - {fileID: 8802910570157426904, guid: a0a906d1edc282840bc09274ad390083, type: 3}

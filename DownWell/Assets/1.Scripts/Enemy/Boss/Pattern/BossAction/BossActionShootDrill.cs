@@ -54,12 +54,11 @@ public class BossActionShootDrill : BossAction
         for (int i = 0; i < 3; i++)
         {
             Destroy(warn[i]);
+            shotProjectile[i] = Instantiate(projectile, pos[i], Quaternion.identity, transform);
         }
 
-        for (int i = 0; i < 3; i++)
-            shotProjectile[i] = Instantiate(projectile, pos[i], Quaternion.identity, transform);
-       
         Shoot();
+
         for(int i=0;i<3;i++)
             shotProjectile[i].GetComponent<BossProjectile>().MoveToTargetByTransform();
         
