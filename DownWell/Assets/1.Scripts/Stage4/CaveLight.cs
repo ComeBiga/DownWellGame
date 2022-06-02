@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class CaveLight : MonoBehaviour
 {
-    Animator caveLight;
+    public bool activeOnce;
 
     private void Start()
     {
-        caveLight = PlayerManager.instance.playerObject.transform.GetChild(5).gameObject.GetComponent<Animator>();
-
+        activeOnce = false;
         if (StageManager.instance.stages[StageManager.instance.CurrentStageIndex].Name == "Stage3")
-            caveLight.SetBool("On", false);
+        {
+            GetComponent<Animator>().SetBool("On", false);
+            activeOnce = true;
+        }
     }
     void Update()
     {
+        //∫“¿ª π‡«˚¿ª ∂ß
+        if (GetComponent<Animator>().GetBool("On")&& activeOnce)
+        {
+            activeOnce = false;
+            if(IsInvoking("CaveLightOff"))
+                CancelInvoke("CaveLightOff");
+            Invoke("CaveLightOff", 3f);
+        }
+    }
+
+    void CaveLightOff()
+    {
+        GetComponent<Animator>().SetBool("On", false);
+        activeOnce = true;
     }
 }
