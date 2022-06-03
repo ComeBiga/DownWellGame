@@ -2825,6 +2825,9 @@ MonoBehaviour:
   - {fileID: 437669055}
   - {fileID: 1506345800}
   - {fileID: 584396129}
+  fillColors:
+  - {fileID: -5133366326846771148, guid: e732178fb0879b247900ec68339984ec, type: 3}
+  - {fileID: -1097895855674340645, guid: 4915e18f34a42aa49abc4cf45d9eb6d8, type: 3}
 --- !u!1 &382856862
 GameObject:
   m_ObjectHideFlags: 0

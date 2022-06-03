@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32932b1db19a798428c468ae081a5c6a, type: 3}
-  m_Name: ShotGun
+  m_Name: PowerShotGun
   m_EditorClassIdentifier: 
-  shootable: 1
+  shootable: 0
   shotRebound: 5
   coolDownTime: 0.6
-  projectile: {fileID: 8349611456179436559, guid: 7fb5a3dab5260ca4ba776fb4deb21c61, type: 3}
+  projectile: {fileID: 5046906191758248325, guid: 24432896551f6e84fb1354121b9d8127, type: 3}
   damage: 12
   addedRange: 2
   destroyOnHit: 0
-  capacity: 2
+  capacity: 4

@@ -6,23 +6,26 @@ using UnityEngine.UI;
 public class UIHealthBar : MonoBehaviour
 {
     public List<Image> fills;
+    [SerializeField] private Sprite[] fillColors;
+    private int colorIndex;
 
     private PlayerHealth playerHP;
     private int lastHP;
-
-    private void Start()
-    {
-
-    }
 
     public void Init()
     {
         playerHP = PlayerManager.instance.playerObject.GetComponent<PlayerHealth>();
         lastHP = playerHP.CurrentHealth;
+
+        colorIndex = CalculateFillColorIndex(playerHP.CurrentHealth) - 1;
+
+        SetFillColorAll(fillColors[colorIndex]);
     }
 
     public void OnChange()
     {
+        //colorIndex = CalculateFillColorIndex(playerHP.CurrentHealth);
+
         if(playerHP.CurrentHealth > lastHP)
         {
             Increase();
@@ -41,7 +44,10 @@ public class UIHealthBar : MonoBehaviour
     {
         var currentHP = playerHP.CurrentHealth;
 
-        fills[lastHP].color = Color.white;
+        colorIndex = CalculateFillColorIndex(lastHP);
+        var fillIndex = lastHP % 3;
+        Debug.Log($"fillIndex : {fillIndex}, colorIndex {colorIndex}");
+        fills[fillIndex].sprite = fillColors[colorIndex];
 
         lastHP = currentHP;
     }
@@ -50,8 +56,26 @@ public class UIHealthBar : MonoBehaviour
     {
         var currentHP = playerHP.CurrentHealth;
 
-        fills[currentHP].color = Color.clear;
+        colorIndex = CalculateFillColorIndex(currentHP);
+        var fillIndex = currentHP % 3;
+        if (colorIndex < 1)
+            fills[fillIndex].color = Color.clear;
+        else
+            fills[fillIndex].sprite = fillColors[colorIndex - 1];
 
         lastHP = currentHP;
+    }
+
+    private int CalculateFillColorIndex(int hpCount)
+    {
+        return hpCount / 3;
+    }
+
+    private void SetFillColorAll(Sprite sprite)
+    {
+        foreach(var f in fills)
+        {
+            f.sprite = sprite;
+        }
     }
 }

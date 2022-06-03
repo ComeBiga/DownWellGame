@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
 
     public float lifeDistance = 5f;
 
+    public bool destroyOnHit = true;
+
     private void Update()
     {
         //CollisionCheck();
@@ -105,7 +107,8 @@ public class Projectile : MonoBehaviour
                 collision.GetComponent<IHitByProjectile>().Hit(damage);
 
                 GetComponent<Effector>().Generate("Hit");
-                Destroy();
+                
+                if(destroyOnHit) Destroy();
             }
 
             //if (collision.tag == "Boss")

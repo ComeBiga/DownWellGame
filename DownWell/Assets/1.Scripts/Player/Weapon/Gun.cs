@@ -12,6 +12,7 @@ public class Gun : Weapon
 
     protected Transform shotPos;
     public float addedRange;
+    public bool destroyOnHit = true;
 
     // magazine
     public struct Magazine
@@ -152,6 +153,9 @@ public class Gun : Weapon
 
         // Modifying Range
         projectile.lifeDistance += addedRange;
+
+        // Destory on hit
+        projectile.destroyOnHit = destroyOnHit;
 
         _projectile.GetComponent<ProjectileMovement>().Init();
     }
