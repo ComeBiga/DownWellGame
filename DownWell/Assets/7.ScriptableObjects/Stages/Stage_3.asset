@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 8802910570157426904, guid: a0a906d1edc282840bc09274ad390083, type: 3}
   - {fileID: 6790013765567100886, guid: f003698416d388b44bceb64e5626bf93, type: 3}
   - {fileID: 6851877925598714561, guid: eafce809f7ee31a4481cc1445516eee3, type: 3}
-  bossObject: {fileID: 8440922860621249452, guid: 2394bad115ff56240aefa34ed44695d1, type: 3}
+  bossObject: {fileID: 0}
   bgInfo:
     _base:
     - {fileID: 21300000, guid: 25cc80126f231ab4190b697be3c7b049, type: 3}
