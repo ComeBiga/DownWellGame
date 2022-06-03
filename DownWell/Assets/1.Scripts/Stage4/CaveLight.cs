@@ -5,11 +5,12 @@ using UnityEngine;
 public class CaveLight : MonoBehaviour
 {
     public bool activeOnce;
+    public string stageName="Stage3"; 
 
     private void Start()
     {
         activeOnce = false;
-        if (StageManager.instance.stages[StageManager.instance.CurrentStageIndex].Name == "Stage3")
+        if (StageManager.instance.stages[StageManager.instance.CurrentStageIndex].Name == stageName)
         {
             GetComponent<Animator>().SetBool("On", false);
             activeOnce = true;
