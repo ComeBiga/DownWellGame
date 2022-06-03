@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6008028185094645234}
   - component: {fileID: 8789917459049180444}
   - component: {fileID: 8921175601830071225}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: CaveRock_R
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6008028185094645233}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

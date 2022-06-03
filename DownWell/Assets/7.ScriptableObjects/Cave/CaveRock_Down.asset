@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveRock_Down
   m_EditorClassIdentifier: 
   code: 41
-  name: CaveRock
+  name: CaveRock_Down
   score: 0
   sprite: {fileID: 21300000, guid: b3e459b2df329bf44803c339563d140f, type: 3}
   sliced: 0
