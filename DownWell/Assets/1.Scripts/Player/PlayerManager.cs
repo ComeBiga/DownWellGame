@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
     public void Init()
     {
         if (playerObject != null) Destroy(playerObject);
-        playerObject = characters.GetCharacter(0);
+        playerObject = characters.GetCharacterProfile(0).pref;
     }
 
     public void Instantiate(Vector3 position)

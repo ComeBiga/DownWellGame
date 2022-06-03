@@ -20,10 +20,12 @@ public class UICharacterCollection : MonoBehaviour
         {
             var newProfile = Instantiate(profile, transform);
 
-            newProfile.GetComponent<UICharacterProfile>().Character = character;
+            newProfile.GetComponent<UICharacterProfile>().Character = character.pref;
 
             newProfile.GetComponentInChildren<Toggle>().group = toggleGroup;
             newProfile.GetComponentInChildren<Toggle>().onValueChanged.AddListener(SetPlayerCharacter);
+
+            if (character.locked) newProfile.GetComponentInChildren<Toggle>().interactable = false;
         }
     }
 
