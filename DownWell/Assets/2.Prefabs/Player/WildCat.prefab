@@ -298,8 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254f924eee6344742a371d832b3d4058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Cat
-  num: 0
+  name: WildCat
+  num: 2
 --- !u!114 &6329849020522339201
 MonoBehaviour:
   m_ObjectHideFlags: 0

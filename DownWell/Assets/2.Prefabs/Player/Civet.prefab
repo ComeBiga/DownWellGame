@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254f924eee6344742a371d832b3d4058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Dog
+  name: Civet
   num: 1
 --- !u!114 &2236011651787514179
 MonoBehaviour:
