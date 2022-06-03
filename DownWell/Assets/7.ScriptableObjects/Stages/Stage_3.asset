@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage_3
   m_EditorClassIdentifier: 
   name: Stage3
-  num: 1
+  num: 3
   path: /Resources/Levels/Stage3/Main
   mapObjects:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
