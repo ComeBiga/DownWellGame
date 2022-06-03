@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3271901869997338321}
   - component: {fileID: 1486997361618576881}
   - component: {fileID: 8469582313047347756}
+  - component: {fileID: 772595185631550634}
   m_Layer: 7
   m_Name: CaveWorm
   m_TagString: Enemy
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6851877925598714561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ab241f0cbc779d48b3afbcab0590c94, type: 3}
   m_Name: 
@@ -209,3 +210,24 @@ MonoBehaviour:
     transform: {fileID: 6851877925598714588}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
+--- !u!114 &772595185631550634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6851877925598714561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac279a24c73a96418e30b7e1a9383e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  rayLength: 0.05
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  groundLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  rayLengthOutRange: 0.5
+  posMod: 0.1

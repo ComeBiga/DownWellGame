@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8789586585210228523}
   - component: {fileID: 7245684450521962663}
   - component: {fileID: 6445208151747096058}
-  - component: {fileID: 3606390070392305699}
+  - component: {fileID: 7297494044297158174}
   m_Layer: 7
   m_Name: CaveBat
   m_TagString: Enemy
@@ -196,9 +196,9 @@ MonoBehaviour:
   - name: Moving
     actionLoop: 1
     actions:
-    - {fileID: 3606390070392305699}
+    - {fileID: 7297494044297158174}
     transitions: []
---- !u!114 &3606390070392305699
+--- !u!114 &7297494044297158174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8789586585210228532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 974e88b7bbacb524a92a38d3cd5c82f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 70f6a2e93eb9d4948a277d1b8f87bb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5

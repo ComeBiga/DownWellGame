@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4849757203251585093}
   - component: {fileID: 4319490478389669681}
   - component: {fileID: 666236081753012339}
+  - component: {fileID: 5916983518647734383}
   m_Layer: 7
   m_Name: CaveMouse
   m_TagString: Enemy
@@ -206,7 +207,7 @@ MonoBehaviour:
   - name: Moving
     actionLoop: 1
     actions:
-    - {fileID: 666236081753012339}
+    - {fileID: 5916983518647734383}
     transitions: []
 --- !u!114 &666236081753012339
 MonoBehaviour:
@@ -215,9 +216,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6790013765567100886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 129e141959d3bba41acf3e2cb3a3f4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 0.1
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  groundLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  moveAsCollision: 0
+  speed: 4
+  startDirection: 0
+  flipX: 0
+  changeTime: 3
+--- !u!114 &5916983518647734383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6790013765567100886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518cd137c71d13a4fb275fdf1ac84c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rayLength: 0.1
