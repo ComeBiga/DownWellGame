@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IHitByProjectile
 {
     public EnemyInfo info;
-    public int health = 10;
+    [HideInInspector] public int health = 10;
     [HideInInspector] public bool invincible = false;
 
     [Header("DropItems")]

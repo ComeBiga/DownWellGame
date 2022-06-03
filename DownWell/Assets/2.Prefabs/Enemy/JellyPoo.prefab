@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3768119630584708889}
   - component: {fileID: 7275870146132870485}
   - component: {fileID: 8224531701916298570}
-  - component: {fileID: 3497555664075828463}
+  - component: {fileID: 6668236002862958570}
   - component: {fileID: 2625999096728353576}
   - component: {fileID: 492955916106371826}
   - component: {fileID: 1503795862426347861}
@@ -163,7 +163,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.91142523, y: 0.6474173}
   m_EdgeRadius: 0.01
---- !u!114 &3497555664075828463
+--- !u!114 &6668236002862958570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3497555664075828464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 259b585905059e24aa8aef15b53ae4b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 39a1ecd87485cbf43b29da87e4c59103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 15e5dd87c4c9e5441b5e34f8be30f2b2, type: 2}
@@ -180,6 +180,7 @@ MonoBehaviour:
   invincible: 0
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
+  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
 --- !u!114 &2625999096728353576
 MonoBehaviour:
   m_ObjectHideFlags: 0
