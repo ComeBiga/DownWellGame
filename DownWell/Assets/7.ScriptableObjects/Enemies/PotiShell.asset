@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 2998
   name: PotiShell
-  sprite: {fileID: 4505586374222085760, guid: f907423746fef3f4ebad90e857763f20, type: 3}
-  sprites: []
-  sliced: 1
   score: 0
+  sprite: {fileID: 4505586374222085760, guid: f907423746fef3f4ebad90e857763f20, type: 3}
+  sliced: 1
+  hp: 5
