@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 5200003265344453156}
   - component: {fileID: 7319329846358165008}
   - component: {fileID: 623963207081921776}
+  - component: {fileID: 3877275238511101863}
   - component: {fileID: 1284640389756179048}
   - component: {fileID: 4855797169223127852}
   - component: {fileID: 5848510546564840479}
@@ -203,6 +204,7 @@ Transform:
   - {fileID: 7537039007443620192}
   - {fileID: 7820427682867251193}
   - {fileID: 5962660012387687386}
+  - {fileID: 5186845396704758627}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -420,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0362ffb4ee1d0e4b86de80c7768dddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 5
   jumpSpeed: 12
   maxFallSpeed: 30
   cantMove: 0
@@ -438,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallCollision: {fileID: 0}
-  speed: 8
+  speed: 5
   jumpSpeed: 12
   gravity: 3
   maxFallSpeed: 30
@@ -526,6 +528,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3877275238511101863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196084851690187152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec64075c0c82264fa1b358a78384d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quakeCollider: {fileID: 469658117010701494}
+  filter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 128
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  magnitude: 0.1
+  duration: 0.2
 --- !u!114 &1284640389756179048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,6 +599,53 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!1 &6444005579006687203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5186845396704758627}
+  - component: {fileID: 469658117010701494}
+  m_Layer: 3
+  m_Name: QuakeRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5186845396704758627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444005579006687203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6196084851690187156}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &469658117010701494
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444005579006687203}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!1 &6746180385737115380
 GameObject:
   m_ObjectHideFlags: 0
