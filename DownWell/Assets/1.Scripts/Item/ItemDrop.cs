@@ -40,6 +40,41 @@ public class ItemDrop : ScriptableObject
         }
     }
 
+    public void Random(Vector3 position)
+    {
+        foreach(var item in dropItems)
+        {
+            var _item = item.GetComponent<Item>();
+
+            if (_item.i_Info.name == "Coin")
+            {
+                InstantiateCoin(_item, position);
+            }
+            else
+            {
+                if (CatDown.Random.Get().Next(100) < _item.i_Info.chacePercent)
+                {
+                    //rItem.InstantiateItem(position);
+                    InstantiateItem(_item.gameObject, position);
+                }
+            }
+        }
+    }
+
+    private void InstantiateCoin(Item _item, Vector3 position)
+    {
+        var count = CatDown.Random.Get().Next(3, 6);
+
+        for (int i = 0; i < count; i++)
+        {
+            if (CatDown.Random.Get().Next(100) < _item.i_Info.chacePercent)
+            {
+                //rItem.InstantiateItem(position);
+                InstantiateItem(_item.gameObject, position);
+            }
+        }
+    }
+
     private void InstantiateItem(GameObject itemObject, Vector3 position)
     {
         var dropItem = Instantiate(itemObject, position, Quaternion.identity);
