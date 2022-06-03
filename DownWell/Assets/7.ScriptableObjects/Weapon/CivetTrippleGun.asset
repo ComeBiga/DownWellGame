@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f55cece96373d4abbd290659092c8f, type: 3}
   m_Name: CivetTrippleGun
   m_EditorClassIdentifier: 
-  shootable: 1
+  shootable: 0
   shotRebound: 0
   coolDownTime: 0.16
   projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
   damage: 4
-  addedRange: 38
+  addedRange: 0
+  destroyOnHit: 1
   capacity: 8
   angleOffset: 15
