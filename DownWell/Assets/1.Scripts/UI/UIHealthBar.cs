@@ -47,6 +47,7 @@ public class UIHealthBar : MonoBehaviour
         colorIndex = CalculateFillColorIndex(lastHP);
         var fillIndex = lastHP % 3;
         Debug.Log($"fillIndex : {fillIndex}, colorIndex {colorIndex}");
+        fills[fillIndex].color = Color.white;
         fills[fillIndex].sprite = fillColors[colorIndex];
 
         lastHP = currentHP;

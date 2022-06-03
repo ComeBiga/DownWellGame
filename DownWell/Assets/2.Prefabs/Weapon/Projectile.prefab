@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 4
-  lifeDistance: 5
+  lifeDistance: 5.7
+  destroyOnHit: 1
 --- !u!114 &-4662082631914798936
 MonoBehaviour:
   m_ObjectHideFlags: 0
