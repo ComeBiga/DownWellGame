@@ -11,7 +11,7 @@ namespace CatDown
             //불 켜지면
             if (PlayerManager.instance.playerObject.transform.GetChild(5).gameObject.GetComponent<Animator>().GetBool("On"))
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
             }
             else
             {

@@ -12,17 +12,24 @@ public class CaveLight : MonoBehaviour
         activeOnce = false;
         if (StageManager.instance.stages[StageManager.instance.CurrentStageIndex].Name == stageName)
         {
-            GetComponent<Animator>().SetBool("On", false);
+            GetComponent<Animator>().SetBool("On", true);
             activeOnce = true;
         }
     }
     void Update()
     {
+        if (StageManager.instance.stages[StageManager.instance.CurrentStageIndex].Name != stageName)
+        {
+            GetComponent<Animator>().SetBool("On", true);
+            activeOnce =false;
+            stageName = "";
+        }
+
         //∫“¿ª π‡«˚¿ª ∂ß
-        if (GetComponent<Animator>().GetBool("On")&& activeOnce)
+        if (GetComponent<Animator>().GetBool("On") && activeOnce)
         {
             activeOnce = false;
-            if(IsInvoking("CaveLightOff"))
+            if (IsInvoking("CaveLightOff"))
                 CancelInvoke("CaveLightOff");
             Invoke("CaveLightOff", 3f);
         }
