@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour
 
         // Gameover UI Panel
         Invoke("GameOverPanel", 3f);
+
+        AchievementSystem.Instance.RewardAsAllAchieved();
     }
 
     void GameOverPanel()

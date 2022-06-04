@@ -3089,6 +3089,7 @@ GameObject:
   - component: {fileID: 783146857}
   - component: {fileID: 783146856}
   - component: {fileID: 783146858}
+  - component: {fileID: 783146859}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -3146,6 +3147,21 @@ MonoBehaviour:
   maxLogCount: 1000
   logFontSize: 12
   scaleFactor: 1
+--- !u!114 &783146859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783146855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43fe9e4bb35cbd48a456326dc805f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  achievements:
+  - {fileID: 11400000, guid: eb5ccf020a99853479d6bf02c0132d2c, type: 2}
 --- !u!4 &783354765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7474343433999274379, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}

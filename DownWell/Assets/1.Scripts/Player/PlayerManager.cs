@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject playerObject;
     [SerializeField] private CharacterCollector characters;
+    public CharacterCollector Collector { get { return characters; } }
     //public List<GameObject> characters;
 
     //public Character selectedCharacter;
