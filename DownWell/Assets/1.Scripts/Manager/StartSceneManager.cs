@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StartSceneManager : Singleton<StartSceneManager>
 {
     [Header("UI")]
+    public GameObject UIs;
     public bool viewOpening = true;
     public GameObject openingPanel;
     public GameObject startPanel;
@@ -26,10 +27,16 @@ public class StartSceneManager : Singleton<StartSceneManager>
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            AchievementSystem.Instance.ResetAllAchievements();
-            PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "FatCat").locked = true;
-            UICharacterCollection.Instance.ResetCharacterProfiles();
+            InitCollectionData();
         }
+    }
+
+    private void InitCollectionData()
+    {
+        AchievementSystem.Instance.ResetAllAchievements();
+        UICharacterCollection.Instance.ResetCharacterProfiles();
+        UIs.GetComponentInChildren<UICoinPanel>().Init();
+        UIs.GetComponentInChildren<UICharacterSelection>().UpdateButton();
     }
 
     public void InitPanel()

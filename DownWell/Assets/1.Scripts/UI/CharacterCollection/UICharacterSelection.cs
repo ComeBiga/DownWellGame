@@ -14,6 +14,8 @@ public class UICharacterSelection : MonoBehaviour
     [SerializeField] private GameObject buyBtn;
     [SerializeField] private GameObject lockBtn;
 
+    private CharacterCollector.CharacterProfile selectedCharacterProfile;
+
     /// <summary>
     /// 0:selectButton, 1:buyButton, 2:lockButton
     /// </summary>
@@ -40,18 +42,41 @@ public class UICharacterSelection : MonoBehaviour
         }
     }
 
-    public void SetSelectionPanel(CharacterCollector.CharacterProfile characterProfile)
+    public void UpdateSelectionPanel(CharacterCollector.CharacterProfile characterProfile)
     {
+        selectedCharacterProfile = characterProfile;
+
         characterName.text = characterProfile.CharacterName;
         characterDescription.text = characterProfile.description;
 
-        buyBtn.GetComponentInChildren<Text>().text = "-100";
-        
+        buyBtn.GetComponentInChildren<Text>().text = characterProfile.price.ToString();
+        if (characterProfile.price > PlayerPrefs.GetInt("Coin"))
+            buyBtn.GetComponentInChildren<Button>().interactable = false;
+        else
+            buyBtn.GetComponentInChildren<Button>().interactable = true;
+
+        UpdateButton(characterProfile);
+    }
+
+    public void BuyCharacter()
+    {
+        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - selectedCharacterProfile.price);
+        selectedCharacterProfile.locked = false;
+        UpdateButton(selectedCharacterProfile);
+    }
+
+    public void UpdateButton()
+    {
+        UpdateButton(selectedCharacterProfile);
+    }
+
+    public void UpdateButton(CharacterCollector.CharacterProfile characterProfile)
+    {
         if (characterProfile.locked && characterProfile.canBuy)
         {
             SwitchButton(1);
         }
-        else if(characterProfile.locked)
+        else if (characterProfile.locked)
         {
             SwitchButton(2);
         }
@@ -61,11 +86,11 @@ public class UICharacterSelection : MonoBehaviour
         }
     }
 
-    public void SetSelectionPanel(string name, string description, string price = "10")
-    {
-        characterName.text = name;
-        characterDescription.text = description;
+    //public void SetSelectionPanel(string name, string description, string price = "10")
+    //{
+    //    characterName.text = name;
+    //    characterDescription.text = description;
 
-        buyBtn.GetComponentInChildren<Text>().text = price;
-    }
+    //    buyBtn.GetComponentInChildren<Text>().text = price;
+    //}
 }

@@ -10,6 +10,8 @@ public class CoinCount : MonoBehaviour
 
     public int coin = 0;
 
+    public int Current { get { return coin; } }
+
     void Update()
     {
         coinTxt.text = coin.ToString();

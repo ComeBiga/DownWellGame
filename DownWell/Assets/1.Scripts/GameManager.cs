@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         gameoverPanel.SetActive(true);
         gameoverPanel.GetComponent<UIGameOver>().TurnOnAchievementPanel(AchievementSystem.Instance.RewardAsAllAchieved());
+        PlayerPrefs.SetInt("Coin", UICollector.Instance.coin.Current);
     }
 
     private void DropCharacterLateSeconds()

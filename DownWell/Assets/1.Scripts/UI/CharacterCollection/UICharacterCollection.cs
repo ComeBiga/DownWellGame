@@ -48,6 +48,9 @@ public class UICharacterCollection : Singleton<UICharacterCollection>
             Destroy(profiles[i].gameObject);
 
         InitCharacterProfiles();
+
+        PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "FatCat").locked = true;
+        PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "WildCat").locked = true;
     }
 
     public GameObject GetSelectedCharacter()
@@ -65,18 +68,7 @@ public class UICharacterCollection : Singleton<UICharacterCollection>
             var selectedCharacterProfile = collector.GetCharacterProfile(GetSelectedCharacter().GetComponent<Player>().name);
             PlayerManager.instance.SetPlayerCharacter(selectedCharacterProfile.pref);
 
-            selection.SetSelectionPanel(selectedCharacterProfile); 
-        }
-    }
-    
-    private void SetPlayerCharacter()
-    {
-        if(true)
-        {
-            var selectedCharacterProfile = collector.GetCharacterProfile(GetSelectedCharacter().GetComponent<Player>().name);
-            PlayerManager.instance.SetPlayerCharacter(selectedCharacterProfile.pref);
-
-            selection.SetSelectionPanel(selectedCharacterProfile); 
+            selection.UpdateSelectionPanel(selectedCharacterProfile); 
         }
     }
 }
