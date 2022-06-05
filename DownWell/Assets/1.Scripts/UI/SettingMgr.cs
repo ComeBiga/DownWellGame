@@ -18,7 +18,7 @@ public class SettingMgr : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
     #endregion
@@ -54,6 +54,9 @@ public class SettingMgr : MonoBehaviour
         if(buttonOnStart) setBtn.SetActive(true);
         //if (SceneManager.GetActiveScene().name == "GameScene" && bgmOff == 0)
         //    SoundManager.instance.PlayBGMSound("Background");  //사운드 시작
+
+        //ActivateSettingButton(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        //SceneManager.sceneLoaded += ActivateSettingButton;
     }
 
     void Update()
@@ -66,15 +69,15 @@ public class SettingMgr : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene().name == "StartScene" && OpeningPanel != null)
-        {
-            if (OpeningPanel.activeInHierarchy)
-                setBtn.GetComponent<Image>().enabled = false;
-            else
-                setBtn.GetComponent<Image>().enabled = true;
-        }
-        else
-            setBtn.GetComponent<Image>().enabled = true;
+        //if (SceneManager.GetActiveScene().name == "StartScene" && OpeningPanel != null)
+        //{
+        //    if (OpeningPanel.activeInHierarchy)
+        //        setBtn.GetComponent<Image>().enabled = false;
+        //    else
+        //        setBtn.GetComponent<Image>().enabled = true;
+        //}
+        //else
+        //    setBtn.GetComponent<Image>().enabled = true;
 
         if (Setting.worldCamera == null)
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -105,9 +108,25 @@ public class SettingMgr : MonoBehaviour
 
     }
 
+    public void ResetCollectionData()
+    {
+        StartSceneManager.Instance.ResetCollectionData();
+    }
+
     void DoubleClick()
     {
         ClickCount = 0;
+    }
+
+    public void SetActiveSettingButton(bool value)
+    {
+        setBtn.SetActive(value);
+    }
+
+    public void ActivateSettingButton(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex == 0)
+            setBtn.SetActive(true);
     }
 
     //setting

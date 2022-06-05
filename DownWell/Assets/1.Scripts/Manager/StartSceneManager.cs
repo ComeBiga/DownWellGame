@@ -11,6 +11,7 @@ public class StartSceneManager : Singleton<StartSceneManager>
     public GameObject openingPanel;
     public GameObject startPanel;
     public GameObject charPanel;
+    public GameObject settingButton;
     public Text versionInfo;
 
     // Start is called before the first frame update
@@ -27,11 +28,11 @@ public class StartSceneManager : Singleton<StartSceneManager>
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            InitCollectionData();
+            ResetCollectionData();
         }
     }
 
-    private void InitCollectionData()
+    public void ResetCollectionData()
     {
         AchievementSystem.Instance.ResetAllAchievements();
         UICharacterCollection.Instance.ResetCharacterProfiles();
@@ -46,12 +47,16 @@ public class StartSceneManager : Singleton<StartSceneManager>
             openingPanel.SetActive(true);
             startPanel.SetActive(false);
             charPanel.SetActive(false);
+            //settingButton.SetActive(false);
+            SettingMgr.instance.SetActiveSettingButton(false);
         }
         else
         {
             openingPanel.SetActive(false);
             startPanel.SetActive(true);
             charPanel.SetActive(false);
+            //settingButton.SetActive(false);
+            SettingMgr.instance.SetActiveSettingButton(false);
         }
 
         versionInfo.text = "Ver." + Application.version;
@@ -76,10 +81,14 @@ public class StartSceneManager : Singleton<StartSceneManager>
     {
         startPanel.SetActive(false);
         charPanel.SetActive(true);
+        //settingButton.SetActive(true);
+        SettingMgr.instance.SetActiveSettingButton(true);
+
     }
 
     public void LoadGameScene()
     {
-        SceneManager.LoadScene(1);
+        SettingMgr.instance.SetActiveSettingButton(false);
+        var operation = SceneManager.LoadSceneAsync(1);
     }
 }
