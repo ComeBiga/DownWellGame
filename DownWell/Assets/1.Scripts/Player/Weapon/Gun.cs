@@ -63,6 +63,10 @@ public class Gun : Weapon
 
         addedRange = 0f;
 
+        // Initialize Event
+        OnReload = null;
+        OnShoot = null;
+
         // Bullet UI
         //OnReload += () => { player.GetComponent<Effector>().GenerateInParent("Reload"); };
         //UICollector.Instance.bullets.Init();
@@ -113,6 +117,8 @@ public class Gun : Weapon
 
             OnShoot.Invoke();
         }
+
+        //Debug.Log($"Gun Shoot");
     }
 
     protected void OnShootFunc()
@@ -122,7 +128,7 @@ public class Gun : Weapon
 
     public void Reload()
     {
-        //Debug.Log(Reloaded);
+
         if (Reloaded) return;
 
         magazine.current = magazine.max;

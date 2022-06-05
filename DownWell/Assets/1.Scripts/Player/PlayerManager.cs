@@ -36,15 +36,27 @@ public class PlayerManager : MonoBehaviour
 
     public void Init()
     {
-        if (playerObject != null) Destroy(playerObject);
+        if (playerObject != null) playerObject = null;
         playerObject = characters.GetCharacterProfile(0).pref;
+    }
+
+    public void DestoryPlayerObject()
+    {
+        Destroy(playerObject);
     }
 
     public void Instantiate(Vector3 position)
     {
-        playerObject = Instantiate(playerObject, position, Quaternion.identity, transform);
+        playerObject = Instantiate(playerObject, position, Quaternion.identity);
         playerObject.GetComponent<PlayerPhysics>().Init();
+        playerObject.GetComponent<PlayerAttack>().InitWeapons();
         //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
+    }
+    
+    public void Instantiate(GameObject playerObject, Vector3 position)
+    {
+        this.playerObject = Instantiate(playerObject, position, Quaternion.identity);
+        this.playerObject.GetComponent<PlayerPhysics>().Init();
     }
 
     public void SetPlayerCharacter(GameObject playerObject)

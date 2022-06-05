@@ -42,6 +42,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
     private void GetAchievementData(IAchievementInfo achivementInfo)
     {
+        Debug.Log($"GetAchievementData");
         achievedList.Enqueue(achivementInfo);
     }
 
@@ -72,6 +73,16 @@ public class AchievementSystem : Singleton<AchievementSystem>
                 var characterToUnlock = PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == achieved.Name);
                 characterToUnlock.locked = false;
                 break;
+        }
+
+        Debug.Log(PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == achieved.Name).locked);
+    }
+
+    public void ResetAllAchievements()
+    {
+        foreach(var achievement in achievements)
+        {
+            achievement.Reset();
         }
     }
 }

@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Shoot()
     {
+        //Debug.Log("Shoot");
         if(timer >= CurrentWeapon.coolDownTime && CurrentWeapon.IsShootable())//weapon.shootable && !weapon.IsEmpty)
         {
             CurrentWeapon.Attack();//Shoot(projectile, transform);
@@ -44,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
         //weapon = new Weapon(projectile, capacity);
 
         //GetComponent<PlayerPhysics>().OnGrounded += ReLoad;
-        InitWeapons();
+        //InitWeapons();
     }
 
     private void Update()
@@ -63,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
         //if(!weapon.Reloaded && GetComponent<PlayerController>().GroundCollision()) weapon.Reload();
     }
 
-    private void InitWeapons()
+    public void InitWeapons()
     {
         foreach(var w in lineOfWeapons)
         {

@@ -107,7 +107,7 @@ public class Projectile : MonoBehaviour
                 collision.GetComponent<IHitByProjectile>().Hit(damage);
 
                 GetComponent<Effector>().Generate("Hit");
-                
+
                 if(destroyOnHit) Destroy();
             }
 

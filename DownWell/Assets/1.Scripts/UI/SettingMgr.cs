@@ -66,7 +66,7 @@ public class SettingMgr : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene().name == "StartScene")
+        if (SceneManager.GetActiveScene().name == "StartScene" && OpeningPanel != null)
         {
             if (OpeningPanel.activeInHierarchy)
                 setBtn.GetComponent<Image>().enabled = false;
@@ -136,9 +136,9 @@ public class SettingMgr : MonoBehaviour
     public void homeBtn()
     {
         Time.timeScale = 1;
-        PlayerManager.instance.Init();
-        Destroy(this.gameObject);
-        SceneManager.LoadScene(0);
+        //PlayerManager.instance.DestoryPlayerObject();
+        setPanel.SetActive(false);
+        SceneManager.LoadSceneAsync(0);
     }
 
 /*    private void OnApplicationQuit()

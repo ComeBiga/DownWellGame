@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICharacterCollection : MonoBehaviour
+public class UICharacterCollection : Singleton<UICharacterCollection>
 {
     [SerializeField] private CharacterCollector collector;
     [SerializeField] private ToggleGroup toggleGroup;
@@ -27,6 +27,16 @@ public class UICharacterCollection : MonoBehaviour
 
             if (character.locked) newProfile.GetComponentInChildren<Toggle>().interactable = false;
         }
+    }
+
+    public void ResetCharacterProfiles()
+    {
+        var profiles = GetComponentsInChildren<UICharacterProfile>();
+
+        for (int i = 0; i < profiles.Length; i++)
+            Destroy(profiles[i].gameObject);
+
+        InitCharacterProfiles();
     }
 
     public GameObject GetSelectedCharacter()

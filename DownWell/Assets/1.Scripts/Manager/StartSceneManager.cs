@@ -15,9 +15,21 @@ public class StartSceneManager : Singleton<StartSceneManager>
     // Start is called before the first frame update
     void Start()
     {
+        //PlayerManager.instance.Init();
+
         InitPanel();
 
         InitSound();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            AchievementSystem.Instance.ResetAllAchievements();
+            PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "FatCat").locked = true;
+            UICharacterCollection.Instance.ResetCharacterProfiles();
+        }
     }
 
     public void InitPanel()
@@ -61,6 +73,6 @@ public class StartSceneManager : Singleton<StartSceneManager>
 
     public void LoadGameScene()
     {
-        AsyncOperation asyncOper = SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadScene(1);
     }
 }

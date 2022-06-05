@@ -12137,6 +12137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f933305cb5eef749b10251e67ddb5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collector: {fileID: 11400000, guid: 28008e69c4f5a3f47aebbc4fbe85020f, type: 2}
   playerPrefab: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
   startPos: {fileID: 382856863}
   instantiatePosition: {x: 0, y: 10, z: 0}

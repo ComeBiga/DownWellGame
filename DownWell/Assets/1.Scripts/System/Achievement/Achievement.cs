@@ -22,8 +22,8 @@ public class Achievement : ScriptableObject, IAchievementInfo
     {
         public string target;
         public int requireAmount;
-        [HideInInspector] public int currentAmount;
-        [HideInInspector] public bool achieved = false;
+        public int currentAmount;
+        public bool achieved = false;
 
         public bool IsAchieved
         {
@@ -37,6 +37,17 @@ public class Achievement : ScriptableObject, IAchievementInfo
     [SerializeField] protected Requirement[] requirements;
 
     public event System.Action<IAchievementInfo> OnAchieve;
+
+    public void Reset()
+    {
+        //OnAchieve = null;
+
+        foreach(var requirement in requirements)
+        {
+            requirement.currentAmount = 0;
+            requirement.achieved = false;
+        }
+    }
 
     public bool RequireTarget(string target)
     {

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private MapManager mapManager;
     private PlayerManager playerManager;
 
+    public CharacterCollector collector;
     public GameObject playerPrefab;
     private GameObject playerCharacter;
     public Transform startPos;
@@ -80,6 +81,11 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             ClearStage();
+        }
+        
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

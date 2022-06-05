@@ -9904,6 +9904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091beec0ef7ebda4ea02b3df1edd200c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   collector: {fileID: 11400000, guid: 28008e69c4f5a3f47aebbc4fbe85020f, type: 2}
   toggleGroup: {fileID: 2044775919}
   profile: {fileID: 5763668365962414223, guid: 5deaee8921634ca448832fe655cc9265, type: 3}

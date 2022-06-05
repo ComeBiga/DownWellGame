@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UIBullets : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
-    private List<Image> bullets;
+    //private List<Image> bullets;
+    private List<GameObject> bulletUIs;
 
     private PlayerAttack playerAttack;
     private Gun gun;
@@ -15,7 +16,8 @@ public class UIBullets : MonoBehaviour
     public void Init(PlayerAttack playerAttack)
     {
         this.playerAttack = playerAttack;
-        bullets = new List<Image>();
+        //bullets = new List<Image>();
+        bulletUIs = new List<GameObject>();
 
         OnWeaponChanged();
         
@@ -26,12 +28,13 @@ public class UIBullets : MonoBehaviour
     {
         //Debug.Log("OnWeaponChanged");
         gun = playerAttack.CurrentWeapon as Gun;
-        gun.OnReload += UICollector.Instance.bullets.OnChange;
-        gun.OnShoot += UICollector.Instance.bullets.OnChange;
+        gun.OnReload += OnChange;
+        gun.OnShoot += OnChange;
 
         lastCount = gun.CurrentNumOfBullet;
 
-        DisplayBulletImages();
+        //DisplayBulletImages();
+        DisplayBulletUIs();
     }
 
     public void OnChange()
@@ -39,8 +42,11 @@ public class UIBullets : MonoBehaviour
         gun = playerAttack.CurrentWeapon as Gun;
 
         //Debug.Log($"Bullet : {gun.CurrentNumOfBullet}");
-        
-        if(gun.CurrentNumOfBullet > lastCount)
+        //Debug.Log($"lastCount : {lastCount}");
+        //Debug.Log($"OnChange()===============");
+        //DebugBullet();
+
+        if (gun.CurrentNumOfBullet > lastCount)
         {
             Reload(gun.CurrentNumOfBullet);
         }
@@ -68,13 +74,14 @@ public class UIBullets : MonoBehaviour
     {
         for(int i = lastCount; i < lastCount + amount; i++)
         {
-            if (i >= bullets.Count)
+            if (i >= bulletUIs.Count)
             {
-                lastCount = bullets.Count;
+                lastCount = bulletUIs.Count;
                 return;
             }
 
-            bullets[i].color = Color.white;
+            bulletUIs[i].SetActive(true);
+            //bullets[i].color = Color.white;
         }
 
         lastCount += amount;
@@ -82,41 +89,93 @@ public class UIBullets : MonoBehaviour
 
     public void Decrease(int amount = 1)
     {
+        //Debug.Log($"Decrease===============");
+        //foreach(var bullet in bulletUIs)
+        //{
+        //    Debug.Log($"bulletUI 0 : {bullet}");
+        //}
+
         for (int i = lastCount; i > lastCount - amount; i--)
         {
+            //Debug.Log($"lastCount : {lastCount}, amount : {amount}, i : {i}");
+
             if(i <= 0)
             {
                 lastCount = 0;
                 return;
             }
-            
-            bullets[i - 1].color = Color.clear;
+
+            //Debug.Log($"bulletUIs : { bulletUIs[i-1] }, bulletUIs.Count : {bulletUIs.Count}");
+            bulletUIs[i - 1].SetActive(false);
+            //bullets[i - 1].color = Color.clear;
         }
 
         lastCount -= amount;
     }
 
-    private void DisplayBulletImages()
-    {
-        //Debug.Log($"{bullets.Count}, {gun.CapacityOfMagazine}");
-        if (bullets.Count >= gun.CapacityOfMagazine) return;
+    //private void DisplayBulletImages()
+    //{
+    //    //Debug.Log($"{bullets.Count}, {gun.CapacityOfMagazine}");
+    //    if (bullets.Count >= gun.CapacityOfMagazine) return;
 
-        foreach(var bullet in bullets)
+    //    Debug.Log($"DisplayBulletImages");
+
+    //    foreach(var bullet in bullets)
+    //    {
+    //        bullet.gameObject.SetActive(false);
+    //    }
+
+    //    for (int i = 0; i < gun.CapacityOfMagazine; i++)
+    //    {
+    //        if(i < bullets.Count)
+    //        {
+    //            bullets[i].gameObject.SetActive(true);
+    //        }
+    //        else
+    //        {
+    //            var blt = Instantiate(bullet, transform);
+    //            bullets.Add(blt.GetComponent<Image>());
+    //        }
+    //    }
+    //}
+
+    private void DisplayBulletUIs()
+    {
+        //Debug.Log($"bulletUIs.Count : {bulletUIs.Count}");
+
+        if (bulletUIs.Count >= gun.CapacityOfMagazine) return;
+
+        foreach (var bullet in bulletUIs)
         {
-            bullet.gameObject.SetActive(false);
+            bullet.SetActive(false);
         }
 
         for (int i = 0; i < gun.CapacityOfMagazine; i++)
         {
-            if(i < bullets.Count)
+            if (i < bulletUIs.Count)
             {
-                bullets[i].gameObject.SetActive(true);
+                bulletUIs[i].SetActive(true);
             }
             else
             {
+                //Debug.Log($"bullet : {bullet}");
                 var blt = Instantiate(bullet, transform);
-                bullets.Add(blt.GetComponent<Image>());
+                //Debug.Log($"Instantiated bullet : {blt}");
+                bulletUIs.Add(blt);
             }
+        }
+
+        //Debug.Log($"bulletUIs.Count : {bulletUIs.Count}");
+    }
+
+    public void DebugBullet()
+    {
+        Debug.Log($"HashCode : {this.GetHashCode()}");
+        int i = 0;
+        foreach (var bullet in bulletUIs)
+        {
+            Debug.Log($"bulletUI {i} : {bullet}");
+            i++;
         }
     }
 }
