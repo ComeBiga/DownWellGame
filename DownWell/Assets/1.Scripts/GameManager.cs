@@ -140,13 +140,12 @@ public class GameManager : MonoBehaviour
 
         // Gameover UI Panel
         Invoke("GameOverPanel", 3f);
-
-        AchievementSystem.Instance.RewardAsAllAchieved();
     }
 
     void GameOverPanel()
     {
         gameoverPanel.SetActive(true);
+        gameoverPanel.GetComponent<UIGameOver>().TurnOnAchievementPanel(AchievementSystem.Instance.RewardAsAllAchieved());
     }
 
     private void DropCharacterLateSeconds()

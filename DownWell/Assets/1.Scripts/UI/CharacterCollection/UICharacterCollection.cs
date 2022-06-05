@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,15 @@ public class UICharacterCollection : Singleton<UICharacterCollection>
     [SerializeField] private ToggleGroup toggleGroup;
     [SerializeField] private GameObject profile;
 
+    private List<Button> profileButtons;
+
+    [Header("Character Selection")]
+    [SerializeField] private UICharacterSelection selection;
+
     private void Start()
     {
+        profileButtons = new List<Button>();
+
         InitCharacterProfiles();
     }
 
@@ -22,10 +30,13 @@ public class UICharacterCollection : Singleton<UICharacterCollection>
 
             newProfile.GetComponent<UICharacterProfile>().Character = character.pref;
 
+            //newProfile.GetComponent<Button>().onClick.AddListener(SetPlayerCharacter);
+            //profileButtons.Add(newProfile.GetComponent<Button>());
+
             newProfile.GetComponentInChildren<Toggle>().group = toggleGroup;
             newProfile.GetComponentInChildren<Toggle>().onValueChanged.AddListener(SetPlayerCharacter);
 
-            if (character.locked) newProfile.GetComponentInChildren<Toggle>().interactable = false;
+            //if (character.locked) newProfile.GetComponentInChildren<Toggle>().interactable = false;
         }
     }
 
@@ -51,7 +62,21 @@ public class UICharacterCollection : Singleton<UICharacterCollection>
     {
         if(value)
         {
-            PlayerManager.instance.SetPlayerCharacter(GetSelectedCharacter());
+            var selectedCharacterProfile = collector.GetCharacterProfile(GetSelectedCharacter().GetComponent<Player>().name);
+            PlayerManager.instance.SetPlayerCharacter(selectedCharacterProfile.pref);
+
+            selection.SetSelectionPanel(selectedCharacterProfile); 
+        }
+    }
+    
+    private void SetPlayerCharacter()
+    {
+        if(true)
+        {
+            var selectedCharacterProfile = collector.GetCharacterProfile(GetSelectedCharacter().GetComponent<Player>().name);
+            PlayerManager.instance.SetPlayerCharacter(selectedCharacterProfile.pref);
+
+            selection.SetSelectionPanel(selectedCharacterProfile); 
         }
     }
 }

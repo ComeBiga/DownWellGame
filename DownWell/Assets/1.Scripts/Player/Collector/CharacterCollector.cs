@@ -12,7 +12,9 @@ public class CharacterCollector : ScriptableObject
     public class CharacterProfile
     {
         public GameObject pref;
+        public string description = "";
         public bool locked = false;
+        public bool canBuy = false;
         public string CharacterName
         {
             get

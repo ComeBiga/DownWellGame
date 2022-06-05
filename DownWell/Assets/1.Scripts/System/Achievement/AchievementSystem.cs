@@ -46,15 +46,17 @@ public class AchievementSystem : Singleton<AchievementSystem>
         achievedList.Enqueue(achivementInfo);
     }
 
-    public void RewardAsAllAchieved()
+    public Queue<IAchievementInfo> RewardAsAllAchieved()
     {
         if (achievedList == null)
-            return;
+            return null;
 
         foreach(var achieved in achievedList)
         {
             RewardByType(achieved);
         }
+
+        return achievedList;
     }
 
     public void RewardAsAchieved()

@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - pref: {fileID: 5834640292865415495, guid: defd1211a3470ab46a383aaab60d9292, type: 3}
+    description: 
     locked: 0
+    canBuy: 0
   - pref: {fileID: 8920811025012618084, guid: 176b6fc53e1803140b02283e24e3b851, type: 3}
+    description: 
     locked: 0
+    canBuy: 0
   - pref: {fileID: 3680244335401011622, guid: 94ffde4b81d812541ba49ce8090e3c05, type: 3}
-    locked: 0
-  - pref: {fileID: 6196084851690187152, guid: 671aee010027f784eb4af2450a16f0c0, type: 3}
+    description: 
     locked: 1
+    canBuy: 1
+  - pref: {fileID: 6196084851690187152, guid: 671aee010027f784eb4af2450a16f0c0, type: 3}
+    description: 
+    locked: 1
+    canBuy: 0
