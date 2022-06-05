@@ -21,7 +21,7 @@ public class UICoinPanel : MonoBehaviour
         SetText();
     }
 
-    private void SetText()
+    public void SetText()
     {
         coinText.text = PlayerPrefs.GetInt("Coin").ToString();
     }

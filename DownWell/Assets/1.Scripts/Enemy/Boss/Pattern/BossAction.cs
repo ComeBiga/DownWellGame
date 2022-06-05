@@ -13,6 +13,7 @@ public abstract class BossAction : MonoBehaviour
 
     public void TakeAction()
     {
+        Debug.Log($"Boss TakeAction() in {this}");
         BossAction.ready = false;
 
         //Take();

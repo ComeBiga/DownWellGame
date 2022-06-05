@@ -13,6 +13,9 @@ public class UICharacterSelection : MonoBehaviour
     [SerializeField] private GameObject selectBtn;
     [SerializeField] private GameObject buyBtn;
     [SerializeField] private GameObject lockBtn;
+    [SerializeField] private GameObject coinPanel;
+
+
 
     private CharacterCollector.CharacterProfile selectedCharacterProfile;
 
@@ -63,6 +66,7 @@ public class UICharacterSelection : MonoBehaviour
         PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - selectedCharacterProfile.price);
         selectedCharacterProfile.locked = false;
         UpdateButton(selectedCharacterProfile);
+        coinPanel.GetComponent<UICoinPanel>().SetText();
     }
 
     public void UpdateButton()

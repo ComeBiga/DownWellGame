@@ -9,6 +9,7 @@ public class BossActionShootNormal : BossAction
 
     public override void Take()
     {
+        Debug.Log($"ShootNormal Take() in {this}");
         GetComponent<Animator>().SetTrigger("Attack_0");
         // Event
         //onEvent.Invoke();

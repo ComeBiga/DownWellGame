@@ -20,12 +20,16 @@ public class BossBrain : MonoBehaviour
 
     IEnumerator EUse()
     {
+        Debug.Log($"EUse() in {this}");
         float timer = 0;
 
+        BossAction.ready = true;
         BossAction.interval = this.interval;
         SetPattern(normalPattern);
         //BossAction.onCut += current.Act;
         //Act();
+
+        Debug.Log($"BossAction.ready : {BossAction.ready}");
 
         while (true)
         {

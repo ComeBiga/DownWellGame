@@ -28,8 +28,10 @@ public class SettingMgr : MonoBehaviour
     public GameObject OpeningPanel;
     public GameObject setPanel;
     public GameObject setBtn;
-    public GameObject exitButton;
+    public GameObject resetButton;
     public GameObject ingameSetting;
+
+    [HideInInspector] public bool Opening = true;
 
 
     [Header("Image")]
@@ -69,6 +71,14 @@ public class SettingMgr : MonoBehaviour
             }
         }
 
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                SettingBtn();
+            }
+        }
+
         //if (SceneManager.GetActiveScene().name == "StartScene" && OpeningPanel != null)
         //{
         //    if (OpeningPanel.activeInHierarchy)
@@ -92,19 +102,19 @@ public class SettingMgr : MonoBehaviour
         else
             effImg.sprite = originImg;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CancelBtn();
-            ClickCount++;
-            if (!IsInvoking("DoubleClick"))
-                Invoke("DoubleClick", 1.0f);
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    CancelBtn();
+        //    ClickCount++;
+        //    if (!IsInvoking("DoubleClick"))
+        //        Invoke("DoubleClick", 1.0f);
 
-        }
-        else if (ClickCount == 2)
-        {
-            CancelInvoke("DoubleClick");
-            exitBtn();
-        }
+        //}
+        //else if (ClickCount == 2)
+        //{
+        //    CancelInvoke("DoubleClick");
+        //    exitBtn();
+        //}
 
     }
 
@@ -135,12 +145,12 @@ public class SettingMgr : MonoBehaviour
         gPaused = true;
         if ((SceneManager.GetActiveScene().buildIndex == 1) || UIManager.clickPlay)
         {
-            exitButton.SetActive(false);
+            resetButton.SetActive(false);
             ingameSetting.SetActive(true);
         }
         else
         {
-            exitButton.SetActive(true);
+            resetButton.SetActive(true);
             ingameSetting.SetActive(false);
         }
         setPanel.SetActive(true);

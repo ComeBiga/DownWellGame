@@ -42,13 +42,15 @@ public class StartSceneManager : Singleton<StartSceneManager>
 
     public void InitPanel()
     {
-        if (PlayerPrefs.GetInt("Opening") == 0 && viewOpening)
+        if (SettingMgr.instance.Opening && viewOpening)
         {
             openingPanel.SetActive(true);
             startPanel.SetActive(false);
             charPanel.SetActive(false);
             //settingButton.SetActive(false);
             SettingMgr.instance.SetActiveSettingButton(false);
+
+            SettingMgr.instance.Opening = false;
         }
         else
         {
