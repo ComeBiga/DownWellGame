@@ -215,6 +215,8 @@ MonoBehaviour:
   health:
     current: 0
   damagedInterval: 0.08
+  bodyColor: {r: 1, g: 1, b: 1, a: 1}
+  damagedColor: {r: 0, g: 0, b: 0, a: 1}
   dyingObj: {fileID: 6431410211589148503, guid: 7d068be3a1a94b44e900397a7b7e7c3c, type: 3}
 --- !u!114 &2485176263420914955
 MonoBehaviour:
@@ -246,6 +248,10 @@ MonoBehaviour:
     transform: {fileID: 1649624395474174976}
     fx: {fileID: 6455041936140182723, guid: be0fda99cc271e44c9100cd12c63e8bd, type: 3}
     angle: 0
+  - name: Breath_Rage
+    transform: {fileID: 1649624395474174976}
+    fx: {fileID: 7978505368245888294, guid: c71dc90d904827d469e1c56a97ec819b, type: 3}
+    angle: 0
 --- !u!114 &1649624395474174984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +274,11 @@ MonoBehaviour:
     - {fileID: 1649624395474175221}
     - {fileID: 1649624395474174986}
     - {fileID: 1649624395474174987}
+  beforeRage: 1
+  betweenRage: 1
+  afterRage: 1
+  first: {r: 1, g: 0.7877358, b: 0.8139054, a: 1}
+  second: {r: 1, g: 0.42745098, b: 0.49803922, a: 1}
 --- !u!114 &1649624395474175220
 MonoBehaviour:
   m_ObjectHideFlags: 0

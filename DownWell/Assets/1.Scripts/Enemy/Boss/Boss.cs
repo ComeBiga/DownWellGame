@@ -14,6 +14,10 @@ public class Boss : MonoBehaviour, IHitByProjectile
     public Health health;
     public float damagedInterval = 0.5f;
 
+    [Header("Damaged")]
+    public Color bodyColor;
+    public Color damagedColor;
+
     [Header("Death")]
     public GameObject dyingObj;
     private bool died = false;
@@ -80,12 +84,12 @@ public class Boss : MonoBehaviour, IHitByProjectile
     private IEnumerator DamagedFX()
     {
         //GetComponent<SpriteRenderer>().color = Color.black;
-        ChangeColor(Color.black);
+        ChangeColor(damagedColor);
 
         yield return new WaitForSeconds(damagedInterval);
 
         //GetComponent<SpriteRenderer>().color = Color.white;
-        ChangeColor(Color.white);
+        ChangeColor(bodyColor);
     }
 
     public void Hit(int damage = 0)

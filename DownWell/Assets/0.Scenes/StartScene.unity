@@ -6334,7 +6334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   UIs: {fileID: 1847140160}
-  viewOpening: 1
+  viewOpening: 0
   openingPanel: {fileID: 1663313545}
   startPanel: {fileID: 1527060946}
   charPanel: {fileID: 947480729}

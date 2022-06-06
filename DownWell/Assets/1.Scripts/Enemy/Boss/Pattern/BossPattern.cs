@@ -13,7 +13,13 @@ public abstract class BossPattern
         var action = GetRandomAction();
         //Debug.Log($"In Act() : {action}");
         action.TakeAction();
+        current = action;
         //Debug.Log($"current action:{action}");
+    }
+
+    public void CancelAction()
+    {
+        current.CancelTake();
     }
 
     BossAction GetRandomAction()

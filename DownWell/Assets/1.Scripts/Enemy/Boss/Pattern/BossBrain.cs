@@ -13,6 +13,15 @@ public class BossBrain : MonoBehaviour
     public BossNormalPattern normalPattern;
     public BossRagePattern ragePattern;
 
+    [Header("Interval")]
+    [SerializeField] private float beforeRage = 1f;
+    [SerializeField] private float betweenRage = 1f;
+    [SerializeField] private float afterRage = 1f;
+
+    [Header("RageColor")]
+    [SerializeField] private Color first;
+    [SerializeField] private Color second;
+
     public void Use()
     {
         StartCoroutine(EUse());
@@ -49,9 +58,25 @@ public class BossBrain : MonoBehaviour
 
             if (GetComponent<Boss>().UnderHealthRatio(rageModePercentage))
             {
-                SetPattern(ragePattern);
+                current.CancelAction();
+                StartCoroutine(EChangeToRage());
+                break;
+                //current.CancelAction();
+                //StartCoroutine(EChangeToRage());
+                
+                //SetPattern(ragePattern);
                 //BeRageMode();
                 //current.Act();
+            }
+
+            yield return null;
+        }
+
+        while(true)
+        {
+            if(BossAction.ready)
+            {
+                Act();
             }
 
             yield return null;
@@ -67,5 +92,32 @@ public class BossBrain : MonoBehaviour
     {
         current = pattern;
         //BossAction.onCut += current.Act;
+    }
+
+    private IEnumerator EChangeToRage()
+    {
+        var effector = GetComponent<Effector>();
+        var sr = GetComponent<SpriteRenderer>();
+
+        BossAction.ready = false;
+
+        yield return new WaitForSeconds(beforeRage);
+
+        effector.Generate("Breath_Rage");
+        sr.material.color = first;
+        GetComponent<Boss>().bodyColor = first;
+
+
+        yield return new WaitForSeconds(betweenRage);
+
+        effector.Generate("Breath_Rage");
+        sr.material.color = second;
+        GetComponent<Boss>().bodyColor = second;
+
+
+        yield return new WaitForSeconds(afterRage);
+
+        SetPattern(ragePattern);
+        BossAction.ready = true;
     }
 }

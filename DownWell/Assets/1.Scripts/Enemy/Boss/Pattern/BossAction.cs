@@ -22,6 +22,11 @@ public abstract class BossAction : MonoBehaviour
 
     public abstract void Take();
 
+    public void CancelTake()
+    {
+        CancelInvoke("Take");
+    }
+
     protected static void Cut()
     {
         //onCut?.Invoke();
