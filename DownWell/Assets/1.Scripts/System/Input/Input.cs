@@ -25,7 +25,12 @@ namespace CatDown
             this.controller = controller;
         }
 
-        public virtual void SetControllerSize(int ratio)
+        public virtual void SetPartition(float value)
+        {
+
+        }
+
+        public virtual void SetControllerSize(int ratio, float offset = 0)
         {
 
         }

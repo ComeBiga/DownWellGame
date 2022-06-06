@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     public Sprite pressedMove;
 
     [Header("Jump")]
+    public RectTransform jumpPanel;
     public Image jump;
     public Sprite normalJump;
     public Sprite pressedJump;
@@ -20,6 +21,14 @@ public class UIController : MonoBehaviour
     public void SetSize(int ratio)
     {
         movePanel.localScale *= ratio / 100f;
+
+        jumpPanel.localScale *= ratio / 100f;
+    }
+
+    public void SetOffset(float offset)
+    {
+        movePanel.localPosition += Vector3.right * offset;
+        jumpPanel.localPosition -= Vector3.right * offset;
     }
 
     /// <summary>

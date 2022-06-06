@@ -9,20 +9,42 @@ namespace CatDown
         float screenCenter = Camera.main.pixelWidth / 2;
         float screenQuater = Camera.main.pixelWidth / 4;
 
+        float jumpPivot = Camera.main.pixelWidth / 2;
+
+        float partitionX;
+        float offset;
+
         public override void Init(float sens, float dead)
         {
             base.Init(sens, dead);
 
             screenCenter = Camera.main.pixelWidth / 2;
             screenQuater = Camera.main.pixelWidth / 4;
+
+            jumpPivot = Camera.main.pixelWidth / 2;
+
+            offset = 0;
         }
 
-        public override void SetControllerSize(int ratio)
+        public override void SetPartition(float value)
         {
+            screenCenter += value;
+            jumpPivot += value;
+        }
+
+        public override void SetControllerSize(int ratio, float offset = 0)
+        {
+            Debug.Log($"ratio : {ratio}");
+
             screenCenter *= ratio/100f;
             screenQuater *= ratio/100f;
 
+            jumpPivot *= 1 + (1 - ratio / 100f);
+
+            this.offset = offset;
+
             controller.GetComponent<UIController>().SetSize(ratio);
+            controller.GetComponent<UIController>().SetOffset(offset);
         }
 
         public override void Update()
@@ -44,8 +66,10 @@ namespace CatDown
             {
                 foreach (var touch in UnityEngine.Input.touches)
                 {
-                    if (touch.position.x > screenCenter && (touch.phase == TouchPhase.Began))
+                    if (touch.position.x > jumpPivot - offset && (touch.phase == TouchPhase.Began))
                     {
+                        controller.GetComponent<UIController>().SetJumpButton(1);
+
                         return true;
                     }
                 }
@@ -59,7 +83,7 @@ namespace CatDown
             {
                 foreach (var touch in UnityEngine.Input.touches)
                 {
-                    if (touch.position.x > screenCenter && (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
+                    if (touch.position.x > jumpPivot - offset && (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
                     {
                         return true;
                     }
@@ -74,8 +98,10 @@ namespace CatDown
             {
                 foreach (var touch in UnityEngine.Input.touches)
                 {
-                    if (touch.position.x > screenCenter && (touch.phase == TouchPhase.Ended))
+                    if (touch.position.x > jumpPivot - offset && (touch.phase == TouchPhase.Ended))
                     {
+                        controller.GetComponent<UIController>().SetJumpButton(0);
+
                         return true;
                     }
                 }
@@ -95,7 +121,7 @@ namespace CatDown
                         moveTouchCount++;
 
                         // 왼쪽 방향키
-                        if (touch.position.x > 0 && touch.position.x <= screenQuater)
+                        if (touch.position.x > 0 + offset && touch.position.x <= screenQuater + offset)
                         {
                             Debug.Log("left");
                             //horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
@@ -107,7 +133,7 @@ namespace CatDown
                             controller.GetComponent<UIController>().SetRightButton(0);
                         }
                         // 오른쪽 방향키
-                        else if (touch.position.x > screenQuater && touch.position.x < screenCenter)
+                        else if (touch.position.x > screenQuater + offset && touch.position.x < screenCenter + offset)
                         {
                             Debug.Log("right");
                             //horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);

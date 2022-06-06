@@ -27,6 +27,8 @@ public class InputManager : MonoBehaviour
 
     public GameObject controllerPanel;
     [Range(0, 100)] public int controllerSize = 100;
+    public float controllerOffset = 30f;
+    public float controllerPartition = 50f;
 
     void Start()
     {
@@ -46,7 +48,11 @@ public class InputManager : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (controllerPanel != null) controllerPanel.SetActive(false);
 #elif UNITY_ANDROID
-        input.SetControllerSize(controllerSize);
+        if (!PlayerPrefs.HasKey("ControllerSize")) PlayerPrefs.SetInt("ControllerSize", 60);
+        var csize = PlayerPrefs.GetInt("ControllerSize");
+
+        input.SetPartition(controllerPartition);
+        input.SetControllerSize(csize, controllerOffset);
         if(controllerPanel != null) controllerPanel.SetActive(true);  
 #endif
     }
@@ -73,5 +79,11 @@ public class InputManager : MonoBehaviour
     public bool GetJumpButtonUp()
     {
         return input.GetJumpButtonUp();
+    }
+
+    public void SetControllerSize()
+    {
+        var size = PlayerPrefs.GetInt("ControllerSize");
+        input.SetControllerSize(size, controllerOffset);
     }
 }

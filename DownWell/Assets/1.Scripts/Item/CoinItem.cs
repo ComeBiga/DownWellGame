@@ -8,7 +8,7 @@ public class CoinItem : Item
     {
         UICollector.Instance.coin.Gain();
 
-        AchievementSystem.Instance.ProgressAchievement("Coin");
+        // AchievementSystem.Instance.ProgressAchievement("Coin");
 
         // Sound
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");

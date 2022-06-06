@@ -192,7 +192,7 @@ public class SettingMgr : MonoBehaviour
         if (pause) //유저가 홈이나 홀드버튼 눌렸을 때 일시정지
         {
             gPaused = true;
-            SettingBtn();
+            if(SceneManager.GetActiveScene().buildIndex == 1) SettingBtn();
         }
         else
         {
