@@ -31,5 +31,5 @@ MonoBehaviour:
   - pref: {fileID: 6196084851690187152, guid: 671aee010027f784eb4af2450a16f0c0, type: 3}
     description: 
     price: 0
-    locked: 1
+    locked: 0
     canBuy: 0

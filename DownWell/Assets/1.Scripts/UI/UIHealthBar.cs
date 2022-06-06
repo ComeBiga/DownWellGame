@@ -58,11 +58,18 @@ public class UIHealthBar : MonoBehaviour
         var currentHP = playerHP.CurrentHealth;
 
         colorIndex = CalculateFillColorIndex(currentHP);
+
         var fillIndex = currentHP % 3;
-        if (colorIndex < 1)
-            fills[fillIndex].color = Color.clear;
-        else
-            fills[fillIndex].sprite = fillColors[colorIndex - 1];
+
+        for (int i = 0; i < lastHP - currentHP; i++)
+        {
+            if (i >= fills.Count) break;
+
+            if (colorIndex < 1)
+                fills[fillIndex + i].color = Color.clear;
+            else
+                fills[fillIndex + i].sprite = fillColors[colorIndex - 1];
+        }
 
         lastHP = currentHP;
     }

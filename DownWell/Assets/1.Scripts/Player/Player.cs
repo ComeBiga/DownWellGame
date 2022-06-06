@@ -28,6 +28,19 @@ public class Player : MonoBehaviour
             {
                 GetComponent<PlayerCombat>().Damaged(collision.transform);
             }
+
+            //if (collision.tag == "UpperBoss")
+            //{
+            //    if (GetComponent<PlayerPhysics>().Grounded)
+            //    {
+            //        GetComponent<PlayerCombat>().Damaged(collision.transform, GetComponent<PlayerHealth>().CurrentHealth);
+            //        //GetComponent<PlayerHealth>().Die();
+            //    }
+            //    else
+            //    {
+            //        GetComponent<PlayerCombat>().Damaged(collision.transform);
+            //    }
+            //}
         }
     }
 

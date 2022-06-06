@@ -45,7 +45,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     #region Damage
-    public void Damaged(Transform enemy)
+    public void Damaged(Transform enemy, int damage = 1)
     {
         if (isInvincible) return;
 
@@ -53,7 +53,7 @@ public class PlayerCombat : MonoBehaviour
         if (ItemManager.instance.curItem != "") ItemManager.instance.UseItem();
 
         // Lose Health
-        if(useLoseHealth) health.LoseHealth();
+        if(useLoseHealth) health.LoseHealth(damage);
 
         // Knockback
         KnockBack(knuckBackSpeed, transform.position, enemy.transform.position, knuckBackDistance);
