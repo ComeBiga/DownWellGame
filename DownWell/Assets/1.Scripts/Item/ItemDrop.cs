@@ -16,6 +16,10 @@ public class ItemDrop : ScriptableObject
     public float minVerticalPopSpeed = 2f;
     public float maxVerticalPopSpeed = 10f;
 
+    [Header("DropAmount")]
+    public int minCoin = 1;
+    public int maxCoin = 3;
+
     public ItemDrop()
     {
         dropItems = new List<GameObject>();
@@ -56,6 +60,7 @@ public class ItemDrop : ScriptableObject
                 {
                     //rItem.InstantiateItem(position);
                     InstantiateItem(_item.gameObject, position);
+                    break;
                 }
             }
         }
@@ -63,7 +68,7 @@ public class ItemDrop : ScriptableObject
 
     private void InstantiateCoin(Item _item, Vector3 position)
     {
-        var count = CatDown.Random.Get().Next(3, 6);
+        var count = CatDown.Random.Get().Next(minCoin, maxCoin);
 
         for (int i = 0; i < count; i++)
         {

@@ -47,6 +47,7 @@ public class BossStageManager : MonoBehaviour
         {
             bossObject = Instantiate(bossObject, bossSpawner.transform);
             bossObject.transform.localPosition = new Vector3(0, Camera.main.transform.position.y + posOffset, 0);//Vector3.zero;
+            bossObject.GetComponent<Boss>().InstantiateUpperBoss(bossSpawner.transform);
         }
 
         bossSpawner.SetActive(false);
@@ -122,6 +123,7 @@ public class BossStageManager : MonoBehaviour
         PlayerManager.instance.playerObject.GetComponent<PlayerController>().cantMove = false;
         //boss.GetComponent<BossCombat>().active = true;
         bossObject.GetComponent<Boss>().upperBossObject.GetComponent<SpriteRenderer>().color = Color.white;
+        bossObject.GetComponent<Boss>().UpdateUpperBoss();
         bossObject.GetComponent<BossBrain>().Use();
         bossObject.GetComponent<BossMovement>().Move();
 

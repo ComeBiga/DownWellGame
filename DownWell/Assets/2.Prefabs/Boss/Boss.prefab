@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f2ed51a8a11984f943c430db2bff6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperBossObject: {fileID: 6950627383125449674}
+  upperBossObject: {fileID: 2883644436479882512, guid: d66a370809d3bed42a0b79d3411944da, type: 3}
   currentState: 0
   maxHealth: 1000
   health:
@@ -656,7 +656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7742507710502485968
 Transform:
   m_ObjectHideFlags: 0

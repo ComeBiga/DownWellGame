@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32932b1db19a798428c468ae081a5c6a, type: 3}
   m_Name: ShotGun
   m_EditorClassIdentifier: 
-  shootable: 1
+  shootable: 0
   shotRebound: 5
   coolDownTime: 0.6
   projectile: {fileID: 8349611456179436559, guid: 7fb5a3dab5260ca4ba776fb4deb21c61, type: 3}
-  damage: 12
+  damage: 30
   addedRange: 2
   destroyOnHit: 0
   capacity: 2

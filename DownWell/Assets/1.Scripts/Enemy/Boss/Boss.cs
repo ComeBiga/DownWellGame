@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour, IHitByProjectile
 {
     GameObject bossObject;
     public GameObject upperBossObject;
+    public float distanceFromBoss = 19f;
 
     public enum BossState { normal, rage }
     [SerializeField] BossState currentState = BossState.normal;
@@ -77,6 +78,7 @@ public class Boss : MonoBehaviour, IHitByProjectile
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop("BackgroundBoss");
 
         Destroy(this.gameObject);
+        Destroy(upperBossObject);
         Instantiate(dyingObj, transform.position, Quaternion.identity);
         //BossStageManager.instance.EndBossStage();
     }
@@ -105,5 +107,30 @@ public class Boss : MonoBehaviour, IHitByProjectile
         //gameObject.GetComponent<Animator>().runtimeAnimatorController = ac;
 
         GetComponent<SpriteRenderer>().material.color = color;
+    }
+
+    public void InstantiateUpperBoss(Transform parent)
+    {
+        upperBossObject = Instantiate(upperBossObject, parent);
+        upperBossObject.transform.localPosition = new Vector3(0, transform.position.y + distanceFromBoss, 0);
+        //StartCoroutine(EUpdateUpperBoss());
+    }
+
+    public void UpdateUpperBoss()
+    {
+        StartCoroutine(EUpdateUpperBoss());
+    }
+
+    private IEnumerator EUpdateUpperBoss()
+    {
+        while(true)
+        {
+            if (died)
+                break;
+
+            upperBossObject.transform.localPosition = new Vector3(0, transform.position.y + distanceFromBoss, 0);
+
+            yield return null;
+        }
     }
 }
