@@ -20,9 +20,9 @@ MonoBehaviour:
     canBuy: 0
   - pref: {fileID: 8920811025012618084, guid: 176b6fc53e1803140b02283e24e3b851, type: 3}
     description: 
-    price: 0
+    price: 10
     locked: 0
-    canBuy: 0
+    canBuy: 1
   - pref: {fileID: 3680244335401011622, guid: 94ffde4b81d812541ba49ce8090e3c05, type: 3}
     description: 
     price: 50

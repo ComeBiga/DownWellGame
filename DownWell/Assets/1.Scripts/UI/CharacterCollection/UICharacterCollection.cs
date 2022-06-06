@@ -51,6 +51,7 @@ public class UICharacterCollection : Singleton<UICharacterCollection>
 
         PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "FatCat").locked = true;
         PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "WildCat").locked = true;
+        PlayerManager.instance.Collector.Characters.Find(c => c.CharacterName == "Civet").locked = true;
     }
 
     public GameObject GetSelectedCharacter()

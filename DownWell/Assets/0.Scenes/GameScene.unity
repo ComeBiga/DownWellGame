@@ -8479,8 +8479,9 @@ MonoBehaviour:
   OpeningPanel: {fileID: 0}
   setPanel: {fileID: 1111668014}
   setBtn: {fileID: 1667628788}
-  exitButton: {fileID: 525866229}
+  resetButton: {fileID: 0}
   ingameSetting: {fileID: 1315085412}
+  Opening: 1
   muteImg: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   originImg: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   bgmImg: {fileID: 997383345}
@@ -12639,7 +12640,7 @@ MonoBehaviour:
   bossAppearDistance: 2
   appearDirection: -1
   appearSpeed: 1
-  delayAfterAppear: 2
+  delayAfterAppear: 1.3
   posOffset: -11
   bugTime: 0
 --- !u!114 &1700652130

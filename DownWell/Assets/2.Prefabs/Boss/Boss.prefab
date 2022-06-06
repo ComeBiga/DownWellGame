@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperBossObject: {fileID: 6950627383125449674}
   currentState: 0
-  maxHealth: 500
+  maxHealth: 1000
   health:
     current: 0
   damagedInterval: 0.08

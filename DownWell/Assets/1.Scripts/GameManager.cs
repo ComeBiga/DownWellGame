@@ -114,6 +114,12 @@ public class GameManager : MonoBehaviour
         
         stageManager.NextStage();
 
+        if (stageManager.CurrentStageIndex == 2)
+        {
+            GameOver();
+            return;
+        }
+
         mapManager.Clear();
 
         mapManager.GenerateBeforeUpdate();
