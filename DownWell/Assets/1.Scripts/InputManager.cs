@@ -26,6 +26,7 @@ public class InputManager : MonoBehaviour
     public float Horizontal { get { return input.GetAxisHorizontal(); } }
 
     public GameObject controllerPanel;
+    [Range(0, 100)] public int controllerSize = 100;
 
     void Start()
     {
@@ -36,6 +37,8 @@ public class InputManager : MonoBehaviour
             input = new CatDown.InputPCTouch();
 #elif UNITY_ANDROID
         input = new CatDown.InputAndroid();
+        input.SetController(controllerPanel);
+        
 #endif
 
         input.Init(sens, dead);
@@ -43,6 +46,7 @@ public class InputManager : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (controllerPanel != null) controllerPanel.SetActive(false);
 #elif UNITY_ANDROID
+        input.SetControllerSize(controllerSize);
         if(controllerPanel != null) controllerPanel.SetActive(true);  
 #endif
     }

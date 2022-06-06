@@ -11,11 +11,23 @@ namespace CatDown
         protected float sens;
         protected float dead;
 
+        protected GameObject controller;
+
         public virtual void Init(float sens, float dead)
         {
             horizontal = 0;
             this.sens = sens;
             this.dead = dead;
+        }
+
+        public void SetController(GameObject controller)
+        {
+            this.controller = controller;
+        }
+
+        public virtual void SetControllerSize(int ratio)
+        {
+
         }
 
         public virtual void Update()
