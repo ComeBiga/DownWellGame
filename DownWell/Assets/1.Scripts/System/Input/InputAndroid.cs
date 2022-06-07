@@ -123,7 +123,7 @@ namespace CatDown
                         // 왼쪽 방향키
                         if (touch.position.x > 0 + offset && touch.position.x <= screenQuater + offset)
                         {
-                            Debug.Log("left");
+                            //Debug.Log("left");
                             //horizontal = Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
                             horizontal = (horizontal > 0) ? 0 : Mathf.MoveTowards(horizontal, -1, sens * Time.deltaTime);
                             //horizontal = -1;
@@ -135,7 +135,7 @@ namespace CatDown
                         // 오른쪽 방향키
                         else if (touch.position.x > screenQuater + offset && touch.position.x < screenCenter + offset)
                         {
-                            Debug.Log("right");
+                            //Debug.Log("right");
                             //horizontal = Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
                             horizontal = (horizontal < 0) ? 0 : Mathf.MoveTowards(horizontal, 1, sens * Time.deltaTime);
                             //horizontal = 1;

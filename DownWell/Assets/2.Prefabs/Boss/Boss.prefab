@@ -210,8 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upperBossObject: {fileID: 2883644436479882512, guid: d66a370809d3bed42a0b79d3411944da, type: 3}
+  distanceFromBoss: 19
   currentState: 0
-  maxHealth: 1000
+  maxHealth: 700
   health:
     current: 0
   damagedInterval: 0.08
@@ -625,7 +626,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1160250817
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
