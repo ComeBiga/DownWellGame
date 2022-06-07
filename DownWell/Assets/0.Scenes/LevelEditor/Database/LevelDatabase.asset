@@ -287,6 +287,24 @@ MonoBehaviour:
   - filename: S3_9
     stage: 3
     path: /Resources/Levels/Stage3/Main/S3_9.json
+  - filename: S3_10
+    stage: 3
+    path: /Resources/Levels/Stage3/Main/S3_10.json
+  - filename: S3_11
+    stage: 3
+    path: /Resources/Levels/Stage3/Main/S3_11.json
+  - filename: S3_12
+    stage: 3
+    path: /Resources/Levels/Stage3/Main/S3_12.json
+  - filename: S3_13
+    stage: 3
+    path: /Resources/Levels/Stage3/Main/S3_13.json
+  - filename: S3_14
+    stage: 3
+    path: /Resources/Levels/Stage3/Main/S3_14.json
+  - filename: S3_15
+    stage: 3
+    path: /Resources/Levels/Stage3/Main/S3_15.json
   - filename: stageGround_0
     stage: 6
     path: /Resources/Levels/StageGround/stageGround_0.json
