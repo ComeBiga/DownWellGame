@@ -10,6 +10,7 @@ public class CaveRockAttack : Wall
         filter = new ContactFilter2D();
         filter.layerMask = 1 << 3;
         filter.useLayerMask = false;
+        setRotation(info.code);
     }
     
     void Update()
@@ -33,6 +34,25 @@ public class CaveRockAttack : Wall
 
                 return;
             }
+        }
+    }
+
+    void setRotation(int code)
+    {
+        switch(code)
+        {
+            case 41:
+                transform.Rotate(new Vector3(0, 0, 0));
+                break;
+            case 42:
+                transform.Rotate(new Vector3(0, 0, -90));
+                break;
+            case 43:
+                transform.Rotate(new Vector3(0, 0, 90));
+                break;
+            case 44:
+                transform.Rotate(new Vector3(0, 0, 180));
+                break;
         }
     }
 }
