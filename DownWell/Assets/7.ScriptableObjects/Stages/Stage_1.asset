@@ -52,9 +52,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4880bcac736a98949bb228851777bd09, type: 3}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
-  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
   - {fileID: 981605482245356936, guid: 73e6f002881cbe442a906a16094aac9b, type: 3}
   - {fileID: 8145201318786321816, guid: df7e1dd3959a20543974ec939f8c543b, type: 3}
+  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
   - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}
