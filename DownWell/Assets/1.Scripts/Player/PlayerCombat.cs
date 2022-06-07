@@ -49,6 +49,8 @@ public class PlayerCombat : MonoBehaviour
     {
         if (isInvincible && !ignore) return;
 
+        Debug.Log($"Damaged by {enemy.name}");
+
         // to OnDamaged
         if (ItemManager.instance.curItem != "") ItemManager.instance.UseItem();
 

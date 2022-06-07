@@ -23,10 +23,37 @@ public class Boss : MonoBehaviour, IHitByProjectile
     public GameObject dyingObj;
     private bool died = false;
 
+    private ContactFilter2D filter;
+
     private void Start()
     {
         health = new Health(maxHealth);
         upperBossObject.GetComponent<SpriteRenderer>().color = Color.clear;
+
+        filter = new ContactFilter2D();
+        filter.useLayerMask = true;
+        filter.useTriggers = true;
+        filter.layerMask = LayerMask.GetMask("Player");
+    }
+
+    private void Update()
+    {
+        //var colliders = new List<Collider2D>();
+        //GetComponent<Collider2D>().OverlapCollider(filter.NoFilter(), colliders);
+
+        //foreach (var collider in colliders)
+        //{
+        //    Debug.Log("Collide");
+        //    if (collider != null && collider.tag == "Player")
+        //    {
+        //        var player = collider.transform;
+
+        //    Debug.Log("Collide Player");
+        //        player.GetComponent<PlayerCombat>().Damaged(transform);
+
+        //        return;
+        //    }
+        //}
     }
 
     #region Object Handle

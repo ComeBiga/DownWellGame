@@ -7,9 +7,33 @@ public class Player : MonoBehaviour
     public new string name = "";
     public int num;
 
+    private ContactFilter2D filter;
+
+
+    private void Start()
+    {
+        filter = new ContactFilter2D();
+        filter.useLayerMask = true;
+        filter.useTriggers = true;
+        filter.layerMask = LayerMask.GetMask("Boss");
+    }
+
     private void Update()
     {
+        var colliders = new List<Collider2D>();
+        GetComponent<Collider2D>().OverlapCollider(filter, colliders);
 
+        foreach (var collider in colliders)
+        {
+            //Debug.Log("Collide");
+            if (collider != null && collider.tag == "Boss")
+            {
+                //Debug.Log("Collide Boss");
+                GetComponent<PlayerCombat>().Damaged(collider.transform);
+
+                return;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +50,7 @@ public class Player : MonoBehaviour
 
             if (collision.tag == "Boss")
             {
-                GetComponent<PlayerCombat>().Damaged(collision.transform);
+                //GetComponent<PlayerCombat>().Damaged(collision.transform);
             }
 
             //if (collision.tag == "UpperBoss")
@@ -50,7 +74,7 @@ public class Player : MonoBehaviour
         {
             if (collision.tag == "Boss")
             {
-                GetComponent<PlayerCombat>().Damaged(collision.transform);
+                //GetComponent<PlayerCombat>().Damaged(collision.transform);
             }
         }
     }

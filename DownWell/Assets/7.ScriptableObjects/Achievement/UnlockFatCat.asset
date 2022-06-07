@@ -19,5 +19,5 @@ MonoBehaviour:
   requirements:
   - target: Coin
     requireAmount: 50
-    currentAmount: 50
-    achieved: 1
+    currentAmount: 0
+    achieved: 0
