@@ -67,6 +67,9 @@ TagManager:
   - name: Player
     uniqueID: 1343732879
     locked: 0
+  - name: UpperBoss
+    uniqueID: 652783417
+    locked: 0
   - name: SpecialItem
     uniqueID: 2731365685
     locked: 0

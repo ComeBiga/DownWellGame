@@ -45,9 +45,9 @@ public class PlayerCombat : MonoBehaviour
     }
 
     #region Damage
-    public void Damaged(Transform enemy, int damage = 1)
+    public void Damaged(Transform enemy, int damage = 1, bool ignore = false)
     {
-        if (isInvincible) return;
+        if (isInvincible && !ignore) return;
 
         // to OnDamaged
         if (ItemManager.instance.curItem != "") ItemManager.instance.UseItem();

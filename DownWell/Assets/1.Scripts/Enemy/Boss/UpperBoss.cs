@@ -19,7 +19,7 @@ public class UpperBoss : MonoBehaviour
 
                 if (player.GetComponent<PlayerPhysics>().Grounded)
                 {
-                    player.GetComponent<PlayerCombat>().Damaged(transform, player.GetComponent<PlayerHealth>().CurrentHealth);
+                    player.GetComponent<PlayerCombat>().Damaged(transform, player.GetComponent<PlayerHealth>().CurrentHealth, true);
                     //GetComponent<PlayerHealth>().Die();
                 }
                 else

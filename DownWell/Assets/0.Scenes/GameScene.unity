@@ -3963,7 +3963,7 @@ MonoBehaviour:
   target: {fileID: 0}
   startPos: {x: 0, y: -9, z: -10}
   endPos: 10
-  offset: {x: 0, y: 1, z: -10}
+  offset: {x: 0, y: -1, z: -10}
   smooth: 15
   followActive: 1
   followCharacter: 0

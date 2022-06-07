@@ -98,6 +98,7 @@ public class BossBrain : MonoBehaviour
     {
         var effector = GetComponent<Effector>();
         var sr = GetComponent<SpriteRenderer>();
+        var ubsr = GetComponent<Boss>().upperBossObject.GetComponent<SpriteRenderer>();
 
         BossAction.ready = false;
 
@@ -105,13 +106,16 @@ public class BossBrain : MonoBehaviour
 
         effector.Generate("Breath_Rage");
         sr.material.color = first;
+        ubsr.material.color = first;
         GetComponent<Boss>().bodyColor = first;
+        
 
 
         yield return new WaitForSeconds(betweenRage);
 
         effector.Generate("Breath_Rage");
         sr.material.color = second;
+        ubsr.material.color = second;
         GetComponent<Boss>().bodyColor = second;
 
 
