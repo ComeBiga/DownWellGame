@@ -3965,9 +3965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64b0e88093a9e04f99a151339262132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleKey: 96
+  toggleKey: 0
   openOnStart: 0
-  shakeToOpen: 1
+  shakeToOpen: 0
   shakeRequiresTouch: 0
   shakeAcceleration: 3
   toggleThresholdSeconds: 0.5
@@ -6567,7 +6567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   UIs: {fileID: 1847140160}
-  viewOpening: 0
+  viewOpening: 1
   openingPanel: {fileID: 1663313545}
   startPanel: {fileID: 1527060946}
   charPanel: {fileID: 947480729}
