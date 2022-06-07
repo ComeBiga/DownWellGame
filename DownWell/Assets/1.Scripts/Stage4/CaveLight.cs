@@ -31,7 +31,7 @@ public class CaveLight : MonoBehaviour
             activeOnce = false;
             if (IsInvoking("CaveLightOff"))
                 CancelInvoke("CaveLightOff");
-            Invoke("CaveLightOff", 3f);
+            Invoke("CaveLightOff", 2f);
         }
     }
 
