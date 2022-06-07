@@ -45,9 +45,9 @@ MonoBehaviour:
   blockSprites:
   - {fileID: 21300000, guid: 782c0e11f7ab80142b46a57f602338b4, type: 3}
   platformSprites:
-  - {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
-  - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
-  - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: -6755175304499052669, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
+  - {fileID: 3228329768652349505, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
+  - {fileID: 1374277057527122448, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
   itemGiverSprites:
   - {fileID: 21300000, guid: 4880bcac736a98949bb228851777bd09, type: 3}
   dropItems:
