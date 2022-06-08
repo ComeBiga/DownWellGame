@@ -73,6 +73,9 @@ public class GameManager : MonoBehaviour
         gameoverPanel.GetComponent<Image>().enabled = true;
         gameoverPanel.SetActive(false);
 
+        var stageName = PlayerManager.instance.stageName;
+        if ( stageName == "Stage3" || stageName == "Stage2" ) stageManager.SetCurrentStage(PlayerManager.instance.stageName);
+
         StartStage();
     }
 
@@ -109,7 +112,7 @@ public class GameManager : MonoBehaviour
     {
         stageManager.NextStage();
 
-        if (stageManager.CurrentStageIndex == 2)
+        if (stageManager.CurrentStageIndex == 2 || stageManager.GetCurrentStageName() == "Stage3" || stageManager.GetCurrentStageName() == "Stage2")
         {
             GameOver();
             return;

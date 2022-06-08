@@ -45,6 +45,17 @@ public class StageDatabase : ScriptableObject
     //    public int height = 1;
     //}
 
+    [Header("Sound")]
+    [SerializeField] private string bgm;
+
+    public string BGM
+    {
+        get
+        {
+            return bgm;
+        }
+    }
+
     public List<GameObject> MapObjects 
     { 
         get 
