@@ -17,4 +17,4 @@ MonoBehaviour:
   score: 0
   sprite: {fileID: -649022395968036104, guid: da199b96b4bb3254e8824145e32e74ce, type: 3}
   sliced: 1
-  hp: 7
+  hp: 6
