@@ -24,9 +24,6 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private List<Sprite> blockSprites;
     [SerializeField] private List<Sprite> platformSprites;
     [SerializeField] private List<Sprite> itemGiverSprites;
-    [SerializeField] private List<GameObject> dropItems;
-
-    public List<GameObject> DropItems { get { return dropItems; } }
 
     [Header("Enemy")]
     [SerializeField] private List<GameObject> enemyObjects;
@@ -38,6 +35,15 @@ public class StageDatabase : ScriptableObject
     //[SerializeField] private Sprite baseBackground;
     //[SerializeField] private BackgroundSprite[] background;
     public BackgroundInfo bgInfo;
+
+    //[System.Serializable]
+    //private class BackgroundSprite
+    //{
+    //    public Sprite[] sprite;
+
+    //    public int width = 1;
+    //    public int height = 1;
+    //}
 
     [Header("Sound")]
     [SerializeField] private string bgm;

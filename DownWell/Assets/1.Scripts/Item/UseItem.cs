@@ -8,10 +8,6 @@ public abstract class UseItem : Item
 
     public override void PutIn(PlayerItem playerItem)
     {
-        // slot
         playerItem.AddItem(PlayerItem.ItemType.SLOT, this);
-
-        //
-        playerItem.AddItem(i_Info);
     }
 }

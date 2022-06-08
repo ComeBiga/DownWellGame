@@ -6,28 +6,9 @@ public class PlayerItem : MonoBehaviour
 {
     public enum ItemType { PASSIVE, SLOT }
 
-    private List<ItemInfo> items;
+    private List<Item> items;
     private UseItem slotItem;
 
-    public List<ItemInfo> Items { get { return items; } }
-
-    public event System.Action<ItemInfo> OnAdded;
-
-    public void AddItem(ItemInfo itemInfo)
-    {
-        if (Exist(itemInfo.code)) return;
-
-        items.Add(itemInfo);
-
-        OnAdded.Invoke(itemInfo);
-    }
-
-    public bool Exist(int itemCode)
-    {
-        return items.Exists(item => item.code == itemCode);
-    }
-
-    #region SlotItem
     public void UseSlotItem()
     {
         if(slotItem != null) slotItem.Use();
@@ -38,7 +19,7 @@ public class PlayerItem : MonoBehaviour
         switch (type)
         {
             case ItemType.PASSIVE:
-                items.Add(item.i_Info);
+                items.Add(item);
                 break;
             case ItemType.SLOT:
                 slotItem = item as UseItem;
@@ -49,17 +30,6 @@ public class PlayerItem : MonoBehaviour
         }
     }
 
-    #endregion
-
     #region Private Method
-
-    private void Start()
-    {
-        items = new List<ItemInfo>();
-
-        // UI
-        UICollector.Instance.itemPocket.Init(this);
-    }
-
     #endregion
 }

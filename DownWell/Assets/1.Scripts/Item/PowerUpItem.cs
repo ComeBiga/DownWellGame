@@ -11,17 +11,8 @@ public class PowerUpItem : UseImmediatelyItem
     {
         base.Use();
 
-        var player = PlayerManager.instance.playerObject;
-
-        // Power Up
-        player.GetComponent<PlayerAttack>().ReinforceWeapon();
-
-        // FX
-        player.GetComponent<Effector>().GenerateInParent("PowerUp");
-
-        // Sound
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("PowerUp");
-
-        //Debug.Log("Power Up!");
+        PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().ReinforceWeapon();
+        PlayerManager.instance.playerObject.GetComponent<Effector>().GenerateInParent("PowerUp");
+        Debug.Log("Power Up!");
     }
 }
