@@ -14,13 +14,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stage3
   num: 3
-  path: 
-  mapObjects: []
-  wallSprites: []
+  path: /Resources/Levels/Stage3/Main
+  mapObjects:
+  - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
+  - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
+  - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
+  - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
+  - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
+  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
+  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
+  - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
+  - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
+  - {fileID: 2501996699620118486, guid: e0853d73c75b171458f7fdd781972ad2, type: 3}
+  - {fileID: 6008028185094645233, guid: 25a54eab94d423644bdeae712353766a, type: 3}
+  - {fileID: 6008028185094645233, guid: ec6f25c6717e77d41ace7fca8b4e5a50, type: 3}
+  - {fileID: 6008028185094645233, guid: 43d82c0de517e7c4ab7fbe630b8a4eb8, type: 3}
+  - {fileID: 6008028185094645233, guid: 7e121a24ff1615f4dbda09a9e97be557, type: 3}
+  wallSprites:
+  - {fileID: 21300000, guid: d38e4a7d03f47f64484ac535b3df8278, type: 3}
+  - {fileID: 21300000, guid: 7d47e83b14f374a478b1150cbc004ca0, type: 3}
+  - {fileID: 21300000, guid: 5664397c4fc5680488a97fff4b8ce972, type: 3}
+  - {fileID: 21300000, guid: 590d02e766dd8424fa497b4afeccf566, type: 3}
+  - {fileID: 21300000, guid: d0d54ffc47f6a024e9bba93d8a0d294e, type: 3}
+  - {fileID: 21300000, guid: 315e75251c2f76442a5e9f59bd6b6850, type: 3}
+  - {fileID: 21300000, guid: 3720fd4f542a96641896094e386aef99, type: 3}
+  - {fileID: 21300000, guid: 03fe28028354f2349b57d55ebe16ac7a, type: 3}
+  - {fileID: 21300000, guid: 0a5c0424c259b2d4ba77d3778298ab2f, type: 3}
+  - {fileID: 21300000, guid: dc53b6ee766dab44b93a6e523335a2a1, type: 3}
+  - {fileID: 21300000, guid: 927c51c57aa2c204e91af3afdbcef131, type: 3}
+  - {fileID: 21300000, guid: 9b3efb2dee296b741b7875a6e5c470d5, type: 3}
+  - {fileID: 21300000, guid: df9675922b7b438429d8427cb79680b9, type: 3}
+  - {fileID: 21300000, guid: 01bd362f7e7e03b42986f647ef91da42, type: 3}
+  - {fileID: 21300000, guid: c4d7b7243b0209b42bd9128996e2bd4f, type: 3}
+  - {fileID: 21300000, guid: 07493242203712340aa11b00ae18d2a6, type: 3}
+  blockSprites:
+  - {fileID: 21300000, guid: 6d9d5751d05e7f84386345b154608ab9, type: 3}
+  platformSprites:
+  - {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  itemGiverSprites:
+  - {fileID: 0}
   enemyObjects:
   - {fileID: 8789586585210228532, guid: a28556a9307fd2a40b0badfa432064a0, type: 3}
-  - {fileID: 3067082653622727890, guid: 9df6efcb519de034799584b2e1e39930, type: 3}
+  - {fileID: 8802910570157426904, guid: a0a906d1edc282840bc09274ad390083, type: 3}
+  - {fileID: 6790013765567100886, guid: f003698416d388b44bceb64e5626bf93, type: 3}
+  - {fileID: 6851877925598714561, guid: eafce809f7ee31a4481cc1445516eee3, type: 3}
   bossObject: {fileID: 0}
   bgInfo:
-    _base: []
+    _base:
+    - {fileID: 21300000, guid: 25cc80126f231ab4190b697be3c7b049, type: 3}
+    - {fileID: 21300000, guid: 324834b785731114194e16d6e04f4456, type: 3}
+    - {fileID: 21300000, guid: fc77170a4b71c1a47bc1902ab135053f, type: 3}
+    - {fileID: 21300000, guid: c1e288cbd188b7e4481b0a553a639697, type: 3}
     deco: []

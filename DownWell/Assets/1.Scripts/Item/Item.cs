@@ -5,9 +5,6 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     bool poping = true;
-    //private bool pickedUp = false;
-
-    //public bool PickedUp { get { return pickedUp; } }
     
     [Header("ItemInfo")]
     public ItemInfo i_Info;
@@ -28,9 +25,9 @@ public class Item : MonoBehaviour
         Destroy(item);
     }
 
-    public bool PickUp()
+    public void PickUp()
     {
-        if (poping) return false;
+        if (poping) return;
 
         // Stop being dragged
         StopCoroutine("EDraggedIntoPlayer");
@@ -39,12 +36,10 @@ public class Item : MonoBehaviour
         OnPickedUp();
 
         // Sound
-        //if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Coin");
 
         // Destroy
         Destroy(this.gameObject);
-
-        return true;
     }
 
     protected virtual void OnPickedUp()

@@ -26,18 +26,13 @@ namespace Comebiga
 
             foreach(Sound s in sounds)
             {
-                Init(s);
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+                s.source.loop = s.loop;
             }
-        }
-
-        public void Init(Sound s)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
         }
 
         public void Play(string name)
@@ -52,11 +47,6 @@ namespace Comebiga
             s.source.Play();
         }
 
-        public void Play(Sound s)
-        {
-            s.source.Play();
-        }
-
         public void Stop(string name)
         {
             Sound s = System.Array.Find(sounds, sound => sound.name == name);
@@ -68,24 +58,12 @@ namespace Comebiga
             s.source.Stop();
         }
 
-        public void Stop(Sound _s)
-        {
-            Sound s = System.Array.Find(sounds, sound => sound == _s);
-            if (s == null)
-            {
-                Debug.LogWarning("Sound: " + _s.name + " not found!");
-                return;
-            }
-
-            s.source.Stop();
-        }
-
         public void Stop(Sound.SoundType type)
         {
             Sound[] s = System.Array.FindAll(sounds, sound => sound.type == type);
             if (s == null)
             {
-                Debug.LogWarning(type.ToString() + " sound not found!");
+                Debug.LogWarning("Sound: " + name + " not found!");
                 return;
             }
 
