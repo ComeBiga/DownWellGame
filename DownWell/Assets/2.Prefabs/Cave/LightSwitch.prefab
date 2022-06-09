@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2501996699620118481}
   - component: {fileID: 2501996699620118511}
   - component: {fileID: 2501996699620118508}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: LightSwitch
   m_TagString: Block
   m_Icon: {fileID: 0}
