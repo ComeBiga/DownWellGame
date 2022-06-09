@@ -66,16 +66,6 @@ public class PlayerManager : MonoBehaviour
         this.playerObject = playerObject;
     }
 
-    public void SetStage2()
-    {
-        stageName = "Stage2";
-    }
-
-    public void SetStage3()
-    {
-        stageName = "Stage3";
-    }
-
     #region Deprecated(SelectedPlayer)
     ///// <summary>
     ///// 선택한 캐릭터를 플레이어의 캐릭터로 선택

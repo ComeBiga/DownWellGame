@@ -94,4 +94,14 @@ public class StartSceneManager : Singleton<StartSceneManager>
         SettingMgr.instance.SetActiveSettingButton(false);
         var operation = SceneManager.LoadSceneAsync(1);
     }
+    public void SetStage2()
+    {
+        PlayerManager.instance.stageName = "Stage2";
+    }
+
+    public void SetStage3()
+    {
+        PlayerManager.instance.stageName = "Stage3";
+    }
+
 }
