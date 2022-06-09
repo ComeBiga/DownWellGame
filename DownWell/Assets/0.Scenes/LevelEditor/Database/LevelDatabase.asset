@@ -38,9 +38,6 @@ MonoBehaviour:
   - filename: entre1_0
     stage: 1
     path: /Resources/Levels/Stage1/Entre/entre1_0.json
-  - filename: entre3_0
-    stage: 3
-    path: /Resources/Levels/Stage3/Entre/entre3_0.json
   - filename: entre_0
     stage: 2
     path: /Resources/Levels/Stage2/Entre/entre_0.json
@@ -53,9 +50,6 @@ MonoBehaviour:
   - filename: exit2_0
     stage: 2
     path: /Resources/Levels/Stage2/Exit/exit2_0.json
-  - filename: exit3_0
-    stage: 3
-    path: /Resources/Levels/Stage3/Exit/exit3_0.json
   - filename: level_0
     stage: 1
     path: /Resources/Levels/Stage1/Main/level_0.json
@@ -263,48 +257,6 @@ MonoBehaviour:
   - filename: S3_1
     stage: 3
     path: /Resources/Levels/Stage3/Main/S3_1.json
-  - filename: S3_2
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_2.json
-  - filename: S3_3
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_3.json
-  - filename: S3_4
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_4.json
-  - filename: S3_5
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_5.json
-  - filename: S3_6
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_6.json
-  - filename: S3_7
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_7.json
-  - filename: S3_8
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_8.json
-  - filename: S3_9
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_9.json
-  - filename: S3_10
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_10.json
-  - filename: S3_11
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_11.json
-  - filename: S3_12
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_12.json
-  - filename: S3_13
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_13.json
-  - filename: S3_14
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_14.json
-  - filename: S3_15
-    stage: 3
-    path: /Resources/Levels/Stage3/Main/S3_15.json
   - filename: stageGround_0
     stage: 6
     path: /Resources/Levels/StageGround/stageGround_0.json

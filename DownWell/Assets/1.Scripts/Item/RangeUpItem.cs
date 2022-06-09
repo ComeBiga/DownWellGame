@@ -11,6 +11,9 @@ public class RangeUpItem : UseImmediatelyItem
         PlayerManager.instance.playerObject.GetComponent<PlayerAttack>().weaponReinforcer.ReinforceRange(addRange);
         PlayerManager.instance.playerObject.GetComponent<Effector>().GenerateInParent("RangeUp");
 
-        Debug.Log("Range Up");
+        // Sound
+        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("PowerUp");
+
+        //Debug.Log("Range Up");
     }
 }

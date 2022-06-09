@@ -11,7 +11,6 @@ public class UICharacterSelection : MonoBehaviour
 
     [Header("Button")]
     [SerializeField] private GameObject selectBtn;
-    [SerializeField] private GameObject testStageSelectBtns;
     [SerializeField] private GameObject buyBtn;
     [SerializeField] private GameObject lockBtn;
     [SerializeField] private GameObject coinPanel;

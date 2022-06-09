@@ -179,10 +179,8 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: a9a3fc89f8741554c9d92f809695367e, type: 2}
   health: 4
   invincible: 0
-  itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
-  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
 --- !u!114 &3564371177529011756
 MonoBehaviour:
   m_ObjectHideFlags: 0

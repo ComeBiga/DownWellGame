@@ -29,8 +29,6 @@ public class PlayerManager : MonoBehaviour
     //public Character selectedCharacter;
     //public List<Character> characters1 = new List<Character>();
 
-    public string stageName = "";
-
     private void Start()
     {
         
@@ -64,16 +62,6 @@ public class PlayerManager : MonoBehaviour
     public void SetPlayerCharacter(GameObject playerObject)
     {
         this.playerObject = playerObject;
-    }
-
-    public void SetStage2()
-    {
-        stageName = "Stage2";
-    }
-
-    public void SetStage3()
-    {
-        stageName = "Stage3";
     }
 
     #region Deprecated(SelectedPlayer)

@@ -88,11 +88,6 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public string GetCurrentStageName()
-    {
-        return current.Name;
-    }
-
     public void SetCurrentStage(int stageNum)
     {
         var newStage = stages.Find(s => s.Num == stageNum);

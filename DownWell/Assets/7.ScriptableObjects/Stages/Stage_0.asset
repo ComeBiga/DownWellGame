@@ -50,6 +50,9 @@ MonoBehaviour:
   - {fileID: 1374277057527122448, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
   itemGiverSprites:
   - {fileID: 21300000, guid: 4880bcac736a98949bb228851777bd09, type: 3}
+  dropItems:
+  - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
+  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
   enemyObjects:
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   - {fileID: 3051560113913932450, guid: a60a7ef6320d67544aa2043c98307285, type: 3}
@@ -66,3 +69,4 @@ MonoBehaviour:
       prob: 5
     - sprite: {fileID: -3993480536105716121, guid: 0acea06ccc4f9874eb5981a543b97b0c, type: 3}
       prob: 5
+  bgm: Background

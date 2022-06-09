@@ -10,6 +10,7 @@ public class ItemGiver : Block
 
     private void Start()
     {
+        dropItems = StageManager.instance.Current.DropItems;
         itemDropper.SetItem(dropItems);
     }
 

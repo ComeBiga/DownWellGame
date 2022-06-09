@@ -18,7 +18,6 @@ public class StartSceneManager : Singleton<StartSceneManager>
     void Start()
     {
         //PlayerManager.instance.Init();
-        PlayerManager.instance.stageName = "";
 
         InitPanel();
 
