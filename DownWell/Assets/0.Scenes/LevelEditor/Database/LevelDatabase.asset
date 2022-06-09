@@ -26,6 +26,9 @@ MonoBehaviour:
   - filename: boss1_0
     stage: 1
     path: /Resources/Levels/Stage1/Boss/Entre/boss1_0.json
+  - filename: boss1_1
+    stage: 1
+    path: /Resources/Levels/Stage1/Boss/Entre/boss1_1.json
   - filename: boss_0
     stage: 2
     path: /Resources/Levels/Stage2/Boss/Entre/boss_0.json
@@ -38,12 +41,18 @@ MonoBehaviour:
   - filename: entre1_0
     stage: 1
     path: /Resources/Levels/Stage1/Entre/entre1_0.json
+  - filename: entre1_1
+    stage: 1
+    path: /Resources/Levels/Stage1/Entre/entre1_1.json
   - filename: entre_0
     stage: 2
     path: /Resources/Levels/Stage2/Entre/entre_0.json
   - filename: exit0_0
     stage: 0
     path: /Resources/Levels/Stage0/Exit/exit0_0.json
+  - filename: exit0_1
+    stage: 0
+    path: /Resources/Levels/Stage0/Exit/exit0_1.json
   - filename: exit1_0
     stage: 1
     path: /Resources/Levels/Stage1/Exit/exit1_0.json
@@ -65,9 +74,6 @@ MonoBehaviour:
   - filename: level_4
     stage: 1
     path: /Resources/Levels/Stage1/Main/level_4.json
-  - filename: level_5
-    stage: 1
-    path: /Resources/Levels/Stage1/Main/level_5.json
   - filename: s0_1
     stage: 0
     path: /Resources/Levels/Stage0/Main/s0_1.json
@@ -92,6 +98,15 @@ MonoBehaviour:
   - filename: s0_8
     stage: 0
     path: /Resources/Levels/Stage0/Main/s0_8.json
+  - filename: s0_9
+    stage: 0
+    path: /Resources/Levels/Stage0/Main/s0_9.json
+  - filename: s0_10
+    stage: 0
+    path: /Resources/Levels/Stage0/Main/s0_10.json
+  - filename: s0_11
+    stage: 0
+    path: /Resources/Levels/Stage0/Main/s0_11.json
   - filename: S1_1
     stage: 1
     path: /Resources/Levels/Stage1/Main/S1_1.json
@@ -155,9 +170,6 @@ MonoBehaviour:
   - filename: S1_21
     stage: 1
     path: /Resources/Levels/Stage1/Main/S1_21.json
-  - filename: S1_22
-    stage: 1
-    path: /Resources/Levels/Stage1/Main/S1_22.json
   - filename: S1_23
     stage: 1
     path: /Resources/Levels/Stage1/Main/S1_23.json
@@ -170,9 +182,6 @@ MonoBehaviour:
   - filename: S1_26
     stage: 1
     path: /Resources/Levels/Stage1/Main/S1_26.json
-  - filename: S1_27
-    stage: 1
-    path: /Resources/Levels/Stage1/Main/S1_27.json
   - filename: S1_28
     stage: 1
     path: /Resources/Levels/Stage1/Main/S1_28.json
@@ -263,3 +272,9 @@ MonoBehaviour:
   - filename: StageStart
     stage: 6
     path: /Resources/Levels/StageStart/StageStart.json
+  - filename: bl1_1
+    stage: 1
+    path: /Resources/Levels/Stage1/Boss/Main/bl1_1.json
+  - filename: bl1_2
+    stage: 1
+    path: /Resources/Levels/Stage1/Boss/Main/bl1_2.json
