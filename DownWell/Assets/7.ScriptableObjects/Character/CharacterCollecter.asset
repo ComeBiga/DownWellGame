@@ -29,7 +29,7 @@ MonoBehaviour:
     locked: 1
     canBuy: 1
   - pref: {fileID: 6196084851690187152, guid: 671aee010027f784eb4af2450a16f0c0, type: 3}
-    description: 50 coins to unlock
+    description: 
     price: 0
     locked: 1
     canBuy: 0
