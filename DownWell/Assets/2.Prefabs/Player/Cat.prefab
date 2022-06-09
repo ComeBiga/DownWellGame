@@ -245,7 +245,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1343732879
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 6998356985531720136, guid: 16dc874b4178fd84b88dd7063dee323a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -627,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 6730146399935576863}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 5834640292865415491}
   m_RootOrder: 5
@@ -670,7 +670,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1343732879
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f2377225aafc4904ab218c7a36760e3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -714,6 +714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5e0b7e3f10f344ca6677c9aeb9e7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeOnce: 0
+  stageName: Stage3
 --- !u!1 &9199056338382792220
 GameObject:
   m_ObjectHideFlags: 0
