@@ -19,6 +19,31 @@ public class Projectile : MonoBehaviour
             Destroy();
     }
 
+    private void FixedUpdate()
+    {
+        var colliders = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+        GetComponent<Collider2D>().OverlapCollider(filter.NoFilter(), colliders);
+
+        if(colliders.Count > 0)
+        {
+            foreach(var collider in colliders)
+            {
+                Debug.Log($"collider tag : {collider.tag}");
+                if(collider.GetComponentInChildren<IHitByProjectile>()!= null)
+                {
+                    collider.GetComponentInChildren<IHitByProjectile>().Hit(damage);
+
+                    GetComponent<Effector>().Generate("Hit");
+
+                    if (destroyOnHit) Destroy();
+
+                    Debug.Log($"projectil destoried");
+                }
+            }
+        }
+    }
+
     #region Deprecated
     void CollisionCheck()
     {
@@ -102,14 +127,14 @@ public class Projectile : MonoBehaviour
     {
         if(collision != null)
         {
-            if (collision.GetComponent<IHitByProjectile>() != null)
-            {
-                collision.GetComponent<IHitByProjectile>().Hit(damage);
+            //if (collision.GetComponent<IHitByProjectile>() != null)
+            //{
+            //    collision.GetComponent<IHitByProjectile>().Hit(damage);
 
-                GetComponent<Effector>().Generate("Hit");
+            //    GetComponent<Effector>().Generate("Hit");
 
-                if(destroyOnHit) Destroy();
-            }
+            //    if(destroyOnHit) Destroy();
+            //}
 
             //if (collision.tag == "Boss")
             //{
