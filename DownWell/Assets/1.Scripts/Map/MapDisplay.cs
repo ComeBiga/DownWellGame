@@ -6,9 +6,13 @@ public class MapDisplay : MonoBehaviour
 {
     MapManager mapManager;
 
+    [Header("Parents")]
     public Transform parent;
     public Transform wallParent;
     public Transform enemyParent;
+    public Transform bgParent;
+
+    [Header("Position")]
     public Vector3 offset;
     [SerializeField] private GameObject startPos;
 
@@ -62,6 +66,46 @@ public class MapDisplay : MonoBehaviour
 
         // enemy
         es_root = new EnemySelector(2000, 3000, enemyRatio);
+    }
+
+    public void ClearAll()
+    {
+        ClearWalls();
+        ClearEnemies();
+        ClearBackgrounds();
+    }
+
+    public void ClearWalls()
+    {
+        var mo = wallParent.GetComponentsInChildren<Transform>();
+
+        foreach (var m in mo)
+        {
+            if (m != wallParent)
+                Destroy(m.gameObject);
+        }
+    }
+
+    public void ClearEnemies()
+    {
+        var mo = enemyParent.GetComponentsInChildren<Transform>();
+
+        foreach (var m in mo)
+        {
+            if (m != enemyParent)
+                Destroy(m.gameObject);
+        }
+    }
+
+    public void ClearBackgrounds()
+    {
+        var mo = bgParent.GetComponentsInChildren<Transform>();
+
+        foreach (var m in mo)
+        {
+            if (m != bgParent)
+                Destroy(m.gameObject);
+        }
     }
 
     //public void Display(Tile[,] generatedTiles)
@@ -170,17 +214,17 @@ public class MapDisplay : MonoBehaviour
     private void DisplayObject(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         // wall
-        ws_root.InstantiateObject(tileCode, tilePosition, transform, currentStage);
+        ws_root.InstantiateObject(tileCode, tilePosition, wallParent, currentStage);
 
         // enemy
-        es_root.InstantiateObject(tileCode, tilePosition, transform, currentStage);
+        es_root.InstantiateObject(tileCode, tilePosition, enemyParent, currentStage);
     }
 
     private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
     {
         Vector2 tilePosition = new Vector2(Xpos, Ypos);
 
-        var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, transform);
+        var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, bgParent);
 
         return go;
     }

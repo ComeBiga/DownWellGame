@@ -48,13 +48,14 @@ public class MapManager : MonoBehaviour
 
     public void Clear()
     {
-        var mo = GetComponentsInChildren<Transform>();
+        //var mo = GetComponentsInChildren<Transform>();
 
-        foreach(var m in mo)
-        {
-            if (m != this.transform)
-                Destroy(m.gameObject);
-        }
+        //foreach(var m in mo)
+        //{
+        //    if (m != this.transform)
+        //        Destroy(m.gameObject);
+        //}
+        mapDisplay.ClearAll();
     }
 
     #endregion
