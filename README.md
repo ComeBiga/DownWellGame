@@ -17,7 +17,7 @@ __플레이 영상__ : [Link](https://www.youtube.com/watch?v=XUWcHJYMt88)
 
 ## 주요 코드
 + #### [BossBrain](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/1.Scripts/Enemy/Boss/Pattern/README.md)
-+ #### [EnemyBrain](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/99.EnemyEditor/Scripts/README.md)
++ #### [EnemyBrain](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/1.Scripts/Enemy/README.md)
 + #### [MapDisplay](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/1.Scripts/Map)
 + #### [LevelEditor](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/0.Scenes/LevelEditor)
 + #### [Physics](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/1.Scripts/Player/README.md)
