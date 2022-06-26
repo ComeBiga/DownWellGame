@@ -1,7 +1,9 @@
 
 # CatDown
 
-![Screen_Recording_20211209-221833_CatDown_1](https://user-images.githubusercontent.com/36800639/152974931-25161746-d136-4f57-b35f-e18497a190fa.gif)
+<p>
+  <img src="https://user-images.githubusercontent.com/36800639/175810929-addff3cc-5b6b-44cd-8f57-b58600aeb06a.gif"  width="250" height="550"/>
+</p>
 
 이 게임은 2D 종스크롤 방식의 슈팅 게임입니다.
 
