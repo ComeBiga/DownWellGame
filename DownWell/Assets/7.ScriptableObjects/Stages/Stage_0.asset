@@ -26,30 +26,30 @@ MonoBehaviour:
   - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
   - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
   wallSprites:
-  - {fileID: 1727949997725430831, guid: 14cd458e1c533274298e6883ffcac9c7, type: 3}
-  - {fileID: -5160640993196718334, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: -6851664222367154025, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: -4133390030825483088, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: 6507832171425871358, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: 4697089916373413300, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: -7784797564092799725, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: -1553400917075000094, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: 5498997690200877452, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: 3704416195225489251, guid: ec05906eba4dad34bad92c3b46660782, type: 3}
-  - {fileID: -2188492320230463155, guid: 11c31b0cc0afd7e48bc4335728f31750, type: 3}
-  - {fileID: 6811653120911754007, guid: 11c31b0cc0afd7e48bc4335728f31750, type: 3}
-  - {fileID: -1353980098171843232, guid: 11c31b0cc0afd7e48bc4335728f31750, type: 3}
-  - {fileID: -5102691422068219331, guid: 11c31b0cc0afd7e48bc4335728f31750, type: 3}
-  - {fileID: -283328128897051894, guid: 11c31b0cc0afd7e48bc4335728f31750, type: 3}
-  - {fileID: 1152822251356415732, guid: 11c31b0cc0afd7e48bc4335728f31750, type: 3}
+  - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+  - {fileID: -8668958053737087820, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -7786853946139616982, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -4972809209741350286, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: 4292971695097237386, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: 5166692102197943301, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -8968729423981400309, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: 7629501436978985344, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -2208134847849381855, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: 9079432382562792529, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -3801257808257220460, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: 864594763026940855, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: 5273118182159388248, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -1471781673789823148, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -7360721961718912818, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
+  - {fileID: -1234207176431411585, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
   blockSprites:
-  - {fileID: 21300000, guid: 782c0e11f7ab80142b46a57f602338b4, type: 3}
+  - {fileID: 2659686873517320435, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
   platformSprites:
-  - {fileID: -6755175304499052669, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
-  - {fileID: 3228329768652349505, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
-  - {fileID: 1374277057527122448, guid: 676f727bb6a92fb429fcfaf66ce0e0f8, type: 3}
+  - {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
   itemGiverSprites:
-  - {fileID: 21300000, guid: 4880bcac736a98949bb228851777bd09, type: 3}
+  - {fileID: 2659686873517320435, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
@@ -61,12 +61,10 @@ MonoBehaviour:
   bossObject: {fileID: 0}
   bgInfo:
     _base:
-    - {fileID: 6769815502460608889, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
-    - {fileID: 5749315296748578733, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
-    - {fileID: 5997892723870387092, guid: ff1a3f59cca4f354e97d18160ca49fb3, type: 3}
+    - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+    - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
     deco:
-    - sprite: {fileID: 2950533864399549308, guid: 0acea06ccc4f9874eb5981a543b97b0c, type: 3}
-      prob: 5
-    - sprite: {fileID: -3993480536105716121, guid: 0acea06ccc4f9874eb5981a543b97b0c, type: 3}
-      prob: 5
+    - sprite: {fileID: 1457973918208686885, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
+      prob: 1
   bgm: Background

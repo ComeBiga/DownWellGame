@@ -273,7 +273,6 @@ MonoBehaviour:
   ragePattern:
     actions:
     - {fileID: 1649624395474175221}
-    - {fileID: 1649624395474174986}
     - {fileID: 1649624395474174987}
   beforeRage: 1
   betweenRage: 1

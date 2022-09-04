@@ -80,7 +80,7 @@ public class MapManager : MonoBehaviour
     {
         for (; (-currentYpos) < height;)
         {
-            // ·£´ýÀ¸·Î ºÒ·¯¿Â ·¹º§À» ÇöÀç y À§Ä¡¿¡¼­ »ý¼º
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ y ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentYpos -= mapDisplay.Display(levels[CatDown.Random.Get().Next(levels.Count)], currentYpos);
         }
     }
@@ -114,7 +114,7 @@ public class MapManager : MonoBehaviour
     //{
     //    yield return null;
 
-    //    // Å¸ÀÏÀ» ´Ù »ý¼ºÇÏ°í ³­ ÈÄ Y position;
+    //    // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ ï¿½ï¿½ Y position;
     //    currentYpos = 0;
 
     //    //List<Level> stageStarts = LoadLevel.instance.GetObjects("StageStart");
@@ -130,11 +130,11 @@ public class MapManager : MonoBehaviour
 
     //    for (;(-currentYpos) < height;)
     //    {
-    //        // ·£´ýÀ¸·Î ºÒ·¯¿Â ·¹º§À» ÇöÀç y À§Ä¡¿¡¼­ »ý¼º
+    //        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ y ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //        currentYpos -= mapDisplay.Display(RandomLevel(sm.CurrentStageIndex), currentYpos);
     //    }
 
-    //    // ½ºÅ×ÀÌÁö ³¡À» »ý¼ºÇÏ´Â ÄÚµå
+    //    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Úµï¿½
     //    List<Level> stageGrounds = LoadLevel.instance.GetObjects("StageGround");
     //    Level stageGround = stageGrounds[0];
 
@@ -144,17 +144,17 @@ public class MapManager : MonoBehaviour
 
     public void GenerateBeforeUpdate()
     {
-        // Å¸ÀÏÀ» ´Ù »ý¼ºÇÏ°í ³­ ÈÄ Y position;
+        // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ ï¿½ï¿½ Y position;
         currentYpos = 0;
 
-        // ½ºÅ×ÀÌÁö ½ÃÀÛ ºÎºÐ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
         //GenerateLevel(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.ENTRE, sm.Current.Num)));
         GenerateLevel(loadLevel.GetLevels(LoadLevel.LevelType.ENTRE, sm.Current.Num));
 
-        // ·£´ý ·¹º§ »ý¼º
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GenerateLevels(loadLevel.GetLevels(LoadLevel.LevelType.MAIN, sm.Current.Num), height);
 
-        // ½ºÅ×ÀÌÁö ³¡À» »ý¼ºÇÏ´Â ÄÚµå
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Úµï¿½
         if (sm.Current.BossObject != null)
         {
             //GenerateLevel(loadLevel.LoadAndGetLevels(loadLevel.GetPath(LoadLevel.LevelType.BOSS, sm.Current.Num)));

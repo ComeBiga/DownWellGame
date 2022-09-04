@@ -4010,7 +4010,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -9856,6 +9856,7 @@ MonoBehaviour:
   enemyRatio: 80
   backgroundObject: {fileID: 4639442091226460463, guid: df5e17a819a0acb4cb946f4501bcb7fd, type: 3}
   brightness: 190
+  backgroundPoolCount: 2200
 --- !u!114 &1215072950
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MapDisplay : MonoBehaviour
 {
@@ -45,9 +46,17 @@ public class MapDisplay : MonoBehaviour
     private WallSelector ws_root;
     private EnemySelector es_root;
 
+    [Header("ObjectPool")]
+    public int backgroundPoolCount;
+    private ObjectPooler backgroundPooler = new ObjectPooler();
+    private ObjectPooler wallPooler = new ObjectPooler();
+
     private void Start()
     {
         mapManager = MapManager.instance;
+
+        backgroundPooler.Init(backgroundObject, backgroundPoolCount, bgParent);
+        wallPooler.Init(null, 0, wallParent);
 
         InitSelector();
     }
@@ -101,10 +110,34 @@ public class MapDisplay : MonoBehaviour
     {
         var mo = bgParent.GetComponentsInChildren<Transform>();
 
-        foreach (var m in mo)
+        for (int i = 1; i < mo.Count(); i++)
         {
-            if (m != bgParent)
-                Destroy(m.gameObject);
+            if(mo[i]?.gameObject.activeSelf == true)
+                backgroundPooler.SetUnused(mo[i]?.gameObject);
+            // if (m != bgParent)
+            //     Destroy(m.gameObject);
+        }
+    }
+
+    private void Update() 
+    {    
+        ClearBackgroundOutOfScreen();
+    }
+
+    private void ClearBackgroundOutOfScreen()
+    {
+        var mo = bgParent.GetComponentsInChildren<Transform>();
+        mo = mo.Where(o => o.gameObject.activeSelf == true).ToArray();
+
+        for (int i = 1; i < mo.Count(); i++)
+        {
+            var orthoSize = Camera.main.orthographicSize;
+            var pivot = PlayerManager.instance.playerObject.transform.position.y + (orthoSize + 3f);
+            if(mo[i].localPosition.y > pivot)
+            {
+                Debug.Log($"{mo[i].gameObject}");
+                backgroundPooler.SetUnused(mo[i].gameObject);
+            }
         }
     }
 
@@ -224,7 +257,9 @@ public class MapDisplay : MonoBehaviour
     {
         Vector2 tilePosition = new Vector2(Xpos, Ypos);
 
-        var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, bgParent);
+        var go = backgroundPooler.GetUnusedObject();
+        go.transform.position = tilePosition;
+        // var go = Instantiate(backgroundObject, tilePosition, Quaternion.identity, bgParent);
 
         return go;
     }
