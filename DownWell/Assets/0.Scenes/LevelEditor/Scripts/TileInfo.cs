@@ -38,11 +38,11 @@ public class TileInfo : MonoBehaviour
     {
         // sprite set
         if (tileCode > 2000)
-            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.GetEnemyObjects().Find(b => b.code == tileCode).sprite;
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.EnemyPallet.Find(b => b.code == tileCode).sprite;
         else if (tileCode >= 100)
-            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.GetWallObjects().Find(b => b.code == 1).sprite;
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.WallPallet.Find(b => b.code == 1).sprite;
         else if (tileCode > 0)
-            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.GetWallObjects().Find(b => b.code == tileCode).sprite;
+            GetComponent<SpriteRenderer>().sprite = BrushManager.instance.WallPallet.Find(b => b.code == tileCode).sprite;
         else
             GetComponent<SpriteRenderer>().sprite = BrushManager.instance.eraserBrush.sprite;
 

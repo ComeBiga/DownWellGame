@@ -32,6 +32,17 @@ public class BrushInputManager : MonoBehaviour
                 JsonIO.levelChanged = true;
             }
         }
+
+        if(Input.GetMouseButton(1))
+        {
+            var tileInfo = GetTileInfoOnMousePosition();
+
+            if (tileInfo != null)
+            {
+                tileInfo.SetInfo(BrushManager.instance.eraserBrush);
+                JsonIO.levelChanged = true;
+            }
+        }
     }
 
     public TileInfo GetTileInfoOnMousePosition()

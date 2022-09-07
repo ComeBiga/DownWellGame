@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a995c0fd05a8cb4d945b123d351233b, type: 3}
+  m_Name: WallPalletData
+  m_EditorClassIdentifier: 
+  pallets:
+  - {fileID: 11400000, guid: a233656cf4f4e11469cb9558c55ea7a4, type: 2}
+  - {fileID: 11400000, guid: 2aa2763ec01845c41aecc54f10412f02, type: 2}
+  - {fileID: 11400000, guid: f0cff3b3593b0344ca1aae8a9c5b2f55, type: 2}
+  - {fileID: 11400000, guid: 6f46ac92540d1df4eab0d5af9ffa6f83, type: 2}
+  - {fileID: 11400000, guid: 6d11ee9eb9fde214fb39a557f0f166e5, type: 2}
+  - {fileID: 11400000, guid: 42d3647a1c5b1d34b8380a19faccf42d, type: 2}
+  - {fileID: 11400000, guid: af7daa92dfa12d2479ce27596845bd16, type: 2}
+  - {fileID: 11400000, guid: 41e999af23195f341b2100e2ce0b0188, type: 2}
+  - {fileID: 11400000, guid: c9551ab6784ba9145a409c8ca02a696a, type: 2}
+  - {fileID: 11400000, guid: 7f0f96eb188dead4b84a847ca7b8e114, type: 2}
+  - {fileID: 11400000, guid: 3a0871e6b95aeae4e9636da5661f7497, type: 2}
+  - {fileID: 11400000, guid: 7aef7ac5570cca740882a380f203067a, type: 2}

@@ -22,6 +22,11 @@ public class BrushManager : MonoBehaviour
     //public List<LevelObject> enemyBrushes;
     public LevelObject eraserBrush;
 
+    public PalletData enemyPallet;
+    public List<LevelObject> EnemyPallet { get => enemyPallet.pallets; }
+    public PalletData wallPallet;
+    public List<LevelObject> WallPallet { get => wallPallet.pallets; }
+
     private void Start()
     {
         currentBrush = eraserBrush;

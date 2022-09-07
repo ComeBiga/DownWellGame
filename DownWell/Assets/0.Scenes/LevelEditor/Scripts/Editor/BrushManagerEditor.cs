@@ -12,6 +12,9 @@ public class BrushManagerEditor : Editor
     SerializedProperty wallBrushes;
     SerializedProperty enemyBrushes;
     SerializedProperty eraserBrush;
+    SerializedProperty wallPallet;
+    SerializedProperty enemyPallet;
+
 
     int enemyCode = 0;
     bool changeColorFoldout = false;
@@ -29,22 +32,27 @@ public class BrushManagerEditor : Editor
         wallBrushes = serializedObject.FindProperty("wallBrushes");
         enemyBrushes = serializedObject.FindProperty("enemyBrushes");
         eraserBrush = serializedObject.FindProperty("eraserBrush");
+        wallPallet = serializedObject.FindProperty("wallPallet");
+        enemyPallet = serializedObject.FindProperty("enemyPallet");
     }
 
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
 
-        EditorGUILayout.HelpBox("°¢ ¹öÆ°À» ´©¸£°í ±×¸®¸é ±×·ÁÁý´Ï´Ù. \n´Ù¸¥ °³Ã¼¸¦ ±×¸®·Á¸é ¾Æ·¡¿¡ ¼Ò½º¸¦ Ãß°¡ÇÏ¸é µË´Ï´Ù.", MessageType.Info);
+        EditorGUILayout.HelpBox("ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. \nï¿½Ù¸ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï¸ï¿½ ï¿½Ë´Ï´ï¿½.", MessageType.Info);
         EditorGUILayout.LabelField("Brush", EditorStyles.boldLabel);
 
         serializedObject.Update();
 
         EditorGUILayout.BeginHorizontal();
         {
-            EditorGUILayout.PropertyField(stage, new GUIContent("DB"));
+            //EditorGUILayout.PropertyField(stage, new GUIContent("DB"));
         }
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.PropertyField(wallPallet, new GUIContent("WallPallet"));
+        EditorGUILayout.PropertyField(enemyPallet, new GUIContent("EnemyPallet"));
 
         EditorGUILayout.BeginVertical("HelpBox", GUILayout.ExpandWidth(false), GUILayout.Width(300));
         {
@@ -54,7 +62,7 @@ public class BrushManagerEditor : Editor
 
             EditorGUILayout.EndHorizontal();
 
-            switch(brushType)
+            switch (brushType)
             {
                 case 0:
                     //CreateBrushButton();
@@ -70,7 +78,7 @@ public class BrushManagerEditor : Editor
                     brushManager.ChangeToEraser();
                     break;
             }
-            
+
         }
         EditorGUILayout.EndVertical();
 
@@ -170,6 +178,8 @@ public class BrushManagerEditor : Editor
     //    GUILayout.EndHorizontal();
     //}
 
+    public int selectedWall = 0;
+
     void DisplayWallBrushButton()
     {
         GUILayout.BeginHorizontal("HelpBox");
@@ -178,7 +188,7 @@ public class BrushManagerEditor : Editor
 
             GUILayout.BeginHorizontal();
             {
-                for (int i = 0, hCount = 0; i < brushManager.GetWallObjects().Count; i++, hCount++)
+                for (int i = 0, hCount = 0; i < brushManager.WallPallet.Count; i++, hCount++)
                 {
                     if (hCount >= 5)
                     {
@@ -187,13 +197,34 @@ public class BrushManagerEditor : Editor
                         GUILayout.BeginHorizontal();
                     }
 
-                    LevelObject brush = brushManager.GetWallObjects()[i];
+                    LevelObject brush = brushManager.WallPallet[i];
+
+                    if (brush == brushManager.currentBrush) GUI.enabled = false;
 
                     if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
                     {
+                        selectedWall = i;
                         brushManager.ChangeBrush(brush);
                     }
+
+                    if (brush == brushManager.currentBrush) GUI.enabled = true;
                 }
+                // for (int i = 0, hCount = 0; i < brushManager.GetWallObjects().Count; i++, hCount++)
+                // {
+                //     if (hCount >= 5)
+                //     {
+                //         GUILayout.EndHorizontal();
+                //         hCount = 0;
+                //         GUILayout.BeginHorizontal();
+                //     }
+
+                //     LevelObject brush = brushManager.GetWallObjects()[i];
+
+                //     if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
+                //     {
+                //         brushManager.ChangeBrush(brush);
+                //     }
+                // }
             }
             GUILayout.EndHorizontal();
 
@@ -242,7 +273,7 @@ public class BrushManagerEditor : Editor
 
             GUILayout.BeginHorizontal();
             {
-                for (int i = 0, hCount = 0; i < brushManager.GetEnemyObjects().Count; i++, hCount++)
+                for (int i = 0, hCount = 0; i < brushManager.EnemyPallet.Count; i++, hCount++)
                 {
                     if (hCount >= 5)
                     {
@@ -251,16 +282,36 @@ public class BrushManagerEditor : Editor
                         GUILayout.BeginHorizontal();
                     }
 
-                    LevelObject brush = brushManager.GetEnemyObjects()[i];
+                    LevelObject brush = brushManager.EnemyPallet[i];
+
+                    if (brush == brushManager.currentBrush) GUI.enabled = false;
 
                     if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
                     {
                         brushManager.ChangeBrush(brush);
                     }
+
+                    if (brush == brushManager.currentBrush) GUI.enabled = true;
                 }
+                // for (int i = 0, hCount = 0; i < brushManager.GetEnemyObjects().Count; i++, hCount++)
+                // {
+                //     if (hCount >= 5)
+                //     {
+                //         GUILayout.EndHorizontal();
+                //         hCount = 0;
+                //         GUILayout.BeginHorizontal();
+                //     }
+
+                //     LevelObject brush = brushManager.GetEnemyObjects()[i];
+
+                //     if (GUILayout.Button(new GUIContent(brush.GetTexture2D()), GUILayout.Width(50), GUILayout.Height(50)))
+                //     {
+                //         brushManager.ChangeBrush(brush);
+                //     }
+                // }
             }
             GUILayout.EndHorizontal();
-            
+
             EditorGUILayout.EndScrollView();
         }
         GUILayout.EndHorizontal();
@@ -281,7 +332,7 @@ public class BrushManagerEditor : Editor
     {
         string[] displayList = new string[enemyBrushes.ToArray().Length];
 
-        for(int i = 0; i< enemyBrushes.ToArray().Length; i++)
+        for (int i = 0; i < enemyBrushes.ToArray().Length; i++)
         {
             displayList[i] = enemyBrushes[i].name;
         }
