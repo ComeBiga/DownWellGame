@@ -81,6 +81,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void UseGravity(bool value)
+    {
+        physics.UseGravity(value);
+    }
+
     void HorizontalMove()
     {
         if (cantMove)

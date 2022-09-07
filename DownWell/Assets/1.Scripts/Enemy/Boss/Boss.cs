@@ -34,6 +34,23 @@ public class Boss : MonoBehaviour, IHitByProjectile
         filter.useLayerMask = true;
         filter.useTriggers = true;
         filter.layerMask = LayerMask.GetMask("Player");
+
+        //ColorChecker();
+    }
+
+    private void ColorChecker()
+    {
+        var pixels = GetComponent<SpriteRenderer>().sprite.texture.GetPixels();
+        List<Color> exColor = new List<Color>();
+
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            if(exColor.Contains(pixels[i]) == false)
+            {
+                exColor.Add(pixels[i]);
+                Debug.Log($"{pixels[i]}, {GetComponent<SpriteRenderer>().sprite.texture.name}");
+            }
+        }
     }
 
     private void Update()

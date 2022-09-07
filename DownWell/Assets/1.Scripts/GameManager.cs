@@ -6,22 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    #region Singleton
     public static GameManager instance = null;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            //DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-    #endregion
 
     private StageManager stageManager;
     private MapManager mapManager;
@@ -44,6 +30,21 @@ public class GameManager : MonoBehaviour
     private GameObject gameoverPanel;
 
     //public GameObject boss;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            //DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        Application.targetFrameRate = 60;
+    }
 
     private void Start()
     {
@@ -182,13 +183,15 @@ public class GameManager : MonoBehaviour
     {
         while(true)
         {
-            if (playerManager.playerObject.transform.position.y <= mapManager.CurrentYPos)
+            if (playerManager.playerObject.transform.position.y <= mapManager.CurrentYPos - 3f)
                 break;
 
             yield return null;
         }
 
         playerManager.playerObject.GetComponent<PlayerController>().cantMove = true;
+        playerManager.playerObject.GetComponent<PlayerPhysics>().InitVelocity();
+        playerManager.playerObject.GetComponent<PlayerPhysics>().UseGravity(false);
 
         Invoke("ClearStage", stageClearDelay);
     }

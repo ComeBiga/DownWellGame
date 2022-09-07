@@ -48,6 +48,7 @@ public class MapDisplay : MonoBehaviour
 
     [Header("ObjectPool")]
     public int backgroundPoolCount;
+    public float bgPoolOffset = 30f;
     private ObjectPooler backgroundPooler = new ObjectPooler();
     private ObjectPooler wallPooler = new ObjectPooler();
 
@@ -132,10 +133,10 @@ public class MapDisplay : MonoBehaviour
         for (int i = 1; i < mo.Count(); i++)
         {
             var orthoSize = Camera.main.orthographicSize;
-            var pivot = PlayerManager.instance.playerObject.transform.position.y + (orthoSize + 3f);
+            var pivot = PlayerManager.instance.playerObject.transform.position.y + (orthoSize + bgPoolOffset);
             if(mo[i].localPosition.y > pivot)
             {
-                Debug.Log($"{mo[i].gameObject}");
+                //Debug.Log($"{mo[i].gameObject}");
                 backgroundPooler.SetUnused(mo[i].gameObject);
             }
         }
