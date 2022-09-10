@@ -145,7 +145,7 @@ public class PlayerCombat : MonoBehaviour
 
         GetComponent<Effector>().Generate("Damaged");
 
-        //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //»ç¿îµåÀÌÆåÆ®
+        //if (SoundManager.instance != null) SoundManager.instance.PlayEffSound("Shoot_1");  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Shoot_1");
 
     }
@@ -164,6 +164,4 @@ public class PlayerCombat : MonoBehaviour
     }
 
     #endregion
-
-
 }

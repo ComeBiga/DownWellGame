@@ -18,14 +18,14 @@ public class PlayerAttack : MonoBehaviour
     public void Shoot()
     {
         //Debug.Log("Shoot");
-        if(timer >= CurrentWeapon.coolDownTime && CurrentWeapon.IsShootable())//weapon.shootable && !weapon.IsEmpty)
+        if(timer >= CurrentWeapon.coolDownTime) // && CurrentWeapon.IsShootable())//weapon.shootable && !weapon.IsEmpty)
         {
             CurrentWeapon.Attack();//Shoot(projectile, transform);
 
             //GetComponent<PlayerPhysics>().LeapOff(weapon.shotRebound);
 
             // Effect
-            CurrentWeapon.Effect();
+            //CurrentWeapon.Effect();
 
             timer = 0;
         }

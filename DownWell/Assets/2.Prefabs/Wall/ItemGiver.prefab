@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1511073773
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2659686873517320435, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
+  m_Sprite: {fileID: 697509473648982185, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,3 +187,4 @@ MonoBehaviour:
     transform: {fileID: 4009486809924621639}
     fx: {fileID: 7913374481254233727, guid: c0e7a55248deb4741bccfafef45cd0ae, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}

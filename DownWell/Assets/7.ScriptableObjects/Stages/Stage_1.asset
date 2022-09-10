@@ -49,11 +49,9 @@ MonoBehaviour:
   - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
   - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
   itemGiverSprites:
-  - {fileID: 2659686873517320435, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
+  - {fileID: 5673921885698166438, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
-  - {fileID: 981605482245356936, guid: 73e6f002881cbe442a906a16094aac9b, type: 3}
-  - {fileID: 8145201318786321816, guid: df7e1dd3959a20543974ec939f8c543b, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
@@ -61,6 +59,7 @@ MonoBehaviour:
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   - {fileID: 2828334627078130561, guid: 5231486e93382f04fa5396f7693a42e9, type: 3}
   - {fileID: 3170539923968211391, guid: 6e0ec53eeb2dd904eafd48bdd6c3f183, type: 3}
+  - {fileID: 7840619046348813548, guid: 8af4e9f9c9b26b946ad324d251a90159, type: 3}
   bossObject: {fileID: 1649624395474174977, guid: 1772583bf7a66734ebbb3fa5b0e6e2c5, type: 3}
   bgInfo:
     _base:

@@ -8,6 +8,7 @@ public class Wall : MonoBehaviour, IHitByProjectile
     
     private void Start()
     {
+        
     }
 
     public virtual void Hit(int damage = 0)

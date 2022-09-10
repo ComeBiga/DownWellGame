@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 20f;
 
     public float moveDistance = 0;
 

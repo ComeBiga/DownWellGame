@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 678621961257141165}
   - component: {fileID: 7167330042012309443}
   - component: {fileID: -3727341824296423865}
-  - component: {fileID: -8761494203728585418}
-  - component: {fileID: -4662082631914798936}
+  - component: {fileID: 7469616762981115642}
   - component: {fileID: 441356585571666473}
   m_Layer: 15
   m_Name: Projectile
@@ -125,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.12}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &-8761494203728585418
+--- !u!114 &7469616762981115642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,24 +133,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1862661163937341917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff90363cbeaed1b4d816ea884b7f8ad4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8de592f757fcd484f93cef46c9f4612b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 4
-  lifeDistance: 5.7
+  lifeDistance: 11
+  destroybyDistance: 1
   destroyOnHit: 1
---- !u!114 &-4662082631914798936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1862661163937341917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d725fd274b45bf44780cbb1d3dfbc1ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   speed: 20
   moveDistance: 0
 --- !u!114 &441356585571666473
@@ -171,6 +159,7 @@ MonoBehaviour:
     transform: {fileID: 6655501357315070677}
     fx: {fileID: 433145225747925701, guid: 8cfd43a2d2550b2409ea7af29c40dec6, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
 --- !u!1 &8786228597031434194
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,10 +231,10 @@ SpriteRenderer:
   m_SortingLayerID: 1343732879
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3ea7df61498844c46ae28e9d86a93b10, type: 3}
+  m_Sprite: {fileID: 21300250, guid: 4f3d817ad821bc345b488255f0de8318, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5

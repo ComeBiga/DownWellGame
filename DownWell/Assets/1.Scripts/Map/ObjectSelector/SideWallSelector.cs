@@ -47,6 +47,9 @@ public class SideWallSelector : ObjectSelector
             case "ItemGiver":
                 result = stage.ItemGiverSprites[0];
                 break;
+            case "ItemGiver_Lock":
+                result = stage.ItemGiverLockSprites[0];
+                break;
             default:
                 sprite = null;
                 return false;

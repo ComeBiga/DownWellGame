@@ -24,9 +24,10 @@ public class Gun : Weapon
 
     [Header("Magazine")]
     [SerializeField] private int capacity = 0;
+    private bool isEmpty = false;
 
     public bool Reloaded { get { return (magazine.current >= magazine.max); } }
-    public bool IsEmpty { get { return (magazine.current <= 0); } }
+    public bool IsEmpty { get => isEmpty; set { isEmpty = value; } }
     public int CurrentNumOfBullet { get { return magazine.current; } }
     public int CapacityOfMagazine { get { return magazine.max; } }
 
@@ -114,8 +115,15 @@ public class Gun : Weapon
             InitProjectile(pt);
             //Debug.Log($"AddedRange : {addedRange} (Gun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
+            Effect();
 
             OnShoot.Invoke();
+        }
+        
+        if(!IsEmpty && magazine.current <= 0)
+        {
+            IsEmpty = true;
+            EmptyFX();
         }
 
         //Debug.Log($"Gun Shoot");
@@ -132,10 +140,11 @@ public class Gun : Weapon
         if (Reloaded) return;
 
         magazine.current = magazine.max;
+        IsEmpty = false;
 
         OnReload.Invoke();
 
-        ReloadFX();
+        //ReloadFX();
 
         //UICollector.Instance.bullet.bulletReload();
     }
@@ -148,6 +157,11 @@ public class Gun : Weapon
     protected virtual void ReloadFX()
     {
         player.GetComponent<Effector>().GenerateInParent("Reload");
+    }
+
+    protected virtual void EmptyFX()
+    {
+        player.GetComponent<Effector>().GenerateInParent("Empty");
     }
 
     protected void InitProjectile(GameObject _projectile)
@@ -163,7 +177,7 @@ public class Gun : Weapon
         // Destory on hit
         projectile.destroyOnHit = destroyOnHit;
 
-        _projectile.GetComponent<ProjectileMovement>().Init();
+        projectile.Init();
     }
 
 }

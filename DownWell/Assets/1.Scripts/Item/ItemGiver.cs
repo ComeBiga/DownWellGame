@@ -6,6 +6,8 @@ public class ItemGiver : Block
 {
     public ItemDrop itemDropper;
 
+    //public float dialogueOffset = 1f;
+
     [SerializeField] private List<GameObject> dropItems;
 
     private void Start()

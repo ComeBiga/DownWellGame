@@ -340,30 +340,42 @@ MonoBehaviour:
     transform: {fileID: 7447212144028510301}
     fx: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: Damaged
     transform: {fileID: 5834640292865415491}
     fx: {fileID: 5553784123641463371, guid: 3db93dc1ff4f95e4da45cf8fc5cb0554, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: Jump
     transform: {fileID: 7447212144028510301}
     fx: {fileID: 4799331527240392631, guid: 8d7538f851b4f4447b4da42c75533efa, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: Land
     transform: {fileID: 7447212144028510301}
     fx: {fileID: 5338455378960127721, guid: e650b38e05f3c354594dfed8dc34e2da, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: PowerUp
     transform: {fileID: 6321852687579867917}
     fx: {fileID: 1964459263684832213, guid: b09397b96b313c6478bfc3e4651b70c8, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: RangeUp
     transform: {fileID: 6321852687579867917}
     fx: {fileID: 6879009638447328053, guid: 52c261314f3b9e64bb06503f1b0bddcb, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: Reload
     transform: {fileID: 6321852687579867917}
     fx: {fileID: 2250817311889097427, guid: c575d154e86c38642bce16fecdfeb307, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
+  - name: Empty
+    transform: {fileID: 6321852687579867917}
+    fx: {fileID: 5435296027511742958, guid: 7de4279f3e067a74fb7818935968a750, type: 3}
+    angle: 0
+    offset: {x: 0, y: 0.5}
 --- !u!114 &3027550015346354234
 MonoBehaviour:
   m_ObjectHideFlags: 0
