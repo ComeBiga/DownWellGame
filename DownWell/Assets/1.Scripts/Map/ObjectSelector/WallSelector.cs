@@ -22,5 +22,4 @@ public class WallSelector : ObjectSelector
         
         return wall;
     }
-
 }

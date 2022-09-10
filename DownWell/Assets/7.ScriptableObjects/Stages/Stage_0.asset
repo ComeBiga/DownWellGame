@@ -19,13 +19,13 @@ MonoBehaviour:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
   - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
-  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
   - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
   - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
-  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
   - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
-  - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
   - {fileID: 27600725104633016, guid: dff9122e2289134439b8164ff4908cd0, type: 3}
+  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
+  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
+  - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
   wallSprites:
   - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: 6094567818995607104, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
@@ -43,6 +43,17 @@ MonoBehaviour:
   - {fileID: -5881622362676116124, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: -6728371487741853675, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
   - {fileID: -1234207176431411585, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
+  mapObjectSprites:
+  - {fileID: 0}
+  - {fileID: 4181698436641752397, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
+  - {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - {fileID: 697509473648982185, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
+  - {fileID: -6999109337804598064, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   blockSprites:
   - {fileID: 4181698436641752397, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
   platformSprites:

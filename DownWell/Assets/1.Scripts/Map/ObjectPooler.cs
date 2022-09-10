@@ -10,6 +10,12 @@ public class ObjectPooler : MonoBehaviour
 
     public List<GameObject> pool = new List<GameObject>();
 
+    public GameObject this[int i]
+    {
+        get{ return pool[i]; }
+        set{ pool.Add(value); }
+    }
+
     public void Init(GameObject objectToPool, int count, Transform parent)
     {
         this.objectToPool = objectToPool;

@@ -121,7 +121,7 @@ public class PlayerPhysics : MonoBehaviour
 
     private void UpdateGravity()
     {
-        // ÃÖ´ë¼Óµµ
+        // ï¿½Ö´ï¿½Óµï¿½
         if (rigidbody.velocity.y <= -maxFallSpeed) 
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
     }
@@ -131,6 +131,7 @@ public class PlayerPhysics : MonoBehaviour
         if(!CheckHorizontalCollision(hInput))
         {
             transform.position += Vector3.right * speed * hInput * Time.deltaTime;
+            //rigidbody.velocity = new Vector2(speed * hInput, rigidbody.velocity.y);
         }
     }
 

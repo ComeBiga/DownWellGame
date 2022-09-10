@@ -21,6 +21,7 @@ public class StageDatabase : ScriptableObject
     [Header("Wall")]
     [SerializeField] private List<GameObject> mapObjects;
     [SerializeField] private List<Sprite> wallSprites;
+    [SerializeField] private List<Sprite> mapObjectSprites;
     [SerializeField] private List<Sprite> blockSprites;
     [SerializeField] private List<Sprite> platformSprites;
     [SerializeField] private List<Sprite> itemGiverSprites;
@@ -74,6 +75,27 @@ public class StageDatabase : ScriptableObject
     public List<Sprite> ItemGiverLockSprites { get { return itemGiverLockSprites; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
+
+    public GameObject InstantiateMapObject(int tileCode, Vector3 position, Transform parent)
+    {
+        GameObject newGo = null;
+
+        if(tileCode >= 100 && tileCode < 1000)
+        {
+            newGo = Instantiate(mapObjects[0], position, Quaternion.identity, parent);
+            newGo.GetComponent<SpriteRenderer>().sprite = WallSprites[tileCode - 100];
+        }
+        else
+        {
+            var go = mapObjects.Find(g => g.GetComponent<Wall>().info.code == tileCode);
+            newGo = Instantiate(go, position, Quaternion.identity, parent);
+
+            var index = mapObjects.IndexOf(go);
+            if(mapObjectSprites[index] != null) newGo.GetComponent<SpriteRenderer>().sprite = mapObjectSprites[index];
+        }
+
+        return newGo;
+    }
 
 
     //public Sprite BaseBackGround { get { return baseBackground; } }
