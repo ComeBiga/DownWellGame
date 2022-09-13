@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1649624395474175221}
   - component: {fileID: 1649624395474174986}
   - component: {fileID: 1649624395474174987}
+  - component: {fileID: 4621324683595564581}
   m_Layer: 13
   m_Name: Boss
   m_TagString: Boss
@@ -249,10 +250,12 @@ MonoBehaviour:
     transform: {fileID: 1649624395474174976}
     fx: {fileID: 6455041936140182723, guid: be0fda99cc271e44c9100cd12c63e8bd, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
   - name: Breath_Rage
     transform: {fileID: 1649624395474174976}
     fx: {fileID: 7978505368245888294, guid: c71dc90d904827d469e1c56a97ec819b, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
 --- !u!114 &1649624395474174984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +277,7 @@ MonoBehaviour:
     actions:
     - {fileID: 1649624395474175221}
     - {fileID: 1649624395474174987}
+    - {fileID: 4621324683595564581}
   beforeRage: 1
   betweenRage: 1
   afterRage: 1
@@ -353,6 +357,26 @@ MonoBehaviour:
   distance: 2
   speed: 2
   attackAtCenter: 0
+--- !u!114 &4621324683595564581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649624395474174977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e20e8fbaf4dc8942a1f9a47f0191189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addedInterval: 0
+  onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  octoTurret: {fileID: 2054867273042109991, guid: 564d3dd474dc438419208a003f6b86cb, type: 3}
+  numOfShot: 2
+  shotInterval: 0.5
+  shotSpeed: 12
 --- !u!1 &1649624395771165162
 GameObject:
   m_ObjectHideFlags: 0

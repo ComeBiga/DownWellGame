@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JellyOctoMovement : EnemyMovement
 {
-    bool adjustedPos = false;
+    protected bool adjustedPos = false;
 
     private float currentRayLength = 0;
     public float rayLengthOutRange = .5f;
@@ -12,14 +12,14 @@ public class JellyOctoMovement : EnemyMovement
     public float posMod = .1f;
     Vector2 gDirection = Vector2.right;
 
-    global::CollisionDirection forwardCollision;
-    global::CollisionDirection groundCollision;
+    protected global::CollisionDirection forwardCollision;
+    protected global::CollisionDirection groundCollision;
 
-    enum GravityDirection { NONE, UP, DOWN, LEFT, RIGHT }
-    GravityDirection gDir;
+    protected enum GravityDirection { NONE, UP, DOWN, LEFT, RIGHT }
+    protected GravityDirection gDir;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
 
@@ -36,7 +36,7 @@ public class JellyOctoMovement : EnemyMovement
         UpdateGravityDirection();
     }
 
-    void AdjustPositionOutOfRange()
+    protected void AdjustPositionOutOfRange()
     {
         switch (gDir)
         {
@@ -67,7 +67,7 @@ public class JellyOctoMovement : EnemyMovement
 
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (!adjustedPos)
             AdjustPositionOutOfRange();
@@ -125,7 +125,7 @@ public class JellyOctoMovement : EnemyMovement
         }
     }
 
-    void ChangeDirectionCCW()
+    protected void ChangeDirectionCCW()
     {
         switch (gDir)
         {
@@ -144,7 +144,7 @@ public class JellyOctoMovement : EnemyMovement
         }
     }
 
-    void ChangeDirectionCW()
+    protected void ChangeDirectionCW()
     {
         switch (gDir)
         {
@@ -167,7 +167,7 @@ public class JellyOctoMovement : EnemyMovement
         }
     }
 
-    void UpdateGravityDirection()
+    protected void UpdateGravityDirection()
     {
         switch (gDir)
         {

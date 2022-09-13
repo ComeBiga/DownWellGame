@@ -39,7 +39,7 @@ namespace CatDown
                 //Debug.Log("ETake in While");
                 OnActionUpdate();
 
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
 

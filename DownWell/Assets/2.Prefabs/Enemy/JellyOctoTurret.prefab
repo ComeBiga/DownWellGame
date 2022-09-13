@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9204163303539181111, guid: 8a19cf1df35b71845802ff14a3f75cd1, type: 3}
-  projectileSpeed: 20
+  projectileSpeed: 3
   shootInterval: 2
 --- !u!114 &3898033097261231818
 MonoBehaviour:
@@ -226,3 +226,4 @@ MonoBehaviour:
     transform: {fileID: 2054867273042110010}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}

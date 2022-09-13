@@ -77,7 +77,7 @@ public class EnemyPhysics
 
     private void UpdateGravity()
     {
-        // ÃÖ´ë¼Óµµ
+        // ï¿½Ö´ï¿½Óµï¿½
         if (rigidbody.velocity.y <= -maxFallSpeed)
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
     }

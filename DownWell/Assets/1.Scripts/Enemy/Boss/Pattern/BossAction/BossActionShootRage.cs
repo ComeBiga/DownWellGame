@@ -10,6 +10,7 @@ public class BossActionShootRage : BossActionShootNormal
 
     public override void Take()
     {
+        Debug.Log("ShootRage");
         //GetComponent<Animator>().SetTrigger("Attack_0_Event");
         StartCoroutine(EAnimateShotInARow());
 
@@ -43,10 +44,31 @@ public class BossActionShootRage : BossActionShootNormal
     private IEnumerator EAnimateShotInARow()
     {
         var count = 0;
+        var animator = GetComponent<Animator>();
 
         while (true)
         {
             GetComponent<Animator>().SetTrigger("Attack_0_Event");
+
+            yield return new WaitUntil(() =>
+            {
+                var state = animator.GetCurrentAnimatorStateInfo(0);
+                var isName = state.IsName("Attack_0_Event");
+                var normalizedTime = (state.normalizedTime - (int)state.normalizedTime);
+
+                return (isName && normalizedTime > .9f);
+            });
+
+            // var clips = GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+            // var clip = GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip;
+            // var state = animator.GetCurrentAnimatorStateInfo(0);
+            // var transition = animator.GetAnimatorTransitionInfo(0);
+            // var isName = state.IsName("Attack_0_Event");
+            // var normalizedTime = (state.normalizedTime - (int)state.normalizedTime);
+            // if (isName && normalizedTime > .9f)
+            //     Debug.Log(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+            Shoot();
 
             if (++count >= numOfShot) break;
 
@@ -59,7 +81,7 @@ public class BossActionShootRage : BossActionShootNormal
         var count = 0;
         var target = PlayerManager.instance.playerObject.transform;
 
-        while(true)
+        while (true)
         {
             var dir = (target.position - transform.position).normalized;
 

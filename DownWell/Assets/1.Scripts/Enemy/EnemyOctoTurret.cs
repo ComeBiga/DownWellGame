@@ -21,7 +21,7 @@ public class EnemyOctoTurret : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer > shootInterval)
+        if (timer > shootInterval)
         {
             var newProjectile = Instantiate<Projectile>(projectile, transform.position, Quaternion.identity);
 

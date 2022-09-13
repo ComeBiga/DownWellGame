@@ -11,6 +11,11 @@ public class BossActionShootNormal : BossAction
     {
         Debug.Log($"ShootNormal Take() in {this}");
         GetComponent<Animator>().SetTrigger("Attack_0");
+        var clips = GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+        var clip = GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip;
+        Debug.Log(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name);
+
+
         // Event
         //onEvent.Invoke();
 
@@ -41,7 +46,7 @@ public class BossActionShootNormal : BossAction
 
         var target = player.transform;
         var dir = (target.position - transform.position).normalized;
-        
+
         var shotProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
         shotProjectile.GetComponent<BossProjectile>().SetDirection(dir);
         shotProjectile.GetComponent<BossProjectile>().MoveToTarget();

@@ -33,13 +33,14 @@ public class PlayerPhysics : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     public void Init()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = gravity;
+        //UseGravity(false);
 
         wallCollision = new CollisionCheck();
         wallCollision.Init(GetComponent<BoxCollider2D>(),
@@ -106,7 +107,7 @@ public class PlayerPhysics : MonoBehaviour
 
     #region Private Method
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (PlayerManager.instance.playerObject == null) return;
 
@@ -121,6 +122,9 @@ public class PlayerPhysics : MonoBehaviour
 
     private void UpdateGravity()
     {
+        //rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y - gravity / gravity);
+        //transform.position += Vector3.down * gravity * Time.deltaTime;
+
         // �ִ�ӵ�
         if (rigidbody.velocity.y <= -maxFallSpeed) 
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, -maxFallSpeed);
@@ -143,7 +147,10 @@ public class PlayerPhysics : MonoBehaviour
     private void CheckGround()
     {
         if (wallCollision.CheckCollision(CollisionDirection.DOWN, OnGround))
+        {
+            //rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
             grounded = true;
+        }
         else
             grounded = false;
     }
