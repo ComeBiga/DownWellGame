@@ -1,6 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public abstract class ObjectSelector
 {
@@ -9,6 +10,7 @@ public abstract class ObjectSelector
     protected int max;
     protected GameObject[] objects;
 
+    protected static Tilemap tm_Wall;
     protected static Vector3 position;
     protected static Transform parent;
     protected static StageDatabase currentStage;
@@ -30,6 +32,11 @@ public abstract class ObjectSelector
     public void SetNext(ObjectSelector next)
     {
         this.next = next;
+    }
+
+    public void SetTileMap(Tilemap wall)
+    {
+        tm_Wall = wall;
     }
 
     public void SetObject(params GameObject[] objects)

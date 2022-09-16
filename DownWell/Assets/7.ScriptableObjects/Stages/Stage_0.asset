@@ -67,6 +67,31 @@ MonoBehaviour:
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
+  tileBases:
+  - {fileID: 11400000, guid: 6f422997d17845c43984c820057d8d41, type: 2}
+  - {fileID: 11400000, guid: 6763ba95a43581c4c97c921f8692ce41, type: 2}
+  - {fileID: 11400000, guid: fddc8649b6a553244b85365d97757f9f, type: 2}
+  - {fileID: 11400000, guid: 1cefe4fff551ff943acb888cab789177, type: 2}
+  - {fileID: 11400000, guid: baee59a004b3bf043be2cd066d9e8725, type: 2}
+  - {fileID: 11400000, guid: 8451ba71bd0c17b4b8d9cbb44adeab56, type: 2}
+  - {fileID: 11400000, guid: 257c8a0ad1eb3f84380f1180b27e9bd3, type: 2}
+  - {fileID: 11400000, guid: 06cdcec1e8c054642a9f684987fa24b8, type: 2}
+  - {fileID: 11400000, guid: 50f1079f94bbe28489790a3697baefba, type: 2}
+  - {fileID: 11400000, guid: 5ea59670c547e494fbc39dba3164139e, type: 2}
+  - {fileID: 11400000, guid: b4b79c5a8e5ada64996a44e85bc979ce, type: 2}
+  - {fileID: 11400000, guid: a1d60db62111ad1479ef22f447539456, type: 2}
+  - {fileID: 11400000, guid: f054ef82ec89b3940ae5057fda030dd3, type: 2}
+  - {fileID: 11400000, guid: 293455656f3b7bb4692946335fd38fc2, type: 2}
+  - {fileID: 11400000, guid: 0c0d09cd138123642ad6a293b587a243, type: 2}
+  - {fileID: 11400000, guid: 419584a71147a804a9352aec627ba25a, type: 2}
+  - {fileID: 11400000, guid: 448417f79830249489c696cd5c85398f, type: 2}
+  - {fileID: 11400000, guid: e93e13322c6ff6a4dbaffe58f7e36969, type: 2}
+  - {fileID: 11400000, guid: ab8539d5c1b4c9d4c89834f4abb2be2d, type: 2}
+  - {fileID: 11400000, guid: cb17ec32e430d434384dc6386c2adb06, type: 2}
+  - {fileID: 11400000, guid: 6e89e7c09c4d5cb4b98f10b345758430, type: 2}
+  - {fileID: 11400000, guid: ca3868d9a80eae84b9abd678758c2b5e, type: 2}
+  - {fileID: 11400000, guid: 5dc5738ba6320214794c9469e09ea14c, type: 2}
+  - {fileID: 11400000, guid: 1a0a8cefd3827d345b75f9cd006ca51e, type: 2}
   enemyObjects:
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   - {fileID: 3051560113913932450, guid: a60a7ef6320d67544aa2043c98307285, type: 3}

@@ -4,22 +4,22 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 4419926408919307843
-    second: tile_plus1_5_0
+    second: wall_15
   - first:
       213: 8916070052922533597
-    second: tile_plus1_5_1
+    second: block_0
   - first:
       213: -4477624741032095978
     second: tile_plus1_5_2
   - first:
       213: 1492975547949835125
-    second: tile_plus1_5_3
+    second: platform_L
   - first:
       213: -4387522647513133027
-    second: tile_plus1_5_4
+    second: platform_M
   - first:
       213: 8207738129746289337
-    second: tile_plus1_5_5
+    second: platform_R
   - first:
       213: -9139355517342132493
     second: tile_plus1_5_6
@@ -112,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tile_plus1_5_0
+      name: wall_15
       rect:
         serializedVersion: 2
         x: 8
@@ -133,7 +133,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_plus1_5_1
+      name: block_0
       rect:
         serializedVersion: 2
         x: 40
@@ -175,7 +175,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_plus1_5_3
+      name: platform_L
       rect:
         serializedVersion: 2
         x: 4
@@ -196,7 +196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_plus1_5_4
+      name: platform_M
       rect:
         serializedVersion: 2
         x: 21
@@ -217,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_plus1_5_5
+      name: platform_R
       rect:
         serializedVersion: 2
         x: 38

@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class DialogueBox : MonoBehaviour
 {
+    public SpriteRenderer sr;
+    public Animator animator;
+
+    [Space]
     public float activeDuration = 3f;
 
     public Action onInStateEnter;
@@ -27,6 +31,6 @@ public class DialogueBox : MonoBehaviour
 
     private void SetProperty()
     {
-        GetComponent<Animator>().SetTrigger("Out");
+        animator.SetTrigger("Out");
     }
 }

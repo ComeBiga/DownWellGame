@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float stageClearDelay;
 
     [Header("UI")]
+    public Transform worldSpaceUI;
     public Score score;
     public CoinCount coin;
 

@@ -5536,10 +5536,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -132.0,
-            "y": 414.0000305175781,
-            "width": 129.00001525878907,
-            "height": 34.0
+            "x": -185.00006103515626,
+            "y": 431.9999694824219,
+            "width": 128.99998474121095,
+            "height": 33.999996185302737
         }
     },
     "m_Slots": [
@@ -5592,13 +5592,13 @@
     },
     "m_Name": "Sample Texture 2D",
     "m_DrawState": {
-        "m_Expanded": false,
+        "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 15.999970436096192,
-            "y": 388.0000305175781,
-            "width": 184.00001525878907,
-            "height": 253.00001525878907
+            "x": -37.000083923339847,
+            "y": 406.0,
+            "width": 184.0,
+            "height": 253.99998474121095
         }
     },
     "m_Slots": [

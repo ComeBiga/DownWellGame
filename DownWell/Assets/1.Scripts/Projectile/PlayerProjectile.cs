@@ -16,6 +16,9 @@ public class PlayerProjectile : Projectile
 
                 if (destroyOnHit) Destroy();
             }
+
+            GetComponent<Effector>().Generate("Hit");
+            if (destroyOnHit) Destroy();
         }
     }
 }

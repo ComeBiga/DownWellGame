@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(fileName = "new StageDB", menuName = "Database/StageDB")]
 public class StageDatabase : ScriptableObject
@@ -27,6 +28,7 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private List<Sprite> itemGiverSprites;
     [SerializeField] private List<Sprite> itemGiverLockSprites;
     [SerializeField] private List<GameObject> dropItems;
+    [SerializeField] private List<TileBase> tileBases;
 
     public List<GameObject> DropItems { get { return dropItems; } }
 
@@ -73,6 +75,7 @@ public class StageDatabase : ScriptableObject
     public List<Sprite> PlatformSprites { get { return platformSprites; } }
     public List<Sprite> ItemGiverSprites { get { return itemGiverSprites; } }
     public List<Sprite> ItemGiverLockSprites { get { return itemGiverLockSprites; } }
+    public List<TileBase> TileBases { get { return tileBases; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
 

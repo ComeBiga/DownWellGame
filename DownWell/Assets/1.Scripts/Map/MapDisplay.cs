@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Tilemaps;
 
 public class MapDisplay : MonoBehaviour
 {
     MapManager mapManager;
+
+    public Tilemap tm_Wall;
+    public Tilemap tm_Background;
 
     [Header("Parents")]
     public Transform parent;
@@ -74,6 +78,8 @@ public class MapDisplay : MonoBehaviour
         spws.SetNext(ssws);
         ssws.SetNext(sdws);
 
+        ws_root.SetTileMap(tm_Wall);
+
         // enemy
         es_root = new EnemySelector(2000, 3000, enemyRatio);
     }
@@ -105,6 +111,8 @@ public class MapDisplay : MonoBehaviour
             if (m != enemyParent)
                 Destroy(m.gameObject);
         }
+
+        tm_Wall.ClearAllTiles();
     }
 
     public void ClearBackgrounds()
@@ -225,24 +233,27 @@ public class MapDisplay : MonoBehaviour
     private void DisplayBackground(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         // Background base
-        var bgo = GetTileInstance(backgroundObject, tilePosition.x, tilePosition.y);
-        bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(currentStage.bgInfo);
-        bgo.GetComponent<SpriteRenderer>().color = new Color((float)brightness/255, (float)brightness /255, (float)brightness/255);
+        var tileIndex = CatDown.Random.Get().Next(20, 23);
+        tm_Background.SetTile(new Vector3Int((int)tilePosition.x, (int)tilePosition.y, (int)tilePosition.z), currentStage.TileBases[tileIndex]);
+        tm_Background.color = new Color((float)brightness/255, (float)brightness /255, (float)brightness/255);
+        // var bgo = GetTileInstance(backgroundObject, tilePosition.x, tilePosition.y);
+        // bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(currentStage.bgInfo);
+        // bgo.GetComponent<SpriteRenderer>().color = new Color((float)brightness/255, (float)brightness /255, (float)brightness/255);
 
         // Background Decoration
-        var decos = currentStage.bgInfo.deco;
+        // var decos = currentStage.bgInfo.deco;
 
-        foreach (var deco in decos)
-        {
-            Sprite decoSprite;
+        // foreach (var deco in decos)
+        // {
+        //     Sprite decoSprite;
 
-            if (BackgroundHandler.Decorate(deco, out decoSprite))
-            {
-                bgo.GetComponent<SpriteRenderer>().sprite = decoSprite;
-                bgo.GetComponent<SpriteRenderer>().sortingOrder = 2;
-                break;
-            }
-        }
+        //     if (BackgroundHandler.Decorate(deco, out decoSprite))
+        //     {
+        //         bgo.GetComponent<SpriteRenderer>().sprite = decoSprite;
+        //         bgo.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        //         break;
+        //     }
+        // }
     }
 
     private void DisplayObject(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
