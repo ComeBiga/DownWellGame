@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour
     void GameOverPanel()
     {
         gameoverPanel.SetActive(true);
-        AchievementSystem.Instance.ProgressAchievement("Coin", UICollector.Instance.coin.Current);
-        gameoverPanel.GetComponent<UIGameOver>().TurnOnAchievementPanel(AchievementSystem.Instance.RewardAsAllAchieved());
+        // AchievementSystem.Instance.ProgressAchievement("Coin", UICollector.Instance.coin.Current);
+        // gameoverPanel.GetComponent<UIGameOver>().TurnOnAchievementPanel(AchievementSystem.Instance.RewardAsAllAchieved());
         PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + UICollector.Instance.coin.Current);
     }
 

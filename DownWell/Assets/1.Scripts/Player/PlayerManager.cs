@@ -21,6 +21,8 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField]
+    private GameObject playerPrefab;
     public GameObject playerObject;
     [SerializeField] private CharacterCollector characters;
     public CharacterCollector Collector { get { return characters; } }
@@ -47,7 +49,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Instantiate(Vector3 position)
     {
-        playerObject = Instantiate(playerObject, position, Quaternion.identity);
+        playerObject = Instantiate(playerPrefab, position, Quaternion.identity);
         playerObject.GetComponent<PlayerPhysics>().Init();
         playerObject.GetComponent<PlayerAttack>().InitWeapons();
         //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerObject.transform);
@@ -66,9 +68,9 @@ public class PlayerManager : MonoBehaviour
 
     #region Deprecated(SelectedPlayer)
     ///// <summary>
-    ///// ¼±ÅÃÇÑ Ä³¸¯ÅÍ¸¦ ÇÃ·¹ÀÌ¾îÀÇ Ä³¸¯ÅÍ·Î ¼±ÅÃ
+    ///// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½
     ///// </summary>
-    ///// <param name="name">Ä³¸¯ÅÍ ÀÌ¸§</param>
+    ///// <param name="name">Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½</param>
     //public void SelectPlayerCharacter(string name)
     //{
     //    //player = characters.Find(c => c.GetComponent<Player>().name == name);
@@ -77,9 +79,9 @@ public class PlayerManager : MonoBehaviour
     //}
 
     ///// <summary>
-    ///// ¼±ÅÃÇÑ Ä³¸¯ÅÍ¸¦ ÇÃ·¹ÀÌ¾îÀÇ Ä³¸¯ÅÍ·Î ¼±ÅÃ
+    ///// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½
     ///// </summary>
-    ///// <param charNum="charNum">Ä³¸¯ÅÍ ¹øÈ£</param>
+    ///// <param charNum="charNum">Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£</param>
     //public void SelectPlayerCharacter(int charNum)
     //{
     //    //player = characters.Find(c => c.GetComponent<Player>().num == charNum);
@@ -88,17 +90,17 @@ public class PlayerManager : MonoBehaviour
     //}
 
     ///// <summary>
-    ///// ¼±ÅÃÇÑ Ä³¸¯ÅÍ¸¦ ¸®¼Ò½º Æú´õ·Î ºÎÅÍ ·Îµå
+    ///// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½
     ///// </summary>
     ///// <param name="fileName"></param>
-    ///// <returns>·ÎµåÇÑ Ä³¸¯ÅÍ</returns>
+    ///// <returns>ï¿½Îµï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½</returns>
     //public Character SelectPlayerCharacterFromResource(string fileName)
     //{
     //    return Resources.Load("Characters/" + name) as Character;
     //}
 
     ///// <summary>
-    ///// ¸®¼Ò½º Æú´õ·Î ºÎÅÍ ¸ðµç Ä³¸¯ÅÍ ·Îµå
+    ///// ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½
     ///// </summary>
     //public void LoadAllCharacterFromResource()
     //{

@@ -8,6 +8,7 @@ public class PlayerProjectile : Projectile
     {
         if (collision != null)
         {
+
             if (collision.GetComponent<IHitByProjectile>() != null)
             {
                 collision.GetComponent<IHitByProjectile>().Hit(damage);

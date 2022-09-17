@@ -13,6 +13,15 @@ public class StartSceneManager : Singleton<StartSceneManager>
     public GameObject charPanel;
     public GameObject settingButton;
     public Text versionInfo;
+    public Button startButton;
+
+    private void Awake()
+    {
+        startButton.onClick.AddListener(() => 
+        {
+            LoadGameScene();
+        });
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +35,7 @@ public class StartSceneManager : Singleton<StartSceneManager>
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             ResetCollectionData();
         }
