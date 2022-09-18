@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     string text_Timer;
     public Text timeresult;
+    public TextMeshProUGUI timeTMP;
 
     private float time_start;
     private float time_current;
@@ -28,6 +30,7 @@ public class Timer : MonoBehaviour
     {
         End_Timer();
         timeresult.text = text_Timer;
+        timeTMP.text = text_Timer;
     }
 
     private void Start()

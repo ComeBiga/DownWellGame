@@ -16,16 +16,9 @@ GameObject:
   - component: {fileID: 6668236002862958570}
   - component: {fileID: 2625999096728353576}
   - component: {fileID: 492955916106371826}
-  - component: {fileID: 1503795862426347861}
-  - component: {fileID: 7384944447552896362}
-  - component: {fileID: 4329448174518538046}
-  - component: {fileID: 2411612313104567671}
-  - component: {fileID: 742055079508281411}
-  - component: {fileID: 7897412269105657540}
-  - component: {fileID: 8930872007281899478}
-  - component: {fileID: 8291811957975696450}
+  - component: {fileID: 7624211584419527143}
   m_Layer: 7
-  m_Name: JellyPoo
+  m_Name: JellyPoo_Walker
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 146973773
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50a2c1d2931c1444b839254795a10ec2, type: 3}
-  m_Color: {r: 1, g: 0.5476818, b: 0.54901963, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1922444a3e9463d4c99cb7fa5f237fd6, type: 3}
+  m_Color: {r: 1, g: 0.54901963, b: 0.54901963, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 3497555664075828464}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aab9a315329706b41850cca63b956c13, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9d9caacfb081ab04c859ed2c4a53f1d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -175,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a1ecd87485cbf43b29da87e4c59103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 15e5dd87c4c9e5441b5e34f8be30f2b2, type: 2}
+  info: {fileID: 11400000, guid: 343c5583f5cdc274aaa3c224694513c4, type: 2}
   health: 10
   invincible: 0
   dropItems:
@@ -212,28 +205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states:
-  - name: Sleeping
-    actionLoop: 0
+  - name: Walking
+    actionLoop: 1
     actions:
-    - {fileID: 1503795862426347861}
-    transitions:
-    - decision: {fileID: 7384944447552896362}
-      toState: Moving
-  - name: Moving
-    actionLoop: 0
-    actions:
-    - {fileID: 4329448174518538046}
-    transitions:
-    - decision: {fileID: 2411612313104567671}
-      toState: Sitting
-  - name: Sitting
-    actionLoop: 0
-    actions:
-    - {fileID: 7897412269105657540}
-    transitions:
-    - decision: {fileID: 8930872007281899478}
-      toState: Sleeping
---- !u!114 &1503795862426347861
+    - {fileID: 7624211584419527143}
+    transitions: []
+--- !u!114 &7624211584419527143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,145 +219,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3497555664075828464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d880ce989f8d49f47b9623a1d1c5f09c, type: 3}
+  m_Script: {fileID: 11500000, guid: 129e141959d3bba41acf3e2cb3a3f4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7384944447552896362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ab803d937e40c4dadb1b3abeedd123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensorCollider: {fileID: 2538971142890041180}
-  targetLayer:
+  rayLength: 0.1
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  groundLayermask:
     serializedVersion: 2
-    m_Bits: 8
-  targetFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 8
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
---- !u!114 &4329448174518538046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c72ada7547da8ea48b85ee2ca0b04339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animateInFrameTime: 1
-  speed: 3
-  dashTime: 1
---- !u!114 &2411612313104567671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f1f4e6f56f0a984d92433bfa507b7cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 3
---- !u!114 &742055079508281411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e20ea8ce2678b1046b32a52883ce9ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3768119630584708889}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Attack
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7897412269105657540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e20ea8ce2678b1046b32a52883ce9ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3768119630584708889}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Idle
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8930872007281899478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffda73738cbab8b4799ff2b3e14e2503, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8291811957975696450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497555664075828464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a519c53605f90034a94c0610606a32ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    m_Bits: 64
+  moveAsCollision: 1
+  speed: 1
+  startDirection: 0
+  flipX: 0
+  changeTime: 3
 --- !u!1 &6654104118453041115
 GameObject:
   m_ObjectHideFlags: 0

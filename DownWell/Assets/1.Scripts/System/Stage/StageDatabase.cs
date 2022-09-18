@@ -19,6 +19,8 @@ public class StageDatabase : ScriptableObject
     private string path;
     public string Path { get { return path; } }
 
+    public int stageLength = 200;
+
     [Header("Wall")]
     [SerializeField] private List<GameObject> mapObjects;
     [SerializeField] private List<Sprite> wallSprites;

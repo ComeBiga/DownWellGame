@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Vector3 instantiatePosition;
     public float dropCharacterDelay;
     public float stageClearDelay;
+    public int lastStage = 3;
 
     [Header("UI")]
     public Transform worldSpaceUI;
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
         
         stageManager.NextStage();
 
-        if (stageManager.CurrentStageIndex == 2)
+        if (stageManager.CurrentStageIndex == lastStage + 1)
         {
             GameOver();
             return;

@@ -7,10 +7,13 @@ public class UIHealthBar : MonoBehaviour
 {
     public List<Image> fills;
     [SerializeField] private Sprite[] fillColors;
+    [SerializeField] private Color[] colorLevels;
     private int colorIndex;
 
     private PlayerHealth playerHP;
     private int lastHP;
+
+    public bool useColorLevels = true;
 
     public void Init()
     {
@@ -19,7 +22,8 @@ public class UIHealthBar : MonoBehaviour
 
         colorIndex = CalculateFillColorIndex(playerHP.CurrentHealth) - 1;
 
-        SetFillColorAll(fillColors[colorIndex]);
+        if(!useColorLevels) SetFillColorAll(fillColors[colorIndex]);
+        else SetFillColorAll(colorLevels[colorIndex]);
     }
 
     public void OnChange()
@@ -48,7 +52,8 @@ public class UIHealthBar : MonoBehaviour
         var fillIndex = lastHP % 3;
         Debug.Log($"fillIndex : {fillIndex}, colorIndex {colorIndex}");
         fills[fillIndex].color = Color.white;
-        fills[fillIndex].sprite = fillColors[colorIndex];
+        if(!useColorLevels) fills[fillIndex].sprite = fillColors[colorIndex];
+        else fills[fillIndex].color = colorLevels[colorIndex];
 
         lastHP = currentHP;
     }
@@ -68,7 +73,10 @@ public class UIHealthBar : MonoBehaviour
             if (colorIndex < 1)
                 fills[fillIndex + i].color = Color.clear;
             else
-                fills[fillIndex + i].sprite = fillColors[colorIndex - 1];
+            {
+                if(!useColorLevels) fills[fillIndex + i].sprite = fillColors[colorIndex - 1];
+                else fills[fillIndex + i].color = colorLevels[colorIndex - 1];
+            }
         }
 
         lastHP = currentHP;
@@ -84,6 +92,14 @@ public class UIHealthBar : MonoBehaviour
         foreach(var f in fills)
         {
             f.sprite = sprite;
+        }
+    }
+    
+    private void SetFillColorAll(Color color)
+    {
+        foreach(var f in fills)
+        {
+            f.color = color;
         }
     }
 }

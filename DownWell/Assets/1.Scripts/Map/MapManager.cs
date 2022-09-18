@@ -152,7 +152,7 @@ public class MapManager : MonoBehaviour
         GenerateLevel(loadLevel.GetLevels(LoadLevel.LevelType.ENTRE, sm.Current.Num));
 
         // ���� ���� ����
-        GenerateLevels(loadLevel.GetLevels(LoadLevel.LevelType.MAIN, sm.Current.Num), height);
+        GenerateLevels(loadLevel.GetLevels(LoadLevel.LevelType.MAIN, sm.Current.Num), sm.Current.stageLength);//height);
 
         // �������� ���� �����ϴ� �ڵ�
         if (sm.Current.BossObject != null)

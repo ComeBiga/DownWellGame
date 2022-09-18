@@ -12,6 +12,9 @@ public class BossProjectile : MonoBehaviour
     Vector2 direction;
 
     ContactFilter2D filter;
+    private Camera mainCamera;
+    private float width;
+    private float height;
 
     protected virtual void Start()
     {
@@ -19,11 +22,20 @@ public class BossProjectile : MonoBehaviour
         filter.SetLayerMask(1 << 3);
 
         RotateToTarget(PlayerManager.instance.transform.position);
+
+        mainCamera = Camera.main;
+        height = mainCamera.orthographicSize * 2;
+        width = height / 16 * 9;
     }
 
     private void Update()
     {
         TakeDamage();
+
+        var position = transform.position;
+        var cameraPos = mainCamera.transform.position;
+        if (cameraPos.x - width / 2 > position.x || cameraPos.x + width / 2 < position.x || cameraPos.y - height / 2 > position.y || cameraPos.y + height / 2 < position.y)
+            Destroy(this.gameObject);
     }
 
     public void RotateToTarget(Vector3 target)
@@ -66,7 +78,7 @@ public class BossProjectile : MonoBehaviour
     {
         var top = Camera.main.transform.position.y - Camera.main.orthographicSize;
 
-        while(true)
+        while (true)
         {
             if (transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize
                 || transform.position.y > Camera.main.transform.position.y + Camera.main.orthographicSize
@@ -74,7 +86,7 @@ public class BossProjectile : MonoBehaviour
                 || transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * 9 / 16)
                 break;
 
-                transform.localPosition += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+            transform.localPosition += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
 
             yield return null;
         }
@@ -87,9 +99,9 @@ public class BossProjectile : MonoBehaviour
         List<Collider2D> colliders = new List<Collider2D>();
         GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), colliders);
 
-        if(colliders.Count > 0)
+        if (colliders.Count > 0)
         {
-            foreach(var collider in colliders)
+            foreach (var collider in colliders)
             {
                 //if(collider.tag == "Wall")
                 //{

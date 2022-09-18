@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class StartSceneManager : Singleton<StartSceneManager>
 {
@@ -13,6 +14,8 @@ public class StartSceneManager : Singleton<StartSceneManager>
     public GameObject charPanel;
     public GameObject settingButton;
     public Text versionInfo;
+    public TextMeshProUGUI versionInfoTMP;
+
     public Button startButton;
 
     private void Awake()
@@ -71,6 +74,7 @@ public class StartSceneManager : Singleton<StartSceneManager>
         }
 
         versionInfo.text = "Ver." + Application.version;
+        versionInfoTMP.text = "Ver." + Application.version;
     }
 
     public void InitSound()
