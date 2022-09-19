@@ -13,7 +13,7 @@ EnemyAct 클래스의 UpdateAct 함수가 템플릿 메서드 함수로 구현�
 
 EnemyActionState의 CheckTransition 함수를 통해서 ActState를 바꾸는 것을 결정합니다.
 
-## [전체코드](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/99.EnemyEditor/Scripts)
+## [전체코드](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/1.Scripts/Enemy)
 ### EnemyAct.cs
 ```c#
 public abstract class EnemyAct : MonoBehaviour
