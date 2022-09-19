@@ -31,6 +31,7 @@ public class StageDatabase : ScriptableObject
     [SerializeField] private List<Sprite> itemGiverLockSprites;
     [SerializeField] private List<GameObject> dropItems;
     [SerializeField] private List<TileBase> tileBases;
+    [SerializeField] private List<Material> materials;
 
     public List<GameObject> DropItems { get { return dropItems; } }
 
@@ -80,6 +81,7 @@ public class StageDatabase : ScriptableObject
     public List<TileBase> TileBases { get { return tileBases; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
+    public List<Material> Materials { get { return materials; } }
 
     public GameObject InstantiateMapObject(int tileCode, Vector3 position, Transform parent)
     {

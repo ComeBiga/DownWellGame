@@ -11610,6 +11610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tm_Wall: {fileID: 514018177}
   tm_Background: {fileID: 324260873}
+  tmr_Wall: {fileID: 514018176}
+  tmr_Background: {fileID: 324260872}
   parent: {fileID: 474134045}
   wallParent: {fileID: 514018175}
   enemyParent: {fileID: 432793905}

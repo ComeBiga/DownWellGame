@@ -11,6 +11,9 @@ public class MapDisplay : MonoBehaviour
     public Tilemap tm_Wall;
     public Tilemap tm_Background;
 
+    public TilemapRenderer tmr_Wall;
+    public TilemapRenderer tmr_Background;
+
     [Header("Parents")]
     public Transform parent;
     public Transform wallParent;
@@ -78,7 +81,7 @@ public class MapDisplay : MonoBehaviour
         spws.SetNext(ssws);
         ssws.SetNext(sdws);
 
-        ws_root.SetTileMap(tm_Wall);
+        ws_root.SetTileMap(tm_Wall, tmr_Wall);
 
         // enemy
         es_root = new EnemySelector(2000, 3000, enemyRatio);
@@ -236,6 +239,7 @@ public class MapDisplay : MonoBehaviour
         var tileIndex = CatDown.Random.Get().Next(20, 23);
         tm_Background.SetTile(new Vector3Int((int)tilePosition.x, (int)tilePosition.y, (int)tilePosition.z), currentStage.TileBases[tileIndex]);
         tm_Background.color = new Color((float)brightness/255, (float)brightness /255, (float)brightness/255);
+        tmr_Background.sharedMaterial = currentStage.Materials[1];
         // var bgo = GetTileInstance(backgroundObject, tilePosition.x, tilePosition.y);
         // bgo.GetComponent<SpriteRenderer>().sprite = BackgroundHandler.GetRandomBase(currentStage.bgInfo);
         // bgo.GetComponent<SpriteRenderer>().color = new Color((float)brightness/255, (float)brightness /255, (float)brightness/255);

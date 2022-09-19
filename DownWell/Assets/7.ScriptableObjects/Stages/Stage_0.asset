@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Stage0
   num: 0
   path: /Resources/Levels/Stage0/Main
+  stageLength: 200
   mapObjects:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
@@ -92,6 +93,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca3868d9a80eae84b9abd678758c2b5e, type: 2}
   - {fileID: 11400000, guid: 5dc5738ba6320214794c9469e09ea14c, type: 2}
   - {fileID: 11400000, guid: 1a0a8cefd3827d345b75f9cd006ca51e, type: 2}
+  materials:
+  - {fileID: 2100000, guid: d2d06a13bb838084ea84ecf70efefa4c, type: 2}
+  - {fileID: 2100000, guid: e70a6d92fe7a6784bbdcc645eb8890ed, type: 2}
   enemyObjects:
   - {fileID: 3497555664075828464, guid: d1ed6d6840540cd4ba559ce35a2a1914, type: 3}
   - {fileID: 3051560113913932450, guid: a60a7ef6320d67544aa2043c98307285, type: 3}

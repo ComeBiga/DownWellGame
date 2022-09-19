@@ -81,6 +81,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca3868d9a80eae84b9abd678758c2b5e, type: 2}
   - {fileID: 11400000, guid: 5dc5738ba6320214794c9469e09ea14c, type: 2}
   - {fileID: 11400000, guid: 1a0a8cefd3827d345b75f9cd006ca51e, type: 2}
+  materials:
+  - {fileID: 2100000, guid: 56d522d89171eca49999d1230f699837, type: 2}
+  - {fileID: 2100000, guid: 1788104d1634e774cb0aaeba2c0e1c7e, type: 2}
   enemyObjects:
   - {fileID: 7840619046348813548, guid: 24cc03a053b2fbb42899f318499599cb, type: 3}
   - {fileID: 2054867273042109991, guid: a81ec09880f3bb740a74f9e4b29d744d, type: 3}

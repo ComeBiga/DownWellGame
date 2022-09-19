@@ -11,6 +11,7 @@ public abstract class ObjectSelector
     protected GameObject[] objects;
 
     protected static Tilemap tm_Wall;
+    protected static TilemapRenderer tmr_Wall;
     protected static Vector3 position;
     protected static Transform parent;
     protected static StageDatabase currentStage;
@@ -34,9 +35,10 @@ public abstract class ObjectSelector
         this.next = next;
     }
 
-    public void SetTileMap(Tilemap wall)
+    public void SetTileMap(Tilemap wall, TilemapRenderer renderer)
     {
         tm_Wall = wall;
+        tmr_Wall = renderer;
     }
 
     public void SetObject(params GameObject[] objects)

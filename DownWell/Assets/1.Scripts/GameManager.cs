@@ -81,12 +81,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ClearStage();
         }
-        
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SceneManager.LoadScene(0);
         }
@@ -94,6 +94,9 @@ public class GameManager : MonoBehaviour
 
     public void StartStage()
     {
+        // Material
+
+
         // Level Generation
         MapManager.instance.GenerateBeforeUpdate();
 
@@ -113,8 +116,8 @@ public class GameManager : MonoBehaviour
 
     public void ClearStage()
     {
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(stageManager.Current.BGM);
-        
+
+        var lastBGM = stageManager.Current.BGM;
         stageManager.NextStage();
 
         if (stageManager.CurrentStageIndex == lastStage + 1)
@@ -132,7 +135,11 @@ public class GameManager : MonoBehaviour
 
         Camera.main.GetComponent<SmoothFollow>().StartStage();
 
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play(stageManager.Current.BGM);
+        if (Comebiga.SoundManager.instance != null && stageManager.Current.BGM != lastBGM)
+        {
+            Comebiga.SoundManager.instance.Stop(lastBGM);
+            Comebiga.SoundManager.instance.Play(stageManager.Current.BGM);
+        }
     }
 
     public void EndStage()
@@ -183,7 +190,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EFallIntoNextStage()
     {
-        while(true)
+        while (true)
         {
             if (playerManager.playerObject.transform.position.y <= mapManager.CurrentYPos - 3f)
                 break;
