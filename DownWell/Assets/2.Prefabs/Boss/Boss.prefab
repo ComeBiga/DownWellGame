@@ -211,9 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upperBossObject: {fileID: 2883644436479882512, guid: d66a370809d3bed42a0b79d3411944da, type: 3}
-  distanceFromBoss: 19
+  distanceFromBoss: 16
   currentState: 0
-  maxHealth: 700
+  maxHealth: 1000
   health:
     current: 0
   damagedInterval: 0.08
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 3
-  rageModePercentage: 60
+  rageModePercentage: 45
   normalPattern:
     actions:
     - {fileID: 1649624395474175220}

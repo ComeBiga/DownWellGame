@@ -16,7 +16,8 @@ MonoBehaviour:
   shotRebound: 0
   coolDownTime: 0.2
   projectile: {fileID: 1862661163937341917, guid: e7bee866f024fe148b7bed0d5b1a6878, type: 3}
-  damage: 6
+  damage: 4
   addedRange: 0
+  destroyOnHit: 1
   capacity: 6
   projectileOffset: 0.16

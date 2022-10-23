@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
         input.Init(sens, dead);
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if (controllerPanel != null) controllerPanel.SetActive(false);
+        //if (controllerPanel != null) controllerPanel.SetActive(false);
 #elif UNITY_ANDROID
         if (!PlayerPrefs.HasKey("ControllerSize")) PlayerPrefs.SetInt("ControllerSize", 60);
         var csize = PlayerPrefs.GetInt("ControllerSize");

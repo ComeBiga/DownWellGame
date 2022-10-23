@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -9,8 +10,10 @@ public class UIController : MonoBehaviour
     public RectTransform movePanel;
     public Image left;
     public Image right;
-    public Sprite normalMove;
-    public Sprite pressedMove;
+    public Sprite normalMoveL;
+    public Sprite pressedMoveL;
+    public Sprite normalMoveR;
+    public Sprite pressedMoveR;
 
     [Header("Jump")]
     public RectTransform jumpPanel;
@@ -40,10 +43,10 @@ public class UIController : MonoBehaviour
         switch(value)
         {
             case 0:
-                left.sprite = normalMove;
+                left.sprite = normalMoveL;
                 break;
             case 1:
-                left.sprite = pressedMove;
+                left.sprite = pressedMoveL;
                 break;
         }
     }
@@ -57,10 +60,10 @@ public class UIController : MonoBehaviour
         switch (value)
         {
             case 0:
-                right.sprite = normalMove;
+                right.sprite = normalMoveR;
                 break;
             case 1:
-                right.sprite = pressedMove;
+                right.sprite = pressedMoveR;
                 break;
         }
     }
@@ -80,5 +83,20 @@ public class UIController : MonoBehaviour
                 jump.sprite = pressedJump;
                 break;
         }
+    }
+
+    public void OnPointerDownLeftButton()
+    {
+        Debug.Log("Left");
+    }
+    
+    public void OnPointerDownRightButton()
+    {
+        Debug.Log("Right");
+    }
+    
+    public void OnPointerDownJumpButton()
+    {
+        Debug.Log("Jump");
     }
 }

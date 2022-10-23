@@ -66,6 +66,11 @@ public class ItemDrop : ScriptableObject
         }
     }
 
+    public void DropItem(GameObject itemGO, Vector3 position)
+    {
+        InstantiateItem(itemGO, position);
+    }
+
     private void InstantiateCoin(Item _item, Vector3 position)
     {
         var count = CatDown.Random.Get().Next(minCoin, maxCoin);

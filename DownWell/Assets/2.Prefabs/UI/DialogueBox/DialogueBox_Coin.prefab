@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 2504026971341619110}
   animator: {fileID: 1538526840421676818}
+  txtDialogue: {fileID: 781539327678279448}
   activeDuration: 1
 --- !u!1 &5741056602129696113
 GameObject:
@@ -307,8 +308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -719.29645, y: -1620.1826}
-  m_SizeDelta: {x: -1439.685, y: -3199.5833}
+  m_AnchoredPosition: {x: -719.2782, y: -1620.1826}
+  m_SizeDelta: {x: -1439.57, y: -3199.5833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5692153161858572807
 CanvasRenderer:
@@ -338,7 +339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29dc150b70398f5408424e8e80119435, type: 2}
   m_sharedMaterial: {fileID: 6299070972765533238, guid: 29dc150b70398f5408424e8e80119435, type: 2}

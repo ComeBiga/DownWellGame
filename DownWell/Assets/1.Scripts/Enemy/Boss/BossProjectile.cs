@@ -34,7 +34,7 @@ public class BossProjectile : MonoBehaviour
 
         var position = transform.position;
         var cameraPos = mainCamera.transform.position;
-        if (cameraPos.x - width / 2 > position.x || cameraPos.x + width / 2 < position.x || cameraPos.y - height / 2 > position.y || cameraPos.y + height / 2 < position.y)
+        if (cameraPos.x - width / 2 > position.x || cameraPos.x + width / 2 < position.x || cameraPos.y + height / 2 < position.y )//|| cameraPos.y - height / 2 > position.y)
             Destroy(this.gameObject);
     }
 

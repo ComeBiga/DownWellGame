@@ -27,4 +27,12 @@ public class CoinCount : MonoBehaviour
     {
         coin += amount;
     }
+
+    public void Use(int amount = 1)
+    {
+        coin -= amount;
+        
+        if(coin < 0)
+            Debug.LogError("Coin shouldn't be minus");
+    }
 }

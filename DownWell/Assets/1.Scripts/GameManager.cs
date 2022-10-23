@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
 
         if (stageManager.CurrentStageIndex == lastStage + 1)
         {
-            GameOver();
+            GameClear();
             return;
         }
 
@@ -158,12 +158,26 @@ public class GameManager : MonoBehaviour
         Invoke("GameOverPanel", 3f);
     }
 
+    public void GameClear()
+    {
+        // Timer
+        GetComponent<Timer>().EndTimer();
+
+        Invoke("GameClearPanel", 3f);
+    }
+
     void GameOverPanel()
     {
         gameoverPanel.SetActive(true);
         // AchievementSystem.Instance.ProgressAchievement("Coin", UICollector.Instance.coin.Current);
         // gameoverPanel.GetComponent<UIGameOver>().TurnOnAchievementPanel(AchievementSystem.Instance.RewardAsAllAchieved());
-        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + UICollector.Instance.coin.Current);
+        // PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + UICollector.Instance.coin.Current);
+    }
+
+    private void GameClearPanel()
+    {
+        gameoverPanel.SetActive(true);
+        gameoverPanel.GetComponent<UIGameOver>().GameClear();
     }
 
     private void DropCharacterLateSeconds()

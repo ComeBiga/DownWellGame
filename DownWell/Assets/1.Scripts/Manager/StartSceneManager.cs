@@ -62,7 +62,7 @@ public class StartSceneManager : Singleton<StartSceneManager>
             //settingButton.SetActive(false);
             SettingMgr.instance.SetActiveSettingButton(false);
 
-            SettingMgr.instance.Opening = false;
+            //SettingMgr.instance.Opening = false;
         }
         else
         {

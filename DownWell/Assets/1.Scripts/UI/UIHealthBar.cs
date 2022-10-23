@@ -26,6 +26,15 @@ public class UIHealthBar : MonoBehaviour
         else SetFillColorAll(colorLevels[colorIndex]);
     }
 
+    public bool CanIncrease()
+    {
+        var _colorIndex = CalculateFillColorIndex(lastHP);
+        if(_colorIndex >= colorLevels.Length)
+            return false;
+
+        return true;
+    }
+
     public void OnChange()
     {
         //colorIndex = CalculateFillColorIndex(playerHP.CurrentHealth);
@@ -46,11 +55,11 @@ public class UIHealthBar : MonoBehaviour
 
     public void Increase(int amount = 1)
     {
+
         var currentHP = playerHP.CurrentHealth;
 
-        colorIndex = CalculateFillColorIndex(lastHP);
         var fillIndex = lastHP % 3;
-        Debug.Log($"fillIndex : {fillIndex}, colorIndex {colorIndex}");
+        colorIndex = CalculateFillColorIndex(lastHP);
         fills[fillIndex].color = Color.white;
         if(!useColorLevels) fills[fillIndex].sprite = fillColors[colorIndex];
         else fills[fillIndex].color = colorLevels[colorIndex];

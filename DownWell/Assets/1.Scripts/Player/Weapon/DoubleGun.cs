@@ -19,6 +19,14 @@ public class DoubleGun : Gun
 
     public new void Shoot(GameObject projectile, Transform transform)
     {
+        if (IsEmpty)
+        {
+            player.GetComponent<PlayerPhysics>().LeapOff(player.GetComponent<Rigidbody2D>().velocity.y + 3f);
+
+            // Animation
+            player.GetComponent<PlayerAnimation>().Shoot();
+        }
+
         if (magazine.current > 0)
         {
             magazine.current--;
@@ -30,8 +38,15 @@ public class DoubleGun : Gun
 
             //Debug.Log($"AddedRange : {addedRange} (DoubleGun.cs)");
             //pt.GetComponent<Projectile>().damage = projectileDamage;
+            Effect();
 
             OnShootFunc();
+        }
+
+        if (!IsEmpty && magazine.current <= 0)
+        {
+            IsEmpty = true;
+            EmptyFX();
         }
     }
 }

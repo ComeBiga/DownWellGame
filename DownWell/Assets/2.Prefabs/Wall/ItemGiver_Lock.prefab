@@ -186,7 +186,8 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 54af265c9b525374597efd423bb5caae, type: 2}
   itemDropper: {fileID: 11400000, guid: c2ea8e090c180264e97b15fc611e53ad, type: 2}
   dropItems: []
-  unlockCoinCount: 100
+  unlockCoinCount: 30
   dialogueBox: {fileID: 5435296027511742958, guid: 7a541604575d5b1448eb08f5971d0225, type: 3}
   showingDialogue: 0
   dialogueOffset: 1
+  giveItem: {fileID: 981605482245356936, guid: 73e6f002881cbe442a906a16094aac9b, type: 3}

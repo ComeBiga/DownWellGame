@@ -41,6 +41,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void GainHealth(int amount)
     {
+        if(UICollector.Instance.healthBar.CanIncrease() == false)
+            return;
+
         currentHealth += amount;
         //currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 

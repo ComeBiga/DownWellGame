@@ -25,13 +25,10 @@ public class SettingMgr : MonoBehaviour
 
     public bool buttonOnStart = false;
 
-    public GameObject OpeningPanel;
     public GameObject setPanel;
     public GameObject setBtn;
-    public GameObject resetButton;
-    public GameObject ingameSetting;
 
-    [HideInInspector] public bool Opening = true;
+    public bool Opening = true;
 
 
     [Header("Image")]
@@ -53,69 +50,39 @@ public class SettingMgr : MonoBehaviour
     void Start()
     {
         setPanel.SetActive(false);
-        if(buttonOnStart) setBtn.SetActive(true);
-        //if (SceneManager.GetActiveScene().name == "GameScene" && bgmOff == 0)
-        //    SoundManager.instance.PlayBGMSound("Background");  //»ç¿îµå ½ÃÀÛ
-
-        //ActivateSettingButton(SceneManager.GetActiveScene(), LoadSceneMode.Single);
-        //SceneManager.sceneLoaded += ActivateSettingButton;
+        if (buttonOnStart) setBtn.SetActive(true);
     }
 
     void Update()
     {
-        if(!setPanel.activeSelf)
+        if (!setPanel.activeSelf)
         {
-            if(Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 SettingBtn();
             }
         }
 
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SettingBtn();
             }
         }
-
-        //if (SceneManager.GetActiveScene().name == "StartScene" && OpeningPanel != null)
-        //{
-        //    if (OpeningPanel.activeInHierarchy)
-        //        setBtn.GetComponent<Image>().enabled = false;
-        //    else
-        //        setBtn.GetComponent<Image>().enabled = true;
-        //}
-        //else
-        //    setBtn.GetComponent<Image>().enabled = true;
 
         if (Setting.worldCamera == null)
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
-        if (bgmOff == 1)
-            bgmImg.sprite = muteImg;
-        else
-            bgmImg.sprite = originImg;
-        
-        if (effOff == 1)
-            effImg.sprite = muteImg;
-        else
-            effImg.sprite = originImg;
+        // if (bgmOff == 1)
+        //     bgmImg.sprite = muteImg;
+        // else
+        //     bgmImg.sprite = originImg;
 
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    CancelBtn();
-        //    ClickCount++;
-        //    if (!IsInvoking("DoubleClick"))
-        //        Invoke("DoubleClick", 1.0f);
-
-        //}
-        //else if (ClickCount == 2)
-        //{
-        //    CancelInvoke("DoubleClick");
-        //    exitBtn();
-        //}
-
+        // if (effOff == 1)
+        //     effImg.sprite = muteImg;
+        // else
+        //     effImg.sprite = originImg;
     }
 
     public void ResetCollectionData()
@@ -135,7 +102,7 @@ public class SettingMgr : MonoBehaviour
 
     public void ActivateSettingButton(Scene scene, LoadSceneMode mode)
     {
-        if(scene.buildIndex == 0)
+        if (scene.buildIndex == 0)
             setBtn.SetActive(true);
     }
 
@@ -143,16 +110,6 @@ public class SettingMgr : MonoBehaviour
     public void SettingBtn()
     {
         gPaused = true;
-        if ((SceneManager.GetActiveScene().buildIndex == 1) || UIManager.clickPlay)
-        {
-            resetButton.SetActive(false);
-            ingameSetting.SetActive(true);
-        }
-        else
-        {
-            resetButton.SetActive(true);
-            ingameSetting.SetActive(false);
-        }
         setPanel.SetActive(true);
         Time.timeScale = 0;
     }
@@ -170,14 +127,19 @@ public class SettingMgr : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
     }
 
-/*    private void OnApplicationQuit()
+    public void RestartGameScene()
     {
-        Application.CancelQuit();
-#if !UNITY_EDITOR
-        System.Diagnostics.Process.GetCurrentProcess().Kill();
-#endif
-    }*/
-    
+        SceneManager.LoadSceneAsync(1);
+    }
+
+    /*    private void OnApplicationQuit()
+        {
+            Application.CancelQuit();
+    #if !UNITY_EDITOR
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+    #endif
+        }*/
+
     public void exitBtn()
     {
 #if UNITY_EDITOR
@@ -189,14 +151,14 @@ public class SettingMgr : MonoBehaviour
 
     void OnApplicationPause(bool pause)
     {
-        if (pause) //À¯Àú°¡ È¨ÀÌ³ª È¦µå¹öÆ° ´­·ÈÀ» ¶§ ÀÏ½ÃÁ¤Áö
+        if (pause) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¨ï¿½Ì³ï¿½ È¦ï¿½ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             gPaused = true;
-            if(SceneManager.GetActiveScene().buildIndex == 1) SettingBtn();
+            if (SceneManager.GetActiveScene().buildIndex == 1) SettingBtn();
         }
         else
         {
-            if (gPaused) //À¯Àú°¡ °ÔÀÓÀ¸·Î µ¹¾Æ¿ÔÀ» ¶§
+            if (gPaused) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
                 gPaused = false;
             }
@@ -222,6 +184,8 @@ public class SettingMgr : MonoBehaviour
                 var bgmvalue = (bgmOff == 1) ? true : false;
                 if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
 
+                bgmImg.sprite = (bgmOff == 1) ? muteImg : originImg;
+
                 PlayerPrefs.SetInt("BgmVolume", bgmOff);
                 break;
             case "eff":
@@ -232,6 +196,8 @@ public class SettingMgr : MonoBehaviour
                 //SoundManager.instance.SetEffVolume(effOff);
                 var effvalue = (effOff == 1) ? true : false;
                 if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.EFFECT, effvalue);
+
+                effImg.sprite = (effOff == 1) ? muteImg : originImg;
 
                 PlayerPrefs.SetInt("EffVolume", effOff);
                 break;
