@@ -126,7 +126,7 @@ public class StageDatabase : ScriptableObject
     {
 #if UNITY_EDITOR
         return path;
-#elif UNITY_ANDROID || UNITY_STANDALONE_WIN
+#elif UNITY_ANDROID || UNITY_STANDALONE_WIN || UNITY_IOS
         return path.Replace("/Resources/", "");
 #endif
         //if (resourceLoad)

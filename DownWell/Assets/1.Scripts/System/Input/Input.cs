@@ -12,6 +12,7 @@ namespace CatDown
         protected float dead;
 
         protected GameObject controller;
+        protected UIController cont;
 
         public virtual void Init(float sens, float dead)
         {
@@ -23,6 +24,7 @@ namespace CatDown
         public void SetController(GameObject controller)
         {
             this.controller = controller;
+            cont = controller.GetComponent<UIController>();
         }
 
         public virtual void SetPartition(float value)

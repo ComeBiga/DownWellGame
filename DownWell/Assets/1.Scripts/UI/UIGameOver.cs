@@ -8,6 +8,7 @@ using TMPro;
 public class UIGameOver : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI txtGameOverTitle;
+    [SerializeField] private Button btnRetry;
     [SerializeField] private Button btnHome;
 
     [Header("Achievement")]
@@ -16,12 +17,12 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private Text achievementDescription;
     [SerializeField] private Image achievementImage;
     [SerializeField] private Queue<IAchievementInfo> _achievedList;
-    [SerializeField] private Button btnRetry;
 
     private void Awake()
     {
         btnRetry.onClick.AddListener(() => {
-            SettingMgr.instance.RestartGameScene();
+            Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
+            SceneManager.LoadSceneAsync(1);
         });
 
         btnHome.onClick.AddListener(() => {

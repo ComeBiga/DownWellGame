@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour
 {
     [Header("Move")]
     public RectTransform movePanel;
+    public RectTransform rtrLeft;
+    public RectTransform rtrRight;
     public Image left;
     public Image right;
     public Sprite normalMoveL;
@@ -17,9 +19,14 @@ public class UIController : MonoBehaviour
 
     [Header("Jump")]
     public RectTransform jumpPanel;
+    public RectTransform rtrJump;
     public Image jump;
     public Sprite normalJump;
     public Sprite pressedJump;
+
+    private void Update() {
+        
+    }
 
     public void SetSize(int ratio)
     {
@@ -83,20 +90,5 @@ public class UIController : MonoBehaviour
                 jump.sprite = pressedJump;
                 break;
         }
-    }
-
-    public void OnPointerDownLeftButton()
-    {
-        Debug.Log("Left");
-    }
-    
-    public void OnPointerDownRightButton()
-    {
-        Debug.Log("Right");
-    }
-    
-    public void OnPointerDownJumpButton()
-    {
-        Debug.Log("Jump");
     }
 }

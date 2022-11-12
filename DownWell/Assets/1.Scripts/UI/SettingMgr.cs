@@ -129,6 +129,7 @@ public class SettingMgr : MonoBehaviour
 
     public void RestartGameScene()
     {
+        //SoundManager.instance.SoundOff();
         SceneManager.LoadSceneAsync(1);
     }
 
