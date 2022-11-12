@@ -8,7 +8,7 @@ public class ObjectPooler : MonoBehaviour
     public GameObject objectToPool;
     public Transform parent;
 
-    public List<GameObject> pool = new List<GameObject>();
+    public List<GameObject> pool = new List<GameObject>(100);
 
     public GameObject this[int i]
     {
