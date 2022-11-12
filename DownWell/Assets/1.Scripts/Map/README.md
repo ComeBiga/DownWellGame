@@ -1,7 +1,7 @@
 # MapDisplay
-![me](https://user-images.githubusercontent.com/36800639/153050160-18c66ce5-42bc-4bfd-9193-e134481ad5be.PNG)
+![맵_1](https://user-images.githubusercontent.com/36800639/201475223-e4f60e16-1f0c-4579-925a-8c0d0d099ee7.PNG)
 
-위 사진처럼 맵이 일정 길이로 수 십 가지가 저장이 되어있습니다. 그 중 맵을 랜덤하게 선택해 배치합니다.
+위 사진처럼 저장된 레벨 리스트 중에 랜덤으로 선택해 맵에 배치합니다.
 ## 주요 코드라인
 
 ### MapManager.cs
