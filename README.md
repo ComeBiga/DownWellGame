@@ -15,8 +15,10 @@ __구글플레이__ : [Link](https://play.google.com/store/apps/details?id=com.F
 
 ## 주요 코드
 + #### [ObjectPooler](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/1.Scripts/Map/ObjectPooler/ObjectPooler.cs)
+ ### 몬스터 패턴
 + #### [BossBrain](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/1.Scripts/Enemy/Boss/Pattern/README.md)
 + #### [EnemyBrain](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/1.Scripts/Enemy/README.md)
+ ### 맵 생성 / 에디터
 + #### [MapDisplay](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/1.Scripts/Map)
 + #### [LevelEditor](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/0.Scenes/LevelEditor)
 + #### [Physics](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/1.Scripts/Player/README.md)
