@@ -1,9 +1,6 @@
 
 # CatDown
-
-<p>
-  <img src="https://user-images.githubusercontent.com/36800639/175810929-addff3cc-5b6b-44cd-8f57-b58600aeb06a.gif"  width="250" height="550"/>
-</p>
+<img src="https://user-images.githubusercontent.com/36800639/201512304-400e6888-cc32-41bb-b86a-8d31fb454619.jpg"  width="250" height="550"/>
 
 이 게임은 2D 종스크롤 방식의 슈팅 게임입니다.
 
@@ -11,7 +8,8 @@
 
 __개발엔진__ : Unity3D  
 __목표플랫폼__ : 모바일   
-__플레이 영상__ : [Link](https://www.youtube.com/watch?v=XUWcHJYMt88)
+__플레이 영상__ : [Link](https://www.youtube.com/watch?v=XUWcHJYMt88)    
+__구글플레이__ : [Link](https://play.google.com/store/apps/details?id=com.FourDX.CatDown)
 
 
 
