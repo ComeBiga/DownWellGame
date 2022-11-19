@@ -4,6 +4,10 @@
 
 인 게임에서 생성되는 레벨을 디자인하기 위한 에디터입니다.
 
+기획자가 디자인한 레벨의 데이터를 전달받는 과정을 자동화하기 위해서 구현했습니다.
+
+그 결과 개발 시간을 대폭 단축할 수 있었고 이후 수정이 용이했습니다.
+
 ## [전체코드](https://github.com/ComeBiga/DownWellGame/tree/main/DownWell/Assets/0.Scenes/LevelEditor/Scripts)
 + ### [주요코드라인](https://github.com/ComeBiga/DownWellGame/blob/main/DownWell/Assets/0.Scenes/LevelEditor/Scripts/README.md)
 
