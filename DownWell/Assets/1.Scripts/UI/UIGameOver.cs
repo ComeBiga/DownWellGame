@@ -21,7 +21,7 @@ public class UIGameOver : MonoBehaviour
     private void Awake()
     {
         btnRetry.onClick.AddListener(() => {
-            Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
+            Comebiga.SoundManager.instance?.Stop(Sound.SoundType.BACKGROUND);
             SceneManager.LoadSceneAsync(1);
         });
 

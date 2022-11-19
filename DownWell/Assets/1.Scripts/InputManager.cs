@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
             input = new CatDown.InputPC();
         else
             input = new CatDown.InputPCTouch();
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID || UNITY_IOS
         input = new CatDown.InputAndroid();
         input.SetController(controllerPanel);
         
@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         //if (controllerPanel != null) controllerPanel.SetActive(false);
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID || UNITY_IOS
         if (!PlayerPrefs.HasKey("ControllerSize")) PlayerPrefs.SetInt("ControllerSize", 60);
         var csize = PlayerPrefs.GetInt("ControllerSize");
 

@@ -35,6 +35,8 @@ public class Boss : MonoBehaviour, IHitByProjectile
         filter.useTriggers = true;
         filter.layerMask = LayerMask.GetMask("Player");
 
+        GetComponent<SpriteRenderer>().material.SetColor("_HitColor", damagedColor);
+
         //ColorChecker();
     }
 
@@ -130,12 +132,13 @@ public class Boss : MonoBehaviour, IHitByProjectile
     private IEnumerator DamagedFX()
     {
         //GetComponent<SpriteRenderer>().color = Color.black;
-        ChangeColor(damagedColor);
+        //GetComponent<SpriteRenderer>().material.SetColor("_HitColor", damagedColor);
+        ChangeColor(damagedColor, -1);
 
         yield return new WaitForSeconds(damagedInterval);
 
         //GetComponent<SpriteRenderer>().color = Color.white;
-        ChangeColor(bodyColor);
+        ChangeColor(bodyColor, 1);
     }
 
     public void Hit(int damage = 0)
@@ -143,14 +146,16 @@ public class Boss : MonoBehaviour, IHitByProjectile
         Damaged(damage);
     }
 
-    private void ChangeColor(Color color)
+    private void ChangeColor(Color color, int isHit)
     {
         //RuntimeAnimatorController ac = gameObject.GetComponent<Animator>().runtimeAnimatorController;
         //gameObject.GetComponent<Animator>().runtimeAnimatorController = null;
         //gameObject.GetComponent<SpriteRenderer>().color = color;
         //gameObject.GetComponent<Animator>().runtimeAnimatorController = ac;
 
-        GetComponent<SpriteRenderer>().material.color = color;
+        //GetComponent<SpriteRenderer>().material.color = color;
+        GetComponent<SpriteRenderer>().material.SetInt("_IsHit", isHit);
+        //GetComponent<SpriteRenderer>().sharedMaterial.color = color;
     }
 
     public void InstantiateUpperBoss(Transform parent)

@@ -76,6 +76,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_98a68d5e19e845e79e7c8b3a81615d51: 0
+    - Vector1_cd19bf63cf834e8b9262dbd7ad6b7f95: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -83,6 +85,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IsHit: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -118,7 +121,9 @@ Material:
     - Color_7c357066874c4f8b9d92afce230e5754: {r: 0.0627451, g: 0.1137255, b: 0.043137256, a: 1}
     - Color_8: {r: 0.72156864, g: 0.54509807, b: 0.39607847, a: 1}
     - Color_9: {r: 0.5803922, g: 0.5294118, b: 0.35686275, a: 1}
+    - Color_9a90a32ceb7745afbc8ade6797930111: {r: 1, g: 0, b: 0, a: 0}
     - Color_eb23b9ab029140c7952c01ca8cbddc7c: {r: 0.09411766, g: 0.19215688, b: 0.058823533, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HitColor: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

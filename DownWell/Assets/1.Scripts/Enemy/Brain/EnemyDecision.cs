@@ -42,7 +42,14 @@ namespace CatDown
 
             while(true)
             {
-                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform) || decided) break;
+                if(decided)
+                    break;
+
+                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform))
+                {
+                    yield return null;
+                    continue;
+                }
 
                 Examine();
 

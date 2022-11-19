@@ -190,6 +190,7 @@ MonoBehaviour:
     transform: {fileID: 2828334627078130588}
     fx: {fileID: 4761909933297254482, guid: 3266fc9f44c9ede43907a2ca0087120c, type: 3}
     angle: 0
+    offset: {x: 0, y: 0}
 --- !u!114 &4795017919699833702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ MonoBehaviour:
   groundLayermask:
     serializedVersion: 2
     m_Bits: 64
-  moveAsCollision: 0
+  moveAsCollision: 1
   speed: 1
   startDirection: 0
   flipX: 0

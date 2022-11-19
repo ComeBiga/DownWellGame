@@ -60,7 +60,7 @@ namespace CatDown
         }
 
         protected override void OnActionUpdate()
-        {
+        { 
             physics.Update();
 
             if (moveAsCollision) MoveAsCollision();

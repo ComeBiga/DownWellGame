@@ -34,7 +34,11 @@ namespace CatDown
 
             while(true)
             {
-                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform)) break;
+                if (!EnemyBrain.CheckTargetRange(PlayerManager.instance.playerObject.transform, this.transform))
+                {
+                    yield return new WaitForFixedUpdate();
+                    continue;
+                }
 
                 //Debug.Log("ETake in While");
                 OnActionUpdate();

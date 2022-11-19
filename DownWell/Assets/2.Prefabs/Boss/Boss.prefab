@@ -218,7 +218,7 @@ MonoBehaviour:
     current: 0
   damagedInterval: 0.08
   bodyColor: {r: 1, g: 1, b: 1, a: 1}
-  damagedColor: {r: 0, g: 0, b: 0, a: 1}
+  damagedColor: {r: 1, g: 0, b: 0, a: 1}
   dyingObj: {fileID: 6431410211589148503, guid: 7d068be3a1a94b44e900397a7b7e7c3c, type: 3}
 --- !u!114 &2485176263420914955
 MonoBehaviour:
