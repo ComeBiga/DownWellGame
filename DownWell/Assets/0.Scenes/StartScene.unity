@@ -1830,7 +1830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -98, y: 0}
+  m_AnchoredPosition: {x: -98.00003, y: 0}
   m_SizeDelta: {x: -227.41, y: -30.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289965750
@@ -4686,10 +4686,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 590068206585159238, guid: f4e91acb06e6ca74ca4657d263a0a8b2, type: 3}
-      propertyPath: OpeningPanel
-      value: 
-      objectReference: {fileID: 1663313545}
     - target: {fileID: 590068206585159242, guid: f4e91acb06e6ca74ca4657d263a0a8b2, type: 3}
       propertyPath: m_Name
       value: Setting
@@ -23833,6 +23829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9066c9e97d1d69a42a13a1dc5cbc715a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmMixer: {fileID: 6452287777992161009, guid: f5a293802148f504ebb5b72126c67851, type: 2}
+  sfxMixer: {fileID: -638860448505141785, guid: f5a293802148f504ebb5b72126c67851, type: 2}
   sounds:
   - name: Background
     clip: {fileID: 8300000, guid: 4a7ceb681b180af4f912958dea491bca, type: 3}

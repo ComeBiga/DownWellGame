@@ -5,29 +5,40 @@ using UnityEngine.Audio;
 
 namespace Comebiga
 {
+    public enum AudioState { ON = 0, OFF = -80 }
+
     public class SoundManager : MonoBehaviour
     {
 
+        public static SoundManager instance;
+        public AudioMixerGroup bgmMixer;
+        public AudioMixerGroup sfxMixer;
+
         public Sound[] sounds;
 
-        public static SoundManager instance;
+        private float bgmVolume;
+        private float sfxVolume;
 
         private void Awake()
         {
             if (instance == null)
+            {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
             else
             {
                 Destroy(gameObject);
                 return;
             }
 
-            DontDestroyOnLoad(gameObject);
-
             foreach(Sound s in sounds)
             {
                 Init(s);
             }
+
+            UnmuteBGM();
+            UnmuteSFX();
         }
 
         public void Init(Sound s)
@@ -48,12 +59,14 @@ namespace Comebiga
                 Debug.LogWarning("Sound: " + name + " not found!");
                 return;
             }
-
+            
+            SetAudioMixerGroupBySoundType(s);
             s.source.Play();
         }
 
         public void Play(Sound s)
         {
+            SetAudioMixerGroupBySoundType(s);
             s.source.Play();
         }
 
@@ -107,6 +120,41 @@ namespace Comebiga
             foreach(var sound in s)
             {
                 sound.source.mute = value;
+            }
+        }
+
+        public void MuteBGM()
+        {
+            var parameter = "bgmVolume";
+            bgmMixer.audioMixer.SetFloat(parameter, (float)AudioState.OFF);
+        }
+
+        public void UnmuteBGM()
+        {
+            bgmMixer.audioMixer.SetFloat("bgmVolume", (float)AudioState.ON);
+        }
+        
+        public void MuteSFX()
+        {
+            var parameter = "sfxVolume";
+            sfxMixer.audioMixer.SetFloat(parameter, (float)AudioState.OFF);
+        }
+
+        public void UnmuteSFX()
+        {
+            sfxMixer.audioMixer.SetFloat("sfxVolume", (float)AudioState.ON);
+        }
+
+        private void SetAudioMixerGroupBySoundType(Sound s)
+        {
+            switch(s.type)
+            {
+                case Sound.SoundType.BACKGROUND:
+                    s.source.outputAudioMixerGroup = bgmMixer;
+                    break;
+                case Sound.SoundType.EFFECT:
+                    s.source.outputAudioMixerGroup = sfxMixer;
+                    break;
             }
         }
     }

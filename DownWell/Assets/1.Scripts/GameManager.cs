@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -53,23 +52,6 @@ public class GameManager : MonoBehaviour
         stageManager = StageManager.instance;
         mapManager = MapManager.instance;
         playerManager = PlayerManager.instance;
-
-        // Player Init
-        //PlayerManager.instance.selectedCharacter.InitPlayerValues(playerPrefab);
-
-        //playerPrefab = Instantiate(playerPrefab, startPos.position, Quaternion.identity);
-        //playerPrefab.SetActive(false);
-
-        //Camera.main.GetComponent<SmoothFollow>().InitFollowCamera(playerPrefab.transform);
-
-        //PlayerManager.instance.player = playerPrefab;
-
-        // Timer
-        //GetComponent<Timer>().StartTimer();
-
-        // Play BGM
-        //SoundManager.instance.PlayBGMSound("Background");
-        //if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Play("Background");
 
         // Gameover Panel Init
         gameoverPanel = GameObject.Find("GameOver");
@@ -169,9 +151,6 @@ public class GameManager : MonoBehaviour
     void GameOverPanel()
     {
         gameoverPanel.SetActive(true);
-        // AchievementSystem.Instance.ProgressAchievement("Coin", UICollector.Instance.coin.Current);
-        // gameoverPanel.GetComponent<UIGameOver>().TurnOnAchievementPanel(AchievementSystem.Instance.RewardAsAllAchieved());
-        // PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + UICollector.Instance.coin.Current);
     }
 
     private void GameClearPanel()
@@ -236,15 +215,6 @@ public class GameManager : MonoBehaviour
         return false;
     }
     #endregion
-
-
-    //public void StageEnd()
-    //{
-    //    //SceneManager.LoadScene(0);
-    //    boss.SetActive(true);
-    //    Camera.main.GetComponent<SmoothFollow>().StartBossCamera();
-    //    MapManager.instance.GenerateInfinity(PlayerManager.instance.player.transform, 10);
-    //}
 
     public void homeBtn()
     {

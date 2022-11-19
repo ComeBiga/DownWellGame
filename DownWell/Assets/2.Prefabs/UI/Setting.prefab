@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 590068205281982853}
   - component: {fileID: 590068205281982858}
   m_Layer: 5
-  m_Name: exitBtn
+  m_Name: Btn_Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,7 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 590068205625010887}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: SoundGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 590068205675091579}
   - component: {fileID: 590068205675091578}
   m_Layer: 5
-  m_Name: effImg
+  m_Name: Btn_SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,19 +808,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 590068205675091579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 590068206585159238}
-        m_TargetAssemblyTypeName: SettingMgr, Assembly-CSharp
-        m_MethodName: muteSound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: eff
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &590068205888696784
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +822,7 @@ GameObject:
   - component: {fileID: 590068205888696780}
   - component: {fileID: 590068205888696786}
   m_Layer: 5
-  m_Name: bgmImg
+  m_Name: Btn_BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,19 +929,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 590068205888696780}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 590068206585159238}
-        m_TargetAssemblyTypeName: SettingMgr, Assembly-CSharp
-        m_MethodName: muteSound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: bgm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &590068205957514083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,20 +1754,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonOnStart: 0
-  OpeningPanel: {fileID: 0}
   setPanel: {fileID: 590068206539839571}
   setBtn: {fileID: 590068207095141257}
-  resetButton: {fileID: 0}
-  ingameSetting: {fileID: 590068206609051929}
   Opening: 1
-  muteImg: {fileID: -7568063341596875841, guid: bd6bce45b51d15f4583ce1214ad3e4e6, type: 3}
-  originImg: {fileID: -7344508877482438339, guid: bd6bce45b51d15f4583ce1214ad3e4e6, type: 3}
-  bgmImg: {fileID: 590068205888696780}
-  effImg: {fileID: 590068205675091579}
+  spriteOn: {fileID: -7568063341596875841, guid: bd6bce45b51d15f4583ce1214ad3e4e6, type: 3}
+  spriteOff: {fileID: -7344508877482438339, guid: bd6bce45b51d15f4583ce1214ad3e4e6, type: 3}
+  imgBGM: {fileID: 590068205888696780}
+  imgSFX: {fileID: 590068205675091579}
   gPaused: 0
   Setting: {fileID: 590068206585159239}
   bgmOff: 0
   effOff: 0
+  btnBGM: {fileID: 590068205888696786}
+  btnSFX: {fileID: 590068205675091578}
 --- !u!223 &590068206585159239
 Canvas:
   m_ObjectHideFlags: 0
