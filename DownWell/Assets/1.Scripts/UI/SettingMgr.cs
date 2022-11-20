@@ -8,13 +8,7 @@ public class SettingMgr : MonoBehaviour
 {
     public static SettingMgr instance = null;
 
-    public bool buttonOnStart = false;
-
     public GameObject setPanel;
-    public GameObject setBtn;
-
-    public bool Opening = true;
-
 
     [Header("Image")]
     [UnityEngine.Serialization.FormerlySerializedAs("spriteOn")]
@@ -26,15 +20,7 @@ public class SettingMgr : MonoBehaviour
     [UnityEngine.Serialization.FormerlySerializedAs("effImg")]
     public Image imgSFX;
 
-    public bool gPaused;
-    int ClickCount = 0;
-
     public Canvas Setting;
-
-    [HideInInspector]
-    public int bgmOff;
-    [HideInInspector]
-    public int effOff;
 
     private Comebiga.SoundManager soundManager;
 
@@ -42,6 +28,10 @@ public class SettingMgr : MonoBehaviour
     private Button btnBGM;
     [SerializeField]
     private Button btnSFX;
+    [SerializeField]
+    private Button btnResume;
+    [SerializeField]
+    private Button btnHome;
 
     private Comebiga.AudioState stateBGM;
     private Comebiga.AudioState stateSFX;
@@ -71,6 +61,15 @@ public class SettingMgr : MonoBehaviour
             SwitchSfxState();
         });
 
+        btnResume.onClick.AddListener(() =>
+        {
+            CancelBtn();
+        });
+
+        btnHome.onClick.AddListener(() =>
+        {
+            homeBtn();
+        });
     }
 
     void Start()
@@ -78,21 +77,12 @@ public class SettingMgr : MonoBehaviour
         soundManager = Comebiga.SoundManager.instance;
 
         setPanel.SetActive(false);
-        if (buttonOnStart) setBtn.SetActive(true);
 
         InitSoundButton();
     }
 
     void Update()
     {
-        if (!setPanel.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                SettingBtn();
-            }
-        }
-
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -105,74 +95,37 @@ public class SettingMgr : MonoBehaviour
             Setting.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
-    public void ResetCollectionData()
-    {
-        StartSceneManager.Instance.ResetCollectionData();
-    }
-
-    void DoubleClick()
-    {
-        ClickCount = 0;
-    }
-
-    public void SetActiveSettingButton(bool value)
-    {
-        setBtn.SetActive(value);
-    }
-
-    public void ActivateSettingButton(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.buildIndex == 0)
-            setBtn.SetActive(true);
-    }
-
     //setting
     public void SettingBtn()
     {
-        gPaused = true;
         setPanel.SetActive(true);
         Time.timeScale = 0;
     }
+
     public void CancelBtn()
     {
         Time.timeScale = 1;
-        gPaused = false;
         setPanel.SetActive(false);
     }
+
     public void homeBtn()
     {
         Time.timeScale = 1;
         setPanel.SetActive(false);
-        SceneManager.LoadSceneAsync(0);
+        soundManager.StopAll();
+        SceneManager.LoadScene(0);
     }
 
     public void RestartGameScene()
     {
-        SceneManager.LoadSceneAsync(1);
-    }
-
-    public void exitBtn()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        SceneManager.LoadScene(1);
     }
 
     void OnApplicationPause(bool pause)
     {
         if (pause)
         {
-            gPaused = true;
             if (SceneManager.GetActiveScene().buildIndex == 1) SettingBtn();
-        }
-        else
-        {
-            if (gPaused)
-            {
-                gPaused = false;
-            }
         }
     }
 
@@ -253,43 +206,4 @@ public class SettingMgr : MonoBehaviour
                 break;
         }
     }
-
-    //sound
-    // public void muteSound(string sound)
-    // {
-    //     switch (sound)
-    //     {
-    //         case "bgm":
-    //             if (bgmOff == 0)
-    //             {
-    //                 soundManager?.MuteBGM();
-    //                 bgmOff = 1;
-    //             }
-    //             else
-    //             {
-    //                 soundManager?.UnmuteBGM();
-    //                 bgmOff = 0;
-    //             }
-
-    //             // var bgmvalue = (bgmOff == 1) ? true : false;
-    //             // if (soundManager != null) soundManager.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
-
-    //             imgBGM.sprite = (bgmOff == 1) ? spriteOff : spriteOn;
-
-    //             PlayerPrefs.SetInt("BgmVolume", bgmOff);
-    //             break;
-    //         case "eff":
-    //             if (effOff == 0)
-    //                 effOff = 1;
-    //             else
-    //                 effOff = 0;
-    //             var effvalue = (effOff == 1) ? true : false;
-    //             if (soundManager != null) soundManager.Mute(Sound.SoundType.EFFECT, effvalue);
-
-    //             imgSFX.sprite = (effOff == 1) ? spriteOff : spriteOn;
-
-    //             PlayerPrefs.SetInt("EffVolume", effOff);
-    //             break;
-    //     }
-    // }
 }

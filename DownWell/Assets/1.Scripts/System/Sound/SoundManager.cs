@@ -9,8 +9,8 @@ namespace Comebiga
 
     public class SoundManager : MonoBehaviour
     {
-
         public static SoundManager instance;
+
         public AudioMixerGroup bgmMixer;
         public AudioMixerGroup sfxMixer;
 
@@ -32,7 +32,7 @@ namespace Comebiga
                 return;
             }
 
-            foreach(Sound s in sounds)
+            foreach (Sound s in sounds)
             {
                 Init(s);
             }
@@ -59,7 +59,7 @@ namespace Comebiga
                 Debug.LogWarning("Sound: " + name + " not found!");
                 return;
             }
-            
+
             SetAudioMixerGroupBySoundType(s);
             s.source.Play();
         }
@@ -108,6 +108,16 @@ namespace Comebiga
             }
         }
 
+        public void StopAll()
+        {
+            Sound[] s = System.Array.FindAll(sounds, sound => sound.source.isPlaying == true);
+
+            foreach (var sound in s)
+            {
+                sound.source.Stop();
+            }
+        }
+
         public void Mute(Sound.SoundType type, bool value)
         {
             Sound[] s = System.Array.FindAll(sounds, sound => sound.type == type);
@@ -117,7 +127,7 @@ namespace Comebiga
                 return;
             }
 
-            foreach(var sound in s)
+            foreach (var sound in s)
             {
                 sound.source.mute = value;
             }
@@ -133,7 +143,7 @@ namespace Comebiga
         {
             bgmMixer.audioMixer.SetFloat("bgmVolume", (float)AudioState.ON);
         }
-        
+
         public void MuteSFX()
         {
             var parameter = "sfxVolume";
@@ -147,7 +157,7 @@ namespace Comebiga
 
         private void SetAudioMixerGroupBySoundType(Sound s)
         {
-            switch(s.type)
+            switch (s.type)
             {
                 case Sound.SoundType.BACKGROUND:
                     s.source.outputAudioMixerGroup = bgmMixer;

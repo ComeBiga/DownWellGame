@@ -7,16 +7,17 @@ using TMPro;
 public class StartSceneManager : Singleton<StartSceneManager>
 {
     [Header("UI")]
-    public GameObject UIs;
+    // public GameObject UIs;
     public bool viewOpening = true;
     public GameObject openingPanel;
     public GameObject startPanel;
-    public GameObject charPanel;
-    public GameObject settingButton;
+    public Button startButton;
+    // [System.Obsolete]
+    // public GameObject charPanel;
+    //public GameObject settingButton;
     public Text versionInfo;
     public TextMeshProUGUI versionInfoTMP;
 
-    public Button startButton;
 
     private void Awake()
     {
@@ -27,83 +28,45 @@ public class StartSceneManager : Singleton<StartSceneManager>
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //PlayerManager.instance.Init();
-
         InitPanel();
-
-        InitSound();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetCollectionData();
-        }
-    }
-
-    public void ResetCollectionData()
-    {
-        AchievementSystem.Instance.ResetAllAchievements();
-        UICharacterCollection.Instance.ResetCharacterProfiles();
-        UIs.GetComponentInChildren<UICoinPanel>().Init();
-        UIs.GetComponentInChildren<UICharacterSelection>().UpdateButton();
-    }
+    // public void ResetCollectionData()
+    // {
+    //     AchievementSystem.Instance.ResetAllAchievements();
+    //     UICharacterCollection.Instance.ResetCharacterProfiles();
+    //     UIs.GetComponentInChildren<UICoinPanel>().Init();
+    //     UIs.GetComponentInChildren<UICharacterSelection>().UpdateButton();
+    // }
 
     public void InitPanel()
     {
-        if (SettingMgr.instance.Opening && viewOpening)
+        if (UserData.showOpening && viewOpening)
         {
             openingPanel.SetActive(true);
             startPanel.SetActive(false);
-            charPanel.SetActive(false);
-            //settingButton.SetActive(false);
-            SettingMgr.instance.SetActiveSettingButton(false);
 
-            //SettingMgr.instance.Opening = false;
+            //UserData.showOpening = false;
         }
         else
         {
             openingPanel.SetActive(false);
             startPanel.SetActive(true);
-            charPanel.SetActive(false);
-            //settingButton.SetActive(false);
-            SettingMgr.instance.SetActiveSettingButton(false);
         }
 
         versionInfo.text = "Ver." + Application.version;
         versionInfoTMP.text = "Ver." + Application.version;
     }
 
-    public void InitSound()
-    {
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Stop(Sound.SoundType.BACKGROUND);
-
-        SettingMgr.instance.bgmOff = PlayerPrefs.GetInt("BgmVolume");
-        SettingMgr.instance.effOff = PlayerPrefs.GetInt("EffVolume");
-
-        var bgmvalue = (SettingMgr.instance.bgmOff == 1) ? true : false;
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
-
-        //SoundManager.instance.SetEffVolume(SettingMgr.instance.effOff);
-        var effvalue = (SettingMgr.instance.effOff == 1) ? true : false;
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.EFFECT, effvalue);
-    }
-
     public void OpenCharPanel()
     {
         startPanel.SetActive(false);
-        charPanel.SetActive(true);
-        //settingButton.SetActive(true);
-        SettingMgr.instance.SetActiveSettingButton(true);
-
     }
 
     public void LoadGameScene()
     {
-        SettingMgr.instance.SetActiveSettingButton(false);
-        var operation = SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadScene(1);
     }
 }

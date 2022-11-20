@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8579365060598391039}
-  - component: {fileID: 8579365060598391038}
+  - component: {fileID: 8579365060281516984}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8579365060598391038
+--- !u!114 &8579365060281516984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,18 +169,75 @@ MonoBehaviour:
   m_GameObject: {fileID: 8579365060598391025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d68483e5d073d54fbb70c66f4c3c7ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 9066c9e97d1d69a42a13a1dc5cbc715a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolumeBGM: 1
-  masterVolumeEFF: 1
-  charBgmAudioClips:
-  - {fileID: 8300000, guid: 4a7ceb681b180af4f912958dea491bca, type: 3}
-  - {fileID: 8300000, guid: 68cb205ff95b39549b0c2416cc3989f0, type: 3}
-  effAudioClips:
-  - {fileID: 8300000, guid: 20fa32acc44658444a7efad7b0fa3d2c, type: 3}
-  - {fileID: 8300000, guid: 22908bab48d645d4d97d3a8f488d81fe, type: 3}
-  - {fileID: 8300000, guid: de2fc0eb2b3802a4e8c003fab9df95a4, type: 3}
+  bgmMixer: {fileID: 6452287777992161009, guid: f5a293802148f504ebb5b72126c67851, type: 2}
+  sfxMixer: {fileID: -638860448505141785, guid: f5a293802148f504ebb5b72126c67851, type: 2}
+  sounds:
+  - name: Background
+    clip: {fileID: 8300000, guid: 4a7ceb681b180af4f912958dea491bca, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BackgroundBoss
+    clip: {fileID: 8300000, guid: 68cb205ff95b39549b0c2416cc3989f0, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Shoot_0
+    clip: {fileID: 8300000, guid: 20fa32acc44658444a7efad7b0fa3d2c, type: 3}
+    type: 1
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: 22908bab48d645d4d97d3a8f488d81fe, type: 3}
+    type: 1
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Shoot_1
+    clip: {fileID: 8300000, guid: de2fc0eb2b3802a4e8c003fab9df95a4, type: 3}
+    type: 1
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Health
+    clip: {fileID: 8300000, guid: dc1f1b2fce6a19649a17d94905258316, type: 3}
+    type: 1
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Reload
+    clip: {fileID: 8300000, guid: 829b3d740706de6488075aafeddab437, type: 3}
+    type: 1
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PowerUp
+    clip: {fileID: 8300000, guid: 12bc5382e1e5ebd47a8f7036d434d4f4, type: 3}
+    type: 1
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bg1
+    clip: {fileID: 8300000, guid: 2df1a17f7e54d8d45a81295d0a909f8f, type: 3}
+    type: 0
+    volume: 0.73
+    pitch: 0.9
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &8579365061611581358
 GameObject:
   m_ObjectHideFlags: 0

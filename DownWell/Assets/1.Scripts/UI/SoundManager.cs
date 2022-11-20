@@ -2,111 +2,114 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+namespace Suj
 {
-    #region Singleton
-    private static SoundManager Instance;
-
-    public static SoundManager instance
+    public class SoundManager : MonoBehaviour
     {
-        get
+        #region Singleton
+        private static SoundManager Instance;
+
+        public static SoundManager instance
         {
-            if (Instance == null)
+            get
             {
-                Instance = FindObjectOfType<SoundManager>();
+                if (Instance == null)
+                {
+                    Instance = FindObjectOfType<SoundManager>();
+                }
+                return Instance;
             }
-            return Instance;
         }
-    }
-    #endregion
+        #endregion
 
-    private AudioSource bgm;
-    private AudioSource eff;
+        private AudioSource bgm;
+        private AudioSource eff;
 
-    public float masterVolumeBGM = 1f;
-    public float masterVolumeEFF = 1f;
-
-
-    [SerializeField]
-    private AudioClip[] charBgmAudioClips;
-
-    Dictionary<string, AudioClip> bgmAudioClipsDic = new Dictionary<string, AudioClip>(); //bgm µñ¼Å³Ê¸®
+        public float masterVolumeBGM = 1f;
+        public float masterVolumeEFF = 1f;
 
 
-    [SerializeField]
-    private AudioClip[] effAudioClips;
+        [SerializeField]
+        private AudioClip[] charBgmAudioClips;
 
-    Dictionary<string, AudioClip> effAudioClipsDic = new Dictionary<string, AudioClip>(); //È¿°úÀ½ µñ¼Å³Ê¸®
+        Dictionary<string, AudioClip> bgmAudioClipsDic = new Dictionary<string, AudioClip>(); //bgm ï¿½ï¿½Å³Ê¸ï¿½
 
-    private void Awake()
-    {
-        if (instance != this)
+
+        [SerializeField]
+        private AudioClip[] effAudioClips;
+
+        Dictionary<string, AudioClip> effAudioClipsDic = new Dictionary<string, AudioClip>(); //È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³Ê¸ï¿½
+
+        private void Awake()
         {
-            Destroy(this.gameObject);
+            if (instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            DontDestroyOnLoad(this.gameObject);
+
+            bgm = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            eff = GameObject.Find("EFFSoundPlayer").GetComponent<AudioSource>();
+
+            foreach (AudioClip audioclip in charBgmAudioClips)
+            {
+                bgmAudioClipsDic.Add(audioclip.name, audioclip);
+            }
+            foreach (AudioClip audioclip in effAudioClips)
+            {
+                effAudioClipsDic.Add(audioclip.name, audioclip);
+            }
         }
-        DontDestroyOnLoad(this.gameObject);
 
-        bgm = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
-        eff = GameObject.Find("EFFSoundPlayer").GetComponent<AudioSource>();
-
-        foreach (AudioClip audioclip in charBgmAudioClips)
+        //SoundManager.instance.PlayEffSound("È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½");
+        public void PlayEffSound(string name)
         {
-            bgmAudioClipsDic.Add(audioclip.name, audioclip);
+            if (effAudioClipsDic.ContainsKey(name) == false)
+            {
+                Debug.Log(name + " is not Contained audioClipsDic");
+                return;
+            }
+            eff.PlayOneShot(effAudioClipsDic[name]);
         }
-        foreach (AudioClip audioclip in effAudioClips)
+
+        //SoundManager.instance.PlayBGMSound("BGMï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½");
+        public void PlayBGMSound(string name)
         {
-            effAudioClipsDic.Add(audioclip.name, audioclip);
+            bgm.loop = true;
+            bgm.clip = bgmAudioClipsDic[name];
+            bgm.Play();
         }
-    }
 
-    //SoundManager.instance.PlayEffSound("È¿°úÀ½ÆÄÀÏÀÌ¸§");
-    public void PlayEffSound(string name)
-    {
-        if (effAudioClipsDic.ContainsKey(name) == false)
+        public void SoundOff()
         {
-            Debug.Log(name + " is not Contained audioClipsDic");
-            return;
+            bgm.Stop();
         }
-        eff.PlayOneShot(effAudioClipsDic[name]);
-    }
-
-    //SoundManager.instance.PlayBGMSound("BGMÆÄÀÏÀÌ¸§");
-    public void PlayBGMSound(string name)
-    {
-        bgm.loop = true;
-        bgm.clip = bgmAudioClipsDic[name];
-        bgm.Play();
-    }
-
-    public void SoundOff()
-    {
-        bgm.Stop();
-    }
 
 
-    public void SetBgmVolume(float fVolume)
-    {
-        switch (fVolume)
+        public void SetBgmVolume(float fVolume)
         {
-            case 1:
-                bgm.mute = true;
-                break;
-            case 0:
-                bgm.mute = false;
-                break;
+            switch (fVolume)
+            {
+                case 1:
+                    bgm.mute = true;
+                    break;
+                case 0:
+                    bgm.mute = false;
+                    break;
+            }
         }
-    }
 
-    public void SetEffVolume(float fVolume)
-    {
-        switch (fVolume)
+        public void SetEffVolume(float fVolume)
         {
-            case 1:
-                eff.mute = true;
-                break;
-            case 0:
-                eff.mute = false;
-                break;
+            switch (fVolume)
+            {
+                case 1:
+                    eff.mute = true;
+                    break;
+                case 0:
+                    eff.mute = false;
+                    break;
+            }
         }
     }
 }

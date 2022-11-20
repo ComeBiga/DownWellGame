@@ -35,16 +35,16 @@ public class UIManager : MonoBehaviour
 
         PlayerPrefs.SetInt("Opening", 1);
 
-        SettingMgr.instance.bgmOff = PlayerPrefs.GetInt("BgmVolume");
-        SettingMgr.instance.effOff = PlayerPrefs.GetInt("EffVolume");
+        // SettingMgr.instance.bgmOff = PlayerPrefs.GetInt("BgmVolume");
+        // SettingMgr.instance.effOff = PlayerPrefs.GetInt("EffVolume");
 
-        //SoundManager.instance.SetBgmVolume(SettingMgr.instance.bgmOff);
-        var bgmvalue = (SettingMgr.instance.bgmOff == 1) ? true : false;
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
+        // //SoundManager.instance.SetBgmVolume(SettingMgr.instance.bgmOff);
+        // var bgmvalue = (SettingMgr.instance.bgmOff == 1) ? true : false;
+        // if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.BACKGROUND, bgmvalue);
 
-        //SoundManager.instance.SetEffVolume(SettingMgr.instance.effOff);
-        var effvalue = (SettingMgr.instance.effOff == 1) ? true : false;
-        if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.EFFECT, effvalue);
+        // //SoundManager.instance.SetEffVolume(SettingMgr.instance.effOff);
+        // var effvalue = (SettingMgr.instance.effOff == 1) ? true : false;
+        // if (Comebiga.SoundManager.instance != null) Comebiga.SoundManager.instance.Mute(Sound.SoundType.EFFECT, effvalue);
 
         versionInfo.text = "Ver." + Application.version;
     }
