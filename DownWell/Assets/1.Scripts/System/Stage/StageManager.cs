@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
     }
     #endregion
 
-    public enum Stage { Stage_1, Stage_2, Stage_3, Stage_4, Stage_5, TestStage }
+    //public enum Stage { Stage_1, Stage_2, Stage_3, Stage_4, Stage_5, TestStage }
     //public Stage stage = Stage.Stage_1;
 
     [Header("DB")]
