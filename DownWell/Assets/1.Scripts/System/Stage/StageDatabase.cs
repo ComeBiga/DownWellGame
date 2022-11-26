@@ -15,9 +15,9 @@ public class StageDatabase : ScriptableObject
     private int num;
     public int Num { get { return num; } }
 
-    [SerializeField]
-    private string path;
-    public string Path { get { return path; } }
+    // [SerializeField]
+    // private string path;
+    // public string Path { get { return path; } }
 
     public int stageLength = 200;
 
@@ -44,7 +44,7 @@ public class StageDatabase : ScriptableObject
     [Header("Background")]
     //[SerializeField] private Sprite baseBackground;
     //[SerializeField] private BackgroundSprite[] background;
-    public BackgroundInfo bgInfo;
+    //public BackgroundInfo bgInfo;
 
     [Header("Sound")]
     [SerializeField] private string bgm;
@@ -57,18 +57,12 @@ public class StageDatabase : ScriptableObject
         }
     }
 
+    public readonly string bgmName;
+
     public List<GameObject> MapObjects 
     { 
         get 
         {
-            //var mos = mapObjects;
-
-            //foreach (var mo in mos)
-            //{
-            //    mo.GetComponent<Wall>().SetSpriteByStage(num);
-            //}
-
-            //return mos;
             return mapObjects; 
         } 
     }
@@ -83,26 +77,26 @@ public class StageDatabase : ScriptableObject
     public GameObject BossObject { get { return bossObject; } }
     public List<Material> Materials { get { return materials; } }
 
-    public GameObject InstantiateMapObject(int tileCode, Vector3 position, Transform parent)
-    {
-        GameObject newGo = null;
+    // public GameObject InstantiateMapObject(int tileCode, Vector3 position, Transform parent)
+    // {
+    //     GameObject newGo = null;
 
-        if(tileCode >= 100 && tileCode < 1000)
-        {
-            newGo = Instantiate(mapObjects[0], position, Quaternion.identity, parent);
-            newGo.GetComponent<SpriteRenderer>().sprite = WallSprites[tileCode - 100];
-        }
-        else
-        {
-            var go = mapObjects.Find(g => g.GetComponent<Wall>().info.code == tileCode);
-            newGo = Instantiate(go, position, Quaternion.identity, parent);
+    //     if(tileCode >= 100 && tileCode < 1000)
+    //     {
+    //         newGo = Instantiate(mapObjects[0], position, Quaternion.identity, parent);
+    //         newGo.GetComponent<SpriteRenderer>().sprite = WallSprites[tileCode - 100];
+    //     }
+    //     else
+    //     {
+    //         var go = mapObjects.Find(g => g.GetComponent<Wall>().info.code == tileCode);
+    //         newGo = Instantiate(go, position, Quaternion.identity, parent);
 
-            var index = mapObjects.IndexOf(go);
-            if(mapObjectSprites[index] != null) newGo.GetComponent<SpriteRenderer>().sprite = mapObjectSprites[index];
-        }
+    //         var index = mapObjects.IndexOf(go);
+    //         if(mapObjectSprites[index] != null) newGo.GetComponent<SpriteRenderer>().sprite = mapObjectSprites[index];
+    //     }
 
-        return newGo;
-    }
+    //     return newGo;
+    // }
 
 
     //public Sprite BaseBackGround { get { return baseBackground; } }
@@ -122,16 +116,16 @@ public class StageDatabase : ScriptableObject
     /// </summary>
     /// <param name="resourceLoad"></param>
     /// <returns></returns>
-    public string GetPath()
-    {
-#if UNITY_EDITOR
-        return path;
-#elif UNITY_ANDROID || UNITY_STANDALONE_WIN || UNITY_IOS
-        return path.Replace("/Resources/", "");
-#endif
-        //if (resourceLoad)
-        //    return path.Replace("/Resources", "");
-        //else
-        //    return path;
-    }
+//     public string GetPath()
+//     {
+// #if UNITY_EDITOR
+//         return path;
+// #elif UNITY_ANDROID || UNITY_STANDALONE_WIN || UNITY_IOS
+//         return path.Replace("/Resources/", "");
+// #endif
+//         //if (resourceLoad)
+//         //    return path.Replace("/Resources", "");
+//         //else
+//         //    return path;
+//     }
 }
