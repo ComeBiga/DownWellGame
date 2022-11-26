@@ -22,7 +22,6 @@ public class MapDisplay : MonoBehaviour
 
     [Header("Position")]
     public Vector3 offset;
-    [SerializeField] private GameObject startPos;
 
     [Header("Ratio")]
     [Range(0, 100)]
@@ -30,16 +29,9 @@ public class MapDisplay : MonoBehaviour
     [Range(0, 100)]
     public int enemyRatio = 100;
 
-    private List<GameObject> wallObjects;
-    private List<Sprite> wallSprites;
-    private List<GameObject> enemyObjects;
-
     [Header("Background")]
     public GameObject backgroundObject;
     public float brightness = 190;
-
-    private WallSelector ws_root;
-    private EnemySelector es_root;
 
     [Header("ObjectPool")]
     public int backgroundPoolCount;
@@ -47,32 +39,29 @@ public class MapDisplay : MonoBehaviour
     private ObjectPooler backgroundPooler = new ObjectPooler();
     private ObjectPooler wallPooler = new ObjectPooler();
 
+    private Dictionary<int, Wall> mapObjects = new Dictionary<int, Wall>(50);
+
     private void Start()
     {
         mapManager = MapManager.instance;
 
+        LoadMapObjects();
+
         backgroundPooler.Init(backgroundObject, backgroundPoolCount, bgParent);
         wallPooler.Init(null, 0, wallParent);
-
-        InitSelector();
     }
 
-    private void InitSelector()
+    private void LoadMapObjects()
     {
-        // wall
-        ws_root = new WallSelector(100, 1000);
-        var spws = new SpecialWallSelector(9);
-        var ssws = new StartPosSelector(8);
-        var sdws = new SideWallSelector(0, 99);
+        var loadedMapObjects = Resources.LoadAll<Wall>("MapObjects");
 
-        ws_root.SetNext(spws);
-        spws.SetNext(ssws);
-        ssws.SetNext(sdws);
+        for(int i = 0; i< loadedMapObjects.Length; ++i)
+        {
+            var value = loadedMapObjects[i];
+            var key = value.info.code;
 
-        ws_root.SetTileMap(tm_Wall, tmr_Wall);
-
-        // enemy
-        es_root = new EnemySelector(2000, 3000, enemyRatio);
+            mapObjects.Add(key, value);
+        }
     }
 
     public void ClearAll()
@@ -138,13 +127,6 @@ public class MapDisplay : MonoBehaviour
         }
     }
 
-    public void SetObjects(List<GameObject> mapObjects, List<Sprite> wallSprites, List<GameObject> enemyObjects)
-    {
-        this.wallObjects = mapObjects;
-        this.wallSprites = wallSprites;
-        this.enemyObjects = enemyObjects;
-    }
-
     public void DisplayByDatabase(Level level, StageDatabase stageDB)
     {
         for (int y = 0; y < level.height; y++)
@@ -192,11 +174,17 @@ public class MapDisplay : MonoBehaviour
 
     private void DisplayObject(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
-        // wall
-        ws_root.InstantiateObject(tileCode, tilePosition, wallParent, currentStage);
-
-        // enemy
-        es_root.InstantiateObject(tileCode, tilePosition, enemyParent, currentStage);
+        if(tileCode >= 0 && tileCode < 1000)
+        {
+            // wall
+            CreateWall(tileCode, tilePosition, currentStage);
+            CreateObjects(tileCode, tilePosition, currentStage);
+        }
+        else if(tileCode >= 2000 && tileCode < 3000)
+        {
+            // enemy
+            CreateEnemy(tileCode, tilePosition, currentStage);
+        }
     }
 
     private GameObject GetTileInstance(GameObject tileObject, float Xpos, float Ypos)
@@ -209,13 +197,36 @@ public class MapDisplay : MonoBehaviour
         return go;
     }
 
-    // 벽 외에 블럭 같은 것들도 tile로 생성할 수 있을 지 고민해보기
-    private void SetWallTile(int tileCode, Vector3 position, StageDatabase currentStage)
+    private void CreateWall(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
     {
-        var positionInt = new Vector3Int((int)position.x, (int)position.y, (int)position.z);
+        if(tileCode < 100 || tileCode > 200)
+            return;
+
+        var position = new Vector3Int((int)tilePosition.x, (int)tilePosition.y, (int)tilePosition.z);
         var tileBase = currentStage.TileBases[tileCode - 100];
 
-        tm_Wall.SetTile(positionInt, tileBase);
+        tm_Wall.SetTile(position, tileBase);
         tmr_Wall.sharedMaterial = currentStage.Materials[0];
+    }
+
+    private void CreateObjects(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
+    {
+        Wall obj = null;
+        if(mapObjects.TryGetValue(tileCode, out obj) == false)
+            return;
+
+        var instanceObj = Instantiate(obj, tilePosition, Quaternion.identity, wallParent);
+
+        if(currentStage.GetMapObjectInfo(tileCode) != null)
+            instanceObj.GetComponent<SpriteRenderer>().sprite = currentStage.GetMapObjectInfo(tileCode).sprite;
+    }
+
+    private void CreateEnemy(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
+    {
+        if(CatDown.Random.Get().Next(100) < enemyRatio)
+        {
+            var obj = currentStage.EnemyObjects.Find(o => o.GetComponent<Enemy>().info.code == tileCode);
+            Instantiate(obj, tilePosition, Quaternion.identity, enemyParent);
+        }
     }
 }

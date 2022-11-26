@@ -16,13 +16,13 @@ public class WallSelector : ObjectSelector
 
     protected override GameObject Select(int tileCode)
     {
-        GameObject obj = Find(1);
+        //GameObject obj = Find(1);
         // var wall = Instantiate(obj);
         // wall.GetComponent<SpriteRenderer>().sprite = currentStage.WallSprites[tileCode - 100];
 
-        tm_Wall.SetTile(new Vector3Int((int)position.x, (int)position.y, (int)position.z), currentStage.TileBases[tileCode - 100]);
-        tmr_Wall.sharedMaterial = currentStage.Materials[0];
+        // tm_Wall.SetTile(new Vector3Int((int)position.x, (int)position.y, (int)position.z), currentStage.TileBases[tileCode - 100]);
+        // tmr_Wall.sharedMaterial = currentStage.Materials[0];
         
-        return obj;
+        return null; //obj;
     }
 }

@@ -15,20 +15,12 @@ public class StageDatabase : ScriptableObject
     private int num;
     public int Num { get { return num; } }
 
-    // [SerializeField]
-    // private string path;
-    // public string Path { get { return path; } }
-
     public int stageLength = 200;
+
+    public List<MapObjectInfo> mapObjectInfos;
 
     [Header("Wall")]
     [SerializeField] private List<GameObject> mapObjects;
-    [SerializeField] private List<Sprite> wallSprites;
-    [SerializeField] private List<Sprite> mapObjectSprites;
-    [SerializeField] private List<Sprite> blockSprites;
-    [SerializeField] private List<Sprite> platformSprites;
-    [SerializeField] private List<Sprite> itemGiverSprites;
-    [SerializeField] private List<Sprite> itemGiverLockSprites;
     [SerializeField] private List<GameObject> dropItems;
     [SerializeField] private List<TileBase> tileBases;
     [SerializeField] private List<Material> materials;
@@ -41,11 +33,6 @@ public class StageDatabase : ScriptableObject
     [Header("Boss")]
     [SerializeField] private GameObject bossObject;
 
-    [Header("Background")]
-    //[SerializeField] private Sprite baseBackground;
-    //[SerializeField] private BackgroundSprite[] background;
-    //public BackgroundInfo bgInfo;
-
     [Header("Sound")]
     [SerializeField] private string bgm;
 
@@ -57,75 +44,21 @@ public class StageDatabase : ScriptableObject
         }
     }
 
-    public readonly string bgmName;
-
-    public List<GameObject> MapObjects 
-    { 
-        get 
-        {
-            return mapObjects; 
-        } 
-    }
-
-    public List<Sprite> WallSprites { get { return wallSprites; } }
-    public List<Sprite> BlockSprites { get { return blockSprites; } }
-    public List<Sprite> PlatformSprites { get { return platformSprites; } }
-    public List<Sprite> ItemGiverSprites { get { return itemGiverSprites; } }
-    public List<Sprite> ItemGiverLockSprites { get { return itemGiverLockSprites; } }
     public List<TileBase> TileBases { get { return tileBases; } }
     public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
     public List<Material> Materials { get { return materials; } }
 
-    // public GameObject InstantiateMapObject(int tileCode, Vector3 position, Transform parent)
-    // {
-    //     GameObject newGo = null;
+    public MapObjectInfo GetMapObjectInfo(int code)
+    {
+        return mapObjectInfos.Find(info => info.id == code);
+    }
 
-    //     if(tileCode >= 100 && tileCode < 1000)
-    //     {
-    //         newGo = Instantiate(mapObjects[0], position, Quaternion.identity, parent);
-    //         newGo.GetComponent<SpriteRenderer>().sprite = WallSprites[tileCode - 100];
-    //     }
-    //     else
-    //     {
-    //         var go = mapObjects.Find(g => g.GetComponent<Wall>().info.code == tileCode);
-    //         newGo = Instantiate(go, position, Quaternion.identity, parent);
-
-    //         var index = mapObjects.IndexOf(go);
-    //         if(mapObjectSprites[index] != null) newGo.GetComponent<SpriteRenderer>().sprite = mapObjectSprites[index];
-    //     }
-
-    //     return newGo;
-    // }
-
-
-    //public Sprite BaseBackGround { get { return baseBackground; } }
-    //public Sprite Background
-    //{
-    //    get
-    //    {
-    //        string seed = (Time.time + Random.value).ToString();
-    //        System.Random rand = new System.Random(seed.GetHashCode());
-
-    //        return background[rand.Next(0, background.Length)].sprite[0];
-    //    }
-    //}
-
-    /// <summary>
-    /// If resourceLoad is true, remove 'Resources/' directory.
-    /// </summary>
-    /// <param name="resourceLoad"></param>
-    /// <returns></returns>
-//     public string GetPath()
-//     {
-// #if UNITY_EDITOR
-//         return path;
-// #elif UNITY_ANDROID || UNITY_STANDALONE_WIN || UNITY_IOS
-//         return path.Replace("/Resources/", "");
-// #endif
-//         //if (resourceLoad)
-//         //    return path.Replace("/Resources", "");
-//         //else
-//         //    return path;
-//     }
+    [System.Serializable]
+    public class MapObjectInfo
+    {
+        public string name;
+        public int id;
+        public Sprite sprite;
+    }
 }

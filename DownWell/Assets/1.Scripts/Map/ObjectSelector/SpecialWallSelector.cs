@@ -14,12 +14,12 @@ public class SpecialWallSelector : ObjectSelector
 
     protected override GameObject Select(int tileCode)
     {
-        if (BossStageManager.instance.IsBossStage)
-        {
-            var obj = Find(tileCode);
-            return Instantiate(obj);
-        }
-        else
+        // if (BossStageManager.instance.IsBossStage)
+        // {
+        //     var obj = Find(tileCode);
+        //     return Instantiate(obj);
+        // }
+        // else
             return null;
     }
 }

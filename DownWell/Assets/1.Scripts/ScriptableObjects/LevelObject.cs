@@ -20,21 +20,6 @@ public class LevelObject : ScriptableObject
         else
             return sprite.texture;
     }
-
-    //public Texture2D GetCroppedTexture()
-    //{
-    //    var ct = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
-
-    //    var pixels = sprite.texture.GetPixels((int)sprite.textureRect.x,
-    //                                     (int)sprite.textureRect.y,
-    //                                     (int)sprite.textureRect.width,
-    //                                     (int)sprite.textureRect.height);
-
-    //    ct.SetPixels(pixels);
-    //    ct.Apply();
-
-    //    return ct;
-    //}
 }
 
 

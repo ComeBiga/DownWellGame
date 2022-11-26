@@ -76,7 +76,7 @@ public abstract class ObjectSelector
 
     protected GameObject Find(int tileCode)
     {
-        return currentStage.MapObjects.Find(o => o.GetComponent<Wall>().info.code == tileCode);
+        return null; //currentStage.MapObjects.Find(o => o.GetComponent<Wall>().info.code == tileCode);
     }
 
     protected GameObject Next(int tileCode)
@@ -93,10 +93,12 @@ public abstract class ObjectSelector
 
     protected GameObject Instantiate(GameObject go)
     {
-        if (go != null)
-            return GameObject.Instantiate(go, position, Quaternion.identity, parent);
-        else
-            return null;
+        return null;
+
+        // if (go != null)
+        //     return GameObject.Instantiate(go, position, Quaternion.identity, parent);
+        // else
+        //     return null;
     }
 }
 

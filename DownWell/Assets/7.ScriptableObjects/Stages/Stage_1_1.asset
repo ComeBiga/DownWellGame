@@ -14,8 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stage1
   num: 1
-  path: /Resources/Levels/Stage1/Main
   stageLength: 200
+  mapObjectInfos:
+  - name: block
+    id: 2
+    sprite: {fileID: 2659686873517320435, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
+  - name: platform
+    id: 3
+    sprite: {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - name: platform_L
+    id: 5
+    sprite: {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - name: platform_R
+    id: 7
+    sprite: {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
+  - name: itemGiver
+    id: 10
+    sprite: {fileID: 5673921885698166438, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
+  - name: itemGiver_Lock
+    id: 11
+    sprite: {fileID: -6999109337804598064, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
   mapObjects:
   - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
   - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
@@ -27,34 +45,6 @@ MonoBehaviour:
   - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
   - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
   - {fileID: 27600725104633016, guid: dff9122e2289134439b8164ff4908cd0, type: 3}
-  wallSprites:
-  - {fileID: 361258845582702848, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-  - {fileID: -8668958053737087820, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -7786853946139616982, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -4972809209741350286, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: 4292971695097237386, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: 5166692102197943301, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -8968729423981400309, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: 7629501436978985344, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -2208134847849381855, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: 9079432382562792529, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -3801257808257220460, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: 864594763026940855, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: 5273118182159388248, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -1471781673789823148, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -7360721961718912818, guid: 0c545fb38fe9f6d4fa77e82e7caf4c0e, type: 3}
-  - {fileID: -1234207176431411585, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
-  mapObjectSprites: []
-  blockSprites:
-  - {fileID: 2659686873517320435, guid: 8fbfc3da60f9b0e4290998fe4ad2bdf6, type: 3}
-  platformSprites:
-  - {fileID: -4387522647513133027, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
-  - {fileID: 1492975547949835125, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
-  - {fileID: 8207738129746289337, guid: 6e2eb73b60485dd46bf25656c921ff3a, type: 3}
-  itemGiverSprites:
-  - {fileID: 5673921885698166438, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
-  itemGiverLockSprites:
-  - {fileID: -6999109337804598064, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
   dropItems:
   - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
   - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
@@ -96,12 +86,4 @@ MonoBehaviour:
   - {fileID: 3497555664075828464, guid: 82bd724817377444db3f13e046ea39aa, type: 3}
   - {fileID: 2054867273042109991, guid: 564d3dd474dc438419208a003f6b86cb, type: 3}
   bossObject: {fileID: 0}
-  bgInfo:
-    _base:
-    - {fileID: 2771405236911218164, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-    - {fileID: -5013777032346609765, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-    - {fileID: 3346454942947971662, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-    deco:
-    - sprite: {fileID: 1457973918208686885, guid: 6a04df319fa181c468b05f062fd3f0bb, type: 3}
-      prob: 1
   bgm: Bg1
