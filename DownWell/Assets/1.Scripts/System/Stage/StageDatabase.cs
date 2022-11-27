@@ -18,14 +18,11 @@ public class StageDatabase : ScriptableObject
     public int stageLength = 200;
 
     public List<MapObjectInfo> mapObjectInfos;
+    public List<DropItemSets> dropItemSets;
 
     [Header("Wall")]
-    [SerializeField] private List<GameObject> mapObjects;
-    [SerializeField] private List<GameObject> dropItems;
     [SerializeField] private List<TileBase> tileBases;
     [SerializeField] private List<Material> materials;
-
-    public List<GameObject> DropItems { get { return dropItems; } }
 
     [Header("Enemy")]
     [SerializeField] private List<GameObject> enemyObjects;
@@ -60,5 +57,12 @@ public class StageDatabase : ScriptableObject
         public string name;
         public int id;
         public Sprite sprite;
+    }
+
+    [System.Serializable]
+    public class DropItemSets
+    {
+        public int id;
+        public List<int> items;
     }
 }

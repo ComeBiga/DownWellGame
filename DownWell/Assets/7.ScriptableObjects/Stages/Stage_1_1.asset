@@ -34,20 +34,9 @@ MonoBehaviour:
   - name: itemGiver_Lock
     id: 11
     sprite: {fileID: -6999109337804598064, guid: 5ed381bc234da064a93da87bbf3eb482, type: 3}
-  mapObjects:
-  - {fileID: 1687051807138975847, guid: 9de85988f1d6b3e42af89b6eaeda1366, type: 3}
-  - {fileID: 7665563266699775398, guid: ae436d7ebad21d54981e417b5125d82a, type: 3}
-  - {fileID: 5145000130153139242, guid: 990ac9e1013c1464e981aca68453d610, type: 3}
-  - {fileID: 8481642562006256250, guid: 950734a322b84bd4b80dbe3bd3f4fa69, type: 3}
-  - {fileID: 4617716056163936406, guid: 0937da72c7ef2894186a7128cd9473f0, type: 3}
-  - {fileID: 7043322206093987627, guid: 19088e03c299af642a662bb98efec097, type: 3}
-  - {fileID: 656814902656677276, guid: 960aebec878013f4b8ce4b58b7812e16, type: 3}
-  - {fileID: 27600725104633016, guid: 6628f3abd5ef18542bee0288a1da3c44, type: 3}
-  - {fileID: 1708828606200111537, guid: 5d3421e42a56a8c45ad11b6123066539, type: 3}
-  - {fileID: 27600725104633016, guid: dff9122e2289134439b8164ff4908cd0, type: 3}
-  dropItems:
-  - {fileID: 3519354593657197702, guid: 3538dcdc9567a2e48ad61cdab3675c8d, type: 3}
-  - {fileID: 3519354593657197702, guid: 5c0241c474cc8ac43b66e2ff89831b0e, type: 3}
+  dropItemSets:
+  - id: 0
+    items: b90b0000bd0b0000
   tileBases:
   - {fileID: 11400000, guid: 6f422997d17845c43984c820057d8d41, type: 2}
   - {fileID: 11400000, guid: 6763ba95a43581c4c97c921f8692ce41, type: 2}

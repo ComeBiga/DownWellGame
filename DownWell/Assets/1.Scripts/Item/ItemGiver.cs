@@ -8,11 +8,19 @@ public class ItemGiver : Block
 
     //public float dialogueOffset = 1f;
 
-    [SerializeField] private List<GameObject> dropItems;
+    [SerializeField] private List<GameObject> dropItems = new List<GameObject>();
 
     private void Start()
     {
-        dropItems = StageManager.instance.Current.DropItems;
+        var dropItemSet = StageManager.instance.Current.dropItemSets[0];
+
+        for (int i = 0; i < dropItemSet.items.Count; ++i)
+        {
+            var dropItem = DataManager.GetItem(dropItemSet.items[i]);
+            dropItems.Add(dropItem.gameObject);
+        }
+
+        //dropItems = StageManager.instance.Current.DropItems;
         itemDropper.SetItem(dropItems);
     }
 
