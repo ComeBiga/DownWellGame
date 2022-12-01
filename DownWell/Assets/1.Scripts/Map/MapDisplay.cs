@@ -221,11 +221,11 @@ public class MapDisplay : MonoBehaviour
             instanceObj.GetComponent<SpriteRenderer>().sprite = currentStage.GetMapObjectInfo(tileCode).sprite;
     }
 
-    private void CreateEnemy(int tileCode, Vector3 tilePosition, StageDatabase currentStage)
+    private void CreateEnemy(int enemyCode, Vector3 tilePosition, StageDatabase currentStage)
     {
         if(CatDown.Random.Get().Next(100) < enemyRatio)
         {
-            var obj = currentStage.EnemyObjects.Find(o => o.GetComponent<Enemy>().info.code == tileCode);
+            var obj = DataManager.GetEnemy(enemyCode);
             Instantiate(obj, tilePosition, Quaternion.identity, enemyParent);
         }
     }
