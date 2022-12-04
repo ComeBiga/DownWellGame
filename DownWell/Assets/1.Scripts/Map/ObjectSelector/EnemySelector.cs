@@ -20,8 +20,8 @@ public class EnemySelector : ObjectSelector
     {
         if(CatDown.Random.Get().Next(100) < ratio)
         {
-            var obj = StageManager.instance.Current.EnemyObjects.Find(o => o.GetComponent<Enemy>().info.code == tileCode);
-            return Instantiate(obj);
+            //var obj = StageManager.instance.Current.EnemyObjects.Find(o => o.GetComponent<Enemy>().info.code == tileCode);
+            return Instantiate(null);
         }
 
         return null;

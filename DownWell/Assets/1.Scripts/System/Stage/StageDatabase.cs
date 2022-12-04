@@ -20,13 +20,9 @@ public class StageDatabase : ScriptableObject
     public List<MapObjectInfo> mapObjectInfos;
     public List<DropItemSets> dropItemSets;
 
-    [Header("Wall")]
+    [Header("Map Style")]
     [SerializeField] private List<TileBase> tileBases;
     [SerializeField] private List<Material> materials;
-
-    [Header("Enemy")]
-    [System.Obsolete]
-    [SerializeField] private List<GameObject> enemyObjects;
 
     [Header("Boss")]
     [SerializeField] private GameObject bossObject;
@@ -43,8 +39,6 @@ public class StageDatabase : ScriptableObject
     }
 
     public List<TileBase> TileBases { get { return tileBases; } }
-    [System.Obsolete]
-    public List<GameObject> EnemyObjects { get { return enemyObjects; } }
     public GameObject BossObject { get { return bossObject; } }
     public List<Material> Materials { get { return materials; } }
 
