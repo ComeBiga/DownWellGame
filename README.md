@@ -8,7 +8,7 @@
 
 __개발엔진__ : Unity3D  
 __목표플랫폼__ : 모바일   
-__플레이 영상__ : [Link](https://youtu.be/uQEhLIi4TyE)    
+__플레이 영상__ : [Link](https://youtu.be/x36c1LxZNZ0)    
 __구글플레이__ : [Link](https://play.google.com/store/apps/details?id=com.FourDX.CatDown)
 
 
