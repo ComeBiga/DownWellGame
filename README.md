@@ -3,16 +3,18 @@
 
 ![CatDownLogo](https://user-images.githubusercontent.com/36800639/232320649-ee4e089a-27c8-41a6-a16d-f5d0ff3e404b.png)
 
-이 게임은 2D 종스크롤 방식의 슈팅 게임입니다.
-
-게임 '[다운웰(Downwell)](https://youtu.be/tpDONgfBuzk)'을 벤치마킹해서, 기존 게임의 속도감과 타격감을 살려서 개발했습니다.
-
 __개발엔진__ : Unity3D  
 __목표플랫폼__ : 모바일   
 __플레이 영상__ : [Link](https://youtu.be/x36c1LxZNZ0)    
 __구글플레이__ : [Link](https://play.google.com/store/apps/details?id=com.FourDX.CatDown)
 
-***
+이 게임은 2D 종스크롤 방식의 슈팅 게임입니다.
+
+게임 '[다운웰(Downwell)](https://youtu.be/tpDONgfBuzk)'을 벤치마킹해서, 기존 게임의 속도감과 타격감을 살려서 개발했습니다.
+
+
+
+
 ## 게임 설명
 <img src="https://user-images.githubusercontent.com/36800639/232319414-abdced62-3477-4459-9edf-c130d246485e.PNG"  width="250" height="550"/> <img src="https://user-images.githubusercontent.com/36800639/232319342-a25478bb-790e-4ce9-9780-5671d272ea95.jpg"  width="250" height="550"/> <img src="https://user-images.githubusercontent.com/36800639/232319944-ba6e70de-729c-407a-9c96-ccf98667760c.jpg"  width="250" height="550"/>
 
@@ -27,7 +29,7 @@ __구글플레이__ : [Link](https://play.google.com/store/apps/details?id=com.F
 
 강해진 공격으로 보스를 잡으면 됩니다.
 
-***
+
 
 ## 주요 코드
  ### 맵 생성
