@@ -18,7 +18,7 @@ __구글플레이__ : [Link](https://play.google.com/store/apps/details?id=com.F
 ## 게임 설명
 <img src="https://user-images.githubusercontent.com/36800639/232319414-abdced62-3477-4459-9edf-c130d246485e.PNG"  width="250" height="550"/> <img src="https://user-images.githubusercontent.com/36800639/232319342-a25478bb-790e-4ce9-9780-5671d272ea95.jpg"  width="250" height="550"/> <img src="https://user-images.githubusercontent.com/36800639/232319944-ba6e70de-729c-407a-9c96-ccf98667760c.jpg"  width="250" height="550"/>
 
-아래로 이어진 맵을 따라서 내려가면서 몬스터를 피해 내려가야 합니다.
+아래로 이어진 맵을 따라서 몬스터를 피해 내려가야 합니다.
 
 **조작법**은 간단하게 _좌우 이동_, _점프_, _점프 중 발사_ 입니다. _몬스터를 밟는 경우_ 에도 잡을 수 있습니다.
 
